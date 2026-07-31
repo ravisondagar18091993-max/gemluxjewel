@@ -1,0 +1,118 @@
+{% render 'dirona-fonts' %}
+{{ 'section-dirona-shop.css' | asset_url | stylesheet_tag }}
+{{ 'section-dirona-home.css' | asset_url | stylesheet_tag }}
+{{ 'component-facets.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'dirona-collection.js' | asset_url }}" defer="defer"></script>
+
+<collection-component
+  view-event-payload="{{ collection | standard_event_data: 'view' | escape }}"
+  data-collection-id="{{ collection.id }}"
+>
+  <section class="dirona dirona-shop">
+    <div class="dirona-container">
+      {%- paginate collection.products by section.settings.products_per_page -%}
+        <div class="dirona-shop__toolbar">
+          {%- if section.settings.enable_filtering -%}
+            <button type="button" class="dirona-shop__filter-toggle" data-dirona-filter-toggle>
+              <span>{{ section.settings.filter_label | default: 'Show Filter' }}</span>
+              <span class="dirona-shop__filter-switch">
+                <input
+                  type="checkbox"
+                  data-dirona-filter-checkbox
+                  {% if section.settings.filters_open_by_default %}checked{% endif %}
+                  aria-label="{{ section.settings.filter_label | default: 'Show Filter' }}"
+                >
+                <span class="dirona-shop__filter-track"></span>
+              </span>
+            </button>
+          {%- endif -%}
+
+          {%- if section.settings.enable_sorting -%}
+            <facet-filters-form class="dirona-shop__sort-wrap">
+              <form class="dirona-shop__sort-form" id="FacetSortForm">
+                {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+                <select
+                  name="sort_by"
+                  id="SortBy"
+                  class="dirona-shop__sort"
+                  aria-describedby="a11y-refresh-page-message"
+                >
+                  {%- for option in collection.sort_options -%}
+                    <option value="{{ option.value | escape }}" {% if option.value == sort_by %}selected{% endif %}>
+                      {{ option.name | escape }}
+                    </option>
+                  {%- endfor -%}
+                </select>
+              </form>
+            </facet-filters-form>
+          {%- endif -%}
+        </div>
+
+        <div
+          class="dirona-shop__layout{% if section.settings.filters_open_by_default and section.settings.enable_filtering %} is-filters-open{% endif %}"
+          data-dirona-shop-layout
+        >
+          {%- if section.settings.enable_filtering -%}
+            <aside class="dirona-shop__filters" id="main-collection-filters" data-id="{{ section.id }}">
+              {% render 'facets',
+                results: collection,
+                enable_filtering: true,
+                enable_sorting: false,
+                filter_type: 'vertical',
+                paginate: paginate
+              %}
+            </aside>
+          {%- endif -%}
+
+          <div id="ProductGridContainer">
+            {% render 'dirona-collection-grid', paginate: paginate %}
+          </div>
+        </div>
+      {%- endpaginate -%}
+    </div>
+  </section>
+</collection-component>
+
+{% schema %}
+{
+  "name": "Dirona Shop Grid",
+  "tag": "section",
+  "class": "dirona-section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 8,
+      "max": 36,
+      "step": 4,
+      "default": 16,
+      "label": "Products per page"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_filtering",
+      "label": "Enable filtering",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "filters_open_by_default",
+      "label": "Show filters by default",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "filter_label",
+      "label": "Filter toggle label",
+      "default": "Show Filter"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sorting",
+      "label": "Enable sorting",
+      "default": true
+    }
+  ]
+}
+{% endschema %}
