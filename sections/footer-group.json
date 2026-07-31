@@ -11,8 +11,8 @@
   "name": "Footer",
   "type": "footer",
   "sections": {
-    "Gemluxjewel_footer": {
-      "type": "Gemluxjewel-footer",
+    "gemluxjewel_footer": {
+      "type": "gemluxjewel-footer",
       "blocks": {
         "insta_1": { "type": "instagram", "settings": {} },
         "insta_2": { "type": "instagram", "settings": {} },
@@ -23,7 +23,7 @@
       },
       "block_order": ["insta_1", "insta_2", "insta_3", "insta_4", "insta_5", "insta_6"],
       "settings": {
-        "heading": "#Gemluxjewel",
+        "heading": "#gemluxjewel",
         "newsletter_heading": "SIGN UP TO OUR NEWSLETTER",
         "newsletter_text": "Don't Miss Out On Our Latest Arrivals, Promotions And Discounts:",
         "newsletter_placeholder": "Email Address…",
@@ -35,12 +35,12 @@
         "directions_label": "GET DIRECTIONS",
         "menu_1": "footer",
         "show_payment_icons": true,
-        "copyright_text": "@ Gemluxjewel 2026",
+        "copyright_text": "@ gemluxjewel 2026",
         "credit_text": "Design & Develop by Prothemebazaar",
         "credit_url": "https://prothemebazaar.com/"
       }
     }
   },
-  "order": ["Gemluxjewel_footer"]
+  "order": ["gemluxjewel_footer"]
 }
 

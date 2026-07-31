@@ -1,5 +1,5 @@
-{{ 'section-Gemluxjewel-home.css' | asset_url | stylesheet_tag }}
-{{ 'section-Gemluxjewel-product.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-product.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
   assign source_collection = section.settings.collection
@@ -9,19 +9,19 @@
   assign shown = 0
 -%}
 
-<section class="Gemluxjewel Gemluxjewel-pdp-related">
-  <div class="Gemluxjewel-container">
-    <div class="Gemluxjewel-section-header">
+<section class="gemluxjewel gemluxjewel-pdp-related">
+  <div class="gemluxjewel-container">
+    <div class="gemluxjewel-section-header">
       <div>
         {%- if section.settings.title != blank -%}
-          <h2 class="Gemluxjewel-section-title">{{ section.settings.title | escape }}</h2>
+          <h2 class="gemluxjewel-section-title">{{ section.settings.title | escape }}</h2>
         {%- endif -%}
         {%- if section.settings.subtitle != blank -%}
-          <p class="Gemluxjewel-section-desc">{{ section.settings.subtitle | escape }}</p>
+          <p class="gemluxjewel-section-desc">{{ section.settings.subtitle | escape }}</p>
         {%- endif -%}
       </div>
       {%- if section.settings.button_label != blank -%}
-        {% render 'Gemluxjewel-btn',
+        {% render 'gemluxjewel-btn',
           label: section.settings.button_label,
           url: section.settings.button_link | default: source_collection.url,
           style: 'green'
@@ -29,7 +29,7 @@
       {%- endif -%}
     </div>
 
-    <div class="Gemluxjewel-products__grid">
+    <div class="gemluxjewel-products__grid">
       {%- if source_collection != blank -%}
         {%- for related_product in source_collection.products -%}
           {%- if related_product.id != product.id -%}
@@ -39,7 +39,7 @@
                 assign badge_text = 'NEW IN'
               endif
             -%}
-            {% render 'Gemluxjewel-product-card', product: related_product, badge_text: badge_text, show_discount: true %}
+            {% render 'gemluxjewel-product-card', product: related_product, badge_text: badge_text, show_discount: true %}
             {%- assign shown = shown | plus: 1 -%}
             {%- if shown >= section.settings.products_to_show -%}
               {%- break -%}
@@ -50,7 +50,7 @@
 
       {%- if shown == 0 -%}
         {%- for i in (1..4) -%}
-          {% render 'Gemluxjewel-product-card', product: blank, badge_text: 'NEW IN', show_discount: true %}
+          {% render 'gemluxjewel-product-card', product: blank, badge_text: 'NEW IN', show_discount: true %}
         {%- endfor -%}
       {%- endif -%}
     </div>
@@ -59,9 +59,9 @@
 
 {% schema %}
 {
-  "name": "Gemluxjewel Related Prods",
+  "name": "gemluxjewel Related Prods",
   "tag": "section",
-  "class": "Gemluxjewel-section",
+  "class": "gemluxjewel-section",
   "settings": [
     { "type": "text", "id": "title", "label": "Heading", "default": "YOU MAY ALSO LIKE" },
     {
@@ -83,6 +83,6 @@
       "label": "Products to show"
     }
   ],
-  "presets": [{ "name": "Gemluxjewel Related Prods" }]
+  "presets": [{ "name": "gemluxjewel Related Prods" }]
 }
 {% endschema %}

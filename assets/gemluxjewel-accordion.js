@@ -26,7 +26,7 @@
     }
   }
 
-  document.querySelectorAll('[data-Gemluxjewel-accordion]').forEach(function (root) {
+  document.querySelectorAll('[data-gemluxjewel-accordion]').forEach(function (root) {
     root.querySelectorAll('.closet-header').forEach(function (header) {
       header.addEventListener('click', function () {
         toggleAccordion(root, header);

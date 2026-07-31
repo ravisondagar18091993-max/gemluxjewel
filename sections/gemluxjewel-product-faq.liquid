@@ -1,31 +1,31 @@
-{% render 'Gemluxjewel-fonts' %}
-{{ 'section-Gemluxjewel-home.css' | asset_url | stylesheet_tag }}
-{{ 'section-Gemluxjewel-product.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'Gemluxjewel-accordion.js' | asset_url }}" defer="defer"></script>
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-product.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'gemluxjewel-accordion.js' | asset_url }}" defer="defer"></script>
 
-<section class="Gemluxjewel Gemluxjewel-pdp-faq">
-  <div class="Gemluxjewel-container">
-    <div class="Gemluxjewel-pdp-faq__grid">
-      <div class="Gemluxjewel-pdp-faq__intro-col">
-        <div class="Gemluxjewel-pdp-faq__header">
+<section class="gemluxjewel gemluxjewel-pdp-faq">
+  <div class="gemluxjewel-container">
+    <div class="gemluxjewel-pdp-faq__grid">
+      <div class="gemluxjewel-pdp-faq__intro-col">
+        <div class="gemluxjewel-pdp-faq__header">
           {%- if section.settings.prefix != blank -%}
-            <p class="Gemluxjewel-prefix Gemluxjewel-pdp-faq__prefix">{{ section.settings.prefix | escape }}</p>
+            <p class="gemluxjewel-prefix gemluxjewel-pdp-faq__prefix">{{ section.settings.prefix | escape }}</p>
           {%- endif -%}
           {%- if section.settings.title != blank -%}
-            <h2 class="Gemluxjewel-section-title Gemluxjewel-pdp-faq__title">{{ section.settings.title | escape }}</h2>
+            <h2 class="gemluxjewel-section-title gemluxjewel-pdp-faq__title">{{ section.settings.title | escape }}</h2>
           {%- endif -%}
           {%- if section.settings.text != blank -%}
-            <p class="Gemluxjewel-section-desc Gemluxjewel-pdp-faq__desc">{{ section.settings.text | escape }}</p>
+            <p class="gemluxjewel-section-desc gemluxjewel-pdp-faq__desc">{{ section.settings.text | escape }}</p>
           {%- endif -%}
           {%- if section.settings.button_label != blank -%}
-            {% render 'Gemluxjewel-btn', label: section.settings.button_label, url: section.settings.button_link, style: 'green' %}
+            {% render 'gemluxjewel-btn', label: section.settings.button_label, url: section.settings.button_link, style: 'green' %}
           {%- endif -%}
         </div>
       </div>
 
-      <div class="Gemluxjewel-pdp-faq__accordion-col">
-        <div class="Gemluxjewel-pdp-faq__accordian-block">
-          <div class="closet-accordion" data-Gemluxjewel-accordion>
+      <div class="gemluxjewel-pdp-faq__accordion-col">
+        <div class="gemluxjewel-pdp-faq__accordian-block">
+          <div class="closet-accordion" data-gemluxjewel-accordion>
             {%- for block in section.blocks -%}
               <div class="closet-item" {{ block.shopify_attributes }}>
                 <div
@@ -55,9 +55,9 @@
 
 {% schema %}
 {
-  "name": "Gemluxjewel Product FAQ",
+  "name": "gemluxjewel Product FAQ",
   "tag": "section",
-  "class": "Gemluxjewel-section",
+  "class": "gemluxjewel-section",
   "settings": [
     { "type": "text", "id": "prefix", "label": "Prefix", "default": "NEED HELP?" },
     { "type": "text", "id": "title", "label": "Heading", "default": "FREQUENTLY ASKED QUESTIONS" },
@@ -92,7 +92,7 @@
   ],
   "presets": [
     {
-      "name": "Gemluxjewel Product FAQ",
+      "name": "gemluxjewel Product FAQ",
       "blocks": [
         {
           "type": "faq",

@@ -1,13 +1,13 @@
-{{ 'section-Gemluxjewel-home.css' | asset_url | stylesheet_tag }}
-{% render 'Gemluxjewel-fonts' %}
-<script src="{{ 'Gemluxjewel-home.js' | asset_url }}" defer="defer"></script>
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{% render 'gemluxjewel-fonts' %}
+<script src="{{ 'gemluxjewel-home.js' | asset_url }}" defer="defer"></script>
 
-<section class="Gemluxjewel Gemluxjewel-hero" data-Gemluxjewel-hero data-autoplay="{{ section.settings.autoplay_speed }}">
-  <div class="Gemluxjewel-hero__layer"></div>
-  <div class="Gemluxjewel-hero__slides">
+<section class="gemluxjewel gemluxjewel-hero" data-gemluxjewel-hero data-autoplay="{{ section.settings.autoplay_speed }}">
+  <div class="gemluxjewel-hero__layer"></div>
+  <div class="gemluxjewel-hero__slides">
     {%- if section.blocks.size > 0 -%}
       {%- for block in section.blocks -%}
-        <div class="Gemluxjewel-hero__slide{% if forloop.first %} is-active{% endif %}" data-Gemluxjewel-hero-slide {{ block.shopify_attributes }}>
+        <div class="gemluxjewel-hero__slide{% if forloop.first %} is-active{% endif %}" data-gemluxjewel-hero-slide {{ block.shopify_attributes }}>
           {%- if block.settings.image != blank -%}
             {{ block.settings.image | image_url: width: 3840 | image_tag: widths: '750, 1100, 1500, 2000, 3840', sizes: '100vw', fetchpriority: forloop.first }}
           {%- else -%}
@@ -16,51 +16,51 @@
         </div>
       {%- endfor -%}
     {%- elsif section.settings.image != blank -%}
-      <div class="Gemluxjewel-hero__slide is-active" data-Gemluxjewel-hero-slide>
+      <div class="gemluxjewel-hero__slide is-active" data-gemluxjewel-hero-slide>
         {{ section.settings.image | image_url: width: 3840 | image_tag: widths: '750, 1100, 1500, 2000, 3840', sizes: '100vw', fetchpriority: 'high' }}
       </div>
     {%- else -%}
-      <div class="Gemluxjewel-hero__slide is-active" data-Gemluxjewel-hero-slide>
+      <div class="gemluxjewel-hero__slide is-active" data-gemluxjewel-hero-slide>
         <img src="{{ 'hero-img.png' | asset_url }}" alt="" width="1920" height="900" fetchpriority="high">
       </div>
     {%- endif -%}
   </div>
 
-  <div class="Gemluxjewel-hero__content">
-    <div class="Gemluxjewel-container">
-      <div class="Gemluxjewel-hero__content-inner">
+  <div class="gemluxjewel-hero__content">
+    <div class="gemluxjewel-container">
+      <div class="gemluxjewel-hero__content-inner">
       {%- if section.settings.prefix != blank -%}
-        <p class="Gemluxjewel-prefix">{{ section.settings.prefix }}</p>
+        <p class="gemluxjewel-prefix">{{ section.settings.prefix }}</p>
       {%- endif -%}
       {%- if section.settings.title != blank -%}
-        <h1 class="Gemluxjewel-hero__title">{{ section.settings.title }}</h1>
+        <h1 class="gemluxjewel-hero__title">{{ section.settings.title }}</h1>
       {%- endif -%}
       {%- if section.settings.text != blank -%}
-        <p class="Gemluxjewel-hero__text">{{ section.settings.text }}</p>
+        <p class="gemluxjewel-hero__text">{{ section.settings.text }}</p>
       {%- endif -%}
-      {% render 'Gemluxjewel-btn', label: section.settings.button_label, url: section.settings.button_link, style: 'green' %}
+      {% render 'gemluxjewel-btn', label: section.settings.button_label, url: section.settings.button_link, style: 'green' %}
       </div>
     </div>
   </div>
 
-  <div class="Gemluxjewel-hero__float">
-    <div class="Gemluxjewel-container">
-      <div class="Gemluxjewel-hero__float-inner">
-        <div class="Gemluxjewel-hero__product-box">
-          <div class="Gemluxjewel-hero__product-thumb">
+  <div class="gemluxjewel-hero__float">
+    <div class="gemluxjewel-container">
+      <div class="gemluxjewel-hero__float-inner">
+        <div class="gemluxjewel-hero__product-box">
+          <div class="gemluxjewel-hero__product-thumb">
             {%- assign preview_product = section.settings.preview_product -%}
             {%- if preview_product != blank and preview_product.featured_media -%}
-              <img src="{{ preview_product.featured_media | image_url: width: 200 }}" alt="{{ preview_product.title | escape }}" data-Gemluxjewel-hero-preview width="100" height="80">
+              <img src="{{ preview_product.featured_media | image_url: width: 200 }}" alt="{{ preview_product.title | escape }}" data-gemluxjewel-hero-preview width="100" height="80">
             {%- elsif section.blocks.first.settings.image != blank -%}
-              <img src="{{ section.blocks.first.settings.image | image_url: width: 200 }}" alt="" data-Gemluxjewel-hero-preview width="100" height="80">
+              <img src="{{ section.blocks.first.settings.image | image_url: width: 200 }}" alt="" data-gemluxjewel-hero-preview width="100" height="80">
             {%- else -%}
-              <img src="{{ 'hero-product-img.png' | asset_url }}" alt="" data-Gemluxjewel-hero-preview width="100" height="80">
+              <img src="{{ 'hero-product-img.png' | asset_url }}" alt="" data-gemluxjewel-hero-preview width="100" height="80">
             {%- endif -%}
           </div>
           <div style="flex:1">
-            <p class="Gemluxjewel-hero__product-label">{{ section.settings.preview_label | default: section.settings.prefix }}</p>
-            <p class="Gemluxjewel-hero__product-desc">{{ section.settings.preview_text | default: section.settings.title }}</p>
-            <div class="Gemluxjewel-hero__progress"><div class="Gemluxjewel-hero__progress-fill" data-Gemluxjewel-hero-progress></div></div>
+            <p class="gemluxjewel-hero__product-label">{{ section.settings.preview_label | default: section.settings.prefix }}</p>
+            <p class="gemluxjewel-hero__product-desc">{{ section.settings.preview_text | default: section.settings.title }}</p>
+            <div class="gemluxjewel-hero__progress"><div class="gemluxjewel-hero__progress-fill" data-gemluxjewel-hero-progress></div></div>
           </div>
         </div>
       </div>
@@ -70,9 +70,9 @@
 
 {% schema %}
 {
-  "name": "Gemluxjewel Hero",
+  "name": "gemluxjewel Hero",
   "tag": "section",
-  "class": "section Gemluxjewel-section",
+  "class": "section gemluxjewel-section",
   "settings": [
     { "type": "image_picker", "id": "image", "label": "Fallback slide image" },
     { "type": "range", "id": "autoplay_speed", "min": 3000, "max": 8000, "step": 500, "default": 5000, "unit": "ms", "label": "Slide speed" },
@@ -92,6 +92,6 @@
       "settings": [{ "type": "image_picker", "id": "image", "label": "Image" }]
     }
   ],
-  "presets": [{ "name": "Gemluxjewel Hero", "blocks": [{ "type": "slide" }, { "type": "slide" }, { "type": "slide" }] }]
+  "presets": [{ "name": "gemluxjewel Hero", "blocks": [{ "type": "slide" }, { "type": "slide" }, { "type": "slide" }] }]
 }
 {% endschema %}

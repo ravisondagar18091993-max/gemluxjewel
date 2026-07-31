@@ -1,25 +1,25 @@
-{{ 'dirona-marquee.css' | asset_url | stylesheet_tag }}
-{{ 'section-dirona-home.css' | asset_url | stylesheet_tag }}
+{{ 'gemluxjewel-marquee.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
 
-<section class="dirona dirona-marquee-strip">
+<section class="gemluxjewel gemluxjewel-marquee-strip">
   {%- capture strip_marquee_content -%}
     {%- for block in section.blocks -%}
-      <div class="dirona-marquee-strip__item" {{ block.shopify_attributes }}>
+      <div class="gemluxjewel-marquee-strip__item" {{ block.shopify_attributes }}>
         {{ block.settings.text | escape }}
-        <span class="dirona-marquee-strip__star">
+        <span class="gemluxjewel-marquee-strip__star">
           <img src="{{ 'star.svg' | asset_url }}" alt="" width="50" height="50">
         </span>
       </div>
     {%- endfor -%}
   {%- endcapture -%}
-  {% render 'dirona-marquee', class: 'dirona-marquee-strip__inner', duration: section.settings.speed, gap: 0, content: strip_marquee_content %}
+  {% render 'gemluxjewel-marquee', class: 'gemluxjewel-marquee-strip__inner', duration: section.settings.speed, gap: 0, content: strip_marquee_content %}
 </section>
 
 {% schema %}
 {
-  "name": "Dirona Marquee Strip",
+  "name": "gemluxjewel Marquee Strip",
   "tag": "section",
-  "class": "section dirona-section",
+  "class": "section gemluxjewel-section",
   "settings": [
     {
       "type": "range",
@@ -41,7 +41,7 @@
   ],
   "presets": [
     {
-      "name": "Dirona Marquee Strip",
+      "name": "gemluxjewel Marquee Strip",
       "blocks": [
         { "type": "text", "settings": { "text": "Timeless Style" } },
         { "type": "text", "settings": { "text": "Cold Shield" } },

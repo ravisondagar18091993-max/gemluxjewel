@@ -11,8 +11,8 @@
   "name": "Header",
   "type": "header",
   "sections": {
-    "Gemluxjewel_header": {
-      "type": "Gemluxjewel-header",
+    "gemluxjewel_header": {
+      "type": "gemluxjewel-header",
       "blocks": {
         "top_1": { "type": "top_link", "settings": { "label": "Modern Jewellery" } },
         "top_2": { "type": "top_link", "settings": { "label": "Minimal Jewellery" } },
@@ -34,7 +34,7 @@
         "mega_1", "mega_2", "mega_3", "mega_img"
       ],
       "settings": {
-        "logo_text": "Gemluxjewel",
+        "logo_text": "gemluxjewel",
         "menu": "main-menu",
         "marquee_speed": 35,
         "dark_style": false,
@@ -44,5 +44,5 @@
       }
     }
   },
-  "order": ["Gemluxjewel_header"]
+  "order": ["gemluxjewel_header"]
 }

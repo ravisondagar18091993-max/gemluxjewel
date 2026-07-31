@@ -1,7 +1,7 @@
-{% render 'dirona-fonts' %}
-{{ 'dirona-marquee.css' | asset_url | stylesheet_tag }}
-{{ 'section-dirona-header.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'dirona-header.js' | asset_url }}" defer="defer"></script>
+{% render 'gemluxjewel-fonts' %}
+{{ 'gemluxjewel-marquee.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-header.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'gemluxjewel-header.js' | asset_url }}" defer="defer"></script>
 
 {%- liquid
   assign use_dark = section.settings.dark_style
@@ -13,63 +13,63 @@
 -%}
 
 <header
-  class="dirona dirona-header{% if use_dark %} dirona-header--dark{% endif %}"
-  data-dirona-header
+  class="gemluxjewel gemluxjewel-header{% if use_dark %} gemluxjewel-header--dark{% endif %}"
+  data-gemluxjewel-header
 >
-  <div class="dirona-header__top">
+  <div class="gemluxjewel-header__top">
     {%- capture top_marquee_content -%}
       {%- for block in section.blocks -%}
         {%- if block.type == 'top_link' -%}
-          <div class="dirona-marquee__item" {{ block.shopify_attributes }}>
-            <img src="{{ 'diamond.svg' | asset_url }}" alt="" class="dirona-header__top-icon" width="18" height="18">
+          <div class="gemluxjewel-marquee__item" {{ block.shopify_attributes }}>
+            <img src="{{ 'diamond.svg' | asset_url }}" alt="" class="gemluxjewel-header__top-icon" width="18" height="18">
             {%- if block.settings.url != blank -%}
-              <a href="{{ block.settings.url }}" class="dirona-header__top-link">{{ block.settings.label | escape }}</a>
+              <a href="{{ block.settings.url }}" class="gemluxjewel-header__top-link">{{ block.settings.label | escape }}</a>
             {%- else -%}
-              <span class="dirona-header__top-link">{{ block.settings.label | escape }}</span>
+              <span class="gemluxjewel-header__top-link">{{ block.settings.label | escape }}</span>
             {%- endif -%}
           </div>
         {%- endif -%}
       {%- endfor -%}
     {%- endcapture -%}
-    {% render 'dirona-marquee', class: 'dirona-header__marquee', duration: section.settings.marquee_speed, gap: 48, content: top_marquee_content %}
+    {% render 'gemluxjewel-marquee', class: 'gemluxjewel-header__marquee', duration: section.settings.marquee_speed, gap: 48, content: top_marquee_content %}
   </div>
 
-  <div class="dirona-header__wrap">
-    <div class="dirona-header__main" data-dirona-header-main>
-      <div class="dirona-header__inner">
-        <div class="dirona-header__left">
+  <div class="gemluxjewel-header__wrap">
+    <div class="gemluxjewel-header__main" data-gemluxjewel-header-main>
+      <div class="gemluxjewel-header__inner">
+        <div class="gemluxjewel-header__left">
           <nav aria-label="Main">
             {%- if section.settings.menu != blank -%}
-              <ul class="dirona-header__nav">
+              <ul class="gemluxjewel-header__nav">
                 {%- for link in section.settings.menu.links -%}
-                  <li class="dirona-header__nav-item{% if forloop.first and mega_blocks.size > 0 %} has-mega{% endif %}">
-                    <a href="{{ link.url }}" class="dirona-header__nav-link">{{ link.title | escape }}</a>
+                  <li class="gemluxjewel-header__nav-item{% if forloop.first and mega_blocks.size > 0 %} has-mega{% endif %}">
+                    <a href="{{ link.url }}" class="gemluxjewel-header__nav-link">{{ link.title | escape }}</a>
                     {%- if forloop.first and mega_blocks.size > 0 -%}
-                      <div class="dirona-header__mega">
-                        <div class="dirona-header__mega-inner">
-                          <div class="dirona-header__mega-grid">
+                      <div class="gemluxjewel-header__mega">
+                        <div class="gemluxjewel-header__mega-inner">
+                          <div class="gemluxjewel-header__mega-grid">
                             {%- for block in mega_blocks -%}
-                              <div class="dirona-header__mega-col{% if block.settings.show_border %} dirona-header__mega-col--border{% endif %}" {{ block.shopify_attributes }}>
+                              <div class="gemluxjewel-header__mega-col{% if block.settings.show_border %} gemluxjewel-header__mega-col--border{% endif %}" {{ block.shopify_attributes }}>
                                 {%- if block.settings.title != blank -%}
-                                  <div class="dirona-header__mega-title">{{ block.settings.title | escape }}</div>
+                                  <div class="gemluxjewel-header__mega-title">{{ block.settings.title | escape }}</div>
                                 {%- endif -%}
                                 {%- if block.settings.menu != blank -%}
-                                  <ul class="dirona-header__mega-list">
+                                  <ul class="gemluxjewel-header__mega-list">
                                     {%- for mega_link in block.settings.menu.links -%}
                                       <li><a href="{{ mega_link.url }}">{{ mega_link.title | escape }}</a></li>
                                     {%- endfor -%}
                                   </ul>
                                 {%- endif -%}
                                 {%- if block.settings.view_all_url != blank -%}
-                                  <a href="{{ block.settings.view_all_url }}" class="dirona-header__mega-view-all">
+                                  <a href="{{ block.settings.view_all_url }}" class="gemluxjewel-header__mega-view-all">
                                     {{ block.settings.view_all_label | default: 'View all' }}
                                   </a>
                                 {%- endif -%}
                               </div>
                             {%- endfor -%}
                             {%- if mega_image_block -%}
-                              <div class="dirona-header__mega-col" {{ mega_image_block.shopify_attributes }}>
-                                <div class="dirona-header__mega-img">
+                              <div class="gemluxjewel-header__mega-col" {{ mega_image_block.shopify_attributes }}>
+                                <div class="gemluxjewel-header__mega-img">
                                   {%- if mega_image_block.settings.image != blank -%}
                                     {{ mega_image_block.settings.image | image_url: width: 600 | image_tag: widths: '300, 400, 600', sizes: '300px', loading: 'lazy' }}
                                   {%- else -%}
@@ -89,7 +89,7 @@
           </nav>
         </div>
 
-        <a href="{{ routes.root_url }}" class="dirona-header__logo">
+        <a href="{{ routes.root_url }}" class="gemluxjewel-header__logo">
           {%- if section.settings.logo_text != blank -%}
             {{ section.settings.logo_text | escape }}
           {%- else -%}
@@ -97,46 +97,46 @@
           {%- endif -%}
         </a>
 
-        <div class="dirona-header__actions">
-          <div class="dirona-header__burger">
-            <button type="button" class="dirona-header__burger-btn" data-dirona-burger aria-label="Open menu">
-              <img src="{{ 'burgermenu.svg' | asset_url }}" alt="" class="dirona-header__burger-light" width="40" height="40">
-              <img src="{{ 'dark-header-burgermenu.svg' | asset_url }}" alt="" class="dirona-header__burger-dark" width="40" height="40">
+        <div class="gemluxjewel-header__actions">
+          <div class="gemluxjewel-header__burger">
+            <button type="button" class="gemluxjewel-header__burger-btn" data-gemluxjewel-burger aria-label="Open menu">
+              <img src="{{ 'burgermenu.svg' | asset_url }}" alt="" class="gemluxjewel-header__burger-light" width="40" height="40">
+              <img src="{{ 'dark-header-burgermenu.svg' | asset_url }}" alt="" class="gemluxjewel-header__burger-dark" width="40" height="40">
             </button>
           </div>
 
-          <div class="dirona-header__right">
+          <div class="gemluxjewel-header__right">
           {%- if section.settings.locale_text != blank -%}
-            <span class="dirona-header__locale">{{ section.settings.locale_text | escape }}</span>
+            <span class="gemluxjewel-header__locale">{{ section.settings.locale_text | escape }}</span>
           {%- endif -%}
 
-          <div class="dirona-header__icons">
+          <div class="gemluxjewel-header__icons">
             {%- if section.settings.enable_search -%}
-              <a href="{{ routes.search_url }}" class="dirona-header__icon" aria-label="Search">
-                <img src="{{ 'header-icon1.svg' | asset_url }}" alt="" class="dirona-header__icon-light" width="25" height="25">
-                <img src="{{ 'dark-header-icon1.svg' | asset_url }}" alt="" class="dirona-header__icon-dark" width="25" height="25">
+              <a href="{{ routes.search_url }}" class="gemluxjewel-header__icon" aria-label="Search">
+                <img src="{{ 'header-icon1.svg' | asset_url }}" alt="" class="gemluxjewel-header__icon-light" width="25" height="25">
+                <img src="{{ 'dark-header-icon1.svg' | asset_url }}" alt="" class="gemluxjewel-header__icon-dark" width="25" height="25">
               </a>
             {%- endif -%}
-            <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="dirona-header__icon" aria-label="Account">
-              <img src="{{ 'header-icon2.svg' | asset_url }}" alt="" class="dirona-header__icon-light" width="25" height="25">
-              <img src="{{ 'dark-header-icon2.svg' | asset_url }}" alt="" class="dirona-header__icon-dark" width="25" height="25">
+            <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="gemluxjewel-header__icon" aria-label="Account">
+              <img src="{{ 'header-icon2.svg' | asset_url }}" alt="" class="gemluxjewel-header__icon-light" width="25" height="25">
+              <img src="{{ 'dark-header-icon2.svg' | asset_url }}" alt="" class="gemluxjewel-header__icon-dark" width="25" height="25">
             </a>
             {%- if section.settings.wishlist_url != blank -%}
-              <a href="{{ section.settings.wishlist_url }}" class="dirona-header__icon" aria-label="Wishlist">
-                <img src="{{ 'header-icon3.svg' | asset_url }}" alt="" class="dirona-header__icon-light" width="25" height="25">
-                <img src="{{ 'dark-header-icon3.svg' | asset_url }}" alt="" class="dirona-header__icon-dark" width="25" height="25">
+              <a href="{{ section.settings.wishlist_url }}" class="gemluxjewel-header__icon" aria-label="Wishlist">
+                <img src="{{ 'header-icon3.svg' | asset_url }}" alt="" class="gemluxjewel-header__icon-light" width="25" height="25">
+                <img src="{{ 'dark-header-icon3.svg' | asset_url }}" alt="" class="gemluxjewel-header__icon-dark" width="25" height="25">
               </a>
             {%- else -%}
-              <span class="dirona-header__icon" aria-hidden="true">
-                <img src="{{ 'header-icon3.svg' | asset_url }}" alt="" class="dirona-header__icon-light" width="25" height="25">
-                <img src="{{ 'dark-header-icon3.svg' | asset_url }}" alt="" class="dirona-header__icon-dark" width="25" height="25">
+              <span class="gemluxjewel-header__icon" aria-hidden="true">
+                <img src="{{ 'header-icon3.svg' | asset_url }}" alt="" class="gemluxjewel-header__icon-light" width="25" height="25">
+                <img src="{{ 'dark-header-icon3.svg' | asset_url }}" alt="" class="gemluxjewel-header__icon-dark" width="25" height="25">
               </span>
             {%- endif -%}
-            <a href="{{ routes.cart_url }}" class="dirona-header__icon" id="dirona-cart-icon" aria-label="Cart">
-              <img src="{{ 'header-icon4.svg' | asset_url }}" alt="" class="dirona-header__icon-light" width="25" height="25">
-              <img src="{{ 'dark-header-icon4.svg' | asset_url }}" alt="" class="dirona-header__icon-dark" width="25" height="25">
+            <a href="{{ routes.cart_url }}" class="gemluxjewel-header__icon" id="gemluxjewel-cart-icon" aria-label="Cart">
+              <img src="{{ 'header-icon4.svg' | asset_url }}" alt="" class="gemluxjewel-header__icon-light" width="25" height="25">
+              <img src="{{ 'dark-header-icon4.svg' | asset_url }}" alt="" class="gemluxjewel-header__icon-dark" width="25" height="25">
               {%- if cart.item_count > 0 -%}
-                <span class="dirona-header__cart-count">{{ cart.item_count }}</span>
+                <span class="gemluxjewel-header__cart-count">{{ cart.item_count }}</span>
               {%- endif -%}
             </a>
           </div>
@@ -146,22 +146,22 @@
   </div>
 </header>
 
-<div class="dirona dirona-mobile-menu" data-dirona-mobile-menu id="dironaMobileMenu">
-  <div class="dirona-mobile-menu__head">
-    <a href="{{ routes.root_url }}" class="dirona-header__logo">{{ section.settings.logo_text | default: shop.name | escape }}</a>
-    <button type="button" class="dirona-mobile-menu__close" data-dirona-menu-close aria-label="Close menu">
+<div class="gemluxjewel gemluxjewel-mobile-menu" data-gemluxjewel-mobile-menu id="gemluxjewelMobileMenu">
+  <div class="gemluxjewel-mobile-menu__head">
+    <a href="{{ routes.root_url }}" class="gemluxjewel-header__logo">{{ section.settings.logo_text | default: shop.name | escape }}</a>
+    <button type="button" class="gemluxjewel-mobile-menu__close" data-gemluxjewel-menu-close aria-label="Close menu">
       <img src="{{ 'close-btn.svg' | asset_url }}" alt="" width="32" height="32">
     </button>
   </div>
-  <nav class="dirona-mobile-menu__nav" aria-label="Mobile">
+  <nav class="gemluxjewel-mobile-menu__nav" aria-label="Mobile">
     {%- if section.settings.menu != blank -%}
       {%- for link in section.settings.menu.links -%}
-        <a href="{{ link.url }}" class="dirona-mobile-menu__link" data-dirona-menu-close-on-click>{{ link.title | escape }}</a>
+        <a href="{{ link.url }}" class="gemluxjewel-mobile-menu__link" data-gemluxjewel-menu-close-on-click>{{ link.title | escape }}</a>
       {%- endfor -%}
     {%- endif -%}
     {%- if section.settings.mobile_menu != blank -%}
       {%- for link in section.settings.mobile_menu.links -%}
-        <a href="{{ link.url }}" class="dirona-mobile-menu__link" data-dirona-menu-close-on-click>{{ link.title | escape }}</a>
+        <a href="{{ link.url }}" class="gemluxjewel-mobile-menu__link" data-gemluxjewel-menu-close-on-click>{{ link.title | escape }}</a>
       {%- endfor -%}
     {%- endif -%}
   </nav>
@@ -169,14 +169,14 @@
 
 {% schema %}
 {
-  "name": "Dirona Header",
-  "class": "dirona-section",
+  "name": "gemluxjewel Header",
+  "class": "gemluxjewel-section",
   "settings": [
     {
       "type": "text",
       "id": "logo_text",
       "label": "Logo text",
-      "default": "dirona"
+      "default": "gemluxjewel"
     },
     {
       "type": "link_list",
@@ -262,7 +262,7 @@
   ],
   "presets": [
     {
-      "name": "Dirona Header",
+      "name": "gemluxjewel Header",
       "blocks": [
         { "type": "top_link", "settings": { "label": "Modern Jewellery" } },
         { "type": "top_link", "settings": { "label": "Minimal Jewellery" } },

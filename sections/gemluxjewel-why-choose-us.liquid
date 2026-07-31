@@ -1,26 +1,26 @@
-{{ 'section-Gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
 
-<section class="Gemluxjewel Gemluxjewel-why">
-  <div class="Gemluxjewel-container">
-    <div class="Gemluxjewel-why__grid">
-      <div class="Gemluxjewel-why__content">
+<section class="gemluxjewel gemluxjewel-why">
+  <div class="gemluxjewel-container">
+    <div class="gemluxjewel-why__grid">
+      <div class="gemluxjewel-why__content">
         {%- if section.settings.prefix != blank -%}
-          <p class="Gemluxjewel-prefix">{{ section.settings.prefix }}</p>
+          <p class="gemluxjewel-prefix">{{ section.settings.prefix }}</p>
         {%- endif -%}
         {%- if section.settings.title != blank -%}
-          <h2 class="Gemluxjewel-section-title">{{ section.settings.title }}</h2>
+          <h2 class="gemluxjewel-section-title">{{ section.settings.title }}</h2>
         {%- endif -%}
-        <div class="Gemluxjewel-why__stories">
+        <div class="gemluxjewel-why__stories">
           {%- for block in section.blocks -%}
-            <div class="Gemluxjewel-why__story" {{ block.shopify_attributes }}>
-              <p class="Gemluxjewel-why__story-title">{{ block.settings.title | escape }}</p>
-              <p class="Gemluxjewel-why__story-text">{{ block.settings.text | escape }}</p>
+            <div class="gemluxjewel-why__story" {{ block.shopify_attributes }}>
+              <p class="gemluxjewel-why__story-title">{{ block.settings.title | escape }}</p>
+              <p class="gemluxjewel-why__story-text">{{ block.settings.text | escape }}</p>
             </div>
           {%- endfor -%}
         </div>
-        {% render 'Gemluxjewel-btn', label: section.settings.button_label, url: section.settings.button_link, style: 'pink' %}
+        {% render 'gemluxjewel-btn', label: section.settings.button_label, url: section.settings.button_link, style: 'pink' %}
       </div>
-      <div class="Gemluxjewel-why__image">
+      <div class="gemluxjewel-why__image">
         {%- if section.settings.image != blank -%}
           {{ section.settings.image | image_url: width: 1200 | image_tag: widths: '600, 800, 1200', sizes: '(min-width: 990px) 50vw, 100vw', loading: 'lazy' }}
         {%- else -%}
@@ -33,9 +33,9 @@
 
 {% schema %}
 {
-  "name": "Gemluxjewel Why Choose Us",
+  "name": "gemluxjewel Why Choose Us",
   "tag": "section",
-  "class": "section Gemluxjewel-section",
+  "class": "section gemluxjewel-section",
   "settings": [
     { "type": "text", "id": "prefix", "label": "Prefix", "default": "Our Story" },
     { "type": "text", "id": "title", "label": "Heading", "default": "Why Choose Us" },
@@ -55,7 +55,7 @@
   ],
   "presets": [
     {
-      "name": "Gemluxjewel Why Choose Us",
+      "name": "gemluxjewel Why Choose Us",
       "blocks": [
         { "type": "feature", "settings": { "title": "Skin-Safe Comfort", "text": "Designed with hypoallergenic materials that are gentle on sensitive skin all day" } },
         { "type": "feature", "settings": { "title": "Premium Quality", "text": "Crafted using durable, high-grade materials for long-lasting shine and strength" } },

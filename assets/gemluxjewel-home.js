@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('[data-Gemluxjewel-hero]').forEach((hero) => {
-    const slides = hero.querySelectorAll('[data-Gemluxjewel-hero-slide]');
-    const previewEl = hero.querySelector('[data-Gemluxjewel-hero-preview]');
+  document.querySelectorAll('[data-gemluxjewel-hero]').forEach((hero) => {
+    const slides = hero.querySelectorAll('[data-gemluxjewel-hero-slide]');
+    const previewEl = hero.querySelector('[data-gemluxjewel-hero-preview]');
     const preview = previewEl && previewEl.tagName === 'IMG' ? previewEl : null;
-    const progress = hero.querySelector('[data-Gemluxjewel-hero-progress]');
+    const progress = hero.querySelector('[data-gemluxjewel-hero-progress]');
     if (!slides.length) return;
 
     const duration = parseInt(hero.dataset.autoplay || '5000', 10);

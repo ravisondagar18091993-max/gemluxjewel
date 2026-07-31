@@ -1,47 +1,47 @@
-{% render 'Gemluxjewel-fonts' %}
-{{ 'section-Gemluxjewel-shop.css' | asset_url | stylesheet_tag }}
-{{ 'section-Gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-shop.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
 {{ 'component-facets.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
-<script src="{{ 'Gemluxjewel-collection.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'gemluxjewel-collection.js' | asset_url }}" defer="defer"></script>
 
 <collection-component
   view-event-payload="{{ collection | standard_event_data: 'view' | escape }}"
   data-collection-id="{{ collection.id }}"
 >
-  <section class="Gemluxjewel Gemluxjewel-shop">
-    <div class="Gemluxjewel-container">
+  <section class="gemluxjewel gemluxjewel-shop">
+    <div class="gemluxjewel-container">
       {%- paginate collection.products by section.settings.products_per_page -%}
-        <div class="Gemluxjewel-shop__toolbar">
+        <div class="gemluxjewel-shop__toolbar">
           {%- if section.settings.enable_filtering -%}
             <button
               type="button"
-              class="Gemluxjewel-shop__filter-toggle"
-              data-Gemluxjewel-filter-toggle
+              class="gemluxjewel-shop__filter-toggle"
+              data-gemluxjewel-filter-toggle
               data-show-label="{{ section.settings.filter_label | default: 'Show Filter' | escape }}"
               data-hide-label="{{ section.settings.filter_hide_label | default: 'Hide Filter' | escape }}"
             >
               <span>{{ section.settings.filter_label | default: 'Show Filter' }}</span>
-              <span class="Gemluxjewel-shop__filter-switch">
+              <span class="gemluxjewel-shop__filter-switch">
                 <input
                   type="checkbox"
-                  data-Gemluxjewel-filter-checkbox
+                  data-gemluxjewel-filter-checkbox
                   {% if section.settings.filters_open_by_default %}checked{% endif %}
                   aria-label="{{ section.settings.filter_label | default: 'Show Filter' }}"
                 >
-                <span class="Gemluxjewel-shop__filter-track"></span>
+                <span class="gemluxjewel-shop__filter-track"></span>
               </span>
             </button>
           {%- endif -%}
 
           {%- if section.settings.enable_sorting -%}
-            <facet-filters-form class="Gemluxjewel-shop__sort-wrap">
-              <form class="Gemluxjewel-shop__sort-form" id="FacetSortForm">
+            <facet-filters-form class="gemluxjewel-shop__sort-wrap">
+              <form class="gemluxjewel-shop__sort-form" id="FacetSortForm">
                 {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
                 <select
                   name="sort_by"
                   id="SortBy"
-                  class="Gemluxjewel-shop__sort"
+                  class="gemluxjewel-shop__sort"
                   aria-describedby="a11y-refresh-page-message"
                 >
                   {%- for option in collection.sort_options -%}
@@ -56,12 +56,12 @@
         </div>
 
         <div
-          class="Gemluxjewel-shop__layout{% if section.settings.filters_open_by_default and section.settings.enable_filtering %} is-filters-open{% endif %}"
-          data-Gemluxjewel-shop-layout
+          class="gemluxjewel-shop__layout{% if section.settings.filters_open_by_default and section.settings.enable_filtering %} is-filters-open{% endif %}"
+          data-gemluxjewel-shop-layout
         >
           {%- if section.settings.enable_filtering -%}
-            <aside class="Gemluxjewel-shop__filters" id="main-collection-filters" data-id="{{ section.id }}">
-              {% render 'Gemluxjewel-facets',
+            <aside class="gemluxjewel-shop__filters" id="main-collection-filters" data-id="{{ section.id }}">
+              {% render 'gemluxjewel-facets',
                 results: collection,
                 enable_filtering: true,
                 enable_sorting: false,
@@ -72,7 +72,7 @@
           {%- endif -%}
 
           <div id="ProductGridContainer">
-            {% render 'Gemluxjewel-collection-grid', paginate: paginate %}
+            {% render 'gemluxjewel-collection-grid', paginate: paginate %}
           </div>
         </div>
       {%- endpaginate -%}
@@ -82,9 +82,9 @@
 
 {% schema %}
 {
-  "name": "Gemluxjewel Shop Grid",
+  "name": "gemluxjewel Shop Grid",
   "tag": "section",
-  "class": "Gemluxjewel-section",
+  "class": "gemluxjewel-section",
   "settings": [
     {
       "type": "range",

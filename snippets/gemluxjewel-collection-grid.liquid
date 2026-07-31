@@ -1,19 +1,19 @@
 {% comment %}
-  Gemluxjewel collection product grid — compatible with Dawn facets.js
+  gemluxjewel collection product grid — compatible with Dawn facets.js
   Requires: collection, paginate, section
 {% endcomment %}
 
 <div class="collection">
   <div class="loading-overlay gradient"></div>
   {%- if collection.products.size == 0 -%}
-    <div class="Gemluxjewel-shop__empty">
+    <div class="gemluxjewel-shop__empty">
       <p>{{ 'sections.collection_template.empty' | t }}</p>
       <p>
-        {{ 'sections.collection_template.use_fewer_filters_html' | t: link: collection.url, class: 'Gemluxjewel-shop__empty-link' }}
+        {{ 'sections.collection_template.use_fewer_filters_html' | t: link: collection.url, class: 'gemluxjewel-shop__empty-link' }}
       </p>
     </div>
   {%- else -%}
-    <ul id="product-grid" data-id="{{ section.id }}" class="Gemluxjewel-shop__grid">
+    <ul id="product-grid" data-id="{{ section.id }}" class="gemluxjewel-shop__grid">
       {%- for product in collection.products -%}
         <li>
           {%- liquid
@@ -22,10 +22,10 @@
               assign badge_text = 'NEW IN'
             endif
           -%}
-          {% render 'Gemluxjewel-product-card', product: product, badge_text: badge_text, show_discount: true %}
+          {% render 'gemluxjewel-product-card', product: product, badge_text: badge_text, show_discount: true %}
         </li>
       {%- endfor -%}
     </ul>
-    {% render 'Gemluxjewel-pagination', paginate: paginate %}
+    {% render 'gemluxjewel-pagination', paginate: paginate %}
   {%- endif -%}
 </div>

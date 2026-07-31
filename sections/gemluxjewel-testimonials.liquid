@@ -1,30 +1,30 @@
-{{ 'section-Gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
 
-<section class="Gemluxjewel Gemluxjewel-testimonials">
-  <div class="Gemluxjewel-container">
-    <div class="Gemluxjewel-section-header Gemluxjewel-section-header--center">
+<section class="gemluxjewel gemluxjewel-testimonials">
+  <div class="gemluxjewel-container">
+    <div class="gemluxjewel-section-header gemluxjewel-section-header--center">
       <div>
         {%- if section.settings.title != blank -%}
-          <h2 class="Gemluxjewel-section-title">{{ section.settings.title }}</h2>
+          <h2 class="gemluxjewel-section-title">{{ section.settings.title }}</h2>
         {%- endif -%}
         {%- if section.settings.subtitle != blank -%}
-          <p class="Gemluxjewel-section-desc">{{ section.settings.subtitle }}</p>
+          <p class="gemluxjewel-section-desc">{{ section.settings.subtitle }}</p>
         {%- endif -%}
       </div>
     </div>
-    <div class="Gemluxjewel-testimonials__grid">
+    <div class="gemluxjewel-testimonials__grid">
       {%- for block in section.blocks -%}
-        <div class="Gemluxjewel-testimonials__card" {{ block.shopify_attributes }}>
-          <div class="Gemluxjewel-testimonials__stars">
+        <div class="gemluxjewel-testimonials__card" {{ block.shopify_attributes }}>
+          <div class="gemluxjewel-testimonials__stars">
             {%- for i in (1..block.settings.rating) -%}
               <img src="{{ 'testimonial-star.svg' | asset_url }}" alt="" width="25" height="25">
             {%- endfor -%}
           </div>
           {%- if block.settings.text != blank -%}
-            <p class="Gemluxjewel-testimonials__text">{{ block.settings.text | escape }}</p>
+            <p class="gemluxjewel-testimonials__text">{{ block.settings.text | escape }}</p>
           {%- endif -%}
           {%- if block.settings.author != blank -%}
-            <p class="Gemluxjewel-testimonials__author">{{ block.settings.author | escape }}</p>
+            <p class="gemluxjewel-testimonials__author">{{ block.settings.author | escape }}</p>
           {%- endif -%}
         </div>
       {%- endfor -%}
@@ -34,9 +34,9 @@
 
 {% schema %}
 {
-  "name": "Gemluxjewel Testimonials",
+  "name": "gemluxjewel Testimonials",
   "tag": "section",
-  "class": "section Gemluxjewel-section",
+  "class": "section gemluxjewel-section",
   "settings": [
     { "type": "text", "id": "title", "label": "Heading", "default": "Customer Voices" },
     { "type": "textarea", "id": "subtitle", "label": "Subheading", "default": "Real experiences from people who value comfort, quality, and everyday style." }
@@ -54,7 +54,7 @@
   ],
   "presets": [
     {
-      "name": "Gemluxjewel Testimonials",
+      "name": "gemluxjewel Testimonials",
       "blocks": [
         { "type": "review", "settings": { "text": "Really impressed with how lightweight and comfortable the jewellery feels all day. No irritation at all.", "author": "Aarav Mehta – India" } },
         { "type": "review", "settings": { "text": "The quality is excellent and it looks even better in person. Been wearing it daily.", "author": "Oliver Smith – United Kingdom" } },

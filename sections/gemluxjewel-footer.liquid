@@ -1,19 +1,19 @@
-{% render 'Gemluxjewel-fonts' %}
-{{ 'section-Gemluxjewel-footer.css' | asset_url | stylesheet_tag }}
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-footer.css' | asset_url | stylesheet_tag }}
 
-<footer class="Gemluxjewel Gemluxjewel-footer">
-  <div class="Gemluxjewel-container">
+<footer class="gemluxjewel gemluxjewel-footer">
+  <div class="gemluxjewel-container">
     {%- if section.settings.heading != blank -%}
-      <div class="Gemluxjewel-footer__heading">{{ section.settings.heading }}</div>
+      <div class="gemluxjewel-footer__heading">{{ section.settings.heading }}</div>
     {%- endif -%}
 
     {%- if section.blocks.size > 0 -%}
-      <div class="Gemluxjewel-footer__instagram">
+      <div class="gemluxjewel-footer__instagram">
         {%- for block in section.blocks -%}
           {%- if block.type == 'instagram' -%}
-            <div class="Gemluxjewel-footer__insta-item" {{ block.shopify_attributes }}>
+            <div class="gemluxjewel-footer__insta-item" {{ block.shopify_attributes }}>
               {%- if block.settings.link != blank -%}
-                <a href="{{ block.settings.link }}" class="Gemluxjewel-footer__insta-link" target="_blank" rel="noopener noreferrer">
+                <a href="{{ block.settings.link }}" class="gemluxjewel-footer__insta-link" target="_blank" rel="noopener noreferrer">
               {%- endif -%}
               {%- if block.settings.image != blank -%}
                 {{ block.settings.image | image_url: width: 600 | image_tag: widths: '200, 300, 400, 600', sizes: '(min-width: 990px) 16vw, 50vw', loading: 'lazy' }}
@@ -29,45 +29,45 @@
       </div>
     {%- endif -%}
 
-    <div class="Gemluxjewel-footer__main">
-      <div class="Gemluxjewel-footer__newsletter-col">
-        <div class="Gemluxjewel-footer__newsletter-wrap">
-          <div class="Gemluxjewel-footer__newsletter-img">
+    <div class="gemluxjewel-footer__main">
+      <div class="gemluxjewel-footer__newsletter-col">
+        <div class="gemluxjewel-footer__newsletter-wrap">
+          <div class="gemluxjewel-footer__newsletter-img">
             {%- if section.settings.newsletter_image != blank -%}
               {{ section.settings.newsletter_image | image_url: width: 900 | image_tag: widths: '400, 600, 900', sizes: '(min-width: 990px) 50vw, 100vw', loading: 'lazy' }}
             {%- else -%}
               <img src="{{ 'newsletter-img.png' | asset_url }}" alt="" width="600" height="669" loading="lazy">
             {%- endif -%}
           </div>
-          <div class="Gemluxjewel-footer__newsletter-box">
-            <div class="Gemluxjewel-footer__newsletter-inner">
+          <div class="gemluxjewel-footer__newsletter-box">
+            <div class="gemluxjewel-footer__newsletter-inner">
               {%- if section.settings.newsletter_heading != blank -%}
-                <h2 class="Gemluxjewel-footer__newsletter-title">{{ section.settings.newsletter_heading }}</h2>
+                <h2 class="gemluxjewel-footer__newsletter-title">{{ section.settings.newsletter_heading }}</h2>
               {%- endif -%}
               {%- if section.settings.newsletter_text != blank -%}
-                <p class="Gemluxjewel-footer__newsletter-text">{{ section.settings.newsletter_text }}</p>
+                <p class="gemluxjewel-footer__newsletter-text">{{ section.settings.newsletter_text }}</p>
               {%- endif -%}
-              {%- form 'customer', id: 'GemluxjewelFooterNewsletter', class: 'Gemluxjewel-footer__newsletter-form' -%}
+              {%- form 'customer', id: 'gemluxjewelFooterNewsletter', class: 'gemluxjewel-footer__newsletter-form' -%}
                 <input type="hidden" name="contact[tags]" value="newsletter">
                 <input
                   type="email"
                   name="contact[email]"
-                  class="Gemluxjewel-footer__newsletter-input"
+                  class="gemluxjewel-footer__newsletter-input"
                   placeholder="{{ section.settings.newsletter_placeholder | default: 'Email Address…' }}"
                   autocomplete="email"
                   required
-                  {% if form.posted_successfully? %}aria-describedby="GemluxjewelFooterNewsletter-success"{% endif %}
+                  {% if form.posted_successfully? %}aria-describedby="gemluxjewelFooterNewsletter-success"{% endif %}
                 >
-                <button type="submit" class="Gemluxjewel-footer__newsletter-submit" aria-label="{{ 'newsletter.button_label' | t }}">
+                <button type="submit" class="gemluxjewel-footer__newsletter-submit" aria-label="{{ 'newsletter.button_label' | t }}">
                   <img src="{{ 'right-arrow.svg' | asset_url }}" alt="" width="24" height="24">
                 </button>
                 {%- if form.posted_successfully? -%}
-                  <p id="GemluxjewelFooterNewsletter-success" class="Gemluxjewel-footer__newsletter-success">
+                  <p id="gemluxjewelFooterNewsletter-success" class="gemluxjewel-footer__newsletter-success">
                     {{ 'newsletter.success' | t }}
                   </p>
                 {%- endif -%}
                 {%- if form.errors -%}
-                  <p class="Gemluxjewel-footer__newsletter-success">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>
+                  <p class="gemluxjewel-footer__newsletter-success">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>
                 {%- endif -%}
               {%- endform -%}
             </div>
@@ -75,106 +75,106 @@
         </div>
       </div>
 
-      <div class="Gemluxjewel-footer__content-col">
-        <div class="Gemluxjewel-footer__contact">
+      <div class="gemluxjewel-footer__content-col">
+        <div class="gemluxjewel-footer__contact">
           <div>
-            <div class="Gemluxjewel-footer__contact-title">{{ section.settings.contact_heading | default: 'Contact Us' }}</div>
+            <div class="gemluxjewel-footer__contact-title">{{ section.settings.contact_heading | default: 'Contact Us' }}</div>
             {%- if section.settings.phone != blank -%}
-              <p class="Gemluxjewel-footer__contact-detail">
+              <p class="gemluxjewel-footer__contact-detail">
                 Call: <a href="tel:{{ section.settings.phone | replace: ' ', '' }}">{{ section.settings.phone }}</a>
               </p>
             {%- endif -%}
             {%- if section.settings.email != blank -%}
-              <p class="Gemluxjewel-footer__contact-detail">
+              <p class="gemluxjewel-footer__contact-detail">
                 Email: <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
               </p>
             {%- endif -%}
           </div>
           <div>
-            <div class="Gemluxjewel-footer__contact-title">{{ section.settings.location_heading | default: 'Location' }}</div>
+            <div class="gemluxjewel-footer__contact-title">{{ section.settings.location_heading | default: 'Location' }}</div>
             {%- if section.settings.address != blank -%}
-              <div class="Gemluxjewel-footer__contact-detail">{{ section.settings.address }}</div>
+              <div class="gemluxjewel-footer__contact-detail">{{ section.settings.address }}</div>
             {%- endif -%}
             {%- if section.settings.directions_url != blank -%}
-              <a href="{{ section.settings.directions_url }}" class="Gemluxjewel-footer__contact-detail Gemluxjewel-footer__directions" target="_blank" rel="noopener noreferrer">
+              <a href="{{ section.settings.directions_url }}" class="gemluxjewel-footer__contact-detail gemluxjewel-footer__directions" target="_blank" rel="noopener noreferrer">
                 {{ section.settings.directions_label | default: 'Get Directions' }}
               </a>
             {%- endif -%}
           </div>
         </div>
 
-        <div class="Gemluxjewel-footer__nav">
+        <div class="gemluxjewel-footer__nav">
           <nav>
             {%- if section.settings.menu_1 != blank -%}
-              <ul class="Gemluxjewel-footer__nav-list">
+              <ul class="gemluxjewel-footer__nav-list">
                 {%- for link in section.settings.menu_1.links -%}
-                  <li><a href="{{ link.url }}" class="Gemluxjewel-footer__nav-link">{{ link.title }}</a></li>
+                  <li><a href="{{ link.url }}" class="gemluxjewel-footer__nav-link">{{ link.title }}</a></li>
                 {%- endfor -%}
               </ul>
             {%- endif -%}
           </nav>
           <nav>
             {%- if section.settings.menu_2 != blank -%}
-              <ul class="Gemluxjewel-footer__nav-list">
+              <ul class="gemluxjewel-footer__nav-list">
                 {%- for link in section.settings.menu_2.links -%}
-                  <li><a href="{{ link.url }}" class="Gemluxjewel-footer__nav-link">{{ link.title }}</a></li>
+                  <li><a href="{{ link.url }}" class="gemluxjewel-footer__nav-link">{{ link.title }}</a></li>
                 {%- endfor -%}
               </ul>
             {%- endif -%}
           </nav>
         </div>
 
-        <div class="Gemluxjewel-footer__social-row">
-          <div class="Gemluxjewel-footer__social">
+        <div class="gemluxjewel-footer__social-row">
+          <div class="gemluxjewel-footer__social">
             {%- if settings.social_facebook_link != blank -%}
-              <a href="{{ settings.social_facebook_link }}" class="Gemluxjewel-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <a href="{{ settings.social_facebook_link }}" class="gemluxjewel-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <img src="{{ 'white-facebook.svg' | asset_url }}" alt="" width="24" height="24">
               </a>
             {%- endif -%}
             {%- if section.settings.linkedin_url != blank -%}
-              <a href="{{ section.settings.linkedin_url }}" class="Gemluxjewel-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <a href="{{ section.settings.linkedin_url }}" class="gemluxjewel-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <img src="{{ 'white-linkedin.svg' | asset_url }}" alt="" width="24" height="24">
               </a>
             {%- endif -%}
             {%- if settings.social_twitter_link != blank -%}
-              <a href="{{ settings.social_twitter_link }}" class="Gemluxjewel-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+              <a href="{{ settings.social_twitter_link }}" class="gemluxjewel-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
                 <img src="{{ 'white-twitter.svg' | asset_url }}" alt="" width="24" height="24">
               </a>
             {%- endif -%}
             {%- if settings.social_instagram_link != blank -%}
-              <a href="{{ settings.social_instagram_link }}" class="Gemluxjewel-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <a href="{{ settings.social_instagram_link }}" class="gemluxjewel-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <img src="{{ 'white-instagram.svg' | asset_url }}" alt="" width="24" height="24">
               </a>
             {%- endif -%}
           </div>
 
           {%- if section.settings.show_payment_icons -%}
-            <div class="Gemluxjewel-footer__payments">
+            <div class="gemluxjewel-footer__payments">
               {%- if shop.enabled_payment_types.size > 0 -%}
                 {%- for type in shop.enabled_payment_types -%}
-                  <span class="Gemluxjewel-footer__payment-icon">{{ type | payment_type_svg_tag }}</span>
+                  <span class="gemluxjewel-footer__payment-icon">{{ type | payment_type_svg_tag }}</span>
                 {%- endfor -%}
               {%- else -%}
-                <span class="Gemluxjewel-footer__payment-icon"><img src="{{ 'visa-card.svg' | asset_url }}" alt="Visa" height="24"></span>
-                <span class="Gemluxjewel-footer__payment-icon"><img src="{{ 'mastercard.svg' | asset_url }}" alt="Mastercard" height="24"></span>
-                <span class="Gemluxjewel-footer__payment-icon"><img src="{{ 'american-express.svg' | asset_url }}" alt="American Express" height="24"></span>
-                <span class="Gemluxjewel-footer__payment-icon"><img src="{{ 'discover.svg' | asset_url }}" alt="Discover" height="24"></span>
+                <span class="gemluxjewel-footer__payment-icon"><img src="{{ 'visa-card.svg' | asset_url }}" alt="Visa" height="24"></span>
+                <span class="gemluxjewel-footer__payment-icon"><img src="{{ 'mastercard.svg' | asset_url }}" alt="Mastercard" height="24"></span>
+                <span class="gemluxjewel-footer__payment-icon"><img src="{{ 'american-express.svg' | asset_url }}" alt="American Express" height="24"></span>
+                <span class="gemluxjewel-footer__payment-icon"><img src="{{ 'discover.svg' | asset_url }}" alt="Discover" height="24"></span>
               {%- endif -%}
             </div>
           {%- endif -%}
         </div>
 
-        <div class="Gemluxjewel-footer__bar">
-          <p class="Gemluxjewel-footer__copyright">
-            {{ section.settings.copyright_text | default: '@ Gemluxjewel 2026' }}
+        <div class="gemluxjewel-footer__bar">
+          <p class="gemluxjewel-footer__copyright">
+            {{ section.settings.copyright_text | default: '@ gemluxjewel 2026' }}
           </p>
           {%- if section.settings.credit_text != blank -%}
             {%- if section.settings.credit_url != blank -%}
-              <a href="{{ section.settings.credit_url }}" class="Gemluxjewel-footer__credit" target="_blank" rel="noopener noreferrer">
+              <a href="{{ section.settings.credit_url }}" class="gemluxjewel-footer__credit" target="_blank" rel="noopener noreferrer">
                 {{ section.settings.credit_text }}
               </a>
             {%- else -%}
-              <span class="Gemluxjewel-footer__credit">{{ section.settings.credit_text }}</span>
+              <span class="gemluxjewel-footer__credit">{{ section.settings.credit_text }}</span>
             {%- endif -%}
           {%- endif -%}
         </div>
@@ -185,16 +185,16 @@
 
 {% schema %}
 {
-  "name": "Gemluxjewel Footer",
+  "name": "gemluxjewel Footer",
   "tag": "section",
-  "class": "Gemluxjewel-section",
+  "class": "gemluxjewel-section",
   "max_blocks": 6,
   "settings": [
     {
       "type": "text",
       "id": "heading",
       "label": "Brand heading",
-      "default": "#Gemluxjewel"
+      "default": "#gemluxjewel"
     },
     {
       "type": "header",
@@ -306,7 +306,7 @@
       "type": "text",
       "id": "copyright_text",
       "label": "Copyright text",
-      "default": "@ Gemluxjewel 2026"
+      "default": "@ gemluxjewel 2026"
     },
     {
       "type": "text",
@@ -332,7 +332,7 @@
   ],
   "presets": [
     {
-      "name": "Gemluxjewel Footer",
+      "name": "gemluxjewel Footer",
       "blocks": [
         { "type": "instagram" },
         { "type": "instagram" },
