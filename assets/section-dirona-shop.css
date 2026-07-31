@@ -53,6 +53,15 @@
   .dirona-collection-hero__grid {
     grid-template-columns: 1fr 1fr;
   }
+
+  .dirona-collection-hero__grid--no-image {
+    grid-template-columns: 1fr;
+    max-width: 640px;
+  }
+}
+
+.dirona-collection-hero__content {
+  min-width: 0;
 }
 
 .dirona-collection-hero__breadcrumb {
@@ -119,9 +128,10 @@
 
 .dirona-collection-hero__img {
   width: 100%;
+  max-width: 518px;
   border-radius: var(--dirona-radius);
   overflow: hidden;
-  aspect-ratio: 518 / 400;
+  aspect-ratio: 518 / 469;
 }
 
 .dirona-collection-hero__img img {

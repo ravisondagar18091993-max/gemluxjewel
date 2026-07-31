@@ -3,8 +3,8 @@
 
 <section class="dirona dirona-collection-hero">
   <div class="dirona-container">
-    <div class="dirona-collection-hero__grid">
-      <div>
+    <div class="dirona-collection-hero__grid{% if collection.image == blank %} dirona-collection-hero__grid--no-image{% endif %}">
+      <div class="dirona-collection-hero__content">
         <p class="dirona-collection-hero__breadcrumb">
           <a href="{{ routes.root_url }}">{{ section.settings.breadcrumb_home | default: 'Home' | escape }}</a>
           |
@@ -23,17 +23,13 @@
           <p class="dirona-collection-hero__desc">{{ section.settings.fallback_description | escape }}</p>
         {%- endif -%}
       </div>
-      <div class="dirona-collection-hero__media">
-        <div class="dirona-collection-hero__img">
-          {%- if collection.image != blank -%}
+      {%- if collection.image != blank -%}
+        <div class="dirona-collection-hero__media">
+          <div class="dirona-collection-hero__img">
             {{ collection.image | image_url: width: 1036 | image_tag: widths: '400, 600, 800, 1036', sizes: '(min-width: 990px) 518px, 100vw', loading: 'eager', alt: collection.title }}
-          {%- elsif section.settings.fallback_image != blank -%}
-            {{ section.settings.fallback_image | image_url: width: 1036 | image_tag: widths: '400, 600, 800, 1036', sizes: '(min-width: 990px) 518px, 100vw', loading: 'eager', alt: collection.title }}
-          {%- else -%}
-            <img src="{{ 'sub-hero-img.png' | asset_url }}" alt="{{ collection.title | escape }}" width="518" height="400" loading="eager">
-          {%- endif -%}
+          </div>
         </div>
-      </div>
+      {%- endif -%}
     </div>
   </div>
 </section>
@@ -66,11 +62,6 @@
       "id": "fallback_description",
       "label": "Fallback description",
       "default": "Elegant, timeless jewellery crafted for lasting beauty and everyday luxury."
-    },
-    {
-      "type": "image_picker",
-      "id": "fallback_image",
-      "label": "Fallback hero image"
     }
   ]
 }
