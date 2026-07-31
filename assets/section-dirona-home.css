@@ -496,7 +496,7 @@
 .dirona-new-in__grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 0;
+  gap: 20px;
 }
 
 @media (min-width: 1200px) {
@@ -827,11 +827,7 @@
 /* ── Why Choose Us ── */
 .dirona-why {
   background: var(--dirona-primary);
-  padding: 60px 0;
-}
-
-@media (max-width: 991px) {
-  .dirona-why { padding: 40px 0; }
+  padding: 90px 0;
 }
 
 .dirona-why__grid {
