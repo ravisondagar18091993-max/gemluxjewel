@@ -227,6 +227,14 @@
   display: block;
 }
 
+.dirona-hero__content-inner {
+  max-width: 640px;
+}
+
+@media (max-width: 991px) {
+  .dirona-hero__content-inner { max-width: 100%; }
+}
+
 .dirona-hero__content {
   position: absolute;
   top: 32%;

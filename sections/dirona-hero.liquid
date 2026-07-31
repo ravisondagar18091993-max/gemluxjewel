@@ -28,6 +28,7 @@
 
   <div class="dirona-hero__content">
     <div class="dirona-container">
+      <div class="dirona-hero__content-inner">
       {%- if section.settings.prefix != blank -%}
         <p class="dirona-prefix">{{ section.settings.prefix }}</p>
       {%- endif -%}
@@ -38,6 +39,7 @@
         <p class="dirona-hero__text">{{ section.settings.text }}</p>
       {%- endif -%}
       {% render 'dirona-btn', label: section.settings.button_label, url: section.settings.button_link, style: 'green' %}
+      </div>
     </div>
   </div>
 
