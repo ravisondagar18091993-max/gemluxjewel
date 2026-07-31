@@ -358,6 +358,10 @@
   display: block !important;
 }
 
+.dirona-header__burger-dark {
+  display: none;
+}
+
 /* Mobile menu */
 .dirona-mobile-menu {
   position: fixed;

@@ -1,4 +1,5 @@
 {% render 'dirona-fonts' %}
+{{ 'dirona-marquee.css' | asset_url | stylesheet_tag }}
 {{ 'section-dirona-header.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'dirona-header.js' | asset_url }}" defer="defer"></script>
 
@@ -36,7 +37,7 @@
   <div class="dirona-header__wrap">
     <div class="dirona-header__main" data-dirona-header-main>
       <div class="dirona-header__inner">
-        <nav class="dirona-header__nav" aria-label="Main">
+        <nav aria-label="Main">
           {%- if section.settings.menu != blank -%}
             <ul class="dirona-header__nav">
               {%- for link in section.settings.menu.links -%}

@@ -366,17 +366,10 @@
   overflow: hidden;
 }
 
-.dirona-usp-marquee__track {
-  display: flex;
-  width: max-content;
-  animation: dirona-usp-scroll 30s linear infinite;
-}
-
 .dirona-usp-marquee__item {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 0 30px;
   color: #fff;
   font-family: var(--dirona-font-heading);
   font-weight: 300;
@@ -389,11 +382,6 @@
   width: 18px;
   height: 18px;
   flex-shrink: 0;
-}
-
-@keyframes dirona-usp-scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
 }
 
 /* ── Categories ── */
@@ -591,12 +579,6 @@
   margin-bottom: 40px;
 }
 
-.dirona-marquee-strip__track {
-  display: flex;
-  width: max-content;
-  animation: dirona-strip-scroll 25s linear infinite;
-}
-
 .dirona-marquee-strip__item {
   display: flex;
   align-items: center;
@@ -606,7 +588,6 @@
   line-height: 1;
   color: #0c3c2e;
   white-space: nowrap;
-  padding-right: 0;
 }
 
 .dirona-marquee-strip__star {
@@ -628,11 +609,6 @@
 @media (max-width: 991px) {
   .dirona-marquee-strip__item { font-size: 50px; }
   .dirona-marquee-strip__star { width: 30px; height: 30px; margin-left: 20px; margin-right: 20px; }
-}
-
-@keyframes dirona-strip-scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
 }
 
 /* ── Product grid sections ── */

@@ -1,18 +1,18 @@
+{{ 'dirona-marquee.css' | asset_url | stylesheet_tag }}
 {{ 'section-dirona-home.css' | asset_url | stylesheet_tag }}
 
 <section class="dirona dirona-marquee-strip">
-  <div class="dirona-marquee-strip__track">
-    {%- for i in (1..2) -%}
-      {%- for block in section.blocks -%}
-        <div class="dirona-marquee-strip__item" {{ block.shopify_attributes }}>
-          {{ block.settings.text | escape }}
-          <span class="dirona-marquee-strip__star">
-            <img src="{{ 'star.svg' | asset_url }}" alt="" width="50" height="50">
-          </span>
-        </div>
-      {%- endfor -%}
+  {%- capture strip_marquee_content -%}
+    {%- for block in section.blocks -%}
+      <div class="dirona-marquee-strip__item" {{ block.shopify_attributes }}>
+        {{ block.settings.text | escape }}
+        <span class="dirona-marquee-strip__star">
+          <img src="{{ 'star.svg' | asset_url }}" alt="" width="50" height="50">
+        </span>
+      </div>
     {%- endfor -%}
-  </div>
+  {%- endcapture -%}
+  {% render 'dirona-marquee', class: 'dirona-marquee-strip__inner', duration: section.settings.speed, gap: 0, content: strip_marquee_content %}
 </section>
 
 {% schema %}
@@ -20,6 +20,18 @@
   "name": "Dirona Marquee Strip",
   "tag": "section",
   "class": "section dirona-section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 15,
+      "max": 60,
+      "step": 5,
+      "unit": "s",
+      "label": "Scroll speed",
+      "default": 25
+    }
+  ],
   "blocks": [
     {
       "type": "text",
