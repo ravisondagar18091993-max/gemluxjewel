@@ -1,0 +1,68 @@
+{{ 'section-dirona-home.css' | asset_url | stylesheet_tag }}
+
+<section class="dirona dirona-why">
+  <div class="dirona-container">
+    <div class="dirona-why__grid">
+      <div class="dirona-why__content">
+        {%- if section.settings.prefix != blank -%}
+          <p class="dirona-prefix">{{ section.settings.prefix }}</p>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class="dirona-section-title">{{ section.settings.title }}</h2>
+        {%- endif -%}
+        {%- for block in section.blocks -%}
+          <div class="dirona-why__story" {{ block.shopify_attributes }}>
+            <p class="dirona-why__story-title">{{ block.settings.title | escape }}</p>
+            <p class="dirona-why__story-text">{{ block.settings.text | escape }}</p>
+          </div>
+        {%- endfor -%}
+        <div style="margin-top:24px;">
+          {% render 'dirona-btn', label: section.settings.button_label, url: section.settings.button_link, style: 'pink' %}
+        </div>
+      </div>
+      <div class="dirona-why__image">
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 1200 | image_tag: widths: '600, 800, 1200', sizes: '(min-width: 990px) 50vw, 100vw', loading: 'lazy' }}
+        {%- else -%}
+          {{ 'hero-apparel-3' | placeholder_svg_tag }}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Dirona Why Choose Us",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "prefix", "label": "Prefix", "default": "Our Story" },
+    { "type": "text", "id": "title", "label": "Heading", "default": "Why Choose Us" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "View Collection" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "image_picker", "id": "image", "label": "Image" }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Skin-Safe Comfort" },
+        { "type": "textarea", "id": "text", "label": "Description", "default": "Designed with hypoallergenic materials that are gentle on sensitive skin all day" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Dirona Why Choose Us",
+      "blocks": [
+        { "type": "feature", "settings": { "title": "Skin-Safe Comfort", "text": "Designed with hypoallergenic materials that are gentle on sensitive skin all day" } },
+        { "type": "feature", "settings": { "title": "Premium Quality", "text": "Crafted using durable, high-grade materials for long-lasting shine and strength" } },
+        { "type": "feature", "settings": { "title": "Everyday Wear", "text": "Lightweight and waterproof jewellery made for daily use without compromise" } },
+        { "type": "feature", "settings": { "title": "Expert Support", "text": "Get reliable 24/7 guidance to help you choose the perfect piece effortlessly" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
