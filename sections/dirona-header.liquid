@@ -5,7 +5,7 @@
 
 {%- liquid
   assign use_dark = section.settings.dark_style
-  if use_dark == false and template.name != 'index'
+  if use_dark == false and template.name != 'index' and template.name != 'collection'
     assign use_dark = true
   endif
   assign mega_blocks = section.blocks | where: 'type', 'mega_column'
@@ -106,15 +106,7 @@
           </div>
 
           <div class="dirona-header__right">
-          {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
-            <localization-form>
-              {%- form 'localization', id: 'DironaHeaderLocalization', class: 'localization-form' -%}
-                <button type="button" class="dirona-header__locale" aria-expanded="false" data-dirona-locale-toggle>
-                  {{ localization.country.name }} ({{ localization.country.currency.iso_code }} {{ localization.country.currency.symbol }}) +
-                </button>
-              {%- endform -%}
-            </localization-form>
-          {%- elsif section.settings.locale_text != blank -%}
+          {%- if section.settings.locale_text != blank -%}
             <span class="dirona-header__locale">{{ section.settings.locale_text | escape }}</span>
           {%- endif -%}
 
