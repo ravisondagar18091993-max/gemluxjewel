@@ -457,18 +457,18 @@ html.dirona-menu-open {
 }
 
 /* Page offset for fixed header (pages without hero / collection banner) */
-body:not(:has(.dirona-hero)):not(:has(.dirona-collection-hero)) .content-for-layout {
+body:not(:has(.dirona-hero)):not(:has(.dirona-collection-hero)):not(:has(.dirona-pdp)) .content-for-layout {
   padding-top: 170px;
 }
 
 @media (max-width: 1199px) {
-  body:not(:has(.dirona-hero)):not(:has(.dirona-collection-hero)) .content-for-layout {
+  body:not(:has(.dirona-hero)):not(:has(.dirona-collection-hero)):not(:has(.dirona-pdp)) .content-for-layout {
     padding-top: 150px;
   }
 }
 
 @media (max-width: 767px) {
-  body:not(:has(.dirona-hero)):not(:has(.dirona-collection-hero)) .content-for-layout {
+  body:not(:has(.dirona-hero)):not(:has(.dirona-collection-hero)):not(:has(.dirona-pdp)) .content-for-layout {
     padding-top: 130px;
   }
 }
