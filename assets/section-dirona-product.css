@@ -211,7 +211,6 @@
   flex-direction: row;
   flex-wrap: wrap;
   align-items: flex-start;
-  justify-content: flex-end;
   gap: 32px 48px;
   width: 100%;
 }
