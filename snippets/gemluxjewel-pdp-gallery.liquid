@@ -12,7 +12,7 @@
   {%- else -%}
     {%- for i in (1..8) -%}
       <div class="gemluxjewel-pdp__gallery-item">
-        <img src="{{ 'gallery-img.png' | asset_url }}" alt="{{ product.title | escape }}" width="450" height="358" loading="lazy">
+        {% render 'gemluxjewel-theme-image', asset: 'gallery-img.png', width: 900, widths: '450,600,900', sizes: '(min-width: 990px) 45vw, 100vw', alt: product.title %}
       </div>
     {%- endfor -%}
   {%- endif -%}

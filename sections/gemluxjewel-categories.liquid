@@ -9,7 +9,7 @@
             {%- if block.settings.image != blank -%}
               {{ block.settings.image | image_url: width: 400 | image_tag: widths: '155, 200, 400', sizes: '200px', loading: 'lazy' }}
             {%- else -%}
-              <img src="{{ 'category-img.png' | asset_url }}" alt="{{ block.settings.title | escape }}" width="200" height="200" loading="lazy">
+              {% render 'gemluxjewel-theme-image', asset: 'category-img.png', width: 400, widths: '200,300,400', sizes: '200px', alt: block.settings.title, class: 'gemluxjewel-categories__img' %}
             {%- endif -%}
           </div>
           <div class="gemluxjewel-categories__title">{{ block.settings.title | escape }}</div>

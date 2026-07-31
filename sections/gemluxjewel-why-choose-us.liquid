@@ -24,7 +24,7 @@
         {%- if section.settings.image != blank -%}
           {{ section.settings.image | image_url: width: 1200 | image_tag: widths: '600, 800, 1200', sizes: '(min-width: 990px) 50vw, 100vw', loading: 'lazy' }}
         {%- else -%}
-          <img src="{{ 'left-right-img.png' | asset_url }}" alt="" width="800" height="659" loading="lazy">
+          {% render 'gemluxjewel-theme-image', asset: 'left-right-img.png', width: 800, widths: '400,600,800', sizes: '(min-width: 990px) 45vw, 100vw' %}
         {%- endif -%}
       </div>
     </div>

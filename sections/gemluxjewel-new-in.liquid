@@ -24,14 +24,14 @@
               class: 'gemluxjewel-new-in__banner-img'
           }}
         {%- else -%}
-          <img
-            class="gemluxjewel-new-in__banner-img"
-            src="{{ 'newin-left-img.png' | asset_url }}"
-            alt="{{ section.settings.title | escape }}"
-            width="640"
-            height="958"
-            loading="lazy"
-          >
+          {% render 'gemluxjewel-theme-image',
+            asset: 'newin-left-img.png',
+            width: 1200,
+            widths: '600,800,1200',
+            sizes: '(min-width: 1200px) 50vw, 100vw',
+            alt: section.settings.title,
+            class: 'gemluxjewel-new-in__banner-img'
+          %}
         {%- endif -%}
         <div class="gemluxjewel-new-in__banner-content">
           {%- if section.settings.prefix != blank -%}

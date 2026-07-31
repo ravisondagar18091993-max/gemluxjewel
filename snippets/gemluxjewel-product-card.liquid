@@ -45,7 +45,9 @@
       {%- else -%}
         <img
           class="gemluxjewel-card__img gemluxjewel-card__img--primary"
-          src="{{ 'product-img.png' | asset_url }}"
+          src="{{ 'product-img.png' | asset_img_url: width: 800 }}"
+          srcset="{{ 'product-img.png' | asset_img_url: width: 400 }} 400w, {{ 'product-img.png' | asset_img_url: width: 600 }} 600w, {{ 'product-img.png' | asset_img_url: width: 800 }} 800w"
+          sizes="(min-width: 990px) 22vw, 45vw"
           alt=""
           width="600"
           height="358"
