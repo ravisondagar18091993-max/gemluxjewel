@@ -1,23 +1,55 @@
 {{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
 
+{%- liquid
+  assign feed_mode = section.settings.feed_mode | default: 'manual'
+  assign behold_feed_id = section.settings.behold_feed_id | strip
+  assign profile_url = section.settings.instagram_profile_url | default: settings.social_instagram_link | default: 'https://www.instagram.com/gemluxjewels/'
+  assign use_behold = false
+  if feed_mode == 'behold' and behold_feed_id != blank
+    assign use_behold = true
+  endif
+-%}
+
 <section class="gemluxjewel gemluxjewel-instagram">
-  <ul class="gemluxjewel-instagram__grid">
-    {%- for block in section.blocks -%}
-      <li class="gemluxjewel-instagram__item" {{ block.shopify_attributes }}>
-        {%- if block.settings.link != blank -%}
-          <a href="{{ block.settings.link }}" class="gemluxjewel-instagram__link" target="_blank" rel="noopener">
-        {%- endif -%}
-        {%- if block.settings.image != blank -%}
-          {{ block.settings.image | image_url: width: 600 | image_tag: widths: '200, 300, 400, 600', sizes: '(min-width: 750px) 20vw, 50vw', loading: 'lazy' }}
-        {%- else -%}
-          {% render 'gemluxjewel-theme-image', asset: 'insta-post-img.png', width: 400, widths: '200,300,400', sizes: '(min-width: 768px) 25vw, 50vw' %}
-        {%- endif -%}
-        {%- if block.settings.link != blank -%}
+  {%- if use_behold -%}
+    <div class="gemluxjewel-instagram__feed" data-gemluxjewel-instagram-feed>
+      <behold-widget feed-id="{{ behold_feed_id | escape }}"></behold-widget>
+    </div>
+    <script>
+      (() => {
+        if (document.querySelector('script[data-gemluxjewel-behold]')) return;
+        const script = document.createElement('script');
+        script.type = 'module';
+        script.src = 'https://w.behold.so/widget.js';
+        script.dataset.gemluxjewelBehold = 'true';
+        document.head.append(script);
+      })();
+    </script>
+  {%- else -%}
+    <ul class="gemluxjewel-instagram__grid">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign item_link = block.settings.link
+          if item_link == blank
+            assign item_link = profile_url
+          endif
+        -%}
+        <li class="gemluxjewel-instagram__item" {{ block.shopify_attributes }}>
+          <a href="{{ item_link }}" class="gemluxjewel-instagram__link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            {%- if block.settings.image != blank -%}
+              {{
+                block.settings.image
+                | image_url: width: 600
+                | image_tag: widths: '200, 300, 400, 600', sizes: '(min-width: 750px) 20vw, 50vw', loading: 'lazy'
+              }}
+            {%- else -%}
+              {% render 'gemluxjewel-theme-image', asset: 'insta-post-img.png', width: 400, widths: '200,300,400', sizes: '(min-width: 768px) 25vw, 50vw' %}
+            {%- endif -%}
           </a>
-        {%- endif -%}
-      </li>
-    {%- endfor -%}
-  </ul>
+        </li>
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
 </section>
 
 {% schema %}
@@ -26,19 +58,51 @@
   "tag": "section",
   "class": "section gemluxjewel-section",
   "max_blocks": 6,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Instagram does not allow themes to fetch posts directly. For automatic updates from @gemluxjewels, use Behold (free): connect your account at behold.so, create a Widget feed, then paste the Feed ID below."
+    },
+    {
+      "type": "select",
+      "id": "feed_mode",
+      "label": "Feed source",
+      "default": "behold",
+      "options": [
+        { "value": "behold", "label": "Behold — live Instagram feed" },
+        { "value": "manual", "label": "Manual — upload images in blocks" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "behold_feed_id",
+      "label": "Behold feed ID",
+      "info": "From behold.so → your feed → Embed code. Example: L7mnQCHvZeMZLbNXmJll"
+    },
+    {
+      "type": "url",
+      "id": "instagram_profile_url",
+      "label": "Instagram profile URL",
+      "info": "Used for manual image links. Defaults to Theme settings → Social media → Instagram if left blank."
+    }
+  ],
   "blocks": [
     {
       "type": "image",
       "name": "Image",
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Image" },
-        { "type": "url", "id": "link", "label": "Link" }
+        { "type": "url", "id": "link", "label": "Post link", "info": "Leave blank to use profile URL" }
       ]
     }
   ],
   "presets": [
     {
       "name": "Gemlux Instagram",
+      "settings": {
+        "feed_mode": "behold",
+        "instagram_profile_url": "https://www.instagram.com/gemluxjewels/"
+      },
       "blocks": [
         { "type": "image" },
         { "type": "image" },
