@@ -36,7 +36,10 @@
         "title": "Gentle on Your Skin. Perfect for Daily Wear.",
         "text": "Expert-crafted titanium jewellery that's hypoallergenic, waterproof, and incredibly lightweight.",
         "button_label": "View Collection",
-        "button_link": "shopify://collections/all"
+        "button_link": "shopify://collections/all",
+        "preview_product": "",
+        "preview_label": "",
+        "preview_text": ""
       }
     },
     "gemluxjewel_usp": {
@@ -66,7 +69,9 @@
         "u2",
         "u3"
       ],
-      "settings": {}
+      "settings": {
+        "speed": 30
+      }
     },
     "gemluxjewel_categories": {
       "type": "gemluxjewel-categories",
@@ -169,7 +174,9 @@
         "m3",
         "m4"
       ],
-      "settings": {}
+      "settings": {
+        "speed": 25
+      }
     },
     "gemluxjewel_best_sellers": {
       "type": "gemluxjewel-best-sellers",
@@ -309,23 +316,33 @@
       "blocks": {
         "ig1": {
           "type": "image",
-          "settings": {}
+          "settings": {
+            "link": ""
+          }
         },
         "ig2": {
           "type": "image",
-          "settings": {}
+          "settings": {
+            "link": ""
+          }
         },
         "ig3": {
           "type": "image",
-          "settings": {}
+          "settings": {
+            "link": ""
+          }
         },
         "ig4": {
           "type": "image",
-          "settings": {}
+          "settings": {
+            "link": ""
+          }
         },
         "ig5": {
           "type": "image",
-          "settings": {}
+          "settings": {
+            "link": ""
+          }
         }
       },
       "block_order": [
@@ -335,7 +352,11 @@
         "ig4",
         "ig5"
       ],
-      "settings": {}
+      "settings": {
+        "feed_mode": "behold",
+        "behold_feed_id": "",
+        "instagram_profile_url": "https://www.instagram.com/gemluxjewels"
+      }
     }
   },
   "order": [
