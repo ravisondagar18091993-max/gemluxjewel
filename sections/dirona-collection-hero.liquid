@@ -1,0 +1,77 @@
+{% render 'dirona-fonts' %}
+{{ 'section-dirona-shop.css' | asset_url | stylesheet_tag }}
+
+<section class="dirona dirona-collection-hero">
+  <div class="dirona-container">
+    <div class="dirona-collection-hero__grid">
+      <div>
+        <p class="dirona-collection-hero__breadcrumb">
+          <a href="{{ routes.root_url }}">{{ section.settings.breadcrumb_home | default: 'Home' | escape }}</a>
+          |
+          {%- if section.settings.breadcrumb_collections_link != blank -%}
+            <a href="{{ section.settings.breadcrumb_collections_link }}">{{ section.settings.breadcrumb_collections | default: 'Collections' | escape }}</a>
+          {%- else -%}
+            {{ section.settings.breadcrumb_collections | default: 'Collections' | escape }}
+          {%- endif -%}
+          |
+          <span>{{ collection.title | escape }}</span>
+        </p>
+        <h1 class="dirona-collection-hero__title">{{ collection.title | escape }}</h1>
+        {%- if collection.description != blank -%}
+          <div class="dirona-collection-hero__desc">{{ collection.description }}</div>
+        {%- elsif section.settings.fallback_description != blank -%}
+          <p class="dirona-collection-hero__desc">{{ section.settings.fallback_description | escape }}</p>
+        {%- endif -%}
+      </div>
+      <div class="dirona-collection-hero__media">
+        <div class="dirona-collection-hero__img">
+          {%- if collection.image != blank -%}
+            {{ collection.image | image_url: width: 1036 | image_tag: widths: '400, 600, 800, 1036', sizes: '(min-width: 990px) 518px, 100vw', loading: 'eager', alt: collection.title }}
+          {%- elsif section.settings.fallback_image != blank -%}
+            {{ section.settings.fallback_image | image_url: width: 1036 | image_tag: widths: '400, 600, 800, 1036', sizes: '(min-width: 990px) 518px, 100vw', loading: 'eager', alt: collection.title }}
+          {%- else -%}
+            <img src="{{ 'sub-hero-img.png' | asset_url }}" alt="{{ collection.title | escape }}" width="518" height="400" loading="eager">
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Dirona Collection Hero",
+  "tag": "section",
+  "class": "dirona-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "breadcrumb_home",
+      "label": "Breadcrumb home label",
+      "default": "HOME"
+    },
+    {
+      "type": "text",
+      "id": "breadcrumb_collections",
+      "label": "Breadcrumb collections label",
+      "default": "COLLECTIONS"
+    },
+    {
+      "type": "url",
+      "id": "breadcrumb_collections_link",
+      "label": "Collections link"
+    },
+    {
+      "type": "textarea",
+      "id": "fallback_description",
+      "label": "Fallback description",
+      "default": "Elegant, timeless jewellery crafted for lasting beauty and everyday luxury."
+    },
+    {
+      "type": "image_picker",
+      "id": "fallback_image",
+      "label": "Fallback hero image"
+    }
+  ]
+}
+{% endschema %}
