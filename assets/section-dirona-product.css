@@ -251,7 +251,7 @@
 
 .dirona-pdp__option-values {
   display: flex;
-  flex-direction: column;
+
   align-items: stretch;
   gap: 10px;
   width: 100%;
