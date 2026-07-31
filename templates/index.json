@@ -14,15 +14,36 @@
       "blocks": {
         "slide_1": {
           "type": "slide",
-          "settings": {}
+          "settings": {
+            "media_type": "image",
+            "prefix": "",
+            "heading": "",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
         },
         "slide_2": {
           "type": "slide",
-          "settings": {}
+          "settings": {
+            "media_type": "image",
+            "prefix": "",
+            "heading": "",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
         },
         "slide_3": {
           "type": "slide",
-          "settings": {}
+          "settings": {
+            "media_type": "image",
+            "prefix": "",
+            "heading": "",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
         }
       },
       "block_order": [
@@ -66,49 +87,86 @@
         "u2",
         "u3"
       ],
-      "settings": {}
+      "settings": {
+        "speed": 30
+      }
     },
     "gemluxjewel_categories": {
       "type": "gemluxjewel-categories",
       "blocks": {
+        "category_mDHBN4": {
+          "type": "category",
+          "settings": {
+            "collection": "",
+            "title": ""
+          }
+        },
         "c1": {
           "type": "category",
-          "settings": {}
+          "settings": {
+            "collection": "",
+            "title": ""
+          }
         },
         "c2": {
           "type": "category",
-          "settings": {}
+          "settings": {
+            "collection": "",
+            "title": ""
+          }
         },
         "c3": {
           "type": "category",
-          "settings": {}
+          "settings": {
+            "collection": "",
+            "title": ""
+          }
         },
         "c4": {
           "type": "category",
-          "settings": {}
+          "settings": {
+            "collection": "",
+            "title": ""
+          }
         },
         "c5": {
           "type": "category",
-          "settings": {}
+          "settings": {
+            "collection": "",
+            "title": ""
+          }
         },
         "c6": {
           "type": "category",
-          "settings": {}
+          "settings": {
+            "collection": "",
+            "title": ""
+          }
         },
         "c7": {
           "type": "category",
-          "settings": {}
+          "settings": {
+            "collection": "",
+            "title": ""
+          }
         },
         "c8": {
           "type": "category",
-          "settings": {}
+          "settings": {
+            "collection": "",
+            "title": ""
+          }
         },
         "c9": {
           "type": "category",
-          "settings": {}
+          "settings": {
+            "collection": "",
+            "title": ""
+          }
         }
       },
       "block_order": [
+        "category_mDHBN4",
         "c1",
         "c2",
         "c3",
@@ -119,7 +177,9 @@
         "c8",
         "c9"
       ],
-      "settings": {}
+      "settings": {
+        "cards_to_show": 7
+      }
     },
     "gemluxjewel_new_in": {
       "type": "gemluxjewel-new-in",
@@ -166,7 +226,9 @@
         "m3",
         "m4"
       ],
-      "settings": {}
+      "settings": {
+        "speed": 25
+      }
     },
     "gemluxjewel_best_sellers": {
       "type": "gemluxjewel-best-sellers",
