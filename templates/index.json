@@ -130,6 +130,7 @@
     "dirona_new_in": {
       "type": "dirona-new-in",
       "settings": {
+        "banner_image": "shopify://shop_images/RoundLab-GrownDiamondCrossPendantNecklacein14KYellowGold_2.jpg",
         "prefix": "Just Arrived",
         "title": "New In",
         "text": "Discover our latest additions - fresh designs and timeless classics newly available",
