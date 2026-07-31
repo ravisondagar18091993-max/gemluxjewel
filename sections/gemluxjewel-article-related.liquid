@@ -1,5 +1,10 @@
 {{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
-{{ 'section-gemluxjewel-blog.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign posts_limit = section.settings.posts_to_show | default: 4
+  assign latest_articles = blog.articles | sort: 'published_at' | reverse
+  assign shown = 0
+-%}
 
 <section class="gemluxjewel gemluxjewel-article-related">
   <div class="gemluxjewel-container">
@@ -15,11 +20,10 @@
       {% render 'gemluxjewel-btn', label: section.settings.button_label, url: blog.url, style: 'green' %}
     </div>
 
-    <div class="gemluxjewel-blog__grid">
-      {%- assign shown = 0 -%}
-      {%- for related in blog.articles -%}
-        {%- if related.id != article.id and shown < section.settings.posts_to_show -%}
-          {% render 'gemluxjewel-blog-card', article: related %}
+    <div class="gemluxjewel-news__grid gemluxjewel-article-related__grid">
+      {%- for related in latest_articles -%}
+        {%- if related.id != article.id and shown < posts_limit -%}
+          {% render 'gemluxjewel-blog-card', article: related, card_style: 'news' %}
           {%- assign shown = shown | plus: 1 -%}
         {%- endif -%}
       {%- endfor -%}
@@ -58,7 +62,7 @@
       "max": 4,
       "step": 1,
       "default": 4,
-      "label": "Posts to show"
+      "label": "Latest posts to show"
     }
   ]
 }
