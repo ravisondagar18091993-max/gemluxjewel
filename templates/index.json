@@ -94,45 +94,52 @@
     "gemluxjewel_categories": {
       "type": "gemluxjewel-categories",
       "blocks": {
+        "category_YE8LXp": {
+          "type": "category",
+          "settings": {
+            "collection": "moissanite-bracelets",
+            "title": ""
+          }
+        },
         "category_mDHBN4": {
           "type": "category",
           "settings": {
-            "collection": "",
+            "collection": "moissanite-earrings",
             "title": ""
           }
         },
         "c1": {
           "type": "category",
           "settings": {
-            "collection": "",
+            "collection": "moissanite-bridal-ring-sets",
             "title": ""
           }
         },
         "c2": {
           "type": "category",
           "settings": {
-            "collection": "",
+            "collection": "moissanite-engagement-rings",
             "title": ""
           }
         },
         "c3": {
           "type": "category",
           "settings": {
-            "collection": "",
+            "collection": "mens-wedding-band-lab-grown-diamond",
             "title": ""
           }
         },
         "c4": {
           "type": "category",
           "settings": {
-            "collection": "",
+            "collection": "lab-diamond-bracelets",
             "title": ""
           }
         },
         "c5": {
           "type": "category",
           "settings": {
-            "collection": "",
+            "collection": "lab-diamond-necklaces",
             "title": ""
           }
         },
@@ -166,6 +173,7 @@
         }
       },
       "block_order": [
+        "category_YE8LXp",
         "category_mDHBN4",
         "c1",
         "c2",
