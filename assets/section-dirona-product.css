@@ -208,20 +208,24 @@
 
 .dirona-pdp__variant-selects {
   display: flex;
-  flex-direction: column;
-  gap: 28px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 32px 48px;
   width: 100%;
 }
 
 .dirona-pdp__option {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: start;
-  gap: 16px 32px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 16px 24px;
   border: none;
   margin: 0;
   padding: 0;
   min-width: 0;
+  flex: 0 1 auto;
 }
 
 .dirona-pdp__option-label {
@@ -233,8 +237,8 @@
   color: var(--dirona-dark);
   margin: 0;
   padding-top: 14px;
-  float: none;
-  width: auto;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .dirona-pdp__option-right {
@@ -242,7 +246,7 @@
   flex-direction: column;
   align-items: flex-end;
   gap: 16px;
-  min-width: 148px;
+  min-width: 132px;
 }
 
 .dirona-pdp__option-values {
@@ -502,23 +506,26 @@
     padding: 0 24px;
   }
 
-  .dirona-pdp__option {
-    grid-template-columns: 1fr;
-    gap: 12px;
+  .dirona-pdp__variant-selects {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
   }
 
-  .dirona-pdp__option-label {
-    padding-top: 0;
+  .dirona-pdp__option {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
   }
 
   .dirona-pdp__option-right {
-    align-items: flex-start;
+    align-items: flex-end;
     min-width: 0;
   }
 
   .dirona-pdp__option--pill .dirona-pdp__option-values,
   .dirona-pdp__swatches {
-    align-items: flex-start;
+    align-items: flex-end;
   }
 }
 
