@@ -10,12 +10,37 @@ document.addEventListener('DOMContentLoaded', () => {
     let current = 0;
     let timer;
 
+    const syncVideos = (index) => {
+      slides.forEach((slide, i) => {
+        const video = slide.querySelector('video');
+        if (!video) return;
+
+        if (i === index) {
+          video.currentTime = 0;
+          const playPromise = video.play();
+          if (playPromise && typeof playPromise.catch === 'function') {
+            playPromise.catch(() => {});
+          }
+        } else {
+          video.pause();
+        }
+      });
+    };
+
     const show = (index) => {
       slides.forEach((slide, i) => slide.classList.toggle('is-active', i === index));
+      syncVideos(index);
+
       if (preview && slides[index]) {
-        const img = slides[index].querySelector('img');
-        if (img) preview.src = img.currentSrc || img.src;
+        const previewSrc = slides[index].dataset.previewSrc;
+        if (previewSrc) {
+          preview.src = previewSrc;
+        } else {
+          const img = slides[index].querySelector('img');
+          if (img) preview.src = img.currentSrc || img.src;
+        }
       }
+
       if (progress) {
         progress.style.transition = 'none';
         progress.style.width = '0%';
