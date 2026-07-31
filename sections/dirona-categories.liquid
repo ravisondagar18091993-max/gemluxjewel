@@ -9,7 +9,7 @@
             {%- if block.settings.image != blank -%}
               {{ block.settings.image | image_url: width: 400 | image_tag: widths: '155, 200, 400', sizes: '200px', loading: 'lazy' }}
             {%- else -%}
-              {{ 'collection-apparel-' | append: forloop.index | placeholder_svg_tag }}
+              <img src="{{ 'category-img.png' | asset_url }}" alt="{{ block.settings.title | escape }}" width="200" height="200" loading="lazy">
             {%- endif -%}
           </div>
           <div class="dirona-categories__title">{{ block.settings.title | escape }}</div>
@@ -24,7 +24,7 @@
 {
   "name": "Dirona Categories",
   "tag": "section",
-  "class": "section",
+  "class": "section dirona-section",
   "max_blocks": 8,
   "blocks": [
     {

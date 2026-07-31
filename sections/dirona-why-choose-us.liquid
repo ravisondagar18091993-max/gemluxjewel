@@ -10,21 +10,21 @@
         {%- if section.settings.title != blank -%}
           <h2 class="dirona-section-title">{{ section.settings.title }}</h2>
         {%- endif -%}
-        {%- for block in section.blocks -%}
-          <div class="dirona-why__story" {{ block.shopify_attributes }}>
-            <p class="dirona-why__story-title">{{ block.settings.title | escape }}</p>
-            <p class="dirona-why__story-text">{{ block.settings.text | escape }}</p>
-          </div>
-        {%- endfor -%}
-        <div style="margin-top:24px;">
-          {% render 'dirona-btn', label: section.settings.button_label, url: section.settings.button_link, style: 'pink' %}
+        <div class="dirona-why__stories">
+          {%- for block in section.blocks -%}
+            <div class="dirona-why__story" {{ block.shopify_attributes }}>
+              <p class="dirona-why__story-title">{{ block.settings.title | escape }}</p>
+              <p class="dirona-why__story-text">{{ block.settings.text | escape }}</p>
+            </div>
+          {%- endfor -%}
         </div>
+        {% render 'dirona-btn', label: section.settings.button_label, url: section.settings.button_link, style: 'pink' %}
       </div>
       <div class="dirona-why__image">
         {%- if section.settings.image != blank -%}
           {{ section.settings.image | image_url: width: 1200 | image_tag: widths: '600, 800, 1200', sizes: '(min-width: 990px) 50vw, 100vw', loading: 'lazy' }}
         {%- else -%}
-          {{ 'hero-apparel-3' | placeholder_svg_tag }}
+          <img src="{{ 'left-right-img.png' | asset_url }}" alt="" width="800" height="659" loading="lazy">
         {%- endif -%}
       </div>
     </div>
@@ -35,7 +35,7 @@
 {
   "name": "Dirona Why Choose Us",
   "tag": "section",
-  "class": "section",
+  "class": "section dirona-section",
   "settings": [
     { "type": "text", "id": "prefix", "label": "Prefix", "default": "Our Story" },
     { "type": "text", "id": "title", "label": "Heading", "default": "Why Choose Us" },
