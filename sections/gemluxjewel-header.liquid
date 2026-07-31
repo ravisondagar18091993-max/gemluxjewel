@@ -5,7 +5,7 @@
 
 {%- liquid
   assign use_dark = section.settings.dark_style
-  if use_dark == false and template.name != 'index' and template.name != 'collection'
+  if use_dark == false and template.name != 'index' and template.name != 'collection' and template.name != 'blog'
     assign use_dark = true
   endif
   assign mega_blocks = section.blocks | where: 'type', 'mega_column'
@@ -73,7 +73,7 @@
                                   {%- if mega_image_block.settings.image != blank -%}
                                     {{ mega_image_block.settings.image | image_url: width: 600 | image_tag: widths: '300, 400, 600', sizes: '300px', loading: 'lazy' }}
                                   {%- else -%}
-                                    <img src="{{ 'mega-menu-img.png' | asset_url }}" alt="" width="400" height="395" loading="lazy">
+                                    {% render 'gemluxjewel-theme-image', asset: 'mega-menu-img.png', width: 400, widths: '200,300,400', sizes: '400px' %}
                                   {%- endif -%}
                                 </div>
                               </div>

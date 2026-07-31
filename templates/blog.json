@@ -1,19 +1,61 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "main": {
-      "type": "main-blog",
+    "gemluxjewel_blog_hero": {
+      "type": "gemluxjewel-blog-hero",
       "settings": {
-        "layout": "collage",
-        "show_image": true,
-        "image_height": "medium",
-        "show_date": true,
-        "show_author": false,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "button_label": "View Collection",
+        "button_link": "shopify://collections/all"
+      }
+    },
+    "gemluxjewel_blog_main": {
+      "type": "gemluxjewel-blog-main",
+      "blocks": {
+        "filter_materials": {
+          "type": "filter",
+          "settings": { "label": "Materials", "tag_handle": "materials" }
+        },
+        "filter_everyday": {
+          "type": "filter",
+          "settings": { "label": "Everyday Wear", "tag_handle": "everyday-wear" }
+        },
+        "filter_skin": {
+          "type": "filter",
+          "settings": { "label": "Skin Problems", "tag_handle": "skin-problems" }
+        },
+        "filter_season": {
+          "type": "filter",
+          "settings": { "label": "Seasonable Jewellery", "tag_handle": "seasonable-jewellery" }
+        },
+        "filter_care": {
+          "type": "filter",
+          "settings": { "label": "Jewellery Care", "tag_handle": "jewellery-care" }
+        }
+      },
+      "block_order": [
+        "filter_materials",
+        "filter_everyday",
+        "filter_skin",
+        "filter_season",
+        "filter_care"
+      ],
+      "settings": {
+        "articles_per_page": 12,
+        "show_filters": true,
+        "all_posts_label": "All Posts"
       }
     }
   },
   "order": [
-    "main"
+    "gemluxjewel_blog_hero",
+    "gemluxjewel_blog_main"
   ]
 }
