@@ -532,7 +532,7 @@
   left: 53px;
   color: #fff;
   max-width: 360px;
-  z-index: 1;
+  z-index: 2;
 }
 
 .dirona-new-in__banner-content .dirona-prefix,
@@ -808,19 +808,7 @@
   cursor: pointer;
   transition: transform 0.3s;
   flex-shrink: 0;
-  background: var(--swatch-color, var(--dirona-yellow));
-}
-
-.dirona-swatch:not([style*="--swatch-color"]) .dirona-swatch__inner,
-.dirona-swatch[style*="--swatch-color: gold"] .dirona-swatch__inner,
-.dirona-swatch[style*="--swatch-color: yellow"] .dirona-swatch__inner {
-  background: var(--dirona-yellow);
-}
-
-.dirona-swatch[style*="--swatch-color: silver"] .dirona-swatch__inner,
-.dirona-swatch[style*="--swatch-color: grey"] .dirona-swatch__inner,
-.dirona-swatch[style*="--swatch-color: gray"] .dirona-swatch__inner {
-  background: var(--dirona-gray-border);
+  display: inline-block;
 }
 
 .dirona-swatch:hover { transform: scale(1.2); }

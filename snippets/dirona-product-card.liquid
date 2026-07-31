@@ -89,11 +89,21 @@
     <div class="dirona-card__swatches">
       {%- if product != blank and product.options_by_name['Color'] != blank -%}
         {%- for value in product.options_by_name['Color'].values limit: 4 -%}
-          <span class="dirona-swatch" title="{{ value | escape }}" style="--swatch-color: {{ value | handle }};"></span>
+          {%- assign swatch_key = value | downcase -%}
+          {%- assign swatch_mod = 'dirona-swatch' -%}
+          {%- if swatch_key contains 'silver' or swatch_key contains 'grey' or swatch_key contains 'gray' or swatch_key contains 'white' or swatch_key contains 'platinum' -%}
+            {%- assign swatch_mod = 'dirona-swatch dirona-swatch--gray' -%}
+          {%- endif -%}
+          <span class="{{ swatch_mod }}" title="{{ value | escape }}"><span class="dirona-swatch__inner"></span></span>
         {%- endfor -%}
       {%- elsif product != blank and product.options_by_name['Colour'] != blank -%}
         {%- for value in product.options_by_name['Colour'].values limit: 4 -%}
-          <span class="dirona-swatch" title="{{ value | escape }}" style="--swatch-color: {{ value | handle }};"></span>
+          {%- assign swatch_key = value | downcase -%}
+          {%- assign swatch_mod = 'dirona-swatch' -%}
+          {%- if swatch_key contains 'silver' or swatch_key contains 'grey' or swatch_key contains 'gray' or swatch_key contains 'white' or swatch_key contains 'platinum' -%}
+            {%- assign swatch_mod = 'dirona-swatch dirona-swatch--gray' -%}
+          {%- endif -%}
+          <span class="{{ swatch_mod }}" title="{{ value | escape }}"><span class="dirona-swatch__inner"></span></span>
         {%- endfor -%}
       {%- else -%}
         <span class="dirona-swatch"><span class="dirona-swatch__inner"></span></span>
