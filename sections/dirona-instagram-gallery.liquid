@@ -10,7 +10,7 @@
         {%- if block.settings.image != blank -%}
           {{ block.settings.image | image_url: width: 600 | image_tag: widths: '200, 300, 400, 600', sizes: '(min-width: 750px) 20vw, 50vw', loading: 'lazy' }}
         {%- else -%}
-          <img src="{{ 'insta-post-img.png' | asset_url }}" alt="" width="400" height="320" loading="lazy">
+          {{ 'detailed-apparel-' | append: forloop.index | placeholder_svg_tag }}
         {%- endif -%}
         {%- if block.settings.link != blank -%}
           </a>
@@ -24,7 +24,7 @@
 {
   "name": "Dirona Instagram Gallery",
   "tag": "section",
-  "class": "section dirona-section",
+  "class": "section",
   "max_blocks": 6,
   "blocks": [
     {
