@@ -218,76 +218,144 @@
   width: 100%;
 }
 
-.dirona-pdp__variants-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 16px;
+.dirona-pdp__variants-block {
   margin-bottom: 40px;
 }
 
-.dirona-pdp__variants-row variant-selects {
-  flex: 1;
-  min-width: 200px;
-}
-
-.dirona-pdp__option--color {
-  margin-bottom: 0;
-}
-
-.dirona-pdp__swatches {
+.dirona-pdp__variant-selects {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 28px;
+  width: 100%;
+}
+
+.dirona-pdp__option {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 16px 32px;
+  border: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.dirona-pdp__option-label {
+  font-family: var(--dirona-font-body);
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--dirona-dark);
+  margin: 0;
+  padding-top: 14px;
+  float: none;
+  width: auto;
+}
+
+.dirona-pdp__option-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+  min-width: 148px;
+}
+
+.dirona-pdp__option-values {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  width: 100%;
+  position: relative;
 }
 
 .dirona-pdp__option-values input {
   position: absolute;
   opacity: 0;
+  width: 1px;
+  height: 1px;
   pointer-events: none;
 }
 
-.dirona-pdp__swatches .dirona-swatch {
-  width: 60px;
-  height: 60px;
-  cursor: pointer;
-}
-
-.dirona-pdp__swatches input:checked + .dirona-swatch {
-  transform: scale(1.05);
-  box-shadow: 0 0 0 2px var(--dirona-primary);
-}
-
-.dirona-pdp__swatches input.disabled + .dirona-swatch {
-  opacity: 0.35;
-  cursor: not-allowed;
-}
-
+/* Material / size pills — stacked right */
 .dirona-pdp__option--pill .dirona-pdp__option-values {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  align-items: flex-end;
 }
 
 .dirona-pdp__pill {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 40px;
-  padding: 8px 16px;
+  min-width: 132px;
+  min-height: 46px;
+  padding: 10px 28px;
   border: 1px solid var(--dirona-primary);
   border-radius: var(--dirona-radius-pill);
+  background: #fff;
+  font-family: var(--dirona-font-body);
   font-size: 14px;
+  line-height: 18px;
   color: var(--dirona-primary);
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .dirona-pdp__option--pill input:checked + .dirona-pdp__pill {
   background: var(--dirona-primary);
   color: #fff;
+  border-color: var(--dirona-primary);
+}
+
+.dirona-pdp__option--pill input.disabled + .dirona-pdp__pill {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* Color swatches — 60px, stacked right */
+.dirona-pdp__swatches {
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.dirona-pdp__swatches .dirona-swatch {
+  width: 60px;
+  height: 60px;
+  padding: 3px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.dirona-pdp__swatches .dirona-swatch--gold {
+  border-color: var(--dirona-yellow);
+}
+
+.dirona-pdp__swatches .dirona-swatch--gold .dirona-swatch__inner {
+  background: var(--dirona-yellow);
+}
+
+.dirona-pdp__swatches .dirona-swatch--gray {
+  border-color: var(--dirona-gray-border);
+}
+
+.dirona-pdp__swatches .dirona-swatch--gray .dirona-swatch__inner {
+  background: var(--dirona-gray-border);
+}
+
+.dirona-pdp__swatches input:checked + .dirona-swatch {
+  border-color: var(--dirona-primary);
+  box-shadow: 0 0 0 2px #fff;
+  transform: none;
+}
+
+.dirona-pdp__swatches input.disabled + .dirona-swatch {
+  opacity: 0.35;
+  cursor: not-allowed;
 }
 
 .dirona-pdp__size-guide {
@@ -299,30 +367,41 @@
   white-space: nowrap;
 }
 
-.dirona-pdp__size-guide:hover { color: var(--dirona-primary); }
+.dirona-pdp__size-guide:hover {
+  color: var(--dirona-primary);
+}
 
-/* Cart row */
+.dirona-pdp__size-guide--solo {
+  display: inline-block;
+  margin-left: auto;
+}
+
+/* Cart row — qty left, full-width add to cart (HTML .cart-btn-box) */
 .dirona-pdp__cart-row {
   position: relative;
-  margin-bottom: 0;
+  margin-bottom: 85px;
+  min-height: 55px;
   max-width: 100%;
 }
 
 .dirona-pdp__qty-box {
+  position: relative;
+  z-index: 2;
   height: 55px;
   border: 2px solid var(--dirona-primary);
   border-radius: var(--dirona-radius-pill);
   display: inline-flex;
   align-items: center;
-  padding: 0 24px;
-  min-width: 140px;
+  padding: 0 28px;
+  min-width: 130px;
+  background: var(--dirona-secondary);
 }
 
 .dirona-pdp__qty {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 28px;
   width: 100%;
 }
 
@@ -339,7 +418,7 @@
 }
 
 .dirona-pdp__qty-input {
-  width: 40px;
+  width: 32px;
   text-align: center;
   border: none;
   background: transparent;
@@ -359,14 +438,15 @@
 .dirona-pdp__submit {
   position: absolute;
   top: 0;
+  left: 0;
   right: 0;
   height: 55px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
-  padding: 0 60px 0 120px;
-  border: none;
+  padding: 0 40px 0 150px;
+  border: 1px solid var(--dirona-primary);
   border-radius: var(--dirona-radius-pill);
   background: var(--dirona-primary);
   color: #fff;
@@ -380,7 +460,6 @@
 
 .dirona-pdp__submit:hover:not([disabled]) {
   background: transparent;
-  border: 1px solid var(--dirona-primary);
   color: var(--dirona-primary);
 }
 
@@ -400,12 +479,13 @@
 .dirona-pdp__basket-icon {
   width: 24px;
   height: 24px;
-  position: relative;
+  flex-shrink: 0;
 }
 
 .dirona-pdp__basket-icon img {
   width: 24px;
   height: auto;
+  display: block;
 }
 
 .dirona-pdp__basket-green {
@@ -417,17 +497,44 @@
   height: 20px;
 }
 
+@media (max-width: 991px) {
+  .dirona-pdp__submit {
+    padding-left: 120px;
+    padding-right: 24px;
+  }
+}
+
 @media (max-width: 767px) {
   .dirona-pdp__cart-row {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    margin-bottom: 48px;
   }
 
   .dirona-pdp__submit {
     position: static;
     width: 100%;
     padding: 0 24px;
+  }
+
+  .dirona-pdp__option {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .dirona-pdp__option-label {
+    padding-top: 0;
+  }
+
+  .dirona-pdp__option-right {
+    align-items: flex-start;
+    min-width: 0;
+  }
+
+  .dirona-pdp__option--pill .dirona-pdp__option-values,
+  .dirona-pdp__swatches {
+    align-items: flex-start;
   }
 }
 

@@ -89,18 +89,13 @@
           {%- endif -%}
 
           {%- unless product.has_only_default_variant -%}
-            <div class="dirona-pdp__variants-row">
+            <div class="dirona-pdp__variants-block">
               {% render 'dirona-pdp-variant-picker' %}
-              {%- if section.settings.size_guide_url != blank -%}
-                <a href="{{ section.settings.size_guide_url }}" class="dirona-pdp__size-guide">
-                  {{ section.settings.size_guide_label | default: 'Size Guide' | escape }}
-                </a>
-              {%- endif -%}
             </div>
           {%- else -%}
             {%- if section.settings.size_guide_url != blank -%}
-              <div class="dirona-pdp__variants-row">
-                <a href="{{ section.settings.size_guide_url }}" class="dirona-pdp__size-guide">
+              <div class="dirona-pdp__variants-block">
+                <a href="{{ section.settings.size_guide_url }}" class="dirona-pdp__size-guide dirona-pdp__size-guide--solo">
                   {{ section.settings.size_guide_label | default: 'Size Guide' | escape }}
                 </a>
               </div>

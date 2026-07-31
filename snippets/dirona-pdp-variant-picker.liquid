@@ -8,6 +8,7 @@
 {%- unless product.has_only_default_variant -%}
   <variant-selects
     id="variant-selects-{{ section.id }}"
+    class="dirona-pdp__variant-selects"
     data-section="{{ section.id }}"
     data-product-handle="{{ product.handle }}"
     data-product-title="{{ product.title | escape }}"
@@ -25,42 +26,51 @@
       -%}
       <fieldset class="js product-form__input dirona-pdp__option{% if is_color %} dirona-pdp__option--color{% else %} dirona-pdp__option--pill{% endif %}">
         <legend class="dirona-pdp__option-label">{{ option.name | upcase }}:</legend>
-        <div class="dirona-pdp__option-values{% if is_color %} dirona-pdp__swatches{% endif %}">
-          {%- for value in option.values -%}
-            {%- liquid
-              assign option_disabled = false
-              unless value.available
-                assign option_disabled = true
-              endunless
-              assign input_id = section.id | append: '-' | append: option.position | append: '-' | append: forloop.index0
-              assign input_name = option.name | append: '-' | append: option.position
-              assign swatch_mod = 'dirona-swatch'
-              assign value_downcase = value | downcase
-              if value_downcase contains 'silver' or value_downcase contains 'grey' or value_downcase contains 'gray' or value_downcase contains 'white' or value_downcase contains 'platinum'
-                assign swatch_mod = 'dirona-swatch dirona-swatch--gray'
-              endif
-            -%}
-            <input
-              type="radio"
-              id="{{ input_id }}"
-              name="{{ input_name | escape }}"
-              value="{{ value | escape }}"
-              form="{{ product_form_id }}"
-              {% if value.selected %}checked{% endif %}
-              {% if option_disabled %}class="disabled"{% endif %}
-              data-product-url="{{ value.product_url }}"
-              data-option-value-id="{{ value.id }}"
-              data-option-name="{{ option.name | escape }}"
-            >
-            {%- if is_color -%}
-              <label for="{{ input_id }}" class="{{ swatch_mod }}" title="{{ value | escape }}">
-                <span class="dirona-swatch__inner"></span>
-                <span class="visually-hidden">{{ value }}</span>
-              </label>
-            {%- else -%}
-              <label for="{{ input_id }}" class="dirona-pdp__pill">{{ value }}</label>
-            {%- endif -%}
-          {%- endfor -%}
+        <div class="dirona-pdp__option-right">
+          <div class="dirona-pdp__option-values{% if is_color %} dirona-pdp__swatches{% endif %}">
+            {%- for value in option.values -%}
+              {%- liquid
+                assign option_disabled = false
+                unless value.available
+                  assign option_disabled = true
+                endunless
+                assign input_id = section.id | append: '-' | append: option.position | append: '-' | append: forloop.index0
+                assign input_name = option.name | append: '-' | append: option.position
+                assign swatch_mod = 'dirona-swatch dirona-swatch--gold'
+                assign value_downcase = value | downcase
+                if value_downcase contains 'silver' or value_downcase contains 'grey' or value_downcase contains 'gray' or value_downcase contains 'white' or value_downcase contains 'platinum'
+                  assign swatch_mod = 'dirona-swatch dirona-swatch--gray'
+                elsif value_downcase contains 'gold' or value_downcase contains 'yellow' or value_downcase contains 'rose'
+                  assign swatch_mod = 'dirona-swatch dirona-swatch--gold'
+                endif
+              -%}
+              <input
+                type="radio"
+                id="{{ input_id }}"
+                name="{{ input_name | escape }}"
+                value="{{ value | escape }}"
+                form="{{ product_form_id }}"
+                {% if value.selected %}checked{% endif %}
+                {% if option_disabled %}class="disabled"{% endif %}
+                data-product-url="{{ value.product_url }}"
+                data-option-value-id="{{ value.id }}"
+                data-option-name="{{ option.name | escape }}"
+              >
+              {%- if is_color -%}
+                <label for="{{ input_id }}" class="{{ swatch_mod }}" title="{{ value | escape }}">
+                  <span class="dirona-swatch__inner"></span>
+                  <span class="visually-hidden">{{ value }}</span>
+                </label>
+              {%- else -%}
+                <label for="{{ input_id }}" class="dirona-pdp__pill">{{ value }}</label>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+          {%- if is_color and section.settings.size_guide_url != blank -%}
+            <a href="{{ section.settings.size_guide_url }}" class="dirona-pdp__size-guide">
+              {{ section.settings.size_guide_label | default: 'Size Guide' | escape }}
+            </a>
+          {%- endif -%}
         </div>
       </fieldset>
     {%- endfor -%}
