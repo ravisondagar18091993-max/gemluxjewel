@@ -1,0 +1,347 @@
+{% render 'dirona-fonts' %}
+{{ 'section-dirona-footer.css' | asset_url | stylesheet_tag }}
+
+<footer class="dirona dirona-footer">
+  <div class="dirona-container">
+    {%- if section.settings.heading != blank -%}
+      <div class="dirona-footer__heading">{{ section.settings.heading }}</div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="dirona-footer__instagram">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'instagram' -%}
+            <div class="dirona-footer__insta-item" {{ block.shopify_attributes }}>
+              {%- if block.settings.link != blank -%}
+                <a href="{{ block.settings.link }}" class="dirona-footer__insta-link" target="_blank" rel="noopener noreferrer">
+              {%- endif -%}
+              {%- if block.settings.image != blank -%}
+                {{ block.settings.image | image_url: width: 600 | image_tag: widths: '200, 300, 400, 600', sizes: '(min-width: 990px) 16vw, 50vw', loading: 'lazy' }}
+              {%- else -%}
+                <img src="{{ 'insta-post-img.png' | asset_url }}" alt="" width="400" height="360" loading="lazy">
+              {%- endif -%}
+              {%- if block.settings.link != blank -%}
+                </a>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    <div class="dirona-footer__main">
+      <div class="dirona-footer__newsletter-col">
+        <div class="dirona-footer__newsletter-wrap">
+          <div class="dirona-footer__newsletter-img">
+            {%- if section.settings.newsletter_image != blank -%}
+              {{ section.settings.newsletter_image | image_url: width: 900 | image_tag: widths: '400, 600, 900', sizes: '(min-width: 990px) 50vw, 100vw', loading: 'lazy' }}
+            {%- else -%}
+              <img src="{{ 'newsletter-img.png' | asset_url }}" alt="" width="600" height="669" loading="lazy">
+            {%- endif -%}
+          </div>
+          <div class="dirona-footer__newsletter-box">
+            <div class="dirona-footer__newsletter-inner">
+              {%- if section.settings.newsletter_heading != blank -%}
+                <h2 class="dirona-footer__newsletter-title">{{ section.settings.newsletter_heading }}</h2>
+              {%- endif -%}
+              {%- if section.settings.newsletter_text != blank -%}
+                <p class="dirona-footer__newsletter-text">{{ section.settings.newsletter_text }}</p>
+              {%- endif -%}
+              {%- form 'customer', id: 'DironaFooterNewsletter', class: 'dirona-footer__newsletter-form' -%}
+                <input type="hidden" name="contact[tags]" value="newsletter">
+                <input
+                  type="email"
+                  name="contact[email]"
+                  class="dirona-footer__newsletter-input"
+                  placeholder="{{ section.settings.newsletter_placeholder | default: 'Email Address…' }}"
+                  autocomplete="email"
+                  required
+                  {% if form.posted_successfully? %}aria-describedby="DironaFooterNewsletter-success"{% endif %}
+                >
+                <button type="submit" class="dirona-footer__newsletter-submit" aria-label="{{ 'newsletter.button_label' | t }}">
+                  <img src="{{ 'right-arrow.svg' | asset_url }}" alt="" width="24" height="24">
+                </button>
+                {%- if form.posted_successfully? -%}
+                  <p id="DironaFooterNewsletter-success" class="dirona-footer__newsletter-success">
+                    {{ 'newsletter.success' | t }}
+                  </p>
+                {%- endif -%}
+                {%- if form.errors -%}
+                  <p class="dirona-footer__newsletter-success">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>
+                {%- endif -%}
+              {%- endform -%}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dirona-footer__content-col">
+        <div class="dirona-footer__contact">
+          <div>
+            <div class="dirona-footer__contact-title">{{ section.settings.contact_heading | default: 'Contact Us' }}</div>
+            {%- if section.settings.phone != blank -%}
+              <p class="dirona-footer__contact-detail">
+                Call: <a href="tel:{{ section.settings.phone | replace: ' ', '' }}">{{ section.settings.phone }}</a>
+              </p>
+            {%- endif -%}
+            {%- if section.settings.email != blank -%}
+              <p class="dirona-footer__contact-detail">
+                Email: <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
+              </p>
+            {%- endif -%}
+          </div>
+          <div>
+            <div class="dirona-footer__contact-title">{{ section.settings.location_heading | default: 'Location' }}</div>
+            {%- if section.settings.address != blank -%}
+              <div class="dirona-footer__contact-detail">{{ section.settings.address }}</div>
+            {%- endif -%}
+            {%- if section.settings.directions_url != blank -%}
+              <a href="{{ section.settings.directions_url }}" class="dirona-footer__contact-detail dirona-footer__directions" target="_blank" rel="noopener noreferrer">
+                {{ section.settings.directions_label | default: 'Get Directions' }}
+              </a>
+            {%- endif -%}
+          </div>
+        </div>
+
+        <div class="dirona-footer__nav">
+          <nav>
+            {%- if section.settings.menu_1 != blank -%}
+              <ul class="dirona-footer__nav-list">
+                {%- for link in section.settings.menu_1.links -%}
+                  <li><a href="{{ link.url }}" class="dirona-footer__nav-link">{{ link.title }}</a></li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </nav>
+          <nav>
+            {%- if section.settings.menu_2 != blank -%}
+              <ul class="dirona-footer__nav-list">
+                {%- for link in section.settings.menu_2.links -%}
+                  <li><a href="{{ link.url }}" class="dirona-footer__nav-link">{{ link.title }}</a></li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </nav>
+        </div>
+
+        <div class="dirona-footer__social-row">
+          <div class="dirona-footer__social">
+            {%- if settings.social_facebook_link != blank -%}
+              <a href="{{ settings.social_facebook_link }}" class="dirona-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <img src="{{ 'white-facebook.svg' | asset_url }}" alt="" width="24" height="24">
+              </a>
+            {%- endif -%}
+            {%- if section.settings.linkedin_url != blank -%}
+              <a href="{{ section.settings.linkedin_url }}" class="dirona-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <img src="{{ 'white-linkedin.svg' | asset_url }}" alt="" width="24" height="24">
+              </a>
+            {%- endif -%}
+            {%- if settings.social_twitter_link != blank -%}
+              <a href="{{ settings.social_twitter_link }}" class="dirona-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                <img src="{{ 'white-twitter.svg' | asset_url }}" alt="" width="24" height="24">
+              </a>
+            {%- endif -%}
+            {%- if settings.social_instagram_link != blank -%}
+              <a href="{{ settings.social_instagram_link }}" class="dirona-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <img src="{{ 'white-instagram.svg' | asset_url }}" alt="" width="24" height="24">
+              </a>
+            {%- endif -%}
+          </div>
+
+          {%- if section.settings.show_payment_icons -%}
+            <div class="dirona-footer__payments">
+              {%- if shop.enabled_payment_types.size > 0 -%}
+                {%- for type in shop.enabled_payment_types -%}
+                  <span class="dirona-footer__payment-icon">{{ type | payment_type_svg_tag }}</span>
+                {%- endfor -%}
+              {%- else -%}
+                <span class="dirona-footer__payment-icon"><img src="{{ 'visa-card.svg' | asset_url }}" alt="Visa" height="24"></span>
+                <span class="dirona-footer__payment-icon"><img src="{{ 'mastercard.svg' | asset_url }}" alt="Mastercard" height="24"></span>
+                <span class="dirona-footer__payment-icon"><img src="{{ 'american-express.svg' | asset_url }}" alt="American Express" height="24"></span>
+                <span class="dirona-footer__payment-icon"><img src="{{ 'discover.svg' | asset_url }}" alt="Discover" height="24"></span>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+
+        <div class="dirona-footer__bar">
+          <p class="dirona-footer__copyright">
+            {{ section.settings.copyright_text | default: '@ Dirona 2026' }}
+          </p>
+          {%- if section.settings.credit_text != blank -%}
+            {%- if section.settings.credit_url != blank -%}
+              <a href="{{ section.settings.credit_url }}" class="dirona-footer__credit" target="_blank" rel="noopener noreferrer">
+                {{ section.settings.credit_text }}
+              </a>
+            {%- else -%}
+              <span class="dirona-footer__credit">{{ section.settings.credit_text }}</span>
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Dirona Footer",
+  "tag": "section",
+  "class": "dirona-section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Brand heading",
+      "default": "#DIRONA"
+    },
+    {
+      "type": "header",
+      "content": "Newsletter"
+    },
+    {
+      "type": "image_picker",
+      "id": "newsletter_image",
+      "label": "Newsletter background image"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_heading",
+      "label": "Newsletter heading",
+      "default": "Sign Up To Our Newsletter"
+    },
+    {
+      "type": "textarea",
+      "id": "newsletter_text",
+      "label": "Newsletter description",
+      "default": "Don't Miss Out On Our Latest Arrivals, Promotions And Discounts:"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_placeholder",
+      "label": "Email placeholder",
+      "default": "Email Address…"
+    },
+    {
+      "type": "header",
+      "content": "Contact"
+    },
+    {
+      "type": "text",
+      "id": "contact_heading",
+      "label": "Contact heading",
+      "default": "Contact Us"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone",
+      "default": "+1 000 000 000"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email",
+      "default": "Info@prothemebazaar.com"
+    },
+    {
+      "type": "text",
+      "id": "location_heading",
+      "label": "Location heading",
+      "default": "Location"
+    },
+    {
+      "type": "textarea",
+      "id": "address",
+      "label": "Address",
+      "default": "49, Bremner Blvd, Rogers Centre, Ontario Toronto, M5J 0A1"
+    },
+    {
+      "type": "url",
+      "id": "directions_url",
+      "label": "Directions link"
+    },
+    {
+      "type": "text",
+      "id": "directions_label",
+      "label": "Directions label",
+      "default": "Get Directions"
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_1",
+      "label": "Menu column 1",
+      "default": "footer"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_2",
+      "label": "Menu column 2"
+    },
+    {
+      "type": "header",
+      "content": "Social & payments"
+    },
+    {
+      "type": "url",
+      "id": "linkedin_url",
+      "label": "LinkedIn URL (if not set in theme settings)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Show payment icons",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Footer bar"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright text",
+      "default": "@ Dirona 2026"
+    },
+    {
+      "type": "text",
+      "id": "credit_text",
+      "label": "Credit text",
+      "default": "Design & Develop by Prothemebazaar"
+    },
+    {
+      "type": "url",
+      "id": "credit_url",
+      "label": "Credit link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "instagram",
+      "name": "Instagram image",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Dirona Footer",
+      "blocks": [
+        { "type": "instagram" },
+        { "type": "instagram" },
+        { "type": "instagram" },
+        { "type": "instagram" },
+        { "type": "instagram" },
+        { "type": "instagram" }
+      ]
+    }
+  ]
+}
+{% endschema %}

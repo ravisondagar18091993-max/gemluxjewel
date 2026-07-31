@@ -1,1 +1,46 @@
-{"name":"t:sections.footer.name","type":"footer","sections":{"footer":{"type":"footer","settings":{"color_scheme":"scheme-1","newsletter_enable":true,"newsletter_heading":"Subscribe to our emails","enable_follow_on_shop":true,"show_social":true,"enable_country_selector":true,"enable_language_selector":true,"payment_enable":true,"show_policy":true,"margin_top":0,"padding_top":36,"padding_bottom":36}}},"order":["footer"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "Footer",
+  "type": "footer",
+  "sections": {
+    "dirona_footer": {
+      "type": "dirona-footer",
+      "blocks": {
+        "insta_1": { "type": "instagram", "settings": {} },
+        "insta_2": { "type": "instagram", "settings": {} },
+        "insta_3": { "type": "instagram", "settings": {} },
+        "insta_4": { "type": "instagram", "settings": {} },
+        "insta_5": { "type": "instagram", "settings": {} },
+        "insta_6": { "type": "instagram", "settings": {} }
+      },
+      "block_order": ["insta_1", "insta_2", "insta_3", "insta_4", "insta_5", "insta_6"],
+      "settings": {
+        "heading": "#DIRONA",
+        "newsletter_heading": "SIGN UP TO OUR NEWSLETTER",
+        "newsletter_text": "Don't Miss Out On Our Latest Arrivals, Promotions And Discounts:",
+        "newsletter_placeholder": "Email Address…",
+        "contact_heading": "CONTACT US",
+        "phone": "+1 000 000 000",
+        "email": "Info@prothemebazaar.com",
+        "location_heading": "LOCATION",
+        "address": "49, Bremner Blvd, Rogers Centre, Ontario Toronto, M5J 0A1",
+        "directions_label": "GET DIRECTIONS",
+        "menu_1": "footer",
+        "show_payment_icons": true,
+        "copyright_text": "@ Dirona 2026",
+        "credit_text": "Design & Develop by Prothemebazaar",
+        "credit_url": "https://prothemebazaar.com/"
+      }
+    }
+  },
+  "order": ["dirona_footer"]
+}
+
