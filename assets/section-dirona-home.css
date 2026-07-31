@@ -399,11 +399,11 @@
 /* ── Categories ── */
 .dirona-categories {
   background: var(--dirona-secondary);
-  padding: 0 0 80px;
+  padding: 100px 0 150px;
 }
 
 @media (max-width: 991px) {
-  .dirona-categories { padding-bottom: 60px; }
+  .dirona-categories { padding: 60px 0 100px; }
 }
 
 .dirona-categories__scroll {
@@ -486,11 +486,11 @@
 /* ── New In ── */
 .dirona-new-in {
   background: var(--dirona-secondary);
-  padding-bottom: 80px;
+  padding-bottom: 124px;
 }
 
 @media (max-width: 991px) {
-  .dirona-new-in { padding-bottom: 50px; }
+  .dirona-new-in { padding-bottom: 60px; }
 }
 
 .dirona-new-in__grid {
@@ -588,6 +588,7 @@
   background: var(--dirona-primary);
   padding: 16px 0;
   overflow: hidden;
+  margin-bottom: 40px;
 }
 
 .dirona-marquee-strip__track {
@@ -637,11 +638,11 @@
 /* ── Product grid sections ── */
 .dirona-products {
   background: var(--dirona-secondary);
-  padding: 0 0 80px;
+  padding: 120px 0 140px;
 }
 
 @media (max-width: 991px) {
-  .dirona-products { padding-bottom: 50px; }
+  .dirona-products { padding: 50px 0 60px; }
 }
 
 .dirona-products__grid {
@@ -904,7 +905,12 @@
 /* ── Testimonials ── */
 .dirona-testimonials {
   background: var(--dirona-secondary);
+  padding-top: 150px;
   padding-bottom: 0;
+}
+
+@media (max-width: 991px) {
+  .dirona-testimonials { padding-top: 100px; }
 }
 
 .dirona-testimonials__grid {
@@ -963,11 +969,11 @@
 /* ── News ── */
 .dirona-news {
   background: var(--dirona-secondary);
-  padding-bottom: 80px;
+  padding: 180px 0 140px;
 }
 
 @media (max-width: 576px) {
-  .dirona-news { padding-bottom: 50px; }
+  .dirona-news { padding: 120px 0 69px; }
 }
 
 .dirona-news__grid {

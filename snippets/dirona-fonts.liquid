@@ -40,30 +40,9 @@
     background-color: #fff8f4;
   }
 
-  /* Remove Dawn inner padding only — keep gaps between sections */
   .shopify-section:has(.dirona) {
+    margin-top: 0 !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
-  }
-
-  .shopify-section:has(.dirona) + .shopify-section:has(.dirona) {
-    margin-top: 50px !important;
-  }
-
-  @media screen and (min-width: 750px) {
-    .shopify-section:has(.dirona) + .shopify-section:has(.dirona) {
-      margin-top: 80px !important;
-    }
-  }
-
-  @media screen and (min-width: 990px) {
-    .shopify-section:has(.dirona) + .shopify-section:has(.dirona) {
-      margin-top: 100px !important;
-    }
-  }
-
-  /* Hero flows directly into USP bar */
-  .shopify-section:has(.dirona-hero) + .shopify-section:has(.dirona-usp-marquee) {
-    margin-top: 0 !important;
   }
 {% endstyle %}
