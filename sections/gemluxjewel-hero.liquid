@@ -2,10 +2,45 @@
 {% render 'gemluxjewel-fonts' %}
 <script src="{{ 'gemluxjewel-home.js' | asset_url }}" defer="defer"></script>
 
+{%- liquid
+  assign slide_count = section.blocks.size
+  assign active_block = section.blocks.first
+  assign next_block = section.blocks[1]
+
+  if slide_count == 1
+    assign next_block = section.blocks.first
+  elsif next_block == blank
+    assign next_block = section.blocks.first
+  endif
+
+  assign active_prefix = active_block.settings.prefix | default: section.settings.prefix
+  assign active_heading = active_block.settings.heading | default: section.settings.title
+  assign active_text = active_block.settings.text | default: section.settings.text
+  assign active_button_label = active_block.settings.button_label | default: section.settings.button_label
+  assign active_button_link = active_block.settings.button_link | default: section.settings.button_link
+
+  assign next_prefix = next_block.settings.prefix | default: section.settings.prefix
+  assign next_heading = next_block.settings.heading | default: section.settings.title
+
+  assign next_preview_src = ''
+  assign next_media_type = next_block.settings.media_type | default: 'image'
+  if next_media_type == 'video' and next_block.settings.video != blank
+    if next_block.settings.video_poster != blank
+      assign next_preview_src = next_block.settings.video_poster | image_url: width: 400
+    elsif next_block.settings.video.preview_image != blank
+      assign next_preview_src = next_block.settings.video.preview_image | image_url: width: 400
+    elsif next_block.settings.image != blank
+      assign next_preview_src = next_block.settings.image | image_url: width: 400
+    endif
+  elsif next_block.settings.image != blank
+    assign next_preview_src = next_block.settings.image | image_url: width: 400
+  endif
+-%}
+
 <section class="gemluxjewel gemluxjewel-hero" data-gemluxjewel-hero data-autoplay="{{ section.settings.autoplay_speed }}">
   <div class="gemluxjewel-hero__layer"></div>
   <div class="gemluxjewel-hero__slides">
-    {%- if section.blocks.size > 0 -%}
+    {%- if slide_count > 0 -%}
       {%- for block in section.blocks -%}
         {%- liquid
           assign media_type = block.settings.media_type | default: 'image'
@@ -21,12 +56,23 @@
           elsif block.settings.image != blank
             assign preview_src = block.settings.image | image_url: width: 400
           endif
+
+          assign slide_prefix = block.settings.prefix | default: section.settings.prefix
+          assign slide_heading = block.settings.heading | default: section.settings.title
+          assign slide_text = block.settings.text | default: section.settings.text
+          assign slide_button_label = block.settings.button_label | default: section.settings.button_label
+          assign slide_button_link = block.settings.button_link | default: section.settings.button_link
         -%}
         <div
           class="gemluxjewel-hero__slide{% if forloop.first %} is-active{% endif %}"
           data-gemluxjewel-hero-slide
           data-media-type="{{ media_type }}"
           {% if preview_src != blank %}data-preview-src="{{ preview_src }}"{% endif %}
+          data-slide-prefix="{{ slide_prefix | escape }}"
+          data-slide-heading="{{ slide_heading | escape }}"
+          data-slide-text="{{ slide_text | escape }}"
+          data-slide-button-label="{{ slide_button_label | escape }}"
+          {% if slide_button_link != blank %}data-slide-button-link="{{ slide_button_link }}"{% endif %}
           {{ block.shopify_attributes }}
         >
           {%- if media_type == 'video' and block.settings.video != blank -%}
@@ -75,48 +121,50 @@
   <div class="gemluxjewel-hero__content">
     <div class="gemluxjewel-container">
       <div class="gemluxjewel-hero__content-inner">
-      {%- if section.settings.prefix != blank -%}
-        <p class="gemluxjewel-prefix">{{ section.settings.prefix }}</p>
-      {%- endif -%}
-      {%- if section.settings.title != blank -%}
-        <h1 class="gemluxjewel-hero__title">{{ section.settings.title }}</h1>
-      {%- endif -%}
-      {%- if section.settings.text != blank -%}
-        <p class="gemluxjewel-hero__text">{{ section.settings.text }}</p>
-      {%- endif -%}
-      {% render 'gemluxjewel-btn', label: section.settings.button_label, url: section.settings.button_link, style: 'green' %}
-      </div>
-    </div>
-  </div>
-
-  <div class="gemluxjewel-hero__float">
-    <div class="gemluxjewel-container">
-      <div class="gemluxjewel-hero__float-inner">
-        <div class="gemluxjewel-hero__product-box">
-          <div class="gemluxjewel-hero__product-thumb">
-            {%- assign preview_product = section.settings.preview_product -%}
-            {%- assign first_block = section.blocks.first -%}
-            {%- if preview_product != blank and preview_product.featured_media -%}
-              <img src="{{ preview_product.featured_media | image_url: width: 200 }}" alt="{{ preview_product.title | escape }}" data-gemluxjewel-hero-preview width="100" height="80">
-            {%- elsif first_block.settings.media_type == 'video' and first_block.settings.video_poster != blank -%}
-              <img src="{{ first_block.settings.video_poster | image_url: width: 200 }}" alt="" data-gemluxjewel-hero-preview width="100" height="80">
-            {%- elsif first_block.settings.media_type == 'video' and first_block.settings.video.preview_image != blank -%}
-              <img src="{{ first_block.settings.video.preview_image | image_url: width: 200 }}" alt="" data-gemluxjewel-hero-preview width="100" height="80">
-            {%- elsif first_block.settings.image != blank -%}
-              <img src="{{ first_block.settings.image | image_url: width: 200 }}" alt="" data-gemluxjewel-hero-preview width="100" height="80">
-            {%- else -%}
-              <img src="{{ 'hero-product-img.png' | asset_img_url: width: 200 }}" alt="" data-gemluxjewel-hero-preview width="100" height="80" loading="lazy">
-            {%- endif -%}
-          </div>
-          <div style="flex:1">
-            <p class="gemluxjewel-hero__product-label">{{ section.settings.preview_label | default: section.settings.prefix }}</p>
-            <p class="gemluxjewel-hero__product-desc">{{ section.settings.preview_text | default: section.settings.title }}</p>
-            <div class="gemluxjewel-hero__progress"><div class="gemluxjewel-hero__progress-fill" data-gemluxjewel-hero-progress></div></div>
-          </div>
+        {%- if active_prefix != blank -%}
+          <p class="gemluxjewel-prefix" data-gemluxjewel-hero-prefix>{{ active_prefix }}</p>
+        {%- endif -%}
+        {%- if active_heading != blank -%}
+          <h1 class="gemluxjewel-hero__title" data-gemluxjewel-hero-title>{{ active_heading }}</h1>
+        {%- endif -%}
+        {%- if active_text != blank -%}
+          <p class="gemluxjewel-hero__text" data-gemluxjewel-hero-text>{{ active_text }}</p>
+        {%- endif -%}
+        <div data-gemluxjewel-hero-button>
+          {% render 'gemluxjewel-btn', label: active_button_label, url: active_button_link, style: 'green' %}
         </div>
       </div>
     </div>
   </div>
+
+  {%- if slide_count > 1 -%}
+    <div class="gemluxjewel-hero__float">
+      <div class="gemluxjewel-container">
+        <div class="gemluxjewel-hero__float-inner">
+          <div class="gemluxjewel-hero__product-box">
+            <div class="gemluxjewel-hero__product-thumb">
+              {%- if next_preview_src != blank -%}
+                <img src="{{ next_preview_src }}" alt="" data-gemluxjewel-hero-preview width="100" height="80">
+              {%- else -%}
+                <img src="{{ 'hero-product-img.png' | asset_img_url: width: 200 }}" alt="" data-gemluxjewel-hero-preview width="100" height="80" loading="lazy">
+              {%- endif -%}
+            </div>
+            <div class="gemluxjewel-hero__product-copy">
+              {%- if next_prefix != blank -%}
+                <p class="gemluxjewel-hero__product-label" data-gemluxjewel-hero-preview-label>{{ next_prefix }}</p>
+              {%- endif -%}
+              {%- if next_heading != blank -%}
+                <p class="gemluxjewel-hero__product-desc" data-gemluxjewel-hero-preview-desc>{{ next_heading }}</p>
+              {%- endif -%}
+              <div class="gemluxjewel-hero__progress">
+                <div class="gemluxjewel-hero__progress-fill" data-gemluxjewel-hero-progress></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
 </section>
 
 {% schema %}
@@ -127,14 +175,13 @@
   "settings": [
     { "type": "image_picker", "id": "image", "label": "Fallback slide image" },
     { "type": "range", "id": "autoplay_speed", "min": 3000, "max": 8000, "step": 500, "default": 5000, "unit": "ms", "label": "Slide speed" },
+    { "type": "header", "content": "Default slide content" },
+    { "type": "paragraph", "content": "Used when a slide leaves fields blank. Each slide can override these." },
     { "type": "text", "id": "prefix", "label": "Prefix", "default": "Hypoallergenic Titanium Jewellery" },
     { "type": "text", "id": "title", "label": "Heading", "default": "Gentle on Your Skin. Perfect for Daily Wear." },
     { "type": "textarea", "id": "text", "label": "Description", "default": "Expert-crafted titanium jewellery that's hypoallergenic, waterproof, and incredibly lightweight." },
     { "type": "text", "id": "button_label", "label": "Button label", "default": "View Collection" },
-    { "type": "url", "id": "button_link", "label": "Button link" },
-    { "type": "product", "id": "preview_product", "label": "Preview product" },
-    { "type": "text", "id": "preview_label", "label": "Preview box label" },
-    { "type": "text", "id": "preview_text", "label": "Preview box text" }
+    { "type": "url", "id": "button_link", "label": "Button link" }
   ],
   "blocks": [
     {
@@ -168,9 +215,14 @@
           "type": "image_picker",
           "id": "video_poster",
           "label": "Video poster (optional)",
-          "info": "Used in the preview box when this slide is active.",
           "visible_if": "{{ block.settings.media_type == 'video' }}"
-        }
+        },
+        { "type": "header", "content": "Slide content" },
+        { "type": "text", "id": "prefix", "label": "Prefix", "info": "Shown in the preview box when the previous slide is active." },
+        { "type": "text", "id": "heading", "label": "Heading" },
+        { "type": "textarea", "id": "text", "label": "Description" },
+        { "type": "text", "id": "button_label", "label": "Button label" },
+        { "type": "url", "id": "button_link", "label": "Button link" }
       ]
     }
   ],

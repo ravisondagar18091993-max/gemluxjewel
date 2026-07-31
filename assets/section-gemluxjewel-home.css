@@ -322,6 +322,11 @@
   object-fit: cover;
 }
 
+.gemluxjewel-hero__product-copy {
+  flex: 1;
+  min-width: 0;
+}
+
 .gemluxjewel-hero__product-label {
   font-family: var(--gemluxjewel-font-body);
   font-size: 8px;
