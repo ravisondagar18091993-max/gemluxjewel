@@ -1,0 +1,15 @@
+{% comment %}
+  Seamless infinite marquee — duplicate groups, no loop gap.
+  Accepts: class, duration (seconds), gap (px), content (HTML string, duplicated twice)
+{% endcomment %}
+{%- liquid
+  assign marquee_class = class | default: 'dirona-marquee'
+  assign marquee_duration = duration | default: 30
+  assign marquee_gap = gap | default: 60
+-%}
+<div class="{{ marquee_class }}" style="--dirona-marquee-duration: {{ marquee_duration }}s; --dirona-marquee-gap: {{ marquee_gap }}px;">
+  <div class="dirona-marquee__track">
+    <div class="dirona-marquee__group">{{ content }}</div>
+    <div class="dirona-marquee__group" aria-hidden="true">{{ content }}</div>
+  </div>
+</div>
