@@ -601,7 +601,8 @@
   gap: 8px;
 }
 
-.dirona-facets .facets-layout-list--swatch .facets__label {
+.dirona-facets .facets-layout-list--swatch .facets__label,
+.dirona-facets .facets-layout-list--swatch .facet-checkbox {
   display: flex;
   align-items: center;
   gap: 12px;
