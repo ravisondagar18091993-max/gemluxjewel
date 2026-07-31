@@ -1,6 +1,10 @@
 {{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
 
-{%- assign blog = blogs[section.settings.blog] -%}
+{%- liquid
+  assign blog = blogs[section.settings.blog]
+  assign posts_limit = section.settings.posts_to_show | default: 4
+  assign latest_articles = blog.articles | sort: 'published_at' | reverse
+-%}
 
 <section class="gemluxjewel gemluxjewel-news">
   <div class="gemluxjewel-container">
@@ -21,31 +25,8 @@
     </div>
     <div class="gemluxjewel-news__grid">
       {%- if blog != blank and blog.articles.size > 0 -%}
-        {%- for article in blog.articles limit: section.settings.posts_to_show -%}
-          <article class="gemluxjewel-news__card">
-            <div class="gemluxjewel-news__img">
-              <a href="{{ article.url }}">
-                {%- if article.image -%}
-                  {{ article.image | image_url: width: 600 | image_tag: widths: '300, 400, 600', sizes: '(min-width: 1200px) 22vw, 45vw', loading: 'lazy', alt: article.title }}
-                {%- else -%}
-                  {% render 'gemluxjewel-theme-image', asset: 'news-img.png', width: 600, widths: '300,450,600', sizes: '(min-width: 1200px) 22vw, 45vw', alt: article.title %}
-                {%- endif -%}
-              </a>
-              {%- if article.tags.size > 0 -%}
-                <div class="gemluxjewel-card__top">
-                  <span class="gemluxjewel-badge">{{ article.tags.first }}</span>
-                </div>
-              {%- endif -%}
-            </div>
-            <h3 class="gemluxjewel-news__title"><a href="{{ article.url }}">{{ article.title }}</a></h3>
-            <p class="gemluxjewel-news__excerpt">{{ article.excerpt | default: article.content | strip_html | truncate: 120 }}</p>
-            <a href="{{ article.url }}" class="gemluxjewel-news__readmore">
-              Read More
-              <span class="gemluxjewel-btn__arrow">
-                <img src="{{ 'green-right-arrow.svg' | asset_url }}" alt="" width="24" height="24">
-              </span>
-            </a>
-          </article>
+        {%- for article in latest_articles limit: posts_limit -%}
+          {% render 'gemluxjewel-blog-card', article: article, card_style: 'news' %}
         {%- endfor -%}
       {%- else -%}
         {%- for block in section.blocks -%}
