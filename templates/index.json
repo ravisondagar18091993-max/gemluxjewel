@@ -39,15 +39,15 @@
     "gemluxjewel_categories": {
       "type": "gemluxjewel-categories",
       "blocks": {
-        "c1": { "type": "category", "settings": { "title": "Earrings", "link": "shopify://collections/all" } },
-        "c2": { "type": "category", "settings": { "title": "Cartilage Hoops", "link": "shopify://collections/all" } },
-        "c3": { "type": "category", "settings": { "title": "Flat Back Studs", "link": "shopify://collections/all" } },
-        "c4": { "type": "category", "settings": { "title": "Huggies", "link": "shopify://collections/all" } },
-        "c5": { "type": "category", "settings": { "title": "Stud Earrings", "link": "shopify://collections/all" } },
-        "c6": { "type": "category", "settings": { "title": "Hoops", "link": "shopify://collections/all" } },
-        "c7": { "type": "category", "settings": { "title": "Necklaces", "link": "shopify://collections/all" } },
-        "c8": { "type": "category", "settings": { "title": "Bracelets", "link": "shopify://collections/all" } },
-        "c9": { "type": "category", "settings": { "title": "Rings", "link": "shopify://collections/all" } }
+        "c1": { "type": "category", "settings": {} },
+        "c2": { "type": "category", "settings": {} },
+        "c3": { "type": "category", "settings": {} },
+        "c4": { "type": "category", "settings": {} },
+        "c5": { "type": "category", "settings": {} },
+        "c6": { "type": "category", "settings": {} },
+        "c7": { "type": "category", "settings": {} },
+        "c8": { "type": "category", "settings": {} },
+        "c9": { "type": "category", "settings": {} }
       },
       "block_order": ["c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8", "c9"],
       "settings": {}

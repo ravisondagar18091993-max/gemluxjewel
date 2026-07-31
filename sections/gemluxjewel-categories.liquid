@@ -4,15 +4,42 @@
   <div class="gemluxjewel-container">
     <div class="gemluxjewel-categories__grid">
       {%- for block in section.blocks -%}
-        <a href="{{ block.settings.link | default: '#' }}" class="gemluxjewel-categories__item" {{ block.shopify_attributes }}>
+        {%- assign collection = block.settings.collection -%}
+        {%- if collection == blank -%}
+          {%- continue -%}
+        {%- endif -%}
+
+        {%- liquid
+          assign card_title = block.settings.title | default: collection.title
+          assign collection_image = collection.featured_image
+          if collection_image == blank and collection.products_count > 0
+            assign collection_image = collection.products.first.featured_image
+          endif
+        -%}
+
+        <a href="{{ collection.url }}" class="gemluxjewel-categories__item" {{ block.shopify_attributes }}>
           <div class="gemluxjewel-categories__img">
-            {%- if block.settings.image != blank -%}
-              {{ block.settings.image | image_url: width: 400 | image_tag: widths: '155, 200, 400', sizes: '(min-width: 1200px) 11vw, (min-width: 768px) 30vw, 45vw', loading: 'lazy' }}
+            {%- if collection_image != blank -%}
+              {{
+                collection_image
+                | image_url: width: 600
+                | image_tag:
+                  widths: '155, 200, 300, 400, 600',
+                  sizes: '(min-width: 1200px) 11vw, (min-width: 768px) 30vw, 45vw',
+                  loading: 'lazy',
+                  alt: card_title
+              }}
             {%- else -%}
-              {% render 'gemluxjewel-theme-image', asset: 'category-img.png', width: 400, widths: '200,300,400', sizes: '(min-width: 1200px) 11vw, (min-width: 768px) 30vw, 45vw', alt: block.settings.title %}
+              {% render 'gemluxjewel-theme-image',
+                asset: 'category-img.png',
+                width: 400,
+                widths: '200,300,400',
+                sizes: '(min-width: 1200px) 11vw, (min-width: 768px) 30vw, 45vw',
+                alt: card_title
+              %}
             {%- endif -%}
           </div>
-          <div class="gemluxjewel-categories__title">{{ block.settings.title | escape }}</div>
+          <div class="gemluxjewel-categories__title">{{ card_title | escape }}</div>
         </a>
       {%- endfor -%}
     </div>
@@ -25,14 +52,28 @@
   "tag": "section",
   "class": "section gemluxjewel-section",
   "max_blocks": 12,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Pick collections for each card. Title, link, and image come from the collection. Update the collection image in Shopify Admin → Products → Collections."
+    }
+  ],
   "blocks": [
     {
       "type": "category",
-      "name": "Category",
+      "name": "Collection",
       "settings": [
-        { "type": "image_picker", "id": "image", "label": "Image" },
-        { "type": "text", "id": "title", "label": "Title", "default": "Earrings" },
-        { "type": "url", "id": "link", "label": "Link" }
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Custom title (optional)",
+          "info": "Leave blank to use the collection title."
+        }
       ]
     }
   ],
@@ -40,15 +81,15 @@
     {
       "name": "gemluxjewel Categories",
       "blocks": [
-        { "type": "category", "settings": { "title": "Earrings" } },
-        { "type": "category", "settings": { "title": "Cartilage Hoops" } },
-        { "type": "category", "settings": { "title": "Flat Back Studs" } },
-        { "type": "category", "settings": { "title": "Huggies" } },
-        { "type": "category", "settings": { "title": "Stud Earrings" } },
-        { "type": "category", "settings": { "title": "Hoops" } },
-        { "type": "category", "settings": { "title": "Necklaces" } },
-        { "type": "category", "settings": { "title": "Bracelets" } },
-        { "type": "category", "settings": { "title": "Rings" } }
+        { "type": "category" },
+        { "type": "category" },
+        { "type": "category" },
+        { "type": "category" },
+        { "type": "category" },
+        { "type": "category" },
+        { "type": "category" },
+        { "type": "category" },
+        { "type": "category" }
       ]
     }
   ]
