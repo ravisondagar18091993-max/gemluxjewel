@@ -1,19 +1,10 @@
 {% comment %}
-  Dirona product card from index.html
-  Accepts: product, badge_text, show_discount
+  Dirona product card — matches HTML product-card
 {% endcomment %}
 
 <div class="dirona-card">
-  <a href="{{ product.url | default: '#' }}">
-    <div class="dirona-card__img-wrap">
-      <div class="dirona-card__top">
-        {%- if badge_text != blank -%}
-          <span class="dirona-badge">{{ badge_text }}</span>
-        {%- endif -%}
-        <span class="dirona-card__heart">
-          <img src="{{ 'heart.svg' | asset_url }}" alt="" width="22" height="22">
-        </span>
-      </div>
+  <div class="dirona-card__img-wrap">
+    <a href="{{ product.url | default: '#' }}">
       {%- if product != blank and product.featured_media -%}
         {{
           product.featured_media
@@ -21,27 +12,39 @@
           | image_tag: widths: '200, 300, 400, 600', sizes: '(min-width: 990px) 22vw, 45vw', loading: 'lazy', alt: product.title
         }}
       {%- else -%}
-        {{ 'product-apparel-1' | placeholder_svg_tag }}
+        <img src="{{ 'product-img.png' | asset_url }}" alt="" width="600" height="358" loading="lazy">
       {%- endif -%}
-      <span class="dirona-card__basket">
-        <img src="{{ 'basket.svg' | asset_url }}" alt="Add to cart" width="24" height="24">
-      </span>
+    </a>
+    <div class="dirona-card__top">
+      {%- if badge_text != blank -%}
+        <span class="dirona-badge">{{ badge_text }}</span>
+      {%- else -%}
+        <span></span>
+      {%- endif -%}
+      <a href="#" class="dirona-card__heart" aria-label="Wishlist">
+        <img src="{{ 'heart.svg' | asset_url }}" alt="" width="22" height="22">
+      </a>
     </div>
-  </a>
+    <a href="{{ product.url | default: '#' }}" class="dirona-card__basket" aria-label="Add to cart">
+      <img src="{{ 'basket.svg' | asset_url }}" alt="" width="24" height="24">
+    </a>
+  </div>
   <div class="dirona-card__row">
     <a href="{{ product.url | default: '#' }}" class="dirona-card__title">
-      {%- if product != blank -%}{{ product.title | escape }}{%- else -%}Product Title{%- endif -%}
+      {%- if product != blank -%}{{ product.title | escape }}{%- else -%}Blue Mystic Twist Ring{%- endif -%}
     </a>
-    {%- if show_discount and product != blank and product.compare_at_price > product.price -%}
-      {%- assign discount = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price -%}
-      <span class="dirona-badge dirona-badge--orange">{{ discount }}% Off</span>
-    {%- elsif show_discount -%}
-      <span class="dirona-badge dirona-badge--orange">10% Off</span>
+    {%- if show_discount -%}
+      {%- if product != blank and product.compare_at_price > product.price -%}
+        {%- assign discount = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price -%}
+        <span class="dirona-badge dirona-badge--orange">{{ discount }}% Off</span>
+      {%- else -%}
+        <span class="dirona-badge dirona-badge--orange">10% Off</span>
+      {%- endif -%}
     {%- endif -%}
   </div>
   <div class="dirona-card__price-row">
     <span class="dirona-card__price">
-      {%- if product != blank -%}{{ product.price | money }}{%- else -%}$135.00{%- endif -%}
+      {%- if product != blank -%}{{ product.price | money }}{%- else -%}€ 135.00{%- endif -%}
     </span>
     <div class="dirona-card__swatches">
       <span class="dirona-swatch"><span class="dirona-swatch__inner"></span></span>
