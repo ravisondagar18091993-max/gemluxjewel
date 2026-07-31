@@ -1,0 +1,289 @@
+{% render 'dirona-fonts' %}
+{{ 'section-dirona-header.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'dirona-header.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign use_dark = section.settings.dark_style
+  if use_dark == false and template.name != 'index'
+    assign use_dark = true
+  endif
+  assign mega_blocks = section.blocks | where: 'type', 'mega_column'
+  assign mega_image_block = section.blocks | where: 'type', 'mega_image' | first
+-%}
+
+<header
+  class="dirona dirona-header{% if use_dark %} dirona-header--dark{% endif %}"
+  data-dirona-header
+>
+  <div class="dirona-header__top">
+    {%- capture top_marquee_content -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'top_link' -%}
+          <div class="dirona-marquee__item" {{ block.shopify_attributes }}>
+            <img src="{{ 'diamond.svg' | asset_url }}" alt="" class="dirona-header__top-icon" width="18" height="18">
+            {%- if block.settings.url != blank -%}
+              <a href="{{ block.settings.url }}" class="dirona-header__top-link">{{ block.settings.label | escape }}</a>
+            {%- else -%}
+              <span class="dirona-header__top-link">{{ block.settings.label | escape }}</span>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+    {% render 'dirona-marquee', class: 'dirona-header__marquee', duration: section.settings.marquee_speed, gap: 48, content: top_marquee_content %}
+  </div>
+
+  <div class="dirona-header__wrap">
+    <div class="dirona-header__main" data-dirona-header-main>
+      <div class="dirona-header__inner">
+        <nav class="dirona-header__nav" aria-label="Main">
+          {%- if section.settings.menu != blank -%}
+            <ul class="dirona-header__nav">
+              {%- for link in section.settings.menu.links -%}
+                <li class="dirona-header__nav-item{% if forloop.first and mega_blocks.size > 0 %} has-mega{% endif %}">
+                  <a href="{{ link.url }}" class="dirona-header__nav-link">{{ link.title | escape }}</a>
+                  {%- if forloop.first and mega_blocks.size > 0 -%}
+                    <div class="dirona-header__mega">
+                      <div class="dirona-header__mega-inner">
+                        <div class="dirona-header__mega-grid">
+                          {%- for block in mega_blocks -%}
+                            <div class="dirona-header__mega-col{% if block.settings.show_border %} dirona-header__mega-col--border{% endif %}" {{ block.shopify_attributes }}>
+                              {%- if block.settings.title != blank -%}
+                                <div class="dirona-header__mega-title">{{ block.settings.title | escape }}</div>
+                              {%- endif -%}
+                              {%- if block.settings.menu != blank -%}
+                                <ul class="dirona-header__mega-list">
+                                  {%- for mega_link in block.settings.menu.links -%}
+                                    <li><a href="{{ mega_link.url }}">{{ mega_link.title | escape }}</a></li>
+                                  {%- endfor -%}
+                                </ul>
+                              {%- endif -%}
+                              {%- if block.settings.view_all_url != blank -%}
+                                <a href="{{ block.settings.view_all_url }}" class="dirona-header__mega-view-all">
+                                  {{ block.settings.view_all_label | default: 'View all' }}
+                                </a>
+                              {%- endif -%}
+                            </div>
+                          {%- endfor -%}
+                          {%- if mega_image_block -%}
+                            <div class="dirona-header__mega-col" {{ mega_image_block.shopify_attributes }}>
+                              <div class="dirona-header__mega-img">
+                                {%- if mega_image_block.settings.image != blank -%}
+                                  {{ mega_image_block.settings.image | image_url: width: 600 | image_tag: widths: '300, 400, 600', sizes: '300px', loading: 'lazy' }}
+                                {%- else -%}
+                                  <img src="{{ 'mega-menu-img.png' | asset_url }}" alt="" width="400" height="395" loading="lazy">
+                                {%- endif -%}
+                              </div>
+                            </div>
+                          {%- endif -%}
+                        </div>
+                      </div>
+                    </div>
+                  {%- endif -%}
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </nav>
+
+        <a href="{{ routes.root_url }}" class="dirona-header__logo">
+          {%- if section.settings.logo_text != blank -%}
+            {{ section.settings.logo_text | escape }}
+          {%- else -%}
+            {{ shop.name | escape }}
+          {%- endif -%}
+        </a>
+
+        <div class="dirona-header__burger">
+          <button type="button" class="dirona-header__burger-btn" data-dirona-burger aria-label="Open menu">
+            <img src="{{ 'burgermenu.svg' | asset_url }}" alt="" class="dirona-header__burger-light" width="40" height="40">
+            <img src="{{ 'dark-header-burgermenu.svg' | asset_url }}" alt="" class="dirona-header__burger-dark" width="40" height="40" style="display:none">
+          </button>
+        </div>
+
+        <div class="dirona-header__right">
+          {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
+            <localization-form>
+              {%- form 'localization', id: 'DironaHeaderLocalization', class: 'localization-form' -%}
+                <button type="button" class="dirona-header__locale" aria-expanded="false" data-dirona-locale-toggle>
+                  {{ localization.country.name }} ({{ localization.country.currency.iso_code }} {{ localization.country.currency.symbol }}) +
+                </button>
+              {%- endform -%}
+            </localization-form>
+          {%- elsif section.settings.locale_text != blank -%}
+            <span class="dirona-header__locale">{{ section.settings.locale_text | escape }}</span>
+          {%- endif -%}
+
+          <div class="dirona-header__icons">
+            {%- if section.settings.enable_search -%}
+              <a href="{{ routes.search_url }}" class="dirona-header__icon" aria-label="Search">
+                <img src="{{ 'header-icon1.svg' | asset_url }}" alt="" class="dirona-header__icon-light" width="25" height="25">
+                <img src="{{ 'dark-header-icon1.svg' | asset_url }}" alt="" class="dirona-header__icon-dark" width="25" height="25">
+              </a>
+            {%- endif -%}
+            <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="dirona-header__icon" aria-label="Account">
+              <img src="{{ 'header-icon2.svg' | asset_url }}" alt="" class="dirona-header__icon-light" width="25" height="25">
+              <img src="{{ 'dark-header-icon2.svg' | asset_url }}" alt="" class="dirona-header__icon-dark" width="25" height="25">
+            </a>
+            {%- if section.settings.wishlist_url != blank -%}
+              <a href="{{ section.settings.wishlist_url }}" class="dirona-header__icon" aria-label="Wishlist">
+                <img src="{{ 'header-icon3.svg' | asset_url }}" alt="" class="dirona-header__icon-light" width="25" height="25">
+                <img src="{{ 'dark-header-icon3.svg' | asset_url }}" alt="" class="dirona-header__icon-dark" width="25" height="25">
+              </a>
+            {%- else -%}
+              <span class="dirona-header__icon" aria-hidden="true">
+                <img src="{{ 'header-icon3.svg' | asset_url }}" alt="" class="dirona-header__icon-light" width="25" height="25">
+                <img src="{{ 'dark-header-icon3.svg' | asset_url }}" alt="" class="dirona-header__icon-dark" width="25" height="25">
+              </span>
+            {%- endif -%}
+            <a href="{{ routes.cart_url }}" class="dirona-header__icon" id="dirona-cart-icon" aria-label="Cart">
+              <img src="{{ 'header-icon4.svg' | asset_url }}" alt="" class="dirona-header__icon-light" width="25" height="25">
+              <img src="{{ 'dark-header-icon4.svg' | asset_url }}" alt="" class="dirona-header__icon-dark" width="25" height="25">
+              {%- if cart.item_count > 0 -%}
+                <span class="dirona-header__cart-count">{{ cart.item_count }}</span>
+              {%- endif -%}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="dirona dirona-mobile-menu" data-dirona-mobile-menu id="dironaMobileMenu">
+  <div class="dirona-mobile-menu__head">
+    <a href="{{ routes.root_url }}" class="dirona-header__logo">{{ section.settings.logo_text | default: shop.name | escape }}</a>
+    <button type="button" class="dirona-mobile-menu__close" data-dirona-menu-close aria-label="Close menu">
+      <img src="{{ 'close-btn.svg' | asset_url }}" alt="" width="32" height="32">
+    </button>
+  </div>
+  <nav class="dirona-mobile-menu__nav" aria-label="Mobile">
+    {%- if section.settings.menu != blank -%}
+      {%- for link in section.settings.menu.links -%}
+        <a href="{{ link.url }}" class="dirona-mobile-menu__link" data-dirona-menu-close-on-click>{{ link.title | escape }}</a>
+      {%- endfor -%}
+    {%- endif -%}
+    {%- if section.settings.mobile_menu != blank -%}
+      {%- for link in section.settings.mobile_menu.links -%}
+        <a href="{{ link.url }}" class="dirona-mobile-menu__link" data-dirona-menu-close-on-click>{{ link.title | escape }}</a>
+      {%- endfor -%}
+    {%- endif -%}
+  </nav>
+</div>
+
+{% schema %}
+{
+  "name": "Dirona Header",
+  "class": "dirona-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo text",
+      "default": "dirona"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Main menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "link_list",
+      "id": "mobile_menu",
+      "label": "Extra mobile links"
+    },
+    {
+      "type": "range",
+      "id": "marquee_speed",
+      "min": 15,
+      "max": 60,
+      "step": 5,
+      "unit": "s",
+      "label": "Top marquee speed",
+      "default": 35
+    },
+    {
+      "type": "checkbox",
+      "id": "dark_style",
+      "label": "Dark header style",
+      "default": false,
+      "info": "Auto-enabled on all pages except homepage"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_search",
+      "label": "Show search icon",
+      "default": true
+    },
+    {
+      "type": "url",
+      "id": "wishlist_url",
+      "label": "Wishlist link"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_country_selector",
+      "label": "Show country/currency",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "locale_text",
+      "label": "Locale text (fallback)",
+      "default": "France (EUR €) +"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "top_link",
+      "name": "Top marquee link",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Modern Jewellery" },
+        { "type": "url", "id": "url", "label": "Link" }
+      ]
+    },
+    {
+      "type": "mega_column",
+      "name": "Mega menu column",
+      "limit": 3,
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Popular Collections" },
+        { "type": "link_list", "id": "menu", "label": "Links" },
+        { "type": "url", "id": "view_all_url", "label": "View all link" },
+        { "type": "text", "id": "view_all_label", "label": "View all label", "default": "View all" },
+        { "type": "checkbox", "id": "show_border", "label": "Left border", "default": false }
+      ]
+    },
+    {
+      "type": "mega_image",
+      "name": "Mega menu image",
+      "limit": 1,
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Dirona Header",
+      "blocks": [
+        { "type": "top_link", "settings": { "label": "Modern Jewellery" } },
+        { "type": "top_link", "settings": { "label": "Minimal Jewellery" } },
+        { "type": "top_link", "settings": { "label": "Statement Jewellery" } },
+        { "type": "top_link", "settings": { "label": "Antique Jewellery" } },
+        { "type": "top_link", "settings": { "label": "Gold Jewellery" } },
+        { "type": "top_link", "settings": { "label": "Silver Jewellery" } },
+        { "type": "top_link", "settings": { "label": "Diamond Jewellery" } },
+        { "type": "top_link", "settings": { "label": "Platinum Jewellery" } },
+        { "type": "top_link", "settings": { "label": "Artificial Jewellery" } },
+        { "type": "top_link", "settings": { "label": "Fashion Jewellery" } },
+        { "type": "mega_column", "settings": { "title": "Popular Collections", "show_border": false } },
+        { "type": "mega_column", "settings": { "title": "Best Seller", "show_border": false } },
+        { "type": "mega_column", "settings": { "title": "New Arrival", "show_border": true } },
+        { "type": "mega_image", "settings": {} }
+      ]
+    }
+  ]
+}
+{% endschema %}
