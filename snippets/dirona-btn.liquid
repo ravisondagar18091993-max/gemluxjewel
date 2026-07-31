@@ -1,0 +1,12 @@
+{% comment %}
+  Dirona button with arrow
+  Accepts: label, url, style (green|pink)
+{% endcomment %}
+
+<a href="{{ url | default: '#' }}" class="dirona-btn dirona-btn--{{ style | default: 'green' }}">
+  {{ label | escape }}
+  <span class="dirona-btn__arrow">
+    <img src="{{ 'green-right-arrow.svg' | asset_url }}" alt="" class="dirona-btn__arrow-green" width="24" height="24">
+    <img src="{{ 'right-arrow.svg' | asset_url }}" alt="" class="dirona-btn__arrow-white" width="24" height="24">
+  </span>
+</a>
