@@ -74,6 +74,18 @@
   padding: 12px 20px;
 }
 
+.dirona-header__left {
+  min-width: 0;
+}
+
+.dirona-header__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0;
+  min-width: 0;
+}
+
 @media (min-width: 1200px) {
   .dirona-header__inner { padding: 0 24px; min-height: 72px; }
 }
@@ -242,8 +254,14 @@
 
 .dirona-header__mega-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
   gap: 24px;
+}
+
+@media (min-width: 990px) {
+  .dirona-header__mega-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .dirona-header__mega-title {

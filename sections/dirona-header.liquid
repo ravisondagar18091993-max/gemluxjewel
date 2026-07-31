@@ -37,55 +37,57 @@
   <div class="dirona-header__wrap">
     <div class="dirona-header__main" data-dirona-header-main>
       <div class="dirona-header__inner">
-        <nav aria-label="Main">
-          {%- if section.settings.menu != blank -%}
-            <ul class="dirona-header__nav">
-              {%- for link in section.settings.menu.links -%}
-                <li class="dirona-header__nav-item{% if forloop.first and mega_blocks.size > 0 %} has-mega{% endif %}">
-                  <a href="{{ link.url }}" class="dirona-header__nav-link">{{ link.title | escape }}</a>
-                  {%- if forloop.first and mega_blocks.size > 0 -%}
-                    <div class="dirona-header__mega">
-                      <div class="dirona-header__mega-inner">
-                        <div class="dirona-header__mega-grid">
-                          {%- for block in mega_blocks -%}
-                            <div class="dirona-header__mega-col{% if block.settings.show_border %} dirona-header__mega-col--border{% endif %}" {{ block.shopify_attributes }}>
-                              {%- if block.settings.title != blank -%}
-                                <div class="dirona-header__mega-title">{{ block.settings.title | escape }}</div>
-                              {%- endif -%}
-                              {%- if block.settings.menu != blank -%}
-                                <ul class="dirona-header__mega-list">
-                                  {%- for mega_link in block.settings.menu.links -%}
-                                    <li><a href="{{ mega_link.url }}">{{ mega_link.title | escape }}</a></li>
-                                  {%- endfor -%}
-                                </ul>
-                              {%- endif -%}
-                              {%- if block.settings.view_all_url != blank -%}
-                                <a href="{{ block.settings.view_all_url }}" class="dirona-header__mega-view-all">
-                                  {{ block.settings.view_all_label | default: 'View all' }}
-                                </a>
-                              {%- endif -%}
-                            </div>
-                          {%- endfor -%}
-                          {%- if mega_image_block -%}
-                            <div class="dirona-header__mega-col" {{ mega_image_block.shopify_attributes }}>
-                              <div class="dirona-header__mega-img">
-                                {%- if mega_image_block.settings.image != blank -%}
-                                  {{ mega_image_block.settings.image | image_url: width: 600 | image_tag: widths: '300, 400, 600', sizes: '300px', loading: 'lazy' }}
-                                {%- else -%}
-                                  <img src="{{ 'mega-menu-img.png' | asset_url }}" alt="" width="400" height="395" loading="lazy">
+        <div class="dirona-header__left">
+          <nav aria-label="Main">
+            {%- if section.settings.menu != blank -%}
+              <ul class="dirona-header__nav">
+                {%- for link in section.settings.menu.links -%}
+                  <li class="dirona-header__nav-item{% if forloop.first and mega_blocks.size > 0 %} has-mega{% endif %}">
+                    <a href="{{ link.url }}" class="dirona-header__nav-link">{{ link.title | escape }}</a>
+                    {%- if forloop.first and mega_blocks.size > 0 -%}
+                      <div class="dirona-header__mega">
+                        <div class="dirona-header__mega-inner">
+                          <div class="dirona-header__mega-grid">
+                            {%- for block in mega_blocks -%}
+                              <div class="dirona-header__mega-col{% if block.settings.show_border %} dirona-header__mega-col--border{% endif %}" {{ block.shopify_attributes }}>
+                                {%- if block.settings.title != blank -%}
+                                  <div class="dirona-header__mega-title">{{ block.settings.title | escape }}</div>
+                                {%- endif -%}
+                                {%- if block.settings.menu != blank -%}
+                                  <ul class="dirona-header__mega-list">
+                                    {%- for mega_link in block.settings.menu.links -%}
+                                      <li><a href="{{ mega_link.url }}">{{ mega_link.title | escape }}</a></li>
+                                    {%- endfor -%}
+                                  </ul>
+                                {%- endif -%}
+                                {%- if block.settings.view_all_url != blank -%}
+                                  <a href="{{ block.settings.view_all_url }}" class="dirona-header__mega-view-all">
+                                    {{ block.settings.view_all_label | default: 'View all' }}
+                                  </a>
                                 {%- endif -%}
                               </div>
-                            </div>
-                          {%- endif -%}
+                            {%- endfor -%}
+                            {%- if mega_image_block -%}
+                              <div class="dirona-header__mega-col" {{ mega_image_block.shopify_attributes }}>
+                                <div class="dirona-header__mega-img">
+                                  {%- if mega_image_block.settings.image != blank -%}
+                                    {{ mega_image_block.settings.image | image_url: width: 600 | image_tag: widths: '300, 400, 600', sizes: '300px', loading: 'lazy' }}
+                                  {%- else -%}
+                                    <img src="{{ 'mega-menu-img.png' | asset_url }}" alt="" width="400" height="395" loading="lazy">
+                                  {%- endif -%}
+                                </div>
+                              </div>
+                            {%- endif -%}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  {%- endif -%}
-                </li>
-              {%- endfor -%}
-            </ul>
-          {%- endif -%}
-        </nav>
+                    {%- endif -%}
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </nav>
+        </div>
 
         <a href="{{ routes.root_url }}" class="dirona-header__logo">
           {%- if section.settings.logo_text != blank -%}
@@ -95,14 +97,15 @@
           {%- endif -%}
         </a>
 
-        <div class="dirona-header__burger">
-          <button type="button" class="dirona-header__burger-btn" data-dirona-burger aria-label="Open menu">
-            <img src="{{ 'burgermenu.svg' | asset_url }}" alt="" class="dirona-header__burger-light" width="40" height="40">
-            <img src="{{ 'dark-header-burgermenu.svg' | asset_url }}" alt="" class="dirona-header__burger-dark" width="40" height="40" style="display:none">
-          </button>
-        </div>
+        <div class="dirona-header__actions">
+          <div class="dirona-header__burger">
+            <button type="button" class="dirona-header__burger-btn" data-dirona-burger aria-label="Open menu">
+              <img src="{{ 'burgermenu.svg' | asset_url }}" alt="" class="dirona-header__burger-light" width="40" height="40">
+              <img src="{{ 'dark-header-burgermenu.svg' | asset_url }}" alt="" class="dirona-header__burger-dark" width="40" height="40">
+            </button>
+          </div>
 
-        <div class="dirona-header__right">
+          <div class="dirona-header__right">
           {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
             <localization-form>
               {%- form 'localization', id: 'DironaHeaderLocalization', class: 'localization-form' -%}
