@@ -162,7 +162,7 @@
 .gemluxjewel-blog-card__media {
   display: block;
   position: relative;
-  height: 280px;
+  height: 250px;
   border-radius: var(--gemluxjewel-radius, 10px);
   overflow: hidden;
   margin-bottom: 18px;
