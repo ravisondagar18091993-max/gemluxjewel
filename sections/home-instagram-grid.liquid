@@ -1,0 +1,82 @@
+{{ 'section-home.css' | asset_url | stylesheet_tag }}
+
+<section class="home-section home-instagram">
+  {%- if section.settings.title != blank -%}
+    <h2 class="home-section__heading">{{ section.settings.title }}</h2>
+  {%- endif -%}
+  <ul class="home-instagram__grid">
+    {%- for block in section.blocks -%}
+      <li class="home-instagram__item" {{ block.shopify_attributes }}>
+        {%- if block.settings.link != blank -%}
+          <a href="{{ block.settings.link }}" class="home-instagram__link" target="_blank" rel="noopener">
+        {%- endif -%}
+        {%- if block.settings.image != blank -%}
+          {{
+            block.settings.image
+            | image_url: width: 600
+            | image_tag:
+              widths: '200, 300, 400, 600',
+              sizes: '(min-width: 750px) 25vw, 50vw',
+              loading: 'lazy'
+          }}
+        {%- else -%}
+          {{ 'detailed-apparel-' | append: forloop.index | placeholder_svg_tag }}
+        {%- endif -%}
+        {%- if block.settings.link != blank -%}
+          </a>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+</section>
+
+{% schema %}
+{
+  "name": "Home Instagram Grid",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Latest on IG"
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Instagram profile URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home Instagram Grid",
+      "blocks": [
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" }
+      ]
+    }
+  ]
+}
+{% endschema %}

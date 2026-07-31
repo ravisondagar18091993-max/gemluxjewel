@@ -1,0 +1,72 @@
+{{ 'section-home.css' | asset_url | stylesheet_tag }}
+
+<section class="home-section home-trust">
+  <ul class="home-trust__grid">
+    {%- for block in section.blocks -%}
+      <li class="home-trust__item" {{ block.shopify_attributes }}>
+        <div class="home-trust__icon">
+          {%- case block.settings.icon -%}
+            {%- when 'shipping' -%}
+              <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="4" y="16" width="28" height="20" rx="2"/><path d="M32 20 L40 20 L44 28 L44 36 L32 36"/><circle cx="14" cy="38" r="4"/><circle cx="38" cy="38" r="4"/></svg>
+            {%- when 'returns' -%}
+              <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 24 A16 16 0 1 1 24 40"/><path d="M8 16 L8 24 L16 24"/></svg>
+            {%- when 'secure' -%}
+              <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="12" y="20" width="24" height="22" rx="2"/><path d="M16 20 L16 14 A8 8 0 0 1 32 14 L32 20"/></svg>
+            {%- when 'support' -%}
+              <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 20 A16 16 0 0 1 40 20 L40 32 L32 32 L28 38 L28 32 L8 32 Z"/></svg>
+            {%- else -%}
+              <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="16"/><path d="M16 24 L22 30 L32 18"/></svg>
+          {%- endcase -%}
+        </div>
+        <p class="home-trust__label">{{ block.settings.label | escape }}</p>
+      </li>
+    {%- endfor -%}
+  </ul>
+</section>
+
+{% schema %}
+{
+  "name": "Home Trust Icons",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "trust",
+      "name": "Trust item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Worldwide Shipping"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "shipping", "label": "Shipping" },
+            { "value": "returns", "label": "Returns" },
+            { "value": "secure", "label": "Secure payments" },
+            { "value": "support", "label": "Customer support" },
+            { "value": "check", "label": "Checkmark" }
+          ],
+          "default": "shipping"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home Trust Icons",
+      "blocks": [
+        { "type": "trust", "settings": { "label": "Worldwide Shipping", "icon": "shipping" } },
+        { "type": "trust", "settings": { "label": "30 Day Returns", "icon": "returns" } },
+        { "type": "trust", "settings": { "label": "Secure Payments", "icon": "secure" } },
+        { "type": "trust", "settings": { "label": "Customer Support", "icon": "support" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

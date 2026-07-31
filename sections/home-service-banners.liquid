@@ -1,0 +1,72 @@
+{{ 'section-home.css' | asset_url | stylesheet_tag }}
+
+<section class="home-section home-service-banners">
+  {%- for block in section.blocks -%}
+    <div
+      class="home-service-banners__item home-service-banners__item--{{ block.settings.color }}"
+      {{ block.shopify_attributes }}
+    >
+      {%- if block.settings.title != blank -%}
+        <h2 class="home-service-banners__title">{{ block.settings.title }}</h2>
+      {%- endif -%}
+      {%- if block.settings.button_label != blank -%}
+        <a href="{{ block.settings.button_link }}" class="home-service-banners__btn">
+          {{ block.settings.button_label | escape }}
+        </a>
+      {%- endif -%}
+    </div>
+  {%- endfor -%}
+</section>
+
+{% schema %}
+{
+  "name": "Home Service Banners",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 2,
+  "blocks": [
+    {
+      "type": "banner",
+      "name": "Banner",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Bespoke Service"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "Book Now"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "select",
+          "id": "color",
+          "label": "Background color",
+          "options": [
+            { "value": "green", "label": "Muted green" },
+            { "value": "terracotta", "label": "Terracotta" }
+          ],
+          "default": "green"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home Service Banners",
+      "blocks": [
+        { "type": "banner", "settings": { "title": "Bespoke Service", "button_label": "Book Now", "color": "green" } },
+        { "type": "banner", "settings": { "title": "Gift Cards", "button_label": "Shop Now", "color": "terracotta" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
