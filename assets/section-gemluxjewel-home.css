@@ -404,56 +404,48 @@
   .gemluxjewel-categories { padding: 60px 0 100px; }
 }
 
-.gemluxjewel-categories__scroll {
-  display: flex;
-  gap: 0;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  margin: 0 -15px;
-  padding: 0 15px;
+.gemluxjewel-categories__grid {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  gap: 24px 16px;
 }
 
-.gemluxjewel-categories__scroll::-webkit-scrollbar { display: none; }
+@media (max-width: 1199px) {
+  .gemluxjewel-categories__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .gemluxjewel-categories__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 16px;
+  }
+}
 
 .gemluxjewel-categories__item {
-  flex: 0 0 calc(100% / 6);
-  min-width: 160px;
-  scroll-snap-align: start;
   text-align: center;
   text-decoration: none;
   color: var(--gemluxjewel-primary);
-  padding: 0 15px;
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
-@media (max-width: 1200px) {
-  .gemluxjewel-categories__item { flex: 0 0 25%; min-width: 150px; }
-}
-
-@media (max-width: 767px) {
-  .gemluxjewel-categories__item { flex: 0 0 50%; }
-}
-
 .gemluxjewel-categories__img {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--gemluxjewel-radius, 8px);
   overflow: hidden;
   margin: 0 auto 16px;
-}
-
-@media (max-width: 991px) {
-  .gemluxjewel-categories__img { width: 155px; height: 155px; }
 }
 
 .gemluxjewel-categories__img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .gemluxjewel-categories__title {
@@ -462,23 +454,12 @@
   font-size: 20px;
   line-height: 27px;
   text-transform: uppercase;
-  margin-bottom: 8px;
+  margin: 0;
   color: var(--gemluxjewel-primary);
 }
 
 @media (max-width: 991px) {
-  .gemluxjewel-categories__title { font-size: 15px; }
-}
-
-.gemluxjewel-categories__link {
-  font-family: var(--gemluxjewel-font-heading);
-  font-weight: 500;
-  font-size: 15px;
-  line-height: 20px;
-  text-decoration: underline;
-  text-transform: uppercase;
-  color: var(--gemluxjewel-primary);
-  margin-top: auto;
+  .gemluxjewel-categories__title { font-size: 15px; line-height: 22px; }
 }
 
 /* ── New In ── */

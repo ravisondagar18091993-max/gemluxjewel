@@ -2,18 +2,17 @@
 
 <section class="gemluxjewel gemluxjewel-categories">
   <div class="gemluxjewel-container">
-    <div class="gemluxjewel-categories__scroll">
+    <div class="gemluxjewel-categories__grid">
       {%- for block in section.blocks -%}
-        <a href="{{ block.settings.link }}" class="gemluxjewel-categories__item" {{ block.shopify_attributes }}>
+        <a href="{{ block.settings.link | default: '#' }}" class="gemluxjewel-categories__item" {{ block.shopify_attributes }}>
           <div class="gemluxjewel-categories__img">
             {%- if block.settings.image != blank -%}
-              {{ block.settings.image | image_url: width: 400 | image_tag: widths: '155, 200, 400', sizes: '200px', loading: 'lazy' }}
+              {{ block.settings.image | image_url: width: 400 | image_tag: widths: '155, 200, 400', sizes: '(min-width: 1200px) 11vw, (min-width: 768px) 30vw, 45vw', loading: 'lazy' }}
             {%- else -%}
-              {% render 'gemluxjewel-theme-image', asset: 'category-img.png', width: 400, widths: '200,300,400', sizes: '200px', alt: block.settings.title %}
+              {% render 'gemluxjewel-theme-image', asset: 'category-img.png', width: 400, widths: '200,300,400', sizes: '(min-width: 1200px) 11vw, (min-width: 768px) 30vw, 45vw', alt: block.settings.title %}
             {%- endif -%}
           </div>
           <div class="gemluxjewel-categories__title">{{ block.settings.title | escape }}</div>
-          <span class="gemluxjewel-categories__link">Explore</span>
         </a>
       {%- endfor -%}
     </div>
@@ -25,7 +24,7 @@
   "name": "gemluxjewel Categories",
   "tag": "section",
   "class": "section gemluxjewel-section",
-  "max_blocks": 8,
+  "max_blocks": 12,
   "blocks": [
     {
       "type": "category",
@@ -46,7 +45,10 @@
         { "type": "category", "settings": { "title": "Flat Back Studs" } },
         { "type": "category", "settings": { "title": "Huggies" } },
         { "type": "category", "settings": { "title": "Stud Earrings" } },
-        { "type": "category", "settings": { "title": "Hoops" } }
+        { "type": "category", "settings": { "title": "Hoops" } },
+        { "type": "category", "settings": { "title": "Necklaces" } },
+        { "type": "category", "settings": { "title": "Bracelets" } },
+        { "type": "category", "settings": { "title": "Rings" } }
       ]
     }
   ]
