@@ -9,76 +9,151 @@
  */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "dirona_hero": {
+      "type": "dirona-hero",
       "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
-          }
-        },
-        "button": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
+        "slide_1": { "type": "slide", "settings": {} },
+        "slide_2": { "type": "slide", "settings": {} },
+        "slide_3": { "type": "slide", "settings": {} }
       },
-      "block_order": [
-        "heading",
-        "button"
-      ],
+      "block_order": ["slide_1", "slide_2", "slide_3"],
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "autoplay_speed": 5000,
+        "prefix": "Hypoallergenic Titanium Jewellery",
+        "title": "Gentle on Your Skin. Perfect for Daily Wear.",
+        "text": "Expert-crafted titanium jewellery that's hypoallergenic, waterproof, and incredibly lightweight.",
+        "button_label": "View Collection",
+        "button_link": "shopify://collections/all"
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "dirona_usp": {
+      "type": "dirona-usp-marquee",
+      "blocks": {
+        "u1": { "type": "item", "settings": { "label": "Free Shipping in UK" } },
+        "u2": { "type": "item", "settings": { "label": "Premium Materials" } },
+        "u3": { "type": "item", "settings": { "label": "24/7 Expert Guidance" } }
+      },
+      "block_order": ["u1", "u2", "u3"],
+      "settings": {}
+    },
+    "dirona_categories": {
+      "type": "dirona-categories",
+      "blocks": {
+        "c1": { "type": "category", "settings": { "title": "Earrings", "link": "shopify://collections/all" } },
+        "c2": { "type": "category", "settings": { "title": "Cartilage Hoops", "link": "shopify://collections/all" } },
+        "c3": { "type": "category", "settings": { "title": "Flat Back Studs", "link": "shopify://collections/all" } },
+        "c4": { "type": "category", "settings": { "title": "Huggies", "link": "shopify://collections/all" } },
+        "c5": { "type": "category", "settings": { "title": "Stud Earrings", "link": "shopify://collections/all" } },
+        "c6": { "type": "category", "settings": { "title": "Hoops", "link": "shopify://collections/all" } }
+      },
+      "block_order": ["c1", "c2", "c3", "c4", "c5", "c6"],
+      "settings": {}
+    },
+    "dirona_new_in": {
+      "type": "dirona-new-in",
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 36
+        "prefix": "Just Arrived",
+        "title": "New In",
+        "text": "Discover our latest additions - fresh designs and timeless classics newly available",
+        "button_label": "View Collection",
+        "button_link": "shopify://collections/all",
+        "collection": "all"
       }
+    },
+    "dirona_marquee_strip": {
+      "type": "dirona-marquee-strip",
+      "blocks": {
+        "m1": { "type": "text", "settings": { "text": "Timeless Style" } },
+        "m2": { "type": "text", "settings": { "text": "Cold Shield" } },
+        "m3": { "type": "text", "settings": { "text": "Smart Insulation" } },
+        "m4": { "type": "text", "settings": { "text": "Winter Comfort" } }
+      },
+      "block_order": ["m1", "m2", "m3", "m4"],
+      "settings": {}
+    },
+    "dirona_best_sellers": {
+      "type": "dirona-best-sellers",
+      "settings": {
+        "title": "Best Sellers",
+        "subtitle": "Discover our latest additions - fresh designs and timeless classics newly available",
+        "button_label": "View Collection",
+        "button_link": "shopify://collections/all",
+        "badge_text": "New In",
+        "collection": "all",
+        "products_to_show": 4
+      }
+    },
+    "dirona_why": {
+      "type": "dirona-why-choose-us",
+      "blocks": {
+        "f1": { "type": "feature", "settings": { "title": "Skin-Safe Comfort", "text": "Designed with hypoallergenic materials that are gentle on sensitive skin all day" } },
+        "f2": { "type": "feature", "settings": { "title": "Premium Quality", "text": "Crafted using durable, high-grade materials for long-lasting shine and strength" } },
+        "f3": { "type": "feature", "settings": { "title": "Everyday Wear", "text": "Lightweight and waterproof jewellery made for daily use without compromise" } },
+        "f4": { "type": "feature", "settings": { "title": "Expert Support", "text": "Get reliable 24/7 guidance to help you choose the perfect piece effortlessly" } }
+      },
+      "block_order": ["f1", "f2", "f3", "f4"],
+      "settings": {
+        "prefix": "Our Story",
+        "title": "Why Choose Us",
+        "button_label": "View Collection",
+        "button_link": "shopify://collections/all"
+      }
+    },
+    "dirona_testimonials": {
+      "type": "dirona-testimonials",
+      "blocks": {
+        "r1": { "type": "review", "settings": { "rating": 5, "text": "Really impressed with how lightweight and comfortable the jewellery feels all day. No irritation at all, even after wearing it continuously for long hours.", "author": "Aarav Mehta – India" } },
+        "r2": { "type": "review", "settings": { "rating": 5, "text": "The quality is excellent and it looks even better in person. Been wearing it daily and it still feels as good as new.", "author": "Oliver Smith – United Kingdom" } },
+        "r3": { "type": "review", "settings": { "rating": 5, "text": "Simple, stylish, and perfect for everyday use without any discomfort. You can tell it's made with care and premium materials.", "author": "Ethan Carter – United States" } },
+        "r4": { "type": "review", "settings": { "rating": 5, "text": "Great value for money and the design is exactly what I wanted. Will definitely order again.", "author": "Sofia Rossi – Italy" } },
+        "r5": { "type": "review", "settings": { "rating": 5, "text": "Fast delivery and beautiful packaging. The jewellery exceeded my expectations in every way.", "author": "Yuki Tanaka – Japan" } },
+        "r6": { "type": "review", "settings": { "rating": 5, "text": "My go-to brand for daily wear jewellery. Comfortable, elegant, and always gets compliments.", "author": "Emma Wilson – Australia" } }
+      },
+      "block_order": ["r1", "r2", "r3", "r4", "r5", "r6"],
+      "settings": {
+        "title": "Customer Voices",
+        "subtitle": "Real experiences from people who value comfort, quality, and everyday style."
+      }
+    },
+    "dirona_news": {
+      "type": "dirona-news-insights",
+      "blocks": {
+        "a1": { "type": "article", "settings": { "tag": "Materials", "title": "Why Titanium Jewellery is Trending", "excerpt": "Discover why titanium is becoming the top choice for modern, skin-friendly jewellery lovers" } },
+        "a2": { "type": "article", "settings": { "tag": "Everyday Wear", "title": "Why Titanium Jewellery is Trending", "excerpt": "Discover why titanium is becoming the top choice for modern, skin-friendly jewellery lovers" } },
+        "a3": { "type": "article", "settings": { "tag": "Skin Problems", "title": "Why Titanium Jewellery is Trending", "excerpt": "Discover why titanium is becoming the top choice for modern, skin-friendly jewellery lovers" } },
+        "a4": { "type": "article", "settings": { "tag": "Jewellery Care", "title": "Why Titanium Jewellery is Trending", "excerpt": "Discover why titanium is becoming the top choice for modern, skin-friendly jewellery lovers" } }
+      },
+      "block_order": ["a1", "a2", "a3", "a4"],
+      "settings": {
+        "title": "News & Insights",
+        "subtitle": "Stay updated with the latest trends, expert tips, and everything you need to know about modern jewellery.",
+        "button_label": "View All Blogs",
+        "posts_to_show": 4
+      }
+    },
+    "dirona_instagram": {
+      "type": "dirona-instagram-gallery",
+      "blocks": {
+        "ig1": { "type": "image", "settings": {} },
+        "ig2": { "type": "image", "settings": {} },
+        "ig3": { "type": "image", "settings": {} },
+        "ig4": { "type": "image", "settings": {} },
+        "ig5": { "type": "image", "settings": {} }
+      },
+      "block_order": ["ig1", "ig2", "ig3", "ig4", "ig5"],
+      "settings": {}
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "dirona_hero",
+    "dirona_usp",
+    "dirona_categories",
+    "dirona_new_in",
+    "dirona_marquee_strip",
+    "dirona_best_sellers",
+    "dirona_why",
+    "dirona_testimonials",
+    "dirona_news",
+    "dirona_instagram"
   ]
 }
