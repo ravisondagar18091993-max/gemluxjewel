@@ -1,0 +1,92 @@
+{{ 'section-home.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #HomeBanner-{{ section.id }} {
+    --overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+  }
+{%- endstyle -%}
+
+<section id="HomeBanner-{{ section.id }}" class="home-section home-overlay-banner home-overlay-banner--{{ section.settings.height }}">
+  <div class="home-overlay-banner__media">
+    {%- if section.settings.image != blank -%}
+      {{
+        section.settings.image
+        | image_url: width: 3840
+        | image_tag:
+          widths: '750, 1100, 1500, 1780, 2000, 3000, 3840',
+          sizes: '100vw'
+      }}
+    {%- else -%}
+      {{ 'collection-apparel-1' | placeholder_svg_tag }}
+    {%- endif -%}
+  </div>
+  <div class="home-overlay-banner__overlay"></div>
+  <div class="home-overlay-banner__content">
+    {%- if section.settings.title != blank -%}
+      <h2 class="home-overlay-banner__title">{{ section.settings.title }}</h2>
+    {%- endif -%}
+    {%- if section.settings.link_label != blank -%}
+      <a href="{{ section.settings.link }}" class="home-overlay-banner__link">
+        {{ section.settings.link_label | escape }}
+      </a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Home Overlay Banner",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image"
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": "Banner height",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "default": 25,
+      "unit": "%",
+      "label": "Overlay opacity"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Bloom Collection"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home Overlay Banner"
+    }
+  ]
+}
+{% endschema %}

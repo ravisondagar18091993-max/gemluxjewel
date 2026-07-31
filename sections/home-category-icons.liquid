@@ -1,0 +1,99 @@
+{{ 'section-home.css' | asset_url | stylesheet_tag }}
+
+<section class="home-section home-categories">
+  <div class="page-width">
+    {%- if section.settings.title != blank -%}
+      <h2 class="home-section__heading">{{ section.settings.title }}</h2>
+    {%- endif -%}
+    <ul class="home-categories__grid">
+      {%- for block in section.blocks -%}
+        <li class="home-categories__item" {{ block.shopify_attributes }}>
+          <a href="{{ block.settings.link }}" class="home-categories__link">
+            <span class="home-categories__icon">
+              {%- case block.settings.icon -%}
+                {%- when 'ring' -%}
+                  <svg viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="28" rx="14" ry="10"/><path d="M18 18 L24 8 L30 18"/></svg>
+                {%- when 'earring' -%}
+                  <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="10" r="3"/><path d="M24 13 L24 22"/><circle cx="24" cy="30" r="6"/></svg>
+                {%- when 'necklace' -%}
+                  <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 20 Q24 44 40 20"/><circle cx="24" cy="38" r="4"/></svg>
+                {%- when 'bracelet' -%}
+                  <svg viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="24" rx="18" ry="12"/><ellipse cx="24" cy="24" rx="14" ry="9"/></svg>
+                {%- when 'watch' -%}
+                  <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="14" y="12" width="20" height="24" rx="4"/><path d="M18 12 L18 8 M30 12 L30 8 M18 36 L18 40 M30 36 L30 40"/><circle cx="24" cy="24" r="6"/></svg>
+                {%- when 'pendant' -%}
+                  <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 8 L24 16"/><path d="M16 16 L32 16 L28 36 L20 36 Z"/></svg>
+                {%- else -%}
+                  <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4 L28 18 L42 18 L31 27 L35 42 L24 33 L13 42 L17 27 L6 18 L20 18 Z"/></svg>
+              {%- endcase -%}
+            </span>
+            <span class="home-categories__label">{{ block.settings.label | escape }}</span>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Home Category Icons",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Shop The Looks"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Rings"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "ring", "label": "Ring" },
+            { "value": "earring", "label": "Earring" },
+            { "value": "necklace", "label": "Necklace" },
+            { "value": "bracelet", "label": "Bracelet" },
+            { "value": "watch", "label": "Watch" },
+            { "value": "pendant", "label": "Pendant" },
+            { "value": "star", "label": "Star" }
+          ],
+          "default": "ring"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home Category Icons",
+      "blocks": [
+        { "type": "category", "settings": { "label": "Rings", "icon": "ring" } },
+        { "type": "category", "settings": { "label": "Earrings", "icon": "earring" } },
+        { "type": "category", "settings": { "label": "Necklaces", "icon": "necklace" } },
+        { "type": "category", "settings": { "label": "Bracelets", "icon": "bracelet" } },
+        { "type": "category", "settings": { "label": "Watches", "icon": "watch" } },
+        { "type": "category", "settings": { "label": "Pendants", "icon": "pendant" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

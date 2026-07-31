@@ -1,0 +1,117 @@
+{{ 'section-home.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #HomeHero-{{ section.id }} {
+    --overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+  }
+{%- endstyle -%}
+
+<section id="HomeHero-{{ section.id }}" class="home-section home-hero">
+  <div class="home-hero__media">
+    {%- if section.settings.video != blank -%}
+      {{
+        section.settings.video
+        | video_tag:
+          image_size: '1920x',
+          autoplay: true,
+          loop: true,
+          muted: true,
+          controls: false,
+          playsinline: true
+      }}
+    {%- elsif section.settings.image != blank -%}
+      {{
+        section.settings.image
+        | image_url: width: 3840
+        | image_tag:
+          widths: '750, 1100, 1500, 1780, 2000, 3000, 3840',
+          sizes: '100vw',
+          fetchpriority: 'high'
+      }}
+    {%- else -%}
+      {{ 'hero-apparel-1' | placeholder_svg_tag }}
+    {%- endif -%}
+  </div>
+  <div class="home-hero__overlay"></div>
+  <div class="home-hero__content">
+    {%- if section.settings.title != blank -%}
+      <h1 class="home-hero__title">{{ section.settings.title }}</h1>
+    {%- endif -%}
+    <div class="home-hero__buttons">
+      {%- if section.settings.button_label_1 != blank -%}
+        <a href="{{ section.settings.button_link_1 }}" class="home-hero__btn home-hero__btn--primary">
+          {{ section.settings.button_label_1 | escape }}
+        </a>
+      {%- endif -%}
+      {%- if section.settings.button_label_2 != blank -%}
+        <a href="{{ section.settings.button_link_2 }}" class="home-hero__btn home-hero__btn--secondary">
+          {{ section.settings.button_label_2 | escape }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Home Hero",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Background video",
+      "info": "Overrides image when set"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "default": 20,
+      "unit": "%",
+      "label": "Overlay opacity"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Timeless Elegance"
+    },
+    {
+      "type": "text",
+      "id": "button_label_1",
+      "label": "First button label",
+      "default": "Shop Jewellery"
+    },
+    {
+      "type": "url",
+      "id": "button_link_1",
+      "label": "First button link"
+    },
+    {
+      "type": "text",
+      "id": "button_label_2",
+      "label": "Second button label",
+      "default": "Book Consultation"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Second button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home Hero"
+    }
+  ]
+}
+{% endschema %}
