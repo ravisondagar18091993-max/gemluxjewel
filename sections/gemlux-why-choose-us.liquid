@@ -1,0 +1,99 @@
+{{ 'section-gemlux.css' | asset_url | stylesheet_tag }}
+
+<section class="gemlux gemlux-why">
+  <div class="gemlux-why__grid">
+    <div class="gemlux-why__content">
+      {%- if section.settings.title != blank -%}
+        <h2 class="gemlux-why__title">{{ section.settings.title }}</h2>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <p class="gemlux-why__intro">{{ section.settings.text }}</p>
+      {%- endif -%}
+      <ul class="gemlux-why__features">
+        {%- for block in section.blocks -%}
+          <li class="gemlux-why__feature" {{ block.shopify_attributes }}>
+            <span class="gemlux-why__feature-icon">
+              {%- case block.settings.icon -%}
+                {%- when 'skin' -%}
+                  <svg viewBox="0 0 24 24"><path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></svg>
+                {%- when 'warranty' -%}
+                  <svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 9.5-8 10-4.5-.5-8-5-8-10V6z"/></svg>
+                {%- when 'eco' -%}
+                  <svg viewBox="0 0 24 24"><path d="M12 22C8 18 4 14 4 10a8 8 0 0 1 16 0c0 4-4 8-8 12z"/></svg>
+                {%- when 'craft' -%}
+                  <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4 2 7L12 17l-6.5 3.5 2-7L2 9h7z"/></svg>
+                {%- else -%}
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg>
+              {%- endcase -%}
+            </span>
+            <div>
+              <p class="gemlux-why__feature-title">{{ block.settings.title | escape }}</p>
+              <p class="gemlux-why__feature-text">{{ block.settings.text | escape }}</p>
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ section.settings.button_link }}" class="gemlux__btn gemlux__btn--white">
+          {{ section.settings.button_label | escape }}
+        </a>
+      {%- endif -%}
+    </div>
+    <div class="gemlux-why__image">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 1200 | image_tag: widths: '400, 600, 800, 1200', sizes: '(min-width: 990px) 50vw, 100vw', loading: 'lazy' }}
+      {%- else -%}
+        {{ 'hero-apparel-3' | placeholder_svg_tag }}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Gemlux Why Choose Us",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "Why Choose Us" },
+    { "type": "textarea", "id": "text", "label": "Introduction", "default": "We believe jewellery should feel as good as it looks. Every piece is designed with care, quality, and your comfort in mind." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Read More" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "image_picker", "id": "image", "label": "Image" }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Skin Friendly" },
+        { "type": "text", "id": "text", "label": "Description", "default": "Hypoallergenic materials safe for sensitive skin." },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "skin", "label": "Skin friendly" },
+            { "value": "warranty", "label": "Warranty" },
+            { "value": "eco", "label": "Eco friendly" },
+            { "value": "craft", "label": "Craftsmanship" },
+            { "value": "check", "label": "Checkmark" }
+          ],
+          "default": "skin"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gemlux Why Choose Us",
+      "blocks": [
+        { "type": "feature", "settings": { "title": "Skin Friendly", "text": "Hypoallergenic materials safe for sensitive skin.", "icon": "skin" } },
+        { "type": "feature", "settings": { "title": "Lifetime Warranty", "text": "Quality guaranteed with our lifetime warranty.", "icon": "warranty" } },
+        { "type": "feature", "settings": { "title": "Eco Friendly", "text": "Sustainably sourced and responsibly crafted.", "icon": "eco" } },
+        { "type": "feature", "settings": { "title": "Expert Craftsmanship", "text": "Hand-finished by skilled artisans.", "icon": "craft" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

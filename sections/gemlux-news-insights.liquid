@@ -1,0 +1,93 @@
+{{ 'section-gemlux.css' | asset_url | stylesheet_tag }}
+
+{%- assign blog = blogs[section.settings.blog] -%}
+
+<section class="gemlux gemlux-news">
+  <div class="gemlux-news__inner">
+    <div class="gemlux__section-header">
+      <div>
+        {%- if section.settings.title != blank -%}
+          <h2 class="gemlux__heading">{{ section.settings.title }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subtitle != blank -%}
+          <p class="gemlux__subheading">{{ section.settings.subtitle }}</p>
+        {%- endif -%}
+      </div>
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ section.settings.button_link | default: blog.url }}" class="gemlux__btn gemlux__btn--green">
+          {{ section.settings.button_label | escape }}
+        </a>
+      {%- endif -%}
+    </div>
+    <div class="gemlux-news__grid">
+      {%- if blog != blank and blog.articles.size > 0 -%}
+        {%- for article in blog.articles limit: section.settings.posts_to_show -%}
+          <article class="gemlux-news__card">
+            <div class="gemlux-news__card-image">
+              <a href="{{ article.url }}">
+                {%- if article.image -%}
+                  {{ article.image | image_url: width: 600 | image_tag: widths: '300, 400, 600', sizes: '(min-width: 990px) 20vw, 45vw', loading: 'lazy', alt: article.title }}
+                {%- else -%}
+                  {{ 'hero-apparel-1' | placeholder_svg_tag }}
+                {%- endif -%}
+              </a>
+            </div>
+            <div class="gemlux-news__card-body">
+              {%- if article.tags.size > 0 -%}
+                <p class="gemlux-news__card-tag">{{ article.tags.first | upcase }}</p>
+              {%- endif -%}
+              <h3 class="gemlux-news__card-title">
+                <a href="{{ article.url }}">{{ article.title }}</a>
+              </h3>
+              {%- if article.excerpt != blank -%}
+                <p class="gemlux-news__card-excerpt">{{ article.excerpt | strip_html | truncate: 100 }}</p>
+              {%- else -%}
+                <p class="gemlux-news__card-excerpt">{{ article.content | strip_html | truncate: 100 }}</p>
+              {%- endif -%}
+              <a href="{{ article.url }}" class="gemlux-news__card-link">Read More</a>
+            </div>
+          </article>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for i in (1..4) -%}
+          <article class="gemlux-news__card">
+            <div class="gemlux-news__card-image">
+              {{ 'hero-apparel-' | append: i | placeholder_svg_tag }}
+            </div>
+            <div class="gemlux-news__card-body">
+              <p class="gemlux-news__card-tag">NEW</p>
+              <h3 class="gemlux-news__card-title">Blog Post Title</h3>
+              <p class="gemlux-news__card-excerpt">Discover the latest trends and styling tips for everyday jewellery.</p>
+              <span class="gemlux-news__card-link">Read More</span>
+            </div>
+          </article>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Gemlux News & Insights",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "News & Insights" },
+    { "type": "text", "id": "subtitle", "label": "Subheading", "default": "Tips, trends, and stories from our world of jewellery." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "View All Posts" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "blog", "id": "blog", "label": "Blog" },
+    {
+      "type": "range",
+      "id": "posts_to_show",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "default": 4,
+      "label": "Posts to show"
+    }
+  ],
+  "presets": [{ "name": "Gemlux News & Insights" }]
+}
+{% endschema %}
