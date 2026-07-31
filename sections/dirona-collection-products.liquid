@@ -14,7 +14,13 @@
       {%- paginate collection.products by section.settings.products_per_page -%}
         <div class="dirona-shop__toolbar">
           {%- if section.settings.enable_filtering -%}
-            <button type="button" class="dirona-shop__filter-toggle" data-dirona-filter-toggle>
+            <button
+              type="button"
+              class="dirona-shop__filter-toggle"
+              data-dirona-filter-toggle
+              data-show-label="{{ section.settings.filter_label | default: 'Show Filter' | escape }}"
+              data-hide-label="{{ section.settings.filter_hide_label | default: 'Hide Filter' | escape }}"
+            >
               <span>{{ section.settings.filter_label | default: 'Show Filter' }}</span>
               <span class="dirona-shop__filter-switch">
                 <input
@@ -55,7 +61,7 @@
         >
           {%- if section.settings.enable_filtering -%}
             <aside class="dirona-shop__filters" id="main-collection-filters" data-id="{{ section.id }}">
-              {% render 'facets',
+              {% render 'dirona-facets',
                 results: collection,
                 enable_filtering: true,
                 enable_sorting: false,
@@ -106,6 +112,12 @@
       "id": "filter_label",
       "label": "Filter toggle label",
       "default": "Show Filter"
+    },
+    {
+      "type": "text",
+      "id": "filter_hide_label",
+      "label": "Filter hide label",
+      "default": "Hide Filter"
     },
     {
       "type": "checkbox",

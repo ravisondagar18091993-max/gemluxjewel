@@ -1,0 +1,14 @@
+{% comment %}
+  Dirona collection filters — vertical sidebar (facets.js compatible)
+  Accepts same params as snippets/facets.liquid
+{% endcomment %}
+
+<div class="dirona-facets">
+  {% render 'facets',
+    results: results,
+    enable_filtering: enable_filtering,
+    enable_sorting: enable_sorting,
+    filter_type: filter_type,
+    paginate: paginate
+  %}
+</div>
