@@ -7,7 +7,8 @@
   assign card_tag = article.tags.first
   assign tag_handles = ''
   for tag in article.tags
-    assign tag_handles = tag_handles | append: tag | handleize | append: ' '
+    assign tag_handle = tag | handleize
+    assign tag_handles = tag_handles | append: tag_handle | append: ' '
   endfor
 -%}
 

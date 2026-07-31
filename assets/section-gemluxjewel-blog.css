@@ -1,0 +1,292 @@
+/* Gemlux Jewel blog list — matches HTML/blog.html */
+
+.gemluxjewel-blog,
+.gemluxjewel-blog-hero {
+  --gemluxjewel-primary: #1a5543;
+  --gemluxjewel-secondary: #fff8f4;
+  --gemluxjewel-dark: #141414;
+  --gemluxjewel-gray: #818181;
+  --gemluxjewel-radius: 10px;
+  --gemluxjewel-radius-pill: 30px;
+  --gemluxjewel-font-body: 'Instrument Sans', var(--font-body-family), sans-serif;
+  --gemluxjewel-font-heading: 'Nunito', var(--font-heading-family), sans-serif;
+}
+
+.gemluxjewel-blog-hero {
+  background: var(--gemluxjewel-primary);
+  padding: 200px 0 51px;
+  border-top: 1px solid rgba(255, 248, 244, 0.2);
+  border-bottom: 1px solid rgba(255, 248, 244, 0.2);
+}
+
+@media (max-width: 991px) {
+  .gemluxjewel-blog-hero { padding-top: 160px; }
+}
+
+.gemluxjewel-blog-hero__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  align-items: center;
+}
+
+@media (min-width: 990px) {
+  .gemluxjewel-blog-hero__grid {
+    grid-template-columns: 1.2fr 1fr;
+  }
+
+  .gemluxjewel-blog-hero__grid--no-image {
+    grid-template-columns: 1fr;
+    max-width: 640px;
+  }
+}
+
+.gemluxjewel-blog-hero__date {
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.43px;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0 0 16px;
+}
+
+.gemluxjewel-blog-hero__title {
+  font-family: var(--gemluxjewel-font-heading);
+  font-weight: 300;
+  font-size: 50px;
+  line-height: 60px;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0 0 16px;
+  max-width: 11ch;
+}
+
+@media (max-width: 991px) {
+  .gemluxjewel-blog-hero__title {
+    font-size: 40px;
+    line-height: 50px;
+    max-width: none;
+  }
+}
+
+.gemluxjewel-blog-hero__desc {
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 18px;
+  line-height: 32px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 32px;
+  max-width: 560px;
+}
+
+@media (max-width: 991px) {
+  .gemluxjewel-blog-hero__desc {
+    font-size: 16px;
+    line-height: 30px;
+  }
+}
+
+.gemluxjewel-blog-hero__media {
+  justify-self: end;
+  width: 100%;
+  max-width: 518px;
+}
+
+.gemluxjewel-blog-hero__img {
+  width: 100%;
+  max-width: 518px;
+  border-radius: var(--gemluxjewel-radius, 10px);
+  overflow: hidden;
+  aspect-ratio: 518 / 469;
+}
+
+.gemluxjewel-blog-hero__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 991px) {
+  .gemluxjewel-blog-hero__media {
+    max-width: 100%;
+    justify-self: stretch;
+  }
+}
+
+/* Blog list section */
+.gemluxjewel-blog {
+  background: var(--gemluxjewel-secondary);
+  padding: 80px 0 120px;
+  font-family: var(--gemluxjewel-font-body);
+}
+
+.gemluxjewel-blog__filters {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  gap: 12px;
+  margin-bottom: 80px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+}
+
+.gemluxjewel-blog__filters::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 1200px) {
+  .gemluxjewel-blog__filters {
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow: visible;
+  }
+}
+
+.gemluxjewel-blog__filter {
+  flex-shrink: 0;
+  background: transparent;
+  color: var(--gemluxjewel-primary);
+  border: 1px solid var(--gemluxjewel-primary);
+  border-radius: var(--gemluxjewel-radius-pill, 30px);
+  padding: 8px 16px;
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 14px;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@media (min-width: 1200px) {
+  .gemluxjewel-blog__filter {
+    padding: 8px 24px;
+  }
+}
+
+.gemluxjewel-blog__filter:hover,
+.gemluxjewel-blog__filter.is-active {
+  background: var(--gemluxjewel-primary);
+  color: #fff;
+}
+
+.gemluxjewel-blog__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px 20px;
+}
+
+@media (min-width: 768px) {
+  .gemluxjewel-blog__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 990px) {
+  .gemluxjewel-blog__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .gemluxjewel-blog__grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 48px 20px;
+  }
+}
+
+.gemluxjewel-blog__empty {
+  text-align: center;
+  color: var(--gemluxjewel-dark);
+  padding: 40px 0;
+}
+
+/* Blog card */
+.gemluxjewel-blog-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.gemluxjewel-blog-card.is-hidden {
+  display: none;
+}
+
+.gemluxjewel-blog-card__img {
+  position: relative;
+  border-radius: var(--gemluxjewel-radius, 10px);
+  overflow: hidden;
+  aspect-ratio: 1 / 0.72;
+  margin-bottom: 20px;
+}
+
+.gemluxjewel-blog-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.gemluxjewel-blog-card:hover .gemluxjewel-blog-card__img img {
+  transform: scale(1.08);
+}
+
+.gemluxjewel-blog-card__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  z-index: 1;
+}
+
+.gemluxjewel-blog-card__title {
+  font-family: var(--gemluxjewel-font-heading);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 12px;
+}
+
+.gemluxjewel-blog-card__title a {
+  color: var(--gemluxjewel-primary);
+  text-decoration: none;
+}
+
+.gemluxjewel-blog-card__title a:hover {
+  opacity: 0.85;
+}
+
+.gemluxjewel-blog-card__excerpt {
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--gemluxjewel-gray);
+  margin: 0 0 16px;
+}
+
+.gemluxjewel-blog-card__readmore {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 14px;
+  color: var(--gemluxjewel-primary);
+  text-decoration: none;
+  margin-top: auto;
+}
+
+.gemluxjewel-blog-card__readmore:hover .gemluxjewel-btn__arrow {
+  transform: translateX(5px);
+}
+
+.gemluxjewel-blog-card__readmore .gemluxjewel-btn__arrow {
+  display: inline-flex;
+  transition: transform 0.3s ease;
+}
+
+.gemluxjewel-blog .gemluxjewel-pagination {
+  margin-top: 48px;
+  padding-top: 16px;
+}
