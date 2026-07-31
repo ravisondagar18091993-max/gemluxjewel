@@ -1,16 +1,16 @@
-{{ 'section-dirona-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
 
-<section class="dirona dirona-instagram">
-  <ul class="dirona-instagram__grid">
+<section class="gemluxjewel gemluxjewel-instagram">
+  <ul class="gemluxjewel-instagram__grid">
     {%- for block in section.blocks -%}
-      <li class="dirona-instagram__item" {{ block.shopify_attributes }}>
+      <li class="gemluxjewel-instagram__item" {{ block.shopify_attributes }}>
         {%- if block.settings.link != blank -%}
-          <a href="{{ block.settings.link }}" class="dirona-instagram__link" target="_blank" rel="noopener">
+          <a href="{{ block.settings.link }}" class="gemluxjewel-instagram__link" target="_blank" rel="noopener">
         {%- endif -%}
         {%- if block.settings.image != blank -%}
           {{ block.settings.image | image_url: width: 600 | image_tag: widths: '200, 300, 400, 600', sizes: '(min-width: 750px) 20vw, 50vw', loading: 'lazy' }}
         {%- else -%}
-          <img src="{{ 'insta-post-img.png' | asset_url }}" alt="" width="400" height="320" loading="lazy">
+          {% render 'gemluxjewel-theme-image', asset: 'insta-post-img.png', width: 400, widths: '200,300,400', sizes: '(min-width: 768px) 25vw, 50vw' %}
         {%- endif -%}
         {%- if block.settings.link != blank -%}
           </a>
@@ -22,9 +22,9 @@
 
 {% schema %}
 {
-  "name": "Dirona Instagram Gallery",
+  "name": "Gemlux Instagram",
   "tag": "section",
-  "class": "section dirona-section",
+  "class": "section gemluxjewel-section",
   "max_blocks": 6,
   "blocks": [
     {
@@ -38,7 +38,7 @@
   ],
   "presets": [
     {
-      "name": "Dirona Instagram Gallery",
+      "name": "Gemlux Instagram",
       "blocks": [
         { "type": "image" },
         { "type": "image" },

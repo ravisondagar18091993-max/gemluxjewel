@@ -1,0 +1,116 @@
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+
+{%- assign blog = blogs[section.settings.blog] -%}
+
+<section class="gemluxjewel gemluxjewel-news">
+  <div class="gemluxjewel-container">
+    <div class="gemluxjewel-section-header">
+      <div>
+        {%- if section.settings.title != blank -%}
+          <h2 class="gemluxjewel-section-title">{{ section.settings.title }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subtitle != blank -%}
+          <p class="gemluxjewel-section-desc">{{ section.settings.subtitle }}</p>
+        {%- endif -%}
+      </div>
+      {%- assign news_btn_url = section.settings.button_link -%}
+      {%- if news_btn_url == blank and blog != blank -%}
+        {%- assign news_btn_url = blog.url -%}
+      {%- endif -%}
+      {% render 'gemluxjewel-btn', label: section.settings.button_label, url: news_btn_url, style: 'green' %}
+    </div>
+    <div class="gemluxjewel-news__grid">
+      {%- if blog != blank and blog.articles.size > 0 -%}
+        {%- for article in blog.articles limit: section.settings.posts_to_show -%}
+          <article class="gemluxjewel-news__card">
+            <div class="gemluxjewel-news__img">
+              <a href="{{ article.url }}">
+                {%- if article.image -%}
+                  {{ article.image | image_url: width: 600 | image_tag: widths: '300, 400, 600', sizes: '(min-width: 1200px) 22vw, 45vw', loading: 'lazy', alt: article.title }}
+                {%- else -%}
+                  {% render 'gemluxjewel-theme-image', asset: 'news-img.png', width: 600, widths: '300,450,600', sizes: '(min-width: 1200px) 22vw, 45vw', alt: article.title %}
+                {%- endif -%}
+              </a>
+              {%- if article.tags.size > 0 -%}
+                <div class="gemluxjewel-card__top">
+                  <span class="gemluxjewel-badge">{{ article.tags.first }}</span>
+                </div>
+              {%- endif -%}
+            </div>
+            <h3 class="gemluxjewel-news__title"><a href="{{ article.url }}">{{ article.title }}</a></h3>
+            <p class="gemluxjewel-news__excerpt">{{ article.excerpt | default: article.content | strip_html | truncate: 120 }}</p>
+            <a href="{{ article.url }}" class="gemluxjewel-news__readmore">
+              Read More
+              <span class="gemluxjewel-btn__arrow">
+                <img src="{{ 'green-right-arrow.svg' | asset_url }}" alt="" width="24" height="24">
+              </span>
+            </a>
+          </article>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for block in section.blocks -%}
+          <article class="gemluxjewel-news__card" {{ block.shopify_attributes }}>
+            <div class="gemluxjewel-news__img">
+              {%- if block.settings.image != blank -%}
+                {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy' }}
+              {%- else -%}
+                {% render 'gemluxjewel-theme-image', asset: 'news-img.png', width: 600, widths: '300,450,600', sizes: '(min-width: 1200px) 22vw, 45vw' %}
+              {%- endif -%}
+              {%- if block.settings.tag != blank -%}
+                <div class="gemluxjewel-card__top"><span class="gemluxjewel-badge">{{ block.settings.tag }}</span></div>
+              {%- endif -%}
+            </div>
+            <h3 class="gemluxjewel-news__title">{{ block.settings.title | escape }}</h3>
+            <p class="gemluxjewel-news__excerpt">{{ block.settings.excerpt | escape }}</p>
+            <a href="{{ block.settings.link }}" class="gemluxjewel-news__readmore">
+              Read More
+              <span class="gemluxjewel-btn__arrow">
+                <img src="{{ 'green-right-arrow.svg' | asset_url }}" alt="" width="24" height="24">
+              </span>
+            </a>
+          </article>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Gemlux News Insights",
+  "tag": "section",
+  "class": "section gemluxjewel-section",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "News & Insights" },
+    { "type": "textarea", "id": "subtitle", "label": "Subheading", "default": "Stay updated with the latest trends, expert tips, and everything you need to know about modern jewellery." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "View All Blogs" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "blog", "id": "blog", "label": "Blog" },
+    { "type": "range", "id": "posts_to_show", "min": 2, "max": 8, "step": 1, "default": 4, "label": "Posts to show" }
+  ],
+  "blocks": [
+    {
+      "type": "article",
+      "name": "Manual article",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "tag", "label": "Tag", "default": "Materials" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Why Titanium Jewellery is Trending" },
+        { "type": "textarea", "id": "excerpt", "label": "Excerpt", "default": "Discover why titanium is becoming the top choice for modern, skin-friendly jewellery lovers" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gemlux News Insights",
+      "blocks": [
+        { "type": "article", "settings": { "tag": "Materials", "title": "Why Titanium Jewellery is Trending" } },
+        { "type": "article", "settings": { "tag": "Everyday Wear", "title": "Why Titanium Jewellery is Trending" } },
+        { "type": "article", "settings": { "tag": "Skin Problems", "title": "Why Titanium Jewellery is Trending" } },
+        { "type": "article", "settings": { "tag": "Jewellery Care", "title": "Why Titanium Jewellery is Trending" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
