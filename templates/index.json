@@ -9,333 +9,76 @@
  */
 {
   "sections": {
-    "home_hero": {
-      "type": "home-hero",
-      "settings": {
-        "overlay_opacity": 20,
-        "title": "Timeless Elegance",
-        "button_label_1": "Shop Jewellery",
-        "button_link_1": "shopify://collections/all",
-        "button_label_2": "Book Consultation",
-        "button_link_2": "shopify://pages/contact"
-      }
-    },
-    "home_bloom_banner": {
-      "type": "home-overlay-banner",
-      "settings": {
-        "height": "medium",
-        "overlay_opacity": 30,
-        "title": "Bloom Collection",
-        "link_label": "Shop Now",
-        "link": "shopify://collections/all"
-      }
-    },
-    "home_categories": {
-      "type": "home-category-icons",
+    "image_banner": {
+      "type": "image-banner",
       "blocks": {
-        "cat_rings": {
-          "type": "category",
+        "heading": {
+          "type": "heading",
           "settings": {
-            "label": "Rings",
-            "link": "shopify://collections/all",
-            "icon": "ring"
+            "heading": "Browse our latest products",
+            "heading_size": "h0"
           }
         },
-        "cat_earrings": {
-          "type": "category",
+        "button": {
+          "type": "buttons",
           "settings": {
-            "label": "Earrings",
-            "link": "shopify://collections/all",
-            "icon": "earring"
-          }
-        },
-        "cat_necklaces": {
-          "type": "category",
-          "settings": {
-            "label": "Necklaces",
-            "link": "shopify://collections/all",
-            "icon": "necklace"
-          }
-        },
-        "cat_bracelets": {
-          "type": "category",
-          "settings": {
-            "label": "Bracelets",
-            "link": "shopify://collections/all",
-            "icon": "bracelet"
-          }
-        },
-        "cat_watches": {
-          "type": "category",
-          "settings": {
-            "label": "Watches",
-            "link": "shopify://collections/all",
-            "icon": "watch"
-          }
-        },
-        "cat_pendants": {
-          "type": "category",
-          "settings": {
-            "label": "Pendants",
-            "link": "shopify://collections/all",
-            "icon": "pendant"
+            "button_label_1": "Shop all",
+            "button_link_1": "shopify://collections/all",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
           }
         }
       },
       "block_order": [
-        "cat_rings",
-        "cat_earrings",
-        "cat_necklaces",
-        "cat_bracelets",
-        "cat_watches",
-        "cat_pendants"
+        "heading",
+        "button"
       ],
       "settings": {
-        "title": "Shop The Looks"
+        "image_overlay_opacity": 40,
+        "image_height": "large",
+        "desktop_content_position": "bottom-center",
+        "show_text_box": false,
+        "image_behavior": "none",
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
       }
     },
-    "home_lifestyle_grid": {
-      "type": "home-lifestyle-grid",
-      "blocks": {
-        "img_1": {
-          "type": "image",
-          "settings": {
-            "size": "large",
-            "link": "shopify://collections/all"
-          }
-        },
-        "img_2": {
-          "type": "image",
-          "settings": {
-            "size": "normal",
-            "link": "shopify://collections/all"
-          }
-        },
-        "img_3": {
-          "type": "image",
-          "settings": {
-            "size": "normal",
-            "link": "shopify://collections/all"
-          }
-        },
-        "img_4": {
-          "type": "image",
-          "settings": {
-            "size": "normal",
-            "link": "shopify://collections/all"
-          }
-        },
-        "img_5": {
-          "type": "image",
-          "settings": {
-            "size": "normal",
-            "link": "shopify://collections/all"
-          }
-        }
-      },
-      "block_order": ["img_1", "img_2", "img_3", "img_4", "img_5"],
-      "settings": {}
-    },
-    "home_mens": {
-      "type": "home-dual-images",
-      "blocks": {
-        "mens_1": {
-          "type": "image",
-          "settings": {
-            "label": "Groom",
-            "link": "shopify://collections/all"
-          }
-        },
-        "mens_2": {
-          "type": "image",
-          "settings": {
-            "label": "Lifestyle",
-            "link": "shopify://collections/all"
-          }
-        }
-      },
-      "block_order": ["mens_1", "mens_2"],
-      "settings": {
-        "title": "Men's"
-      }
-    },
-    "home_press": {
-      "type": "home-press-logos",
-      "blocks": {
-        "press_1": { "type": "logo", "settings": { "name": "VOGUE" } },
-        "press_2": { "type": "logo", "settings": { "name": "Harper's BAZAAR" } },
-        "press_3": { "type": "logo", "settings": { "name": "ELLE" } },
-        "press_4": { "type": "logo", "settings": { "name": "Tatler" } },
-        "press_5": { "type": "logo", "settings": { "name": "GRAZIA" } }
-      },
-      "block_order": ["press_1", "press_2", "press_3", "press_4", "press_5"],
-      "settings": {
-        "title": "As Seen In"
-      }
-    },
-    "home_featured_split": {
-      "type": "home-featured-split",
-      "settings": {
-        "button_label": "Shop Now"
-      }
-    },
-    "home_testimonials": {
-      "type": "home-testimonials",
-      "blocks": {
-        "t1": {
-          "type": "testimonial",
-          "settings": {
-            "rating": 5,
-            "text": "The most beautiful engagement ring. Exceptional quality and service.",
-            "author": "Sarah M."
-          }
-        },
-        "t2": {
-          "type": "testimonial",
-          "settings": {
-            "rating": 5,
-            "text": "Stunning pieces that feel truly bespoke. Will definitely return.",
-            "author": "James T."
-          }
-        },
-        "t3": {
-          "type": "testimonial",
-          "settings": {
-            "rating": 5,
-            "text": "Elegant, timeless jewellery. The packaging alone feels luxurious.",
-            "author": "Emma L."
-          }
-        },
-        "t4": {
-          "type": "testimonial",
-          "settings": {
-            "rating": 5,
-            "text": "Perfect gift for my wife. She hasn't taken the necklace off since.",
-            "author": "David R."
-          }
-        },
-        "t5": {
-          "type": "testimonial",
-          "settings": {
-            "rating": 5,
-            "text": "Outstanding customer care from start to finish. Highly recommend.",
-            "author": "Priya K."
-          }
-        }
-      },
-      "block_order": ["t1", "t2", "t3", "t4", "t5"],
-      "settings": {
-        "title": "What Our Customers Say"
-      }
-    },
-    "home_instagram": {
-      "type": "home-instagram-grid",
-      "blocks": {
-        "ig_1": { "type": "image", "settings": {} },
-        "ig_2": { "type": "image", "settings": {} },
-        "ig_3": { "type": "image", "settings": {} },
-        "ig_4": { "type": "image", "settings": {} }
-      },
-      "block_order": ["ig_1", "ig_2", "ig_3", "ig_4"],
-      "settings": {
-        "title": "Latest on IG"
-      }
-    },
-    "home_services": {
-      "type": "home-service-banners",
-      "blocks": {
-        "svc_bespoke": {
-          "type": "banner",
-          "settings": {
-            "title": "Bespoke Service",
-            "button_label": "Book Now",
-            "button_link": "shopify://pages/contact",
-            "color": "green"
-          }
-        },
-        "svc_gift": {
-          "type": "banner",
-          "settings": {
-            "title": "Gift Cards",
-            "button_label": "Shop Now",
-            "button_link": "shopify://collections/all",
-            "color": "terracotta"
-          }
-        }
-      },
-      "block_order": ["svc_bespoke", "svc_gift"],
-      "settings": {}
-    },
-    "home_trust": {
-      "type": "home-trust-icons",
-      "blocks": {
-        "trust_1": { "type": "trust", "settings": { "label": "Worldwide Shipping", "icon": "shipping" } },
-        "trust_2": { "type": "trust", "settings": { "label": "30 Day Returns", "icon": "returns" } },
-        "trust_3": { "type": "trust", "settings": { "label": "Secure Payments", "icon": "secure" } },
-        "trust_4": { "type": "trust", "settings": { "label": "Customer Support", "icon": "support" } }
-      },
-      "block_order": ["trust_1", "trust_2", "trust_3", "trust_4"],
-      "settings": {}
-    },
-    "home_brand_story": {
-      "type": "home-brand-story",
-      "settings": {
-        "title": "About our jewellery & aesthetics",
-        "text": "<p>At Gem Lux Jewels, we craft timeless pieces that celebrate life's most precious moments. Each design is thoughtfully created using ethically sourced materials and masterful artistry, blending classic elegance with contemporary style.</p>",
-        "link_label": "Discover Our Story",
-        "link": "shopify://pages/about"
-      }
-    },
-    "home_new_in": {
+    "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "New In",
+        "title": "Featured products",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
         "description_style": "body",
         "collection": "all",
-        "products_to_show": 4,
+        "products_to_show": 8,
         "columns_desktop": 4,
         "color_scheme": "scheme-1",
         "full_width": false,
         "show_view_all": true,
-        "view_all_style": "link",
+        "view_all_style": "solid",
         "enable_desktop_slider": false,
         "swipe_on_mobile": false,
-        "image_ratio": "portrait",
+        "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
-        "padding_top": 52,
+        "padding_top": 44,
         "padding_bottom": 36
-      }
-    },
-    "home_seo": {
-      "type": "home-seo-content",
-      "settings": {
-        "title": "Fine Jewellery Crafted with Passion",
-        "content": "<p>Gem Lux Jewels offers an exquisite collection of fine jewellery, from engagement rings and wedding bands to necklaces, earrings, and bespoke pieces. Our master craftsmen combine traditional techniques with modern design to create jewellery that tells your unique story.</p><p>Every piece is made with the finest materials — including ethically sourced diamonds, precious gemstones, and hallmarked gold — ensuring lasting beauty and quality you can trust.</p><h3>Engagement & Wedding</h3><p>Find the perfect symbol of your love with our curated selection of engagement rings and wedding bands, available in a range of styles from classic solitaires to contemporary designs.</p><h3>Bespoke Jewellery</h3><p>Our bespoke service allows you to create a one-of-a-kind piece tailored to your vision. Work with our designers to bring your dream jewellery to life.</p>"
       }
     }
   },
   "order": [
-    "home_hero",
-    "home_bloom_banner",
-    "home_categories",
-    "home_lifestyle_grid",
-    "home_mens",
-    "home_press",
-    "home_featured_split",
-    "home_testimonials",
-    "home_instagram",
-    "home_services",
-    "home_trust",
-    "home_brand_story",
-    "home_new_in",
-    "home_seo"
+    "image_banner",
+    "featured_collection"
   ]
 }
