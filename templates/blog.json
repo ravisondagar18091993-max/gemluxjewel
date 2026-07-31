@@ -18,39 +18,8 @@
     },
     "gemluxjewel_blog_main": {
       "type": "gemluxjewel-blog-main",
-      "blocks": {
-        "filter_materials": {
-          "type": "filter",
-          "settings": { "label": "Materials", "tag_handle": "materials" }
-        },
-        "filter_everyday": {
-          "type": "filter",
-          "settings": { "label": "Everyday Wear", "tag_handle": "everyday-wear" }
-        },
-        "filter_skin": {
-          "type": "filter",
-          "settings": { "label": "Skin Problems", "tag_handle": "skin-problems" }
-        },
-        "filter_season": {
-          "type": "filter",
-          "settings": { "label": "Seasonable Jewellery", "tag_handle": "seasonable-jewellery" }
-        },
-        "filter_care": {
-          "type": "filter",
-          "settings": { "label": "Jewellery Care", "tag_handle": "jewellery-care" }
-        }
-      },
-      "block_order": [
-        "filter_materials",
-        "filter_everyday",
-        "filter_skin",
-        "filter_season",
-        "filter_care"
-      ],
       "settings": {
-        "articles_per_page": 12,
-        "show_filters": true,
-        "all_posts_label": "All Posts"
+        "articles_per_page": 12
       }
     }
   },

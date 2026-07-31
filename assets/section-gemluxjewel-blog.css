@@ -54,19 +54,18 @@
 .gemluxjewel-blog-hero__title {
   font-family: var(--gemluxjewel-font-heading);
   font-weight: 300;
-  font-size: 50px;
-  line-height: 60px;
+  font-size: 36px;
+  line-height: 44px;
   text-transform: uppercase;
   color: #fff;
   margin: 0 0 16px;
-  max-width: 11ch;
+  max-width: none;
 }
 
 @media (max-width: 991px) {
   .gemluxjewel-blog-hero__title {
-    font-size: 40px;
-    line-height: 50px;
-    max-width: none;
+    font-size: 28px;
+    line-height: 36px;
   }
 }
 
@@ -121,57 +120,8 @@
   font-family: var(--gemluxjewel-font-body);
 }
 
-.gemluxjewel-blog__filters {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  gap: 12px;
-  margin-bottom: 80px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  padding-bottom: 4px;
-}
-
-.gemluxjewel-blog__filters::-webkit-scrollbar {
-  display: none;
-}
-
-@media (min-width: 1200px) {
-  .gemluxjewel-blog__filters {
-    justify-content: center;
-    flex-wrap: wrap;
-    overflow: visible;
-  }
-}
-
-.gemluxjewel-blog__filter {
-  flex-shrink: 0;
-  background: transparent;
-  color: var(--gemluxjewel-primary);
-  border: 1px solid var(--gemluxjewel-primary);
-  border-radius: var(--gemluxjewel-radius-pill, 30px);
-  padding: 8px 16px;
-  font-family: var(--gemluxjewel-font-body);
-  font-size: 14px;
-  line-height: 1.2;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-@media (min-width: 1200px) {
-  .gemluxjewel-blog__filter {
-    padding: 8px 24px;
-  }
-}
-
-.gemluxjewel-blog__filter:hover,
-.gemluxjewel-blog__filter.is-active {
-  background: var(--gemluxjewel-primary);
-  color: #fff;
-}
-
-.gemluxjewel-blog__grid {
+/* Blog list section */
+.gemluxjewel-blog {
   display: grid;
   grid-template-columns: 1fr;
   gap: 40px 20px;
