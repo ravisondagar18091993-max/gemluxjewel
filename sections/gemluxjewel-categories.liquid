@@ -10,18 +10,25 @@
         {%- endif -%}
 
         {%- liquid
-          assign card_title = block.settings.title | default: collection.title
-          assign collection_image = collection.featured_image
-          if collection_image == blank and collection.products_count > 0
-            assign collection_image = collection.products.first.featured_image
+          assign card_title = block.settings.title
+          if card_title == blank
+            assign card_title = collection.title
+          endif
+
+          assign card_image = block.settings.image
+          if card_image == blank
+            assign card_image = collection.featured_image
+            if card_image == blank and collection.products_count > 0
+              assign card_image = collection.products.first.featured_image
+            endif
           endif
         -%}
 
         <a href="{{ collection.url }}" class="gemluxjewel-categories__item" {{ block.shopify_attributes }}>
           <div class="gemluxjewel-categories__img">
-            {%- if collection_image != blank -%}
+            {%- if card_image != blank -%}
               {{
-                collection_image
+                card_image
                 | image_url: width: 600
                 | image_tag:
                   widths: '155, 200, 300, 400, 600',
@@ -55,7 +62,7 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "Pick collections for each card. Title, link, and image come from the collection. Update the collection image in Shopify Admin → Products → Collections."
+      "content": "Pick a collection for each card. Optionally override the title or image below; otherwise the collection title and collection image from Shopify Admin are used."
     }
   ],
   "blocks": [
@@ -71,8 +78,14 @@
         {
           "type": "text",
           "id": "title",
-          "label": "Custom title (optional)",
+          "label": "Custom title",
           "info": "Leave blank to use the collection title."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom image",
+          "info": "Leave blank to use the collection image from Shopify Admin."
         }
       ]
     }
