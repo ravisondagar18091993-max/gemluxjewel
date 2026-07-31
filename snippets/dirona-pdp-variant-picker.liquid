@@ -32,12 +32,8 @@
               unless value.available
                 assign option_disabled = true
               endunless
-              capture input_id
-                echo section.id | append: '-' | append: option.position | append: '-' | append: forloop.index0
-              endcapture
-              capture input_name
-                echo option.name | append: '-' | append: option.position
-              endcapture
+              assign input_id = section.id | append: '-' | append: option.position | append: '-' | append: forloop.index0
+              assign input_name = option.name | append: '-' | append: option.position
               assign swatch_mod = 'dirona-swatch'
               assign value_downcase = value | downcase
               if value_downcase contains 'silver' or value_downcase contains 'grey' or value_downcase contains 'gray' or value_downcase contains 'white' or value_downcase contains 'platinum'
