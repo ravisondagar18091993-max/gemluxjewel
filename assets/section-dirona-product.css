@@ -202,22 +202,6 @@
 .dirona-pdp__description p { margin: 0 0 1em; }
 .dirona-pdp__description p:last-child { margin-bottom: 0; }
 
-.dirona-pdp__option {
-  border: none;
-  margin: 0 0 40px;
-  padding: 0;
-}
-
-.dirona-pdp__option-label {
-  font-size: 16px;
-  line-height: 20px;
-  text-transform: uppercase;
-  color: var(--dirona-dark);
-  margin-bottom: 12px;
-  float: left;
-  width: 100%;
-}
-
 .dirona-pdp__variants-block {
   margin-bottom: 40px;
 }
