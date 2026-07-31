@@ -1078,3 +1078,17 @@
 .gemluxjewel-instagram__link:hover img { transform: scale(1.05); }
 
 .gemluxjewel-instagram__link { display: block; height: 100%; }
+
+.gemluxjewel-instagram__feed {
+  width: 100%;
+  min-height: 280px;
+}
+
+@media (min-width: 768px) {
+  .gemluxjewel-instagram__feed { min-height: 320px; }
+}
+
+.gemluxjewel-instagram__feed behold-widget {
+  display: block;
+  width: 100%;
+}
