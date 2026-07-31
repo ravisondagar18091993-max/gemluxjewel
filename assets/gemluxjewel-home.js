@@ -54,8 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
           const arrow = link.querySelector('.gemluxjewel-btn__arrow');
 
           link.href = href;
-          link.childNodes.forEach((node) => {
-            if (node !== arrow) link.removeChild(node);
+          Array.from(link.childNodes).forEach((node) => {
+            if (node !== arrow) node.remove();
           });
           if (arrow) {
             link.insertBefore(document.createTextNode(`${label} `), arrow);
