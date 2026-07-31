@@ -451,15 +451,15 @@
 .gemluxjewel-categories__title {
   font-family: var(--gemluxjewel-font-heading);
   font-weight: 500;
-  font-size: 20px;
-  line-height: 27px;
+  font-size: 14px;
+  line-height: 20px;
   text-transform: uppercase;
   margin: 0;
   color: var(--gemluxjewel-primary);
 }
 
 @media (max-width: 991px) {
-  .gemluxjewel-categories__title { font-size: 15px; line-height: 22px; }
+  .gemluxjewel-categories__title { font-size: 12px; line-height: 18px; }
 }
 
 /* ── New In ── */
