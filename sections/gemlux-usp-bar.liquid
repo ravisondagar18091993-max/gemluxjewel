@@ -1,0 +1,71 @@
+{{ 'section-gemlux.css' | asset_url | stylesheet_tag }}
+
+<section class="gemlux gemlux-usp">
+  <ul class="gemlux-usp__list">
+    {%- for block in section.blocks -%}
+      <li class="gemlux-usp__item" {{ block.shopify_attributes }}>
+        <span class="gemlux-usp__icon">
+          {%- case block.settings.icon -%}
+            {%- when 'shipping' -%}
+              <svg viewBox="0 0 24 24"><rect x="1" y="8" width="15" height="10" rx="1"/><path d="M16 10h3l3 4v4h-6"/><circle cx="5.5" cy="19" r="2"/><circle cx="18.5" cy="19" r="2"/></svg>
+            {%- when 'secure' -%}
+              <svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="1"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+            {%- when 'support' -%}
+              <svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 16 0v4l-3-3H7l-3 3z"/></svg>
+            {%- when 'returns' -%}
+              <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 1 3 6.7"/><path d="M3 12h4M3 12l3-3"/></svg>
+            {%- when 'quality' -%}
+              <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5 2 7L12 17l-6.5 3.5 2-7L2 9h7z"/></svg>
+            {%- else -%}
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg>
+          {%- endcase -%}
+        </span>
+        {{ block.settings.label | escape }}
+      </li>
+    {%- endfor -%}
+  </ul>
+</section>
+
+{% schema %}
+{
+  "name": "Gemlux USP Bar",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "usp",
+      "name": "USP item",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Free Shipping" },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "shipping", "label": "Shipping" },
+            { "value": "secure", "label": "Secure payment" },
+            { "value": "support", "label": "Support" },
+            { "value": "returns", "label": "Returns" },
+            { "value": "quality", "label": "Quality" },
+            { "value": "check", "label": "Checkmark" }
+          ],
+          "default": "shipping"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gemlux USP Bar",
+      "blocks": [
+        { "type": "usp", "settings": { "label": "Free Shipping", "icon": "shipping" } },
+        { "type": "usp", "settings": { "label": "Secure Payment", "icon": "secure" } },
+        { "type": "usp", "settings": { "label": "24/7 Support", "icon": "support" } },
+        { "type": "usp", "settings": { "label": "Easy Returns", "icon": "returns" } },
+        { "type": "usp", "settings": { "label": "Premium Quality", "icon": "quality" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
