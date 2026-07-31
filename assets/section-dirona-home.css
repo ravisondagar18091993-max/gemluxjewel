@@ -506,27 +506,24 @@
   }
 }
 
+.dirona-new-in__banner img,
+.dirona-new-in__banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-height: inherit;
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+
 .dirona-new-in__banner {
   position: relative;
   border-radius: var(--dirona-radius);
   overflow: hidden;
   min-height: 600px;
   margin-bottom: 20px;
-}
-
-@media (min-width: 1200px) {
-  .dirona-new-in__banner {
-    min-height: 958px;
-    margin-bottom: 0;
-  }
-}
-
-.dirona-new-in__banner img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  min-height: inherit;
-  display: block;
+  background: #e8e4df;
 }
 
 .dirona-new-in__banner-content {
@@ -561,6 +558,13 @@
   .dirona-new-in__banner-content .dirona-section-desc { margin-bottom: 25px; }
 }
 
+@media (min-width: 1200px) {
+  .dirona-new-in__banner {
+    min-height: 958px;
+    margin-bottom: 0;
+  }
+}
+
 .dirona-new-in__products {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -569,7 +573,14 @@
 }
 
 @media (min-width: 1200px) {
-  .dirona-new-in__products { height: 100%; }
+  .dirona-new-in__products {
+    min-height: 958px;
+    align-content: space-between;
+  }
+}
+
+.dirona-new-in__products .dirona-card {
+  margin-bottom: 0;
 }
 
 /* ── Marquee Strip ── */
@@ -653,7 +664,7 @@
   border-radius: var(--dirona-radius);
   overflow: hidden;
   margin-bottom: 22px;
-  background: #fff;
+  background: #f7f7f7;
 }
 
 .dirona-card__media-link {
@@ -744,9 +755,9 @@
 .dirona-card__row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 8px;
-  gap: 8px;
+  gap: 10px;
 }
 
 .dirona-card__title {
@@ -756,6 +767,14 @@
   line-height: 24px;
   color: var(--dirona-dark);
   text-decoration: none;
+  flex: 1;
+  min-width: 0;
+}
+
+.dirona-card__row .dirona-badge--orange {
+  flex-shrink: 0;
+  margin-top: 2px;
+  white-space: nowrap;
 }
 
 @media (min-width: 992px) and (max-width: 1200px) {
@@ -789,6 +808,19 @@
   cursor: pointer;
   transition: transform 0.3s;
   flex-shrink: 0;
+  background: var(--swatch-color, var(--dirona-yellow));
+}
+
+.dirona-swatch:not([style*="--swatch-color"]) .dirona-swatch__inner,
+.dirona-swatch[style*="--swatch-color: gold"] .dirona-swatch__inner,
+.dirona-swatch[style*="--swatch-color: yellow"] .dirona-swatch__inner {
+  background: var(--dirona-yellow);
+}
+
+.dirona-swatch[style*="--swatch-color: silver"] .dirona-swatch__inner,
+.dirona-swatch[style*="--swatch-color: grey"] .dirona-swatch__inner,
+.dirona-swatch[style*="--swatch-color: gray"] .dirona-swatch__inner {
+  background: var(--dirona-gray-border);
 }
 
 .dirona-swatch:hover { transform: scale(1.2); }

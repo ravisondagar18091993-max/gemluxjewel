@@ -6,10 +6,32 @@
   <div class="dirona-container">
     <div class="dirona-new-in__grid">
       <div class="dirona-new-in__banner">
-        {%- if section.settings.banner_image != blank -%}
-          {{ section.settings.banner_image | image_url: width: 1200 | image_tag: widths: '600, 800, 1200', sizes: '(min-width: 1200px) 50vw, 100vw', loading: 'lazy' }}
+        {%- liquid
+          assign banner = section.settings.banner_image
+          assign use_custom_banner = false
+          if banner != blank and banner.width != nil and banner.width > 0
+            assign use_custom_banner = true
+          endif
+        -%}
+        {%- if use_custom_banner -%}
+          {{
+            banner
+            | image_url: width: 1200
+            | image_tag:
+              widths: '600, 800, 1200',
+              sizes: '(min-width: 1200px) 50vw, 100vw',
+              loading: 'lazy',
+              class: 'dirona-new-in__banner-img'
+          }}
         {%- else -%}
-          <img src="{{ 'newin-left-img.png' | asset_url }}" alt="" width="800" height="958" loading="lazy">
+          <img
+            class="dirona-new-in__banner-img"
+            src="{{ 'newin-left-img.png' | asset_url }}"
+            alt="{{ section.settings.title | escape }}"
+            width="640"
+            height="958"
+            loading="lazy"
+          >
         {%- endif -%}
         <div class="dirona-new-in__banner-content">
           {%- if section.settings.prefix != blank -%}
