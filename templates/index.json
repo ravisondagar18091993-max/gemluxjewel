@@ -35,37 +35,36 @@
         "heading",
         "button"
       ],
-      "disabled": true,
       "settings": {
         "image_overlay_opacity": 40,
         "image_height": "large",
-        "image_behavior": "none",
         "desktop_content_position": "bottom-center",
-        "desktop_content_alignment": "center",
         "show_text_box": false,
+        "image_behavior": "none",
+        "desktop_content_alignment": "center",
         "color_scheme": "scheme-3",
-        "stack_images_on_mobile": false,
         "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
         "show_text_below": false
       }
     },
     "featured_collection": {
       "type": "featured-collection",
-      "disabled": true,
       "settings": {
-        "collection": "all",
-        "products_to_show": 8,
         "title": "Featured products",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
         "description_style": "body",
+        "collection": "all",
+        "products_to_show": 8,
         "columns_desktop": 4,
-        "enable_desktop_slider": false,
+        "color_scheme": "scheme-1",
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
-        "color_scheme": "scheme-1",
+        "enable_desktop_slider": false,
+        "swipe_on_mobile": false,
         "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -73,106 +72,13 @@
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
         "padding_top": 44,
         "padding_bottom": 36
-      }
-    },
-    "gemlux_hero_hYfKL6": {
-      "type": "gemlux-hero",
-      "name": "Gemlux Hero",
-      "settings": {
-        "title": "Gentle on Your Skin, Perfect for Daily Wear",
-        "text": "Discover handcrafted jewellery designed for everyday elegance. Hypoallergenic, lightweight, and beautifully made.",
-        "button_label": "Shop All",
-        "button_link": "",
-        "featured_product": ""
-      }
-    },
-    "gemlux_best_sellers_MeDcmz": {
-      "type": "gemlux-best-sellers",
-      "name": "Gemlux Best Sellers",
-      "settings": {
-        "title": "Best Sellers",
-        "subtitle": "Our most loved pieces, crafted for everyday elegance.",
-        "button_label": "View All Products",
-        "button_link": "",
-        "collection": "",
-        "products_to_show": 4
-      }
-    },
-    "gemlux_testimonials_3fpb6V": {
-      "type": "gemlux-testimonials",
-      "blocks": {
-        "review_MQXaL7": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "text": "Beautiful quality and so comfortable to wear every day.",
-            "author": "Sarah M."
-          }
-        },
-        "review_xdCdL9": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "text": "The perfect gift! Elegant packaging and stunning craftsmanship.",
-            "author": "James T."
-          }
-        },
-        "review_U4r9FF": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "text": "Lightweight and gentle on my sensitive skin. Absolutely love it.",
-            "author": "Emma L."
-          }
-        },
-        "review_hM86CT": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "text": "Exceeded my expectations. Will definitely be ordering again.",
-            "author": "David R."
-          }
-        },
-        "review_BJAzYL": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "text": "Timeless design that goes with everything. Highly recommend.",
-            "author": "Priya K."
-          }
-        },
-        "review_TykUPf": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "text": "Outstanding customer service and gorgeous jewellery.",
-            "author": "Lisa W."
-          }
-        }
-      },
-      "block_order": [
-        "review_MQXaL7",
-        "review_xdCdL9",
-        "review_U4r9FF",
-        "review_hM86CT",
-        "review_BJAzYL",
-        "review_TykUPf"
-      ],
-      "name": "Gemlux Testimonials",
-      "settings": {
-        "title": "Customer Voices",
-        "subtitle": "Real stories from our happy customers."
       }
     }
   },
   "order": [
     "image_banner",
-    "featured_collection",
-    "gemlux_hero_hYfKL6",
-    "gemlux_best_sellers_MeDcmz",
-    "gemlux_testimonials_3fpb6V"
+    "featured_collection"
   ]
 }
