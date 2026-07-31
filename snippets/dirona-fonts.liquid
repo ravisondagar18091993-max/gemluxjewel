@@ -1,0 +1,48 @@
+{% comment %} Dirona font faces — include once per page via hero section {% endcomment %}
+{% style %}
+  @font-face {
+    font-family: 'Instrument Sans';
+    src: url('{{ 'fonts/instrumentsans-regular.ttf' | asset_url }}') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Instrument Sans';
+    src: url('{{ 'fonts/instrumentsans-medium.ttf' | asset_url }}') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Nunito';
+    src: url('{{ 'fonts/nunito-light.ttf' | asset_url }}') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Nunito';
+    src: url('{{ 'fonts/nunito-medium.ttf' | asset_url }}') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Nunito';
+    src: url('{{ 'fonts/nunito-semibold.ttf' | asset_url }}') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  main:has(.dirona) {
+    background-color: #fff8f4;
+  }
+
+  .shopify-section:has(.dirona) {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+{% endstyle %}
