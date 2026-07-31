@@ -1,0 +1,130 @@
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-article.css' | asset_url | stylesheet_tag }}
+
+<article class="gemluxjewel gemluxjewel-article" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="gemluxjewel-container">
+    <div class="gemluxjewel-article__layout">
+      <aside class="gemluxjewel-article__sidebar">
+        <div class="gemluxjewel-article__sidebar-inner">
+          <a href="{{ blog.url }}" class="gemluxjewel-article__back">
+            <span class="gemluxjewel-article__back-arrow" aria-hidden="true">
+              <img src="{{ 'green-right-arrow.svg' | asset_url }}" alt="" width="24" height="24">
+            </span>
+            {{ section.settings.back_label | default: 'Back to Updates' | escape }}
+          </a>
+
+          {% render 'gemluxjewel-article-nav', nav_article: blog.next_article, label: section.settings.next_label %}
+          {% render 'gemluxjewel-article-nav', nav_article: blog.previous_article, label: section.settings.previous_label %}
+
+          <div class="gemluxjewel-article__social">
+            {%- if section.settings.facebook_url != blank -%}
+              <a href="{{ section.settings.facebook_url }}" class="gemluxjewel-article__social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <img src="{{ 'icon-facebook.svg' | asset_url }}" alt="" width="24" height="24">
+              </a>
+            {%- endif -%}
+            {%- if section.settings.linkedin_url != blank -%}
+              <a href="{{ section.settings.linkedin_url }}" class="gemluxjewel-article__social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <img src="{{ 'white-linkedin.svg' | asset_url }}" alt="" width="24" height="24">
+              </a>
+            {%- endif -%}
+            {%- if section.settings.twitter_url != blank -%}
+              <a href="{{ section.settings.twitter_url }}" class="gemluxjewel-article__social-link" target="_blank" rel="noopener noreferrer" aria-label="X">
+                <img src="{{ 'icon-twitter.svg' | asset_url }}" alt="" width="24" height="24">
+              </a>
+            {%- endif -%}
+            {%- if section.settings.instagram_url != blank -%}
+              <a href="{{ section.settings.instagram_url }}" class="gemluxjewel-article__social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <img src="{{ 'icon-instagram.svg' | asset_url }}" alt="" width="24" height="24">
+              </a>
+            {%- endif -%}
+          </div>
+        </div>
+      </aside>
+
+      <div class="gemluxjewel-article__main">
+        {%- if article.tags.first != blank -%}
+          <span class="gemluxjewel-badge gemluxjewel-article__tag">{{ article.tags.first | escape }}</span>
+        {%- endif -%}
+
+        <h1 class="gemluxjewel-article__title" itemprop="headline">{{ article.title | escape }}</h1>
+
+        {%- if article.excerpt != blank -%}
+          <p class="gemluxjewel-article__lead">{{ article.excerpt | strip_html }}</p>
+        {%- endif -%}
+
+        {%- if article.image -%}
+          <div class="gemluxjewel-article__hero-media">
+            {{
+              article.image
+              | image_url: width: 1400
+              | image_tag:
+                widths: '600, 900, 1200, 1400',
+                sizes: '(min-width: 990px) 58vw, 100vw',
+                loading: 'eager',
+                alt: article.title,
+                itemprop: 'image'
+            }}
+          </div>
+        {%- endif -%}
+
+        <div class="gemluxjewel-article__content rte" itemprop="articleBody">
+          {{ article.content }}
+        </div>
+
+        <meta itemprop="datePublished" content="{{ article.published_at | date: '%Y-%m-%d' }}">
+        {%- if article.author != blank -%}
+          <meta itemprop="author" content="{{ article.author | escape }}">
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</article>
+
+{% schema %}
+{
+  "name": "Gemlux Article",
+  "tag": "section",
+  "class": "gemluxjewel-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "back_label",
+      "label": "Back link label",
+      "default": "Back to Updates"
+    },
+    {
+      "type": "text",
+      "id": "next_label",
+      "label": "Next article label",
+      "default": "Next Blog"
+    },
+    {
+      "type": "text",
+      "id": "previous_label",
+      "label": "Previous article label",
+      "default": "Previous Blog"
+    },
+    {
+      "type": "url",
+      "id": "facebook_url",
+      "label": "Facebook URL"
+    },
+    {
+      "type": "url",
+      "id": "linkedin_url",
+      "label": "LinkedIn URL"
+    },
+    {
+      "type": "url",
+      "id": "twitter_url",
+      "label": "X (Twitter) URL"
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Instagram URL"
+    }
+  ]
+}
+{% endschema %}

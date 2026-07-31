@@ -1,0 +1,25 @@
+{% comment %}
+  Sidebar prev/next article card
+  Accepts: nav_article, label
+{% endcomment %}
+
+{%- if nav_article != blank -%}
+  <div class="gemluxjewel-article__nav-block">
+    <p class="gemluxjewel-article__nav-label">{{ label | escape }}</p>
+    <a href="{{ nav_article.url }}" class="gemluxjewel-article__nav-card">
+      <div class="gemluxjewel-article__nav-thumb">
+        {%- if nav_article.image -%}
+          {{ nav_article.image | image_url: width: 240 | image_tag: widths: '120, 240', sizes: '120px', loading: 'lazy', alt: nav_article.title }}
+        {%- else -%}
+          {% render 'gemluxjewel-theme-image', asset: 'news-img.png', width: 240, widths: '120,240', sizes: '120px', alt: nav_article.title %}
+        {%- endif -%}
+      </div>
+      <div class="gemluxjewel-article__nav-text">
+        {%- if nav_article.tags.first != blank -%}
+          <span class="gemluxjewel-badge">{{ nav_article.tags.first | escape }}</span>
+        {%- endif -%}
+        <span class="gemluxjewel-article__nav-title">{{ nav_article.title | escape }}</span>
+      </div>
+    </a>
+  </div>
+{%- endif -%}

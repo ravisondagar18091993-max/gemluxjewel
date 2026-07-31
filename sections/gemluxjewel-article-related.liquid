@@ -1,0 +1,65 @@
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-blog.css' | asset_url | stylesheet_tag }}
+
+<section class="gemluxjewel gemluxjewel-article-related">
+  <div class="gemluxjewel-container">
+    <div class="gemluxjewel-section-header">
+      <div>
+        {%- if section.settings.title != blank -%}
+          <h2 class="gemluxjewel-section-title">{{ section.settings.title | escape }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subtitle != blank -%}
+          <p class="gemluxjewel-section-desc">{{ section.settings.subtitle | escape }}</p>
+        {%- endif -%}
+      </div>
+      {% render 'gemluxjewel-btn', label: section.settings.button_label, url: blog.url, style: 'green' %}
+    </div>
+
+    <div class="gemluxjewel-blog__grid">
+      {%- assign shown = 0 -%}
+      {%- for related in blog.articles -%}
+        {%- if related.id != article.id and shown < section.settings.posts_to_show -%}
+          {% render 'gemluxjewel-blog-card', article: related %}
+          {%- assign shown = shown | plus: 1 -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Gemlux Article Related",
+  "tag": "section",
+  "class": "gemluxjewel-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "News & Insights"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "Stay updated with the latest trends, expert tips, and everything you need to know about modern jewellery."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "View All Blogs"
+    },
+    {
+      "type": "range",
+      "id": "posts_to_show",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 4,
+      "label": "Posts to show"
+    }
+  ]
+}
+{% endschema %}
