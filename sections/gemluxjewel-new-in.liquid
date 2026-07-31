@@ -1,11 +1,11 @@
-{{ 'section-dirona-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-Gemluxjewel-home.css' | asset_url | stylesheet_tag }}
 
 {%- assign collection = section.settings.collection -%}
 
-<section class="dirona dirona-new-in">
-  <div class="dirona-container">
-    <div class="dirona-new-in__grid">
-      <div class="dirona-new-in__banner">
+<section class="Gemluxjewel Gemluxjewel-new-in">
+  <div class="Gemluxjewel-container">
+    <div class="Gemluxjewel-new-in__grid">
+      <div class="Gemluxjewel-new-in__banner">
         {%- liquid
           assign banner = section.settings.banner_image
           assign use_custom_banner = false
@@ -21,11 +21,11 @@
               widths: '600, 800, 1200',
               sizes: '(min-width: 1200px) 50vw, 100vw',
               loading: 'lazy',
-              class: 'dirona-new-in__banner-img'
+              class: 'Gemluxjewel-new-in__banner-img'
           }}
         {%- else -%}
           <img
-            class="dirona-new-in__banner-img"
+            class="Gemluxjewel-new-in__banner-img"
             src="{{ 'newin-left-img.png' | asset_url }}"
             alt="{{ section.settings.title | escape }}"
             width="640"
@@ -33,27 +33,27 @@
             loading="lazy"
           >
         {%- endif -%}
-        <div class="dirona-new-in__banner-content">
+        <div class="Gemluxjewel-new-in__banner-content">
           {%- if section.settings.prefix != blank -%}
-            <p class="dirona-prefix">{{ section.settings.prefix }}</p>
+            <p class="Gemluxjewel-prefix">{{ section.settings.prefix }}</p>
           {%- endif -%}
           {%- if section.settings.title != blank -%}
-            <h2 class="dirona-section-title">{{ section.settings.title }}</h2>
+            <h2 class="Gemluxjewel-section-title">{{ section.settings.title }}</h2>
           {%- endif -%}
           {%- if section.settings.text != blank -%}
-            <p class="dirona-section-desc" style="color:#fff;margin-bottom:24px;">{{ section.settings.text }}</p>
+            <p class="Gemluxjewel-section-desc" style="color:#fff;margin-bottom:24px;">{{ section.settings.text }}</p>
           {%- endif -%}
-          {% render 'dirona-btn', label: section.settings.button_label, url: section.settings.button_link, style: 'green' %}
+          {% render 'Gemluxjewel-btn', label: section.settings.button_label, url: section.settings.button_link, style: 'green' %}
         </div>
       </div>
-      <div class="dirona-new-in__products">
+      <div class="Gemluxjewel-new-in__products">
         {%- if collection != blank -%}
           {%- for product in collection.products limit: 4 -%}
-            {% render 'dirona-product-card', product: product, badge_text: 'New In', show_discount: true %}
+            {% render 'Gemluxjewel-product-card', product: product, badge_text: 'New In', show_discount: true %}
           {%- endfor -%}
         {%- else -%}
           {%- for i in (1..4) -%}
-            {% render 'dirona-product-card', product: blank, badge_text: 'New In', show_discount: true %}
+            {% render 'Gemluxjewel-product-card', product: blank, badge_text: 'New In', show_discount: true %}
           {%- endfor -%}
         {%- endif -%}
       </div>
@@ -63,9 +63,9 @@
 
 {% schema %}
 {
-  "name": "Dirona New In",
+  "name": "Gemluxjewel New In",
   "tag": "section",
-  "class": "section dirona-section",
+  "class": "section Gemluxjewel-section",
   "settings": [
     { "type": "image_picker", "id": "banner_image", "label": "Banner image" },
     { "type": "text", "id": "prefix", "label": "Prefix", "default": "Just Arrived" },
@@ -75,6 +75,6 @@
     { "type": "url", "id": "button_link", "label": "Button link" },
     { "type": "collection", "id": "collection", "label": "Collection" }
   ],
-  "presets": [{ "name": "Dirona New In" }]
+  "presets": [{ "name": "Gemluxjewel New In" }]
 }
 {% endschema %}

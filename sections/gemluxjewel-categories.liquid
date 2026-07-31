@@ -1,19 +1,19 @@
-{{ 'section-dirona-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-Gemluxjewel-home.css' | asset_url | stylesheet_tag }}
 
-<section class="dirona dirona-categories">
-  <div class="dirona-container">
-    <div class="dirona-categories__scroll">
+<section class="Gemluxjewel Gemluxjewel-categories">
+  <div class="Gemluxjewel-container">
+    <div class="Gemluxjewel-categories__scroll">
       {%- for block in section.blocks -%}
-        <a href="{{ block.settings.link }}" class="dirona-categories__item" {{ block.shopify_attributes }}>
-          <div class="dirona-categories__img">
+        <a href="{{ block.settings.link }}" class="Gemluxjewel-categories__item" {{ block.shopify_attributes }}>
+          <div class="Gemluxjewel-categories__img">
             {%- if block.settings.image != blank -%}
               {{ block.settings.image | image_url: width: 400 | image_tag: widths: '155, 200, 400', sizes: '200px', loading: 'lazy' }}
             {%- else -%}
               <img src="{{ 'category-img.png' | asset_url }}" alt="{{ block.settings.title | escape }}" width="200" height="200" loading="lazy">
             {%- endif -%}
           </div>
-          <div class="dirona-categories__title">{{ block.settings.title | escape }}</div>
-          <span class="dirona-categories__link">Explore</span>
+          <div class="Gemluxjewel-categories__title">{{ block.settings.title | escape }}</div>
+          <span class="Gemluxjewel-categories__link">Explore</span>
         </a>
       {%- endfor -%}
     </div>
@@ -22,9 +22,9 @@
 
 {% schema %}
 {
-  "name": "Dirona Categories",
+  "name": "Gemluxjewel Categories",
   "tag": "section",
-  "class": "section dirona-section",
+  "class": "section Gemluxjewel-section",
   "max_blocks": 8,
   "blocks": [
     {
@@ -39,7 +39,7 @@
   ],
   "presets": [
     {
-      "name": "Dirona Categories",
+      "name": "Gemluxjewel Categories",
       "blocks": [
         { "type": "category", "settings": { "title": "Earrings" } },
         { "type": "category", "settings": { "title": "Cartilage Hoops" } },

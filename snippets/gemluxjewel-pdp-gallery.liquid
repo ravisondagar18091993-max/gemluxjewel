@@ -1,0 +1,19 @@
+<div class="Gemluxjewel-pdp__gallery">
+  {%- if product.media.size > 0 -%}
+    {%- for media in product.media limit: 8 -%}
+      <div class="Gemluxjewel-pdp__gallery-item">
+        {%- if media.media_type == 'image' -%}
+          {{ media | image_url: width: 900 | image_tag: widths: '300, 450, 600, 900', sizes: '(min-width: 990px) 25vw, 50vw', loading: 'lazy', alt: product.title }}
+        {%- else -%}
+          {{ media | image_url: width: 900 | image_tag: widths: '300, 450, 600, 900', sizes: '(min-width: 990px) 25vw, 50vw', loading: 'lazy', alt: product.title }}
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  {%- else -%}
+    {%- for i in (1..8) -%}
+      <div class="Gemluxjewel-pdp__gallery-item">
+        <img src="{{ 'gallery-img.png' | asset_url }}" alt="{{ product.title | escape }}" width="450" height="358" loading="lazy">
+      </div>
+    {%- endfor -%}
+  {%- endif -%}
+</div>

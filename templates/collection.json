@@ -9,16 +9,16 @@
  */
 {
   "sections": {
-    "dirona_collection_hero": {
-      "type": "dirona-collection-hero",
+    "Gemluxjewel_collection_hero": {
+      "type": "Gemluxjewel-collection-hero",
       "settings": {
         "breadcrumb_home": "HOME",
         "breadcrumb_collections": "COLLECTIONS",
         "fallback_description": "Elegant, timeless jewellery crafted for lasting beauty and everyday luxury. Designed with a smooth finish and classic appeal, perfect for adding a touch of sophistication to any modern or traditional style."
       }
     },
-    "dirona_collection_products": {
-      "type": "dirona-collection-products",
+    "Gemluxjewel_collection_products": {
+      "type": "Gemluxjewel-collection-products",
       "settings": {
         "products_per_page": 16,"enable_filtering": true,
         "filters_open_by_default": true,
@@ -28,7 +28,7 @@
     }
   },
   "order": [
-    "dirona_collection_hero",
-    "dirona_collection_products"
+    "Gemluxjewel_collection_hero",
+    "Gemluxjewel_collection_products"
   ]
 }

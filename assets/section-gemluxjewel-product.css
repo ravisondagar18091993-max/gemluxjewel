@@ -1,0 +1,722 @@
+/* Gemluxjewel PDP — matches HTML/product-open.html */
+
+.Gemluxjewel-pdp,
+.Gemluxjewel-pdp-faq,
+.Gemluxjewel-pdp-related {
+  --Gemluxjewel-primary: #1a5543;
+  --Gemluxjewel-secondary: #fff8f4;
+  --Gemluxjewel-dark: #141414;
+  --Gemluxjewel-gray: #818181;
+  --Gemluxjewel-orange: #e37859;
+  --Gemluxjewel-radius: 10px;
+  --Gemluxjewel-radius-pill: 30px;
+  --Gemluxjewel-font-body: 'Instrument Sans', var(--font-body-family), sans-serif;
+  --Gemluxjewel-font-heading: 'Nunito', var(--font-heading-family), sans-serif;
+}
+
+.Gemluxjewel-pdp .Gemluxjewel-container,
+.Gemluxjewel-pdp-faq .Gemluxjewel-container,
+.Gemluxjewel-pdp-related .Gemluxjewel-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+@media (max-width: 1200px) {
+  .Gemluxjewel-pdp .Gemluxjewel-container,
+  .Gemluxjewel-pdp-faq .Gemluxjewel-container,
+  .Gemluxjewel-pdp-related .Gemluxjewel-container { padding-left: 30px; padding-right: 30px; }
+}
+
+@media (max-width: 991px) {
+  .Gemluxjewel-pdp .Gemluxjewel-container,
+  .Gemluxjewel-pdp-faq .Gemluxjewel-container,
+  .Gemluxjewel-pdp-related .Gemluxjewel-container { padding-left: 15px; padding-right: 15px; }
+}
+
+/* ── Main product ── */
+.Gemluxjewel-pdp {
+  background: var(--Gemluxjewel-secondary);
+  padding: 218px 0 135px;
+  font-family: var(--Gemluxjewel-font-body);
+}
+
+@media (max-width: 991px) {
+  .Gemluxjewel-pdp { padding-top: 160px; padding-bottom: 80px; }
+}
+
+.Gemluxjewel-pdp__topbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.Gemluxjewel-pdp__breadcrumb {
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.43px;
+  text-transform: uppercase;
+  color: var(--Gemluxjewel-primary);
+  margin: 0;
+}
+
+.Gemluxjewel-pdp__breadcrumb a {
+  color: var(--Gemluxjewel-primary);
+  text-decoration: none;
+}
+
+.Gemluxjewel-pdp__breadcrumb a:hover { opacity: 0.85; }
+
+.Gemluxjewel-pdp__breadcrumb span {
+  color: rgba(26, 85, 67, 0.5);
+}
+
+.Gemluxjewel-pdp__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--Gemluxjewel-primary);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.Gemluxjewel-pdp__back-arrow {
+  transform: rotate(180deg);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.Gemluxjewel-pdp__back-arrow img {
+  width: 100%;
+  height: auto;
+}
+
+.Gemluxjewel-pdp__layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+@media (min-width: 990px) {
+  .Gemluxjewel-pdp__layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .Gemluxjewel-pdp__info {
+    padding-left: 32px;
+  }
+}
+
+/* Gallery */
+.Gemluxjewel-pdp__gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.Gemluxjewel-pdp__gallery-item {
+  height: 358px;
+  border-radius: var(--Gemluxjewel-radius);
+  overflow: hidden;
+  background: #f7f7f7;
+}
+
+.Gemluxjewel-pdp__gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Info */
+.Gemluxjewel-pdp__meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.Gemluxjewel-pdp__heart {
+  width: 22px;
+  display: block;
+}
+
+.Gemluxjewel-pdp__heart img { width: 22px; height: auto; }
+
+.Gemluxjewel-pdp__title {
+  font-family: var(--Gemluxjewel-font-heading);
+  font-weight: 500;
+  font-size: 50px;
+  line-height: 69px;
+  color: var(--Gemluxjewel-primary);
+  margin: 0 0 12px;
+}
+
+@media (max-width: 1199px) {
+  .Gemluxjewel-pdp__title { font-size: 42px; line-height: 55px; }
+}
+
+@media (max-width: 575px) {
+  .Gemluxjewel-pdp__title { font-size: 34px; line-height: 45px; }
+}
+
+.Gemluxjewel-pdp__price-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.Gemluxjewel-pdp__sell-price {
+  font-family: var(--Gemluxjewel-font-body);
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 32px;
+  color: var(--Gemluxjewel-dark);
+}
+
+.Gemluxjewel-pdp__regular-price {
+  font-size: 18px;
+  line-height: 22px;
+  color: var(--Gemluxjewel-gray);
+  text-decoration: line-through;
+}
+
+.Gemluxjewel-pdp__description {
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--Gemluxjewel-gray);
+  margin: 0 0 45px;
+}
+
+.Gemluxjewel-pdp__description p { margin: 0 0 1em; }
+.Gemluxjewel-pdp__description p:last-child { margin-bottom: 0; }
+
+.Gemluxjewel-pdp__variants-block {
+  margin-bottom: 40px;
+}
+
+.Gemluxjewel-pdp__variant-selects {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 32px 48px;
+  width: 100%;
+}
+
+.Gemluxjewel-pdp__option {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 16px 24px;
+  border: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  flex: 0 1 auto;
+}
+
+.Gemluxjewel-pdp__option-label {
+  font-family: var(--Gemluxjewel-font-body);
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--Gemluxjewel-dark);
+  margin: 0;
+  padding-top: 14px;
+  padding-bottom: 12px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.Gemluxjewel-pdp__option-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+  min-width: 132px;
+}
+
+.Gemluxjewel-pdp__option-values {
+  display: flex;
+
+  align-items: stretch;
+  gap: 10px;
+  width: 100%;
+  position: relative;
+}
+
+.Gemluxjewel-pdp__option-values input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+/* Material / size pills — stacked right */
+.Gemluxjewel-pdp__option--pill .Gemluxjewel-pdp__option-values {
+  align-items: flex-end;
+}
+
+.Gemluxjewel-pdp__pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 132px;
+  min-height: 46px;
+  padding: 10px 28px;
+  border: 1px solid var(--Gemluxjewel-primary);
+  border-radius: var(--Gemluxjewel-radius-pill);
+  background: #fff;
+  font-family: var(--Gemluxjewel-font-body);
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--Gemluxjewel-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.Gemluxjewel-pdp__option--pill input:checked + .Gemluxjewel-pdp__pill {
+  background: var(--Gemluxjewel-primary);
+  color: #fff;
+  border-color: var(--Gemluxjewel-primary);
+}
+
+.Gemluxjewel-pdp__option--pill input.disabled + .Gemluxjewel-pdp__pill {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* Color swatches — 60px, stacked right */
+.Gemluxjewel-pdp__swatches {
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.Gemluxjewel-pdp__swatches .Gemluxjewel-swatch {
+  width: 60px;
+  height: 60px;
+  padding: 3px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.Gemluxjewel-pdp__swatches .Gemluxjewel-swatch--gold {
+  border-color: var(--Gemluxjewel-yellow);
+}
+
+.Gemluxjewel-pdp__swatches .Gemluxjewel-swatch--gold .Gemluxjewel-swatch__inner {
+  background: var(--Gemluxjewel-yellow);
+}
+
+.Gemluxjewel-pdp__swatches .Gemluxjewel-swatch--gray {
+  border-color: var(--Gemluxjewel-gray-border);
+}
+
+.Gemluxjewel-pdp__swatches .Gemluxjewel-swatch--gray .Gemluxjewel-swatch__inner {
+  background: var(--Gemluxjewel-gray-border);
+}
+
+.Gemluxjewel-pdp__swatches input:checked + .Gemluxjewel-swatch {
+  border-color: var(--Gemluxjewel-primary);
+  box-shadow: 0 0 0 2px #fff;
+  transform: none;
+}
+
+.Gemluxjewel-pdp__swatches input.disabled + .Gemluxjewel-swatch {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.Gemluxjewel-pdp__size-guide {
+  font-size: 16px;
+  line-height: 20px;
+  text-transform: uppercase;
+  text-decoration: underline;
+  color: var(--Gemluxjewel-dark);
+  white-space: nowrap;
+}
+
+.Gemluxjewel-pdp__size-guide:hover {
+  color: var(--Gemluxjewel-primary);
+}
+
+.Gemluxjewel-pdp__size-guide--solo {
+  display: inline-block;
+  margin-left: auto;
+}
+
+/* Cart row — qty left, full-width add to cart (HTML .cart-btn-box) */
+.Gemluxjewel-pdp__cart-row {
+  position: relative;
+  margin-bottom: 85px;
+  min-height: 55px;
+  max-width: 100%;
+}
+
+.Gemluxjewel-pdp__qty-box {
+  position: relative;
+  z-index: 2;
+  height: 55px;
+  border: 2px solid var(--Gemluxjewel-primary);
+  border-radius: var(--Gemluxjewel-radius-pill);
+  display: inline-flex;
+  align-items: center;
+  padding: 0 28px;
+  min-width: 130px;
+  background: var(--Gemluxjewel-secondary);
+}
+
+.Gemluxjewel-pdp__qty {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  width: 100%;
+}
+
+.Gemluxjewel-pdp__qty-btn {
+  background: transparent;
+  border: none;
+  font-family: var(--Gemluxjewel-font-heading);
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--Gemluxjewel-dark);
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.Gemluxjewel-pdp__qty-input {
+  width: 32px;
+  text-align: center;
+  border: none;
+  background: transparent;
+  font-family: var(--Gemluxjewel-font-body);
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--Gemluxjewel-dark);
+  -moz-appearance: textfield;
+}
+
+.Gemluxjewel-pdp__qty-input::-webkit-outer-spin-button,
+.Gemluxjewel-pdp__qty-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.Gemluxjewel-pdp__submit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 55px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 40px 0 150px;
+  border: 1px solid var(--Gemluxjewel-primary);
+  border-radius: var(--Gemluxjewel-radius-pill);
+  background: var(--Gemluxjewel-primary);
+  color: #fff;
+  font-family: var(--Gemluxjewel-font-body);
+  font-size: 18px;
+  line-height: 22px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.7s ease;
+}
+
+.Gemluxjewel-pdp__submit:hover:not([disabled]) {
+  background: transparent;
+  color: var(--Gemluxjewel-primary);
+}
+
+.Gemluxjewel-pdp__submit:hover:not([disabled]) .Gemluxjewel-pdp__basket-white {
+  display: none;
+}
+
+.Gemluxjewel-pdp__submit:hover:not([disabled]) .Gemluxjewel-pdp__basket-green {
+  display: block;
+}
+
+.Gemluxjewel-pdp__submit[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.Gemluxjewel-pdp__basket-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.Gemluxjewel-pdp__basket-icon img {
+  width: 24px;
+  height: auto;
+  display: block;
+}
+
+.Gemluxjewel-pdp__basket-green {
+  display: none;
+}
+
+.Gemluxjewel-pdp__submit .loading__spinner {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 991px) {
+  .Gemluxjewel-pdp__submit {
+    padding-left: 120px;
+    padding-right: 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .Gemluxjewel-pdp__cart-row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 48px;
+  }
+
+  .Gemluxjewel-pdp__submit {
+    position: static;
+    width: 100%;
+    padding: 0 24px;
+  }
+
+  .Gemluxjewel-pdp__variant-selects {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+
+  .Gemluxjewel-pdp__option {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .Gemluxjewel-pdp__option-right {
+    align-items: flex-end;
+    min-width: 0;
+  }
+
+  .Gemluxjewel-pdp__option--pill .Gemluxjewel-pdp__option-values,
+  .Gemluxjewel-pdp__swatches {
+    align-items: flex-end;
+  }
+}
+
+.Gemluxjewel-pdp__error {
+  color: #c0392b;
+  font-size: 14px;
+  margin-top: 12px;
+}
+
+/* Hide Dawn variant-selects default styles leakage */
+.Gemluxjewel-pdp variant-selects .form__label { display: none; }
+
+/* ── FAQ (matches HTML/product-open.html .faq-section) ── */
+.Gemluxjewel-pdp-faq {
+  background: var(--Gemluxjewel-secondary);
+  padding: 150px 0 70px;
+  font-family: var(--Gemluxjewel-font-body);
+}
+
+@media (max-width: 1200px) {
+  .Gemluxjewel-pdp-faq { padding: 100px 0 50px; }
+}
+
+.Gemluxjewel-pdp-faq__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+@media (min-width: 990px) {
+  .Gemluxjewel-pdp-faq__grid {
+    grid-template-columns: 5fr 7fr;
+    gap: 0;
+  }
+}
+
+.Gemluxjewel-pdp-faq__header {
+  margin-bottom: 16px;
+}
+
+@media (min-width: 990px) {
+  .Gemluxjewel-pdp-faq__header { margin-bottom: 0; }
+}
+
+.Gemluxjewel-pdp-faq__prefix {
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  color: var(--Gemluxjewel-dark);
+}
+
+.Gemluxjewel-pdp-faq__title {
+  line-height: 60px;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 576px) {
+  .Gemluxjewel-pdp-faq__title { line-height: 55px; }
+}
+
+.Gemluxjewel-pdp-faq__desc {
+  margin-bottom: 16px;
+}
+
+@media (min-width: 990px) {
+  .Gemluxjewel-pdp-faq__desc { padding-right: 48px; }
+}
+
+.Gemluxjewel-pdp-faq .Gemluxjewel-btn {
+  text-transform: capitalize;
+}
+
+/* Accordion — HTML .accordian-block / .closet-accordion */
+.Gemluxjewel-pdp-faq__accordian-block {
+  width: 100%;
+}
+
+.Gemluxjewel-pdp-faq .closet-accordion:last-child {
+  border-bottom: 1px solid rgba(20, 20, 20, 0.25);
+}
+
+.Gemluxjewel-pdp-faq .closet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 35px 0;
+  border-top: 1px solid rgba(20, 20, 20, 0.25);
+  cursor: pointer;
+  transition: all 0.7s ease;
+}
+
+@media (max-width: 576px) {
+  .Gemluxjewel-pdp-faq .closet-header {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+}
+
+.Gemluxjewel-pdp-faq .closet-header-title {
+  font-family: var(--Gemluxjewel-font-body);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: var(--Gemluxjewel-dark);
+  text-transform: capitalize;
+  margin: 0;
+  padding-right: 16px;
+}
+
+@media (max-width: 576px) {
+  .Gemluxjewel-pdp-faq .closet-header-title { font-size: 16px; }
+}
+
+.Gemluxjewel-pdp-faq .accordion-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 999px;
+  transition: transform 0.7s ease;
+}
+
+.Gemluxjewel-pdp-faq .accordion-close img {
+  height: 24px;
+  width: auto;
+  display: block;
+}
+
+.Gemluxjewel-pdp-faq .closet-header.active .accordion-close {
+  transform: rotate(180deg);
+}
+
+.Gemluxjewel-pdp-faq .closet-content {
+  display: none;
+}
+
+.Gemluxjewel-pdp-faq .closet-content__inner {
+  margin-right: 24px;
+  padding-bottom: 35px;
+  font-family: var(--Gemluxjewel-font-body);
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--Gemluxjewel-dark);
+}
+
+.Gemluxjewel-pdp-faq .closet-content__inner p {
+  margin: 0;
+}
+
+.Gemluxjewel-pdp-faq .closet-content__inner p + p {
+  margin-top: 12px;
+}
+
+/* ── Related products ── */
+.Gemluxjewel-pdp-related {
+  background: var(--Gemluxjewel-secondary);
+  padding: 120px 0 140px;
+}
+
+@media (max-width: 991px) {
+  .Gemluxjewel-pdp-related { padding: 50px 0 70px; }
+}
+
+.Gemluxjewel-pdp-related .Gemluxjewel-section-header {
+  margin-bottom: 24px;
+}
+
+.Gemluxjewel-pdp-related .Gemluxjewel-products__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .Gemluxjewel-pdp-related .Gemluxjewel-products__grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 1200px) {
+  .Gemluxjewel-pdp-related .Gemluxjewel-products__grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+.Gemluxjewel-pdp-related .Gemluxjewel-card { margin-bottom: 0; }
+
+.visually-hidden {
+  position: absolute !important;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+}

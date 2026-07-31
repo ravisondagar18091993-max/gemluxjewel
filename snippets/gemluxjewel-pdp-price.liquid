@@ -1,0 +1,15 @@
+{%- liquid
+  assign target = product.selected_or_first_available_variant
+  assign on_sale = false
+  if target.compare_at_price > target.price
+    assign on_sale = true
+  endif
+-%}
+<div class="Gemluxjewel-pdp__price-row">
+  <span class="Gemluxjewel-pdp__sell-price">{{ target.price | money }}</span>
+  {%- if on_sale -%}
+    <span class="Gemluxjewel-pdp__regular-price">{{ target.compare_at_price | money }}</span>
+    {%- assign discount = target.compare_at_price | minus: target.price | times: 100 | divided_by: target.compare_at_price -%}
+    <span class="Gemluxjewel-badge Gemluxjewel-badge--orange">{{ discount }}% Off</span>
+  {%- endif -%}
+</div>

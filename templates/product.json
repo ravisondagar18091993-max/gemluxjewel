@@ -9,8 +9,8 @@
  */
 {
   "sections": {
-    "dirona_main_product": {
-      "type": "dirona-main-product",
+    "Gemluxjewel_main_product": {
+      "type": "Gemluxjewel-main-product",
       "settings": {
         "breadcrumb_home": "HOME",
         "breadcrumb_collections": "COLLECTIONS",
@@ -19,8 +19,8 @@
         "size_guide_label": "SIZE GUIDE"
       }
     },
-    "dirona_product_faq": {
-      "type": "dirona-product-faq",
+    "Gemluxjewel_product_faq": {
+      "type": "Gemluxjewel-product-faq",
       "blocks": {
         "faq_1": {
           "type": "faq",
@@ -66,8 +66,8 @@
         "button_label": "View All FAQ's"
       }
     },
-    "dirona_product_related": {
-      "type": "dirona-product-related",
+    "Gemluxjewel_product_related": {
+      "type": "Gemluxjewel-product-related",
       "settings": {
         "title": "YOU MAY ALSO LIKE",
         "subtitle": "Discover our latest additions - fresh designs and timeless classics newly available",
@@ -77,8 +77,8 @@
     }
   },
   "order": [
-    "dirona_main_product",
-    "dirona_product_faq",
-    "dirona_product_related"
+    "Gemluxjewel_main_product",
+    "Gemluxjewel_product_faq",
+    "Gemluxjewel_product_related"
   ]
 }
