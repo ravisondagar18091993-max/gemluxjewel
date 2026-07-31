@@ -435,7 +435,7 @@
 
 .gemluxjewel-categories__img {
   width: 100%;
-  aspect-ratio: 1;
+  aspect-ratio: 1 / 1.25;
   border-radius: var(--gemluxjewel-radius, 8px);
   overflow: hidden;
   margin: 0 auto 16px;
