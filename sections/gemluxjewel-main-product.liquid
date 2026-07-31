@@ -113,43 +113,45 @@
               >
 
               <div class="gemluxjewel-pdp__cart-row product-form__quantity">
-                <div class="gemluxjewel-pdp__qty-box">
-                  <quantity-input class="gemluxjewel-pdp__qty">
-                    <button class="gemluxjewel-pdp__qty-btn" name="minus" type="button" aria-label="{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}">-</button>
-                    <input
-                      class="gemluxjewel-pdp__qty-input quantity__input"
-                      type="number"
-                      name="quantity"
-                      id="Quantity-{{ section.id }}"
-                      min="1"
-                      value="1"
-                      form="{{ product_form_id }}"
-                      aria-label="{{ 'products.product.quantity.input_label' | t: product: product.title | escape }}"
-                    >
-                    <button class="gemluxjewel-pdp__qty-btn" name="plus" type="button" aria-label="{{ 'products.product.quantity.increase' | t: product: product.title | escape }}">+</button>
-                  </quantity-input>
-                </div>
+                <div class="gemluxjewel-pdp__cart-pill">
+                  <div class="gemluxjewel-pdp__qty-box">
+                    <quantity-input class="gemluxjewel-pdp__qty">
+                      <button class="gemluxjewel-pdp__qty-btn" name="minus" type="button" aria-label="{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}">−</button>
+                      <input
+                        class="gemluxjewel-pdp__qty-input quantity__input"
+                        type="number"
+                        name="quantity"
+                        id="Quantity-{{ section.id }}"
+                        min="1"
+                        value="1"
+                        form="{{ product_form_id }}"
+                        aria-label="{{ 'products.product.quantity.input_label' | t: product: product.title | escape }}"
+                      >
+                      <button class="gemluxjewel-pdp__qty-btn" name="plus" type="button" aria-label="{{ 'products.product.quantity.increase' | t: product: product.title | escape }}">+</button>
+                    </quantity-input>
+                  </div>
 
-                <button
-                  type="submit"
-                  name="add"
-                  id="ProductSubmitButton-{{ section.id }}"
-                  class="gemluxjewel-pdp__submit"
-                  {% if current_variant.available == false %}disabled{% endif %}
-                >
-                  <span class="gemluxjewel-pdp__basket-icon">
-                    <img src="{{ 'basket.svg' | asset_url }}" alt="" class="gemluxjewel-pdp__basket-white" width="24" height="24">
-                    <img src="{{ 'green-basket.svg' | asset_url }}" alt="" class="gemluxjewel-pdp__basket-green" width="24" height="24">
-                  </span>
-                  <span>
-                    {%- if current_variant.available -%}
-                      {{ section.settings.add_to_cart_label | default: 'Add to Cart' | escape }}
-                    {%- else -%}
-                      {{ 'products.product.sold_out' | t }}
-                    {%- endif -%}
-                  </span>
-                  {%- render 'loading-spinner' -%}
-                </button>
+                  <button
+                    type="submit"
+                    name="add"
+                    id="ProductSubmitButton-{{ section.id }}"
+                    class="gemluxjewel-pdp__submit"
+                    {% if current_variant.available == false %}disabled{% endif %}
+                  >
+                    <span class="gemluxjewel-pdp__basket-icon" aria-hidden="true">
+                      <img src="{{ 'basket.svg' | asset_url }}" alt="" class="gemluxjewel-pdp__basket-white" width="22" height="22">
+                      <img src="{{ 'green-basket.svg' | asset_url }}" alt="" class="gemluxjewel-pdp__basket-green" width="22" height="22">
+                    </span>
+                    <span class="gemluxjewel-pdp__submit-label">
+                      {%- if current_variant.available -%}
+                        {{ section.settings.add_to_cart_label | default: 'ADD TO CART' | escape }}
+                      {%- else -%}
+                        {{ 'products.product.sold_out' | t }}
+                      {%- endif -%}
+                    </span>
+                    {%- render 'loading-spinner' -%}
+                  </button>
+                </div>
               </div>
             {%- endform -%}
           </product-form>

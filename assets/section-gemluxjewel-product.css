@@ -364,32 +364,41 @@
   margin-left: auto;
 }
 
-/* Cart row — qty left, full-width add to cart (HTML .cart-btn-box) */
+/* Cart row — unified premium pill (qty + add to cart) */
 .gemluxjewel-pdp__cart-row {
-  position: relative;
   margin-bottom: 85px;
+  width: 100%;
+}
+
+.gemluxjewel-pdp__cart-pill {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  max-width: 520px;
   min-height: 55px;
-  max-width: 100%;
+  border: 2px solid var(--gemluxjewel-primary);
+  border-radius: var(--gemluxjewel-radius-pill);
+  overflow: hidden;
+  background: var(--gemluxjewel-secondary);
 }
 
 .gemluxjewel-pdp__qty-box {
-  position: relative;
-  z-index: 2;
-  height: 55px;
-  border: 2px solid var(--gemluxjewel-primary);
-  border-radius: var(--gemluxjewel-radius-pill);
-  display: inline-flex;
+  flex: 0 0 38%;
+  max-width: 160px;
+  min-width: 118px;
+  display: flex;
   align-items: center;
-  padding: 0 28px;
-  min-width: 130px;
+  justify-content: center;
+  padding: 0 20px;
   background: var(--gemluxjewel-secondary);
+  border: none;
 }
 
 .gemluxjewel-pdp__qty {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 28px;
+  gap: 16px;
   width: 100%;
 }
 
@@ -398,23 +407,31 @@
   border: none;
   font-family: var(--gemluxjewel-font-heading);
   font-weight: 500;
-  font-size: 18px;
-  color: var(--gemluxjewel-dark);
+  font-size: 20px;
+  line-height: 1;
+  color: var(--gemluxjewel-primary);
   cursor: pointer;
   padding: 0;
-  line-height: 1;
+  min-width: 20px;
+  transition: opacity 0.25s ease;
+}
+
+.gemluxjewel-pdp__qty-btn:hover {
+  opacity: 0.65;
 }
 
 .gemluxjewel-pdp__qty-input {
-  width: 32px;
+  width: 28px;
   text-align: center;
   border: none;
   background: transparent;
   font-family: var(--gemluxjewel-font-body);
   font-weight: 500;
   font-size: 16px;
-  color: var(--gemluxjewel-dark);
+  line-height: 1;
+  color: var(--gemluxjewel-primary);
   -moz-appearance: textfield;
+  padding: 0;
 }
 
 .gemluxjewel-pdp__qty-input::-webkit-outer-spin-button,
@@ -424,30 +441,33 @@
 }
 
 .gemluxjewel-pdp__submit {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 55px;
+  flex: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  padding: 0 40px 0 150px;
-  border: 1px solid var(--gemluxjewel-primary);
-  border-radius: var(--gemluxjewel-radius-pill);
+  gap: 10px;
+  min-width: 0;
+  padding: 0 28px;
+  border: none;
+  border-radius: 0;
   background: var(--gemluxjewel-primary);
-  color: #fff;
+  color: var(--gemluxjewel-secondary);
   font-family: var(--gemluxjewel-font-body);
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.6px;
   text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.7s ease;
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+.gemluxjewel-pdp__submit-label {
+  white-space: nowrap;
 }
 
 .gemluxjewel-pdp__submit:hover:not([disabled]) {
-  background: transparent;
+  background: var(--gemluxjewel-secondary);
   color: var(--gemluxjewel-primary);
 }
 
@@ -460,19 +480,20 @@
 }
 
 .gemluxjewel-pdp__submit[disabled] {
-  opacity: 0.5;
+  opacity: 0.55;
   cursor: not-allowed;
 }
 
 .gemluxjewel-pdp__basket-icon {
-  width: 24px;
-  height: 24px;
+  position: relative;
+  width: 22px;
+  height: 22px;
   flex-shrink: 0;
 }
 
 .gemluxjewel-pdp__basket-icon img {
-  width: 24px;
-  height: auto;
+  width: 22px;
+  height: 22px;
   display: block;
 }
 
@@ -486,24 +507,35 @@
 }
 
 @media (max-width: 991px) {
+  .gemluxjewel-pdp__cart-pill {
+    max-width: 100%;
+  }
+
   .gemluxjewel-pdp__submit {
-    padding-left: 120px;
-    padding-right: 24px;
+    padding: 0 20px;
+    font-size: 14px;
+    letter-spacing: 0.4px;
   }
 }
 
 @media (max-width: 767px) {
   .gemluxjewel-pdp__cart-row {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
     margin-bottom: 48px;
   }
 
+  .gemluxjewel-pdp__qty-box {
+    flex: 0 0 34%;
+    min-width: 108px;
+    padding: 0 14px;
+  }
+
+  .gemluxjewel-pdp__qty {
+    gap: 10px;
+  }
+
   .gemluxjewel-pdp__submit {
-    position: static;
-    width: 100%;
-    padding: 0 24px;
+    padding: 0 16px;
+    gap: 8px;
   }
 
   .gemluxjewel-pdp__variant-selects {
