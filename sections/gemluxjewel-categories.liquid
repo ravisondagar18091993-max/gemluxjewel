@@ -1,15 +1,57 @@
 {{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
 
+{%- liquid
+  assign cards_limit = section.settings.cards_to_show | default: 9
+  if cards_limit < 3
+    assign cards_limit = 3
+  elsif cards_limit > 12
+    assign cards_limit = 12
+  endif
+
+  if cards_limit <= 3
+    assign tablet_cols = cards_limit
+  elsif cards_limit == 4
+    assign tablet_cols = 2
+  elsif cards_limit <= 6
+    assign tablet_cols = 3
+  else
+    assign tablet_cols = 3
+  endif
+
+  if cards_limit == 1
+    assign mobile_cols = 1
+  else
+    assign mobile_cols = 2
+  endif
+
+  assign desktop_col_width = 100 | divided_by: cards_limit
+  assign image_sizes = '(min-width: 1200px) ' | append: desktop_col_width | append: 'vw, (min-width: 768px) 30vw, 45vw'
+-%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .gemluxjewel-categories__grid {
+    --gemluxjewel-categories-cols: {{ cards_limit }};
+    --gemluxjewel-categories-cols-tablet: {{ tablet_cols }};
+    --gemluxjewel-categories-cols-mobile: {{ mobile_cols }};
+  }
+{%- endstyle -%}
+
 <section class="gemluxjewel gemluxjewel-categories">
   <div class="gemluxjewel-container">
     <div class="gemluxjewel-categories__grid">
+      {%- assign shown = 0 -%}
       {%- for block in section.blocks -%}
+        {%- if shown >= cards_limit -%}
+          {%- break -%}
+        {%- endif -%}
+
         {%- assign collection = block.settings.collection -%}
         {%- if collection == blank -%}
           {%- continue -%}
         {%- endif -%}
 
         {%- liquid
+          assign shown = shown | plus: 1
           assign card_title = block.settings.title
           if card_title == blank
             assign card_title = collection.title
@@ -32,7 +74,7 @@
                 | image_url: width: 600
                 | image_tag:
                   widths: '155, 200, 300, 400, 600',
-                  sizes: '(min-width: 1200px) 11vw, (min-width: 768px) 30vw, 45vw',
+                  sizes: image_sizes,
                   loading: 'lazy',
                   alt: card_title
               }}
@@ -41,7 +83,7 @@
                 asset: 'category-img.png',
                 width: 400,
                 widths: '200,300,400',
-                sizes: '(min-width: 1200px) 11vw, (min-width: 768px) 30vw, 45vw',
+                sizes: image_sizes,
                 alt: card_title
               %}
             {%- endif -%}
@@ -60,6 +102,16 @@
   "class": "section gemluxjewel-section",
   "max_blocks": 12,
   "settings": [
+    {
+      "type": "range",
+      "id": "cards_to_show",
+      "min": 3,
+      "max": 12,
+      "step": 1,
+      "default": 9,
+      "label": "Cards to show",
+      "info": "Controls how many collection cards appear and how wide each card is on desktop."
+    },
     {
       "type": "paragraph",
       "content": "Pick a collection for each card. Optionally override the title or image below; otherwise the collection title and collection image from Shopify Admin are used."

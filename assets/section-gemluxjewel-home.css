@@ -406,20 +406,20 @@
 
 .gemluxjewel-categories__grid {
   display: grid;
-  grid-template-columns: repeat(9, minmax(0, 1fr));
+  grid-template-columns: repeat(var(--gemluxjewel-categories-cols, 9), minmax(0, 1fr));
   gap: 24px 16px;
 }
 
 @media (max-width: 1199px) {
   .gemluxjewel-categories__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(var(--gemluxjewel-categories-cols-tablet, 3), minmax(0, 1fr));
     gap: 32px 20px;
   }
 }
 
 @media (max-width: 767px) {
   .gemluxjewel-categories__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(var(--gemluxjewel-categories-cols-mobile, 2), minmax(0, 1fr));
     gap: 24px 16px;
   }
 }
