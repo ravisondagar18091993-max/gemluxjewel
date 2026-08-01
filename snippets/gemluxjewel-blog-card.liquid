@@ -26,7 +26,7 @@
             | image_tag: widths: '300, 400, 600, 700', sizes: '(min-width: 1200px) 25vw, 50vw', loading: 'lazy', alt: article.title
           }}
         {%- else -%}
-          {% render 'gemluxjewel-theme-image', asset: 'news-img.png', width: 600, widths: '300,450,600', sizes: '(min-width: 1200px) 25vw, 50vw', alt: article.title %}
+          {% render 'gemluxjewel-theme-image', use_store_media: true, seed: article.id, width: 600, widths: '300,450,600', sizes: '(min-width: 1200px) 25vw, 50vw', alt: article.title %}
         {%- endif -%}
       </a>
       {%- if card_tag != blank -%}
@@ -64,7 +64,8 @@
         }}
       {%- else -%}
         {% render 'gemluxjewel-theme-image',
-          asset: 'news-img.png',
+          use_store_media: true,
+          seed: article.id,
           width: 600,
           widths: '300,450,600',
           sizes: '(min-width: 1200px) 25vw, 50vw',

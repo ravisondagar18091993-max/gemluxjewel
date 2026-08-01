@@ -11,7 +11,7 @@
         {%- if nav_article.image -%}
           {{ nav_article.image | image_url: width: 240 | image_tag: widths: '120, 240', sizes: '120px', loading: 'lazy', alt: nav_article.title }}
         {%- else -%}
-          {% render 'gemluxjewel-theme-image', asset: 'news-img.png', width: 240, widths: '120,240', sizes: '120px', alt: nav_article.title %}
+          {% render 'gemluxjewel-theme-image', use_store_media: true, seed: nav_article.id, width: 240, widths: '120,240', sizes: '120px', alt: nav_article.title %}
         {%- endif -%}
       </div>
       <div class="gemluxjewel-article__nav-text">

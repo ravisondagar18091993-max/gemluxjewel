@@ -35,7 +35,7 @@
               {%- if block.settings.image != blank -%}
                 {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy' }}
               {%- else -%}
-                {% render 'gemluxjewel-theme-image', asset: 'news-img.png', width: 600, widths: '300,450,600', sizes: '(min-width: 1200px) 22vw, 45vw' %}
+                {% render 'gemluxjewel-theme-image', use_store_media: true, seed: forloop.index, width: 600, widths: '300,450,600', sizes: '(min-width: 1200px) 22vw, 45vw' %}
               {%- endif -%}
               {%- if block.settings.tag != blank -%}
                 <div class="gemluxjewel-card__top"><span class="gemluxjewel-badge">{{ block.settings.tag }}</span></div>
