@@ -1,22 +1,35 @@
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
 {{ 'section-gemluxjewel-policy.css' | asset_url | stylesheet_tag }}
 {% render 'gemluxjewel-fonts' %}
 
-<section class="gemluxjewel gemluxjewel-policy gemluxjewel-policy--legal">
-  <div class="gemluxjewel-container">
-    <article class="gemluxjewel-policy__box gemluxjewel-policy__box--single">
-      <h1 class="gemluxjewel-policy__heading">{{ policy.title | escape }}</h1>
-      <div class="gemluxjewel-policy__content rte">
-        {{ policy.body }}
-      </div>
-    </article>
+{%- liquid
+  assign current_policy = blank
+  for shop_policy in shop.policies
+    if shop_policy.url == request.path
+      assign current_policy = shop_policy
+      break
+    endif
+  endfor
+-%}
 
-    {%- if section.settings.policies_page != blank -%}
-      <p class="gemluxjewel-policy__back">
-        <a href="{{ section.settings.policies_page }}">{{ section.settings.back_label | escape }}</a>
-      </p>
-    {%- endif -%}
-  </div>
-</section>
+{%- if current_policy != blank -%}
+  <section class="gemluxjewel gemluxjewel-policy gemluxjewel-policy--legal">
+    <div class="gemluxjewel-container">
+      <article class="gemluxjewel-policy__box gemluxjewel-policy__box--single">
+        <h1 class="gemluxjewel-policy__heading">{{ current_policy.title | escape }}</h1>
+        <div class="gemluxjewel-policy__content rte">
+          {{ current_policy.body }}
+        </div>
+      </article>
+
+      {%- if section.settings.policies_page != blank -%}
+        <p class="gemluxjewel-policy__back">
+          <a href="{{ section.settings.policies_page }}">{{ section.settings.back_label | escape }}</a>
+        </p>
+      {%- endif -%}
+    </div>
+  </section>
+{%- endif -%}
 
 {% schema %}
 {
