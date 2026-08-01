@@ -14,13 +14,9 @@
 
 .gemluxjewel-blog-hero {
   background: var(--gemluxjewel-primary);
-  padding: 200px 0 51px;
+  padding: var(--gemluxjewel-header-offset, 218px) 0 51px;
   border-top: 1px solid rgba(255, 248, 244, 0.2);
   border-bottom: 1px solid rgba(255, 248, 244, 0.2);
-}
-
-@media (max-width: 991px) {
-  .gemluxjewel-blog-hero { padding-top: 160px; }
 }
 
 .gemluxjewel-blog-hero__grid {

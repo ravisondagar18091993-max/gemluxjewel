@@ -456,19 +456,31 @@ html.gemluxjewel-menu-open {
   overflow: hidden;
 }
 
-/* Page offset for fixed header (pages without hero / collection banner) */
-body:not(:has(.gemluxjewel-hero)):not(:has(.gemluxjewel-collection-hero)):not(:has(.gemluxjewel-blog-hero)):not(:has(.gemluxjewel-article)):not(:has(.gemluxjewel-pdp)):not(:has(.gemluxjewel-contact)):not(:has(.gemluxjewel-policy)) .content-for-layout {
-  padding-top: 170px;
+/* Page offset for fixed header */
+:root {
+  --gemluxjewel-header-offset: 218px;
 }
 
 @media (max-width: 1199px) {
-  body:not(:has(.gemluxjewel-hero)):not(:has(.gemluxjewel-collection-hero)):not(:has(.gemluxjewel-blog-hero)):not(:has(.gemluxjewel-article)):not(:has(.gemluxjewel-pdp)):not(:has(.gemluxjewel-contact)):not(:has(.gemluxjewel-policy)) .content-for-layout {
-    padding-top: 150px;
+  :root {
+    --gemluxjewel-header-offset: 180px;
   }
 }
 
 @media (max-width: 767px) {
-  body:not(:has(.gemluxjewel-hero)):not(:has(.gemluxjewel-collection-hero)):not(:has(.gemluxjewel-blog-hero)):not(:has(.gemluxjewel-article)):not(:has(.gemluxjewel-pdp)):not(:has(.gemluxjewel-contact)):not(:has(.gemluxjewel-policy)) .content-for-layout {
-    padding-top: 130px;
+  :root {
+    --gemluxjewel-header-offset: 150px;
   }
+}
+
+.content-for-layout {
+  padding-top: var(--gemluxjewel-header-offset);
+}
+
+/* Full-bleed heroes manage their own top offset (avoid cream gap above colored bands) */
+body:has(.gemluxjewel-hero) .content-for-layout,
+body:has(.gemluxjewel-collection-hero) .content-for-layout,
+body:has(.gemluxjewel-blog-hero) .content-for-layout,
+body:has(.gemluxjewel-contact) .content-for-layout {
+  padding-top: 0;
 }

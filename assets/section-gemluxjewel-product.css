@@ -38,12 +38,12 @@
 /* ── Main product ── */
 .gemluxjewel-pdp {
   background: var(--gemluxjewel-secondary);
-  padding: 218px 0 135px;
+  padding: 0 0 135px;
   font-family: var(--gemluxjewel-font-body);
 }
 
 @media (max-width: 991px) {
-  .gemluxjewel-pdp { padding-top: 160px; padding-bottom: 80px; }
+  .gemluxjewel-pdp { padding-bottom: 80px; }
 }
 
 .gemluxjewel-pdp__topbar {

@@ -11,13 +11,12 @@
   --gemluxjewel-font-heading: 'Nunito', var(--font-heading-family), sans-serif;
 
   background: var(--gemluxjewel-secondary);
-  padding: 210px 0 100px;
+  padding: 0 0 100px;
   font-family: var(--gemluxjewel-font-body);
 }
 
 @media (max-width: 991px) {
   .gemluxjewel-article {
-    padding-top: 160px;
     padding-bottom: 70px;
   }
 }

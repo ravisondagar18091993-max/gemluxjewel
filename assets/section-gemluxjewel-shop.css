@@ -34,13 +34,9 @@
 /* ── Collection hero ── */
 .gemluxjewel-collection-hero {
   background: var(--gemluxjewel-primary);
-  padding: 200px 0 51px;
+  padding: var(--gemluxjewel-header-offset, 218px) 0 51px;
   border-top: 1px solid rgba(255, 248, 244, 0.2);
   border-bottom: 1px solid rgba(255, 248, 244, 0.2);
-}
-
-@media (max-width: 991px) {
-  .gemluxjewel-collection-hero { padding-top: 160px; }
 }
 
 .gemluxjewel-collection-hero__grid {
