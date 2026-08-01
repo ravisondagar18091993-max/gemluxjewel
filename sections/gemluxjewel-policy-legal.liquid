@@ -22,11 +22,15 @@
         </div>
       </article>
 
-      {%- if section.settings.policies_page != blank -%}
-        <p class="gemluxjewel-policy__back">
-          <a href="{{ section.settings.policies_page }}">{{ section.settings.back_label | escape }}</a>
-        </p>
-      {%- endif -%}
+      {%- liquid
+        assign policies_page_url = section.settings.policies_page
+        if policies_page_url == blank
+          assign policies_page_url = '/pages/policies'
+        endif
+      -%}
+      <p class="gemluxjewel-policy__back">
+        <a href="{{ policies_page_url }}">{{ section.settings.back_label | escape }}</a>
+      </p>
     </div>
   </section>
 {%- endif -%}
