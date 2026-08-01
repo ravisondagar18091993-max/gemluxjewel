@@ -1,7 +1,13 @@
 .gemluxjewel-policy {
   background: var(--gemluxjewel-secondary, #fff8f4);
   color: var(--gemluxjewel-dark, #141414);
-  padding: 0 0 200px;
+  padding: 250px 0 200px;
+}
+
+@media (max-width: 1199px) {
+  .gemluxjewel-policy {
+    padding-top: 200px;
+  }
 }
 
 @media (max-width: 1200px) {
@@ -12,7 +18,7 @@
 
 @media (max-width: 991px) {
   .gemluxjewel-policy {
-    padding-bottom: 110px;
+    padding: 160px 0 110px;
   }
 }
 

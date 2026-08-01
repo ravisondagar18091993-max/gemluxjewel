@@ -481,6 +481,7 @@ html.gemluxjewel-menu-open {
 body:has(.gemluxjewel-hero) .content-for-layout,
 body:has(.gemluxjewel-collection-hero) .content-for-layout,
 body:has(.gemluxjewel-blog-hero) .content-for-layout,
-body:has(.gemluxjewel-contact) .content-for-layout {
+body:has(.gemluxjewel-contact) .content-for-layout,
+body:has(.gemluxjewel-policy) .content-for-layout {
   padding-top: 0;
 }
