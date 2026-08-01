@@ -8,6 +8,9 @@
   if use_dark == false and template.name != 'index' and template.name != 'collection' and template.name != 'blog'
     assign use_dark = true
   endif
+  if template.name == 'page' and template.suffix == 'contact'
+    assign use_dark = false
+  endif
   assign mega_blocks = section.blocks | where: 'type', 'mega_column'
   assign mega_image_block = section.blocks | where: 'type', 'mega_image' | first
 -%}
