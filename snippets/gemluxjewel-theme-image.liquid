@@ -1,7 +1,9 @@
 {% comment %}
-  Responsive theme asset image via Shopify CDN (asset_img_url).
+  Responsive theme image — theme asset or store media fallback.
 
   @param asset {String} filename in /assets
+  @param use_store_media {Boolean} pick from product/collection/blog media
+  @param seed {Number} index for store media selection
   @param width {Number} default src width
   @param widths {String} comma-separated srcset widths
   @param sizes {String} sizes attribute
@@ -12,6 +14,19 @@
   @param height {Number} optional layout height
 {% endcomment %}
 
+{%- if use_store_media -%}
+  {% render 'gemluxjewel-fallback-image',
+    seed: seed,
+    width: width,
+    widths: widths,
+    sizes: sizes,
+    alt: alt,
+    loading: loading,
+    class: class,
+    fetchpriority: fetchpriority,
+    height: height
+  %}
+{%- else -%}
 {%- liquid
   assign img_width = width | default: 800
   assign img_sizes = sizes | default: '100vw'
@@ -36,3 +51,4 @@
   loading="{{ img_loading }}"
   {% if fetchpriority != blank %}fetchpriority="{{ fetchpriority }}"{% endif %}
 >
+{%- endif -%}

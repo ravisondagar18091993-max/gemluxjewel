@@ -81,8 +81,9 @@
               <ul class="gemluxjewel-contact__errors" role="list">
                 {%- for field in form.errors -%}
                   <li>
-                    {{ form.errors.translated_fields[field] | capitalize }}
-                    {{ form.errors.messages[field] }}
+                    <a href="#GemluxContactForm-{{ field }}">
+                      {{ form.errors.messages[field] }}
+                    </a>
                   </li>
                 {%- endfor -%}
               </ul>
