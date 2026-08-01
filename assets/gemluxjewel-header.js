@@ -9,6 +9,14 @@
   var megaItem = header.querySelector('.has-mega');
   var mainBar = header.querySelector('[data-gemluxjewel-header-main]');
 
+  function setHeaderOffset() {
+    var offset = header.offsetHeight + 24;
+    document.documentElement.style.setProperty('--gemluxjewel-header-offset', offset + 'px');
+  }
+
+  setHeaderOffset();
+  window.addEventListener('resize', setHeaderOffset);
+
   var prevScroll = window.pageYOffset || document.documentElement.scrollTop;
 
   window.addEventListener('scroll', function () {
