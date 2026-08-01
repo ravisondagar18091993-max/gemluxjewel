@@ -43,12 +43,20 @@
 }
 
 /* Sidebar */
+.gemluxjewel-article__sidebar {
+  align-self: stretch;
+}
+
 .gemluxjewel-article__sidebar-inner {
   position: sticky;
-  top: 210px;
+  top: var(--gemluxjewel-header-offset, 218px);
 }
 
 @media (max-width: 989px) {
+  .gemluxjewel-article__sidebar {
+    align-self: auto;
+  }
+
   .gemluxjewel-article__sidebar-inner {
     position: static;
   }
