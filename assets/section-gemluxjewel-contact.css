@@ -1,12 +1,18 @@
 .gemluxjewel-contact {
   background: var(--gemluxjewel-primary);
   color: #fbfaf9;
-  padding: var(--gemluxjewel-header-offset, 218px) 0 120px;
+  padding: 250px 0 120px;
+}
+
+@media (max-width: 1199px) {
+  .gemluxjewel-contact {
+    padding-top: 200px;
+  }
 }
 
 @media (max-width: 991px) {
   .gemluxjewel-contact {
-    padding-bottom: 80px;
+    padding: 160px 0 80px;
   }
 }
 
