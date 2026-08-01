@@ -457,18 +457,18 @@ html.gemluxjewel-menu-open {
 }
 
 /* Page offset for fixed header (pages without hero / collection banner) */
-body:not(:has(.gemluxjewel-hero)):not(:has(.gemluxjewel-collection-hero)):not(:has(.gemluxjewel-blog-hero)):not(:has(.gemluxjewel-article)):not(:has(.gemluxjewel-pdp)):not(:has(.gemluxjewel-contact)) .content-for-layout {
+body:not(:has(.gemluxjewel-hero)):not(:has(.gemluxjewel-collection-hero)):not(:has(.gemluxjewel-blog-hero)):not(:has(.gemluxjewel-article)):not(:has(.gemluxjewel-pdp)):not(:has(.gemluxjewel-contact)):not(:has(.gemluxjewel-policy)) .content-for-layout {
   padding-top: 170px;
 }
 
 @media (max-width: 1199px) {
-  body:not(:has(.gemluxjewel-hero)):not(:has(.gemluxjewel-collection-hero)):not(:has(.gemluxjewel-blog-hero)):not(:has(.gemluxjewel-article)):not(:has(.gemluxjewel-pdp)):not(:has(.gemluxjewel-contact)) .content-for-layout {
+  body:not(:has(.gemluxjewel-hero)):not(:has(.gemluxjewel-collection-hero)):not(:has(.gemluxjewel-blog-hero)):not(:has(.gemluxjewel-article)):not(:has(.gemluxjewel-pdp)):not(:has(.gemluxjewel-contact)):not(:has(.gemluxjewel-policy)) .content-for-layout {
     padding-top: 150px;
   }
 }
 
 @media (max-width: 767px) {
-  body:not(:has(.gemluxjewel-hero)):not(:has(.gemluxjewel-collection-hero)):not(:has(.gemluxjewel-blog-hero)):not(:has(.gemluxjewel-article)):not(:has(.gemluxjewel-pdp)):not(:has(.gemluxjewel-contact)) .content-for-layout {
+  body:not(:has(.gemluxjewel-hero)):not(:has(.gemluxjewel-collection-hero)):not(:has(.gemluxjewel-blog-hero)):not(:has(.gemluxjewel-article)):not(:has(.gemluxjewel-pdp)):not(:has(.gemluxjewel-contact)):not(:has(.gemluxjewel-policy)) .content-for-layout {
     padding-top: 130px;
   }
 }
