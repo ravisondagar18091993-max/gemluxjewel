@@ -10,6 +10,7 @@
   @param class {String}
   @param fetchpriority {String}
   @param height {Number}
+  @param hero_preview {Boolean} adds data-gemluxjewel-hero-preview for hero slider
 {% endcomment %}
 
 {%- liquid
@@ -86,17 +87,34 @@
 {%- endif -%}
 
 {%- if found_image != blank -%}
-  {{
-    found_image
-    | image_url: width: 2000
-    | image_tag:
-      widths: widths,
-      sizes: img_sizes,
-      loading: img_loading,
-      alt: img_alt,
-      class: class,
-      fetchpriority: fetchpriority
-  }}
+  {%- if hero_preview -%}
+    {{
+      found_image
+      | image_url: width: 2000
+      | image_tag:
+        widths: widths,
+        sizes: img_sizes,
+        loading: img_loading,
+        alt: img_alt,
+        class: class,
+        fetchpriority: fetchpriority,
+        width: 100,
+        height: 80,
+        data-gemluxjewel-hero-preview: ''
+    }}
+  {%- else -%}
+    {{
+      found_image
+      | image_url: width: 2000
+      | image_tag:
+        widths: widths,
+        sizes: img_sizes,
+        loading: img_loading,
+        alt: img_alt,
+        class: class,
+        fetchpriority: fetchpriority
+    }}
+  {%- endif -%}
 {%- else -%}
   {{ 'product-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
 {%- endif -%}
