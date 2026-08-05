@@ -15,7 +15,8 @@
         "slide_1": {
           "type": "slide",
           "settings": {
-            "media_type": "image",
+            "media_type": "video",
+            "video": "shopify://files/videos/create_video____.mp4",
             "prefix": "",
             "heading": "",
             "text": "",
@@ -27,6 +28,7 @@
           "type": "slide",
           "settings": {
             "media_type": "image",
+            "image": "shopify://shop_images/hero-img.png",
             "prefix": "",
             "heading": "",
             "text": "",
@@ -38,6 +40,7 @@
           "type": "slide",
           "settings": {
             "media_type": "image",
+            "image": "shopify://shop_images/Gemlux_Jewels.jpg",
             "prefix": "",
             "heading": "",
             "text": "",
