@@ -71,10 +71,13 @@ document.addEventListener('DOMContentLoaded', () => {
       isAnimating = true;
       current = index;
 
+      slides.forEach((slide, i) => slide.classList.toggle('is-active', i === index));
+      syncVideos(index);
+
       if (contentInner) contentInner.classList.add('is-fading');
 
       window.setTimeout(() => {
-        updateSlides(index);
+        applyActiveContent(slides[index]);
         if (contentInner) contentInner.classList.remove('is-fading');
         isAnimating = false;
       }, fadeMs);
