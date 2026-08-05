@@ -9,14 +9,6 @@
  */
 {
   "sections": {
-    "gemluxjewel_collection_hero": {
-      "type": "gemluxjewel-collection-hero",
-      "settings": {
-        "breadcrumb_home": "HOME",
-        "breadcrumb_collections": "COLLECTIONS",
-        "fallback_description": "Elegant, timeless jewellery crafted for lasting beauty and everyday luxury. Designed with a smooth finish and classic appeal, perfect for adding a touch of sophistication to any modern or traditional style."
-      }
-    },
     "gemluxjewel_collection_products": {
       "type": "gemluxjewel-collection-products",
       "blocks": {
@@ -45,7 +37,6 @@
     }
   },
   "order": [
-    "gemluxjewel_collection_hero",
     "gemluxjewel_collection_products"
   ]
 }
