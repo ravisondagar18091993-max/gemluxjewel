@@ -201,6 +201,7 @@
     "gemluxjewel_new_in": {
       "type": "gemluxjewel-new-in",
       "settings": {
+        "banner_image": "shopify://shop_images/Round_Lab-Grown_Diamond_Cross_Pendant_Necklace_in_14K_Yellow_Gold_1.png",
         "prefix": "Just Arrived",
         "title": "New In",
         "text": "Discover our latest additions - fresh designs and timeless classics newly available",
@@ -215,6 +216,7 @@
         "card_1": {
           "type": "card",
           "settings": {
+            "image": "shopify://shop_images/ring-oval-halo-on-neck.webp",
             "title": "Engagement Rings",
             "button_label": "Shop Now",
             "button_link": "shopify://collections/all"
@@ -223,6 +225,7 @@
         "card_2": {
           "type": "card",
           "settings": {
+            "image": "shopify://shop_images/ring-mens-wedding-band.webp",
             "title": "Diamond Pendants",
             "button_label": "Shop Now",
             "button_link": "shopify://collections/all"
