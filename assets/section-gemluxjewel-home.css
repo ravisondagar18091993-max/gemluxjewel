@@ -1240,9 +1240,6 @@
   background:
     radial-gradient(circle at top right, rgba(214, 195, 114, 0.18), transparent 42%),
     linear-gradient(145deg, #1f5f4a 0%, #1a5543 45%, #123628 100%);
-  box-shadow:
-    0 16px 40px rgba(26, 85, 67, 0.22),
-    inset 0 1px 0 rgba(255, 248, 244, 0.12);
 }
 
 .gemluxjewel-testimonials__card--summary:hover {
