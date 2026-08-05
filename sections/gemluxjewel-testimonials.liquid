@@ -1,4 +1,5 @@
 {{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'gemluxjewel-testimonials.js' | asset_url }}" defer="defer"></script>
 
 <section class="gemluxjewel gemluxjewel-testimonials">
   <div class="gemluxjewel-container">
@@ -12,22 +13,62 @@
         {%- endif -%}
       </div>
     </div>
-    <div class="gemluxjewel-testimonials__grid">
-      {%- for block in section.blocks -%}
-        <div class="gemluxjewel-testimonials__card" {{ block.shopify_attributes }}>
-          <div class="gemluxjewel-testimonials__stars">
-            {%- for i in (1..block.settings.rating) -%}
-              <img src="{{ 'testimonial-star.svg' | asset_url }}" alt="" width="25" height="25">
-            {%- endfor -%}
-          </div>
-          {%- if block.settings.text != blank -%}
-            <p class="gemluxjewel-testimonials__text">{{ block.settings.text | escape }}</p>
+
+    <div class="gemluxjewel-testimonials__slider" data-gemluxjewel-testimonials-slider>
+      <button
+        type="button"
+        class="gemluxjewel-testimonials__nav gemluxjewel-testimonials__nav--prev"
+        data-gemluxjewel-testimonials-prev
+        aria-label="Previous reviews"
+        disabled
+      >
+        <span aria-hidden="true">‹</span>
+      </button>
+
+      <div class="gemluxjewel-testimonials__viewport">
+        <div class="gemluxjewel-testimonials__track" data-gemluxjewel-testimonials-track>
+          {%- if section.settings.show_summary -%}
+            <div class="gemluxjewel-testimonials__card gemluxjewel-testimonials__card--summary">
+              {%- if section.settings.average_rating != blank -%}
+                <p class="gemluxjewel-testimonials__score">{{ section.settings.average_rating | escape }}</p>
+              {%- endif -%}
+              <div class="gemluxjewel-testimonials__stars" aria-hidden="true">
+                {%- for i in (1..5) -%}
+                  <img src="{{ 'testimonial-star.svg' | asset_url }}" alt="" width="18" height="18">
+                {%- endfor -%}
+              </div>
+              {%- if section.settings.review_count != blank -%}
+                <p class="gemluxjewel-testimonials__count">{{ section.settings.review_count | escape }}</p>
+              {%- endif -%}
+            </div>
           {%- endif -%}
-          {%- if block.settings.author != blank -%}
-            <p class="gemluxjewel-testimonials__author">{{ block.settings.author | escape }}</p>
-          {%- endif -%}
+
+          {%- for block in section.blocks -%}
+            <div class="gemluxjewel-testimonials__card" {{ block.shopify_attributes }}>
+              <div class="gemluxjewel-testimonials__stars" aria-label="{{ block.settings.rating }} out of 5 stars">
+                {%- for i in (1..block.settings.rating) -%}
+                  <img src="{{ 'testimonial-star.svg' | asset_url }}" alt="" width="18" height="18">
+                {%- endfor -%}
+              </div>
+              {%- if block.settings.text != blank -%}
+                <p class="gemluxjewel-testimonials__text">{{ block.settings.text | escape }}</p>
+              {%- endif -%}
+              {%- if block.settings.author != blank -%}
+                <p class="gemluxjewel-testimonials__author">{{ block.settings.author | escape }}</p>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
         </div>
-      {%- endfor -%}
+      </div>
+
+      <button
+        type="button"
+        class="gemluxjewel-testimonials__nav gemluxjewel-testimonials__nav--next"
+        data-gemluxjewel-testimonials-next
+        aria-label="Next reviews"
+      >
+        <span aria-hidden="true">›</span>
+      </button>
     </div>
   </div>
 </section>
@@ -39,7 +80,10 @@
   "class": "section gemluxjewel-section",
   "settings": [
     { "type": "text", "id": "title", "label": "Heading", "default": "Customer Voices" },
-    { "type": "textarea", "id": "subtitle", "label": "Subheading", "default": "Real experiences from people who value comfort, quality, and everyday style." }
+    { "type": "textarea", "id": "subtitle", "label": "Subheading", "default": "Real experiences from people who value comfort, quality, and everyday style." },
+    { "type": "checkbox", "id": "show_summary", "label": "Show rating summary as first slide", "default": true },
+    { "type": "text", "id": "average_rating", "label": "Average rating", "default": "4.6" },
+    { "type": "text", "id": "review_count", "label": "Total reviews", "default": "2000 reviews" }
   ],
   "blocks": [
     {

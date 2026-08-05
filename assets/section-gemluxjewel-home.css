@@ -876,54 +876,163 @@
   .gemluxjewel-testimonials { padding-top: 100px; }
 }
 
-.gemluxjewel-testimonials__grid {
+.gemluxjewel-testimonials__slider {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
   gap: 12px;
 }
 
-@media (min-width: 750px) {
-  .gemluxjewel-testimonials__grid { grid-template-columns: repeat(2, 1fr); }
+.gemluxjewel-testimonials__viewport {
+  overflow: hidden;
 }
 
-@media (min-width: 990px) {
-  .gemluxjewel-testimonials__grid { grid-template-columns: repeat(3, 1fr); }
+.gemluxjewel-testimonials__track {
+  display: flex;
+  gap: 12px;
+  transition: transform 0.45s ease;
+  will-change: transform;
 }
 
 .gemluxjewel-testimonials__card {
+  flex: 0 0 calc(100% - 8px);
   background: #fff;
   border-radius: var(--gemluxjewel-radius);
-  padding: 40px 36px;
-  min-height: 350px;
+  padding: 24px 20px;
+  min-height: 220px;
   box-shadow: 0 3px 6px rgba(154, 154, 154, 0.17);
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.gemluxjewel-testimonials__stars {
-  display: flex;
-  gap: 4px;
-  margin-bottom: 16px;
+@media (min-width: 750px) {
+  .gemluxjewel-testimonials__card {
+    flex-basis: calc(50% - 6px);
+  }
 }
 
-.gemluxjewel-testimonials__stars img { width: 25px; height: auto; }
+@media (min-width: 990px) {
+  .gemluxjewel-testimonials__card {
+    flex-basis: calc(33.333% - 8px);
+  }
+}
+
+.gemluxjewel-testimonials__card--summary {
+  align-items: center;
+  text-align: center;
+  background: var(--gemluxjewel-primary);
+  color: #fff8f4;
+}
+
+.gemluxjewel-testimonials__score {
+  font-family: var(--gemluxjewel-font-heading);
+  font-weight: 300;
+  font-size: 42px;
+  line-height: 1;
+  margin: 0 0 12px;
+  color: #fff8f4;
+}
+
+.gemluxjewel-testimonials__count {
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 14px;
+  line-height: 20px;
+  margin: 12px 0 0;
+  color: rgba(255, 248, 244, 0.85);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.gemluxjewel-testimonials__card--summary .gemluxjewel-testimonials__stars {
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+.gemluxjewel-testimonials__nav {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(26, 85, 67, 0.15);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--gemluxjewel-primary);
+  font-size: 24px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease, opacity 0.25s ease;
+  flex-shrink: 0;
+}
+
+.gemluxjewel-testimonials__nav:hover:not(:disabled) {
+  background: var(--gemluxjewel-primary);
+  color: #fff8f4;
+}
+
+.gemluxjewel-testimonials__nav:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+@media (max-width: 749px) {
+  .gemluxjewel-testimonials__slider {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .gemluxjewel-testimonials__nav {
+    display: none;
+  }
+
+  .gemluxjewel-testimonials__viewport {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .gemluxjewel-testimonials__viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gemluxjewel-testimonials__track {
+    transform: none !important;
+  }
+
+  .gemluxjewel-testimonials__card {
+    scroll-snap-align: start;
+  }
+}
+
+.gemluxjewel-testimonials__stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 12px;
+}
+
+.gemluxjewel-testimonials__stars img { width: 18px; height: auto; }
 
 .gemluxjewel-testimonials__text {
   font-family: var(--gemluxjewel-font-heading);
   font-weight: 300;
-  font-size: 18px;
-  line-height: 28px;
+  font-size: 15px;
+  line-height: 24px;
   color: var(--gemluxjewel-dark);
-  margin: 0 0 40px;
+  margin: 0 0 16px;
   flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .gemluxjewel-testimonials__author {
   font-family: var(--gemluxjewel-font-body);
   font-weight: 500;
-  font-size: 14px;
-  line-height: 28px;
+  font-size: 12px;
+  line-height: 20px;
   color: var(--gemluxjewel-primary);
   text-transform: uppercase;
   margin: 0;
