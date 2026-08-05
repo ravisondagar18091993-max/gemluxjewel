@@ -80,7 +80,8 @@
               }}
             {%- else -%}
               {% render 'gemluxjewel-theme-image',
-                asset: 'category-img.png',
+                use_store_media: true,
+                seed: shown,
                 width: 400,
                 widths: '200,300,400',
                 sizes: image_sizes,

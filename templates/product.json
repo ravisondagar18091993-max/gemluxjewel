@@ -1,0 +1,75 @@
+{
+  "sections": {
+    "gemluxjewel_main_product": {
+      "type": "gemluxjewel-main-product",
+      "settings": {
+        "breadcrumb_home": "HOME",
+        "breadcrumb_collections": "COLLECTIONS",
+        "back_label": "Return to Store",
+        "add_to_cart_label": "ADD TO CART",
+        "size_guide_label": "SIZE GUIDE"
+      }
+    },
+    "gemluxjewel_product_faq": {
+      "type": "gemluxjewel-product-faq",
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "Is Titanium Jewellery Safe For Sensitive Skin?",
+            "answer": "<p>Yes, absolutely. Titanium is completely hypoallergenic and biocompatible. This means it is entirely free from nickel and other common irritants, making it perfectly safe for even the most sensitive skin without causing redness or green discoloration.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I Wear The Jewellery Daily?",
+            "answer": "<p>Yes! In fact, it is designed for it. Titanium is incredibly lightweight yet remarkably strong. You will barely feel it on your skin, making it the perfect, comfortable choice for everyday, all-day wear.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Is The Jewellery Waterproof?",
+            "answer": "<p>Yes, our titanium jewellery is 100% waterproof and tarnish-resistant. You can confidently wear it while showering, swimming, or working out without worrying about it rusting, fading, or losing its color.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "Will The Jewellery Lose Its Shine Over Time?",
+            "answer": "<p>Titanium is highly durable and resistant to scratches and fading. While all metals can naturally show minor wear over decades, titanium maintains its premium finish and beautiful shine far longer than traditional metals like silver or brass.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "How Should I Care For My Jewellery?",
+            "answer": "<p>Caring for your titanium jewellery is effortless. Simply wash it occasionally with warm water and a mild soap, then gently pat it dry with a soft cloth. Avoid using harsh chemicals or abrasive cleaners to keep it looking brand new.</p>"
+          }
+        }
+      },
+      "block_order": ["faq_1", "faq_2", "faq_3", "faq_4", "faq_5"],
+      "settings": {
+        "prefix": "NEED HELP?",
+        "title": "FREQUENTLY ASKED QUESTIONS",
+        "text": "Find answers to common questions about our jewellery, materials, and care to help you shop with confidence.",
+        "button_label": "View All FAQ's"
+      }
+    },
+    "gemluxjewel_product_related": {
+      "type": "gemluxjewel-product-related",
+      "settings": {
+        "title": "YOU MAY ALSO LIKE",
+        "subtitle": "Discover our latest additions - fresh designs and timeless classics newly available",
+        "button_label": "View Collection",
+        "products_to_show": 4
+      }
+    }
+  },
+  "order": [
+    "gemluxjewel_main_product",
+    "gemluxjewel_product_faq",
+    "gemluxjewel_product_related"
+  ]
+}

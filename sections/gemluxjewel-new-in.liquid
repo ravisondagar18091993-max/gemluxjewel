@@ -25,7 +25,8 @@
           }}
         {%- else -%}
           {% render 'gemluxjewel-theme-image',
-            asset: 'newin-left-img.png',
+            use_store_media: true,
+            seed: 3,
             width: 1200,
             widths: '600,800,1200',
             sizes: '(min-width: 1200px) 50vw, 100vw',

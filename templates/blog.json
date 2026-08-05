@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "gemluxjewel_blog_hero": {
+      "type": "gemluxjewel-blog-hero",
+      "settings": {
+        "button_label": "View Collection",
+        "button_link": "shopify://collections/all"
+      }
+    },
+    "gemluxjewel_blog_main": {
+      "type": "gemluxjewel-blog-main",
+      "settings": {
+        "articles_per_page": 12
+      }
+    }
+  },
+  "order": [
+    "gemluxjewel_blog_hero",
+    "gemluxjewel_blog_main"
+  ]
+}

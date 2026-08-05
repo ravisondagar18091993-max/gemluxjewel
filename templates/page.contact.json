@@ -1,0 +1,22 @@
+{
+  "sections": {
+    "gemluxjewel_contact": {
+      "type": "gemluxjewel-contact",
+      "settings": {
+        "heading": "Contact",
+        "subheading": "Get in touch with our expert team",
+        "phone": "+1 000 000 000",
+        "email": "info@gemluxjewels.com",
+        "address": "49, Bremner Blvd, Rogers Centre, Ontario Toronto, M5J 0A1",
+        "directions_label": "Get directions",
+        "hours_line_1": "Monday - Friday: 10:00am - 15:00pm",
+        "hours_line_2": "Saturday & Sunday: CLOSED",
+        "form_heading": "Let's connect and start a conversation",
+        "button_label": "Send Message"
+      }
+    }
+  },
+  "order": [
+    "gemluxjewel_contact"
+  ]
+}
