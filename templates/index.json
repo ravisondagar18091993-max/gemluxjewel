@@ -12,11 +12,45 @@
     "gemluxjewel_hero": {
       "type": "gemluxjewel-hero",
       "blocks": {
-        "slide_1": { "type": "slide", "settings": {} },
-        "slide_2": { "type": "slide", "settings": {} },
-        "slide_3": { "type": "slide", "settings": {} }
+        "slide_1": {
+          "type": "slide",
+          "settings": {
+            "media_type": "image",
+            "prefix": "",
+            "heading": "",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "slide_2": {
+          "type": "slide",
+          "settings": {
+            "media_type": "image",
+            "prefix": "",
+            "heading": "",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "slide_3": {
+          "type": "slide",
+          "settings": {
+            "media_type": "image",
+            "prefix": "",
+            "heading": "",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
       },
-      "block_order": ["slide_1", "slide_2", "slide_3"],
+      "block_order": [
+        "slide_1",
+        "slide_2",
+        "slide_3"
+      ],
       "settings": {
         "autoplay_speed": 5000,
         "prefix": "Hypoallergenic Titanium Jewellery",
@@ -29,27 +63,112 @@
     "gemluxjewel_usp": {
       "type": "gemluxjewel-usp-marquee",
       "blocks": {
-        "u1": { "type": "item", "settings": { "label": "Free Shipping in UK" } },
-        "u2": { "type": "item", "settings": { "label": "Premium Materials" } },
-        "u3": { "type": "item", "settings": { "label": "24/7 Expert Guidance" } }
+        "u1": {
+          "type": "item",
+          "settings": {
+            "label": "Free Shipping in UK"
+          }
+        },
+        "u2": {
+          "type": "item",
+          "settings": {
+            "label": "Premium Materials"
+          }
+        },
+        "u3": {
+          "type": "item",
+          "settings": {
+            "label": "24/7 Expert Guidance"
+          }
+        }
       },
-      "block_order": ["u1", "u2", "u3"],
-      "settings": {}
+      "block_order": [
+        "u1",
+        "u2",
+        "u3"
+      ],
+      "settings": {
+        "speed": 30
+      }
     },
     "gemluxjewel_categories": {
       "type": "gemluxjewel-categories",
       "blocks": {
-        "c1": { "type": "category", "settings": {} },
-        "c2": { "type": "category", "settings": {} },
-        "c3": { "type": "category", "settings": {} },
-        "c4": { "type": "category", "settings": {} },
-        "c5": { "type": "category", "settings": {} },
-        "c6": { "type": "category", "settings": {} },
-        "c7": { "type": "category", "settings": {} },
-        "c8": { "type": "category", "settings": {} },
-        "c9": { "type": "category", "settings": {} }
+        "c1": {
+          "type": "category",
+          "settings": {
+            "collection": "",
+            "title": ""
+          }
+        },
+        "c2": {
+          "type": "category",
+          "settings": {
+            "collection": "",
+            "title": ""
+          }
+        },
+        "c3": {
+          "type": "category",
+          "settings": {
+            "collection": "",
+            "title": ""
+          }
+        },
+        "c4": {
+          "type": "category",
+          "settings": {
+            "collection": "",
+            "title": ""
+          }
+        },
+        "c5": {
+          "type": "category",
+          "settings": {
+            "collection": "",
+            "title": ""
+          }
+        },
+        "c6": {
+          "type": "category",
+          "settings": {
+            "collection": "",
+            "title": ""
+          }
+        },
+        "c7": {
+          "type": "category",
+          "settings": {
+            "collection": "",
+            "title": ""
+          }
+        },
+        "c8": {
+          "type": "category",
+          "settings": {
+            "collection": "",
+            "title": ""
+          }
+        },
+        "c9": {
+          "type": "category",
+          "settings": {
+            "collection": "",
+            "title": ""
+          }
+        }
       },
-      "block_order": ["c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8", "c9"],
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8",
+        "c9"
+      ],
       "settings": {
         "cards_to_show": 9
       }
@@ -68,13 +187,40 @@
     "gemluxjewel_marquee_strip": {
       "type": "gemluxjewel-marquee-strip",
       "blocks": {
-        "m1": { "type": "text", "settings": { "text": "Timeless Style" } },
-        "m2": { "type": "text", "settings": { "text": "Cold Shield" } },
-        "m3": { "type": "text", "settings": { "text": "Smart Insulation" } },
-        "m4": { "type": "text", "settings": { "text": "Winter Comfort" } }
+        "m1": {
+          "type": "text",
+          "settings": {
+            "text": "Timeless Style"
+          }
+        },
+        "m2": {
+          "type": "text",
+          "settings": {
+            "text": "Cold Shield"
+          }
+        },
+        "m3": {
+          "type": "text",
+          "settings": {
+            "text": "Smart Insulation"
+          }
+        },
+        "m4": {
+          "type": "text",
+          "settings": {
+            "text": "Winter Comfort"
+          }
+        }
       },
-      "block_order": ["m1", "m2", "m3", "m4"],
-      "settings": {}
+      "block_order": [
+        "m1",
+        "m2",
+        "m3",
+        "m4"
+      ],
+      "settings": {
+        "speed": 25
+      }
     },
     "gemluxjewel_best_sellers": {
       "type": "gemluxjewel-best-sellers",
@@ -91,12 +237,41 @@
     "gemluxjewel_why": {
       "type": "gemluxjewel-why-choose-us",
       "blocks": {
-        "f1": { "type": "feature", "settings": { "title": "Skin-Safe Comfort", "text": "Designed with hypoallergenic materials that are gentle on sensitive skin all day" } },
-        "f2": { "type": "feature", "settings": { "title": "Premium Quality", "text": "Crafted using durable, high-grade materials for long-lasting shine and strength" } },
-        "f3": { "type": "feature", "settings": { "title": "Everyday Wear", "text": "Lightweight and waterproof jewellery made for daily use without compromise" } },
-        "f4": { "type": "feature", "settings": { "title": "Expert Support", "text": "Get reliable 24/7 guidance to help you choose the perfect piece effortlessly" } }
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "title": "Skin-Safe Comfort",
+            "text": "Designed with hypoallergenic materials that are gentle on sensitive skin all day"
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "title": "Premium Quality",
+            "text": "Crafted using durable, high-grade materials for long-lasting shine and strength"
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "title": "Everyday Wear",
+            "text": "Lightweight and waterproof jewellery made for daily use without compromise"
+          }
+        },
+        "f4": {
+          "type": "feature",
+          "settings": {
+            "title": "Expert Support",
+            "text": "Get reliable 24/7 guidance to help you choose the perfect piece effortlessly"
+          }
+        }
       },
-      "block_order": ["f1", "f2", "f3", "f4"],
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4"
+      ],
       "settings": {
         "prefix": "Our Story",
         "title": "Why Choose Us",
@@ -107,28 +282,66 @@
     "gemluxjewel_testimonials": {
       "type": "gemluxjewel-testimonials",
       "blocks": {
-        "r1": { "type": "review", "settings": { "rating": 5, "text": "Really impressed with how lightweight and comfortable the jewellery feels all day. No irritation at all, even after wearing it continuously for long hours.", "author": "Aarav Mehta – India" } },
-        "r2": { "type": "review", "settings": { "rating": 5, "text": "The quality is excellent and it looks even better in person. Been wearing it daily and it still feels as good as new.", "author": "Oliver Smith – United Kingdom" } },
-        "r3": { "type": "review", "settings": { "rating": 5, "text": "Simple, stylish, and perfect for everyday use without any discomfort. You can tell it's made with care and premium materials.", "author": "Ethan Carter – United States" } },
-        "r4": { "type": "review", "settings": { "rating": 5, "text": "Great value for money and the design is exactly what I wanted. Will definitely order again.", "author": "Sofia Rossi – Italy" } },
-        "r5": { "type": "review", "settings": { "rating": 5, "text": "Fast delivery and beautiful packaging. The jewellery exceeded my expectations in every way.", "author": "Yuki Tanaka – Japan" } },
-        "r6": { "type": "review", "settings": { "rating": 5, "text": "My go-to brand for daily wear jewellery. Comfortable, elegant, and always gets compliments.", "author": "Emma Wilson – Australia" } }
+        "r1": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "text": "Really impressed with how lightweight and comfortable the jewellery feels all day. No irritation at all, even after wearing it continuously for long hours.",
+            "author": "Aarav Mehta – India"
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "text": "The quality is excellent and it looks even better in person. Been wearing it daily and it still feels as good as new.",
+            "author": "Oliver Smith – United Kingdom"
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "text": "Simple, stylish, and perfect for everyday use without any discomfort. You can tell it's made with care and premium materials.",
+            "author": "Ethan Carter – United States"
+          }
+        },
+        "r4": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "text": "Great value for money and the design is exactly what I wanted. Will definitely order again.",
+            "author": "Sofia Rossi – Italy"
+          }
+        },
+        "r5": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "text": "Fast delivery and beautiful packaging. The jewellery exceeded my expectations in every way.",
+            "author": "Yuki Tanaka – Japan"
+          }
+        },
+        "r6": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "text": "My go-to brand for daily wear jewellery. Comfortable, elegant, and always gets compliments.",
+            "author": "Emma Wilson – Australia"
+          }
+        }
       },
-      "block_order": ["r1", "r2", "r3", "r4", "r5", "r6"],
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6"
+      ],
       "settings": {
         "title": "Customer Voices",
         "subtitle": "Real experiences from people who value comfort, quality, and everyday style."
-      }
-    },
-    "gemluxjewel_news": {
-      "type": "gemluxjewel-news-insights",
-      "settings": {
-        "title": "News & Insights",
-        "subtitle": "Stay updated with the latest trends, expert tips, and everything you need to know about modern jewellery.",
-        "button_label": "View All Blogs",
-        "button_link": "shopify://blogs/news",
-        "blog": "news",
-        "posts_to_show": 4
       }
     }
   },
@@ -140,7 +353,6 @@
     "gemluxjewel_marquee_strip",
     "gemluxjewel_best_sellers",
     "gemluxjewel_why",
-    "gemluxjewel_testimonials",
-    "gemluxjewel_news"
+    "gemluxjewel_testimonials"
   ]
 }
