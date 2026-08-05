@@ -14,7 +14,6 @@
     "gemluxjewel_footer": {
       "type": "gemluxjewel-footer",
       "settings": {
-        "logo_text": "gemluxjewel",
         "subscribe_label": "Subscribe",
         "newsletter_placeholder": "Sign Me Up",
         "promo_heading": "Join our guest list and receive exclusive access to new collections, offers, and events.",
@@ -28,7 +27,7 @@
         "menu_3_title": "Support",
         "menu_4_title": "Education",
         "menu_5_title": "Jewelry Guide",
-        "copyright_text": "© gemluxjewel"
+        "copyright_text": "© gemluxjewel 2026"
       }
     }
   },

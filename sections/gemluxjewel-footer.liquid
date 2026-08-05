@@ -48,12 +48,6 @@
     </div>
 
     <div class="gemluxjewel-footer__main">
-      <div class="gemluxjewel-footer__brand">
-        <a href="{{ routes.root_url }}" class="gemluxjewel-footer__logo">
-          {{ section.settings.logo_text | default: shop.name | escape }}
-        </a>
-      </div>
-
       <div class="gemluxjewel-footer__columns">
         {%- for i in (1..5) -%}
           {%- liquid
@@ -164,12 +158,6 @@
   "tag": "section",
   "class": "gemluxjewel-section",
   "settings": [
-    {
-      "type": "text",
-      "id": "logo_text",
-      "label": "Logo text",
-      "default": "gemluxjewel"
-    },
     {
       "type": "header",
       "content": "Subscribe bar"

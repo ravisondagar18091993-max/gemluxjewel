@@ -165,34 +165,13 @@
 
 /* Main body */
 .gemluxjewel-footer__main {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 40px;
   padding: 48px 0 40px;
 }
 
 @media (min-width: 990px) {
   .gemluxjewel-footer__main {
-    grid-template-columns: minmax(140px, 180px) minmax(0, 1fr);
-    gap: 48px 64px;
     padding: 56px 0 48px;
   }
-}
-
-.gemluxjewel-footer__logo {
-  font-family: var(--gemluxjewel-font-body, 'Instrument Sans', sans-serif);
-  font-weight: 500;
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  line-height: 1;
-  letter-spacing: -0.03em;
-  color: #fff8f4;
-  text-decoration: none;
-  text-transform: lowercase;
-  display: inline-block;
-}
-
-.gemluxjewel-footer__logo:hover {
-  opacity: 0.85;
 }
 
 .gemluxjewel-footer__columns {
