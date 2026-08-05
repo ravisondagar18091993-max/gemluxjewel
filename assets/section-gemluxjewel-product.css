@@ -572,7 +572,7 @@
 
 /* ── FAQ (matches HTML/product-open.html .faq-section) ── */
 .gemluxjewel-pdp-faq {
-  background: var(--gemluxjewel-secondary);
+  background: #f7f7f7;
   padding: 150px 0 70px;
   font-family: var(--gemluxjewel-font-body);
 }
