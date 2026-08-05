@@ -889,11 +889,27 @@
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 20px;
+  width: 100%;
+  max-width: none;
+  padding: 0 60px;
+}
+
+@media (max-width: 1200px) {
+  .gemluxjewel-testimonials__slider {
+    padding: 0 30px;
+  }
+}
+
+@media (max-width: 991px) {
+  .gemluxjewel-testimonials__slider {
+    padding: 0 15px;
+  }
 }
 
 .gemluxjewel-testimonials__viewport {
   overflow: hidden;
   padding: 8px 0 16px;
+  width: 100%;
 }
 
 .gemluxjewel-testimonials__track {
@@ -905,7 +921,7 @@
 
 .gemluxjewel-testimonials__card {
   position: relative;
-  flex: 0 0 calc(100% - 8px);
+  flex: 0 0 calc(100vw - 30px);
   background: linear-gradient(180deg, #fff 0%, #fffaf7 100%);
   border: 1px solid rgba(26, 85, 67, 0.08);
   border-radius: 14px;
