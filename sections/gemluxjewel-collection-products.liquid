@@ -4,6 +4,7 @@
 {{ 'component-facets.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'gemluxjewel-collection.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'gemluxjewel-stone-shapes.js' | asset_url }}" defer="defer"></script>
 
 <collection-component
   view-event-payload="{{ collection | standard_event_data: 'view' | escape }}"
@@ -72,6 +73,7 @@
           {%- endif -%}
 
           <div id="ProductGridContainer">
+            {% render 'gemluxjewel-plp-stone-shapes', collection: collection, section: section %}
             {% render 'gemluxjewel-collection-grid', paginate: paginate %}
           </div>
         </div>
@@ -124,6 +126,69 @@
       "id": "enable_sorting",
       "label": "Enable sorting",
       "default": true
+    },
+    {
+      "type": "header",
+      "content": "Stone shapes bar"
+    },
+    {
+      "type": "paragraph",
+      "content": "Shows diamond shapes above the product grid. The currently selected shape filter is hidden. Upload images in blocks below — shape names must match filter values (e.g. Heart, Marquise)."
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_stone_shapes",
+      "label": "Show stone shapes above products",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "stone_shapes_heading",
+      "label": "Heading",
+      "default": "Diamond Shapes"
+    },
+    {
+      "type": "text",
+      "id": "stone_shape_filter_label",
+      "label": "Filter label",
+      "default": "Stone shape"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "shape",
+      "name": "Shape image",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Shape name",
+          "default": "Round",
+          "info": "Must match the Stone shape filter value."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Shape image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "gemluxjewel Shop Grid",
+      "blocks": [
+        { "type": "shape", "settings": { "title": "Round" } },
+        { "type": "shape", "settings": { "title": "Princess" } },
+        { "type": "shape", "settings": { "title": "Cushion" } },
+        { "type": "shape", "settings": { "title": "Oval" } },
+        { "type": "shape", "settings": { "title": "Emerald" } },
+        { "type": "shape", "settings": { "title": "Pear" } },
+        { "type": "shape", "settings": { "title": "Marquise" } },
+        { "type": "shape", "settings": { "title": "Asscher" } },
+        { "type": "shape", "settings": { "title": "Radiant" } },
+        { "type": "shape", "settings": { "title": "Heart" } }
+      ]
     }
   ]
 }
