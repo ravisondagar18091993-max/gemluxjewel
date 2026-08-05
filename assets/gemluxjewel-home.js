@@ -1,14 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-gemluxjewel-hero]').forEach((hero) => {
     const slides = hero.querySelectorAll('[data-gemluxjewel-hero-slide]');
-    const preview = hero.querySelector('[data-gemluxjewel-hero-preview]');
-    const previewLabel = hero.querySelector('[data-gemluxjewel-hero-preview-label]');
-    const previewDesc = hero.querySelector('[data-gemluxjewel-hero-preview-desc]');
     const prefixEl = hero.querySelector('[data-gemluxjewel-hero-prefix]');
     const titleEl = hero.querySelector('[data-gemluxjewel-hero-title]');
     const textEl = hero.querySelector('[data-gemluxjewel-hero-text]');
     const buttonWrap = hero.querySelector('[data-gemluxjewel-hero-button]');
-    const progress = hero.querySelector('[data-gemluxjewel-hero-progress]');
     if (!slides.length) return;
 
     const duration = parseInt(hero.dataset.autoplay || '5000', 10);
@@ -30,13 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
           video.pause();
         }
       });
-    };
-
-    const getPreviewSrc = (slide) => {
-      if (!slide) return '';
-      if (slide.dataset.previewSrc) return slide.dataset.previewSrc;
-      const img = slide.querySelector('img');
-      return img ? img.currentSrc || img.src : '';
     };
 
     const applyActiveContent = (slide) => {
@@ -66,35 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
 
-    const applyNextPreview = (index) => {
-      if (!preview && !previewLabel && !previewDesc) return;
-
-      const nextIndex = (index + 1) % slides.length;
-      const nextSlide = slides[nextIndex];
-      const nextSrc = getPreviewSrc(nextSlide);
-
-      if (preview && nextSrc) {
-        preview.src = nextSrc;
-      }
-
-      if (previewLabel) previewLabel.textContent = nextSlide.dataset.slidePrefix || '';
-      if (previewDesc) previewDesc.textContent = nextSlide.dataset.slideHeading || '';
-    };
-
     const show = (index) => {
       slides.forEach((slide, i) => slide.classList.toggle('is-active', i === index));
       syncVideos(index);
       applyActiveContent(slides[index]);
-      applyNextPreview(index);
-
-      if (progress) {
-        progress.style.transition = 'none';
-        progress.style.width = '0%';
-        requestAnimationFrame(() => {
-          progress.style.transition = `width ${duration}ms linear`;
-          progress.style.width = '100%';
-        });
-      }
     };
 
     const next = () => {

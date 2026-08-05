@@ -200,7 +200,9 @@
 .gemluxjewel-hero__layer {
   position: absolute;
   inset: 0;
-  background: var(--gemluxjewel-layer);
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.62) 0%, rgba(0, 0, 0, 0.38) 42%, rgba(0, 0, 0, 0.18) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.1) 45%, rgba(0, 0, 0, 0.35) 100%);
   z-index: 1;
   pointer-events: none;
 }
@@ -281,92 +283,12 @@
   .gemluxjewel-hero__text { margin-bottom: 27px; }
 }
 
-.gemluxjewel-hero__float {
-  position: absolute;
-  bottom: 80px;
-  left: 0;
-  right: 0;
-  z-index: 2;
-}
-
-.gemluxjewel-hero__float-inner {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.gemluxjewel-hero__product-box {
-  display: flex;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.29);
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
-  padding: 10px;
-  border-radius: var(--gemluxjewel-radius);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  width: 330px;
-  max-width: 100%;
-}
-
-.gemluxjewel-hero__product-thumb {
-  width: 100px;
-  height: 80px;
-  border-radius: var(--gemluxjewel-radius);
-  overflow: hidden;
-  margin-right: 14px;
-  flex-shrink: 0;
-}
-
-.gemluxjewel-hero__product-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.gemluxjewel-hero__product-copy {
-  flex: 1;
-  min-width: 0;
-}
-
-.gemluxjewel-hero__product-label {
-  font-family: var(--gemluxjewel-font-body);
-  font-size: 8px;
-  line-height: 10px;
-  color: #fff;
-  margin: 0 0 8px;
-}
-
-.gemluxjewel-hero__product-desc {
-  font-family: var(--gemluxjewel-font-heading);
-  font-weight: 300;
-  font-size: 12px;
-  line-height: 14px;
-  color: #fff;
-  margin: 0;
-}
-
-.gemluxjewel-hero__progress {
-  width: 100%;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 2px;
-  margin-top: 8px;
-  overflow: hidden;
-}
-
-.gemluxjewel-hero__progress-fill {
-  height: 100%;
-  width: 0;
-  background: #fff;
-}
-
 @media (max-width: 991px) {
   .gemluxjewel-hero { height: 70vh; min-height: 560px; }
   .gemluxjewel-hero__slide img,
   .gemluxjewel-hero__slide svg,
   .gemluxjewel-hero__slide video,
   .gemluxjewel-hero__slide .gemluxjewel-hero__media { height: 100%; min-height: 560px; }
-  .gemluxjewel-hero__float { bottom: 30px; }
-  .gemluxjewel-hero__float-inner { justify-content: center; }
 }
 
 /* ── USP Marquee ── */
@@ -896,7 +818,7 @@
 
 .gemluxjewel-testimonials__viewport {
   overflow: hidden;
-  padding: 8px 0 16px;
+  padding: 8px 0 24px;
 }
 
 .gemluxjewel-testimonials__track {
