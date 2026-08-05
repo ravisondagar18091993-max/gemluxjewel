@@ -119,6 +119,7 @@
         "title": "Customer Voices",
         "subtitle": "Real experiences from people who value comfort, quality, and everyday style.",
         "show_summary": true,
+        "summary_label": "Trusted Rating",
         "average_rating": "4.6",
         "review_count": "2000 reviews"
       }

@@ -872,76 +872,182 @@
   padding-bottom: 0;
 }
 
+.gemluxjewel-testimonials .gemluxjewel-section-header {
+  margin-bottom: 56px;
+}
+
 @media (max-width: 991px) {
   .gemluxjewel-testimonials { padding-top: 100px; }
+
+  .gemluxjewel-testimonials .gemluxjewel-section-header {
+    margin-bottom: 40px;
+  }
 }
 
 .gemluxjewel-testimonials__slider {
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 12px;
+  gap: 20px;
 }
 
 .gemluxjewel-testimonials__viewport {
   overflow: hidden;
+  padding: 8px 0 16px;
 }
 
 .gemluxjewel-testimonials__track {
   display: flex;
-  gap: 12px;
-  transition: transform 0.45s ease;
+  gap: 16px;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
 }
 
 .gemluxjewel-testimonials__card {
+  position: relative;
   flex: 0 0 calc(100% - 8px);
-  background: #fff;
-  border-radius: var(--gemluxjewel-radius);
-  padding: 24px 20px;
-  min-height: 220px;
-  box-shadow: 0 3px 6px rgba(154, 154, 154, 0.17);
+  background: linear-gradient(180deg, #fff 0%, #fffaf7 100%);
+  border: 1px solid rgba(26, 85, 67, 0.08);
+  border-radius: 14px;
+  padding: 28px 24px 24px;
+  min-height: 240px;
+  box-shadow:
+    0 10px 30px rgba(26, 85, 67, 0.06),
+    0 2px 8px rgba(154, 154, 154, 0.08);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.gemluxjewel-testimonials__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 24px;
+  right: 24px;
+  height: 3px;
+  border-radius: 0 0 4px 4px;
+  background: linear-gradient(90deg, var(--gemluxjewel-primary) 0%, #d6c372 100%);
+  opacity: 0.85;
+}
+
+.gemluxjewel-testimonials__card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(26, 85, 67, 0.14);
+  box-shadow:
+    0 18px 40px rgba(26, 85, 67, 0.1),
+    0 4px 12px rgba(154, 154, 154, 0.1);
 }
 
 @media (min-width: 750px) {
   .gemluxjewel-testimonials__card {
-    flex-basis: calc(50% - 6px);
+    flex-basis: calc(50% - 8px);
   }
 }
 
 @media (min-width: 990px) {
   .gemluxjewel-testimonials__card {
-    flex-basis: calc(33.333% - 8px);
+    flex-basis: calc(33.333% - 11px);
   }
 }
 
 .gemluxjewel-testimonials__card--summary {
+  padding: 0;
+  border: none;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top right, rgba(214, 195, 114, 0.18), transparent 42%),
+    linear-gradient(145deg, #1f5f4a 0%, #1a5543 45%, #123628 100%);
+  box-shadow:
+    0 16px 40px rgba(26, 85, 67, 0.22),
+    inset 0 1px 0 rgba(255, 248, 244, 0.12);
+}
+
+.gemluxjewel-testimonials__card--summary::before {
+  display: none;
+}
+
+.gemluxjewel-testimonials__card--summary:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 22px 48px rgba(26, 85, 67, 0.28),
+    inset 0 1px 0 rgba(255, 248, 244, 0.12);
+}
+
+.gemluxjewel-testimonials__summary-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
-  background: var(--gemluxjewel-primary);
-  color: #fff8f4;
+  min-height: 240px;
+  padding: 32px 24px;
+}
+
+.gemluxjewel-testimonials__summary-inner::after {
+  content: '';
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(214, 195, 114, 0.22);
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.gemluxjewel-testimonials__summary-label {
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 248, 244, 0.72);
+  margin: 0 0 18px;
+}
+
+.gemluxjewel-testimonials__score-wrap {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 14px;
 }
 
 .gemluxjewel-testimonials__score {
   font-family: var(--gemluxjewel-font-heading);
   font-weight: 300;
-  font-size: 42px;
-  line-height: 1;
-  margin: 0 0 12px;
+  font-size: 56px;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
   color: #fff8f4;
+}
+
+.gemluxjewel-testimonials__score-max {
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 18px;
+  line-height: 1;
+  color: rgba(255, 248, 244, 0.55);
+  margin-bottom: 8px;
+}
+
+.gemluxjewel-testimonials__summary-divider {
+  display: block;
+  width: 48px;
+  height: 1px;
+  margin: 16px auto 14px;
+  background: linear-gradient(90deg, transparent, #d6c372, transparent);
 }
 
 .gemluxjewel-testimonials__count {
   font-family: var(--gemluxjewel-font-body);
-  font-size: 14px;
-  line-height: 20px;
-  margin: 12px 0 0;
-  color: rgba(255, 248, 244, 0.85);
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 0;
+  color: rgba(255, 248, 244, 0.88);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.14em;
 }
 
 .gemluxjewel-testimonials__card--summary .gemluxjewel-testimonials__stars {
@@ -949,31 +1055,50 @@
   margin-bottom: 0;
 }
 
+.gemluxjewel-testimonials__stars--gold img {
+  filter: brightness(0) saturate(100%) invert(78%) sepia(29%) saturate(638%) hue-rotate(6deg) brightness(95%) contrast(88%);
+}
+
 .gemluxjewel-testimonials__nav {
-  width: 40px;
-  height: 40px;
-  border: 1px solid rgba(26, 85, 67, 0.15);
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(26, 85, 67, 0.12);
   border-radius: 50%;
   background: #fff;
-  color: var(--gemluxjewel-primary);
-  font-size: 24px;
-  line-height: 1;
+  box-shadow: 0 8px 24px rgba(26, 85, 67, 0.08);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background-color 0.25s ease, color 0.25s ease, opacity 0.25s ease;
+  transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, opacity 0.25s ease;
   flex-shrink: 0;
+}
+
+.gemluxjewel-testimonials__nav-icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+  transition: filter 0.25s ease;
+}
+
+.gemluxjewel-testimonials__nav-icon--prev {
+  transform: rotate(180deg);
 }
 
 .gemluxjewel-testimonials__nav:hover:not(:disabled) {
   background: var(--gemluxjewel-primary);
-  color: #fff8f4;
+  border-color: var(--gemluxjewel-primary);
+  transform: scale(1.04);
+}
+
+.gemluxjewel-testimonials__nav:hover:not(:disabled) .gemluxjewel-testimonials__nav-icon {
+  filter: brightness(0) invert(1);
 }
 
 .gemluxjewel-testimonials__nav:disabled {
   opacity: 0.35;
   cursor: not-allowed;
+  box-shadow: none;
 }
 
 @media (max-width: 749px) {
@@ -991,6 +1116,7 @@
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    padding-bottom: 8px;
   }
 
   .gemluxjewel-testimonials__viewport::-webkit-scrollbar {
@@ -1004,12 +1130,24 @@
   .gemluxjewel-testimonials__card {
     scroll-snap-align: start;
   }
+
+  .gemluxjewel-testimonials__score {
+    font-size: 48px;
+  }
+}
+
+.gemluxjewel-testimonials__quote {
+  font-family: var(--gemluxjewel-font-heading);
+  font-size: 48px;
+  line-height: 1;
+  color: rgba(26, 85, 67, 0.12);
+  margin: -4px 0 4px;
 }
 
 .gemluxjewel-testimonials__stars {
   display: flex;
-  gap: 3px;
-  margin-bottom: 12px;
+  gap: 4px;
+  margin-bottom: 14px;
 }
 
 .gemluxjewel-testimonials__stars img { width: 18px; height: auto; }
@@ -1018,9 +1156,9 @@
   font-family: var(--gemluxjewel-font-heading);
   font-weight: 300;
   font-size: 15px;
-  line-height: 24px;
+  line-height: 26px;
   color: var(--gemluxjewel-dark);
-  margin: 0 0 16px;
+  margin: 0 0 18px;
   flex: 1;
   display: -webkit-box;
   -webkit-line-clamp: 5;
@@ -1035,7 +1173,10 @@
   line-height: 20px;
   color: var(--gemluxjewel-primary);
   text-transform: uppercase;
-  margin: 0;
+  letter-spacing: 0.08em;
+  margin: auto 0 0;
+  padding-top: 14px;
+  border-top: 1px solid rgba(26, 85, 67, 0.08);
 }
 
 /* ── News ── */
