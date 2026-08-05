@@ -1,0 +1,76 @@
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-about.css' | asset_url | stylesheet_tag }}
+
+<section class="gemluxjewel gemluxjewel-about-hero">
+  <div class="gemluxjewel-container">
+    <div class="gemluxjewel-about-hero__grid{% if section.settings.image == blank %} gemluxjewel-about-hero__grid--no-image{% endif %}">
+      <div class="gemluxjewel-about-hero__content">
+        {%- if section.settings.prefix != blank -%}
+          <p class="gemluxjewel-prefix gemluxjewel-about-hero__prefix">{{ section.settings.prefix | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h1 class="gemluxjewel-about-hero__title">{{ section.settings.title | escape }}</h1>
+        {%- endif -%}
+        {%- if section.settings.text_1 != blank -%}
+          <p class="gemluxjewel-about-hero__text">{{ section.settings.text_1 | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.text_2 != blank -%}
+          <p class="gemluxjewel-about-hero__text gemluxjewel-about-hero__text--last">{{ section.settings.text_2 | escape }}</p>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.image != blank -%}
+        <div class="gemluxjewel-about-hero__media">
+          {{
+            section.settings.image
+            | image_url: width: 1200
+            | image_tag:
+              widths: '600, 800, 1000, 1200',
+              sizes: '(min-width: 990px) 50vw, 100vw',
+              loading: 'eager',
+              class: 'gemluxjewel-about-hero__img',
+              alt: section.settings.title
+          }}
+        </div>
+      {%- else -%}
+        <div class="gemluxjewel-about-hero__media">
+          {% render 'gemluxjewel-theme-image',
+            use_store_media: true,
+            seed: 1,
+            width: 1200,
+            widths: '600,800,1200',
+            sizes: '(min-width: 990px) 50vw, 100vw',
+            alt: section.settings.title,
+            class: 'gemluxjewel-about-hero__img'
+          %}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "gemluxjewel About Hero",
+  "tag": "section",
+  "class": "section gemluxjewel-section",
+  "settings": [
+    { "type": "text", "id": "prefix", "label": "Prefix", "default": "Our Story" },
+    { "type": "text", "id": "title", "label": "Heading", "default": "About Us" },
+    {
+      "type": "textarea",
+      "id": "text_1",
+      "label": "Paragraph 1",
+      "default": "We create jewellery that feels as good as it looks. Designed with a focus on comfort, durability, and everyday wear, each piece is crafted using skin-safe materials that are gentle and reliable for daily use."
+    },
+    {
+      "type": "textarea",
+      "id": "text_2",
+      "label": "Paragraph 2",
+      "default": "Our goal is to combine modern style with lasting quality. From minimal designs to bold essentials, every piece is thoughtfully made to fit seamlessly into your lifestyle while maintaining a premium look and feel."
+    },
+    { "type": "image_picker", "id": "image", "label": "Hero image" }
+  ],
+  "presets": [{ "name": "gemluxjewel About Hero" }]
+}
+{% endschema %}
