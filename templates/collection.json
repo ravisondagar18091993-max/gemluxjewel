@@ -1,36 +1,42 @@
 {
   "sections": {
-    "banner": {
-      "type": "main-collection-banner",
+    "gemluxjewel_collection_hero": {
+      "type": "gemluxjewel-collection-hero",
       "settings": {
-        "show_collection_description": true,
-        "show_collection_image": false,
-        "color_scheme": "scheme-1"
+        "breadcrumb_home": "HOME",
+        "breadcrumb_collections": "COLLECTIONS",
+        "fallback_description": "Elegant, timeless jewellery crafted for lasting beauty and everyday luxury. Designed with a smooth finish and classic appeal, perfect for adding a touch of sophistication to any modern or traditional style."
       }
     },
-    "product-grid": {
-      "type": "main-collection-product-grid",
+    "gemluxjewel_collection_products": {
+      "type": "gemluxjewel-collection-products",
+      "blocks": {
+        "shape_1": { "type": "shape", "settings": { "title": "Round" } },
+        "shape_2": { "type": "shape", "settings": { "title": "Princess" } },
+        "shape_3": { "type": "shape", "settings": { "title": "Cushion" } },
+        "shape_4": { "type": "shape", "settings": { "title": "Oval" } },
+        "shape_5": { "type": "shape", "settings": { "title": "Emerald" } },
+        "shape_6": { "type": "shape", "settings": { "title": "Pear" } },
+        "shape_7": { "type": "shape", "settings": { "title": "Marquise" } },
+        "shape_8": { "type": "shape", "settings": { "title": "Asscher" } },
+        "shape_9": { "type": "shape", "settings": { "title": "Radiant" } },
+        "shape_10": { "type": "shape", "settings": { "title": "Heart" } }
+      },
+      "block_order": ["shape_1", "shape_2", "shape_3", "shape_4", "shape_5", "shape_6", "shape_7", "shape_8", "shape_9", "shape_10"],
       "settings": {
         "products_per_page": 16,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": false,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
         "enable_filtering": true,
-        "filter_type": "horizontal",
+        "filters_open_by_default": true,
+        "filter_label": "Show Filter",
         "enable_sorting": true,
-        "columns_mobile": "2",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "enable_stone_shapes": true,
+        "stone_shapes_heading": "Diamond Shapes",
+        "stone_shape_filter_label": "Stone shape"
       }
     }
   },
   "order": [
-    "banner",
-    "product-grid"
+    "gemluxjewel_collection_hero",
+    "gemluxjewel_collection_products"
   ]
 }

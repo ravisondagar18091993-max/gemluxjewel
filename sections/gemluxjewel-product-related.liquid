@@ -1,0 +1,88 @@
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-product.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign source_collection = section.settings.collection
+  if source_collection == blank and product.collections.first
+    assign source_collection = product.collections.first
+  endif
+  assign shown = 0
+-%}
+
+<section class="gemluxjewel gemluxjewel-pdp-related">
+  <div class="gemluxjewel-container">
+    <div class="gemluxjewel-section-header">
+      <div>
+        {%- if section.settings.title != blank -%}
+          <h2 class="gemluxjewel-section-title">{{ section.settings.title | escape }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subtitle != blank -%}
+          <p class="gemluxjewel-section-desc">{{ section.settings.subtitle | escape }}</p>
+        {%- endif -%}
+      </div>
+      {%- if section.settings.button_label != blank -%}
+        {% render 'gemluxjewel-btn',
+          label: section.settings.button_label,
+          url: section.settings.button_link | default: source_collection.url,
+          style: 'green'
+        %}
+      {%- endif -%}
+    </div>
+
+    <div class="gemluxjewel-products__grid">
+      {%- if source_collection != blank -%}
+        {%- for related_product in source_collection.products -%}
+          {%- if related_product.id != product.id -%}
+            {%- liquid
+              assign badge_text = ''
+              if related_product.tags contains 'new' or related_product.tags contains 'New In' or related_product.tags contains 'NEW IN'
+                assign badge_text = 'NEW IN'
+              endif
+            -%}
+            {% render 'gemluxjewel-product-card', product: related_product, badge_text: badge_text, show_discount: true %}
+            {%- assign shown = shown | plus: 1 -%}
+            {%- if shown >= section.settings.products_to_show -%}
+              {%- break -%}
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+
+      {%- if shown == 0 -%}
+        {%- for i in (1..4) -%}
+          {% render 'gemluxjewel-product-card', product: blank, badge_text: 'NEW IN', show_discount: true %}
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "gemluxjewel Related Prods",
+  "tag": "section",
+  "class": "gemluxjewel-section",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "YOU MAY ALSO LIKE" },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "Discover our latest additions - fresh designs and timeless classics newly available"
+    },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "View Collection" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "collection", "id": "collection", "label": "Collection (fallback: product's first collection)" },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "default": 4,
+      "label": "Products to show"
+    }
+  ],
+  "presets": [{ "name": "gemluxjewel Related Prods" }]
+}
+{% endschema %}

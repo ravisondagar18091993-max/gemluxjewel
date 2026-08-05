@@ -1,0 +1,160 @@
+/* Gemlux Jewel pagination — shop, blog, collection */
+
+.gemluxjewel-pagination {
+  --gemluxjewel-pagination-primary: #1a5543;
+  --gemluxjewel-pagination-dark: #141414;
+  --gemluxjewel-pagination-muted: rgba(26, 85, 67, 0.08);
+  --gemluxjewel-pagination-font: 'Instrument Sans', var(--font-body-family), sans-serif;
+  margin-top: 40px;
+  padding-top: 8px;
+}
+
+.gemluxjewel-pagination__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.gemluxjewel-pagination__pages {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.gemluxjewel-pagination__btn,
+.gemluxjewel-pagination__page {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--gemluxjewel-pagination-font);
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+}
+
+.gemluxjewel-pagination__btn {
+  gap: 4px;
+  height: 40px;
+  min-width: 96px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: var(--gemluxjewel-pagination-muted);
+  color: var(--gemluxjewel-pagination-dark);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.35px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.gemluxjewel-pagination__btn-text {
+  white-space: nowrap;
+}
+
+.gemluxjewel-pagination__chevron {
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 400;
+  margin-top: -1px;
+}
+
+.gemluxjewel-pagination__page {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--gemluxjewel-pagination-muted);
+  color: var(--gemluxjewel-pagination-dark);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.gemluxjewel-pagination__ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 40px;
+  color: var(--gemluxjewel-pagination-dark);
+  font-family: var(--gemluxjewel-pagination-font);
+  font-size: 14px;
+  line-height: 1;
+  opacity: 0.45;
+  user-select: none;
+}
+
+.gemluxjewel-pagination__page.is-active {
+  background: var(--gemluxjewel-pagination-primary);
+  color: #fff;
+  border-color: var(--gemluxjewel-pagination-primary);
+  pointer-events: none;
+}
+
+.gemluxjewel-pagination__btn:hover:not(.is-disabled),
+.gemluxjewel-pagination__page:hover {
+  background: var(--gemluxjewel-pagination-primary);
+  color: #fff;
+  border-color: var(--gemluxjewel-pagination-primary);
+}
+
+.gemluxjewel-pagination__btn.is-disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .gemluxjewel-pagination {
+    margin-top: 32px;
+  }
+
+  .gemluxjewel-pagination__inner {
+    gap: 6px;
+  }
+
+  .gemluxjewel-pagination__btn {
+    height: 36px;
+    min-width: 82px;
+    padding: 0 12px;
+    font-size: 11px;
+    letter-spacing: 0.25px;
+  }
+
+  .gemluxjewel-pagination__page {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    font-size: 12px;
+  }
+
+  .gemluxjewel-pagination__chevron {
+    font-size: 16px;
+  }
+
+  .gemluxjewel-pagination__page--hide-sm {
+    display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .gemluxjewel-pagination__btn-text {
+    display: none;
+  }
+
+  .gemluxjewel-pagination__btn {
+    min-width: 36px;
+    width: 36px;
+    padding: 0;
+  }
+
+  .gemluxjewel-pagination__chevron {
+    margin-top: 0;
+  }
+}

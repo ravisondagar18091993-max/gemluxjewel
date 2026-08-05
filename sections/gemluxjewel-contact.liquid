@@ -1,0 +1,310 @@
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-contact.css' | asset_url | stylesheet_tag }}
+{% render 'gemluxjewel-fonts' %}
+
+<section class="gemluxjewel gemluxjewel-contact">
+  <div class="gemluxjewel-container">
+    <div class="gemluxjewel-contact__layout">
+      <div class="gemluxjewel-contact__info">
+        {%- if section.settings.heading != blank -%}
+          <h1 class="gemluxjewel-contact__heading">{{ section.settings.heading | escape }}</h1>
+        {%- endif -%}
+        {%- if section.settings.subheading != blank -%}
+          <p class="gemluxjewel-contact__intro">{{ section.settings.subheading | escape }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.phone != blank -%}
+          <div class="gemluxjewel-contact__block">
+            <p class="gemluxjewel-contact__label">{{ section.settings.phone_label | default: 'Phone' | escape }}</p>
+            <p class="gemluxjewel-contact__detail">
+              {%- if section.settings.phone_prefix != blank -%}
+                {{ section.settings.phone_prefix | escape }}
+              {%- endif -%}
+              <a href="tel:{{ section.settings.phone | replace: ' ', '' | replace: '(', '' | replace: ')', '' | replace: '-', '' }}">
+                {{ section.settings.phone | escape }}
+              </a>
+            </p>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.email != blank -%}
+          <div class="gemluxjewel-contact__block">
+            <p class="gemluxjewel-contact__label">{{ section.settings.email_label | default: 'Email' | escape }}</p>
+            <p class="gemluxjewel-contact__detail">
+              <a href="mailto:{{ section.settings.email | escape }}">{{ section.settings.email | escape }}</a>
+            </p>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.address != blank -%}
+          <div class="gemluxjewel-contact__block">
+            <p class="gemluxjewel-contact__label">{{ section.settings.location_label | default: 'Location' | escape }}</p>
+            <div class="gemluxjewel-contact__detail">
+              <p class="gemluxjewel-contact__address">{{ section.settings.address | newline_to_br }}</p>
+              {%- if section.settings.directions_url != blank -%}
+                <a href="{{ section.settings.directions_url }}" class="gemluxjewel-contact__directions" target="_blank" rel="noopener noreferrer">
+                  {{ section.settings.directions_label | default: 'Get directions' | escape }}
+                </a>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.hours_line_1 != blank or section.settings.hours_line_2 != blank -%}
+          <div class="gemluxjewel-contact__block">
+            <p class="gemluxjewel-contact__label">{{ section.settings.hours_label | default: 'Opening time' | escape }}</p>
+            <div class="gemluxjewel-contact__detail">
+              {%- if section.settings.hours_line_1 != blank -%}
+                <p>{{ section.settings.hours_line_1 | escape }}</p>
+              {%- endif -%}
+              {%- if section.settings.hours_line_2 != blank -%}
+                <p>{{ section.settings.hours_line_2 | escape }}</p>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="gemluxjewel-contact__form-wrap">
+        {%- if section.settings.form_heading != blank -%}
+          <h2 class="gemluxjewel-contact__form-heading">{{ section.settings.form_heading | escape }}</h2>
+        {%- endif -%}
+
+        {%- form 'contact', id: 'GemluxContactForm', class: 'gemluxjewel-contact__form' -%}
+          {%- if form.posted_successfully? -%}
+            <p class="gemluxjewel-contact__status gemluxjewel-contact__status--success" tabindex="-1" autofocus>
+              {{ 'templates.contact.form.post_success' | t }}
+            </p>
+          {%- elsif form.errors -%}
+            <div class="gemluxjewel-contact__status gemluxjewel-contact__status--error" tabindex="-1" autofocus>
+              <p>{{ 'templates.contact.form.error_heading' | t }}</p>
+              <ul class="gemluxjewel-contact__errors" role="list">
+                {%- for field in form.errors -%}
+                  <li>
+                    {{ form.errors.translated_fields[field] | capitalize }}
+                    {{ form.errors.messages[field] }}
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endif -%}
+
+          <div class="gemluxjewel-contact__fields">
+            <div class="gemluxjewel-contact__field">
+              <label class="gemluxjewel-contact__field-label" for="GemluxContactForm-name">
+                {{ 'templates.contact.form.name' | t }} *
+              </label>
+              <input
+                class="gemluxjewel-contact__input"
+                type="text"
+                id="GemluxContactForm-name"
+                name="contact[{{ 'templates.contact.form.name' | t }}]"
+                value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                autocomplete="name"
+                required
+              >
+            </div>
+
+            <div class="gemluxjewel-contact__field">
+              <label class="gemluxjewel-contact__field-label" for="GemluxContactForm-email">
+                {{ 'templates.contact.form.email' | t }} *
+              </label>
+              <input
+                class="gemluxjewel-contact__input"
+                type="email"
+                id="GemluxContactForm-email"
+                name="contact[email]"
+                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                autocomplete="email"
+                spellcheck="false"
+                autocapitalize="off"
+                required
+                {% if form.errors contains 'email' %}
+                  aria-invalid="true"
+                {% endif %}
+              >
+            </div>
+
+            <div class="gemluxjewel-contact__field">
+              <label class="gemluxjewel-contact__field-label" for="GemluxContactForm-phone">
+                {{ 'templates.contact.form.phone' | t }} *
+              </label>
+              <input
+                class="gemluxjewel-contact__input"
+                type="tel"
+                id="GemluxContactForm-phone"
+                name="contact[{{ 'templates.contact.form.phone' | t }}]"
+                value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+                autocomplete="tel"
+                required
+              >
+            </div>
+
+            {%- if section.settings.show_subject -%}
+              <div class="gemluxjewel-contact__field">
+                <label class="gemluxjewel-contact__field-label" for="GemluxContactForm-subject">
+                  {{ section.settings.subject_label | default: 'Subject' | escape }}
+                </label>
+                <input
+                  class="gemluxjewel-contact__input"
+                  type="text"
+                  id="GemluxContactForm-subject"
+                  name="contact[Subject]"
+                  autocomplete="off"
+                >
+              </div>
+            {%- endif -%}
+
+            <div class="gemluxjewel-contact__field gemluxjewel-contact__field--full">
+              <label class="gemluxjewel-contact__field-label" for="GemluxContactForm-body">
+                {{ 'templates.contact.form.comment' | t }} *
+              </label>
+              <textarea
+                class="gemluxjewel-contact__textarea"
+                id="GemluxContactForm-body"
+                name="contact[{{ 'templates.contact.form.comment' | t }}]"
+                rows="6"
+                required
+              >{{ form.body }}</textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="gemluxjewel-btn gemluxjewel-btn--pink gemluxjewel-contact__submit">
+            {{ section.settings.button_label | default: 'Send Message' | escape }}
+            <span class="gemluxjewel-btn__arrow">
+              <img src="{{ 'green-right-arrow.svg' | asset_url }}" alt="" class="gemluxjewel-btn__arrow-green" width="24" height="24">
+              <img src="{{ 'right-arrow.svg' | asset_url }}" alt="" class="gemluxjewel-btn__arrow-white" width="24" height="24">
+            </span>
+          </button>
+        {%- endform -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Gemlux Contact",
+  "tag": "section",
+  "class": "gemluxjewel-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Contact info"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Contact"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Get in touch with our expert team"
+    },
+    {
+      "type": "text",
+      "id": "phone_label",
+      "label": "Phone label",
+      "default": "Phone"
+    },
+    {
+      "type": "text",
+      "id": "phone_prefix",
+      "label": "Phone prefix",
+      "default": "Call:"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone number"
+    },
+    {
+      "type": "text",
+      "id": "email_label",
+      "label": "Email label",
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email address"
+    },
+    {
+      "type": "text",
+      "id": "location_label",
+      "label": "Location label",
+      "default": "Location"
+    },
+    {
+      "type": "textarea",
+      "id": "address",
+      "label": "Address"
+    },
+    {
+      "type": "url",
+      "id": "directions_url",
+      "label": "Directions link"
+    },
+    {
+      "type": "text",
+      "id": "directions_label",
+      "label": "Directions label",
+      "default": "Get directions"
+    },
+    {
+      "type": "text",
+      "id": "hours_label",
+      "label": "Hours label",
+      "default": "Opening time"
+    },
+    {
+      "type": "text",
+      "id": "hours_line_1",
+      "label": "Hours line 1",
+      "default": "Monday - Friday: 10:00am - 15:00pm"
+    },
+    {
+      "type": "text",
+      "id": "hours_line_2",
+      "label": "Hours line 2",
+      "default": "Saturday & Sunday: CLOSED"
+    },
+    {
+      "type": "header",
+      "content": "Contact form"
+    },
+    {
+      "type": "text",
+      "id": "form_heading",
+      "label": "Form heading",
+      "default": "Let's connect and start a conversation"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_subject",
+      "label": "Show subject field",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "subject_label",
+      "label": "Subject label",
+      "default": "Subject"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Submit button label",
+      "default": "Send Message"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gemlux Contact"
+    }
+  ]
+}
+{% endschema %}

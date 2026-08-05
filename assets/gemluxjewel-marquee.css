@@ -1,0 +1,37 @@
+/* Shared seamless marquee — no gap at loop point */
+
+.gemluxjewel-marquee {
+  overflow: hidden;
+  width: 100%;
+}
+
+.gemluxjewel-marquee__track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: gemluxjewel-marquee-scroll var(--gemluxjewel-marquee-duration, 30s) linear infinite;
+}
+
+.gemluxjewel-marquee__group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.gemluxjewel-marquee__item {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding-right: var(--gemluxjewel-marquee-gap, 48px);
+}
+
+@keyframes gemluxjewel-marquee-scroll {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gemluxjewel-marquee__track {
+    animation: none;
+  }
+}

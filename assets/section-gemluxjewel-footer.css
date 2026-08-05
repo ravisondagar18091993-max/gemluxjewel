@@ -1,0 +1,320 @@
+/* gemluxjewel Footer — premium multi-column layout */
+
+.gemluxjewel-footer {
+  position: relative;
+  background: var(--gemluxjewel-primary, #1a5543);
+  color: #fff8f4;
+  font-family: var(--gemluxjewel-font-body, 'Instrument Sans', sans-serif);
+  padding: 0 0 32px;
+  overflow: hidden;
+}
+
+.gemluxjewel-footer__pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255, 248, 244, 0.35) 0, transparent 35%),
+    radial-gradient(circle at 85% 80%, rgba(214, 195, 114, 0.25) 0, transparent 40%);
+  pointer-events: none;
+}
+
+.gemluxjewel-footer .gemluxjewel-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+@media (max-width: 1200px) {
+  .gemluxjewel-footer .gemluxjewel-container {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media (max-width: 991px) {
+  .gemluxjewel-footer .gemluxjewel-container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+/* Subscribe bar */
+.gemluxjewel-footer__subscribe {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: center;
+  padding: 48px 0 40px;
+  border-bottom: 1px solid rgba(255, 248, 244, 0.18);
+}
+
+@media (min-width: 990px) {
+  .gemluxjewel-footer__subscribe {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 48px;
+    padding: 56px 0 48px;
+  }
+}
+
+.gemluxjewel-footer__subscribe-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+}
+
+.gemluxjewel-footer__subscribe-label {
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff8f4;
+  white-space: nowrap;
+}
+
+.gemluxjewel-footer__newsletter-form {
+  flex: 1;
+  min-width: min(100%, 320px);
+}
+
+.gemluxjewel-footer__newsletter-field {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  max-width: 420px;
+}
+
+.gemluxjewel-footer__newsletter-input {
+  flex: 1;
+  min-width: 0;
+  height: 52px;
+  border: 1px solid rgba(255, 248, 244, 0.45);
+  border-right: none;
+  border-radius: 0;
+  background: rgba(20, 20, 20, 0.25);
+  color: #fff8f4;
+  font-family: inherit;
+  font-size: 15px;
+  font-style: italic;
+  padding: 0 16px;
+  outline: none;
+}
+
+.gemluxjewel-footer__newsletter-input::placeholder {
+  color: rgba(255, 248, 244, 0.75);
+}
+
+.gemluxjewel-footer__newsletter-input:focus {
+  border-color: rgba(255, 248, 244, 0.7);
+}
+
+.gemluxjewel-footer__newsletter-submit {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 248, 244, 0.45);
+  border-left: none;
+  background: #fff8f4;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: opacity 0.25s ease;
+}
+
+.gemluxjewel-footer__newsletter-submit img {
+  filter: brightness(0) saturate(100%) invert(24%) sepia(18%) saturate(1200%) hue-rotate(115deg) brightness(95%) contrast(90%);
+}
+
+.gemluxjewel-footer__newsletter-submit:hover {
+  opacity: 0.88;
+}
+
+.gemluxjewel-footer__newsletter-message {
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: rgba(255, 248, 244, 0.9);
+}
+
+.gemluxjewel-footer__promo-heading {
+  margin: 0 0 8px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(255, 248, 244, 0.88);
+}
+
+.gemluxjewel-footer__promo-text {
+  margin: 0;
+  font-family: var(--gemluxjewel-font-heading, 'Nunito', sans-serif);
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 1.35;
+  color: #fff8f4;
+}
+
+@media (max-width: 989px) {
+  .gemluxjewel-footer__promo-text {
+    font-size: 18px;
+  }
+}
+
+/* Main body */
+.gemluxjewel-footer__main {
+  padding: 48px 0 40px;
+}
+
+@media (min-width: 990px) {
+  .gemluxjewel-footer__main {
+    padding: 56px 0 48px;
+  }
+}
+
+.gemluxjewel-footer__columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px 24px;
+}
+
+@media (min-width: 768px) {
+  .gemluxjewel-footer__columns {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 990px) {
+  .gemluxjewel-footer__columns {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 24px 20px;
+  }
+}
+
+.gemluxjewel-footer__column-title {
+  margin: 0 0 16px;
+  font-size: 15px;
+  line-height: 1.3;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff8f4;
+}
+
+.gemluxjewel-footer__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.gemluxjewel-footer__links li {
+  margin-bottom: 10px;
+}
+
+.gemluxjewel-footer__links li:last-child {
+  margin-bottom: 0;
+}
+
+.gemluxjewel-footer__link {
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(255, 248, 244, 0.72);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.gemluxjewel-footer__link:hover {
+  color: #fff8f4;
+}
+
+.gemluxjewel-footer__link--text {
+  display: inline-block;
+}
+
+/* Social */
+.gemluxjewel-footer__social {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 8px 0 32px;
+}
+
+.gemluxjewel-footer__social-link {
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 248, 244, 0.35);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.gemluxjewel-footer__social-link:hover {
+  background: rgba(255, 248, 244, 0.1);
+  border-color: rgba(255, 248, 244, 0.6);
+}
+
+.gemluxjewel-footer__social-link--text {
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8f4;
+  text-decoration: none;
+}
+
+.gemluxjewel-footer__social-link img {
+  height: 20px;
+  width: auto;
+}
+
+/* Legal bar */
+.gemluxjewel-footer__bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 248, 244, 0.18);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .gemluxjewel-footer__bar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 24px;
+  }
+}
+
+.gemluxjewel-footer__copyright {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(255, 248, 244, 0.65);
+}
+
+.gemluxjewel-footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 20px;
+}
+
+.gemluxjewel-footer__legal-link {
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(255, 248, 244, 0.65);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.gemluxjewel-footer__legal-link:hover {
+  color: #fff8f4;
+}

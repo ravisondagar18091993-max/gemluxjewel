@@ -1,0 +1,48 @@
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+
+{%- assign collection = section.settings.collection -%}
+
+<section class="gemluxjewel gemluxjewel-products">
+  <div class="gemluxjewel-container">
+    <div class="gemluxjewel-section-header">
+      <div>
+        {%- if section.settings.title != blank -%}
+          <h2 class="gemluxjewel-section-title">{{ section.settings.title }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subtitle != blank -%}
+          <p class="gemluxjewel-section-desc">{{ section.settings.subtitle }}</p>
+        {%- endif -%}
+      </div>
+      {% render 'gemluxjewel-btn', label: section.settings.button_label, url: section.settings.button_link, style: 'green' %}
+    </div>
+    <div class="gemluxjewel-products__grid">
+      {%- if collection != blank -%}
+        {%- for product in collection.products limit: section.settings.products_to_show -%}
+          {% render 'gemluxjewel-product-card', product: product, badge_text: section.settings.badge_text, show_discount: true %}
+        {%- endfor -%}
+      {%- else -%}
+        {%- for i in (1..4) -%}
+          {% render 'gemluxjewel-product-card', product: blank, badge_text: 'New In', show_discount: true %}
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "gemluxjewel Best Sellers",
+  "tag": "section",
+  "class": "section gemluxjewel-section",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "Best Sellers" },
+    { "type": "textarea", "id": "subtitle", "label": "Subheading", "default": "Discover our latest additions - fresh designs and timeless classics newly available" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "View Collection" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "text", "id": "badge_text", "label": "Product badge", "default": "New In" },
+    { "type": "collection", "id": "collection", "label": "Collection" },
+    { "type": "range", "id": "products_to_show", "min": 2, "max": 8, "step": 1, "default": 4, "label": "Products to show" }
+  ],
+  "presets": [{ "name": "gemluxjewel Best Sellers" }]
+}
+{% endschema %}

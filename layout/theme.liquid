@@ -339,7 +339,20 @@
       tabindex="-1"
       data-template="{{ template.name }}"
     >
-      {{ content_for_layout }}
+      {%- liquid
+        assign is_shopify_policy = false
+        for shop_policy in shop.policies
+          if shop_policy.url == request.path
+            assign is_shopify_policy = true
+            break
+          endif
+        endfor
+      -%}
+      {%- if is_shopify_policy -%}
+        {% section 'gemluxjewel-policy-legal' %}
+      {%- else -%}
+        {{ content_for_layout }}
+      {%- endif -%}
     </main>
 
     {% sections 'footer-group' %}

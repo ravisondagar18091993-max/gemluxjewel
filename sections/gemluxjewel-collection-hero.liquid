@@ -1,0 +1,68 @@
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-shop.css' | asset_url | stylesheet_tag }}
+
+<section class="gemluxjewel gemluxjewel-collection-hero">
+  <div class="gemluxjewel-container">
+    <div class="gemluxjewel-collection-hero__grid{% if collection.image == blank %} gemluxjewel-collection-hero__grid--no-image{% endif %}">
+      <div class="gemluxjewel-collection-hero__content">
+        <p class="gemluxjewel-collection-hero__breadcrumb">
+          <a href="{{ routes.root_url }}">{{ section.settings.breadcrumb_home | default: 'Home' | escape }}</a>
+          |
+          {%- if section.settings.breadcrumb_collections_link != blank -%}
+            <a href="{{ section.settings.breadcrumb_collections_link }}">{{ section.settings.breadcrumb_collections | default: 'Collections' | escape }}</a>
+          {%- else -%}
+            {{ section.settings.breadcrumb_collections | default: 'Collections' | escape }}
+          {%- endif -%}
+          |
+          <span>{{ collection.title | escape }}</span>
+        </p>
+        <h1 class="gemluxjewel-collection-hero__title">{{ collection.title | escape }}</h1>
+        {%- if collection.description != blank -%}
+          <div class="gemluxjewel-collection-hero__desc">{{ collection.description }}</div>
+        {%- elsif section.settings.fallback_description != blank -%}
+          <p class="gemluxjewel-collection-hero__desc">{{ section.settings.fallback_description | escape }}</p>
+        {%- endif -%}
+      </div>
+      {%- if collection.image != blank -%}
+        <div class="gemluxjewel-collection-hero__media">
+          <div class="gemluxjewel-collection-hero__img">
+            {{ collection.image | image_url: width: 1036 | image_tag: widths: '400, 600, 800, 1036', sizes: '(min-width: 990px) 518px, 100vw', loading: 'eager', alt: collection.title }}
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "gemluxjewel Coll Hero",
+  "tag": "section",
+  "class": "gemluxjewel-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "breadcrumb_home",
+      "label": "Breadcrumb home label",
+      "default": "HOME"
+    },
+    {
+      "type": "text",
+      "id": "breadcrumb_collections",
+      "label": "Breadcrumb collections label",
+      "default": "COLLECTIONS"
+    },
+    {
+      "type": "url",
+      "id": "breadcrumb_collections_link",
+      "label": "Collections link"
+    },
+    {
+      "type": "textarea",
+      "id": "fallback_description",
+      "label": "Fallback description",
+      "default": "Elegant, timeless jewellery crafted for lasting beauty and everyday luxury."
+    }
+  ]
+}
+{% endschema %}

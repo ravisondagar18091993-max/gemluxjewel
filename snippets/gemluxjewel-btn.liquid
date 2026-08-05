@@ -1,0 +1,12 @@
+{% comment %}
+  gemluxjewel button with arrow
+  Accepts: label, url, style (green|pink)
+{% endcomment %}
+
+<a href="{{ url | default: '#' }}" class="gemluxjewel-btn gemluxjewel-btn--{{ style | default: 'green' }}">
+  {{ label | escape }}
+  <span class="gemluxjewel-btn__arrow">
+    <img src="{{ 'green-right-arrow.svg' | asset_url }}" alt="" class="gemluxjewel-btn__arrow-green" width="24" height="24">
+    <img src="{{ 'right-arrow.svg' | asset_url }}" alt="" class="gemluxjewel-btn__arrow-white" width="24" height="24">
+  </span>
+</a>

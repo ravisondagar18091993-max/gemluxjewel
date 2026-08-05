@@ -1,0 +1,120 @@
+{% comment %}
+  Fallback image from store catalog media (products, collections, blog).
+
+  @param seed {Number} picks a stable image from the pool
+  @param width {Number}
+  @param widths {String}
+  @param sizes {String}
+  @param alt {String}
+  @param loading {String}
+  @param class {String}
+  @param fetchpriority {String}
+  @param height {Number}
+  @param hero_preview {Boolean} adds data-gemluxjewel-hero-preview for hero slider
+{% endcomment %}
+
+{%- liquid
+  assign seed_num = seed | default: 1 | plus: 0
+  assign img_width = width | default: 800
+  assign img_sizes = sizes | default: '100vw'
+  assign img_alt = alt | default: ''
+  assign img_loading = loading | default: 'lazy'
+  assign width_list = widths | default: img_width | split: ','
+  assign media_count = 0
+  assign pick = 0
+  assign found_image = blank
+  assign news_blog = blogs.news
+-%}
+
+{%- for product in collections.all.products limit: 100 -%}
+  {%- if product.featured_media -%}
+    {%- assign media_count = media_count | plus: 1 -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- for collection in collections limit: 50 -%}
+  {%- if collection.handle != 'all' and collection.handle != 'frontpage' and collection.featured_image -%}
+    {%- assign media_count = media_count | plus: 1 -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- if news_blog != blank -%}
+  {%- for article in news_blog.articles limit: 50 -%}
+    {%- if article.image -%}
+      {%- assign media_count = media_count | plus: 1 -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+
+{%- if media_count > 0 -%}
+  {%- assign pick = seed_num | modulo: media_count -%}
+  {%- assign current = 0 -%}
+
+  {%- for product in collections.all.products limit: 100 -%}
+    {%- if found_image != blank -%}{%- break -%}{%- endif -%}
+    {%- unless product.featured_media -%}{%- continue -%}{%- endunless -%}
+    {%- if current == pick -%}
+      {%- assign found_image = product.featured_media.preview_image -%}
+      {%- break -%}
+    {%- endif -%}
+    {%- assign current = current | plus: 1 -%}
+  {%- endfor -%}
+
+  {%- if found_image == blank -%}
+    {%- for collection in collections limit: 50 -%}
+      {%- if found_image != blank -%}{%- break -%}{%- endif -%}
+      {%- if collection.handle == 'all' or collection.handle == 'frontpage' -%}{%- continue -%}{%- endif -%}
+      {%- unless collection.featured_image -%}{%- continue -%}{%- endunless -%}
+      {%- if current == pick -%}
+        {%- assign found_image = collection.featured_image -%}
+        {%- break -%}
+      {%- endif -%}
+      {%- assign current = current | plus: 1 -%}
+    {%- endfor -%}
+  {%- endif -%}
+
+  {%- if found_image == blank and news_blog != blank -%}
+    {%- for article in news_blog.articles limit: 50 -%}
+      {%- if found_image != blank -%}{%- break -%}{%- endif -%}
+      {%- unless article.image -%}{%- continue -%}{%- endunless -%}
+      {%- if current == pick -%}
+        {%- assign found_image = article.image -%}
+        {%- break -%}
+      {%- endif -%}
+      {%- assign current = current | plus: 1 -%}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endif -%}
+
+{%- if found_image != blank -%}
+  {%- if hero_preview -%}
+    {{
+      found_image
+      | image_url: width: 2000
+      | image_tag:
+        widths: widths,
+        sizes: img_sizes,
+        loading: img_loading,
+        alt: img_alt,
+        class: class,
+        fetchpriority: fetchpriority,
+        width: 100,
+        height: 80,
+        data-gemluxjewel-hero-preview: ''
+    }}
+  {%- else -%}
+    {{
+      found_image
+      | image_url: width: 2000
+      | image_tag:
+        widths: widths,
+        sizes: img_sizes,
+        loading: img_loading,
+        alt: img_alt,
+        class: class,
+        fetchpriority: fetchpriority
+    }}
+  {%- endif -%}
+{%- else -%}
+  {{ 'product-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+{%- endif -%}

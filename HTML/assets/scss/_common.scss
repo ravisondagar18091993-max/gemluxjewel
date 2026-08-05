@@ -1,0 +1,89 @@
+// html {
+//   scrollbar-gutter: stable;
+// }
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+/*----------------------------------------
+   Bootstrap customize
+-----------------------------------------*/
+.container {
+  max-width: 1440px !important;
+  padding-left: 60px !important;
+  padding-right: 60px !important;
+
+  @media #{$lg} {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+  }
+  @media #{$md} {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+}
+
+.h-vh {
+  height: 100vh;
+}
+
+.object-cover {
+  object-fit: cover;
+  object-position: center;
+}
+
+.top-center {
+  top: 50% !important;
+  transform: translateY(-50%);
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.list-none {
+  list-style: none;
+}
+
+.border-none {
+  border: none !important;
+}
+
+.transition {
+  transition: all 0.7s ease !important;
+}
+
+.marquee-img{
+  width: 18px;
+  height: 18px;
+}
+
+
+.prefix {
+  font-size: 18px;
+  line-height: 22px;
+   @media #{$md}{
+      font-size: 16px;
+    }
+}
+
+.section-header {
+
+  .heading {
+    font-size: 50px;
+    line-height: 50px;
+    @media #{$md}{
+      font-size: 45px;
+    }
+    @media #{$sm}{
+      font-size: 40px;
+    }
+  }
+
+  .content {
+    font-size: 18px;
+    line-height: 28px;
+  }
+}

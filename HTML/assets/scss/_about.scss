@@ -1,0 +1,77 @@
+.about-page {
+
+    .about-hero-img {
+        width: 741px;
+        @media #{$md} {
+            margin-top: 30px;
+            width: 100% !important;
+        }
+    }
+
+    // our-history-section
+    .our-history-section {
+        padding-top: 140px;
+        padding-bottom: 90px;
+        @media #{$lg}{
+            padding-top: 100px;
+            padding-bottom: 30px;
+        }
+
+        .timeline-wrapper {
+            .timeline-line {
+                height: 2px;
+                background-color: $theme-primary;
+            }
+
+            .history-slider {
+
+                .history-slide {
+                    .history {
+                        padding-right: 20px;
+                    }
+
+                    .year-badge {
+                        background-color: $theme-primary;
+                        border-radius: $radius30;
+                        padding: 6px 20px;
+                        display: inline-block;
+                        font-size: 14px;
+                        line-height: 18px;
+                    }
+
+                    .history-img {
+                        border-radius: $radius10;
+                        overflow: hidden;
+                    }
+
+                    .title {
+                        font-size: 18px;
+                        line-height: 24px;
+                    }
+
+                    .desc {
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+                }
+            }
+        }
+    }
+    .testimonial-section{
+        padding-bottom: 200px;
+    }
+    .our-team-section {
+        padding-top: 175px;
+        @media #{$lg}{
+            padding-top: 70px;
+        }
+        .member-name {
+            font-size: 20px;
+            line-height: 27px;
+        }
+        .member-position{
+            font-size: 16px;
+            line-height: 20px;
+        }
+    }
+}

@@ -1,0 +1,754 @@
+/* gemluxjewel PDP — matches HTML/product-open.html */
+
+.gemluxjewel-pdp,
+.gemluxjewel-pdp-faq,
+.gemluxjewel-pdp-related {
+  --gemluxjewel-primary: #1a5543;
+  --gemluxjewel-secondary: #fff8f4;
+  --gemluxjewel-dark: #141414;
+  --gemluxjewel-gray: #818181;
+  --gemluxjewel-orange: #e37859;
+  --gemluxjewel-radius: 10px;
+  --gemluxjewel-radius-pill: 30px;
+  --gemluxjewel-font-body: 'Instrument Sans', var(--font-body-family), sans-serif;
+  --gemluxjewel-font-heading: 'Nunito', var(--font-heading-family), sans-serif;
+}
+
+.gemluxjewel-pdp .gemluxjewel-container,
+.gemluxjewel-pdp-faq .gemluxjewel-container,
+.gemluxjewel-pdp-related .gemluxjewel-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+@media (max-width: 1200px) {
+  .gemluxjewel-pdp .gemluxjewel-container,
+  .gemluxjewel-pdp-faq .gemluxjewel-container,
+  .gemluxjewel-pdp-related .gemluxjewel-container { padding-left: 30px; padding-right: 30px; }
+}
+
+@media (max-width: 991px) {
+  .gemluxjewel-pdp .gemluxjewel-container,
+  .gemluxjewel-pdp-faq .gemluxjewel-container,
+  .gemluxjewel-pdp-related .gemluxjewel-container { padding-left: 15px; padding-right: 15px; }
+}
+
+/* ── Main product ── */
+.gemluxjewel-pdp {
+  background: var(--gemluxjewel-secondary);
+  padding: 0 0 135px;
+  font-family: var(--gemluxjewel-font-body);
+}
+
+@media (max-width: 991px) {
+  .gemluxjewel-pdp { padding-bottom: 80px; }
+}
+
+.gemluxjewel-pdp__topbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.gemluxjewel-pdp__breadcrumb {
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.43px;
+  text-transform: uppercase;
+  color: var(--gemluxjewel-primary);
+  margin: 0;
+}
+
+.gemluxjewel-pdp__breadcrumb a {
+  color: var(--gemluxjewel-primary);
+  text-decoration: none;
+}
+
+.gemluxjewel-pdp__breadcrumb a:hover { opacity: 0.85; }
+
+.gemluxjewel-pdp__breadcrumb span {
+  color: rgba(26, 85, 67, 0.5);
+}
+
+.gemluxjewel-pdp__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--gemluxjewel-primary);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.gemluxjewel-pdp__back-arrow {
+  transform: rotate(180deg);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.gemluxjewel-pdp__back-arrow img {
+  width: 100%;
+  height: auto;
+}
+
+.gemluxjewel-pdp__layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+@media (min-width: 990px) {
+  .gemluxjewel-pdp__layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .gemluxjewel-pdp__info {
+    padding-left: 32px;
+  }
+}
+
+/* Gallery */
+.gemluxjewel-pdp__gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.gemluxjewel-pdp__gallery-item {
+  height: 358px;
+  border-radius: var(--gemluxjewel-radius);
+  overflow: hidden;
+  background: #f7f7f7;
+}
+
+.gemluxjewel-pdp__gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Info */
+.gemluxjewel-pdp__meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.gemluxjewel-pdp__heart {
+  width: 22px;
+  display: block;
+}
+
+.gemluxjewel-pdp__heart img { width: 22px; height: auto; }
+
+.gemluxjewel-pdp__title {
+  font-family: var(--gemluxjewel-font-heading);
+  font-weight: 500;
+  font-size: 50px;
+  line-height: 69px;
+  color: var(--gemluxjewel-primary);
+  margin: 0 0 12px;
+}
+
+@media (max-width: 1199px) {
+  .gemluxjewel-pdp__title { font-size: 42px; line-height: 55px; }
+}
+
+@media (max-width: 575px) {
+  .gemluxjewel-pdp__title { font-size: 34px; line-height: 45px; }
+}
+
+.gemluxjewel-pdp__price-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.gemluxjewel-pdp__sell-price {
+  font-family: var(--gemluxjewel-font-body);
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 32px;
+  color: var(--gemluxjewel-dark);
+}
+
+.gemluxjewel-pdp__regular-price {
+  font-size: 18px;
+  line-height: 22px;
+  color: var(--gemluxjewel-gray);
+  text-decoration: line-through;
+}
+
+.gemluxjewel-pdp__description {
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--gemluxjewel-gray);
+  margin: 0 0 45px;
+}
+
+.gemluxjewel-pdp__description p { margin: 0 0 1em; }
+.gemluxjewel-pdp__description p:last-child { margin-bottom: 0; }
+
+.gemluxjewel-pdp__variants-block {
+  margin-bottom: 40px;
+}
+
+.gemluxjewel-pdp__variant-selects {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 32px 48px;
+  width: 100%;
+}
+
+.gemluxjewel-pdp__option {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 16px 24px;
+  border: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  flex: 0 1 auto;
+}
+
+.gemluxjewel-pdp__option-label {
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--gemluxjewel-dark);
+  margin: 0;
+  padding-top: 14px;
+  padding-bottom: 12px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.gemluxjewel-pdp__option-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+  min-width: 132px;
+}
+
+.gemluxjewel-pdp__option-values {
+  display: flex;
+
+  align-items: stretch;
+  gap: 10px;
+  width: 100%;
+  position: relative;
+}
+
+.gemluxjewel-pdp__option-values input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+/* Material / size pills — stacked right */
+.gemluxjewel-pdp__option--pill .gemluxjewel-pdp__option-values {
+  align-items: flex-end;
+}
+
+.gemluxjewel-pdp__pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 132px;
+  min-height: 46px;
+  padding: 10px 28px;
+  border: 1px solid var(--gemluxjewel-primary);
+  border-radius: var(--gemluxjewel-radius-pill);
+  background: #fff;
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--gemluxjewel-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.gemluxjewel-pdp__option--pill input:checked + .gemluxjewel-pdp__pill {
+  background: var(--gemluxjewel-primary);
+  color: #fff;
+  border-color: var(--gemluxjewel-primary);
+}
+
+.gemluxjewel-pdp__option--pill input.disabled + .gemluxjewel-pdp__pill {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* Color swatches — 60px, stacked right */
+.gemluxjewel-pdp__swatches {
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.gemluxjewel-pdp__swatches .gemluxjewel-swatch {
+  width: 60px;
+  height: 60px;
+  padding: 3px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.gemluxjewel-pdp__swatches .gemluxjewel-swatch--gold {
+  border-color: var(--gemluxjewel-yellow);
+}
+
+.gemluxjewel-pdp__swatches .gemluxjewel-swatch--gold .gemluxjewel-swatch__inner {
+  background: var(--gemluxjewel-yellow);
+}
+
+.gemluxjewel-pdp__swatches .gemluxjewel-swatch--gray {
+  border-color: var(--gemluxjewel-gray-border);
+}
+
+.gemluxjewel-pdp__swatches .gemluxjewel-swatch--gray .gemluxjewel-swatch__inner {
+  background: var(--gemluxjewel-gray-border);
+}
+
+.gemluxjewel-pdp__swatches input:checked + .gemluxjewel-swatch {
+  border-color: var(--gemluxjewel-primary);
+  box-shadow: 0 0 0 2px #fff;
+  transform: none;
+}
+
+.gemluxjewel-pdp__swatches input.disabled + .gemluxjewel-swatch {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.gemluxjewel-pdp__size-guide {
+  font-size: 16px;
+  line-height: 20px;
+  text-transform: uppercase;
+  text-decoration: underline;
+  color: var(--gemluxjewel-dark);
+  white-space: nowrap;
+}
+
+.gemluxjewel-pdp__size-guide:hover {
+  color: var(--gemluxjewel-primary);
+}
+
+.gemluxjewel-pdp__size-guide--solo {
+  display: inline-block;
+  margin-left: auto;
+}
+
+/* Cart row — unified premium pill (qty + add to cart) */
+.gemluxjewel-pdp__cart-row {
+  margin-bottom: 85px;
+  width: 100%;
+}
+
+.gemluxjewel-pdp__cart-pill {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  max-width: 520px;
+  min-height: 55px;
+  border: 2px solid var(--gemluxjewel-primary);
+  border-radius: var(--gemluxjewel-radius-pill);
+  overflow: hidden;
+  background: var(--gemluxjewel-secondary);
+}
+
+.gemluxjewel-pdp__qty-box {
+  flex: 0 0 38%;
+  max-width: 160px;
+  min-width: 118px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  background: var(--gemluxjewel-secondary);
+  border: none;
+}
+
+.gemluxjewel-pdp__qty {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+}
+
+.gemluxjewel-pdp__qty-btn {
+  background: transparent;
+  border: none;
+  font-family: var(--gemluxjewel-font-heading);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--gemluxjewel-primary);
+  cursor: pointer;
+  padding: 0;
+  min-width: 20px;
+  transition: opacity 0.25s ease;
+}
+
+.gemluxjewel-pdp__qty-btn:hover {
+  opacity: 0.65;
+}
+
+.gemluxjewel-pdp__qty-input {
+  width: 28px;
+  text-align: center;
+  border: none;
+  background: transparent;
+  font-family: var(--gemluxjewel-font-body);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1;
+  color: var(--gemluxjewel-primary);
+  -moz-appearance: textfield;
+  padding: 0;
+}
+
+.gemluxjewel-pdp__qty-input::-webkit-outer-spin-button,
+.gemluxjewel-pdp__qty-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.gemluxjewel-pdp__submit {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 0 28px;
+  border: none;
+  border-radius: 0;
+  background: var(--gemluxjewel-primary);
+  color: var(--gemluxjewel-secondary);
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+.gemluxjewel-pdp__submit-label {
+  white-space: nowrap;
+}
+
+.gemluxjewel-pdp__submit:hover:not([disabled]) {
+  background: var(--gemluxjewel-secondary);
+  color: var(--gemluxjewel-primary);
+}
+
+.gemluxjewel-pdp__submit:hover:not([disabled]) .gemluxjewel-pdp__basket-white {
+  display: none;
+}
+
+.gemluxjewel-pdp__submit:hover:not([disabled]) .gemluxjewel-pdp__basket-green {
+  display: block;
+}
+
+.gemluxjewel-pdp__submit[disabled] {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.gemluxjewel-pdp__basket-icon {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.gemluxjewel-pdp__basket-icon img {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.gemluxjewel-pdp__basket-green {
+  display: none;
+}
+
+.gemluxjewel-pdp__submit .loading__spinner {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 991px) {
+  .gemluxjewel-pdp__cart-pill {
+    max-width: 100%;
+  }
+
+  .gemluxjewel-pdp__submit {
+    padding: 0 20px;
+    font-size: 14px;
+    letter-spacing: 0.4px;
+  }
+}
+
+@media (max-width: 767px) {
+  .gemluxjewel-pdp__cart-row {
+    margin-bottom: 48px;
+  }
+
+  .gemluxjewel-pdp__qty-box {
+    flex: 0 0 34%;
+    min-width: 108px;
+    padding: 0 14px;
+  }
+
+  .gemluxjewel-pdp__qty {
+    gap: 10px;
+  }
+
+  .gemluxjewel-pdp__submit {
+    padding: 0 16px;
+    gap: 8px;
+  }
+
+  .gemluxjewel-pdp__variant-selects {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+
+  .gemluxjewel-pdp__option {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .gemluxjewel-pdp__option-right {
+    align-items: flex-end;
+    min-width: 0;
+  }
+
+  .gemluxjewel-pdp__option--pill .gemluxjewel-pdp__option-values,
+  .gemluxjewel-pdp__swatches {
+    align-items: flex-end;
+  }
+}
+
+.gemluxjewel-pdp__error {
+  color: #c0392b;
+  font-size: 14px;
+  margin-top: 12px;
+}
+
+/* Hide Dawn variant-selects default styles leakage */
+.gemluxjewel-pdp variant-selects .form__label { display: none; }
+
+/* ── FAQ (matches HTML/product-open.html .faq-section) ── */
+.gemluxjewel-pdp-faq {
+  background: var(--gemluxjewel-secondary);
+  padding: 150px 0 70px;
+  font-family: var(--gemluxjewel-font-body);
+}
+
+@media (max-width: 1200px) {
+  .gemluxjewel-pdp-faq { padding: 100px 0 50px; }
+}
+
+.gemluxjewel-pdp-faq__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+@media (min-width: 990px) {
+  .gemluxjewel-pdp-faq__grid {
+    grid-template-columns: 5fr 7fr;
+    gap: 0;
+  }
+}
+
+.gemluxjewel-pdp-faq__header {
+  margin-bottom: 16px;
+}
+
+@media (min-width: 990px) {
+  .gemluxjewel-pdp-faq__header { margin-bottom: 0; }
+}
+
+.gemluxjewel-pdp-faq__prefix {
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  color: var(--gemluxjewel-dark);
+}
+
+.gemluxjewel-pdp-faq__title {
+  line-height: 60px;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 576px) {
+  .gemluxjewel-pdp-faq__title { line-height: 55px; }
+}
+
+.gemluxjewel-pdp-faq__desc {
+  margin-bottom: 16px;
+}
+
+@media (min-width: 990px) {
+  .gemluxjewel-pdp-faq__desc { padding-right: 48px; }
+}
+
+.gemluxjewel-pdp-faq .gemluxjewel-btn {
+  text-transform: capitalize;
+}
+
+/* Accordion — HTML .accordian-block / .closet-accordion */
+.gemluxjewel-pdp-faq__accordian-block {
+  width: 100%;
+}
+
+.gemluxjewel-pdp-faq .closet-accordion:last-child {
+  border-bottom: 1px solid rgba(20, 20, 20, 0.25);
+}
+
+.gemluxjewel-pdp-faq .closet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 35px 0;
+  border-top: 1px solid rgba(20, 20, 20, 0.25);
+  cursor: pointer;
+  transition: all 0.7s ease;
+}
+
+@media (max-width: 576px) {
+  .gemluxjewel-pdp-faq .closet-header {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+}
+
+.gemluxjewel-pdp-faq .closet-header-title {
+  font-family: var(--gemluxjewel-font-body);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: var(--gemluxjewel-dark);
+  text-transform: capitalize;
+  margin: 0;
+  padding-right: 16px;
+}
+
+@media (max-width: 576px) {
+  .gemluxjewel-pdp-faq .closet-header-title { font-size: 16px; }
+}
+
+.gemluxjewel-pdp-faq .accordion-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 999px;
+  transition: transform 0.7s ease;
+}
+
+.gemluxjewel-pdp-faq .accordion-close img {
+  height: 24px;
+  width: auto;
+  display: block;
+}
+
+.gemluxjewel-pdp-faq .closet-header.active .accordion-close {
+  transform: rotate(180deg);
+}
+
+.gemluxjewel-pdp-faq .closet-content {
+  display: none;
+}
+
+.gemluxjewel-pdp-faq .closet-content__inner {
+  margin-right: 24px;
+  padding-bottom: 35px;
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--gemluxjewel-dark);
+}
+
+.gemluxjewel-pdp-faq .closet-content__inner p {
+  margin: 0;
+}
+
+.gemluxjewel-pdp-faq .closet-content__inner p + p {
+  margin-top: 12px;
+}
+
+/* ── Related products ── */
+.gemluxjewel-pdp-related {
+  background: var(--gemluxjewel-secondary);
+  padding: 120px 0 140px;
+}
+
+@media (max-width: 991px) {
+  .gemluxjewel-pdp-related { padding: 50px 0 70px; }
+}
+
+.gemluxjewel-pdp-related .gemluxjewel-section-header {
+  margin-bottom: 24px;
+}
+
+.gemluxjewel-pdp-related .gemluxjewel-products__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .gemluxjewel-pdp-related .gemluxjewel-products__grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 1200px) {
+  .gemluxjewel-pdp-related .gemluxjewel-products__grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+.gemluxjewel-pdp-related .gemluxjewel-card { margin-bottom: 0; }
+
+.visually-hidden {
+  position: absolute !important;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+}

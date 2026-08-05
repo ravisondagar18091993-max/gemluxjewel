@@ -1,0 +1,223 @@
+.gemluxjewel-contact {
+  background: var(--gemluxjewel-primary);
+  color: #fbfaf9;
+  padding: 250px 0 120px;
+}
+
+@media (max-width: 1199px) {
+  .gemluxjewel-contact {
+    padding-top: 200px;
+  }
+}
+
+@media (max-width: 991px) {
+  .gemluxjewel-contact {
+    padding: 160px 0 80px;
+  }
+}
+
+.gemluxjewel-contact__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.75fr);
+  gap: 48px 64px;
+  align-items: start;
+}
+
+@media (max-width: 991px) {
+  .gemluxjewel-contact__layout {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+.gemluxjewel-contact__heading {
+  font-family: var(--gemluxjewel-font-heading);
+  font-weight: 500;
+  font-size: 50px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: #fbfaf9;
+  margin: 0 0 8px;
+}
+
+@media (max-width: 576px) {
+  .gemluxjewel-contact__heading {
+    font-size: 45px;
+  }
+}
+
+.gemluxjewel-contact__intro {
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 18px;
+  line-height: 28px;
+  color: rgba(251, 250, 249, 0.7);
+  margin: 0 0 50px;
+}
+
+.gemluxjewel-contact__block {
+  margin-bottom: 32px;
+}
+
+.gemluxjewel-contact__block:last-child {
+  margin-bottom: 0;
+}
+
+.gemluxjewel-contact__label {
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 16px;
+  line-height: 20px;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0 0 12px;
+}
+
+.gemluxjewel-contact__detail,
+.gemluxjewel-contact__detail p {
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+.gemluxjewel-contact__detail a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.gemluxjewel-contact__detail a:hover {
+  color: #fff;
+}
+
+.gemluxjewel-contact__address {
+  margin-bottom: 12px !important;
+}
+
+.gemluxjewel-contact__directions {
+  text-decoration: underline !important;
+  text-transform: uppercase;
+}
+
+.gemluxjewel-contact__form-heading {
+  font-family: var(--gemluxjewel-font-heading);
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: #fbfaf9;
+  margin: 0 0 50px;
+}
+
+@media (max-width: 576px) {
+  .gemluxjewel-contact__form-heading {
+    font-size: 26px;
+  }
+}
+
+.gemluxjewel-contact__fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 20px;
+}
+
+@media (max-width: 767px) {
+  .gemluxjewel-contact__fields {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+.gemluxjewel-contact__field {
+  margin-bottom: 0;
+}
+
+.gemluxjewel-contact__field--full {
+  grid-column: 1 / -1;
+}
+
+.gemluxjewel-contact__field-label {
+  display: block;
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 16px;
+  line-height: 20px;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0 0 12px;
+}
+
+@media (max-width: 576px) {
+  .gemluxjewel-contact__field-label {
+    font-size: 14px;
+  }
+}
+
+.gemluxjewel-contact__input,
+.gemluxjewel-contact__textarea {
+  width: 100%;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--gemluxjewel-radius, 10px);
+  padding: 10px 12px;
+  outline: none;
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 16px;
+  line-height: 22px;
+  color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+.gemluxjewel-contact__input {
+  height: 52px;
+  margin-bottom: 38px;
+}
+
+.gemluxjewel-contact__textarea {
+  min-height: 145px;
+  resize: vertical;
+  margin-bottom: 0;
+}
+
+.gemluxjewel-contact__input:focus,
+.gemluxjewel-contact__textarea:focus {
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.gemluxjewel-contact__input::placeholder,
+.gemluxjewel-contact__textarea::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.gemluxjewel-contact__submit {
+  margin-top: 60px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.gemluxjewel-contact__status {
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0 0 24px;
+  padding: 16px 20px;
+  border-radius: var(--gemluxjewel-radius, 10px);
+}
+
+.gemluxjewel-contact__status--success {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.gemluxjewel-contact__status--error {
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+
+.gemluxjewel-contact__errors {
+  margin: 12px 0 0;
+  padding-left: 18px;
+}
+
+.gemluxjewel-contact__errors a {
+  color: #fff;
+}

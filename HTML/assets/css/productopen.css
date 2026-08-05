@@ -1,0 +1,21 @@
+.product-open-section {
+  padding-top: 218px;
+}
+.product-open-section .right-arrow {
+  transform: rotate(180deg);
+}
+.product-open-section .product-breadcrumb {
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.43px;
+}
+.product-open-section .product-breadcrumb span {
+  color: rgba(26, 85, 67, 0.5019607843) !important;
+}
+.product-open-section .back-btn {
+  font-size: 16px;
+  line-height: 24px;
+}
+.product-open-section .gallery-image {
+  height: 358px;
+}/*# sourceMappingURL=productopen.css.map */

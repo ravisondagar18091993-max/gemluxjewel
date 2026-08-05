@@ -1,0 +1,51 @@
+{%- if paginate.pages > 1 -%}
+  {{ 'gemluxjewel-pagination.css' | asset_url | stylesheet_tag }}
+
+  <nav class="gemluxjewel-pagination" aria-label="{{ 'general.pagination.label' | t }}">
+    <div class="gemluxjewel-pagination__inner">
+      {%- if paginate.previous -%}
+        <a href="{{ paginate.previous.url }}" class="gemluxjewel-pagination__btn gemluxjewel-pagination__btn--prev">
+          <span class="gemluxjewel-pagination__chevron" aria-hidden="true">‹</span>
+          <span class="gemluxjewel-pagination__btn-text">{{ 'general.pagination.previous' | t }}</span>
+        </a>
+      {%- else -%}
+        <span class="gemluxjewel-pagination__btn gemluxjewel-pagination__btn--prev is-disabled">
+          <span class="gemluxjewel-pagination__chevron" aria-hidden="true">‹</span>
+          <span class="gemluxjewel-pagination__btn-text">{{ 'general.pagination.previous' | t }}</span>
+        </span>
+      {%- endif -%}
+
+      <div class="gemluxjewel-pagination__pages">
+        {%- for part in paginate.parts -%}
+          {%- if part.is_link -%}
+            <a
+              href="{{ part.url }}"
+              class="gemluxjewel-pagination__page{% if paginate.current_page > 4 and part.title == '1' %} gemluxjewel-pagination__page--hide-sm{% endif %}{% if paginate.pages > 5 and part.title == paginate.pages %} gemluxjewel-pagination__page--hide-sm{% endif %}"
+              aria-label="{{ 'general.pagination.page' | t: number: part.title }}"
+            >
+              {{ part.title }}
+            </a>
+          {%- elsif part.title == paginate.current_page -%}
+            <span class="gemluxjewel-pagination__page is-active" aria-current="page">{{ part.title }}</span>
+          {%- elsif part.title == '…' or part.title == '...' -%}
+            <span class="gemluxjewel-pagination__ellipsis" aria-hidden="true">…</span>
+          {%- else -%}
+            <span class="gemluxjewel-pagination__page">{{ part.title }}</span>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      {%- if paginate.next -%}
+        <a href="{{ paginate.next.url }}" class="gemluxjewel-pagination__btn gemluxjewel-pagination__btn--next">
+          <span class="gemluxjewel-pagination__btn-text">{{ 'general.pagination.next' | t }}</span>
+          <span class="gemluxjewel-pagination__chevron" aria-hidden="true">›</span>
+        </a>
+      {%- else -%}
+        <span class="gemluxjewel-pagination__btn gemluxjewel-pagination__btn--next is-disabled">
+          <span class="gemluxjewel-pagination__btn-text">{{ 'general.pagination.next' | t }}</span>
+          <span class="gemluxjewel-pagination__chevron" aria-hidden="true">›</span>
+        </span>
+      {%- endif -%}
+    </div>
+  </nav>
+{%- endif -%}

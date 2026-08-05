@@ -1,0 +1,50 @@
+// colors
+$theme-primary: #1a5543;
+$theme-secondary: #fff8f4;
+$layer-bg: #433f3f4d;
+$orange-btn-bg: #e37859;
+$pink-btn-bg :#FFE7E0;  
+
+//font color
+$offwhite: #fafafa;
+$white: #ffffff;
+$gray :#818181;
+$darkgray: #141414;
+$yellowborder: #d6c372;
+$grayborder: #bec7c7;
+$text-FBFAF9 : #FBFAF9;
+
+//border-radius
+$radius5: 5px;
+$radius10: 10px;
+$radius30: 30px;
+
+//utilities
+.theme-primary {
+  background-color: $theme-primary !important;
+}
+.theme-secondary {
+  background-color: $theme-secondary !important;
+}
+.text-primary {
+  color: $theme-primary !important;
+}
+.text-secondary {
+  color: $theme-secondary !important;
+}
+.text-gray {
+  color: $gray !important;
+}
+.text-darkgray {
+  color: $darkgray;
+}
+.text-FBFAF9{
+  color: $text-FBFAF9;
+}
+
+// Responsive Variables
+$laptop: '(max-width: 1600px)';
+$lg : '(max-width: 1200px)';
+$md:'(max-width: 991px)';
+$xs:'(max-width: 767px)';
+$sm: '(max-width: 576px)';  

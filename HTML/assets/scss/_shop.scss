@@ -1,0 +1,129 @@
+.sub-hero-section {
+  padding-top: 200px;
+  padding-bottom: 51px;
+  border-top: 1px solid rgba($theme-secondary, 0.2);
+  border-bottom: 1px solid rgba($theme-secondary, 0.2);
+
+  .sub-hero-img {
+    width: 518px;
+    border-radius: $radius10;
+
+    @media #{$md} {
+      margin-top: 30px;
+      width: 100% !important;
+    }
+  }
+
+  .prefix {
+    letter-spacing: 0.43px;
+
+    span {
+      color: rgba($white, 0.5);
+    }
+  }
+
+  .heading {
+    font-size: 50px;
+    line-height: 60px;
+
+    @media #{$md} {
+      font-size: 40px;
+      line-height: 50px;
+    }
+  }
+
+  .content {
+    color: rgba($white, 0.7);
+    font-size: 18px;
+    line-height: 32px;
+
+    @media #{$md} {
+      font-size: 16px;
+      line-height: 30px;
+    }
+  }
+}
+
+// product-section
+.product-section {
+  padding-top: 50px;
+  padding-bottom: 120px;
+
+  .filter-toggle-btn {
+    background-color: $theme-primary;
+    color: $white;
+    padding: 16px 14px 16px 25px;
+    font-size: 16px;
+
+    .form-check-input {
+      width: 44px;
+      height: 24px;
+      background-color: $grayborder;
+      border: none;
+
+      background-image: url("../images/green-dot.svg");
+
+      &:checked {
+        background-color: $white;
+        background-image: url("../images/green-dot.svg");
+      }
+
+      &:focus {
+        box-shadow: none;
+        border-color: transparent;
+      }
+    }
+  }
+
+  .sort-dropdown {
+
+    select {
+      font-size: 13px;
+      color: $darkgray;
+      letter-spacing: 0.5px;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+        box-shadow: none;
+      }
+    }
+  }
+
+}
+
+.pagination-wrapper {
+  .page-btn {
+    height: 50px;
+    background-color: rgba($theme-primary, 0.1);
+    border-radius: $radius30;
+    padding: 12px 20px;
+    font-size: 18px;
+    line-height: 22px;
+
+    @media #{$sm} {
+      height: 40px;
+      padding: 12px 16px;
+      font-size: 14px;
+      line-height: 14px;
+    }
+
+    &.prev-btn,
+    &.next-btn {
+      width: 120px;
+
+      @media #{$sm} {
+        width: 90px;
+      }
+    }
+
+    &.active,
+    &:hover {
+      background-color: $theme-primary;
+      color: $white !important;
+    }
+  }
+}

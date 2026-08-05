@@ -1,0 +1,207 @@
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-product.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign product_form_id = 'product-form-' | append: section.id
+  assign current_variant = product.selected_or_first_available_variant
+  assign badge_text = ''
+  if product.tags contains 'new' or product.tags contains 'New In' or product.tags contains 'NEW IN'
+    assign badge_text = 'NEW IN'
+  endif
+
+  assign back_url = collection.url
+  if back_url == blank and product.collections.first
+    assign back_url = product.collections.first.url
+  endif
+  if back_url == blank
+    assign back_url = routes.all_products_collection_url
+  endif
+
+  assign breadcrumb_collection = collection.title
+  if breadcrumb_collection == blank and product.collections.first
+    assign breadcrumb_collection = product.collections.first.title
+  endif
+-%}
+
+<product-info
+  id="MainProduct-{{ section.id }}"
+  data-section="{{ section.id }}"
+  data-product-id="{{ product.id }}"
+  data-update-url="true"
+  data-url="{{ product.url }}"
+>
+  <section class="gemluxjewel gemluxjewel-pdp">
+    <div class="gemluxjewel-container">
+      <div class="gemluxjewel-pdp__topbar">
+        <p class="gemluxjewel-pdp__breadcrumb">
+          <a href="{{ routes.root_url }}">{{ section.settings.breadcrumb_home | default: 'HOME' | escape }}</a>
+          |
+          {%- if breadcrumb_collection != blank -%}
+            {%- if back_url != blank -%}
+              <a href="{{ back_url }}">{{ section.settings.breadcrumb_collections | default: 'COLLECTIONS' | escape }}</a>
+            {%- else -%}
+              {{ section.settings.breadcrumb_collections | default: 'COLLECTIONS' | escape }}
+            {%- endif -%}
+            |
+            <span>{{ breadcrumb_collection | upcase | escape }}</span>
+          {%- else -%}
+            <span>{{ product.title | upcase | escape }}</span>
+          {%- endif -%}
+        </p>
+        <a href="{{ back_url }}" class="gemluxjewel-pdp__back">
+          <span class="gemluxjewel-pdp__back-arrow">
+            <img src="{{ 'green-right-arrow.svg' | asset_url }}" alt="" width="24" height="24">
+          </span>
+          {{ section.settings.back_label | default: 'Return to Store' | escape }}
+        </a>
+      </div>
+
+      <div class="gemluxjewel-pdp__layout">
+        <div class="gemluxjewel-pdp__gallery-col">
+          {% render 'gemluxjewel-pdp-gallery' %}
+        </div>
+
+        <div class="gemluxjewel-pdp__info">
+          <div class="gemluxjewel-pdp__meta-row">
+            {%- if badge_text != blank -%}
+              <span class="gemluxjewel-badge">{{ badge_text }}</span>
+            {%- else -%}
+              <span aria-hidden="true"></span>
+            {%- endif -%}
+            <a href="#" class="gemluxjewel-pdp__heart" aria-label="Wishlist">
+              <img src="{{ 'heart.svg' | asset_url }}" alt="" width="22" height="22">
+            </a>
+          </div>
+
+          <h1 class="gemluxjewel-pdp__title">{{ product.title | escape }}</h1>
+
+          <div id="price-{{ section.id }}" role="status">
+            {% render 'gemluxjewel-pdp-price' %}
+          </div>
+
+          {%- if product.description != blank -%}
+            <div class="gemluxjewel-pdp__description rte">{{ product.description }}</div>
+          {%- endif -%}
+
+          {%- unless product.has_only_default_variant -%}
+            <div class="gemluxjewel-pdp__variants-block">
+              {% render 'gemluxjewel-pdp-variant-picker' %}
+            </div>
+          {%- else -%}
+            {%- if section.settings.size_guide_url != blank -%}
+              <div class="gemluxjewel-pdp__variants-block">
+                <a href="{{ section.settings.size_guide_url }}" class="gemluxjewel-pdp__size-guide gemluxjewel-pdp__size-guide--solo">
+                  {{ section.settings.size_guide_label | default: 'Size Guide' | escape }}
+                </a>
+              </div>
+            {%- endif -%}
+          {%- endunless -%}
+
+          <product-form class="product-form" data-section-id="{{ section.id }}">
+            {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+              <input
+                type="hidden"
+                name="id"
+                value="{{ current_variant.id }}"
+                {% if current_variant.available == false %}disabled{% endif %}
+                class="product-variant-id"
+              >
+
+              <div class="gemluxjewel-pdp__cart-row product-form__quantity">
+                <div class="gemluxjewel-pdp__cart-pill">
+                  <div class="gemluxjewel-pdp__qty-box">
+                    <quantity-input class="gemluxjewel-pdp__qty">
+                      <button class="gemluxjewel-pdp__qty-btn" name="minus" type="button" aria-label="{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}">−</button>
+                      <input
+                        class="gemluxjewel-pdp__qty-input quantity__input"
+                        type="number"
+                        name="quantity"
+                        id="Quantity-{{ section.id }}"
+                        min="1"
+                        value="1"
+                        form="{{ product_form_id }}"
+                        aria-label="{{ 'products.product.quantity.input_label' | t: product: product.title | escape }}"
+                      >
+                      <button class="gemluxjewel-pdp__qty-btn" name="plus" type="button" aria-label="{{ 'products.product.quantity.increase' | t: product: product.title | escape }}">+</button>
+                    </quantity-input>
+                  </div>
+
+                  <button
+                    type="submit"
+                    name="add"
+                    id="ProductSubmitButton-{{ section.id }}"
+                    class="gemluxjewel-pdp__submit"
+                    {% if current_variant.available == false %}disabled{% endif %}
+                  >
+                    <span class="gemluxjewel-pdp__basket-icon" aria-hidden="true">
+                      <img src="{{ 'basket.svg' | asset_url }}" alt="" class="gemluxjewel-pdp__basket-white" width="22" height="22">
+                      <img src="{{ 'green-basket.svg' | asset_url }}" alt="" class="gemluxjewel-pdp__basket-green" width="22" height="22">
+                    </span>
+                    <span class="gemluxjewel-pdp__submit-label">
+                      {%- if current_variant.available -%}
+                        {{ section.settings.add_to_cart_label | default: 'ADD TO CART' | escape }}
+                      {%- else -%}
+                        {{ 'products.product.sold_out' | t }}
+                      {%- endif -%}
+                    </span>
+                    {%- render 'loading-spinner' -%}
+                  </button>
+                </div>
+              </div>
+            {%- endform -%}
+          </product-form>
+        </div>
+      </div>
+    </div>
+  </section>
+</product-info>
+
+{% schema %}
+{
+  "name": "gemluxjewel Main Product",
+  "tag": "section",
+  "class": "gemluxjewel-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "breadcrumb_home",
+      "label": "Breadcrumb home",
+      "default": "HOME"
+    },
+    {
+      "type": "text",
+      "id": "breadcrumb_collections",
+      "label": "Breadcrumb collections",
+      "default": "COLLECTIONS"
+    },
+    {
+      "type": "text",
+      "id": "back_label",
+      "label": "Back link label",
+      "default": "Return to Store"
+    },
+    {
+      "type": "text",
+      "id": "add_to_cart_label",
+      "label": "Add to cart label",
+      "default": "ADD TO CART"
+    },
+    {
+      "type": "text",
+      "id": "size_guide_label",
+      "label": "Size guide label",
+      "default": "SIZE GUIDE"
+    },
+    {
+      "type": "url",
+      "id": "size_guide_url",
+      "label": "Size guide link"
+    }
+  ]
+}
+{% endschema %}

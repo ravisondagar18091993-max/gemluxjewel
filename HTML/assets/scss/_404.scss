@@ -1,0 +1,51 @@
+.error-page-section {
+  padding-top: 200px;
+  padding-bottom: 100px;
+  .heading {
+    font-size: 400px;
+    line-height: 400px;
+    @media #{$md} {
+      font-size: 200px;
+      line-height: 200px;
+    }
+  }
+  .error-content {
+    font-size: 65px;
+    @media #{$md} {
+      font-size: 27px;
+    }
+  }
+  .return-btn {
+    height: 80px;
+    background-color: $theme-primary;
+    border-radius: 200px;
+    padding-left: 232px;
+    padding-right: 232px;
+    @media #{$md} {
+      height: 70px;
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+    a {
+      font-size: 24px;
+      line-height: 29px;
+      @media #{$md} {
+        font-size: 20px;
+        line-height: 20px;
+      }
+    }
+  }
+  .center-img {
+    height: 250px;
+    width: 150px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 40%;
+    overflow: hidden;
+    @media #{$md} {
+      height: 130px;
+      width: 80px;
+    }
+  }
+}
