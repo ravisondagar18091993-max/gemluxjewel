@@ -44,21 +44,18 @@
 }
 
 .gemluxjewel-header__wrap {
-  padding: 0 15px;
-}
-
-@media (min-width: 1200px) {
-  .gemluxjewel-header__wrap { padding: 0 60px; }
+  padding: 0;
 }
 
 .gemluxjewel-header__main {
   position: relative;
-  max-width: 1440px;
-  margin: 16px auto 0;
+  width: 100%;
+  max-width: none;
+  margin: 0;
   background: var(--gemluxjewel-secondary, #fff8f4);
-  border-radius: 10px;
+  border-radius: 0;
   box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px;
-  transition: background-color 0.7s ease, border-radius 0.3s ease;
+  transition: background-color 0.7s ease;
 }
 
 .gemluxjewel-header__main.is-mega-open {
@@ -71,7 +68,9 @@
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 12px;
-  padding: 12px 20px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 12px 15px;
 }
 
 .gemluxjewel-header__left {
@@ -87,7 +86,24 @@
 }
 
 @media (min-width: 1200px) {
-  .gemluxjewel-header__inner { padding: 0 24px; min-height: 72px; }
+  .gemluxjewel-header__inner {
+    padding: 0 60px;
+    min-height: 72px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .gemluxjewel-header__inner {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media (max-width: 991px) {
+  .gemluxjewel-header__inner {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
 
 .gemluxjewel-header__nav {
@@ -232,8 +248,8 @@
   left: 0;
   right: 0;
   background: var(--gemluxjewel-secondary, #fff8f4);
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.05);
   opacity: 0;
   visibility: hidden;
@@ -248,8 +264,24 @@
 }
 
 .gemluxjewel-header__mega-inner {
-  padding: 40px 24px 40px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 40px 15px;
   border-top: 1px solid rgba(112, 112, 112, 0.5);
+}
+
+@media (min-width: 1200px) {
+  .gemluxjewel-header__mega-inner {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .gemluxjewel-header__mega-inner {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 }
 
 .gemluxjewel-header__mega-grid {
