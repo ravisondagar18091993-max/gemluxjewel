@@ -1,0 +1,175 @@
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'gemluxjewel-stone-shapes.js' | asset_url }}" defer="defer"></script>
+
+<section class="gemluxjewel gemluxjewel-stone-shapes">
+  <div class="gemluxjewel-container">
+    <div class="gemluxjewel-section-header gemluxjewel-section-header--center">
+      <div>
+        {%- if section.settings.title != blank -%}
+          <h2 class="gemluxjewel-section-title">{{ section.settings.title }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subtitle != blank -%}
+          <p class="gemluxjewel-section-desc">{{ section.settings.subtitle }}</p>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="gemluxjewel-stone-shapes__slider" data-gemluxjewel-stone-shapes-slider>
+        <button
+          type="button"
+          class="gemluxjewel-stone-shapes__nav gemluxjewel-stone-shapes__nav--prev"
+          data-gemluxjewel-stone-shapes-prev
+          aria-label="Previous shapes"
+          disabled
+        >
+          <img src="{{ 'green-right-arrow.svg' | asset_url }}" alt="" width="16" height="16" class="gemluxjewel-stone-shapes__nav-icon gemluxjewel-stone-shapes__nav-icon--prev">
+        </button>
+
+        <div class="gemluxjewel-stone-shapes__viewport">
+          <div class="gemluxjewel-stone-shapes__track" data-gemluxjewel-stone-shapes-track>
+            {%- for block in section.blocks -%}
+              {%- liquid
+                assign shape_title = block.settings.title
+                assign shape_collection = block.settings.collection
+                assign shape_image = block.settings.image
+
+                if shape_title == blank and shape_collection != blank
+                  assign shape_title = shape_collection.title
+                endif
+
+                if shape_image == blank and shape_collection != blank
+                  assign shape_image = shape_collection.featured_image
+                endif
+
+                assign shape_url = block.settings.link
+                if shape_url == blank and shape_collection != blank
+                  assign shape_url = shape_collection.url
+                endif
+              -%}
+
+              {%- if shape_url != blank -%}
+                <a href="{{ shape_url }}" class="gemluxjewel-stone-shapes__item" {{ block.shopify_attributes }}>
+              {%- else -%}
+                <div class="gemluxjewel-stone-shapes__item gemluxjewel-stone-shapes__item--static" {{ block.shopify_attributes }}>
+              {%- endif -%}
+                <div class="gemluxjewel-stone-shapes__img">
+                  {%- if shape_image != blank -%}
+                    {{
+                      shape_image
+                      | image_url: width: 400
+                      | image_tag:
+                        widths: '120, 160, 200, 300, 400',
+                        sizes: '120px',
+                        loading: 'lazy',
+                        alt: shape_title
+                    }}
+                  {%- else -%}
+                    {% render 'gemluxjewel-theme-image',
+                      use_store_media: true,
+                      seed: forloop.index,
+                      width: 200,
+                      widths: '120,160,200',
+                      sizes: '120px',
+                      alt: shape_title,
+                      class: 'gemluxjewel-stone-shapes__fallback'
+                    %}
+                  {%- endif -%}
+                </div>
+                {%- if shape_title != blank -%}
+                  <span class="gemluxjewel-stone-shapes__label">{{ shape_title | escape }}</span>
+                {%- endif -%}
+              {%- if shape_url != blank -%}
+                </a>
+              {%- else -%}
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+
+        <button
+          type="button"
+          class="gemluxjewel-stone-shapes__nav gemluxjewel-stone-shapes__nav--next"
+          data-gemluxjewel-stone-shapes-next
+          aria-label="Next shapes"
+        >
+          <img src="{{ 'green-right-arrow.svg' | asset_url }}" alt="" width="16" height="16" class="gemluxjewel-stone-shapes__nav-icon">
+        </button>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "gemluxjewel Stone Shapes",
+  "tag": "section",
+  "class": "section gemluxjewel-section",
+  "max_blocks": 50,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Shop by Stone Shape"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "Explore our collection by diamond and gemstone cut — find the shape that speaks to you."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "shape",
+      "name": "Stone shape",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Shape name",
+          "default": "Round",
+          "info": "e.g. Round, Princess, Marquise, Oval"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Shape image",
+          "info": "Upload a PNG or SVG outline of the stone shape."
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection",
+          "info": "Links to this shape-based collection. Uses collection title and image if left blank."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Custom link",
+          "info": "Optional. Overrides the collection link."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "gemluxjewel Stone Shapes",
+      "blocks": [
+        { "type": "shape", "settings": { "title": "Round" } },
+        { "type": "shape", "settings": { "title": "Princess" } },
+        { "type": "shape", "settings": { "title": "Cushion" } },
+        { "type": "shape", "settings": { "title": "Oval" } },
+        { "type": "shape", "settings": { "title": "Emerald" } },
+        { "type": "shape", "settings": { "title": "Pear" } },
+        { "type": "shape", "settings": { "title": "Marquise" } },
+        { "type": "shape", "settings": { "title": "Asscher" } },
+        { "type": "shape", "settings": { "title": "Radiant" } },
+        { "type": "shape", "settings": { "title": "Heart" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
