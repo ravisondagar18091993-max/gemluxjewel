@@ -184,44 +184,6 @@
         "collection": "all"
       }
     },
-    "gemluxjewel_marquee_strip": {
-      "type": "gemluxjewel-marquee-strip",
-      "blocks": {
-        "m1": {
-          "type": "text",
-          "settings": {
-            "text": "Timeless Style"
-          }
-        },
-        "m2": {
-          "type": "text",
-          "settings": {
-            "text": "Cold Shield"
-          }
-        },
-        "m3": {
-          "type": "text",
-          "settings": {
-            "text": "Smart Insulation"
-          }
-        },
-        "m4": {
-          "type": "text",
-          "settings": {
-            "text": "Winter Comfort"
-          }
-        }
-      },
-      "block_order": [
-        "m1",
-        "m2",
-        "m3",
-        "m4"
-      ],
-      "settings": {
-        "speed": 25
-      }
-    },
     "gemluxjewel_best_sellers": {
       "type": "gemluxjewel-best-sellers",
       "settings": {
@@ -354,7 +316,6 @@
     "gemluxjewel_usp",
     "gemluxjewel_categories",
     "gemluxjewel_new_in",
-    "gemluxjewel_marquee_strip",
     "gemluxjewel_best_sellers",
     "gemluxjewel_why",
     "gemluxjewel_testimonials"
