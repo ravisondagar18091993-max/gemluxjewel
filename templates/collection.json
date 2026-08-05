@@ -9,26 +9,43 @@
  */
 {
   "sections": {
-    "Gemluxjewel_collection_hero": {
-      "type": "Gemluxjewel-collection-hero",
+    "gemluxjewel_collection_hero": {
+      "type": "gemluxjewel-collection-hero",
       "settings": {
         "breadcrumb_home": "HOME",
         "breadcrumb_collections": "COLLECTIONS",
         "fallback_description": "Elegant, timeless jewellery crafted for lasting beauty and everyday luxury. Designed with a smooth finish and classic appeal, perfect for adding a touch of sophistication to any modern or traditional style."
       }
     },
-    "Gemluxjewel_collection_products": {
-      "type": "Gemluxjewel-collection-products",
+    "gemluxjewel_collection_products": {
+      "type": "gemluxjewel-collection-products",
+      "blocks": {
+        "shape_1": { "type": "shape", "settings": { "title": "Round" } },
+        "shape_2": { "type": "shape", "settings": { "title": "Princess" } },
+        "shape_3": { "type": "shape", "settings": { "title": "Cushion" } },
+        "shape_4": { "type": "shape", "settings": { "title": "Oval" } },
+        "shape_5": { "type": "shape", "settings": { "title": "Emerald" } },
+        "shape_6": { "type": "shape", "settings": { "title": "Pear" } },
+        "shape_7": { "type": "shape", "settings": { "title": "Marquise" } },
+        "shape_8": { "type": "shape", "settings": { "title": "Asscher" } },
+        "shape_9": { "type": "shape", "settings": { "title": "Radiant" } },
+        "shape_10": { "type": "shape", "settings": { "title": "Heart" } }
+      },
+      "block_order": ["shape_1", "shape_2", "shape_3", "shape_4", "shape_5", "shape_6", "shape_7", "shape_8", "shape_9", "shape_10"],
       "settings": {
-        "products_per_page": 16,"enable_filtering": true,
+        "products_per_page": 16,
+        "enable_filtering": true,
         "filters_open_by_default": true,
         "filter_label": "Show Filter",
-        "enable_sorting": true
+        "enable_sorting": true,
+        "enable_stone_shapes": true,
+        "stone_shapes_heading": "Diamond Shapes",
+        "stone_shape_filter_label": "Stone shape"
       }
     }
   },
   "order": [
-    "Gemluxjewel_collection_hero",
-    "Gemluxjewel_collection_products"
+    "gemluxjewel_collection_hero",
+    "gemluxjewel_collection_products"
   ]
 }

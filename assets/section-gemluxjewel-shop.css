@@ -816,3 +816,74 @@
 .gemluxjewel-shop .collection.loading .loading-overlay {
   display: block;
 }
+
+/* ── PLP stone shapes ── */
+.gemluxjewel-stone-shapes--plp {
+  padding: 0 0 28px;
+  margin-bottom: 8px;
+  background: transparent;
+}
+
+.gemluxjewel-stone-shapes--plp__heading {
+  font-family: var(--gemluxjewel-font-heading);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gemluxjewel-primary);
+  margin: 0 0 16px;
+}
+
+.gemluxjewel-stone-shapes--plp .gemluxjewel-stone-shapes__slider {
+  gap: 12px;
+}
+
+.gemluxjewel-stone-shapes__track--plp {
+  --stone-shapes-gap: 10px;
+  --stone-shapes-visible: 3;
+}
+
+@media (min-width: 750px) {
+  .gemluxjewel-stone-shapes__track--plp {
+    --stone-shapes-visible: 4;
+  }
+}
+
+@media (min-width: 1200px) {
+  .gemluxjewel-stone-shapes__track--plp {
+    --stone-shapes-visible: 5;
+  }
+}
+
+.gemluxjewel-stone-shapes__img--plp {
+  aspect-ratio: 1 / 1.5;
+  border-radius: 10px;
+  background: #fff;
+  margin-bottom: 8px;
+}
+
+.gemluxjewel-stone-shapes__img--plp img,
+.gemluxjewel-stone-shapes__img--plp .gemluxjewel-stone-shapes__fallback {
+  object-fit: cover;
+}
+
+.gemluxjewel-stone-shapes__label--plp {
+  font-size: 11px;
+  line-height: 16px;
+}
+
+.gemluxjewel-stone-shapes__item--plp:hover {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 749px) {
+  .gemluxjewel-stone-shapes--plp {
+    padding-bottom: 20px;
+  }
+
+  .gemluxjewel-stone-shapes--plp .gemluxjewel-stone-shapes__nav {
+    width: 36px;
+    height: 36px;
+  }
+}
