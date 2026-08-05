@@ -123,8 +123,8 @@
         </a>
       {%- endif -%}
       {%- if section.settings.pinterest_url != blank -%}
-        <a href="{{ section.settings.pinterest_url }}" class="gemluxjewel-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
-          <img src="{{ 'white-instagram.svg' | asset_url }}" alt="" width="22" height="22">
+        <a href="{{ section.settings.pinterest_url }}" class="gemluxjewel-footer__social-link gemluxjewel-footer__social-link--text" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
+          P
         </a>
       {%- endif -%}
       {%- if settings.social_twitter_link != blank -%}
@@ -141,8 +141,11 @@
 
     <div class="gemluxjewel-footer__bar">
       <p class="gemluxjewel-footer__copyright">
-        {{ section.settings.copyright_text | default: shop.name | escape }}
-        {{ 'now' | date: '%Y' }}
+        {%- if section.settings.copyright_text != blank -%}
+          {{ section.settings.copyright_text | escape }}
+        {%- else -%}
+          © {{ shop.name | escape }} {{ 'now' | date: '%Y' }}
+        {%- endif -%}
       </p>
       {%- if section.settings.legal_menu != blank -%}
         <nav class="gemluxjewel-footer__legal" aria-label="Legal">

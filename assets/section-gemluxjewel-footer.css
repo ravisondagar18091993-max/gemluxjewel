@@ -280,6 +280,14 @@
   border-color: rgba(255, 248, 244, 0.6);
 }
 
+.gemluxjewel-footer__social-link--text {
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8f4;
+  text-decoration: none;
+}
+
 .gemluxjewel-footer__social-link img {
   height: 20px;
   width: auto;
