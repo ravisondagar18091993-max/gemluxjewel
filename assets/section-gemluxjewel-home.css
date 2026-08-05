@@ -1092,7 +1092,7 @@
 .gemluxjewel-testimonials__card {
   position: relative;
   flex: 0 0 calc(100% - 8px);
-  background: linear-gradient(180deg, #fff 0%, #fffaf7 100%);
+  background:#ffffff;
   border: 1px solid rgba(26, 85, 67, 0.08);
   border-radius: 14px;
   padding: 28px 24px 24px;
