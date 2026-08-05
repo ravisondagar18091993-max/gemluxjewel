@@ -869,7 +869,7 @@
 .gemluxjewel-testimonials {
   background: var(--gemluxjewel-secondary);
   padding-top: 150px;
-  padding-bottom: 0;
+  padding-bottom: 100px;
 }
 
 .gemluxjewel-testimonials .gemluxjewel-section-header {
@@ -877,7 +877,10 @@
 }
 
 @media (max-width: 991px) {
-  .gemluxjewel-testimonials { padding-top: 100px; }
+  .gemluxjewel-testimonials {
+    padding-top: 100px;
+    padding-bottom: 60px;
+  }
 
   .gemluxjewel-testimonials .gemluxjewel-section-header {
     margin-bottom: 40px;
