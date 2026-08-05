@@ -638,6 +638,14 @@
   transform: rotate(180deg);
 }
 
+.gemluxjewel-stone-shapes__notice {
+  margin: 24px 0 0;
+  text-align: center;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--gemluxjewel-gray);
+}
+
 /* ── New In ── */
 .gemluxjewel-new-in {
   background: var(--gemluxjewel-secondary);

@@ -14,36 +14,15 @@
       "blocks": {
         "slide_1": {
           "type": "slide",
-          "settings": {
-            "media_type": "image",
-            "prefix": "",
-            "heading": "",
-            "text": "",
-            "button_label": "",
-            "button_link": ""
-          }
+          "settings": {}
         },
         "slide_2": {
           "type": "slide",
-          "settings": {
-            "media_type": "image",
-            "prefix": "",
-            "heading": "",
-            "text": "",
-            "button_label": "",
-            "button_link": ""
-          }
+          "settings": {}
         },
         "slide_3": {
           "type": "slide",
-          "settings": {
-            "media_type": "image",
-            "prefix": "",
-            "heading": "",
-            "text": "",
-            "button_label": "",
-            "button_link": ""
-          }
+          "settings": {}
         }
       },
       "block_order": [
@@ -87,8 +66,61 @@
         "u2",
         "u3"
       ],
+      "settings": {}
+    },
+    "gemluxjewel_categories": {
+      "type": "gemluxjewel-categories",
+      "blocks": {
+        "c1": {
+          "type": "category",
+          "settings": {}
+        },
+        "c2": {
+          "type": "category",
+          "settings": {}
+        },
+        "c3": {
+          "type": "category",
+          "settings": {}
+        },
+        "c4": {
+          "type": "category",
+          "settings": {}
+        },
+        "c5": {
+          "type": "category",
+          "settings": {}
+        },
+        "c6": {
+          "type": "category",
+          "settings": {}
+        },
+        "c7": {
+          "type": "category",
+          "settings": {}
+        },
+        "c8": {
+          "type": "category",
+          "settings": {}
+        },
+        "c9": {
+          "type": "category",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8",
+        "c9"
+      ],
       "settings": {
-        "speed": 30
+        "cards_to_show": 9
       }
     },
     "gemluxjewel_stone_shapes": {
@@ -97,81 +129,61 @@
         "s1": {
           "type": "shape",
           "settings": {
-            "title": "Round",
-            "collection": "",
-            "link": ""
+            "title": "Round"
           }
         },
         "s2": {
           "type": "shape",
           "settings": {
-            "title": "Princess",
-            "collection": "",
-            "link": ""
+            "title": "Princess"
           }
         },
         "s3": {
           "type": "shape",
           "settings": {
-            "title": "Cushion",
-            "collection": "",
-            "link": ""
+            "title": "Cushion"
           }
         },
         "s4": {
           "type": "shape",
           "settings": {
-            "title": "Oval",
-            "collection": "",
-            "link": ""
+            "title": "Oval"
           }
         },
         "s5": {
           "type": "shape",
           "settings": {
-            "title": "Emerald",
-            "collection": "",
-            "link": ""
+            "title": "Emerald"
           }
         },
         "s6": {
           "type": "shape",
           "settings": {
-            "title": "Pear",
-            "collection": "",
-            "link": ""
+            "title": "Pear"
           }
         },
         "s7": {
           "type": "shape",
           "settings": {
-            "title": "Marquise",
-            "collection": "",
-            "link": ""
+            "title": "Marquise"
           }
         },
         "s8": {
           "type": "shape",
           "settings": {
-            "title": "Asscher",
-            "collection": "",
-            "link": ""
+            "title": "Asscher"
           }
         },
         "s9": {
           "type": "shape",
           "settings": {
-            "title": "Radiant",
-            "collection": "",
-            "link": ""
+            "title": "Radiant"
           }
         },
         "s10": {
           "type": "shape",
           "settings": {
-            "title": "Heart",
-            "collection": "",
-            "link": ""
+            "title": "Heart"
           }
         }
       },
@@ -202,6 +214,42 @@
         "button_link": "shopify://collections/all",
         "collection": "all"
       }
+    },
+    "gemluxjewel_marquee_strip": {
+      "type": "gemluxjewel-marquee-strip",
+      "blocks": {
+        "m1": {
+          "type": "text",
+          "settings": {
+            "text": "Timeless Style"
+          }
+        },
+        "m2": {
+          "type": "text",
+          "settings": {
+            "text": "Cold Shield"
+          }
+        },
+        "m3": {
+          "type": "text",
+          "settings": {
+            "text": "Smart Insulation"
+          }
+        },
+        "m4": {
+          "type": "text",
+          "settings": {
+            "text": "Winter Comfort"
+          }
+        }
+      },
+      "block_order": [
+        "m1",
+        "m2",
+        "m3",
+        "m4"
+      ],
+      "settings": {}
     },
     "gemluxjewel_best_sellers": {
       "type": "gemluxjewel-best-sellers",
@@ -328,15 +376,29 @@
         "average_rating": "4.6",
         "review_count": "2000 reviews"
       }
+    },
+    "gemluxjewel_news": {
+      "type": "gemluxjewel-news-insights",
+      "settings": {
+        "title": "News & Insights",
+        "subtitle": "Stay updated with the latest trends, expert tips, and everything you need to know about modern jewellery.",
+        "button_label": "View All Blogs",
+        "button_link": "shopify://blogs/news",
+        "blog": "news",
+        "posts_to_show": 4
+      }
     }
   },
   "order": [
     "gemluxjewel_hero",
     "gemluxjewel_usp",
+    "gemluxjewel_categories",
     "gemluxjewel_stone_shapes",
     "gemluxjewel_new_in",
+    "gemluxjewel_marquee_strip",
     "gemluxjewel_best_sellers",
     "gemluxjewel_why",
-    "gemluxjewel_testimonials"
+    "gemluxjewel_testimonials",
+    "gemluxjewel_news"
   ]
 }
