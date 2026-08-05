@@ -64,7 +64,7 @@
   font-family: var(--gemluxjewel-font-body, 'Instrument Sans', sans-serif);
   font-size: 16px;
   line-height: 20px;
-  color: #fff8f4;
+  color: #ffffff;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -406,13 +406,13 @@
 .gemluxjewel-header--dark .gemluxjewel-header__mega-title,
 .gemluxjewel-header--dark .gemluxjewel-header__mega-list a,
 .gemluxjewel-header--dark .gemluxjewel-header__mega-view-all {
-  color: var(--gemluxjewel-secondary, #fff8f4) !important;
+  color: var(--gemluxjewel-secondary, #ffffff) !important;
 }
 
 .gemluxjewel-header--dark .gemluxjewel-header__nav-link:hover,
 .gemluxjewel-header--dark .gemluxjewel-header__mega-list a:hover,
 .gemluxjewel-header--dark .gemluxjewel-header__mega-view-all:hover {
-  color: var(--gemluxjewel-secondary, #fff8f4) !important;
+  color: var(--gemluxjewel-secondary, #ffffff) !important;
   opacity: 1;
 }
 
