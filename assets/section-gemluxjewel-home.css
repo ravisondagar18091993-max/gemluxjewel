@@ -745,6 +745,112 @@
   margin-bottom: 0;
 }
 
+/* ── Dual Cards ── */
+.gemluxjewel-dual-cards {
+  background: var(--gemluxjewel-secondary);
+  padding: 0 0 100px;
+}
+
+@media (max-width: 991px) {
+  .gemluxjewel-dual-cards {
+    padding-bottom: 60px;
+  }
+}
+
+.gemluxjewel-dual-cards__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .gemluxjewel-dual-cards__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+}
+
+.gemluxjewel-dual-cards__card {
+  position: relative;
+  border-radius: var(--gemluxjewel-radius);
+  overflow: hidden;
+  min-height: 420px;
+  background: #e8e4df;
+}
+
+@media (min-width: 1200px) {
+  .gemluxjewel-dual-cards__card {
+    min-height: 520px;
+  }
+}
+
+.gemluxjewel-dual-cards__media {
+  position: absolute;
+  inset: 0;
+}
+
+.gemluxjewel-dual-cards__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gemluxjewel-dual-cards__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.15) 0%,
+    rgba(0, 0, 0, 0.35) 55%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+  pointer-events: none;
+}
+
+.gemluxjewel-dual-cards__content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+@media (min-width: 1200px) {
+  .gemluxjewel-dual-cards__content {
+    padding: 40px 36px;
+  }
+}
+
+.gemluxjewel-dual-cards__title {
+  font-family: var(--gemluxjewel-font-heading);
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 38px;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0;
+  max-width: 320px;
+}
+
+@media (max-width: 991px) {
+  .gemluxjewel-dual-cards__title {
+    font-size: 26px;
+    line-height: 32px;
+  }
+}
+
+.gemluxjewel-dual-cards__card .gemluxjewel-btn--green:hover {
+  background: #fff;
+  border-color: #fff;
+  color: var(--gemluxjewel-primary);
+}
+
 /* ── Marquee Strip ── */
 .gemluxjewel-marquee-strip {
   background: var(--gemluxjewel-primary);
