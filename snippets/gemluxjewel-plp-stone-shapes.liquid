@@ -1,5 +1,5 @@
 {%- comment -%}
-  PLP stone shape strip — shows filter values except the currently active shape.
+  PLP stone shape grid — shows all filter values except the currently active shape.
   @param collection {Collection}
   @param section {Section}
 {%- endcomment -%}
@@ -8,7 +8,7 @@
   {%- liquid
     assign filter_label_setting = section.settings.stone_shape_filter_label | default: 'Stone shape' | downcase
     assign stone_shape_filter = blank
-    assign shape_image_sizes = '(min-width: 1200px) 200px, (min-width: 750px) 170px, 120px'
+    assign shape_image_sizes = '(min-width: 1200px) 120px, (min-width: 750px) 110px, 90px'
 
     for filter in collection.filters
       assign filter_label = filter.label | downcase
@@ -37,80 +37,57 @@
           <p class="gemluxjewel-stone-shapes--plp__heading">{{ section.settings.stone_shapes_heading | escape }}</p>
         {%- endif -%}
 
-        <div class="gemluxjewel-stone-shapes__slider" data-gemluxjewel-stone-shapes-slider>
-          <button
-            type="button"
-            class="gemluxjewel-stone-shapes__nav gemluxjewel-stone-shapes__nav--prev"
-            data-gemluxjewel-stone-shapes-prev
-            aria-label="Previous shapes"
-            disabled
-          >
-            <img src="{{ 'green-right-arrow.svg' | asset_url }}" alt="" width="16" height="16" class="gemluxjewel-stone-shapes__nav-icon gemluxjewel-stone-shapes__nav-icon--prev">
-          </button>
+        <div class="gemluxjewel-stone-shapes__grid gemluxjewel-stone-shapes__grid--plp">
+          {%- for value in stone_shape_filter.values -%}
+            {%- if value.active -%}
+              {%- continue -%}
+            {%- endif -%}
 
-          <div class="gemluxjewel-stone-shapes__viewport">
-            <div class="gemluxjewel-stone-shapes__track gemluxjewel-stone-shapes__track--plp" data-gemluxjewel-stone-shapes-track>
-              {%- for value in stone_shape_filter.values -%}
-                {%- if value.active -%}
-                  {%- continue -%}
+            {%- liquid
+              assign shape_title = value.label
+              assign shape_label_key = shape_title | downcase | strip
+              assign shape_image = blank
+              assign shape_url = collection.url | append: '?' | append: value.param_name | append: '=' | append: value.value | url_param_escape
+
+              for block in section.blocks
+                if block.type != 'shape'
+                  continue
+                endif
+                assign block_title_key = block.settings.title | downcase | strip
+                if block_title_key == shape_label_key and block.settings.image != blank
+                  assign shape_image = block.settings.image
+                  break
+                endif
+              endfor
+            -%}
+
+            <a href="{{ shape_url }}" class="gemluxjewel-stone-shapes__item gemluxjewel-stone-shapes__item--plp">
+              <div class="gemluxjewel-stone-shapes__img gemluxjewel-stone-shapes__img--plp">
+                {%- if shape_image != blank -%}
+                  {{
+                    shape_image
+                    | image_url: width: 600
+                    | image_tag:
+                      widths: '200, 300, 400, 600',
+                      sizes: shape_image_sizes,
+                      loading: 'lazy',
+                      alt: shape_title
+                  }}
+                {%- else -%}
+                  {% render 'gemluxjewel-theme-image',
+                    use_store_media: true,
+                    seed: forloop.index,
+                    width: 400,
+                    widths: '200,300,400,600',
+                    sizes: shape_image_sizes,
+                    alt: shape_title,
+                    class: 'gemluxjewel-stone-shapes__fallback'
+                  %}
                 {%- endif -%}
-
-                {%- liquid
-                  assign shape_title = value.label
-                  assign shape_label_key = shape_title | downcase | strip
-                  assign shape_image = blank
-                  assign shape_url = collection.url | append: '?' | append: value.param_name | append: '=' | append: value.value | url_param_escape
-
-                  for block in section.blocks
-                    if block.type != 'shape'
-                      continue
-                    endif
-                    assign block_title_key = block.settings.title | downcase | strip
-                    if block_title_key == shape_label_key and block.settings.image != blank
-                      assign shape_image = block.settings.image
-                      break
-                    endif
-                  endfor
-                -%}
-
-                <a href="{{ shape_url }}" class="gemluxjewel-stone-shapes__item gemluxjewel-stone-shapes__item--plp">
-                  <div class="gemluxjewel-stone-shapes__img gemluxjewel-stone-shapes__img--plp">
-                    {%- if shape_image != blank -%}
-                      {{
-                        shape_image
-                        | image_url: width: 600
-                        | image_tag:
-                          widths: '200, 300, 400, 600',
-                          sizes: shape_image_sizes,
-                          loading: 'lazy',
-                          alt: shape_title
-                      }}
-                    {%- else -%}
-                      {% render 'gemluxjewel-theme-image',
-                        use_store_media: true,
-                        seed: forloop.index,
-                        width: 400,
-                        widths: '200,300,400,600',
-                        sizes: shape_image_sizes,
-                        alt: shape_title,
-                        class: 'gemluxjewel-stone-shapes__fallback'
-                      %}
-                    {%- endif -%}
-                  </div>
-                  <span class="gemluxjewel-stone-shapes__label gemluxjewel-stone-shapes__label--plp">{{ shape_title | escape }}</span>
-                </a>
-              {%- endfor -%}
-            </div>
-          </div>
-
-          <button
-            type="button"
-            class="gemluxjewel-stone-shapes__nav gemluxjewel-stone-shapes__nav--next"
-            data-gemluxjewel-stone-shapes-next
-            aria-label="Next shapes"
-          >
-            <img src="{{ 'green-right-arrow.svg' | asset_url }}" alt="" width="16" height="16" class="gemluxjewel-stone-shapes__nav-icon">
-          </button>
+              </div>
+              <span class="gemluxjewel-stone-shapes__label gemluxjewel-stone-shapes__label--plp">{{ shape_title | escape }}</span>
+            </a>
+          {%- endfor -%}
         </div>
       </div>
     {%- endif -%}
