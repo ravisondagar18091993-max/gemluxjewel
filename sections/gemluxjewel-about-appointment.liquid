@@ -1,0 +1,135 @@
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-about.css' | asset_url | stylesheet_tag }}
+
+<section class="gemluxjewel gemluxjewel-about-appointment">
+  <div class="gemluxjewel-container">
+    <div class="gemluxjewel-about-appointment__layout">
+      <div class="gemluxjewel-about-appointment__info">
+        {%- if section.settings.prefix != blank -%}
+          <p class="gemluxjewel-prefix gemluxjewel-about-appointment__prefix">{{ section.settings.prefix | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="gemluxjewel-about-appointment__heading">{{ section.settings.heading | escape }}</h2>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <p class="gemluxjewel-about-appointment__intro">{{ section.settings.text | escape }}</p>
+        {%- endif -%}
+
+        <div class="gemluxjewel-about-appointment__details">
+          {%- if section.settings.phone != blank -%}
+            <div class="gemluxjewel-about-appointment__detail">
+              <p class="gemluxjewel-about-appointment__detail-label">{{ section.settings.phone_label | default: 'Phone' | escape }}</p>
+              <a href="tel:{{ section.settings.phone | replace: ' ', '' | replace: '(', '' | replace: ')', '' | replace: '-', '' }}" class="gemluxjewel-about-appointment__detail-value">
+                {{ section.settings.phone | escape }}
+              </a>
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.email != blank -%}
+            <div class="gemluxjewel-about-appointment__detail">
+              <p class="gemluxjewel-about-appointment__detail-label">{{ section.settings.email_label | default: 'Email' | escape }}</p>
+              <a href="mailto:{{ section.settings.email | escape }}" class="gemluxjewel-about-appointment__detail-value">
+                {{ section.settings.email | escape }}
+              </a>
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.hours != blank -%}
+            <div class="gemluxjewel-about-appointment__detail">
+              <p class="gemluxjewel-about-appointment__detail-label">{{ section.settings.hours_label | default: 'Hours' | escape }}</p>
+              <p class="gemluxjewel-about-appointment__detail-value">{{ section.settings.hours | escape }}</p>
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.location != blank -%}
+            <div class="gemluxjewel-about-appointment__detail">
+              <p class="gemluxjewel-about-appointment__detail-label">{{ section.settings.location_label | default: 'Location' | escape }}</p>
+              <p class="gemluxjewel-about-appointment__detail-value">{{ section.settings.location | escape }}</p>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <div class="gemluxjewel-about-appointment__form-wrap">
+        {%- if section.settings.form_heading != blank -%}
+          <h3 class="gemluxjewel-about-appointment__form-heading">{{ section.settings.form_heading | escape }}</h3>
+        {%- endif -%}
+
+        {%- form 'contact', id: 'GemluxAppointmentForm', class: 'gemluxjewel-about-appointment__form' -%}
+          <input type="hidden" name="contact[subject]" value="Appointment Request">
+
+          {%- if form.posted_successfully? -%}
+            <p class="gemluxjewel-about-appointment__status gemluxjewel-about-appointment__status--success" tabindex="-1" autofocus>
+              {{ section.settings.success_message | default: 'Thank you! We will confirm your appointment shortly.' | escape }}
+            </p>
+          {%- elsif form.errors -%}
+            <div class="gemluxjewel-about-appointment__status gemluxjewel-about-appointment__status--error" tabindex="-1" autofocus>
+              <p>{{ 'templates.contact.form.error_heading' | t }}</p>
+            </div>
+          {%- endif -%}
+
+          <div class="gemluxjewel-about-appointment__fields">
+            <div class="gemluxjewel-about-appointment__field">
+              <label class="gemluxjewel-about-appointment__label" for="GemluxAppointmentForm-name">Name *</label>
+              <input class="gemluxjewel-about-appointment__input" type="text" id="GemluxAppointmentForm-name" name="contact[name]" required autocomplete="name" placeholder="Your name">
+            </div>
+
+            <div class="gemluxjewel-about-appointment__field">
+              <label class="gemluxjewel-about-appointment__label" for="GemluxAppointmentForm-email">Email *</label>
+              <input class="gemluxjewel-about-appointment__input" type="email" id="GemluxAppointmentForm-email" name="contact[email]" required autocomplete="email" placeholder="you@email.com">
+            </div>
+
+            <div class="gemluxjewel-about-appointment__field">
+              <label class="gemluxjewel-about-appointment__label" for="GemluxAppointmentForm-phone">Phone</label>
+              <input class="gemluxjewel-about-appointment__input" type="tel" id="GemluxAppointmentForm-phone" name="contact[phone]" autocomplete="tel" placeholder="+44 0000 000000">
+            </div>
+
+            <div class="gemluxjewel-about-appointment__field">
+              <label class="gemluxjewel-about-appointment__label" for="GemluxAppointmentForm-date">Preferred date</label>
+              <input class="gemluxjewel-about-appointment__input" type="date" id="GemluxAppointmentForm-date" name="contact[preferred_date]">
+            </div>
+
+            <div class="gemluxjewel-about-appointment__field gemluxjewel-about-appointment__field--full">
+              <label class="gemluxjewel-about-appointment__label" for="GemluxAppointmentForm-message">Message</label>
+              <textarea class="gemluxjewel-about-appointment__textarea" id="GemluxAppointmentForm-message" name="contact[body]" rows="4" placeholder="Tell us what you are looking for..."></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="gemluxjewel-btn gemluxjewel-btn--green">
+            {{ section.settings.button_label | default: 'Book Appointment' | escape }}
+          </button>
+        {%- endform -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "gemluxjewel Appointment",
+  "tag": "section",
+  "class": "section gemluxjewel-section",
+  "settings": [
+    { "type": "text", "id": "prefix", "label": "Prefix", "default": "Visit Us" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Book an Appointment" },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description",
+      "default": "Schedule a private consultation with our jewellery experts. Whether you are choosing an engagement ring or a custom piece, we are here to help."
+    },
+    { "type": "text", "id": "phone_label", "label": "Phone label", "default": "Phone" },
+    { "type": "text", "id": "phone", "label": "Phone", "default": "+44 0000 000000" },
+    { "type": "text", "id": "email_label", "label": "Email label", "default": "Email" },
+    { "type": "text", "id": "email", "label": "Email", "default": "info@gemluxjewels.com" },
+    { "type": "text", "id": "hours_label", "label": "Hours label", "default": "Opening Hours" },
+    { "type": "text", "id": "hours", "label": "Hours", "default": "Mon–Fri: 10:00am – 6:00pm | Sat: 10:00am – 4:00pm" },
+    { "type": "text", "id": "location_label", "label": "Location label", "default": "Showroom" },
+    { "type": "text", "id": "location", "label": "Location", "default": "49, Bremner Blvd, Toronto, ON" },
+    { "type": "text", "id": "form_heading", "label": "Form heading", "default": "Request your visit" },
+    { "type": "text", "id": "button_label", "label": "Submit button", "default": "Book Appointment" },
+    { "type": "text", "id": "success_message", "label": "Success message", "default": "Thank you! We will confirm your appointment shortly." }
+  ],
+  "presets": [{ "name": "gemluxjewel Appointment" }]
+}
+{% endschema %}
