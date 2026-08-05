@@ -84,7 +84,7 @@
   width: 100%;
   max-width: none;
   margin: 0;
-  background: var(--gemluxjewel-secondary, #fff8f4);
+  background: #fff;
   border-radius: 0;
   box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px;
   transition: background-color 0.7s ease;
@@ -279,7 +279,7 @@
   top: 100%;
   left: 0;
   right: 0;
-  background: var(--gemluxjewel-secondary, #fff8f4);
+  background: #fff;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.05);
@@ -448,7 +448,7 @@
 .gemluxjewel-mobile-menu {
   position: fixed;
   inset: 0;
-  background: var(--gemluxjewel-secondary, #fff8f4);
+  background: #fff;
   z-index: 9999;
   transform: translateY(-100%);
   visibility: hidden;

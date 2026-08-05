@@ -3,7 +3,7 @@
 .gemluxjewel-shop,
 .gemluxjewel-collection-hero {
   --gemluxjewel-primary: #1a5543;
-  --gemluxjewel-secondary: #fff8f4;
+  --gemluxjewel-secondary: #ffffff;
   --gemluxjewel-dark: #141414;
   --gemluxjewel-gray: #818181;
   --gemluxjewel-radius-sm: 5px;
@@ -183,14 +183,14 @@
 .gemluxjewel-shop__filter-toggle {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   background: var(--gemluxjewel-primary);
   color: #fff;
   border: none;
-  border-radius: var(--gemluxjewel-radius-pill);
-  padding: 16px 14px 16px 25px;
+  border-radius: var(--gemluxjewel-radius);
+  padding: 10px 16px;
   font-family: var(--gemluxjewel-font-body);
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
   transition: opacity 0.3s;
 }
