@@ -559,7 +559,7 @@
 
 .gemluxjewel-stone-shapes__img {
   width: 100%;
-  aspect-ratio: 1;
+  aspect-ratio: 1 / 1.5;
   border-radius:10px;
   background: #fff;
   border: 1px solid rgba(26, 85, 67, 0.1);
