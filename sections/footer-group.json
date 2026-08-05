@@ -13,34 +13,24 @@
   "sections": {
     "gemluxjewel_footer": {
       "type": "gemluxjewel-footer",
-      "blocks": {
-        "insta_1": { "type": "instagram", "settings": {} },
-        "insta_2": { "type": "instagram", "settings": {} },
-        "insta_3": { "type": "instagram", "settings": {} },
-        "insta_4": { "type": "instagram", "settings": {} },
-        "insta_5": { "type": "instagram", "settings": {} },
-        "insta_6": { "type": "instagram", "settings": {} }
-      },
-      "block_order": ["insta_1", "insta_2", "insta_3", "insta_4", "insta_5", "insta_6"],
       "settings": {
-        "heading": "#gemluxjewel",
-        "newsletter_heading": "SIGN UP TO OUR NEWSLETTER",
-        "newsletter_text": "Don't Miss Out On Our Latest Arrivals, Promotions And Discounts:",
-        "newsletter_placeholder": "Email Address…",
-        "contact_heading": "CONTACT US",
-        "phone": "+1 000 000 000",
-        "email": "Info@prothemebazaar.com",
-        "location_heading": "LOCATION",
-        "address": "49, Bremner Blvd, Rogers Centre, Ontario Toronto, M5J 0A1",
-        "directions_label": "GET DIRECTIONS",
+        "logo_text": "gemluxjewel",
+        "subscribe_label": "Subscribe",
+        "newsletter_placeholder": "Sign Me Up",
+        "promo_heading": "Join our guest list and receive exclusive access to new collections, offers, and events.",
+        "promo_text": "Enjoy $100 off your first order*",
+        "phone": "+1 000 000 0000",
+        "email": "hello@gemluxjewel.com",
+        "hours": "Mon–Fri: 9am–6pm EST",
+        "menu_1_title": "About Us",
         "menu_1": "footer",
-        "show_payment_icons": true,
-        "copyright_text": "@ gemluxjewel 2026",
-        "credit_text": "Design & Develop by Prothemebazaar",
-        "credit_url": "https://prothemebazaar.com/"
+        "menu_2_title": "Contact",
+        "menu_3_title": "Support",
+        "menu_4_title": "Education",
+        "menu_5_title": "Jewelry Guide",
+        "copyright_text": "© gemluxjewel"
       }
     }
   },
   "order": ["gemluxjewel_footer"]
 }
-
