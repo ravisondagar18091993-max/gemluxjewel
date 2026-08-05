@@ -1,5 +1,4 @@
 {% render 'gemluxjewel-fonts' %}
-{{ 'gemluxjewel-marquee.css' | asset_url | stylesheet_tag }}
 {{ 'section-gemluxjewel-header.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'gemluxjewel-header.js' | asset_url }}" defer="defer"></script>
 
@@ -20,10 +19,18 @@
   data-gemluxjewel-header
 >
   <div class="gemluxjewel-header__top">
-    {%- capture top_marquee_content -%}
-      {%- for block in section.blocks -%}
-        {%- if block.type == 'top_link' -%}
-          <div class="gemluxjewel-marquee__item" {{ block.shopify_attributes }}>
+    {%- assign top_links = section.blocks | where: 'type', 'top_link' -%}
+    {%- if top_links.size > 0 -%}
+      <div
+        class="gemluxjewel-header__top-slider"
+        data-gemluxjewel-header-slider
+        data-interval="{{ section.settings.slider_speed | default: 4 | times: 1000 }}"
+      >
+        {%- for block in top_links -%}
+          <div
+            class="gemluxjewel-header__top-slide{% if forloop.first %} is-active{% endif %}"
+            {{ block.shopify_attributes }}
+          >
             <img src="{{ 'diamond.svg' | asset_url }}" alt="" class="gemluxjewel-header__top-icon" width="18" height="18">
             {%- if block.settings.url != blank -%}
               <a href="{{ block.settings.url }}" class="gemluxjewel-header__top-link">{{ block.settings.label | escape }}</a>
@@ -31,10 +38,9 @@
               <span class="gemluxjewel-header__top-link">{{ block.settings.label | escape }}</span>
             {%- endif -%}
           </div>
-        {%- endif -%}
-      {%- endfor -%}
-    {%- endcapture -%}
-    {% render 'gemluxjewel-marquee', class: 'gemluxjewel-header__marquee', duration: section.settings.marquee_speed, gap: 48, content: top_marquee_content %}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
   </div>
 
   <div class="gemluxjewel-header__wrap">
@@ -76,7 +82,7 @@
                                   {%- if mega_image_block.settings.image != blank -%}
                                     {{ mega_image_block.settings.image | image_url: width: 600 | image_tag: widths: '300, 400, 600', sizes: '300px', loading: 'lazy' }}
                                   {%- else -%}
-                                    {% render 'gemluxjewel-theme-image', asset: 'mega-menu-img.png', width: 400, widths: '200,300,400', sizes: '400px' %}
+                                    {% render 'gemluxjewel-theme-image', use_store_media: true, seed: 5, width: 400, widths: '200,300,400', sizes: '400px' %}
                                   {%- endif -%}
                                 </div>
                               </div>
@@ -194,13 +200,13 @@
     },
     {
       "type": "range",
-      "id": "marquee_speed",
-      "min": 15,
-      "max": 60,
-      "step": 5,
+      "id": "slider_speed",
+      "min": 2,
+      "max": 10,
+      "step": 1,
       "unit": "s",
-      "label": "Top marquee speed",
-      "default": 35
+      "label": "Top slider speed",
+      "default": 4
     },
     {
       "type": "checkbox",
@@ -236,7 +242,7 @@
   "blocks": [
     {
       "type": "top_link",
-      "name": "Top marquee link",
+      "name": "Top slide",
       "settings": [
         { "type": "text", "id": "label", "label": "Label", "default": "Modern Jewellery" },
         { "type": "url", "id": "url", "label": "Link" }

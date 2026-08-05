@@ -20,8 +20,45 @@
   overflow: hidden;
 }
 
-.gemluxjewel-header__top .gemluxjewel-marquee__item {
+.gemluxjewel-header__top-slider {
+  position: relative;
+  height: 20px;
+  overflow: hidden;
+}
+
+.gemluxjewel-header__top-slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 12px;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  pointer-events: none;
+}
+
+.gemluxjewel-header__top-slide.is-active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.gemluxjewel-header__top-slide.is-leaving {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gemluxjewel-header__top-slide {
+    transition: none;
+    transform: none;
+  }
+
+  .gemluxjewel-header__top-slide:not(.is-active) {
+    visibility: hidden;
+  }
 }
 
 .gemluxjewel-header__top-link {
