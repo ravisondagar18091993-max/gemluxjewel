@@ -216,10 +216,16 @@
   position: absolute;
   inset: 0;
   opacity: 0;
-  transition: opacity 1s ease;
+  visibility: hidden;
+  z-index: 0;
+  transition: opacity 1.2s ease-in-out, visibility 1.2s ease-in-out;
 }
 
-.gemluxjewel-hero__slide.is-active { opacity: 1; }
+.gemluxjewel-hero__slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 1;
+}
 
 .gemluxjewel-hero__slide img,
 .gemluxjewel-hero__slide svg,
@@ -233,6 +239,92 @@
 
 .gemluxjewel-hero__content-inner {
   max-width: 640px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.gemluxjewel-hero__content-inner.is-fading {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gemluxjewel-hero__slide,
+  .gemluxjewel-hero__content-inner {
+    transition: none;
+  }
+
+  .gemluxjewel-hero__content-inner.is-fading {
+    transform: none;
+  }
+}
+
+.gemluxjewel-hero__nav {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.gemluxjewel-hero__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border: 1px solid rgba(255, 248, 244, 0.45);
+  border-radius: 50%;
+  background: rgba(255, 248, 244, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  pointer-events: auto;
+  transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.gemluxjewel-hero__arrow--prev {
+  left: 24px;
+}
+
+.gemluxjewel-hero__arrow--next {
+  right: 24px;
+}
+
+.gemluxjewel-hero__arrow:hover {
+  background: rgba(255, 248, 244, 0.22);
+  border-color: rgba(255, 248, 244, 0.75);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.gemluxjewel-hero__arrow-icon {
+  width: 18px;
+  height: 18px;
+  display: block;
+  filter: brightness(0) invert(1);
+}
+
+.gemluxjewel-hero__arrow-icon--prev {
+  transform: rotate(180deg);
+}
+
+@media (min-width: 1200px) {
+  .gemluxjewel-hero__arrow--prev { left: 60px; }
+  .gemluxjewel-hero__arrow--next { right: 60px; }
+}
+
+@media (max-width: 749px) {
+  .gemluxjewel-hero__arrow {
+    width: 44px;
+    height: 44px;
+  }
+
+  .gemluxjewel-hero__arrow--prev { left: 12px; }
+  .gemluxjewel-hero__arrow--next { right: 12px; }
 }
 
 @media (max-width: 991px) {

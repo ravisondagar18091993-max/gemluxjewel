@@ -1,15 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-gemluxjewel-hero]').forEach((hero) => {
     const slides = hero.querySelectorAll('[data-gemluxjewel-hero-slide]');
+    const contentInner = hero.querySelector('[data-gemluxjewel-hero-content]');
     const prefixEl = hero.querySelector('[data-gemluxjewel-hero-prefix]');
     const titleEl = hero.querySelector('[data-gemluxjewel-hero-title]');
     const textEl = hero.querySelector('[data-gemluxjewel-hero-text]');
     const buttonWrap = hero.querySelector('[data-gemluxjewel-hero-button]');
+    const prevBtn = hero.querySelector('[data-gemluxjewel-hero-prev]');
+    const nextBtn = hero.querySelector('[data-gemluxjewel-hero-next]');
     if (!slides.length) return;
 
     const duration = parseInt(hero.dataset.autoplay || '5000', 10);
+    const fadeMs = 500;
     let current = 0;
     let timer;
+    let isAnimating = false;
 
     const syncVideos = (index) => {
       slides.forEach((slide, i) => {
@@ -55,25 +60,64 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
 
-    const show = (index) => {
+    const updateSlides = (index) => {
       slides.forEach((slide, i) => slide.classList.toggle('is-active', i === index));
       syncVideos(index);
       applyActiveContent(slides[index]);
     };
 
-    const next = () => {
-      current = (current + 1) % slides.length;
-      show(current);
+    const show = (index) => {
+      if (isAnimating || index === current) return;
+      isAnimating = true;
+      current = index;
+
+      if (contentInner) contentInner.classList.add('is-fading');
+
+      window.setTimeout(() => {
+        updateSlides(index);
+        if (contentInner) contentInner.classList.remove('is-fading');
+        isAnimating = false;
+      }, fadeMs);
     };
 
-    show(0);
-    if (slides.length > 1) {
-      timer = setInterval(next, duration);
+    const next = () => {
+      show((current + 1) % slides.length);
+    };
 
-      hero.addEventListener('mouseenter', () => clearInterval(timer));
-      hero.addEventListener('mouseleave', () => {
-        timer = setInterval(next, duration);
+    const prev = () => {
+      show((current - 1 + slides.length) % slides.length);
+    };
+
+    const startAutoplay = () => {
+      if (slides.length <= 1) return;
+      clearInterval(timer);
+      timer = setInterval(next, duration);
+    };
+
+    const stopAutoplay = () => {
+      clearInterval(timer);
+    };
+
+    updateSlides(0);
+    startAutoplay();
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        stopAutoplay();
+        next();
+        startAutoplay();
       });
     }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        stopAutoplay();
+        prev();
+        startAutoplay();
+      });
+    }
+
+    hero.addEventListener('mouseenter', stopAutoplay);
+    hero.addEventListener('mouseleave', startAutoplay);
   });
 });
