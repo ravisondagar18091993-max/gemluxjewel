@@ -210,6 +210,52 @@
         "collection": "all"
       }
     },
+    "gemluxjewel_collection_slider": {
+      "type": "gemluxjewel-collection-slider",
+      "blocks": {
+        "c1": {
+          "type": "style",
+          "settings": {
+            "title": "Solitaire"
+          }
+        },
+        "c2": {
+          "type": "style",
+          "settings": {
+            "title": "Bezel"
+          }
+        },
+        "c3": {
+          "type": "style",
+          "settings": {
+            "title": "Toi et Moi"
+          }
+        },
+        "c4": {
+          "type": "style",
+          "settings": {
+            "title": "Three Stone"
+          }
+        },
+        "c5": {
+          "type": "style",
+          "settings": {
+            "title": "Halo"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5"
+      ],
+      "settings": {
+        "title": "Shop Lab Diamond Engagement Rings by Style",
+        "subtitle": "Discover our signature setting styles, including solitaire, three stone, halo, toi et moi and bezel."
+      }
+    },
     "gemluxjewel_dual_cards": {
       "type": "gemluxjewel-dual-cards",
       "blocks": {
@@ -424,6 +470,7 @@
     "gemluxjewel_usp",
     "gemluxjewel_stone_shapes",
     "gemluxjewel_new_in",
+    "gemluxjewel_collection_slider",
     "gemluxjewel_dual_cards",
     "gemluxjewel_best_sellers",
     "gemluxjewel_why",
