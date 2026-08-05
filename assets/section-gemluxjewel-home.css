@@ -921,18 +921,6 @@
   transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
-.gemluxjewel-testimonials__card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 24px;
-  right: 24px;
-  height: 3px;
-  border-radius: 0 0 4px 4px;
-  background: linear-gradient(90deg, var(--gemluxjewel-primary) 0%, #d6c372 100%);
-  opacity: 0.85;
-}
-
 .gemluxjewel-testimonials__card:hover {
   transform: translateY(-4px);
   border-color: rgba(26, 85, 67, 0.14);
@@ -963,10 +951,6 @@
   box-shadow:
     0 16px 40px rgba(26, 85, 67, 0.22),
     inset 0 1px 0 rgba(255, 248, 244, 0.12);
-}
-
-.gemluxjewel-testimonials__card--summary::before {
-  display: none;
 }
 
 .gemluxjewel-testimonials__card--summary:hover {
