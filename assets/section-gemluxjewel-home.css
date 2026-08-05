@@ -560,13 +560,13 @@
 .gemluxjewel-stone-shapes__img {
   width: 100%;
   aspect-ratio: 1;
-  border-radius: 50%;
+  border-radius:10px;
   background: #fff;
   border: 1px solid rgba(26, 85, 67, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 18%;
+  overflow: hidden;
   margin-bottom: 12px;
   box-shadow: 0 4px 16px rgba(26, 85, 67, 0.06);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
