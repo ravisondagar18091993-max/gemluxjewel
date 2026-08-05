@@ -31,7 +31,6 @@
             class="gemluxjewel-header__top-slide{% if forloop.first %} is-active{% endif %}"
             {{ block.shopify_attributes }}
           >
-            <img src="{{ 'diamond.svg' | asset_url }}" alt="" class="gemluxjewel-header__top-icon" width="18" height="18">
             {%- if block.settings.url != blank -%}
               <a href="{{ block.settings.url }}" class="gemluxjewel-header__top-link">{{ block.settings.label | escape }}</a>
             {%- else -%}
@@ -205,7 +204,7 @@
       "max": 10,
       "step": 1,
       "unit": "s",
-      "label": "Top slider speed",
+      "label": "Top offers slider speed",
       "default": 4
     },
     {
@@ -242,10 +241,10 @@
   "blocks": [
     {
       "type": "top_link",
-      "name": "Top slide",
+      "name": "Offer",
       "settings": [
-        { "type": "text", "id": "label", "label": "Label", "default": "Modern Jewellery" },
-        { "type": "url", "id": "url", "label": "Link" }
+        { "type": "text", "id": "label", "label": "Offer text", "default": "Free shipping on orders over $100" },
+        { "type": "url", "id": "url", "label": "Offer link" }
       ]
     },
     {
@@ -273,16 +272,9 @@
     {
       "name": "gemluxjewel Header",
       "blocks": [
-        { "type": "top_link", "settings": { "label": "Modern Jewellery" } },
-        { "type": "top_link", "settings": { "label": "Minimal Jewellery" } },
-        { "type": "top_link", "settings": { "label": "Statement Jewellery" } },
-        { "type": "top_link", "settings": { "label": "Antique Jewellery" } },
-        { "type": "top_link", "settings": { "label": "Gold Jewellery" } },
-        { "type": "top_link", "settings": { "label": "Silver Jewellery" } },
-        { "type": "top_link", "settings": { "label": "Diamond Jewellery" } },
-        { "type": "top_link", "settings": { "label": "Platinum Jewellery" } },
-        { "type": "top_link", "settings": { "label": "Artificial Jewellery" } },
-        { "type": "top_link", "settings": { "label": "Fashion Jewellery" } },
+        { "type": "top_link", "settings": { "label": "Free shipping on orders over $100", "url": "shopify://collections/all" } },
+        { "type": "top_link", "settings": { "label": "10% off your first order — Shop now", "url": "shopify://collections/all" } },
+        { "type": "top_link", "settings": { "label": "New arrivals — Explore the collection", "url": "shopify://collections/all" } },
         { "type": "mega_column", "settings": { "title": "Popular Collections", "show_border": false } },
         { "type": "mega_column", "settings": { "title": "Best Seller", "show_border": false } },
         { "type": "mega_column", "settings": { "title": "New Arrival", "show_border": true } },

@@ -14,29 +14,40 @@
     "gemluxjewel_header": {
       "type": "gemluxjewel-header",
       "blocks": {
-        "top_1": { "type": "top_link", "settings": { "label": "Modern Jewellery" } },
-        "top_2": { "type": "top_link", "settings": { "label": "Minimal Jewellery" } },
-        "top_3": { "type": "top_link", "settings": { "label": "Statement Jewellery" } },
-        "top_4": { "type": "top_link", "settings": { "label": "Antique Jewellery" } },
-        "top_5": { "type": "top_link", "settings": { "label": "Gold Jewellery" } },
-        "top_6": { "type": "top_link", "settings": { "label": "Silver Jewellery" } },
-        "top_7": { "type": "top_link", "settings": { "label": "Diamond Jewellery" } },
-        "top_8": { "type": "top_link", "settings": { "label": "Platinum Jewellery" } },
-        "top_9": { "type": "top_link", "settings": { "label": "Artificial Jewellery" } },
-        "top_10": { "type": "top_link", "settings": { "label": "Fashion Jewellery" } },
+        "top_1": {
+          "type": "top_link",
+          "settings": {
+            "label": "Free shipping on orders over $100",
+            "url": "shopify://collections/all"
+          }
+        },
+        "top_2": {
+          "type": "top_link",
+          "settings": {
+            "label": "10% off your first order — Shop now",
+            "url": "shopify://collections/all"
+          }
+        },
+        "top_3": {
+          "type": "top_link",
+          "settings": {
+            "label": "New arrivals — Explore the collection",
+            "url": "shopify://collections/all"
+          }
+        },
         "mega_1": { "type": "mega_column", "settings": { "title": "Popular Collections", "show_border": false } },
         "mega_2": { "type": "mega_column", "settings": { "title": "Best Seller", "show_border": false } },
         "mega_3": { "type": "mega_column", "settings": { "title": "New Arrival", "show_border": true } },
         "mega_img": { "type": "mega_image", "settings": {} }
       },
       "block_order": [
-        "top_1", "top_2", "top_3", "top_4", "top_5", "top_6", "top_7", "top_8", "top_9", "top_10",
+        "top_1", "top_2", "top_3",
         "mega_1", "mega_2", "mega_3", "mega_img"
       ],
       "settings": {
         "logo_text": "gemluxjewel",
         "menu": "main-menu",
-        "marquee_speed": 35,
+        "slider_speed": 4,
         "dark_style": false,
         "enable_search": true,
         "enable_country_selector": true,
