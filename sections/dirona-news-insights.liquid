@@ -1,51 +1,66 @@
-{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-dirona-home.css' | asset_url | stylesheet_tag }}
 
-{%- liquid
-  assign blog = blogs[section.settings.blog]
-  assign posts_limit = section.settings.posts_to_show | default: 4
-  assign latest_articles = blog.articles | sort: 'published_at' | reverse
--%}
+{%- assign blog = blogs[section.settings.blog] -%}
 
-<section class="gemluxjewel gemluxjewel-news">
-  <div class="gemluxjewel-container">
-    <div class="gemluxjewel-section-header">
+<section class="dirona dirona-news">
+  <div class="dirona-container">
+    <div class="dirona-section-header">
       <div>
         {%- if section.settings.title != blank -%}
-          <h2 class="gemluxjewel-section-title">{{ section.settings.title }}</h2>
+          <h2 class="dirona-section-title">{{ section.settings.title }}</h2>
         {%- endif -%}
         {%- if section.settings.subtitle != blank -%}
-          <p class="gemluxjewel-section-desc">{{ section.settings.subtitle }}</p>
+          <p class="dirona-section-desc">{{ section.settings.subtitle }}</p>
         {%- endif -%}
       </div>
-      {%- assign news_btn_url = section.settings.button_link -%}
-      {%- if news_btn_url == blank and blog != blank -%}
-        {%- assign news_btn_url = blog.url -%}
-      {%- endif -%}
-      {% render 'gemluxjewel-btn', label: section.settings.button_label, url: news_btn_url, style: 'green' %}
+      {% render 'dirona-btn', label: section.settings.button_label, url: section.settings.button_link | default: blog.url, style: 'green' %}
     </div>
-    <div class="gemluxjewel-news__grid">
+    <div class="dirona-news__grid">
       {%- if blog != blank and blog.articles.size > 0 -%}
-        {%- for article in latest_articles limit: posts_limit -%}
-          {% render 'gemluxjewel-blog-card', article: article, card_style: 'news' %}
+        {%- for article in blog.articles limit: section.settings.posts_to_show -%}
+          <article class="dirona-news__card">
+            <div class="dirona-news__img">
+              <a href="{{ article.url }}">
+                {%- if article.image -%}
+                  {{ article.image | image_url: width: 600 | image_tag: widths: '300, 400, 600', sizes: '(min-width: 1200px) 22vw, 45vw', loading: 'lazy', alt: article.title }}
+                {%- else -%}
+                  {{ 'hero-apparel-1' | placeholder_svg_tag }}
+                {%- endif -%}
+              </a>
+              {%- if article.tags.size > 0 -%}
+                <div class="dirona-card__top">
+                  <span class="dirona-badge">{{ article.tags.first }}</span>
+                </div>
+              {%- endif -%}
+            </div>
+            <h3 class="dirona-news__title"><a href="{{ article.url }}">{{ article.title }}</a></h3>
+            <p class="dirona-news__excerpt">{{ article.excerpt | default: article.content | strip_html | truncate: 120 }}</p>
+            <a href="{{ article.url }}" class="dirona-news__readmore">
+              Read More
+              <span class="dirona-btn__arrow">
+                <img src="{{ 'green-right-arrow.svg' | asset_url }}" alt="" width="24" height="24">
+              </span>
+            </a>
+          </article>
         {%- endfor -%}
       {%- else -%}
         {%- for block in section.blocks -%}
-          <article class="gemluxjewel-news__card" {{ block.shopify_attributes }}>
-            <div class="gemluxjewel-news__img">
+          <article class="dirona-news__card" {{ block.shopify_attributes }}>
+            <div class="dirona-news__img">
               {%- if block.settings.image != blank -%}
                 {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy' }}
               {%- else -%}
-                {% render 'gemluxjewel-theme-image', use_store_media: true, seed: forloop.index, width: 600, widths: '300,450,600', sizes: '(min-width: 1200px) 22vw, 45vw' %}
+                {{ 'hero-apparel-' | append: forloop.index | placeholder_svg_tag }}
               {%- endif -%}
               {%- if block.settings.tag != blank -%}
-                <div class="gemluxjewel-card__top"><span class="gemluxjewel-badge">{{ block.settings.tag }}</span></div>
+                <div class="dirona-card__top"><span class="dirona-badge">{{ block.settings.tag }}</span></div>
               {%- endif -%}
             </div>
-            <h3 class="gemluxjewel-news__title">{{ block.settings.title | escape }}</h3>
-            <p class="gemluxjewel-news__excerpt">{{ block.settings.excerpt | escape }}</p>
-            <a href="{{ block.settings.link }}" class="gemluxjewel-news__readmore">
+            <h3 class="dirona-news__title">{{ block.settings.title | escape }}</h3>
+            <p class="dirona-news__excerpt">{{ block.settings.excerpt | escape }}</p>
+            <a href="{{ block.settings.link }}" class="dirona-news__readmore">
               Read More
-              <span class="gemluxjewel-btn__arrow">
+              <span class="dirona-btn__arrow">
                 <img src="{{ 'green-right-arrow.svg' | asset_url }}" alt="" width="24" height="24">
               </span>
             </a>
@@ -58,9 +73,9 @@
 
 {% schema %}
 {
-  "name": "Gemlux News Insights",
+  "name": "Dirona News & Insights",
   "tag": "section",
-  "class": "section gemluxjewel-section",
+  "class": "section",
   "settings": [
     { "type": "text", "id": "title", "label": "Heading", "default": "News & Insights" },
     { "type": "textarea", "id": "subtitle", "label": "Subheading", "default": "Stay updated with the latest trends, expert tips, and everything you need to know about modern jewellery." },
@@ -84,7 +99,7 @@
   ],
   "presets": [
     {
-      "name": "Gemlux News Insights",
+      "name": "Dirona News & Insights",
       "blocks": [
         { "type": "article", "settings": { "tag": "Materials", "title": "Why Titanium Jewellery is Trending" } },
         { "type": "article", "settings": { "tag": "Everyday Wear", "title": "Why Titanium Jewellery is Trending" } },

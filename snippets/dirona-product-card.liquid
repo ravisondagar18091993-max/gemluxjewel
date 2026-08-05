@@ -1,0 +1,114 @@
+{% comment %}
+  Dirona product card
+  - Hover: second image if available, else zoom first image
+  - Basket: full-width bottom bar on hover
+{% endcomment %}
+
+{%- liquid
+  assign has_secondary = false
+  if product != blank and product.media.size > 1
+    assign has_secondary = true
+  endif
+
+  assign on_sale = false
+  if product != blank and product.compare_at_price > product.price
+    assign on_sale = true
+  endif
+-%}
+
+<div class="dirona-card{% if has_secondary %} dirona-card--has-secondary{% endif %}">
+  <div class="dirona-card__img-wrap">
+    <a href="{{ product.url | default: '#' }}" class="dirona-card__media-link">
+      {%- if product != blank and product.featured_media -%}
+        {{
+          product.featured_media
+          | image_url: width: 800
+          | image_tag:
+            class: 'dirona-card__img dirona-card__img--primary',
+            widths: '200, 300, 400, 600, 800',
+            sizes: '(min-width: 990px) 22vw, 45vw',
+            loading: 'lazy',
+            alt: product.title
+        }}
+        {%- if has_secondary -%}
+          {{
+            product.media[1]
+            | image_url: width: 800
+            | image_tag:
+              class: 'dirona-card__img dirona-card__img--secondary',
+              widths: '200, 300, 400, 600, 800',
+              sizes: '(min-width: 990px) 22vw, 45vw',
+              loading: 'lazy',
+              alt: product.title
+          }}
+        {%- endif -%}
+      {%- else -%}
+        <img
+          class="dirona-card__img dirona-card__img--primary"
+          src="{{ 'product-img.png' | asset_url }}"
+          alt=""
+          width="600"
+          height="358"
+          loading="lazy"
+        >
+      {%- endif -%}
+    </a>
+
+    <div class="dirona-card__top">
+      {%- if badge_text != blank -%}
+        <span class="dirona-badge">{{ badge_text }}</span>
+      {%- else -%}
+        <span aria-hidden="true"></span>
+      {%- endif -%}
+      <a href="#" class="dirona-card__heart" aria-label="Wishlist">
+        <img src="{{ 'heart.svg' | asset_url }}" alt="" width="22" height="22">
+      </a>
+    </div>
+
+    <a href="{{ product.url | default: '#' }}" class="dirona-card__basket" aria-label="View product">
+      <img src="{{ 'basket.svg' | asset_url }}" alt="" width="24" height="24">
+    </a>
+  </div>
+
+  <div class="dirona-card__row">
+    <a href="{{ product.url | default: '#' }}" class="dirona-card__title">
+      {%- if product != blank -%}{{ product.title | escape }}{%- else -%}Blue Mystic Twist Ring{%- endif -%}
+    </a>
+    {%- if show_discount and on_sale -%}
+      {%- assign discount = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price -%}
+      <span class="dirona-badge dirona-badge--orange">{{ discount }}% Off</span>
+    {%- elsif show_discount and product == blank -%}
+      <span class="dirona-badge dirona-badge--orange">10% Off</span>
+    {%- endif -%}
+  </div>
+
+  <div class="dirona-card__price-row">
+    <span class="dirona-card__price">
+      {%- if product != blank -%}{{ product.price | money }}{%- else -%}€ 135.00{%- endif -%}
+    </span>
+    <div class="dirona-card__swatches">
+      {%- if product != blank and product.options_by_name['Color'] != blank -%}
+        {%- for value in product.options_by_name['Color'].values limit: 4 -%}
+          {%- assign swatch_key = value | downcase -%}
+          {%- assign swatch_mod = 'dirona-swatch' -%}
+          {%- if swatch_key contains 'silver' or swatch_key contains 'grey' or swatch_key contains 'gray' or swatch_key contains 'white' or swatch_key contains 'platinum' -%}
+            {%- assign swatch_mod = 'dirona-swatch dirona-swatch--gray' -%}
+          {%- endif -%}
+          <span class="{{ swatch_mod }}" title="{{ value | escape }}"><span class="dirona-swatch__inner"></span></span>
+        {%- endfor -%}
+      {%- elsif product != blank and product.options_by_name['Colour'] != blank -%}
+        {%- for value in product.options_by_name['Colour'].values limit: 4 -%}
+          {%- assign swatch_key = value | downcase -%}
+          {%- assign swatch_mod = 'dirona-swatch' -%}
+          {%- if swatch_key contains 'silver' or swatch_key contains 'grey' or swatch_key contains 'gray' or swatch_key contains 'white' or swatch_key contains 'platinum' -%}
+            {%- assign swatch_mod = 'dirona-swatch dirona-swatch--gray' -%}
+          {%- endif -%}
+          <span class="{{ swatch_mod }}" title="{{ value | escape }}"><span class="dirona-swatch__inner"></span></span>
+        {%- endfor -%}
+      {%- else -%}
+        <span class="dirona-swatch"><span class="dirona-swatch__inner"></span></span>
+        <span class="dirona-swatch dirona-swatch--gray"><span class="dirona-swatch__inner"></span></span>
+      {%- endif -%}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,96 @@
+{% comment %}
+  Blog card
+  Accepts:
+  - article {Object}
+  - card_style {String} blog | news — news matches homepage / blog-open related posts
+{% endcomment %}
+
+{%- liquid
+  assign card_style = card_style | default: 'blog'
+  assign card_tag = article.tags.first
+  assign tag_handles = ''
+  for tag in article.tags
+    assign tag_handle = tag | handleize
+    assign tag_handles = tag_handles | append: tag_handle | append: ' '
+  endfor
+-%}
+
+{%- if card_style == 'news' -%}
+  <article class="gemluxjewel-news__card">
+    <div class="gemluxjewel-news__img">
+      <a href="{{ article.url }}" tabindex="-1" aria-hidden="true">
+        {%- if article.image -%}
+          {{
+            article.image
+            | image_url: width: 700
+            | image_tag: widths: '300, 400, 600, 700', sizes: '(min-width: 1200px) 25vw, 50vw', loading: 'lazy', alt: article.title
+          }}
+        {%- else -%}
+          {% render 'gemluxjewel-theme-image', use_store_media: true, seed: article.id, width: 600, widths: '300,450,600', sizes: '(min-width: 1200px) 25vw, 50vw', alt: article.title %}
+        {%- endif -%}
+      </a>
+      {%- if card_tag != blank -%}
+        <div class="gemluxjewel-card__top">
+          <span class="gemluxjewel-badge">{{ card_tag | escape }}</span>
+        </div>
+      {%- endif -%}
+    </div>
+    <h3 class="gemluxjewel-news__title">
+      <a href="{{ article.url }}">{{ article.title | escape }}</a>
+    </h3>
+    <p class="gemluxjewel-news__excerpt">
+      {{ article.excerpt | default: article.content | strip_html | truncate: 120 }}
+    </p>
+    <a href="{{ article.url }}" class="gemluxjewel-news__readmore">
+      Read More
+      <span class="gemluxjewel-btn__arrow">
+        <img src="{{ 'green-right-arrow.svg' | asset_url }}" alt="" width="24" height="24">
+      </span>
+    </a>
+  </article>
+{%- else -%}
+  <article class="gemluxjewel-blog-card {{ tag_handles | strip }}" data-gemluxjewel-blog-card>
+    <a href="{{ article.url }}" class="gemluxjewel-blog-card__media" tabindex="-1" aria-hidden="true">
+      {%- if article.image -%}
+        {{
+          article.image
+          | image_url: width: 800
+          | image_tag:
+            widths: '300, 400, 600, 800',
+            sizes: '(min-width: 1200px) 25vw, (min-width: 768px) 33vw, 50vw',
+            loading: 'lazy',
+            alt: article.title,
+            class: 'gemluxjewel-blog-card__photo'
+        }}
+      {%- else -%}
+        {% render 'gemluxjewel-theme-image',
+          use_store_media: true,
+          seed: article.id,
+          width: 600,
+          widths: '300,450,600',
+          sizes: '(min-width: 1200px) 25vw, 50vw',
+          alt: article.title,
+          class: 'gemluxjewel-blog-card__photo'
+        %}
+      {%- endif -%}
+    </a>
+
+    <div class="gemluxjewel-blog-card__body">
+      {%- if card_tag != blank -%}
+        <p class="gemluxjewel-blog-card__tag">{{ card_tag | escape }}</p>
+      {%- endif -%}
+      <h2 class="gemluxjewel-blog-card__title">
+        <a href="{{ article.url }}">{{ article.title | escape }}</a>
+      </h2>
+      <p class="gemluxjewel-blog-card__excerpt">
+        {{ article.excerpt | default: article.content | strip_html | truncate: 100 }}
+      </p>
+      <a href="{{ article.url }}" class="gemluxjewel-blog-card__readmore">
+        Read More
+        <span class="gemluxjewel-blog-card__arrow" aria-hidden="true">
+          <img src="{{ 'green-right-arrow.svg' | asset_url }}" alt="" width="20" height="20">
+        </span>
+      </a>
+    </div>
+  </article>
+{%- endif -%}

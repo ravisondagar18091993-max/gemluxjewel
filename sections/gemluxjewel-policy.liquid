@@ -1,0 +1,173 @@
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-policy.css' | asset_url | stylesheet_tag }}
+{% render 'gemluxjewel-fonts' %}
+<script src="{{ 'gemluxjewel-policy.js' | asset_url }}" defer="defer"></script>
+
+<section class="gemluxjewel gemluxjewel-policy">
+  <div class="gemluxjewel-container">
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign anchor_id = block.settings.anchor_id
+        if anchor_id == blank
+          assign anchor_id = block.settings.title | handleize
+        endif
+      -%}
+      <article
+        class="gemluxjewel-policy__box"
+        id="{{ anchor_id | escape }}"
+        {{ block.shopify_attributes }}
+      >
+        {%- if block.settings.title != blank -%}
+          <h2 class="gemluxjewel-policy__heading">{{ block.settings.title | escape }}</h2>
+        {%- endif -%}
+        {%- if block.settings.content != blank -%}
+          <div class="gemluxjewel-policy__content rte">
+            {{ block.settings.content }}
+          </div>
+        {%- endif -%}
+      </article>
+    {%- endfor -%}
+  </div>
+
+  {%- if section.blocks.size > 0 and section.settings.show_quick_links -%}
+    <nav class="gemluxjewel-policy__quick-nav" aria-label="Policy sections">
+      <div class="gemluxjewel-container">
+        <ul class="gemluxjewel-policy__quick-links" data-gemluxjewel-policy-nav>
+          {%- for block in section.blocks -%}
+            {%- liquid
+              assign anchor_id = block.settings.anchor_id
+              if anchor_id == blank
+                assign anchor_id = block.settings.title | handleize
+              endif
+              assign link_label = block.settings.nav_label | default: block.settings.title
+            -%}
+            {%- if link_label != blank -%}
+              <li>
+                <a href="#{{ anchor_id | escape }}" class="gemluxjewel-policy__quick-link">
+                  {{ link_label | escape }}
+                </a>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+    </nav>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Gemlux Policy",
+  "tag": "section",
+  "class": "gemluxjewel-section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_quick_links",
+      "label": "Show bottom quick links",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "policy",
+      "name": "Policy section",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Policy heading"
+        },
+        {
+          "type": "text",
+          "id": "nav_label",
+          "label": "Quick link label",
+          "info": "Short label for the bottom navigation. Defaults to heading."
+        },
+        {
+          "type": "text",
+          "id": "anchor_id",
+          "label": "Anchor ID",
+          "info": "Used for quick links, e.g. delivery-policy"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gemlux Policy",
+      "blocks": [
+        {
+          "type": "policy",
+          "settings": {
+            "title": "Delivery Information",
+            "nav_label": "Delivery Information",
+            "anchor_id": "delivery-policy",
+            "content": "<p>We are committed to delivering your order in a fast, safe, and reliable manner. All orders are processed within 1–2 business days after confirmation. Once dispatched, delivery typically takes 3–7 business days depending on your location.</p><p>You will receive a confirmation email along with a tracking link once your order has been shipped. Please note that delivery times may vary during peak seasons, public holidays, or due to unforeseen courier delays. We recommend placing your order in advance for special occasions.</p>"
+          }
+        },
+        {
+          "type": "policy",
+          "settings": {
+            "title": "Shipping Policy",
+            "nav_label": "Shipping Policy",
+            "anchor_id": "shopping-policy",
+            "content": "<p>We provide secure and efficient shipping services to ensure your jewellery reaches you in perfect condition. Shipping options, delivery timelines, and any applicable charges will be clearly displayed at checkout before you complete your purchase.</p><p>Free shipping may be available on selected orders or promotional offers. While we work with trusted courier partners, delays caused by external factors such as weather conditions or logistics issues are beyond our control.</p><p>Customers are responsible for providing accurate shipping information. Incorrect or incomplete addresses may result in delays or failed deliveries.</p>"
+          }
+        },
+        {
+          "type": "policy",
+          "settings": {
+            "title": "Cancellation Policy",
+            "nav_label": "Cancellation Policy",
+            "anchor_id": "cancel-policy",
+            "content": "<p>You may request to cancel your order within a short window after placing it. If the order has not yet been processed or shipped, we will cancel it and initiate a full refund.</p><p>If the order has already been dispatched, cancellation will not be possible. In such cases, you may refer to our return policy after receiving the product.</p>"
+          }
+        },
+        {
+          "type": "policy",
+          "settings": {
+            "title": "Returns & Refunds",
+            "nav_label": "Returns & Refunds",
+            "anchor_id": "return-policy",
+            "content": "<p>We want you to be completely satisfied with your purchase. If you are not happy with your order, you may request a return within the eligible return period from the date of delivery.</p><p>To qualify for a return:</p><ul><li>The item must be unused and in its original condition</li><li>All original packaging must be intact</li><li>Proof of purchase is required</li></ul><p>Once your return is received and inspected, we will notify you of the approval status. Approved refunds will be processed to your original payment method within a few business days.</p><p>Shipping fees (if applicable) are non-refundable unless the return is due to a damaged, defective, or incorrect item.</p>"
+          }
+        },
+        {
+          "type": "policy",
+          "settings": {
+            "title": "Damaged or Incorrect Items",
+            "nav_label": "Damaged or Incorrect Items",
+            "anchor_id": "damage-policy",
+            "content": "<p>If you receive a damaged, defective, or incorrect product, please contact us within 24–48 hours of delivery. Kindly provide clear photos of the issue along with your order details so we can resolve it quickly.</p><p>We will arrange a replacement or refund based on the situation at no additional cost to you.</p>"
+          }
+        },
+        {
+          "type": "policy",
+          "settings": {
+            "title": "Non-Returnable Items",
+            "nav_label": "Non-Returnable Items",
+            "anchor_id": "refund-policy",
+            "content": "<p>For hygiene and safety reasons, certain items may not be eligible for return. These include worn items, customized jewellery, or products returned without original packaging.</p>"
+          }
+        },
+        {
+          "type": "policy",
+          "settings": {
+            "title": "Refund Processing Time",
+            "nav_label": "Refund Processing Time",
+            "anchor_id": "refundprocess-policy",
+            "content": "<p>Once your return is approved:</p><ul><li>Refunds are processed within 5–10 business days</li><li>Funds may take additional time to appear depending on your bank</li><li>You will receive an email confirmation when the refund is issued</li></ul>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

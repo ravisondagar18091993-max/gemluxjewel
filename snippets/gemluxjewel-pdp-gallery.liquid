@@ -1,0 +1,19 @@
+<div class="gemluxjewel-pdp__gallery">
+  {%- if product.media.size > 0 -%}
+    {%- for media in product.media limit: 8 -%}
+      <div class="gemluxjewel-pdp__gallery-item">
+        {%- if media.media_type == 'image' -%}
+          {{ media | image_url: width: 900 | image_tag: widths: '300, 450, 600, 900', sizes: '(min-width: 990px) 25vw, 50vw', loading: 'lazy', alt: product.title }}
+        {%- else -%}
+          {{ media | image_url: width: 900 | image_tag: widths: '300, 450, 600, 900', sizes: '(min-width: 990px) 25vw, 50vw', loading: 'lazy', alt: product.title }}
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  {%- else -%}
+    {%- for i in (1..8) -%}
+      <div class="gemluxjewel-pdp__gallery-item">
+        {% render 'gemluxjewel-theme-image', use_store_media: true, seed: product.id, width: 900, widths: '450,600,900', sizes: '(min-width: 990px) 45vw, 100vw', alt: product.title %}
+      </div>
+    {%- endfor -%}
+  {%- endif -%}
+</div>

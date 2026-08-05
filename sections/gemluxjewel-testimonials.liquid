@@ -1,0 +1,124 @@
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'gemluxjewel-testimonials.js' | asset_url }}" defer="defer"></script>
+
+<section class="gemluxjewel gemluxjewel-testimonials">
+  <div class="gemluxjewel-container">
+    <div class="gemluxjewel-section-header gemluxjewel-section-header--center">
+      <div>
+        {%- if section.settings.title != blank -%}
+          <h2 class="gemluxjewel-section-title">{{ section.settings.title }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subtitle != blank -%}
+          <p class="gemluxjewel-section-desc">{{ section.settings.subtitle }}</p>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="gemluxjewel-testimonials__slider" data-gemluxjewel-testimonials-slider>
+      <button
+        type="button"
+        class="gemluxjewel-testimonials__nav gemluxjewel-testimonials__nav--prev"
+        data-gemluxjewel-testimonials-prev
+        aria-label="Previous reviews"
+        disabled
+      >
+        <img src="{{ 'green-right-arrow.svg' | asset_url }}" alt="" width="16" height="16" class="gemluxjewel-testimonials__nav-icon gemluxjewel-testimonials__nav-icon--prev">
+      </button>
+
+      <div class="gemluxjewel-testimonials__viewport">
+        <div class="gemluxjewel-testimonials__track" data-gemluxjewel-testimonials-track>
+          {%- if section.settings.show_summary -%}
+            <div class="gemluxjewel-testimonials__card gemluxjewel-testimonials__card--summary">
+              <div class="gemluxjewel-testimonials__summary-inner">
+                {%- if section.settings.summary_label != blank -%}
+                  <p class="gemluxjewel-testimonials__summary-label">{{ section.settings.summary_label | escape }}</p>
+                {%- endif -%}
+                {%- if section.settings.average_rating != blank -%}
+                  <div class="gemluxjewel-testimonials__score-wrap">
+                    <span class="gemluxjewel-testimonials__score">{{ section.settings.average_rating | escape }}</span>
+                    <span class="gemluxjewel-testimonials__score-max">/ 5</span>
+                  </div>
+                {%- endif -%}
+                <div class="gemluxjewel-testimonials__stars gemluxjewel-testimonials__stars--gold" aria-hidden="true">
+                  {%- for i in (1..5) -%}
+                    <img src="{{ 'testimonial-star.svg' | asset_url }}" alt="" width="20" height="20">
+                  {%- endfor -%}
+                </div>
+                <span class="gemluxjewel-testimonials__summary-divider" aria-hidden="true"></span>
+                {%- if section.settings.review_count != blank -%}
+                  <p class="gemluxjewel-testimonials__count">{{ section.settings.review_count | escape }}</p>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endif -%}
+
+          {%- for block in section.blocks -%}
+            <div class="gemluxjewel-testimonials__card" {{ block.shopify_attributes }}>
+              <div class="gemluxjewel-testimonials__quote" aria-hidden="true">“</div>
+              <div class="gemluxjewel-testimonials__stars" aria-label="{{ block.settings.rating }} out of 5 stars">
+                {%- for i in (1..block.settings.rating) -%}
+                  <img src="{{ 'testimonial-star.svg' | asset_url }}" alt="" width="18" height="18">
+                {%- endfor -%}
+              </div>
+              {%- if block.settings.text != blank -%}
+                <p class="gemluxjewel-testimonials__text">{{ block.settings.text | escape }}</p>
+              {%- endif -%}
+              {%- if block.settings.author != blank -%}
+                <p class="gemluxjewel-testimonials__author">{{ block.settings.author | escape }}</p>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+
+      <button
+        type="button"
+        class="gemluxjewel-testimonials__nav gemluxjewel-testimonials__nav--next"
+        data-gemluxjewel-testimonials-next
+        aria-label="Next reviews"
+      >
+        <img src="{{ 'green-right-arrow.svg' | asset_url }}" alt="" width="16" height="16" class="gemluxjewel-testimonials__nav-icon">
+      </button>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "gemluxjewel Testimonials",
+  "tag": "section",
+  "class": "section gemluxjewel-section",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "Customer Voices" },
+    { "type": "textarea", "id": "subtitle", "label": "Subheading", "default": "Real experiences from people who value comfort, quality, and everyday style." },
+    { "type": "checkbox", "id": "show_summary", "label": "Show rating summary as first slide", "default": true },
+    { "type": "text", "id": "summary_label", "label": "Summary label", "default": "Trusted Rating" },
+    { "type": "text", "id": "average_rating", "label": "Average rating", "default": "4.6" },
+    { "type": "text", "id": "review_count", "label": "Total reviews", "default": "2000 reviews" }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "range", "id": "rating", "min": 1, "max": 5, "step": 1, "default": 5, "label": "Stars" },
+        { "type": "textarea", "id": "text", "label": "Review", "default": "Really impressed with how lightweight and comfortable the jewellery feels all day." },
+        { "type": "text", "id": "author", "label": "Author", "default": "Aarav Mehta – India" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "gemluxjewel Testimonials",
+      "blocks": [
+        { "type": "review", "settings": { "text": "Really impressed with how lightweight and comfortable the jewellery feels all day. No irritation at all.", "author": "Aarav Mehta – India" } },
+        { "type": "review", "settings": { "text": "The quality is excellent and it looks even better in person. Been wearing it daily.", "author": "Oliver Smith – United Kingdom" } },
+        { "type": "review", "settings": { "text": "Simple, stylish, and perfect for everyday use without any discomfort.", "author": "Ethan Carter – United States" } },
+        { "type": "review", "settings": { "text": "Great value for money and the design is exactly what I wanted.", "author": "Sofia Rossi – Italy" } },
+        { "type": "review", "settings": { "text": "Fast delivery and beautiful packaging. The jewellery exceeded expectations.", "author": "Yuki Tanaka – Japan" } },
+        { "type": "review", "settings": { "text": "My go-to brand for daily wear jewellery. Comfortable and elegant.", "author": "Emma Wilson – Australia" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
