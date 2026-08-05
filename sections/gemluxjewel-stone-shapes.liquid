@@ -26,6 +26,8 @@
   if stone_shape_filter != blank and stone_shape_filter.values.size > 0
     assign use_filter_shapes = true
   endif
+
+  assign shape_image_sizes = '(min-width: 1200px) 180px, (min-width: 750px) 160px, 110px'
 -%}
 
 <section class="gemluxjewel gemluxjewel-stone-shapes">
@@ -81,10 +83,10 @@
                     {%- if shape_image != blank -%}
                       {{
                         shape_image
-                        | image_url: width: 400
+                        | image_url: width: 800
                         | image_tag:
-                          widths: '120, 160, 200, 300, 400',
-                          sizes: '120px',
+                          widths: '200, 300, 400, 600, 800',
+                          sizes: shape_image_sizes,
                           loading: 'lazy',
                           alt: shape_title
                       }}
@@ -92,9 +94,9 @@
                       {% render 'gemluxjewel-theme-image',
                         use_store_media: true,
                         seed: forloop.index,
-                        width: 200,
-                        widths: '120,160,200',
-                        sizes: '120px',
+                        width: 400,
+                        widths: '200,300,400,600',
+                        sizes: shape_image_sizes,
                         alt: shape_title,
                         class: 'gemluxjewel-stone-shapes__fallback'
                       %}
@@ -151,10 +153,10 @@
                     {%- if shape_image != blank -%}
                       {{
                         shape_image
-                        | image_url: width: 400
+                        | image_url: width: 800
                         | image_tag:
-                          widths: '120, 160, 200, 300, 400',
-                          sizes: '120px',
+                          widths: '200, 300, 400, 600, 800',
+                          sizes: shape_image_sizes,
                           loading: 'lazy',
                           alt: shape_title
                       }}
@@ -162,9 +164,9 @@
                       {% render 'gemluxjewel-theme-image',
                         use_store_media: true,
                         seed: forloop.index,
-                        width: 200,
-                        widths: '120,160,200',
-                        sizes: '120px',
+                        width: 400,
+                        widths: '200,300,400,600',
+                        sizes: shape_image_sizes,
                         alt: shape_title,
                         class: 'gemluxjewel-stone-shapes__fallback'
                       %}
