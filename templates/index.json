@@ -16,7 +16,7 @@
           "type": "slide",
           "settings": {
             "media_type": "video",
-            "video": "shopify://files/videos/create_video____.mp4",
+            "video": "shopify://files/videos/Woman_turns_head_in_room_202608061659.mp4",
             "prefix": "",
             "heading": "",
             "text": "",
@@ -216,31 +216,41 @@
         "c1": {
           "type": "style",
           "settings": {
-            "title": "Solitaire"
+            "title": "Solitaire",
+            "collection": "",
+            "link": ""
           }
         },
         "c2": {
           "type": "style",
           "settings": {
-            "title": "Bezel"
+            "title": "Bezel",
+            "collection": "",
+            "link": ""
           }
         },
         "c3": {
           "type": "style",
           "settings": {
-            "title": "Toi et Moi"
+            "title": "Toi et Moi",
+            "collection": "",
+            "link": ""
           }
         },
         "c4": {
           "type": "style",
           "settings": {
-            "title": "Three Stone"
+            "title": "Three Stone",
+            "collection": "",
+            "link": ""
           }
         },
         "c5": {
           "type": "style",
           "settings": {
-            "title": "Halo"
+            "title": "Halo",
+            "collection": "",
+            "link": ""
           }
         }
       },
