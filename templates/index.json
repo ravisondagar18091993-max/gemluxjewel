@@ -16,7 +16,7 @@
           "type": "slide",
           "settings": {
             "media_type": "video",
-            "video": "shopify://files/videos/Woman_wearing_jewelry_indoors_1080p_202608061709.mp4",
+            "video": "shopify://files/videos/create_video____.mp4",
             "prefix": "",
             "heading": "",
             "text": "",
@@ -216,41 +216,31 @@
         "c1": {
           "type": "style",
           "settings": {
-            "title": "Solitaire",
-            "collection": "",
-            "link": ""
+            "title": "Solitaire"
           }
         },
         "c2": {
           "type": "style",
           "settings": {
-            "title": "Bezel",
-            "collection": "",
-            "link": ""
+            "title": "Bezel"
           }
         },
         "c3": {
           "type": "style",
           "settings": {
-            "title": "Toi et Moi",
-            "collection": "",
-            "link": ""
+            "title": "Toi et Moi"
           }
         },
         "c4": {
           "type": "style",
           "settings": {
-            "title": "Three Stone",
-            "collection": "",
-            "link": ""
+            "title": "Three Stone"
           }
         },
         "c5": {
           "type": "style",
           "settings": {
-            "title": "Halo",
-            "collection": "",
-            "link": ""
+            "title": "Halo"
           }
         }
       },
