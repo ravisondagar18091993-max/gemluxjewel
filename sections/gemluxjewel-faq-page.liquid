@@ -1,0 +1,175 @@
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-product.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'gemluxjewel-accordion.js' | asset_url }}" defer="defer"></script>
+
+<section class="gemluxjewel gemluxjewel-faq-page">
+  <div class="gemluxjewel-container">
+    <div class="gemluxjewel-faq-page__inner">
+      <div class="gemluxjewel-faq-page__header gemluxjewel-section-header gemluxjewel-section-header--center">
+        <div>
+          {%- if section.settings.prefix != blank -%}
+            <p class="gemluxjewel-prefix gemluxjewel-faq-page__prefix">{{ section.settings.prefix | escape }}</p>
+          {%- endif -%}
+          {%- if section.settings.title != blank -%}
+            <h1 class="gemluxjewel-section-title gemluxjewel-faq-page__title">{{ section.settings.title | escape }}</h1>
+          {%- endif -%}
+          {%- if section.settings.text != blank -%}
+            <p class="gemluxjewel-section-desc gemluxjewel-faq-page__desc">{{ section.settings.text | escape }}</p>
+          {%- endif -%}
+        </div>
+      </div>
+
+      {%- if section.blocks.size > 0 -%}
+        <div class="gemluxjewel-faq-page__accordion">
+          <div class="closet-accordion" data-gemluxjewel-accordion>
+            {%- for block in section.blocks -%}
+              <div class="closet-item" {{ block.shopify_attributes }}>
+                <div
+                  class="closet-header"
+                  role="button"
+                  tabindex="0"
+                  aria-expanded="false"
+                >
+                  <div class="closet-header-title">{{ block.settings.question | escape }}</div>
+                  <div class="accordion-close">
+                    <img src="{{ 'down-arrow.svg' | asset_url }}" alt="" width="24" height="24">
+                  </div>
+                </div>
+                <div class="closet-content">
+                  <div class="closet-content__inner rte">
+                    {{ block.settings.answer }}
+                  </div>
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.button_label != blank -%}
+        <div class="gemluxjewel-faq-page__cta">
+          {% render 'gemluxjewel-btn', label: section.settings.button_label, url: section.settings.button_link, style: 'green' %}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "gemluxjewel FAQ Page",
+  "tag": "section",
+  "class": "gemluxjewel-section",
+  "max_blocks": 30,
+  "settings": [
+    { "type": "text", "id": "prefix", "label": "Prefix", "default": "Need Help?" },
+    { "type": "text", "id": "title", "label": "Heading", "default": "Frequently Asked Questions" },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description",
+      "default": "Find answers to common questions about our jewellery, materials, and care to help you shop with confidence."
+    },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Contact Us" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Is Titanium Jewellery Safe For Sensitive Skin?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Yes, absolutely. Titanium is completely hypoallergenic and biocompatible.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "gemluxjewel FAQ Page",
+      "blocks": [
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Is Titanium Jewellery Safe For Sensitive Skin?",
+            "answer": "<p>Yes, absolutely. Titanium is completely hypoallergenic and biocompatible. This means it is entirely free from nickel and other common irritants, making it perfectly safe for even the most sensitive skin without causing redness or green discoloration.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Can I Wear The Jewellery Daily?",
+            "answer": "<p>Yes! In fact, it is designed for it. Titanium is incredibly lightweight yet remarkably strong. You will barely feel it on your skin, making it the perfect, comfortable choice for everyday, all-day wear.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Is The Jewellery Waterproof?",
+            "answer": "<p>Yes, our titanium jewellery is 100% waterproof and tarnish-resistant. You can confidently wear it while showering, swimming, or working out without worrying about it rusting, fading, or losing its color.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Will The Jewellery Lose Its Shine Over Time?",
+            "answer": "<p>Titanium is highly durable and resistant to scratches and fading. While all metals can naturally show minor wear over decades, titanium maintains its premium finish and beautiful shine far longer than traditional metals like silver or brass.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "How Should I Care For My Jewellery?",
+            "answer": "<p>Caring for your titanium jewellery is effortless. Simply wash it occasionally with warm water and a mild soap, then gently pat it dry with a soft cloth. Avoid using harsh chemicals or abrasive cleaners to keep it looking brand new.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Can Titanium Jewellery Rust Or Corrode?",
+            "answer": "<p>No, not at all. Titanium is uniquely highly resistant to rust and corrosion. You can expose it to water, sweat, and even salt water without worrying about it oxidizing, tarnishing, or turning your skin green.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Is Titanium Jewellery Suitable For Daily Wear?",
+            "answer": "<p>Absolutely. Because titanium is incredibly lightweight and hypoallergenic, it is one of the most comfortable metals you can wear. It is designed specifically to be a piece you can put on and never have to take off.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Will Titanium Jewellery Fade In Color?",
+            "answer": "<p>Titanium naturally maintains its brilliant metallic finish and will never tarnish or turn black like cheaper alloys or silver. It requires zero polishing to keep its underlying shine, ensuring it looks beautiful for years.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Can I Wear Titanium Jewellery While Working Out?",
+            "answer": "<p>Yes, definitely! Since titanium is completely sweat-proof, waterproof, and extremely durable, you can confidently wear it during heavy workouts, runs, or swimming without worrying about damaging the jewellery or irritating your skin.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Is Titanium Stronger Than Other Metals?",
+            "answer": "<p>Yes. Titanium has one of the highest strength-to-weight ratios of any metal in the world. It is significantly stronger and more durable than gold, silver, and platinum, meaning it is highly resistant to bending, denting, or losing its shape over time.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

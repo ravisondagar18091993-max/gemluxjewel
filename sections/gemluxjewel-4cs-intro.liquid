@@ -1,0 +1,39 @@
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-4cs.css' | asset_url | stylesheet_tag }}
+
+<section class="gemluxjewel gemluxjewel-4cs-intro">
+  <div class="gemluxjewel-container">
+    <div class="gemluxjewel-4cs-intro__inner">
+      {%- if section.settings.title != blank -%}
+        <h1 class="gemluxjewel-4cs-intro__title">{{ section.settings.title | escape }}</h1>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <div class="gemluxjewel-4cs-intro__text rte">{{ section.settings.text }}</div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "gemluxjewel 4Cs Intro",
+  "tag": "section",
+  "class": "gemluxjewel-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "4Cs of Diamond Quality"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Introduction",
+      "default": "<p>The 4Cs — Cut, Carat Weight, Color, and Clarity — are the universal standards for evaluating diamond quality. Together, they determine a diamond's beauty, rarity, and value. Understanding each factor helps you choose a stone that matches your style and budget with confidence.</p>"
+    }
+  ],
+  "presets": [{ "name": "gemluxjewel 4Cs Intro" }]
+}
+{% endschema %}

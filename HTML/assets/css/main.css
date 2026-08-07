@@ -3,7 +3,7 @@
 }
 
 .theme-secondary {
-  background-color: #fff8f4 !important;
+  background-color: #ffffff !important;
 }
 
 .text-primary {
@@ -11,7 +11,7 @@
 }
 
 .text-secondary {
-  color: #fff8f4 !important;
+  color: #ffffff !important;
 }
 
 .text-gray {
@@ -175,13 +175,13 @@ a {
 .header.header-dark .header-logo,
 .header.header-dark .mega-title,
 .header.header-dark .mega-list li a {
-  color: #fff8f4 !important;
+  color: #ffffff !important;
 }
 .header.header-dark .list-text:hover,
 .header.header-dark .header-logo:hover,
 .header.header-dark .mega-title:hover,
 .header.header-dark .mega-list li a:hover {
-  color: #fff8f4 !important;
+  color: #ffffff !important;
   opacity: 1 !important;
 }
 .header.header-dark .top-border {
@@ -272,7 +272,7 @@ a {
 
 /* Mobile Menu Overlay */
 .mobile-menu-overlay {
-  background-color: #fff8f4;
+  background-color: #ffffff;
   z-index: 9999 !important;
   transform: translateY(-100%);
   visibility: hidden;
@@ -673,13 +673,13 @@ a {
   width: 8px;
 }
 .testimonial-section .testimonial-card .content::-webkit-scrollbar-track {
-  background: #fff8f4;
+  background: #ffffff;
   border-radius: 10px;
 }
 .testimonial-section .testimonial-card .content::-webkit-scrollbar-thumb {
   background: #1a5543;
   border-radius: 10px;
-  border: 1px solid #fff8f4;
+  border: 1px solid #ffffff;
 }
 .testimonial-section .testimonial-card .content::-webkit-scrollbar-thumb:hover {
   background: #e37859;
@@ -1172,7 +1172,7 @@ a {
 }
 
 .mini-cart-offcanvas {
-  background-color: #fff8f4;
+  background-color: #ffffff;
   width: 500px !important;
 }
 .mini-cart-offcanvas .offcanvas-body .cart-items::-webkit-scrollbar {

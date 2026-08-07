@@ -1,0 +1,118 @@
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+
+<section class="gemluxjewel gemluxjewel-dual-cards">
+  <div class="gemluxjewel-container">
+    {%- if section.blocks.size > 0 -%}
+      <div class="gemluxjewel-dual-cards__grid">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign card_image = block.settings.image
+            assign card_title = block.settings.title
+            assign card_button_label = block.settings.button_label
+            assign card_button_link = block.settings.button_link
+          -%}
+
+          <div class="gemluxjewel-dual-cards__card" {{ block.shopify_attributes }}>
+            <div class="gemluxjewel-dual-cards__media">
+              {%- if card_image != blank -%}
+                {{
+                  card_image
+                  | image_url: width: 1200
+                  | image_tag:
+                    widths: '600, 800, 1000, 1200',
+                    sizes: '(min-width: 1200px) 50vw, 100vw',
+                    loading: 'lazy',
+                    class: 'gemluxjewel-dual-cards__img',
+                    alt: card_title
+                }}
+              {%- else -%}
+                {% render 'gemluxjewel-theme-image',
+                  use_store_media: true,
+                  seed: forloop.index,
+                  width: 1200,
+                  widths: '600,800,1200',
+                  sizes: '(min-width: 1200px) 50vw, 100vw',
+                  alt: card_title,
+                  class: 'gemluxjewel-dual-cards__img'
+                %}
+              {%- endif -%}
+              <div class="gemluxjewel-dual-cards__overlay" aria-hidden="true"></div>
+            </div>
+
+            <div class="gemluxjewel-dual-cards__content">
+              {%- if card_title != blank -%}
+                <h2 class="gemluxjewel-dual-cards__title">{{ card_title | escape }}</h2>
+              {%- endif -%}
+              {%- if card_button_label != blank -%}
+                {% render 'gemluxjewel-btn', label: card_button_label, url: card_button_link, style: 'green' %}
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "gemluxjewel Dual Cards",
+  "tag": "section",
+  "class": "section gemluxjewel-section",
+  "max_blocks": 2,
+  "settings": [],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Background image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Diamond Collection"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "Shop Now"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "gemluxjewel Dual Cards",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "title": "Engagement Rings",
+            "button_label": "Shop Now",
+            "button_link": "shopify://collections/all"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "Diamond Pendants",
+            "button_label": "Shop Now",
+            "button_link": "shopify://collections/all"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,101 @@
+{
+  "sections": {
+    "gemluxjewel_faq": {
+      "type": "gemluxjewel-faq-page",
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "Is Titanium Jewellery Safe For Sensitive Skin?",
+            "answer": "<p>Yes, absolutely. Titanium is completely hypoallergenic and biocompatible. This means it is entirely free from nickel and other common irritants, making it perfectly safe for even the most sensitive skin without causing redness or green discoloration.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I Wear The Jewellery Daily?",
+            "answer": "<p>Yes! In fact, it is designed for it. Titanium is incredibly lightweight yet remarkably strong. You will barely feel it on your skin, making it the perfect, comfortable choice for everyday, all-day wear.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Is The Jewellery Waterproof?",
+            "answer": "<p>Yes, our titanium jewellery is 100% waterproof and tarnish-resistant. You can confidently wear it while showering, swimming, or working out without worrying about it rusting, fading, or losing its color.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "Will The Jewellery Lose Its Shine Over Time?",
+            "answer": "<p>Titanium is highly durable and resistant to scratches and fading. While all metals can naturally show minor wear over decades, titanium maintains its premium finish and beautiful shine far longer than traditional metals like silver or brass.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "How Should I Care For My Jewellery?",
+            "answer": "<p>Caring for your titanium jewellery is effortless. Simply wash it occasionally with warm water and a mild soap, then gently pat it dry with a soft cloth. Avoid using harsh chemicals or abrasive cleaners to keep it looking brand new.</p>"
+          }
+        },
+        "faq_6": {
+          "type": "faq",
+          "settings": {
+            "question": "Can Titanium Jewellery Rust Or Corrode?",
+            "answer": "<p>No, not at all. Titanium is uniquely highly resistant to rust and corrosion. You can expose it to water, sweat, and even salt water without worrying about it oxidizing, tarnishing, or turning your skin green.</p>"
+          }
+        },
+        "faq_7": {
+          "type": "faq",
+          "settings": {
+            "question": "Is Titanium Jewellery Suitable For Daily Wear?",
+            "answer": "<p>Absolutely. Because titanium is incredibly lightweight and hypoallergenic, it is one of the most comfortable metals you can wear. It is designed specifically to be a piece you can put on and never have to take off.</p>"
+          }
+        },
+        "faq_8": {
+          "type": "faq",
+          "settings": {
+            "question": "Will Titanium Jewellery Fade In Color?",
+            "answer": "<p>Titanium naturally maintains its brilliant metallic finish and will never tarnish or turn black like cheaper alloys or silver. It requires zero polishing to keep its underlying shine, ensuring it looks beautiful for years.</p>"
+          }
+        },
+        "faq_9": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I Wear Titanium Jewellery While Working Out?",
+            "answer": "<p>Yes, definitely! Since titanium is completely sweat-proof, waterproof, and extremely durable, you can confidently wear it during heavy workouts, runs, or swimming without worrying about damaging the jewellery or irritating your skin.</p>"
+          }
+        },
+        "faq_10": {
+          "type": "faq",
+          "settings": {
+            "question": "Is Titanium Stronger Than Other Metals?",
+            "answer": "<p>Yes. Titanium has one of the highest strength-to-weight ratios of any metal in the world. It is significantly stronger and more durable than gold, silver, and platinum, meaning it is highly resistant to bending, denting, or losing its shape over time.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6",
+        "faq_7",
+        "faq_8",
+        "faq_9",
+        "faq_10"
+      ],
+      "settings": {
+        "prefix": "Need Help?",
+        "title": "Frequently Asked Questions",
+        "text": "Find answers to common questions about our jewellery, materials, and care to help you shop with confidence.",
+        "button_label": "Contact Us",
+        "button_link": "shopify://pages/contact"
+      }
+    }
+  },
+  "order": [
+    "gemluxjewel_faq"
+  ]
+}

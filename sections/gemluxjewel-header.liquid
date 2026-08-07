@@ -4,12 +4,6 @@
 
 {%- liquid
   assign use_dark = section.settings.dark_style
-  if use_dark == false and template.name != 'index' and template.name != 'collection' and template.name != 'blog'
-    assign use_dark = true
-  endif
-  if template.name == 'page' and template.suffix == 'contact'
-    assign use_dark = false
-  endif
   assign mega_blocks = section.blocks | where: 'type', 'mega_column'
   assign mega_image_block = section.blocks | where: 'type', 'mega_image' | first
 -%}
@@ -67,9 +61,50 @@
                                       <li><a href="{{ mega_link.url }}">{{ mega_link.title | escape }}</a></li>
                                     {%- endfor -%}
                                   </ul>
+                                {%- else -%}
+                                  <ul class="gemluxjewel-header__mega-list">
+                                    {%- case forloop.index -%}
+                                      {%- when 1 -%}
+                                        <li><a href="{{ routes.collections_url }}/all">Titanium Rings</a></li>
+                                        <li><a href="{{ routes.collections_url }}/all">Chain Necklaces</a></li>
+                                        <li><a href="{{ routes.collections_url }}/all">Stud Earrings</a></li>
+                                        <li><a href="{{ routes.collections_url }}/all">Minimal Jewellery</a></li>
+                                        <li><a href="{{ routes.collections_url }}/all">Statement Pieces</a></li>
+                                        <li><a href="{{ routes.collections_url }}/all">Daily Wear Collection</a></li>
+                                        <li><a href="{{ routes.collections_url }}/all">Waterproof Jewellery</a></li>
+                                        <li><a href="{{ routes.collections_url }}/all">Hypoallergenic Picks</a></li>
+                                        <li><a href="{{ routes.collections_url }}/all">Premium Essentials</a></li>
+                                      {%- when 2 -%}
+                                        <li><a href="{{ routes.collections_url }}/all">Titan Edge Ring</a></li>
+                                        <li><a href="{{ routes.collections_url }}/all">Core Steel Chain</a></li>
+                                        <li><a href="{{ routes.collections_url }}/all">Apex Kada Bracelet</a></li>
+                                        <li><a href="{{ routes.collections_url }}/all">Urban Link Necklace</a></li>
+                                        <li><a href="{{ routes.collections_url }}/all">Prime Band Ring</a></li>
+                                        <li><a href="{{ routes.collections_url }}/all">Steel Fusion Bracelet</a></li>
+                                        <li><a href="{{ routes.collections_url }}/all">Bold Line Chain</a></li>
+                                        <li><a href="{{ routes.collections_url }}/all">Elite Titanium Ring</a></li>
+                                        <li><a href="{{ routes.collections_url }}/all">Power Kada</a></li>
+                                      {%- when 3 -%}
+                                        <li><a href="{{ routes.collections_url }}/all">Nova Titanium Ring</a></li>
+                                        <li><a href="{{ routes.collections_url }}/all">Orbit Chain Necklace</a></li>
+                                        <li><a href="{{ routes.collections_url }}/all">Pulse Kada Bracelet</a></li>
+                                        <li><a href="{{ routes.collections_url }}/all">Aero Link Chain</a></li>
+                                        <li><a href="{{ routes.collections_url }}/all">Flux Band Ring</a></li>
+                                        <li><a href="{{ routes.collections_url }}/all">Neo Steel Bracelet</a></li>
+                                        <li><a href="{{ routes.collections_url }}/all">Vertex Chain</a></li>
+                                        <li><a href="{{ routes.collections_url }}/all">Quantum Ring</a></li>
+                                        <li><a href="{{ routes.collections_url }}/all">Drift Necklace</a></li>
+                                    {%- endcase -%}
+                                  </ul>
                                 {%- endif -%}
-                                {%- if block.settings.view_all_url != blank -%}
-                                  <a href="{{ block.settings.view_all_url }}" class="gemluxjewel-header__mega-view-all">
+                                {%- liquid
+                                  assign mega_view_all_url = block.settings.view_all_url
+                                  if mega_view_all_url == blank
+                                    assign mega_view_all_url = routes.collections_url | append: '/all'
+                                  endif
+                                -%}
+                                {%- if mega_view_all_url != blank -%}
+                                  <a href="{{ mega_view_all_url }}" class="gemluxjewel-header__mega-view-all">
                                     {{ block.settings.view_all_label | default: 'View all' }}
                                   </a>
                                 {%- endif -%}
@@ -212,7 +247,7 @@
       "id": "dark_style",
       "label": "Dark header style",
       "default": false,
-      "info": "Auto-enabled on all pages except homepage"
+      "info": "Uses green header bar with white text. Off = light cream header on all pages."
     },
     {
       "type": "checkbox",

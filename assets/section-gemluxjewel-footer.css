@@ -3,7 +3,7 @@
 .gemluxjewel-footer {
   position: relative;
   background: var(--gemluxjewel-primary, #1a5543);
-  color: #fff8f4;
+  color: #ffffff;
   font-family: var(--gemluxjewel-font-body, 'Instrument Sans', sans-serif);
   padding: 0 0 32px;
   overflow: hidden;
@@ -72,7 +72,7 @@
   line-height: 1;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #fff8f4;
+  color: #ffffff;
   white-space: nowrap;
 }
 
@@ -96,7 +96,7 @@
   border-right: none;
   border-radius: 0;
   background: rgba(20, 20, 20, 0.25);
-  color: #fff8f4;
+  color: #ffffff;
   font-family: inherit;
   font-size: 15px;
   font-style: italic;
@@ -118,7 +118,7 @@
   flex-shrink: 0;
   border: 1px solid rgba(255, 248, 244, 0.45);
   border-left: none;
-  background: #fff8f4;
+  background: #ffffff;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -154,7 +154,7 @@
   font-weight: 300;
   font-size: 22px;
   line-height: 1.35;
-  color: #fff8f4;
+  color: #ffffff;
 }
 
 @media (max-width: 989px) {
@@ -200,7 +200,7 @@
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #fff8f4;
+  color: #ffffff;
 }
 
 .gemluxjewel-footer__links {
@@ -226,7 +226,7 @@
 }
 
 .gemluxjewel-footer__link:hover {
-  color: #fff8f4;
+  color: #ffffff;
 }
 
 .gemluxjewel-footer__link--text {
@@ -263,7 +263,7 @@
   font-family: var(--gemluxjewel-font-body);
   font-size: 14px;
   font-weight: 500;
-  color: #fff8f4;
+  color: #ffffff;
   text-decoration: none;
 }
 
@@ -316,5 +316,5 @@
 }
 
 .gemluxjewel-footer__legal-link:hover {
-  color: #fff8f4;
+  color: #ffffff;
 }

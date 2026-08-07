@@ -1,0 +1,132 @@
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-4cs.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign header_style = section.settings.header_style
+  assign image_sizes = '(min-width: 990px) 760px, 100vw'
+-%}
+
+<section class="gemluxjewel gemluxjewel-4cs-topic gemluxjewel-4cs-topic--{{ header_style }}">
+  {%- if header_style == 'green_band' and section.settings.title != blank -%}
+    <div class="gemluxjewel-4cs-topic__band">
+      <div class="gemluxjewel-container">
+        <h2 class="gemluxjewel-4cs-topic__band-title">{{ section.settings.title | escape }}</h2>
+      </div>
+    </div>
+  {%- endif -%}
+
+  <div class="gemluxjewel-4cs-topic__body">
+    <div class="gemluxjewel-container">
+      <div class="gemluxjewel-4cs-topic__inner">
+        {%- if header_style == 'plain' and section.settings.title != blank -%}
+          <h2 class="gemluxjewel-4cs-topic__title">{{ section.settings.title | escape }}</h2>
+        {%- endif -%}
+
+        {%- if section.settings.subtitle != blank -%}
+          <p class="gemluxjewel-4cs-topic__subtitle">{{ section.settings.subtitle | escape }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.content != blank -%}
+          <div class="gemluxjewel-4cs-topic__content rte">{{ section.settings.content }}</div>
+        {%- endif -%}
+
+        {%- if section.settings.image != blank or section.settings.diagram != blank -%}
+          <div class="gemluxjewel-4cs-topic__media">
+            {%- if section.settings.image != blank -%}
+              {{
+                section.settings.image
+                | image_url: width: 1200
+                | image_tag:
+                  widths: '400, 600, 900, 1200',
+                  sizes: image_sizes,
+                  loading: 'lazy',
+                  class: 'gemluxjewel-4cs-topic__img',
+                  alt: section.settings.image_alt | default: section.settings.title
+              }}
+            {%- else -%}
+              {% render 'gemluxjewel-4cs-diagram', type: section.settings.diagram %}
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.bottom_content != blank -%}
+          <div class="gemluxjewel-4cs-topic__content gemluxjewel-4cs-topic__content--bottom rte">{{ section.settings.bottom_content }}</div>
+        {%- endif -%}
+
+        {%- if section.blocks.size > 0 -%}
+          <ul class="gemluxjewel-4cs-topic__list">
+            {%- for block in section.blocks -%}
+              {%- if block.settings.text != blank -%}
+                <li {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "gemluxjewel 4Cs Topic",
+  "tag": "section",
+  "class": "gemluxjewel-section",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "select",
+      "id": "header_style",
+      "label": "Header style",
+      "default": "plain",
+      "options": [
+        { "value": "plain", "label": "Plain (centered title)" },
+        { "value": "green_band", "label": "Green band header" }
+      ]
+    },
+    { "type": "text", "id": "title", "label": "Heading", "default": "Diamond Cut" },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "Influencing a Diamond's Brilliance"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content (above image)"
+    },
+    {
+      "type": "select",
+      "id": "diagram",
+      "label": "Built-in diagram",
+      "default": "none",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "cut", "label": "Cut anatomy" },
+        { "value": "carat", "label": "Carat comparison" },
+        { "value": "color", "label": "Color grades" },
+        { "value": "clarity", "label": "Clarity grades" }
+      ]
+    },
+    { "type": "image_picker", "id": "image", "label": "Custom illustration (overrides diagram)" },
+    { "type": "text", "id": "image_alt", "label": "Image alt text" },
+    {
+      "type": "richtext",
+      "id": "bottom_content",
+      "label": "Content (below image)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "point",
+      "name": "Bullet point",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "gemluxjewel 4Cs Topic" }]
+}
+{% endschema %}

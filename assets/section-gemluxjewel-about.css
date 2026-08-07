@@ -1,0 +1,584 @@
+/* gemluxjewel About page */
+
+.gemluxjewel-about-hero {
+  background: var(--gemluxjewel-primary, #1a5543);
+  padding: var(--gemluxjewel-header-offset, 218px) 0 80px;
+  color: #fff;
+}
+
+@media (max-width: 991px) {
+  .gemluxjewel-about-hero {
+    padding-bottom: 60px;
+  }
+}
+
+.gemluxjewel-about-hero__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+@media (min-width: 990px) {
+  .gemluxjewel-about-hero__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+}
+
+.gemluxjewel-about-hero__prefix {
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.gemluxjewel-about-hero__title {
+  font-family: var(--gemluxjewel-font-heading);
+  font-weight: 300;
+  font-size: 42px;
+  line-height: 46px;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0 0 24px;
+}
+
+@media (max-width: 991px) {
+  .gemluxjewel-about-hero__title {
+    font-size: 32px;
+    line-height: 36px;
+  }
+}
+
+.gemluxjewel-about-hero__text {
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 18px;
+  line-height: 28px;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 16px;
+}
+
+.gemluxjewel-about-hero__text--last {
+  margin-bottom: 0;
+}
+
+.gemluxjewel-about-hero__media {
+  border-radius: var(--gemluxjewel-radius, 10px);
+  overflow: hidden;
+  min-height: 320px;
+}
+
+@media (min-width: 990px) {
+  .gemluxjewel-about-hero__media {
+    min-height: 480px;
+  }
+}
+
+.gemluxjewel-about-hero__img {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── History timeline slider ── */
+.gemluxjewel-about-history {
+  background: var(--gemluxjewel-secondary, #fff);
+  padding: 100px 0 90px;
+  overflow: hidden;
+}
+
+@media (max-width: 991px) {
+  .gemluxjewel-about-history {
+    padding: 70px 0 50px;
+  }
+}
+
+.gemluxjewel-about-history .gemluxjewel-section-header {
+  margin-bottom: 48px;
+}
+
+.gemluxjewel-about-history__slider {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+}
+
+.gemluxjewel-about-history__viewport {
+  overflow: hidden;
+}
+
+.gemluxjewel-about-history__track {
+  --history-gap: 20px;
+  --history-visible: 1;
+  display: flex;
+  gap: var(--history-gap);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+@media (min-width: 750px) {
+  .gemluxjewel-about-history__track {
+    --history-visible: 2;
+  }
+}
+
+@media (min-width: 1200px) {
+  .gemluxjewel-about-history__track {
+    --history-visible: 3;
+  }
+}
+
+.gemluxjewel-about-history__slide {
+  flex: 0 0 calc((100% - (var(--history-visible) - 1) * var(--history-gap)) / var(--history-visible));
+  min-width: 0;
+}
+
+.gemluxjewel-about-history__timeline-row {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 20px;
+}
+
+.gemluxjewel-about-history__year {
+  flex-shrink: 0;
+  background: var(--gemluxjewel-primary, #1a5543);
+  color: #fff;
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 14px;
+  line-height: 18px;
+  padding: 6px 20px;
+  border-radius: 30px;
+  z-index: 1;
+}
+
+.gemluxjewel-about-history__line {
+  flex: 1;
+  height: 2px;
+  background: var(--gemluxjewel-primary, #1a5543);
+  margin-left: -4px;
+}
+
+.gemluxjewel-about-history__img {
+  border-radius: var(--gemluxjewel-radius, 10px);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  margin-bottom: 16px;
+}
+
+.gemluxjewel-about-history__img img,
+.gemluxjewel-about-history__img .gemluxjewel-about-history__fallback {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gemluxjewel-about-history__card-title {
+  font-family: var(--gemluxjewel-font-heading);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  text-transform: uppercase;
+  color: var(--gemluxjewel-primary, #1a5543);
+  margin: 0 0 12px;
+}
+
+.gemluxjewel-about-history__card-text {
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--gemluxjewel-gray, #818181);
+  margin: 0;
+}
+
+.gemluxjewel-about-history__nav {
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(26, 85, 67, 0.2);
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition: background-color 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
+}
+
+.gemluxjewel-about-history__nav:hover:not(:disabled) {
+  background: var(--gemluxjewel-primary, #1a5543);
+  border-color: var(--gemluxjewel-primary, #1a5543);
+}
+
+.gemluxjewel-about-history__nav:hover:not(:disabled) .gemluxjewel-about-history__nav-icon {
+  filter: brightness(0) invert(1);
+}
+
+.gemluxjewel-about-history__nav:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.gemluxjewel-about-history__nav-icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+.gemluxjewel-about-history__nav-icon--prev {
+  transform: rotate(180deg);
+}
+
+/* ── Mission & Vision ── */
+.gemluxjewel-about-mission {
+  background: #f7f7f7;
+  padding: 100px 0;
+}
+
+@media (max-width: 991px) {
+  .gemluxjewel-about-mission {
+    padding: 70px 0;
+  }
+}
+
+.gemluxjewel-about-mission__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+@media (min-width: 990px) {
+  .gemluxjewel-about-mission__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+}
+
+.gemluxjewel-about-mission__media {
+  border-radius: var(--gemluxjewel-radius, 10px);
+  overflow: hidden;
+  min-height: 400px;
+}
+
+.gemluxjewel-about-mission__img {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  object-fit: cover;
+  display: block;
+}
+
+.gemluxjewel-about-mission__prefix {
+  color: var(--gemluxjewel-primary, #1a5543);
+  margin-bottom: 12px;
+}
+
+.gemluxjewel-about-mission__title {
+  color: var(--gemluxjewel-primary, #1a5543);
+  margin-bottom: 32px;
+}
+
+.gemluxjewel-about-mission__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.gemluxjewel-about-mission__card {
+  padding-left: 20px;
+  border-left: 3px solid var(--gemluxjewel-primary, #1a5543);
+}
+
+.gemluxjewel-about-mission__card-label {
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 16px;
+  line-height: 20px;
+  text-transform: uppercase;
+  color: var(--gemluxjewel-primary, #1a5543);
+  margin: 0 0 10px;
+}
+
+.gemluxjewel-about-mission__card-text {
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--gemluxjewel-gray, #818181);
+  margin: 0;
+}
+
+/* ── Founder ── */
+.gemluxjewel-about-founder {
+  background: var(--gemluxjewel-secondary, #fff);
+  padding: 120px 0;
+}
+
+@media (max-width: 991px) {
+  .gemluxjewel-about-founder {
+    padding: 70px 0;
+  }
+}
+
+.gemluxjewel-about-founder__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+@media (min-width: 990px) {
+  .gemluxjewel-about-founder__grid {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 64px;
+  }
+}
+
+.gemluxjewel-about-founder__media {
+  border-radius: var(--gemluxjewel-radius, 10px);
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  max-width: 480px;
+}
+
+.gemluxjewel-about-founder__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gemluxjewel-about-founder__prefix {
+  color: var(--gemluxjewel-primary, #1a5543);
+  margin-bottom: 12px;
+}
+
+.gemluxjewel-about-founder__name {
+  font-family: var(--gemluxjewel-font-heading);
+  font-weight: 300;
+  font-size: 38px;
+  line-height: 42px;
+  text-transform: uppercase;
+  color: var(--gemluxjewel-dark, #141414);
+  margin: 0 0 8px;
+}
+
+.gemluxjewel-about-founder__role {
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--gemluxjewel-gray, #818181);
+  margin: 0 0 24px;
+}
+
+.gemluxjewel-about-founder__bio {
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--gemluxjewel-dark, #141414);
+  margin: 0 0 24px;
+}
+
+.gemluxjewel-about-founder__quote {
+  font-family: var(--gemluxjewel-font-heading);
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 32px;
+  font-style: italic;
+  color: var(--gemluxjewel-primary, #1a5543);
+  margin: 0 0 32px;
+  padding: 24px;
+  background: #f7f7f7;
+  border-radius: var(--gemluxjewel-radius, 10px);
+  border-left: 4px solid var(--gemluxjewel-primary, #1a5543);
+}
+
+/* ── Book Appointment ── */
+.gemluxjewel-about-appointment {
+  background: var(--gemluxjewel-primary, #1a5543);
+  padding: 100px 0 120px;
+  color: #fff;
+}
+
+@media (max-width: 991px) {
+  .gemluxjewel-about-appointment {
+    padding: 70px 0 80px;
+  }
+}
+
+.gemluxjewel-about-appointment__layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+@media (min-width: 990px) {
+  .gemluxjewel-about-appointment__layout {
+    grid-template-columns: 1fr 1.2fr;
+    gap: 64px;
+  }
+}
+
+.gemluxjewel-about-appointment__prefix {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 12px;
+}
+
+.gemluxjewel-about-appointment__heading {
+  font-family: var(--gemluxjewel-font-heading);
+  font-weight: 300;
+  font-size: 38px;
+  line-height: 42px;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0 0 16px;
+}
+
+.gemluxjewel-about-appointment__intro {
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 18px;
+  line-height: 28px;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0 0 40px;
+}
+
+.gemluxjewel-about-appointment__details {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.gemluxjewel-about-appointment__detail-label {
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 14px;
+  line-height: 18px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0 6px;
+}
+
+.gemluxjewel-about-appointment__detail-value {
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 16px;
+  line-height: 24px;
+  color: #fff;
+  text-decoration: none;
+  margin: 0;
+}
+
+a.gemluxjewel-about-appointment__detail-value:hover {
+  opacity: 0.85;
+}
+
+.gemluxjewel-about-appointment__form-wrap {
+  background: #fff;
+  border-radius: 14px;
+  padding: 32px 28px;
+}
+
+@media (min-width: 750px) {
+  .gemluxjewel-about-appointment__form-wrap {
+    padding: 40px 36px;
+  }
+}
+
+.gemluxjewel-about-appointment__form-heading {
+  font-family: var(--gemluxjewel-font-heading);
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 28px;
+  text-transform: uppercase;
+  color: var(--gemluxjewel-dark, #141414);
+  margin: 0 0 24px;
+}
+
+.gemluxjewel-about-appointment__fields {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+@media (min-width: 750px) {
+  .gemluxjewel-about-appointment__fields {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.gemluxjewel-about-appointment__field--full {
+  grid-column: 1 / -1;
+}
+
+.gemluxjewel-about-appointment__label {
+  display: block;
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--gemluxjewel-dark, #141414);
+  margin-bottom: 8px;
+}
+
+.gemluxjewel-about-appointment__input,
+.gemluxjewel-about-appointment__textarea {
+  width: 100%;
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 15px;
+  line-height: 22px;
+  color: var(--gemluxjewel-dark, #141414);
+  background: #f7f7f7;
+  border: 1px solid rgba(26, 85, 67, 0.12);
+  border-radius: var(--gemluxjewel-radius, 10px);
+  padding: 12px 16px;
+  transition: border-color 0.2s ease;
+}
+
+.gemluxjewel-about-appointment__input:focus,
+.gemluxjewel-about-appointment__textarea:focus {
+  outline: none;
+  border-color: var(--gemluxjewel-primary, #1a5543);
+}
+
+.gemluxjewel-about-appointment__textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.gemluxjewel-about-appointment__status {
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 15px;
+  line-height: 22px;
+  margin-bottom: 16px;
+}
+
+.gemluxjewel-about-appointment__status--success {
+  color: var(--gemluxjewel-primary, #1a5543);
+}
+
+.gemluxjewel-about-appointment__status--error {
+  color: #c0392b;
+}
+
+.gemluxjewel-about-appointment .gemluxjewel-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+@media (min-width: 750px) {
+  .gemluxjewel-about-appointment .gemluxjewel-btn {
+    width: auto;
+  }
+}
+
+/* About page: extra spacing for reused sections */
+.template-page-about .gemluxjewel-testimonials {
+  padding-bottom: 100px;
+}
+
+@media (max-width: 991px) {
+  .template-page-about .gemluxjewel-testimonials {
+    padding-bottom: 70px;
+  }
+}

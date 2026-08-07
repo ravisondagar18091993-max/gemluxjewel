@@ -4,7 +4,7 @@
 .gemluxjewel-pdp-faq,
 .gemluxjewel-pdp-related {
   --gemluxjewel-primary: #1a5543;
-  --gemluxjewel-secondary: #fff8f4;
+  --gemluxjewel-secondary: #ffffff;
   --gemluxjewel-dark: #141414;
   --gemluxjewel-gray: #818181;
   --gemluxjewel-orange: #e37859;
@@ -572,7 +572,7 @@
 
 /* ── FAQ (matches HTML/product-open.html .faq-section) ── */
 .gemluxjewel-pdp-faq {
-  background: var(--gemluxjewel-secondary);
+  background: #f7f7f7;
   padding: 150px 0 70px;
   font-family: var(--gemluxjewel-font-body);
 }
@@ -710,6 +710,146 @@
 
 .gemluxjewel-pdp-faq .closet-content__inner p + p {
   margin-top: 12px;
+}
+
+/* ── FAQ Page (matches HTML/faq.html) ── */
+.gemluxjewel-faq-page {
+  background: var(--gemluxjewel-secondary, #fff);
+  padding: var(--gemluxjewel-header-offset, 218px) 0 140px;
+  font-family: var(--gemluxjewel-font-body);
+}
+
+@media (max-width: 991px) {
+  .gemluxjewel-faq-page {
+    padding-bottom: 80px;
+  }
+}
+
+.gemluxjewel-faq-page__inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.gemluxjewel-faq-page__header {
+  margin-bottom: 60px;
+}
+
+@media (min-width: 990px) {
+  .gemluxjewel-faq-page__header {
+    margin-bottom: 100px;
+  }
+}
+
+.gemluxjewel-faq-page__prefix {
+  color: var(--gemluxjewel-dark);
+}
+
+.gemluxjewel-faq-page__title {
+  line-height: 60px;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 576px) {
+  .gemluxjewel-faq-page__title {
+    line-height: 55px;
+  }
+}
+
+.gemluxjewel-faq-page__desc {
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gemluxjewel-faq-page .closet-accordion:last-child {
+  border-bottom: 1px solid rgba(20, 20, 20, 0.25);
+}
+
+.gemluxjewel-faq-page .closet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 35px 0;
+  border-top: 1px solid rgba(20, 20, 20, 0.25);
+  cursor: pointer;
+  transition: all 0.7s ease;
+}
+
+@media (max-width: 576px) {
+  .gemluxjewel-faq-page .closet-header {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+}
+
+.gemluxjewel-faq-page .closet-header-title {
+  font-family: var(--gemluxjewel-font-body);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: var(--gemluxjewel-dark);
+  text-transform: capitalize;
+  margin: 0;
+  padding-right: 16px;
+}
+
+@media (max-width: 576px) {
+  .gemluxjewel-faq-page .closet-header-title {
+    font-size: 16px;
+  }
+}
+
+.gemluxjewel-faq-page .accordion-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 999px;
+  transition: transform 0.7s ease;
+}
+
+.gemluxjewel-faq-page .accordion-close img {
+  height: 24px;
+  width: auto;
+  display: block;
+}
+
+.gemluxjewel-faq-page .closet-header.active .accordion-close {
+  transform: rotate(180deg);
+}
+
+.gemluxjewel-faq-page .closet-content {
+  display: none;
+}
+
+.gemluxjewel-faq-page .closet-content__inner {
+  margin-right: 24px;
+  padding-bottom: 35px;
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--gemluxjewel-dark);
+}
+
+.gemluxjewel-faq-page .closet-content__inner p {
+  margin: 0;
+}
+
+.gemluxjewel-faq-page .closet-content__inner p + p {
+  margin-top: 12px;
+}
+
+.gemluxjewel-faq-page__cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+@media (min-width: 990px) {
+  .gemluxjewel-faq-page__cta {
+    margin-top: 80px;
+  }
 }
 
 /* ── Related products ── */

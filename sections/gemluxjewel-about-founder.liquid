@@ -1,0 +1,84 @@
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-about.css' | asset_url | stylesheet_tag }}
+
+<section class="gemluxjewel gemluxjewel-about-founder">
+  <div class="gemluxjewel-container">
+    <div class="gemluxjewel-about-founder__grid">
+      <div class="gemluxjewel-about-founder__media">
+        {%- if section.settings.image != blank -%}
+          {{
+            section.settings.image
+            | image_url: width: 900
+            | image_tag:
+              widths: '400, 600, 900',
+              sizes: '(min-width: 990px) 40vw, 100vw',
+              loading: 'lazy',
+              class: 'gemluxjewel-about-founder__img',
+              alt: section.settings.name
+          }}
+        {%- else -%}
+          {% render 'gemluxjewel-theme-image',
+            use_store_media: true,
+            seed: 5,
+            width: 900,
+            widths: '400,600,900',
+            sizes: '(min-width: 990px) 40vw, 100vw',
+            alt: section.settings.name,
+            class: 'gemluxjewel-about-founder__img'
+          %}
+        {%- endif -%}
+      </div>
+
+      <div class="gemluxjewel-about-founder__content">
+        {%- if section.settings.prefix != blank -%}
+          <p class="gemluxjewel-prefix gemluxjewel-about-founder__prefix">{{ section.settings.prefix | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.name != blank -%}
+          <h2 class="gemluxjewel-about-founder__name">{{ section.settings.name | escape }}</h2>
+        {%- endif -%}
+        {%- if section.settings.role != blank -%}
+          <p class="gemluxjewel-about-founder__role">{{ section.settings.role | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.bio != blank -%}
+          <p class="gemluxjewel-about-founder__bio">{{ section.settings.bio | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.quote != blank -%}
+          <blockquote class="gemluxjewel-about-founder__quote">{{ section.settings.quote | escape }}</blockquote>
+        {%- endif -%}
+        {%- if section.settings.button_label != blank -%}
+          {% render 'gemluxjewel-btn', label: section.settings.button_label, url: section.settings.button_link, style: 'green' %}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "gemluxjewel Founder",
+  "tag": "section",
+  "class": "section gemluxjewel-section",
+  "settings": [
+    { "type": "text", "id": "prefix", "label": "Prefix", "default": "Meet the Founder" },
+    { "type": "text", "id": "name", "label": "Name", "default": "Oliver Bennett" },
+    { "type": "text", "id": "role", "label": "Role", "default": "Founder & Creative Director" },
+    {
+      "type": "textarea",
+      "id": "bio",
+      "label": "Bio",
+      "default": "With a passion for modern design and skin-safe materials, Oliver founded GemLux to redefine everyday jewellery — making pieces that are as comfortable as they are beautiful."
+    },
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Quote",
+      "default": "Every piece we create starts with one question: would I wear this every single day?"
+    },
+    { "type": "image_picker", "id": "image", "label": "Photo" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Our Story" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
+  ],
+  "presets": [{ "name": "gemluxjewel Founder" }]
+}
+{% endschema %}

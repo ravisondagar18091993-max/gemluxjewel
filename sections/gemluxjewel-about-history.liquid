@@ -1,0 +1,124 @@
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-about.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'gemluxjewel-about-history.js' | asset_url }}" defer="defer"></script>
+
+<section class="gemluxjewel gemluxjewel-about-history">
+  <div class="gemluxjewel-container">
+    {%- if section.settings.title != blank -%}
+      <div class="gemluxjewel-section-header">
+        <h2 class="gemluxjewel-section-title">{{ section.settings.title | escape }}</h2>
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="gemluxjewel-about-history__slider" data-gemluxjewel-about-history>
+        <button
+          type="button"
+          class="gemluxjewel-about-history__nav gemluxjewel-about-history__nav--prev"
+          data-gemluxjewel-about-history-prev
+          aria-label="Previous milestone"
+          disabled
+        >
+          <img src="{{ 'green-right-arrow.svg' | asset_url }}" alt="" width="16" height="16" class="gemluxjewel-about-history__nav-icon gemluxjewel-about-history__nav-icon--prev">
+        </button>
+
+        <div class="gemluxjewel-about-history__viewport">
+          <div class="gemluxjewel-about-history__track" data-gemluxjewel-about-history-track>
+            {%- for block in section.blocks -%}
+              <div class="gemluxjewel-about-history__slide" {{ block.shopify_attributes }}>
+                <div class="gemluxjewel-about-history__timeline-row">
+                  {%- if block.settings.year != blank -%}
+                    <span class="gemluxjewel-about-history__year">{{ block.settings.year | escape }}</span>
+                  {%- endif -%}
+                  <span class="gemluxjewel-about-history__line" aria-hidden="true"></span>
+                </div>
+
+                <div class="gemluxjewel-about-history__card">
+                  <div class="gemluxjewel-about-history__img">
+                    {%- if block.settings.image != blank -%}
+                      {{
+                        block.settings.image
+                        | image_url: width: 600
+                        | image_tag:
+                          widths: '300, 400, 600',
+                          sizes: '(min-width: 990px) 320px, 85vw',
+                          loading: 'lazy',
+                          alt: block.settings.title
+                      }}
+                    {%- else -%}
+                      {% render 'gemluxjewel-theme-image',
+                        use_store_media: true,
+                        seed: forloop.index,
+                        width: 600,
+                        widths: '300,400,600',
+                        sizes: '(min-width: 990px) 320px, 85vw',
+                        alt: block.settings.title,
+                        class: 'gemluxjewel-about-history__fallback'
+                      %}
+                    {%- endif -%}
+                  </div>
+                  <div class="gemluxjewel-about-history__content">
+                    {%- if block.settings.title != blank -%}
+                      <h3 class="gemluxjewel-about-history__card-title">{{ block.settings.title | escape }}</h3>
+                    {%- endif -%}
+                    {%- if block.settings.text != blank -%}
+                      <p class="gemluxjewel-about-history__card-text">{{ block.settings.text | escape }}</p>
+                    {%- endif -%}
+                  </div>
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+
+        <button
+          type="button"
+          class="gemluxjewel-about-history__nav gemluxjewel-about-history__nav--next"
+          data-gemluxjewel-about-history-next
+          aria-label="Next milestone"
+        >
+          <img src="{{ 'green-right-arrow.svg' | asset_url }}" alt="" width="16" height="16" class="gemluxjewel-about-history__nav-icon">
+        </button>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "gemluxjewel History",
+  "tag": "section",
+  "class": "section gemluxjewel-section",
+  "max_blocks": 20,
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "Our History" }
+  ],
+  "blocks": [
+    {
+      "type": "milestone",
+      "name": "Milestone",
+      "settings": [
+        { "type": "text", "id": "year", "label": "Year", "default": "2020" },
+        { "type": "text", "id": "title", "label": "Title", "default": "The Beginning" },
+        { "type": "textarea", "id": "text", "label": "Description", "default": "The idea was born to create jewellery that combines comfort, durability, and modern design for everyday wear." },
+        { "type": "image_picker", "id": "image", "label": "Image" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "gemluxjewel History",
+      "blocks": [
+        { "type": "milestone", "settings": { "year": "2020", "title": "The Beginning", "text": "The idea was born to create jewellery that combines comfort, durability, and modern design for everyday wear." } },
+        { "type": "milestone", "settings": { "year": "2021", "title": "First Collection Launch", "text": "Introduced the first range of titanium jewellery focused on skin-safe and lightweight designs." } },
+        { "type": "milestone", "settings": { "year": "2022", "title": "Growing Community", "text": "Built a loyal customer base by delivering quality products and consistent customer satisfaction." } },
+        { "type": "milestone", "settings": { "year": "2023", "title": "Expanding Collections", "text": "Expanded into new styles, offering minimal, statement, and everyday essentials for modern lifestyles." } },
+        { "type": "milestone", "settings": { "year": "2024", "title": "Innovation & Quality Focus", "text": "Enhanced product quality with better materials, improved finishes, and refined craftsmanship." } },
+        { "type": "milestone", "settings": { "year": "2025", "title": "Global Expansion", "text": "Reached new international markets and introduced eco-conscious packaging worldwide." } },
+        { "type": "milestone", "settings": { "year": "2026", "title": "Flagship Boutique", "text": "Opened our first immersive retail space for customers to experience our craftsmanship in person." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

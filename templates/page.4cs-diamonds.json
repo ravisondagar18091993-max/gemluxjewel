@@ -1,0 +1,120 @@
+{
+  "sections": {
+    "gemluxjewel_4cs_intro": {
+      "type": "gemluxjewel-4cs-intro",
+      "settings": {
+        "title": "4Cs of Diamond Quality",
+        "text": "<p>The 4Cs — Cut, Carat Weight, Color, and Clarity — are the universal standards for evaluating diamond quality. Together, they determine a diamond's beauty, rarity, and value. Understanding each factor helps you choose a stone that matches your style and budget with confidence.</p>"
+      }
+    },
+    "gemluxjewel_4cs_cut": {
+      "type": "gemluxjewel-4cs-topic",
+      "blocks": {
+        "cut_1": {
+          "type": "point",
+          "settings": {
+            "text": "Proportions — how well the diamond's angles and facets interact with light."
+          }
+        },
+        "cut_2": {
+          "type": "point",
+          "settings": {
+            "text": "Symmetry — how precisely the facets align and mirror one another."
+          }
+        },
+        "cut_3": {
+          "type": "point",
+          "settings": {
+            "text": "Polish — the smoothness of the diamond's surface, affecting sparkle and fire."
+          }
+        }
+      },
+      "block_order": ["cut_1", "cut_2", "cut_3"],
+      "settings": {
+        "header_style": "plain",
+        "title": "Diamond Cut",
+        "subtitle": "Influencing a Diamond's Brilliance",
+        "content": "<p>Cut is often considered the most important of the 4Cs because it has the greatest influence on a diamond's sparkle. A well-cut diamond reflects light beautifully from one facet to another and disperses it through the top of the stone.</p>",
+        "diagram": "cut",
+        "bottom_content": "<p>When evaluating cut, consider these three factors:</p>"
+      }
+    },
+    "gemluxjewel_4cs_carat": {
+      "type": "gemluxjewel-4cs-topic",
+      "settings": {
+        "header_style": "green_band",
+        "title": "Diamond Carat Weight",
+        "subtitle": "",
+        "content": "<p>Carat weight measures a diamond's size. One carat equals 200 milligrams, or 0.2 grams. The term \"carat\" comes from the carob seeds historically used to balance scales. While carat weight affects a diamond's price, two diamonds of equal weight can differ significantly in value depending on cut, color, and clarity.</p>",
+        "diagram": "carat"
+      }
+    },
+    "gemluxjewel_4cs_color": {
+      "type": "gemluxjewel-4cs-topic",
+      "settings": {
+        "header_style": "green_band",
+        "title": "Diamond Color Grade",
+        "subtitle": "",
+        "content": "<p>The GIA color scale runs from D (colorless) to Z (light yellow or brown). Truly colorless diamonds are rare and highly valued. Most diamonds used in fine jewellery fall in the near-colorless range (G–J), offering excellent value while appearing white to the naked eye when set in metal.</p>",
+        "diagram": "color"
+      }
+    },
+    "gemluxjewel_4cs_clarity": {
+      "type": "gemluxjewel-4cs-topic",
+      "blocks": {
+        "clarity_1": {
+          "type": "point",
+          "settings": {
+            "text": "Flawless (FL) — No inclusions or blemishes visible under 10× magnification."
+          }
+        },
+        "clarity_2": {
+          "type": "point",
+          "settings": {
+            "text": "Internally Flawless (IF) — No inclusions visible under 10× magnification."
+          }
+        },
+        "clarity_3": {
+          "type": "point",
+          "settings": {
+            "text": "Very, Very Slightly Included (VVS1, VVS2) — Inclusions difficult to see under 10× magnification."
+          }
+        },
+        "clarity_4": {
+          "type": "point",
+          "settings": {
+            "text": "Very Slightly Included (VS1, VS2) — Minor inclusions visible under 10× magnification."
+          }
+        },
+        "clarity_5": {
+          "type": "point",
+          "settings": {
+            "text": "Slightly Included (SI1, SI2) — Inclusions noticeable under 10× magnification."
+          }
+        },
+        "clarity_6": {
+          "type": "point",
+          "settings": {
+            "text": "Included (I1, I2, I3) — Inclusions visible to the naked eye and may affect durability."
+          }
+        }
+      },
+      "block_order": ["clarity_1", "clarity_2", "clarity_3", "clarity_4", "clarity_5", "clarity_6"],
+      "settings": {
+        "header_style": "green_band",
+        "title": "Diamond Clarity",
+        "subtitle": "",
+        "content": "<p>Clarity refers to the absence of inclusions (internal characteristics) and blemishes (external characteristics). Most diamonds contain natural features formed during their growth. The fewer and less visible these features, the higher the clarity grade.</p>",
+        "diagram": "clarity",
+        "bottom_content": "<p>The GIA clarity scale includes:</p>"
+      }
+    }
+  },
+  "order": [
+    "gemluxjewel_4cs_intro",
+    "gemluxjewel_4cs_cut",
+    "gemluxjewel_4cs_carat",
+    "gemluxjewel_4cs_color",
+    "gemluxjewel_4cs_clarity"
+  ]
+}

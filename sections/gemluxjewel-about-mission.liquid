@@ -1,0 +1,95 @@
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-about.css' | asset_url | stylesheet_tag }}
+
+<section class="gemluxjewel gemluxjewel-about-mission">
+  <div class="gemluxjewel-container">
+    <div class="gemluxjewel-about-mission__grid">
+      <div class="gemluxjewel-about-mission__media">
+        {%- if section.settings.image != blank -%}
+          {{
+            section.settings.image
+            | image_url: width: 1000
+            | image_tag:
+              widths: '500, 700, 1000',
+              sizes: '(min-width: 990px) 45vw, 100vw',
+              loading: 'lazy',
+              class: 'gemluxjewel-about-mission__img',
+              alt: section.settings.title
+          }}
+        {%- else -%}
+          {% render 'gemluxjewel-theme-image',
+            use_store_media: true,
+            seed: 2,
+            width: 1000,
+            widths: '500,700,1000',
+            sizes: '(min-width: 990px) 45vw, 100vw',
+            alt: section.settings.title,
+            class: 'gemluxjewel-about-mission__img'
+          %}
+        {%- endif -%}
+      </div>
+
+      <div class="gemluxjewel-about-mission__content">
+        {%- if section.settings.prefix != blank -%}
+          <p class="gemluxjewel-prefix gemluxjewel-about-mission__prefix">{{ section.settings.prefix | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class="gemluxjewel-section-title gemluxjewel-about-mission__title">{{ section.settings.title | escape }}</h2>
+        {%- endif -%}
+
+        <div class="gemluxjewel-about-mission__cards">
+          {%- if section.settings.mission_title != blank or section.settings.mission_text != blank -%}
+            <div class="gemluxjewel-about-mission__card">
+              {%- if section.settings.mission_title != blank -%}
+                <h3 class="gemluxjewel-about-mission__card-label">{{ section.settings.mission_title | escape }}</h3>
+              {%- endif -%}
+              {%- if section.settings.mission_text != blank -%}
+                <p class="gemluxjewel-about-mission__card-text">{{ section.settings.mission_text | escape }}</p>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.vision_title != blank or section.settings.vision_text != blank -%}
+            <div class="gemluxjewel-about-mission__card">
+              {%- if section.settings.vision_title != blank -%}
+                <h3 class="gemluxjewel-about-mission__card-label">{{ section.settings.vision_title | escape }}</h3>
+              {%- endif -%}
+              {%- if section.settings.vision_text != blank -%}
+                <p class="gemluxjewel-about-mission__card-text">{{ section.settings.vision_text | escape }}</p>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "gemluxjewel Mission",
+  "tag": "section",
+  "class": "section gemluxjewel-section",
+  "settings": [
+    { "type": "text", "id": "prefix", "label": "Prefix", "default": "Our Purpose" },
+    { "type": "text", "id": "title", "label": "Heading", "default": "Mission & Vision" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "mission_title", "label": "Mission label", "default": "Our Mission" },
+    {
+      "type": "textarea",
+      "id": "mission_text",
+      "label": "Mission text",
+      "default": "To create jewellery that blends comfort, durability, and modern design, making it perfect for everyday wear. We aim to offer skin-safe, high-quality pieces that people can trust without compromising style."
+    },
+    { "type": "text", "id": "vision_title", "label": "Vision label", "default": "Our Vision" },
+    {
+      "type": "textarea",
+      "id": "vision_text",
+      "label": "Vision text",
+      "default": "To become a trusted name in modern jewellery by setting new standards in quality, innovation, and everyday comfort. We envision a future where jewellery is not just stylish, but also truly wearable for everyone, every day."
+    }
+  ],
+  "presets": [{ "name": "gemluxjewel Mission" }]
+}
+{% endschema %}
