@@ -35,9 +35,33 @@
             "url": "shopify://collections/all"
           }
         },
-        "mega_1": { "type": "mega_column", "settings": { "title": "Popular Collections", "show_border": false } },
-        "mega_2": { "type": "mega_column", "settings": { "title": "Best Seller", "show_border": false } },
-        "mega_3": { "type": "mega_column", "settings": { "title": "New Arrival", "show_border": true } },
+        "mega_1": {
+          "type": "mega_column",
+          "settings": {
+            "title": "Popular Collections",
+            "show_border": false,
+            "view_all_url": "shopify://collections/all",
+            "view_all_label": "View all"
+          }
+        },
+        "mega_2": {
+          "type": "mega_column",
+          "settings": {
+            "title": "Best Seller",
+            "show_border": false,
+            "view_all_url": "shopify://collections/all",
+            "view_all_label": "View all"
+          }
+        },
+        "mega_3": {
+          "type": "mega_column",
+          "settings": {
+            "title": "New Arrival",
+            "show_border": true,
+            "view_all_url": "shopify://collections/all",
+            "view_all_label": "View all"
+          }
+        },
         "mega_img": { "type": "mega_image", "settings": {} }
       },
       "block_order": [
