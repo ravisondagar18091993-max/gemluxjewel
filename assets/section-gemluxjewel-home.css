@@ -1019,6 +1019,18 @@
   }
 }
 
+.gemluxjewel-dual-cards__desc {
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 15px;
+  line-height: 24px;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 360px;
+}
+
+.gemluxjewel-dual-cards__desc p {
+  margin: 0;
+}
+
 .gemluxjewel-dual-cards__card .gemluxjewel-btn--green:hover {
   background: #fff;
   border-color: #fff;
@@ -1030,7 +1042,7 @@
   background: var(--gemluxjewel-primary);
   padding: 16px 0;
   overflow: hidden;
-  margin-bottom: 40px;
+  margin-bottom: 0;
 }
 
 .gemluxjewel-marquee-strip__item {

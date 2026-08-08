@@ -1,0 +1,65 @@
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-custom-jewellery.css' | asset_url | stylesheet_tag }}
+
+<section class="gemluxjewel gemluxjewel-custom-promo">
+  <div class="gemluxjewel-container">
+    <div class="gemluxjewel-custom-promo__banner">
+      <div class="gemluxjewel-custom-promo__bg" aria-hidden="true">
+        {%- if section.settings.image != blank -%}
+          {{
+            section.settings.image
+            | image_url: width: 1600
+            | image_tag:
+              widths: '600, 900, 1200, 1600',
+              sizes: '100vw',
+              loading: 'lazy',
+              alt: ''
+          }}
+        {%- else -%}
+          {% render 'gemluxjewel-theme-image',
+            use_store_media: true,
+            seed: 3,
+            width: 1600,
+            widths: '600,900,1600',
+            sizes: '100vw',
+            alt: section.settings.title
+          %}
+        {%- endif -%}
+        <div class="gemluxjewel-custom-promo__overlay"></div>
+      </div>
+
+      <div class="gemluxjewel-custom-promo__content">
+        {%- if section.settings.title != blank -%}
+          <h2 class="gemluxjewel-custom-promo__title">{{ section.settings.title | escape }}</h2>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <p class="gemluxjewel-custom-promo__text">{{ section.settings.text | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.button_label != blank -%}
+          {% render 'gemluxjewel-btn', label: section.settings.button_label, url: section.settings.button_link, style: 'green' %}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "gemluxjewel Custom Promo",
+  "tag": "section",
+  "class": "section gemluxjewel-section",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "Timeless Ring Styles" },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description",
+      "default": "Explore our curated collection of ready-to-wear rings while your custom piece is being crafted."
+    },
+    { "type": "image_picker", "id": "image", "label": "Background image" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop Now" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
+  ],
+  "presets": [{ "name": "gemluxjewel Custom Promo" }]
+}
+{% endschema %}

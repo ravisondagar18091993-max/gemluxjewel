@@ -48,9 +48,9 @@
               {{ section.settings.breadcrumb_collections | default: 'COLLECTIONS' | escape }}
             {%- endif -%}
             |
-            <span>{{ breadcrumb_collection | upcase | escape }}</span>
+            <span>{{ breadcrumb_collection | escape }}</span>
           {%- else -%}
-            <span>{{ product.title | upcase | escape }}</span>
+            <span>{{ product.title | escape }}</span>
           {%- endif -%}
         </p>
         <a href="{{ back_url }}" class="gemluxjewel-pdp__back">
@@ -83,10 +83,6 @@
           <div id="price-{{ section.id }}" role="status">
             {% render 'gemluxjewel-pdp-price' %}
           </div>
-
-          {%- if product.description != blank -%}
-            <div class="gemluxjewel-pdp__description rte">{{ product.description }}</div>
-          {%- endif -%}
 
           {%- unless product.has_only_default_variant -%}
             <div class="gemluxjewel-pdp__variants-block">
@@ -155,6 +151,60 @@
               </div>
             {%- endform -%}
           </product-form>
+
+          {%- liquid
+            assign show_description = false
+            if section.settings.show_description and product.description != blank
+              assign show_description = true
+            endif
+
+            assign show_info_accordion = false
+            if show_description
+              assign show_info_accordion = true
+            endif
+            if section.settings.shipping_content != blank
+              assign show_info_accordion = true
+            endif
+            if section.settings.warranty_content != blank
+              assign show_info_accordion = true
+            endif
+            if section.settings.care_content != blank
+              assign show_info_accordion = true
+            endif
+          -%}
+
+          {%- if show_info_accordion -%}
+            <div class="gemluxjewel-pdp__accordian-block gemluxjewel-pdp__info-accordion">
+              {%- if section.settings.info_accordion_heading != blank -%}
+                <h2 class="gemluxjewel-pdp__accordian-heading">{{ section.settings.info_accordion_heading | escape }}</h2>
+              {%- endif -%}
+              <div class="gemluxjewel-pdp__product-accordian">
+                <div class="closet-accordion" data-gemluxjewel-accordion>
+                  {%- if show_description -%}
+                    {% render 'gemluxjewel-pdp-accordion-item',
+                      title: section.settings.description_title,
+                      content: product.description
+                    %}
+                  {%- endif -%}
+
+                  {% render 'gemluxjewel-pdp-accordion-item',
+                    title: section.settings.shipping_title,
+                    content: section.settings.shipping_content
+                  %}
+
+                  {% render 'gemluxjewel-pdp-accordion-item',
+                    title: section.settings.warranty_title,
+                    content: section.settings.warranty_content
+                  %}
+
+                  {% render 'gemluxjewel-pdp-accordion-item',
+                    title: section.settings.care_title,
+                    content: section.settings.care_content
+                  %}
+                </div>
+              </div>
+            </div>
+          {%- endif -%}
         </div>
       </div>
     </div>
@@ -171,13 +221,13 @@
       "type": "text",
       "id": "breadcrumb_home",
       "label": "Breadcrumb home",
-      "default": "HOME"
+      "default": "Home"
     },
     {
       "type": "text",
       "id": "breadcrumb_collections",
       "label": "Breadcrumb collections",
-      "default": "COLLECTIONS"
+      "default": "Collections"
     },
     {
       "type": "text",
@@ -201,6 +251,90 @@
       "type": "url",
       "id": "size_guide_url",
       "label": "Size guide link"
+    },
+    {
+      "type": "header",
+      "content": "Product info accordion"
+    },
+    {
+      "type": "paragraph",
+      "content": "Shipping, warranty, and care content is shared across all products. Edit once here — no need to set up per product."
+    },
+    {
+      "type": "text",
+      "id": "info_accordion_heading",
+      "label": "Accordion heading",
+      "default": "MORE INFO",
+      "info": "Optional. Leave blank to hide."
+    },
+    {
+      "type": "header",
+      "content": "Description (per product)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_description",
+      "label": "Show product description accordion",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "description_title",
+      "label": "Description title",
+      "default": "Description"
+    },
+    {
+      "type": "header",
+      "content": "Shipping policy"
+    },
+    {
+      "type": "text",
+      "id": "shipping_title",
+      "label": "Title",
+      "default": "Shipping Policy"
+    },
+    {
+      "type": "richtext",
+      "id": "shipping_content",
+      "label": "Content",
+      "default": "<p>We offer complimentary shipping on all orders. Delivery times vary by location — most orders arrive within 5–7 business days. You will receive tracking details once your order ships.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Lifetime warranty"
+    },
+    {
+      "type": "text",
+      "id": "warranty_title",
+      "label": "Title",
+      "default": "Lifetime Warranty"
+    },
+    {
+      "type": "richtext",
+      "id": "warranty_content",
+      "label": "Content",
+      "default": "<p>Every piece is backed by our lifetime warranty against manufacturing defects. If something goes wrong due to craftsmanship, we will repair or replace it at no extra cost.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Jewelry care"
+    },
+    {
+      "type": "text",
+      "id": "care_title",
+      "label": "Title",
+      "default": "Jewelry Care Instructions"
+    },
+    {
+      "type": "richtext",
+      "id": "care_content",
+      "label": "Content",
+      "default": "<p>Store your jewellery in a soft pouch away from moisture. Clean gently with warm water and mild soap, then pat dry with a soft cloth. Avoid harsh chemicals, perfumes, and abrasive surfaces.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "gemluxjewel Main Product"
     }
   ]
 }

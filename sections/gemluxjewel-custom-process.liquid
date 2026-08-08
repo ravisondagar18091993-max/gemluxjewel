@@ -1,0 +1,115 @@
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-custom-jewellery.css' | asset_url | stylesheet_tag }}
+
+<section class="gemluxjewel gemluxjewel-custom-process">
+  <div class="gemluxjewel-container">
+    <div class="gemluxjewel-section-header gemluxjewel-section-header--center">
+      <div>
+        {%- if section.settings.prefix != blank -%}
+          <p class="gemluxjewel-prefix">{{ section.settings.prefix | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class="gemluxjewel-section-title">{{ section.settings.title | escape }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subtitle != blank -%}
+          <p class="gemluxjewel-section-desc">{{ section.settings.subtitle | escape }}</p>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="gemluxjewel-custom-process__grid">
+        {%- for block in section.blocks -%}
+          <div class="gemluxjewel-custom-process__step" {{ block.shopify_attributes }}>
+            <div class="gemluxjewel-custom-process__icon">
+              {%- if block.settings.icon != blank -%}
+                {{
+                  block.settings.icon
+                  | image_url: width: 64
+                  | image_tag: widths: '32, 64', sizes: '32px', loading: 'lazy', alt: ''
+                }}
+              {%- else -%}
+                <img src="{{ 'diamond.svg' | asset_url }}" alt="" width="32" height="32">
+              {%- endif -%}
+            </div>
+            {%- if block.settings.title != blank -%}
+              <h3 class="gemluxjewel-custom-process__step-title">{{ block.settings.title | escape }}</h3>
+            {%- endif -%}
+            {%- if block.settings.text != blank -%}
+              <p class="gemluxjewel-custom-process__step-text">{{ block.settings.text | escape }}</p>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "gemluxjewel Custom Process",
+  "tag": "section",
+  "class": "section gemluxjewel-section",
+  "settings": [
+    { "type": "text", "id": "prefix", "label": "Prefix", "default": "How It Works" },
+    { "type": "text", "id": "title", "label": "Heading", "default": "Your Custom Design Process" },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "From first sketch to final delivery — a seamless journey crafted around your vision."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Process step",
+      "settings": [
+        { "type": "image_picker", "id": "icon", "label": "Icon" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Explore & Share" },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Share your ideas, inspiration, and budget with our design team."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "gemluxjewel Custom Process",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "title": "Explore & Share",
+            "text": "Share your ideas, inspiration, and budget with our design team."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "3D Visualization",
+            "text": "We create detailed 3D renders so you can see your piece before it is made."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Craftsmanship",
+            "text": "Skilled artisans handcraft your jewellery using ethically sourced materials."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Final Delivery",
+            "text": "Your finished piece is carefully packaged and delivered to your door."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -2,6 +2,8 @@
 {{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
 {{ 'section-gemluxjewel-product.css' | asset_url | stylesheet_tag }}
 
+{%- assign promo_cards = section.blocks | where: 'type', 'promo_card' -%}
+
 <section class="gemluxjewel gemluxjewel-pdp-shared">
   {%- for block in section.blocks -%}
     {%- case block.type -%}
@@ -21,53 +23,28 @@
             </div>
           </div>
         </div>
-
-      {%- when 'feature_split' -%}
-        <div class="gemluxjewel-pdp-shared__feature gemluxjewel-pdp-shared__feature--{{ block.settings.image_position }}" {{ block.shopify_attributes }}>
-          <div class="gemluxjewel-container">
-            <div class="gemluxjewel-pdp-shared__feature-grid">
-              <div class="gemluxjewel-pdp-shared__feature-media">
-                {%- if block.settings.image != blank -%}
-                  {{
-                    block.settings.image
-                    | image_url: width: 1200
-                    | image_tag:
-                      widths: '600, 900, 1200',
-                      sizes: '(min-width: 990px) 45vw, 100vw',
-                      loading: 'lazy',
-                      class: 'gemluxjewel-pdp-shared__feature-img',
-                      alt: block.settings.title
-                  }}
-                {%- else -%}
-                  {% render 'gemluxjewel-theme-image',
-                    use_store_media: true,
-                    seed: forloop.index,
-                    width: 1000,
-                    widths: '600,900,1200',
-                    sizes: '(min-width: 990px) 45vw, 100vw',
-                    alt: block.settings.title,
-                    class: 'gemluxjewel-pdp-shared__feature-img'
-                  %}
-                {%- endif -%}
-              </div>
-              <div class="gemluxjewel-pdp-shared__feature-content">
-                {%- if block.settings.prefix != blank -%}
-                  <p class="gemluxjewel-prefix">{{ block.settings.prefix | escape }}</p>
-                {%- endif -%}
-                {%- if block.settings.title != blank -%}
-                  <h2 class="gemluxjewel-section-title">{{ block.settings.title | escape }}</h2>
-                {%- endif -%}
-                {%- if block.settings.text != blank -%}
-                  <div class="gemluxjewel-pdp-shared__feature-copy">
-                    <div class="gemluxjewel-pdp-shared__feature-story rte">{{ block.settings.text }}</div>
-                  </div>
-                {%- endif -%}
-              </div>
-            </div>
-          </div>
-        </div>
     {%- endcase -%}
   {%- endfor -%}
+
+  {%- if promo_cards.size > 0 -%}
+    <div class="gemluxjewel-pdp-shared__cards">
+      <div class="gemluxjewel-container">
+        <div class="gemluxjewel-dual-cards__grid">
+          {%- for block in promo_cards -%}
+            {% render 'gemluxjewel-dual-card',
+              image: block.settings.image,
+              title: block.settings.title,
+              description: block.settings.description,
+              button_label: block.settings.button_label,
+              button_link: block.settings.button_link,
+              seed: forloop.index,
+              shopify_attributes: block.shopify_attributes
+            %}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
 </section>
 
 {% schema %}
@@ -102,32 +79,31 @@
       ]
     },
     {
-      "type": "feature_split",
-      "name": "Feature split",
+      "type": "promo_card",
+      "name": "Promo card",
       "settings": [
-        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "image_picker", "id": "image", "label": "Background image" },
         {
-          "type": "select",
-          "id": "image_position",
-          "label": "Image position",
-          "default": "left",
-          "options": [
-            { "value": "left", "label": "Left" },
-            { "value": "right", "label": "Right" }
-          ]
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Premium Materials"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
         },
         {
           "type": "text",
-          "id": "prefix",
-          "label": "Prefix",
-          "default": "Our Craft"
+          "id": "button_label",
+          "label": "Button label",
+          "default": "Shop Now"
         },
-        { "type": "text", "id": "title", "label": "Heading", "default": "Premium Materials" },
         {
-          "type": "richtext",
-          "id": "text",
-          "label": "Text",
-          "default": "<p>We use only the finest metals and ethically sourced stones, selected for brilliance, durability, and everyday wearability.</p>"
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
         }
       ]
     }
@@ -138,20 +114,21 @@
       "blocks": [
         { "type": "intro_banner" },
         {
-          "type": "feature_split",
+          "type": "promo_card",
           "settings": {
-            "prefix": "Our Craft",
             "title": "Premium Materials",
-            "text": "<p>We use only the finest metals and ethically sourced stones, selected for brilliance, durability, and everyday wearability.</p>"
+            "description": "<p>We use only the finest metals and ethically sourced stones, selected for brilliance, durability, and everyday wearability.</p>",
+            "button_label": "Shop Now",
+            "button_link": "shopify://collections/all"
           }
         },
         {
-          "type": "feature_split",
+          "type": "promo_card",
           "settings": {
-            "image_position": "right",
-            "prefix": "Our Promise",
             "title": "Certified Quality",
-            "text": "<p>Each diamond is graded for cut, color, clarity, and carat weight — so you know exactly what you are investing in.</p>"
+            "description": "<p>Each diamond is graded for cut, color, clarity, and carat weight — so you know exactly what you are investing in.</p>",
+            "button_label": "Shop Now",
+            "button_link": "shopify://collections/all"
           }
         }
       ]

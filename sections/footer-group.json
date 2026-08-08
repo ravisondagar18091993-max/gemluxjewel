@@ -14,19 +14,15 @@
     "gemluxjewel_footer": {
       "type": "gemluxjewel-footer",
       "settings": {
-        "subscribe_label": "Subscribe",
+        "subscribe_label": "Subscribe to our emails",
         "newsletter_placeholder": "Sign Me Up",
         "promo_heading": "Join our guest list and receive exclusive access to new collections, offers, and events.",
         "promo_text": "Enjoy $100 off your first order*",
-        "phone": "+1 000 000 0000",
-        "email": "hello@gemluxjewel.com",
-        "hours": "Mon–Fri: 9am–6pm EST",
-        "menu_1_title": "About Us",
-        "menu_1": "footer",
-        "menu_2_title": "Contact",
-        "menu_3_title": "Support",
+        "menu_1_title": "Brand Info",
+        "menu_2_title": "Contact Info",
+        "menu_3_title": "",
         "menu_4_title": "Education",
-        "menu_5_title": "Jewelry Guide",
+        "menu_5_title": "",
         "copyright_text": "© gemluxjewel 2026"
       }
     }

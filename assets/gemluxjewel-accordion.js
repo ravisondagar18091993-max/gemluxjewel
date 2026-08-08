@@ -1,4 +1,7 @@
 (function () {
+  if (window.__gemluxjewelAccordionBound) return;
+  window.__gemluxjewelAccordionBound = true;
+
   function toggleAccordion(root, header) {
     var content = header.nextElementSibling;
     if (!content || !content.classList.contains('closet-content')) return;
@@ -26,18 +29,19 @@
     }
   }
 
-  document.querySelectorAll('[data-gemluxjewel-accordion]').forEach(function (root) {
-    root.querySelectorAll('.closet-header').forEach(function (header) {
-      header.addEventListener('click', function () {
-        toggleAccordion(root, header);
-      });
+  function handleToggle(event) {
+    var header = event.target.closest('.closet-header');
+    if (!header) return;
 
-      header.addEventListener('keydown', function (event) {
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault();
-          toggleAccordion(root, header);
-        }
-      });
-    });
-  });
+    var root = header.closest('[data-gemluxjewel-accordion]');
+    if (!root) return;
+
+    if (event.type === 'keydown' && event.key !== 'Enter' && event.key !== ' ') return;
+    if (event.type === 'keydown') event.preventDefault();
+
+    toggleAccordion(root, header);
+  }
+
+  document.addEventListener('click', handleToggle);
+  document.addEventListener('keydown', handleToggle);
 })();

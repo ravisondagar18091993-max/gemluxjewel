@@ -1,0 +1,50 @@
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-custom-jewellery.css' | asset_url | stylesheet_tag }}
+
+<section class="gemluxjewel gemluxjewel-custom-expert">
+  <div class="gemluxjewel-container">
+    <div class="gemluxjewel-custom-expert__inner">
+      <div class="gemluxjewel-custom-expert__icon">
+        {%- if section.settings.icon != blank -%}
+          {{
+            section.settings.icon
+            | image_url: width: 56
+            | image_tag: widths: '28, 56', sizes: '28px', loading: 'lazy', alt: ''
+          }}
+        {%- else -%}
+          <img src="{{ 'diamond.svg' | asset_url }}" alt="" width="28" height="28">
+        {%- endif -%}
+      </div>
+      {%- if section.settings.title != blank -%}
+        <h2 class="gemluxjewel-custom-expert__title">{{ section.settings.title | escape }}</h2>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <p class="gemluxjewel-custom-expert__text">{{ section.settings.text | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.button_label != blank -%}
+        {% render 'gemluxjewel-btn', label: section.settings.button_label, url: section.settings.button_link, style: 'green' %}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "gemluxjewel Custom Expert CTA",
+  "tag": "section",
+  "class": "section gemluxjewel-section",
+  "settings": [
+    { "type": "image_picker", "id": "icon", "label": "Icon" },
+    { "type": "text", "id": "title", "label": "Heading", "default": "Need Assistance? Speak with Our Expert!" },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description",
+      "default": "Our jewellery specialists are here to answer your questions and guide you through the custom design process."
+    },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Speak with Our Expert" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
+  ],
+  "presets": [{ "name": "gemluxjewel Custom Expert CTA" }]
+}
+{% endschema %}

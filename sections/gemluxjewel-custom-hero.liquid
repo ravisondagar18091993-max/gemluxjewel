@@ -1,0 +1,63 @@
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-custom-jewellery.css' | asset_url | stylesheet_tag }}
+
+<section class="gemluxjewel gemluxjewel-custom-hero">
+  <div class="gemluxjewel-custom-hero__bg" aria-hidden="true">
+    {%- if section.settings.image != blank -%}
+      {{
+        section.settings.image
+        | image_url: width: 2000
+        | image_tag:
+          widths: '800, 1200, 1600, 2000',
+          sizes: '100vw',
+          loading: 'eager',
+          alt: ''
+      }}
+    {%- else -%}
+      {% render 'gemluxjewel-theme-image',
+        use_store_media: true,
+        seed: 1,
+        width: 2000,
+        widths: '800,1200,2000',
+        sizes: '100vw',
+        alt: section.settings.title
+      %}
+    {%- endif -%}
+    <div class="gemluxjewel-custom-hero__overlay"></div>
+  </div>
+
+  <div class="gemluxjewel-container">
+    <div class="gemluxjewel-custom-hero__content">
+      {%- if section.settings.prefix != blank -%}
+        <p class="gemluxjewel-prefix gemluxjewel-custom-hero__prefix">{{ section.settings.prefix | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.title != blank -%}
+        <h1 class="gemluxjewel-custom-hero__title">{{ section.settings.title | escape }}</h1>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <p class="gemluxjewel-custom-hero__text">{{ section.settings.text | escape }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "gemluxjewel Custom Hero",
+  "tag": "section",
+  "class": "section gemluxjewel-section",
+  "settings": [
+    { "type": "text", "id": "prefix", "label": "Prefix", "default": "Bespoke Service" },
+    { "type": "text", "id": "title", "label": "Heading", "default": "Design Your Own Jewellery" },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Subheading",
+      "default": "Tell us your story and we will create a piece made just for you."
+    },
+    { "type": "image_picker", "id": "image", "label": "Background image" }
+  ],
+  "presets": [{ "name": "gemluxjewel Custom Hero" }]
+}
+{% endschema %}

@@ -5,49 +5,14 @@
     {%- if section.blocks.size > 0 -%}
       <div class="gemluxjewel-dual-cards__grid">
         {%- for block in section.blocks -%}
-          {%- liquid
-            assign card_image = block.settings.image
-            assign card_title = block.settings.title
-            assign card_button_label = block.settings.button_label
-            assign card_button_link = block.settings.button_link
-          -%}
-
-          <div class="gemluxjewel-dual-cards__card" {{ block.shopify_attributes }}>
-            <div class="gemluxjewel-dual-cards__media">
-              {%- if card_image != blank -%}
-                {{
-                  card_image
-                  | image_url: width: 1200
-                  | image_tag:
-                    widths: '600, 800, 1000, 1200',
-                    sizes: '(min-width: 1200px) 50vw, 100vw',
-                    loading: 'lazy',
-                    class: 'gemluxjewel-dual-cards__img',
-                    alt: card_title
-                }}
-              {%- else -%}
-                {% render 'gemluxjewel-theme-image',
-                  use_store_media: true,
-                  seed: forloop.index,
-                  width: 1200,
-                  widths: '600,800,1200',
-                  sizes: '(min-width: 1200px) 50vw, 100vw',
-                  alt: card_title,
-                  class: 'gemluxjewel-dual-cards__img'
-                %}
-              {%- endif -%}
-              <div class="gemluxjewel-dual-cards__overlay" aria-hidden="true"></div>
-            </div>
-
-            <div class="gemluxjewel-dual-cards__content">
-              {%- if card_title != blank -%}
-                <h2 class="gemluxjewel-dual-cards__title">{{ card_title | escape }}</h2>
-              {%- endif -%}
-              {%- if card_button_label != blank -%}
-                {% render 'gemluxjewel-btn', label: card_button_label, url: card_button_link, style: 'green' %}
-              {%- endif -%}
-            </div>
-          </div>
+          {% render 'gemluxjewel-dual-card',
+            image: block.settings.image,
+            title: block.settings.title,
+            button_label: block.settings.button_label,
+            button_link: block.settings.button_link,
+            seed: forloop.index,
+            shopify_attributes: block.shopify_attributes
+          %}
         {%- endfor -%}
       </div>
     {%- endif -%}

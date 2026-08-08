@@ -56,48 +56,30 @@
             assign column_title = section.settings[title_key]
             assign column_menu = section.settings[menu_key]
           -%}
-          {%- if column_title != blank or column_menu != blank or i == 2 -%}
+          {%- if column_title != blank or column_menu != blank or i == 2 or i == 1 or i == 4 -%}
             <div class="gemluxjewel-footer__column">
               {%- if column_title != blank -%}
                 <p class="gemluxjewel-footer__column-title">{{ column_title | escape }}</p>
               {%- endif -%}
 
               {%- if i == 2 -%}
-                <ul class="gemluxjewel-footer__links">
-                  {%- if section.settings.phone != blank -%}
-                    <li>
-                      <a href="tel:{{ section.settings.phone | replace: ' ', '' | replace: '(', '' | replace: ')', '' | replace: '-', '' }}" class="gemluxjewel-footer__link">
-                        {{ section.settings.phone | escape }}
-                      </a>
-                    </li>
-                  {%- endif -%}
-                  {%- if section.settings.email != blank -%}
-                    <li>
-                      <a href="mailto:{{ section.settings.email }}" class="gemluxjewel-footer__link">
-                        {{ section.settings.email | escape }}
-                      </a>
-                    </li>
-                  {%- endif -%}
-                  {%- if section.settings.address != blank -%}
-                    <li><span class="gemluxjewel-footer__link gemluxjewel-footer__link--text">{{ section.settings.address }}</span></li>
-                  {%- endif -%}
-                  {%- if section.settings.hours != blank -%}
-                    <li><span class="gemluxjewel-footer__link gemluxjewel-footer__link--text">{{ section.settings.hours }}</span></li>
-                  {%- endif -%}
-                  {%- if section.settings.directions_url != blank -%}
-                    <li>
-                      <a href="{{ section.settings.directions_url }}" class="gemluxjewel-footer__link" target="_blank" rel="noopener noreferrer">
-                        {{ section.settings.directions_label | default: 'Get Directions' | escape }}
-                      </a>
-                    </li>
-                  {%- endif -%}
-                </ul>
+                {%- if column_menu != blank -%}
+                  <ul class="gemluxjewel-footer__links">
+                    {%- for link in column_menu.links -%}
+                      <li><a href="{{ link.url }}" class="gemluxjewel-footer__link">{{ link.title | escape }}</a></li>
+                    {%- endfor -%}
+                  </ul>
+                {%- else -%}
+                  {% render 'gemluxjewel-footer-dummy-links', column: 2 %}
+                {%- endif -%}
               {%- elsif column_menu != blank -%}
                 <ul class="gemluxjewel-footer__links">
                   {%- for link in column_menu.links -%}
                     <li><a href="{{ link.url }}" class="gemluxjewel-footer__link">{{ link.title | escape }}</a></li>
                   {%- endfor -%}
                 </ul>
+              {%- elsif i == 1 or i == 4 -%}
+                {% render 'gemluxjewel-footer-dummy-links', column: i %}
               {%- endif -%}
             </div>
           {%- endif -%}
@@ -110,21 +92,40 @@
         <a href="{{ settings.social_facebook_link }}" class="gemluxjewel-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
           <img src="{{ 'white-facebook.svg' | asset_url }}" alt="" width="22" height="22">
         </a>
+      {%- else -%}
+        <a href="#" class="gemluxjewel-footer__social-link" aria-label="Facebook">
+          <img src="{{ 'white-facebook.svg' | asset_url }}" alt="" width="22" height="22">
+        </a>
       {%- endif -%}
       {%- if settings.social_instagram_link != blank -%}
         <a href="{{ settings.social_instagram_link }}" class="gemluxjewel-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
           <img src="{{ 'white-instagram.svg' | asset_url }}" alt="" width="22" height="22">
+        </a>
+      {%- else -%}
+        <a href="#" class="gemluxjewel-footer__social-link" aria-label="Instagram">
+          <img src="{{ 'white-instagram.svg' | asset_url }}" alt="" width="22" height="22">
+        </a>
+      {%- endif -%}
+      {%- if section.settings.youtube_url != blank -%}
+        <a href="{{ section.settings.youtube_url }}" class="gemluxjewel-footer__social-link gemluxjewel-footer__social-link--text" target="_blank" rel="noopener noreferrer" aria-label="YouTube">Y</a>
+      {%- else -%}
+        <a href="#" class="gemluxjewel-footer__social-link gemluxjewel-footer__social-link--text" aria-label="YouTube">Y</a>
+      {%- endif -%}
+      {%- if settings.social_twitter_link != blank -%}
+        <a href="{{ settings.social_twitter_link }}" class="gemluxjewel-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="X">
+          <img src="{{ 'white-twitter.svg' | asset_url }}" alt="" width="22" height="22">
+        </a>
+      {%- else -%}
+        <a href="#" class="gemluxjewel-footer__social-link" aria-label="X">
+          <img src="{{ 'white-twitter.svg' | asset_url }}" alt="" width="22" height="22">
         </a>
       {%- endif -%}
       {%- if section.settings.pinterest_url != blank -%}
         <a href="{{ section.settings.pinterest_url }}" class="gemluxjewel-footer__social-link gemluxjewel-footer__social-link--text" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
           P
         </a>
-      {%- endif -%}
-      {%- if settings.social_twitter_link != blank -%}
-        <a href="{{ settings.social_twitter_link }}" class="gemluxjewel-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="X">
-          <img src="{{ 'white-twitter.svg' | asset_url }}" alt="" width="22" height="22">
-        </a>
+      {%- else -%}
+        <a href="#" class="gemluxjewel-footer__social-link gemluxjewel-footer__social-link--text" aria-label="Pinterest">P</a>
       {%- endif -%}
       {%- if section.settings.linkedin_url != blank -%}
         <a href="{{ section.settings.linkedin_url }}" class="gemluxjewel-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
@@ -232,7 +233,7 @@
       "type": "text",
       "id": "menu_1_title",
       "label": "Column 1 title",
-      "default": "About Us"
+      "default": "Brand Info"
     },
     {
       "type": "link_list",
@@ -244,7 +245,12 @@
       "type": "text",
       "id": "menu_2_title",
       "label": "Column 2 title",
-      "default": "Contact"
+      "default": "Contact Info"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_2",
+      "label": "Column 2 menu (optional — uses example links when empty)"
     },
     {
       "type": "text",
@@ -282,6 +288,11 @@
     {
       "type": "header",
       "content": "Social & legal"
+    },
+    {
+      "type": "url",
+      "id": "youtube_url",
+      "label": "YouTube URL"
     },
     {
       "type": "url",

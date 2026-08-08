@@ -1,0 +1,198 @@
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-custom-jewellery.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'gemluxjewel-custom-jewellery.js' | asset_url }}" defer="defer"></script>
+
+<section class="gemluxjewel gemluxjewel-custom-form">
+  <div class="gemluxjewel-container">
+    <div class="gemluxjewel-section-header gemluxjewel-section-header--center">
+      <div>
+        {%- if section.settings.prefix != blank -%}
+          <p class="gemluxjewel-prefix">{{ section.settings.prefix | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class="gemluxjewel-section-title">{{ section.settings.title | escape }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subtitle != blank -%}
+          <p class="gemluxjewel-section-desc">{{ section.settings.subtitle | escape }}</p>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="gemluxjewel-custom-form__card" data-gemluxjewel-custom-form>
+      {%- form 'contact', id: 'GemluxCustomJewelleryForm', class: 'gemluxjewel-custom-form__form' -%}
+        <input type="hidden" name="contact[subject]" value="Custom Jewellery Request">
+        <input type="hidden" name="contact[jewellery_type]" value="{{ section.settings.default_type | default: 'Engagement Ring' | escape }}" data-gemluxjewel-custom-form-type>
+        <input type="hidden" name="contact[metal_preference]" value="" data-gemluxjewel-custom-metal-value>
+
+        {%- if form.posted_successfully? -%}
+          <p class="gemluxjewel-custom-form__status gemluxjewel-custom-form__status--success" tabindex="-1" autofocus>
+            {{ section.settings.success_message | default: 'Thank you! Our design team will be in touch within 24 hours.' | escape }}
+          </p>
+        {%- elsif form.errors -%}
+          <div class="gemluxjewel-custom-form__status gemluxjewel-custom-form__status--error" tabindex="-1" autofocus>
+            <p>{{ 'templates.contact.form.error_heading' | t }}</p>
+          </div>
+        {%- endif -%}
+
+        {%- if section.blocks.size > 0 -%}
+          <div class="gemluxjewel-custom-form__tabs" role="tablist" aria-label="Jewellery type">
+            {%- for block in section.blocks -%}
+              <button
+                type="button"
+                class="gemluxjewel-custom-form__tab{% if forloop.first %} is-active{% endif %}"
+                role="tab"
+                aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+                data-gemluxjewel-custom-form-tab
+                data-value="{{ block.settings.label | escape }}"
+                {{ block.shopify_attributes }}
+              >
+                {{ block.settings.label | escape }}
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        <div class="gemluxjewel-custom-form__fields">
+          <div class="gemluxjewel-custom-form__field">
+            <label class="gemluxjewel-custom-form__label" for="GemluxCustomForm-first-name">First name *</label>
+            <input class="gemluxjewel-custom-form__input" type="text" id="GemluxCustomForm-first-name" name="contact[first_name]" required autocomplete="given-name" placeholder="First name">
+          </div>
+
+          <div class="gemluxjewel-custom-form__field">
+            <label class="gemluxjewel-custom-form__label" for="GemluxCustomForm-last-name">Last name *</label>
+            <input class="gemluxjewel-custom-form__input" type="text" id="GemluxCustomForm-last-name" name="contact[last_name]" required autocomplete="family-name" placeholder="Last name">
+          </div>
+
+          <div class="gemluxjewel-custom-form__field">
+            <label class="gemluxjewel-custom-form__label" for="GemluxCustomForm-phone">Phone *</label>
+            <input class="gemluxjewel-custom-form__input" type="tel" id="GemluxCustomForm-phone" name="contact[phone]" required autocomplete="tel" placeholder="+44 0000 000000">
+          </div>
+
+          <div class="gemluxjewel-custom-form__field">
+            <label class="gemluxjewel-custom-form__label" for="GemluxCustomForm-email">Email *</label>
+            <input class="gemluxjewel-custom-form__input" type="email" id="GemluxCustomForm-email" name="contact[email]" required autocomplete="email" placeholder="you@email.com">
+          </div>
+
+          <div class="gemluxjewel-custom-form__field gemluxjewel-custom-form__field--full" data-gemluxjewel-custom-metal>
+            <span class="gemluxjewel-custom-form__label">Choose your metal</span>
+            <div class="gemluxjewel-custom-form__metal-tags">
+              {%- assign metals = section.settings.metals | default: 'White Gold,Yellow Gold,Rose Gold,Platinum,Silver' | split: ',' -%}
+              {%- for metal in metals -%}
+                {%- assign metal_label = metal | strip -%}
+                {%- if metal_label != blank -%}
+                  <button type="button" class="gemluxjewel-custom-form__metal-tag" data-gemluxjewel-custom-metal-tag data-value="{{ metal_label | escape }}">
+                    {{ metal_label | escape }}
+                  </button>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          </div>
+
+          <div class="gemluxjewel-custom-form__field">
+            <label class="gemluxjewel-custom-form__label" for="GemluxCustomForm-budget">Budget range</label>
+            <select class="gemluxjewel-custom-form__select" id="GemluxCustomForm-budget" name="contact[budget]">
+              <option value="">Select budget</option>
+              <option value="Under £1,000">Under £1,000</option>
+              <option value="£1,000 – £2,500">£1,000 – £2,500</option>
+              <option value="£2,500 – £5,000">£2,500 – £5,000</option>
+              <option value="£5,000 – £10,000">£5,000 – £10,000</option>
+              <option value="Over £10,000">Over £10,000</option>
+            </select>
+          </div>
+
+          <div class="gemluxjewel-custom-form__field">
+            <label class="gemluxjewel-custom-form__label" for="GemluxCustomForm-occasion">Occasion / concept</label>
+            <select class="gemluxjewel-custom-form__select" id="GemluxCustomForm-occasion" name="contact[occasion]">
+              <option value="">Select occasion</option>
+              <option value="Engagement">Engagement</option>
+              <option value="Wedding">Wedding</option>
+              <option value="Anniversary">Anniversary</option>
+              <option value="Birthday">Birthday</option>
+              <option value="Self Purchase">Self Purchase</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="gemluxjewel-custom-form__field gemluxjewel-custom-form__field--full">
+            <label class="gemluxjewel-custom-form__label" for="GemluxCustomForm-message">Tell us about your idea *</label>
+            <textarea class="gemluxjewel-custom-form__textarea" id="GemluxCustomForm-message" name="contact[body]" required rows="5" placeholder="Describe your dream piece — style, stones, size, and any inspiration..."></textarea>
+          </div>
+
+          <div class="gemluxjewel-custom-form__field gemluxjewel-custom-form__field--full">
+            <span class="gemluxjewel-custom-form__label">Upload inspiration / sketches</span>
+            <div class="gemluxjewel-custom-form__upload">
+              <p>Share reference images or sketches via email after submitting, or include links in your message above.</p>
+              <p class="gemluxjewel-custom-form__upload-note">{{ section.settings.upload_note | default: 'Our team will follow up to collect any files you would like to share.' | escape }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="gemluxjewel-custom-form__submit">
+          <button type="submit" class="gemluxjewel-btn gemluxjewel-btn--green">
+            {{ section.settings.button_label | default: 'Submit Request' | escape }}
+          </button>
+        </div>
+      {%- endform -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "gemluxjewel Custom Form",
+  "tag": "section",
+  "class": "section gemluxjewel-section",
+  "settings": [
+    { "type": "text", "id": "prefix", "label": "Prefix", "default": "Get Started" },
+    { "type": "text", "id": "title", "label": "Heading", "default": "Start Your Custom Design Request" },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "Fill in the details below and our experts will guide you through every step."
+    },
+    { "type": "text", "id": "default_type", "label": "Default jewellery type", "default": "Engagement Ring" },
+    {
+      "type": "text",
+      "id": "metals",
+      "label": "Metal options (comma-separated)",
+      "default": "White Gold,Yellow Gold,Rose Gold,Platinum,Silver"
+    },
+    { "type": "text", "id": "button_label", "label": "Submit button", "default": "Submit Request" },
+    {
+      "type": "text",
+      "id": "upload_note",
+      "label": "Upload note",
+      "default": "Our team will follow up to collect any files you would like to share."
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "Thank you! Our design team will be in touch within 24 hours."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "type_tab",
+      "name": "Jewellery type tab",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Engagement Ring" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "gemluxjewel Custom Form",
+      "blocks": [
+        { "type": "type_tab", "settings": { "label": "Engagement Ring" } },
+        { "type": "type_tab", "settings": { "label": "Wedding Ring" } },
+        { "type": "type_tab", "settings": { "label": "Earrings" } },
+        { "type": "type_tab", "settings": { "label": "Necklaces" } },
+        { "type": "type_tab", "settings": { "label": "Bracelets" } },
+        { "type": "type_tab", "settings": { "label": "Others" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
