@@ -48,9 +48,9 @@
               {{ section.settings.breadcrumb_collections | default: 'COLLECTIONS' | escape }}
             {%- endif -%}
             |
-            <span>{{ breadcrumb_collection | upcase | escape }}</span>
+            <span>{{ breadcrumb_collection | escape }}</span>
           {%- else -%}
-            <span>{{ product.title | upcase | escape }}</span>
+            <span>{{ product.title | escape }}</span>
           {%- endif -%}
         </p>
         <a href="{{ back_url }}" class="gemluxjewel-pdp__back">
@@ -225,13 +225,13 @@
       "type": "text",
       "id": "breadcrumb_home",
       "label": "Breadcrumb home",
-      "default": "HOME"
+      "default": "Home"
     },
     {
       "type": "text",
       "id": "breadcrumb_collections",
       "label": "Breadcrumb collections",
-      "default": "COLLECTIONS"
+      "default": "Collections"
     },
     {
       "type": "text",
