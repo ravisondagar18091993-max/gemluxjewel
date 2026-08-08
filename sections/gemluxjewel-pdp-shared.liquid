@@ -6,14 +6,17 @@
   {%- for block in section.blocks -%}
     {%- case block.type -%}
       {%- when 'intro_banner' -%}
-        <div class="gemluxjewel-pdp-shared__banner" {{ block.shopify_attributes }}>
+        <div class="gemluxjewel-pdp-shared__intro" {{ block.shopify_attributes }}>
           <div class="gemluxjewel-container">
-            <div class="gemluxjewel-pdp-shared__banner-inner">
+            <div class="gemluxjewel-section-header gemluxjewel-section-header--center gemluxjewel-pdp-shared__intro-header">
+              {%- if block.settings.prefix != blank -%}
+                <p class="gemluxjewel-prefix">{{ block.settings.prefix | escape }}</p>
+              {%- endif -%}
               {%- if block.settings.title != blank -%}
-                <h2 class="gemluxjewel-pdp-shared__banner-title">{{ block.settings.title | escape }}</h2>
+                <h2 class="gemluxjewel-section-title">{{ block.settings.title | escape }}</h2>
               {%- endif -%}
               {%- if block.settings.text != blank -%}
-                <div class="gemluxjewel-pdp-shared__banner-text rte">{{ block.settings.text }}</div>
+                <div class="gemluxjewel-section-desc rte">{{ block.settings.text }}</div>
               {%- endif -%}
             </div>
           </div>
@@ -30,7 +33,7 @@
                     | image_url: width: 1200
                     | image_tag:
                       widths: '600, 900, 1200',
-                      sizes: '(min-width: 990px) 50vw, 100vw',
+                      sizes: '(min-width: 990px) 45vw, 100vw',
                       loading: 'lazy',
                       class: 'gemluxjewel-pdp-shared__feature-img',
                       alt: block.settings.title
@@ -39,20 +42,25 @@
                   {% render 'gemluxjewel-theme-image',
                     use_store_media: true,
                     seed: forloop.index,
-                    width: 900,
+                    width: 1000,
                     widths: '600,900,1200',
-                    sizes: '(min-width: 990px) 50vw, 100vw',
+                    sizes: '(min-width: 990px) 45vw, 100vw',
                     alt: block.settings.title,
                     class: 'gemluxjewel-pdp-shared__feature-img'
                   %}
                 {%- endif -%}
               </div>
               <div class="gemluxjewel-pdp-shared__feature-content">
+                {%- if block.settings.prefix != blank -%}
+                  <p class="gemluxjewel-prefix">{{ block.settings.prefix | escape }}</p>
+                {%- endif -%}
                 {%- if block.settings.title != blank -%}
-                  <h3 class="gemluxjewel-pdp-shared__feature-title">{{ block.settings.title | escape }}</h3>
+                  <h2 class="gemluxjewel-section-title">{{ block.settings.title | escape }}</h2>
                 {%- endif -%}
                 {%- if block.settings.text != blank -%}
-                  <div class="gemluxjewel-pdp-shared__feature-text rte">{{ block.settings.text }}</div>
+                  <div class="gemluxjewel-pdp-shared__feature-copy">
+                    <div class="gemluxjewel-pdp-shared__feature-story rte">{{ block.settings.text }}</div>
+                  </div>
                 {%- endif -%}
               </div>
             </div>
@@ -73,6 +81,12 @@
       "type": "intro_banner",
       "name": "Intro banner",
       "settings": [
+        {
+          "type": "text",
+          "id": "prefix",
+          "label": "Prefix",
+          "default": "Discover More"
+        },
         {
           "type": "text",
           "id": "title",
@@ -102,6 +116,12 @@
             { "value": "right", "label": "Right" }
           ]
         },
+        {
+          "type": "text",
+          "id": "prefix",
+          "label": "Prefix",
+          "default": "Our Craft"
+        },
         { "type": "text", "id": "title", "label": "Heading", "default": "Premium Materials" },
         {
           "type": "richtext",
@@ -120,6 +140,7 @@
         {
           "type": "feature_split",
           "settings": {
+            "prefix": "Our Craft",
             "title": "Premium Materials",
             "text": "<p>We use only the finest metals and ethically sourced stones, selected for brilliance, durability, and everyday wearability.</p>"
           }
@@ -128,6 +149,7 @@
           "type": "feature_split",
           "settings": {
             "image_position": "right",
+            "prefix": "Our Promise",
             "title": "Certified Quality",
             "text": "<p>Each diamond is graded for cut, color, clarity, and carat weight — so you know exactly what you are investing in.</p>"
           }
