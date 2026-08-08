@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "gemluxjewel_main_product": {
@@ -16,7 +25,6 @@
         "shared_banner": {
           "type": "intro_banner",
           "settings": {
-            "prefix": "Discover More",
             "title": "Quality Features & Why",
             "text": "<p>Every piece is thoughtfully designed and expertly crafted to deliver lasting beauty, comfort, and confidence — from premium materials to the finest finishing details.</p>"
           }
@@ -25,7 +33,6 @@
           "type": "feature_split",
           "settings": {
             "image_position": "left",
-            "prefix": "Our Craft",
             "title": "Premium Materials",
             "text": "<p>We use only the finest metals and ethically sourced stones, selected for brilliance, durability, and everyday wearability.</p>"
           }
@@ -34,7 +41,6 @@
           "type": "feature_split",
           "settings": {
             "image_position": "right",
-            "prefix": "Our Promise",
             "title": "Certified Quality",
             "text": "<p>Each diamond is graded for cut, color, clarity, and carat weight — so you know exactly what you are investing in.</p>"
           }
@@ -86,7 +92,13 @@
           }
         }
       },
-      "block_order": ["faq_1", "faq_2", "faq_3", "faq_4", "faq_5"],
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5"
+      ],
       "settings": {
         "prefix": "NEED HELP?",
         "title": "FREQUENTLY ASKED QUESTIONS",
