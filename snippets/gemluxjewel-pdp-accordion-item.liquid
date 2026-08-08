@@ -1,0 +1,25 @@
+{% comment %}
+  PDP info accordion row.
+  Accepts: title, content, shopify_attributes (optional)
+{% endcomment %}
+
+{%- if title != blank and content != blank -%}
+  <div class="closet-item" {{ shopify_attributes }}>
+    <div
+      class="closet-header"
+      role="button"
+      tabindex="0"
+      aria-expanded="false"
+    >
+      <div class="closet-header-title">{{ title | escape }}</div>
+      <div class="accordion-close">
+        <img src="{{ 'down-arrow.svg' | asset_url }}" alt="" width="24" height="24">
+      </div>
+    </div>
+    <div class="closet-content">
+      <div class="closet-content__inner rte">
+        {{ content }}
+      </div>
+    </div>
+  </div>
+{%- endif -%}

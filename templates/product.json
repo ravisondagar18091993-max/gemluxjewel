@@ -11,39 +11,9 @@
   "sections": {
     "gemluxjewel_main_product": {
       "type": "gemluxjewel-main-product",
-      "blocks": {
-        "info_description": {
-          "type": "product_description",
-          "settings": {
-            "title": "Description"
-          }
-        },
-        "info_shipping": {
-          "type": "info_item",
-          "settings": {
-            "title": "Shipping Policy",
-            "content": "<p>We offer complimentary shipping on all orders. Delivery times vary by location — most orders arrive within 5–7 business days. You will receive tracking details once your order ships.</p>"
-          }
-        },
-        "info_warranty": {
-          "type": "info_item",
-          "settings": {
-            "title": "Lifetime Warranty",
-            "content": "<p>Every piece is backed by our lifetime warranty against manufacturing defects. If something goes wrong due to craftsmanship, we will repair or replace it at no extra cost.</p>"
-          }
-        },
-        "info_care": {
-          "type": "info_item",
-          "settings": {
-            "title": "Jewelry Care Instructions",
-            "content": "<p>Store your jewellery in a soft pouch away from moisture. Clean gently with warm water and mild soap, then pat dry with a soft cloth. Avoid harsh chemicals, perfumes, and abrasive surfaces.</p>"
-          }
-        }
-      },
-      "block_order": ["info_description", "info_shipping", "info_warranty", "info_care"],
       "settings": {
-        "breadcrumb_home": "HOME",
-        "breadcrumb_collections": "COLLECTIONS",
+        "breadcrumb_home": "Home",
+        "breadcrumb_collections": "Collections",
         "back_label": "Return to Store",
         "add_to_cart_label": "ADD TO CART",
         "size_guide_label": "SIZE GUIDE",
