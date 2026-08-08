@@ -13,6 +13,8 @@
   --gemluxjewel-radius-pill: 30px;
   --gemluxjewel-font-body: 'Instrument Sans', var(--font-body-family), sans-serif;
   --gemluxjewel-font-heading: 'Nunito', var(--font-heading-family), sans-serif;
+  --gemluxjewel-pdp-gap: 64px;
+  --gemluxjewel-pdp-gap-mobile: 48px;
 }
 
 .gemluxjewel-pdp .gemluxjewel-container,
@@ -42,12 +44,12 @@
 /* ── Main product ── */
 .gemluxjewel-pdp {
   background: var(--gemluxjewel-secondary);
-  padding: 0 0 135px;
+  padding: 0 0 var(--gemluxjewel-pdp-gap);
   font-family: var(--gemluxjewel-font-body);
 }
 
 @media (max-width: 991px) {
-  .gemluxjewel-pdp { padding-bottom: 80px; }
+  .gemluxjewel-pdp { padding-bottom: var(--gemluxjewel-pdp-gap-mobile); }
 }
 
 .gemluxjewel-pdp__topbar {
@@ -542,12 +544,12 @@
 /* ── FAQ (matches HTML/product-open.html .faq-section) ── */
 .gemluxjewel-pdp-faq {
   background: #f7f7f7;
-  padding: 150px 0 70px;
+  padding: var(--gemluxjewel-pdp-gap) 0;
   font-family: var(--gemluxjewel-font-body);
 }
 
-@media (max-width: 1200px) {
-  .gemluxjewel-pdp-faq { padding: 100px 0 50px; }
+@media (max-width: 991px) {
+  .gemluxjewel-pdp-faq { padding: var(--gemluxjewel-pdp-gap-mobile) 0; }
 }
 
 .gemluxjewel-pdp-faq__grid {
@@ -824,11 +826,11 @@
 /* ── Related products ── */
 .gemluxjewel-pdp-related {
   background: var(--gemluxjewel-secondary);
-  padding: 120px 0 140px;
+  padding: var(--gemluxjewel-pdp-gap) 0 80px;
 }
 
 @media (max-width: 991px) {
-  .gemluxjewel-pdp-related { padding: 50px 0 70px; }
+  .gemluxjewel-pdp-related { padding: var(--gemluxjewel-pdp-gap-mobile) 0 56px; }
 }
 
 .gemluxjewel-pdp-related .gemluxjewel-section-header {
@@ -858,13 +860,17 @@
 
 .gemluxjewel-pdp-shared__intro {
   background: var(--gemluxjewel-secondary);
-  padding: 100px 0 40px;
+  padding: 0 0 32px;
 }
 
 @media (max-width: 991px) {
   .gemluxjewel-pdp-shared__intro {
-    padding: 70px 0 24px;
+    padding-bottom: 24px;
   }
+}
+
+.gemluxjewel-pdp-shared__intro-header.gemluxjewel-section-header--center {
+  margin-bottom: 0;
 }
 
 .gemluxjewel-pdp-shared__intro-header {
@@ -881,12 +887,20 @@
 
 .gemluxjewel-pdp-shared__feature {
   background: var(--gemluxjewel-primary);
-  padding: 90px 0;
+  padding: var(--gemluxjewel-pdp-gap) 0;
+}
+
+.gemluxjewel-pdp-shared__feature + .gemluxjewel-pdp-shared__feature {
+  padding-top: 0;
 }
 
 @media (max-width: 991px) {
   .gemluxjewel-pdp-shared__feature {
-    padding: 60px 0;
+    padding: var(--gemluxjewel-pdp-gap-mobile) 0;
+  }
+
+  .gemluxjewel-pdp-shared__feature + .gemluxjewel-pdp-shared__feature {
+    padding-top: 0;
   }
 }
 
@@ -964,7 +978,7 @@
 /* ── PDP trust bar (matches homepage USP marquee) ── */
 .gemluxjewel-pdp-trust {
   background: var(--gemluxjewel-primary);
-  padding: 28px 0;
+  padding: 24px 0;
 }
 
 .gemluxjewel-pdp-trust .gemluxjewel-container {
