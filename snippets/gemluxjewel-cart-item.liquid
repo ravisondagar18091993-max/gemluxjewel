@@ -53,10 +53,12 @@
       {%- endif -%}
 
       {%- if item.line_level_discount_allocations.size > 0 -%}
-        <ul class="gemluxjewel-cart__item-discounts">
+        <ul class="gemluxjewel-cart__item-discounts discounts list-unstyled">
           {%- for discount in item.line_level_discount_allocations -%}
-            <li>
-              {{- 'icon-discount.svg' | inline_asset_content -}}
+            <li class="discounts__discount">
+              <span class="gemluxjewel-cart__discount-icon" aria-hidden="true">
+                {{- 'icon-discount.svg' | inline_asset_content -}}
+              </span>
               {{ discount.discount_application.title | escape }}
             </li>
           {%- endfor -%}
