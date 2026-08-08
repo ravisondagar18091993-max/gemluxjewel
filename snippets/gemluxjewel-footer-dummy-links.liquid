@@ -1,0 +1,34 @@
+{% comment %}
+  Dummy footer links when no Shopify menu is assigned.
+
+  @param column {Number} 1 | 2 | 4
+{% endcomment %}
+
+<ul class="gemluxjewel-footer__links">
+  {%- case column -%}
+    {%- when 1 -%}
+      <li><a href="#" class="gemluxjewel-footer__link">Our Story</a></li>
+      <li><a href="#" class="gemluxjewel-footer__link">Customize</a></li>
+      <li><a href="#" class="gemluxjewel-footer__link">Privacy Policy</a></li>
+      <li><a href="#" class="gemluxjewel-footer__link">Shipping Policy</a></li>
+      <li><a href="#" class="gemluxjewel-footer__link">Refund Policy</a></li>
+      <li><a href="#" class="gemluxjewel-footer__link">Terms of Service</a></li>
+      <li><a href="#" class="gemluxjewel-footer__link">Lifetime Warranty</a></li>
+    {%- when 2 -%}
+      <li><a href="#" class="gemluxjewel-footer__link">Call Us</a></li>
+      <li><a href="#" class="gemluxjewel-footer__link">Email Us</a></li>
+      <li><a href="#" class="gemluxjewel-footer__link">Live Chat</a></li>
+      <li><a href="shopify://pages/faq" class="gemluxjewel-footer__link">FAQ's</a></li>
+      <li><a href="shopify://pages/contact" class="gemluxjewel-footer__link">Contact Us</a></li>
+      <li><a href="#" class="gemluxjewel-footer__link">Virtual Appointment</a></li>
+    {%- when 4 -%}
+      <li><a href="shopify://blogs/news" class="gemluxjewel-footer__link">Blogs</a></li>
+      <li><a href="shopify://pages/4cs-diamonds" class="gemluxjewel-footer__link">4C's Diamonds</a></li>
+      <li><a href="#" class="gemluxjewel-footer__link">Lab Grown Diamonds</a></li>
+      <li><a href="#" class="gemluxjewel-footer__link">Know About Moissanite</a></li>
+      <li><a href="#" class="gemluxjewel-footer__link">Responsible Sourcing</a></li>
+      <li><a href="#" class="gemluxjewel-footer__link">Clean &amp; Care</a></li>
+      <li><a href="#" class="gemluxjewel-footer__link">Jewelry Sizer</a></li>
+      <li><a href="#" class="gemluxjewel-footer__link">Jewelry Customization Process</a></li>
+  {%- endcase -%}
+</ul>
