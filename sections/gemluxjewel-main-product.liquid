@@ -84,10 +84,6 @@
             {% render 'gemluxjewel-pdp-price' %}
           </div>
 
-          {%- if product.description != blank -%}
-            <div class="gemluxjewel-pdp__description rte">{{ product.description }}</div>
-          {%- endif -%}
-
           {%- unless product.has_only_default_variant -%}
             <div class="gemluxjewel-pdp__variants-block">
               {% render 'gemluxjewel-pdp-variant-picker' %}
@@ -164,26 +160,50 @@
               <div class="gemluxjewel-pdp__product-accordian">
                 <div class="closet-accordion" data-gemluxjewel-accordion>
                   {%- for block in section.blocks -%}
-                    {%- if block.settings.title != blank -%}
-                      <div class="closet-item" {{ block.shopify_attributes }}>
-                        <div
-                          class="closet-header"
-                          role="button"
-                          tabindex="0"
-                          aria-expanded="false"
-                        >
-                          <div class="closet-header-title">{{ block.settings.title | escape }}</div>
-                          <div class="accordion-close">
-                            <img src="{{ 'down-arrow.svg' | asset_url }}" alt="" width="24" height="24">
+                    {%- case block.type -%}
+                      {%- when 'product_description' -%}
+                        {%- if product.description != blank -%}
+                          <div class="closet-item" {{ block.shopify_attributes }}>
+                            <div
+                              class="closet-header"
+                              role="button"
+                              tabindex="0"
+                              aria-expanded="false"
+                            >
+                              <div class="closet-header-title">{{ block.settings.title | default: 'Description' | escape }}</div>
+                              <div class="accordion-close">
+                                <img src="{{ 'down-arrow.svg' | asset_url }}" alt="" width="24" height="24">
+                              </div>
+                            </div>
+                            <div class="closet-content">
+                              <div class="closet-content__inner rte">
+                                {{ product.description }}
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                        <div class="closet-content">
-                          <div class="closet-content__inner rte">
-                            {{ block.settings.content }}
+                        {%- endif -%}
+                      {%- when 'info_item' -%}
+                        {%- if block.settings.title != blank -%}
+                          <div class="closet-item" {{ block.shopify_attributes }}>
+                            <div
+                              class="closet-header"
+                              role="button"
+                              tabindex="0"
+                              aria-expanded="false"
+                            >
+                              <div class="closet-header-title">{{ block.settings.title | escape }}</div>
+                              <div class="accordion-close">
+                                <img src="{{ 'down-arrow.svg' | asset_url }}" alt="" width="24" height="24">
+                              </div>
+                            </div>
+                            <div class="closet-content">
+                              <div class="closet-content__inner rte">
+                                {{ block.settings.content }}
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                    {%- endif -%}
+                        {%- endif -%}
+                    {%- endcase -%}
                   {%- endfor -%}
                 </div>
               </div>
@@ -249,6 +269,19 @@
   ],
   "blocks": [
     {
+      "type": "product_description",
+      "name": "Description",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Description"
+        }
+      ]
+    },
+    {
       "type": "info_item",
       "name": "Info accordion item",
       "settings": [
@@ -271,6 +304,12 @@
     {
       "name": "gemluxjewel Main Product",
       "blocks": [
+        {
+          "type": "product_description",
+          "settings": {
+            "title": "Description"
+          }
+        },
         {
           "type": "info_item",
           "settings": {

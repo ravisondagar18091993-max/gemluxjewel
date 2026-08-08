@@ -443,6 +443,23 @@
   margin-top: 12px;
 }
 
+.gemluxjewel-pdp__info-accordion .closet-content__inner ul {
+  margin: 12px 0 0;
+  padding-left: 20px;
+}
+
+.gemluxjewel-pdp__info-accordion .closet-content__inner li {
+  margin-bottom: 8px;
+}
+
+.gemluxjewel-pdp__info-accordion .closet-content__inner li:last-child {
+  margin-bottom: 0;
+}
+
+.gemluxjewel-pdp__info-accordion .closet-content__inner strong {
+  font-weight: 600;
+}
+
 @media (max-width: 991px) {
   .gemluxjewel-pdp__info-accordion {
     margin-bottom: 40px;
