@@ -12,6 +12,12 @@
     "gemluxjewel_main_product": {
       "type": "gemluxjewel-main-product",
       "blocks": {
+        "info_description": {
+          "type": "product_description",
+          "settings": {
+            "title": "Description"
+          }
+        },
         "info_shipping": {
           "type": "info_item",
           "settings": {
@@ -34,7 +40,7 @@
           }
         }
       },
-      "block_order": ["info_shipping", "info_warranty", "info_care"],
+      "block_order": ["info_description", "info_shipping", "info_warranty", "info_care"],
       "settings": {
         "breadcrumb_home": "HOME",
         "breadcrumb_collections": "COLLECTIONS",
