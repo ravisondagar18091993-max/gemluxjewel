@@ -302,48 +302,14 @@
   cursor: not-allowed;
 }
 
-/* Color swatches — 60px, stacked right */
-.gemluxjewel-pdp__swatches {
-  align-items: flex-end;
-  gap: 12px;
+.gemluxjewel-pdp__option--color .gemluxjewel-pdp__option-values {
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
-.gemluxjewel-pdp__swatches .gemluxjewel-swatch {
-  width: 60px;
-  height: 60px;
-  padding: 3px;
-  border: 2px solid transparent;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: border-color 0.3s ease, transform 0.3s ease;
-  flex-shrink: 0;
-}
-
-.gemluxjewel-pdp__swatches .gemluxjewel-swatch--gold {
-  border-color: var(--gemluxjewel-yellow);
-}
-
-.gemluxjewel-pdp__swatches .gemluxjewel-swatch--gold .gemluxjewel-swatch__inner {
-  background: var(--gemluxjewel-yellow);
-}
-
-.gemluxjewel-pdp__swatches .gemluxjewel-swatch--gray {
-  border-color: var(--gemluxjewel-gray-border);
-}
-
-.gemluxjewel-pdp__swatches .gemluxjewel-swatch--gray .gemluxjewel-swatch__inner {
-  background: var(--gemluxjewel-gray-border);
-}
-
-.gemluxjewel-pdp__swatches input:checked + .gemluxjewel-swatch {
-  border-color: var(--gemluxjewel-primary);
-  box-shadow: 0 0 0 2px #fff;
-  transform: none;
-}
-
-.gemluxjewel-pdp__swatches input.disabled + .gemluxjewel-swatch {
-  opacity: 0.35;
-  cursor: not-allowed;
+.gemluxjewel-pdp__option--color .gemluxjewel-pdp__pill {
+  min-width: auto;
+  padding: 10px 20px;
 }
 
 .gemluxjewel-pdp__size-guide {
@@ -555,8 +521,7 @@
     min-width: 0;
   }
 
-  .gemluxjewel-pdp__option--pill .gemluxjewel-pdp__option-values,
-  .gemluxjewel-pdp__swatches {
+  .gemluxjewel-pdp__option--pill .gemluxjewel-pdp__option-values {
     align-items: flex-end;
   }
 }
