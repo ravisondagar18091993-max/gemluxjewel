@@ -34,6 +34,9 @@
     {%- if title != blank -%}
       <h2 class="gemluxjewel-dual-cards__title">{{ title | escape }}</h2>
     {%- endif -%}
+    {%- if description != blank -%}
+      <div class="gemluxjewel-dual-cards__desc rte">{{ description }}</div>
+    {%- endif -%}
     {%- if button_label != blank -%}
       {% render 'gemluxjewel-btn', label: button_label, url: button_link, style: 'green' %}
     {%- endif -%}

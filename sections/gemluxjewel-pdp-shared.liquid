@@ -34,6 +34,7 @@
             {% render 'gemluxjewel-dual-card',
               image: block.settings.image,
               title: block.settings.title,
+              description: block.settings.description,
               button_label: block.settings.button_label,
               button_link: block.settings.button_link,
               seed: forloop.index,
@@ -89,6 +90,11 @@
           "default": "Premium Materials"
         },
         {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        },
+        {
           "type": "text",
           "id": "button_label",
           "label": "Button label",
@@ -111,6 +117,7 @@
           "type": "promo_card",
           "settings": {
             "title": "Premium Materials",
+            "description": "<p>We use only the finest metals and ethically sourced stones, selected for brilliance, durability, and everyday wearability.</p>",
             "button_label": "Shop Now",
             "button_link": "shopify://collections/all"
           }
@@ -119,6 +126,7 @@
           "type": "promo_card",
           "settings": {
             "title": "Certified Quality",
+            "description": "<p>Each diamond is graded for cut, color, clarity, and carat weight — so you know exactly what you are investing in.</p>",
             "button_label": "Shop Now",
             "button_link": "shopify://collections/all"
           }

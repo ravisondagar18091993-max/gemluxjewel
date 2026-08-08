@@ -65,6 +65,7 @@
           "settings": {
             "image": "shopify://shop_images/ring-oval-halo-on-neck.webp",
             "title": "Premium Materials",
+            "description": "<p>We use only the finest metals and ethically sourced stones, selected for brilliance, durability, and everyday wearability.</p>",
             "button_label": "Shop Now",
             "button_link": "shopify://collections/all"
           }
@@ -74,6 +75,7 @@
           "settings": {
             "image": "shopify://shop_images/ring-mens-wedding-band.webp",
             "title": "Certified Quality",
+            "description": "<p>Each diamond is graded for cut, color, clarity, and carat weight — so you know exactly what you are investing in.</p>",
             "button_label": "Shop Now",
             "button_link": "shopify://collections/all"
           }
