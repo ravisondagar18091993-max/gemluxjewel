@@ -1,0 +1,59 @@
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-product.css' | asset_url | stylesheet_tag }}
+
+<section class="gemluxjewel gemluxjewel-pdp-shared gemluxjewel-pdp-shared__trust-wrap">
+  <div class="gemluxjewel-pdp-shared__trust">
+    <div class="gemluxjewel-container">
+      <ul class="gemluxjewel-pdp-shared__trust-list">
+        {%- for i in (1..6) -%}
+          {%- liquid
+            assign label_key = 'label_' | append: i
+            assign icon_key = 'icon_' | append: i
+            assign item_label = section.settings[label_key]
+            assign item_icon = section.settings[icon_key]
+          -%}
+          {%- if item_label != blank -%}
+            <li class="gemluxjewel-pdp-shared__trust-item">
+              <span class="gemluxjewel-pdp-shared__trust-icon">
+                {%- if item_icon != blank -%}
+                  {{
+                    item_icon
+                    | image_url: width: 80
+                    | image_tag: widths: '40, 80', sizes: '40px', loading: 'lazy', alt: ''
+                  }}
+                {%- else -%}
+                  <img src="{{ 'diamond.svg' | asset_url }}" alt="" width="24" height="24">
+                {%- endif -%}
+              </span>
+              <span class="gemluxjewel-pdp-shared__trust-label">{{ item_label | escape }}</span>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "gemluxjewel PDP Trust",
+  "tag": "section",
+  "class": "gemluxjewel-section",
+  "settings": [
+    { "type": "text", "id": "label_1", "label": "Item 1", "default": "Free Shipping" },
+    { "type": "image_picker", "id": "icon_1", "label": "Icon 1" },
+    { "type": "text", "id": "label_2", "label": "Item 2", "default": "Secure Payment" },
+    { "type": "image_picker", "id": "icon_2", "label": "Icon 2" },
+    { "type": "text", "id": "label_3", "label": "Item 3", "default": "Warranty" },
+    { "type": "image_picker", "id": "icon_3", "label": "Icon 3" },
+    { "type": "text", "id": "label_4", "label": "Item 4", "default": "30-Day Returns" },
+    { "type": "image_picker", "id": "icon_4", "label": "Icon 4" },
+    { "type": "text", "id": "label_5", "label": "Item 5", "default": "Eco Friendly" },
+    { "type": "image_picker", "id": "icon_5", "label": "Icon 5" },
+    { "type": "text", "id": "label_6", "label": "Item 6", "default": "Handmade Jewelry" },
+    { "type": "image_picker", "id": "icon_6", "label": "Icon 6" }
+  ],
+  "presets": [{ "name": "gemluxjewel PDP Trust" }]
+}
+{% endschema %}

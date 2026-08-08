@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "gemluxjewel_main_product": {
@@ -9,6 +18,40 @@
         "add_to_cart_label": "ADD TO CART",
         "size_guide_label": "SIZE GUIDE"
       }
+    },
+    "gemluxjewel_pdp_shared": {
+      "type": "gemluxjewel-pdp-shared",
+      "blocks": {
+        "shared_banner": {
+          "type": "intro_banner",
+          "settings": {
+            "title": "Quality Features & Why",
+            "text": "<p>Every piece is thoughtfully designed and expertly crafted to deliver lasting beauty, comfort, and confidence — from premium materials to the finest finishing details.</p>"
+          }
+        },
+        "shared_feature_1": {
+          "type": "feature_split",
+          "settings": {
+            "image_position": "left",
+            "title": "Premium Materials",
+            "text": "<p>We use only the finest metals and ethically sourced stones, selected for brilliance, durability, and everyday wearability.</p>"
+          }
+        },
+        "shared_feature_2": {
+          "type": "feature_split",
+          "settings": {
+            "image_position": "right",
+            "title": "Certified Quality",
+            "text": "<p>Each diamond is graded for cut, color, clarity, and carat weight — so you know exactly what you are investing in.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "shared_banner",
+        "shared_feature_1",
+        "shared_feature_2"
+      ],
+      "settings": {}
     },
     "gemluxjewel_product_faq": {
       "type": "gemluxjewel-product-faq",
@@ -57,6 +100,17 @@
         "button_label": "View All FAQ's"
       }
     },
+    "gemluxjewel_pdp_trust": {
+      "type": "gemluxjewel-pdp-trust",
+      "settings": {
+        "label_1": "Free Shipping",
+        "label_2": "Secure Payment",
+        "label_3": "Warranty",
+        "label_4": "30-Day Returns",
+        "label_5": "Eco Friendly",
+        "label_6": "Handmade Jewelry"
+      }
+    },
     "gemluxjewel_product_related": {
       "type": "gemluxjewel-product-related",
       "settings": {
@@ -69,7 +123,9 @@
   },
   "order": [
     "gemluxjewel_main_product",
+    "gemluxjewel_pdp_shared",
     "gemluxjewel_product_faq",
+    "gemluxjewel_pdp_trust",
     "gemluxjewel_product_related"
   ]
 }
