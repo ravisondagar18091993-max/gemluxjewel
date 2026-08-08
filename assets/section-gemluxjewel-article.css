@@ -1,7 +1,7 @@
 /* Gemlux Jewel article page — matches HTML/blog-open.html */
 
 .gemluxjewel-article {
-  --gemluxjewel-primary: #1a5543;
+  --gemluxjewel-primary: #73976a;
   --gemluxjewel-secondary: #ffffff;
   --gemluxjewel-dark: #141414;
   --gemluxjewel-gray: #818181;
@@ -129,7 +129,7 @@
   height: 90px;
   border-radius: var(--gemluxjewel-radius);
   overflow: hidden;
-  background: rgba(26, 85, 67, 0.06);
+  background: rgba(115, 151, 106, 0.06);
 }
 
 .gemluxjewel-article__nav-thumb img {
@@ -195,7 +195,7 @@
 }
 
 .gemluxjewel-article__social-link:hover {
-  background: rgba(26, 85, 67, 0.08);
+  background: rgba(115, 151, 106, 0.08);
 }
 
 .gemluxjewel-article__social-link img {
@@ -251,7 +251,7 @@
   border-radius: var(--gemluxjewel-radius);
   overflow: hidden;
   margin-bottom: 70px;
-  background: rgba(26, 85, 67, 0.06);
+  background: rgba(115, 151, 106, 0.06);
 }
 
 @media (max-width: 767px) {
@@ -354,7 +354,7 @@
   margin: 32px 0;
   padding: 24px 28px;
   border-left: 3px solid var(--gemluxjewel-primary);
-  background: rgba(26, 85, 67, 0.06);
+  background: rgba(115, 151, 106, 0.06);
   border-radius: 0 var(--gemluxjewel-radius) var(--gemluxjewel-radius) 0;
 }
 

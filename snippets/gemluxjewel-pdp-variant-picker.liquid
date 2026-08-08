@@ -24,10 +24,10 @@
           assign is_color = true
         endif
       -%}
-      <fieldset class="js product-form__input gemluxjewel-pdp__option{% if is_color %} gemluxjewel-pdp__option--color{% else %} gemluxjewel-pdp__option--pill{% endif %}">
+      <fieldset class="js product-form__input gemluxjewel-pdp__option gemluxjewel-pdp__option--pill{% if is_color %} gemluxjewel-pdp__option--color{% endif %}">
         <legend class="gemluxjewel-pdp__option-label">{{ option.name | upcase }}:</legend>
         <div class="gemluxjewel-pdp__option-right">
-          <div class="gemluxjewel-pdp__option-values{% if is_color %} gemluxjewel-pdp__swatches{% endif %}">
+          <div class="gemluxjewel-pdp__option-values">
             {%- for value in option.values -%}
               {%- liquid
                 assign option_disabled = false
@@ -36,13 +36,6 @@
                 endunless
                 assign input_id = section.id | append: '-' | append: option.position | append: '-' | append: forloop.index0
                 assign input_name = option.name | append: '-' | append: option.position
-                assign swatch_mod = 'gemluxjewel-swatch gemluxjewel-swatch--gold'
-                assign value_downcase = value | downcase
-                if value_downcase contains 'silver' or value_downcase contains 'grey' or value_downcase contains 'gray' or value_downcase contains 'white' or value_downcase contains 'platinum'
-                  assign swatch_mod = 'gemluxjewel-swatch gemluxjewel-swatch--gray'
-                elsif value_downcase contains 'gold' or value_downcase contains 'yellow' or value_downcase contains 'rose'
-                  assign swatch_mod = 'gemluxjewel-swatch gemluxjewel-swatch--gold'
-                endif
               -%}
               <input
                 type="radio"
@@ -56,14 +49,7 @@
                 data-option-value-id="{{ value.id }}"
                 data-option-name="{{ option.name | escape }}"
               >
-              {%- if is_color -%}
-                <label for="{{ input_id }}" class="{{ swatch_mod }}" title="{{ value | escape }}">
-                  <span class="gemluxjewel-swatch__inner"></span>
-                  <span class="visually-hidden">{{ value }}</span>
-                </label>
-              {%- else -%}
-                <label for="{{ input_id }}" class="gemluxjewel-pdp__pill">{{ value }}</label>
-              {%- endif -%}
+              <label for="{{ input_id }}" class="gemluxjewel-pdp__pill">{{ value }}</label>
             {%- endfor -%}
           </div>
           {%- if is_color and section.settings.size_guide_url != blank -%}

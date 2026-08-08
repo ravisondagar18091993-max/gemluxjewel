@@ -1,0 +1,161 @@
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-product.css' | asset_url | stylesheet_tag }}
+
+<section class="gemluxjewel gemluxjewel-pdp-shared">
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {%- when 'intro_banner' -%}
+        <div class="gemluxjewel-pdp-shared__intro" {{ block.shopify_attributes }}>
+          <div class="gemluxjewel-container">
+            <div class="gemluxjewel-section-header gemluxjewel-section-header--center gemluxjewel-pdp-shared__intro-header">
+              {%- if block.settings.prefix != blank -%}
+                <p class="gemluxjewel-prefix">{{ block.settings.prefix | escape }}</p>
+              {%- endif -%}
+              {%- if block.settings.title != blank -%}
+                <h2 class="gemluxjewel-section-title">{{ block.settings.title | escape }}</h2>
+              {%- endif -%}
+              {%- if block.settings.text != blank -%}
+                <div class="gemluxjewel-section-desc rte">{{ block.settings.text }}</div>
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+
+      {%- when 'feature_split' -%}
+        <div class="gemluxjewel-pdp-shared__feature gemluxjewel-pdp-shared__feature--{{ block.settings.image_position }}" {{ block.shopify_attributes }}>
+          <div class="gemluxjewel-container">
+            <div class="gemluxjewel-pdp-shared__feature-grid">
+              <div class="gemluxjewel-pdp-shared__feature-media">
+                {%- if block.settings.image != blank -%}
+                  {{
+                    block.settings.image
+                    | image_url: width: 1200
+                    | image_tag:
+                      widths: '600, 900, 1200',
+                      sizes: '(min-width: 990px) 45vw, 100vw',
+                      loading: 'lazy',
+                      class: 'gemluxjewel-pdp-shared__feature-img',
+                      alt: block.settings.title
+                  }}
+                {%- else -%}
+                  {% render 'gemluxjewel-theme-image',
+                    use_store_media: true,
+                    seed: forloop.index,
+                    width: 1000,
+                    widths: '600,900,1200',
+                    sizes: '(min-width: 990px) 45vw, 100vw',
+                    alt: block.settings.title,
+                    class: 'gemluxjewel-pdp-shared__feature-img'
+                  %}
+                {%- endif -%}
+              </div>
+              <div class="gemluxjewel-pdp-shared__feature-content">
+                {%- if block.settings.prefix != blank -%}
+                  <p class="gemluxjewel-prefix">{{ block.settings.prefix | escape }}</p>
+                {%- endif -%}
+                {%- if block.settings.title != blank -%}
+                  <h2 class="gemluxjewel-section-title">{{ block.settings.title | escape }}</h2>
+                {%- endif -%}
+                {%- if block.settings.text != blank -%}
+                  <div class="gemluxjewel-pdp-shared__feature-copy">
+                    <div class="gemluxjewel-pdp-shared__feature-story rte">{{ block.settings.text }}</div>
+                  </div>
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        </div>
+    {%- endcase -%}
+  {%- endfor -%}
+</section>
+
+{% schema %}
+{
+  "name": "gemluxjewel PDP Shared",
+  "tag": "section",
+  "class": "gemluxjewel-section",
+  "max_blocks": 12,
+  "blocks": [
+    {
+      "type": "intro_banner",
+      "name": "Intro banner",
+      "settings": [
+        {
+          "type": "text",
+          "id": "prefix",
+          "label": "Prefix",
+          "default": "Discover More"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Quality Features & Why"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Every piece is thoughtfully designed and expertly crafted to deliver lasting beauty, comfort, and confidence — from premium materials to the finest finishing details.</p>"
+        }
+      ]
+    },
+    {
+      "type": "feature_split",
+      "name": "Feature split",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        {
+          "type": "select",
+          "id": "image_position",
+          "label": "Image position",
+          "default": "left",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "right", "label": "Right" }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "prefix",
+          "label": "Prefix",
+          "default": "Our Craft"
+        },
+        { "type": "text", "id": "title", "label": "Heading", "default": "Premium Materials" },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>We use only the finest metals and ethically sourced stones, selected for brilliance, durability, and everyday wearability.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "gemluxjewel PDP Shared",
+      "blocks": [
+        { "type": "intro_banner" },
+        {
+          "type": "feature_split",
+          "settings": {
+            "prefix": "Our Craft",
+            "title": "Premium Materials",
+            "text": "<p>We use only the finest metals and ethically sourced stones, selected for brilliance, durability, and everyday wearability.</p>"
+          }
+        },
+        {
+          "type": "feature_split",
+          "settings": {
+            "image_position": "right",
+            "prefix": "Our Promise",
+            "title": "Certified Quality",
+            "text": "<p>Each diamond is graded for cut, color, clarity, and carat weight — so you know exactly what you are investing in.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

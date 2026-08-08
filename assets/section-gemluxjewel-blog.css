@@ -2,7 +2,7 @@
 
 .gemluxjewel-blog,
 .gemluxjewel-blog-hero {
-  --gemluxjewel-primary: #1a5543;
+  --gemluxjewel-primary: #73976a;
   --gemluxjewel-secondary: #ffffff;
   --gemluxjewel-dark: #141414;
   --gemluxjewel-gray: #818181;
@@ -162,7 +162,7 @@
   border-radius: var(--gemluxjewel-radius, 10px);
   overflow: hidden;
   margin-bottom: 18px;
-  background: rgba(26, 85, 67, 0.06);
+  background: rgba(115, 151, 106, 0.06);
 }
 
 @media (max-width: 991px) {

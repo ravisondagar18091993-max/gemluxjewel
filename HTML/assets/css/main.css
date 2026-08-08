@@ -1,5 +1,5 @@
 .theme-primary {
-  background-color: #1a5543 !important;
+  background-color: #73976a !important;
 }
 
 .theme-secondary {
@@ -7,7 +7,7 @@
 }
 
 .text-primary {
-  color: #1a5543 !important;
+  color: #73976a !important;
 }
 
 .text-secondary {
@@ -169,7 +169,7 @@ a {
 }
 .header.header-dark .header-main,
 .header.header-dark .mega-menu {
-  background-color: #1a5543 !important;
+  background-color: #73976a !important;
 }
 .header.header-dark .list-text,
 .header.header-dark .header-logo,
@@ -197,7 +197,7 @@ a {
   display: block !important;
 }
 .header .header-top {
-  background-color: #1a5543;
+  background-color: #73976a;
   padding-top: 20px;
   padding-bottom: 20px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -247,7 +247,7 @@ a {
   opacity: 0.5;
 }
 .header .header-main .mega-menu .mega-list li a:hover {
-  color: #1a5543;
+  color: #73976a;
   opacity: 1;
 }
 .header .header-main .mega-menu .mega-img {
@@ -303,7 +303,7 @@ a {
   }
 }
 .mobile-menu-overlay .mobile-nav .mobile-nav-link:hover, .mobile-menu-overlay .mobile-nav .mobile-nav-link:focus {
-  color: #1a5543 !important;
+  color: #73976a !important;
   padding-left: 10px;
 }
 
@@ -328,7 +328,7 @@ a {
 .green-bg-btn {
   font-size: 18px;
   line-height: 22px;
-  background-color: #1a5543;
+  background-color: #73976a;
   color: #ffffff;
   border: 1px solid transparent;
 }
@@ -346,8 +346,8 @@ a {
 }
 .green-bg-btn:hover {
   background-color: transparent;
-  border: 1px solid #1a5543;
-  color: #1a5543;
+  border: 1px solid #73976a;
+  color: #73976a;
 }
 
 .orange-bg-btn {
@@ -359,7 +359,7 @@ a {
 
 .pink-bg-btn {
   background-color: #FFE7E0;
-  color: #1a5543;
+  color: #73976a;
   border: 1px solid transparent;
 }
 .pink-bg-btn .white-arrow {
@@ -385,7 +385,7 @@ a {
 }
 
 .highlight-btn {
-  background-color: #1a5543;
+  background-color: #73976a;
   color: #ffffff;
   font-size: 10px;
   line-height: 13px;
@@ -483,7 +483,7 @@ a {
 }
 
 .marquee-section {
-  background-color: #1a5543;
+  background-color: #73976a;
 }
 .marquee-section .title {
   font-size: 15px;
@@ -592,7 +592,7 @@ a {
 
 .style-section {
   height: 160px;
-  background-color: #1a5543;
+  background-color: #73976a;
 }
 .style-section .style-heading {
   font-size: 100px;
@@ -677,7 +677,7 @@ a {
   border-radius: 10px;
 }
 .testimonial-section .testimonial-card .content::-webkit-scrollbar-thumb {
-  background: #1a5543;
+  background: #73976a;
   border-radius: 10px;
   border: 1px solid #ffffff;
 }
@@ -825,7 +825,7 @@ a {
 .basket-box {
   height: 50px;
   width: 50px;
-  background-color: #1a5543;
+  background-color: #73976a;
   border-radius: 10px 0px 10px 0px;
 }
 
@@ -918,7 +918,7 @@ a {
   padding-bottom: 120px;
 }
 .product-section .filter-toggle-btn {
-  background-color: #1a5543;
+  background-color: #73976a;
   color: #ffffff;
   padding: 16px 14px 16px 25px;
   font-size: 16px;
@@ -954,7 +954,7 @@ a {
 
 .pagination-wrapper .page-btn {
   height: 50px;
-  background-color: rgba(26, 85, 67, 0.1);
+  background-color: rgba(115, 151, 106, 0.1);
   border-radius: 30px;
   padding: 12px 20px;
   font-size: 18px;
@@ -977,7 +977,7 @@ a {
   }
 }
 .pagination-wrapper .page-btn.active, .pagination-wrapper .page-btn:hover {
-  background-color: #1a5543;
+  background-color: #73976a;
   color: #ffffff !important;
 }
 
@@ -994,7 +994,7 @@ a {
   letter-spacing: 0.43px;
 }
 .product-open-page .product-open-section .product-breadcrumb span {
-  color: rgba(26, 85, 67, 0.5019607843) !important;
+  color: rgba(115, 151, 106, 0.5019607843) !important;
 }
 .product-open-page .product-open-section .back-btn {
   font-size: 16px;
@@ -1044,7 +1044,7 @@ a {
 }
 .product-open-page .product-open-section .counter-box {
   height: 55px;
-  border: 2px solid #1a5543;
+  border: 2px solid #73976a;
   border-radius: 50px;
 }
 .product-open-page .product-open-section .cart-btn-box {
@@ -1135,7 +1135,7 @@ a {
 }
 .btn-remove:hover {
   opacity: 1;
-  color: #1a5543 !important;
+  color: #73976a !important;
 }
 
 .offcanvas-backdrop.show {
@@ -1282,13 +1282,13 @@ a {
 }
 .about-page .our-history-section .timeline-wrapper .timeline-line {
   height: 2px;
-  background-color: #1a5543;
+  background-color: #73976a;
 }
 .about-page .our-history-section .timeline-wrapper .history-slider .history-slide .history {
   padding-right: 20px;
 }
 .about-page .our-history-section .timeline-wrapper .history-slider .history-slide .year-badge {
-  background-color: #1a5543;
+  background-color: #73976a;
   border-radius: 30px;
   padding: 6px 20px;
   display: inline-block;
@@ -1414,12 +1414,12 @@ a {
 }
 .blog-section .filter-button-group .btn-filter {
   background-color: transparent;
-  color: #1a5543 !important;
-  border: 1px solid #1a5543 !important;
+  color: #73976a !important;
+  border: 1px solid #73976a !important;
   white-space: nowrap;
 }
 .blog-section .filter-button-group .btn-filter.active, .blog-section .filter-button-group .btn-filter:hover {
-  background-color: #1a5543;
+  background-color: #73976a;
   color: #ffffff !important;
 }
 
@@ -1476,7 +1476,7 @@ a {
 .blog-open-section .left-section .social-block .social-icon {
   width: 50px;
   height: 50px;
-  border: 1px solid #1a5543;
+  border: 1px solid #73976a;
 }
 .blog-open-section .left-section .social-block .social-icon img {
   height: 24px;
@@ -1782,7 +1782,7 @@ footer .devlopby-text {
 }
 .error-page-section .return-btn {
   height: 80px;
-  background-color: #1a5543;
+  background-color: #73976a;
   border-radius: 200px;
   padding-left: 232px;
   padding-right: 232px;

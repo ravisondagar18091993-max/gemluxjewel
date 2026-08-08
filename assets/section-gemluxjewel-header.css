@@ -14,7 +14,7 @@
 }
 
 .gemluxjewel-header__top {
-  background: var(--gemluxjewel-primary, #1a5543);
+  background: var(--gemluxjewel-primary, #73976a);
   padding: 20px 0;
   box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px;
   overflow: hidden;
@@ -170,7 +170,7 @@
 }
 
 .gemluxjewel-header__nav-link:hover {
-  color: var(--gemluxjewel-primary, #1a5543);
+  color: var(--gemluxjewel-primary, #73976a);
 }
 
 .gemluxjewel-header__logo {
@@ -243,7 +243,7 @@
   height: 16px;
   padding: 0 4px;
   border-radius: 50%;
-  background: var(--gemluxjewel-primary, #1a5543);
+  background: var(--gemluxjewel-primary, #73976a);
   color: #fff;
   font-size: 10px;
   line-height: 16px;
@@ -358,7 +358,7 @@
 }
 
 .gemluxjewel-header__mega-list a:hover {
-  color: var(--gemluxjewel-primary, #1a5543);
+  color: var(--gemluxjewel-primary, #73976a);
   opacity: 1;
 }
 
@@ -373,7 +373,7 @@
 
 .gemluxjewel-header__mega-view-all:hover {
   opacity: 1;
-  color: var(--gemluxjewel-primary, #1a5543);
+  color: var(--gemluxjewel-primary, #73976a);
 }
 
 .gemluxjewel-header__mega-col--border {
@@ -397,7 +397,7 @@
 /* Dark header variant */
 .gemluxjewel-header--dark .gemluxjewel-header__main,
 .gemluxjewel-header--dark .gemluxjewel-header__mega {
-  background: var(--gemluxjewel-primary, #1a5543) !important;
+  background: var(--gemluxjewel-primary, #73976a) !important;
 }
 
 .gemluxjewel-header--dark .gemluxjewel-header__nav-link,
@@ -512,7 +512,7 @@
 }
 
 .gemluxjewel-mobile-menu__link:hover {
-  color: var(--gemluxjewel-primary, #1a5543);
+  color: var(--gemluxjewel-primary, #73976a);
   padding-left: 10px;
 }
 
