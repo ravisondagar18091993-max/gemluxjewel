@@ -336,11 +336,32 @@
   margin-left: auto;
 }
 
-/* Info accordion below add to cart */
+/* Info accordion — matches HTML/product-open.html .accordian-block */
 .gemluxjewel-pdp__info-accordion {
-  margin-bottom: 48px;
-  max-width: 520px;
-  margin-left: auto;
+  width: 100%;
+  margin: 8px 0 48px;
+}
+
+.gemluxjewel-pdp__accordian-heading {
+  font-family: var(--gemluxjewel-font-heading);
+  font-weight: 300;
+  font-size: 25px;
+  line-height: 50px;
+  text-transform: uppercase;
+  color: var(--gemluxjewel-dark);
+  margin: 0 0 30px;
+}
+
+@media (max-width: 576px) {
+  .gemluxjewel-pdp__accordian-heading {
+    font-size: 22px;
+    line-height: 32px;
+    margin-bottom: 20px;
+  }
+}
+
+.gemluxjewel-pdp__product-accordian {
+  width: 100%;
 }
 
 .gemluxjewel-pdp__info-accordion .closet-accordion:last-child {
@@ -352,21 +373,34 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 20px 0;
+  padding: 35px 0;
   border-top: 1px solid rgba(20, 20, 20, 0.25);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.7s ease;
+}
+
+@media (max-width: 576px) {
+  .gemluxjewel-pdp__info-accordion .closet-header {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
 }
 
 .gemluxjewel-pdp__info-accordion .closet-header-title {
   font-family: var(--gemluxjewel-font-body);
   font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
+  font-size: 20px;
+  line-height: 24px;
   color: var(--gemluxjewel-dark);
   text-transform: capitalize;
   margin: 0;
   padding-right: 16px;
+}
+
+@media (max-width: 576px) {
+  .gemluxjewel-pdp__info-accordion .closet-header-title {
+    font-size: 16px;
+  }
 }
 
 .gemluxjewel-pdp__info-accordion .accordion-close {
@@ -374,11 +408,12 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: transform 0.3s ease;
+  border-radius: 999px;
+  transition: transform 0.7s ease;
 }
 
 .gemluxjewel-pdp__info-accordion .accordion-close img {
-  height: 20px;
+  height: 24px;
   width: auto;
   display: block;
 }
@@ -392,25 +427,25 @@
 }
 
 .gemluxjewel-pdp__info-accordion .closet-content__inner {
-  padding-bottom: 20px;
+  margin-right: 24px;
+  padding-bottom: 35px;
   font-family: var(--gemluxjewel-font-body);
-  font-size: 15px;
-  line-height: 26px;
-  color: var(--gemluxjewel-gray);
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--gemluxjewel-dark);
 }
 
 .gemluxjewel-pdp__info-accordion .closet-content__inner p {
-  margin: 0 0 12px;
+  margin: 0;
 }
 
-.gemluxjewel-pdp__info-accordion .closet-content__inner p:last-child {
-  margin-bottom: 0;
+.gemluxjewel-pdp__info-accordion .closet-content__inner p + p {
+  margin-top: 12px;
 }
 
 @media (max-width: 991px) {
   .gemluxjewel-pdp__info-accordion {
-    max-width: none;
-    margin-left: 0;
+    margin-bottom: 40px;
   }
 }
 

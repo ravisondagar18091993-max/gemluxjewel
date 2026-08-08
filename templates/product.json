@@ -34,7 +34,11 @@
           }
         }
       },
-      "block_order": ["info_shipping", "info_warranty", "info_care"],
+      "block_order": [
+        "info_shipping",
+        "info_warranty",
+        "info_care"
+      ],
       "settings": {
         "breadcrumb_home": "HOME",
         "breadcrumb_collections": "COLLECTIONS",

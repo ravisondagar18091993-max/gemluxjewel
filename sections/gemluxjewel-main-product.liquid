@@ -158,30 +158,35 @@
           </product-form>
 
           {%- if section.blocks.size > 0 -%}
-            <div class="gemluxjewel-pdp__info-accordion">
-              <div class="closet-accordion" data-gemluxjewel-accordion>
-                {%- for block in section.blocks -%}
-                  {%- if block.settings.title != blank -%}
-                    <div class="closet-item" {{ block.shopify_attributes }}>
-                      <div
-                        class="closet-header"
-                        role="button"
-                        tabindex="0"
-                        aria-expanded="false"
-                      >
-                        <div class="closet-header-title">{{ block.settings.title | escape }}</div>
-                        <div class="accordion-close">
-                          <img src="{{ 'down-arrow.svg' | asset_url }}" alt="" width="24" height="24">
+            <div class="gemluxjewel-pdp__accordian-block gemluxjewel-pdp__info-accordion">
+              {%- if section.settings.info_accordion_heading != blank -%}
+                <h2 class="gemluxjewel-pdp__accordian-heading">{{ section.settings.info_accordion_heading | escape }}</h2>
+              {%- endif -%}
+              <div class="gemluxjewel-pdp__product-accordian">
+                <div class="closet-accordion" data-gemluxjewel-accordion>
+                  {%- for block in section.blocks -%}
+                    {%- if block.settings.title != blank -%}
+                      <div class="closet-item" {{ block.shopify_attributes }}>
+                        <div
+                          class="closet-header"
+                          role="button"
+                          tabindex="0"
+                          aria-expanded="false"
+                        >
+                          <div class="closet-header-title">{{ block.settings.title | escape }}</div>
+                          <div class="accordion-close">
+                            <img src="{{ 'down-arrow.svg' | asset_url }}" alt="" width="24" height="24">
+                          </div>
+                        </div>
+                        <div class="closet-content">
+                          <div class="closet-content__inner rte">
+                            {{ block.settings.content }}
+                          </div>
                         </div>
                       </div>
-                      <div class="closet-content">
-                        <div class="closet-content__inner rte">
-                          {{ block.settings.content }}
-                        </div>
-                      </div>
-                    </div>
-                  {%- endif -%}
-                {%- endfor -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
               </div>
             </div>
           {%- endif -%}
@@ -231,6 +236,16 @@
       "type": "url",
       "id": "size_guide_url",
       "label": "Size guide link"
+    },
+    {
+      "type": "header",
+      "content": "Product info accordion"
+    },
+    {
+      "type": "text",
+      "id": "info_accordion_heading",
+      "label": "Accordion heading",
+      "info": "Optional. Leave blank to hide."
     }
   ],
   "blocks": [
