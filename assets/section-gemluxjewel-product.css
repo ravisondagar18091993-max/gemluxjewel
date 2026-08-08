@@ -118,6 +118,13 @@
     align-items: start;
   }
 
+  .gemluxjewel-pdp__gallery-col {
+    position: sticky;
+    top: var(--gemluxjewel-header-offset, 218px);
+    align-self: start;
+    z-index: 1;
+  }
+
   .gemluxjewel-pdp__info {
     padding-left: 32px;
   }
