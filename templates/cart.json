@@ -23,20 +23,9 @@
         "empty_message": "Your cart is empty",
         "empty_button_label": "Continue shopping"
       }
-    },
-    "gemluxjewel_cart_marquee": {
-      "type": "gemluxjewel-marquee-strip",
-      "blocks": {
-        "m1": { "type": "text", "settings": { "text": "Timeless Style" } },
-        "m2": { "type": "text", "settings": { "text": "Cold Shield" } },
-        "m3": { "type": "text", "settings": { "text": "Premium Materials" } }
-      },
-      "block_order": ["m1", "m2", "m3"],
-      "settings": { "speed": 30 }
     }
   },
   "order": [
-    "gemluxjewel_cart",
-    "gemluxjewel_cart_marquee"
+    "gemluxjewel_cart"
   ]
 }

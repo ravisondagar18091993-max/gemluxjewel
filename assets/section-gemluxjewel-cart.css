@@ -12,13 +12,13 @@
 
 .gemluxjewel-cart__section {
   background: var(--gemluxjewel-secondary);
-  padding: calc(var(--gemluxjewel-header-offset, 218px) - 24px) 0 48px;
+  padding: calc(var(--gemluxjewel-header-offset, 218px) - 48px) 0 48px;
   font-family: var(--gemluxjewel-font-body);
 }
 
 @media (max-width: 991px) {
   .gemluxjewel-cart__section {
-    padding-top: calc(var(--gemluxjewel-header-offset, 180px) - 16px);
+    padding-top: calc(var(--gemluxjewel-header-offset, 180px) - 32px);
     padding-bottom: 40px;
   }
 }
@@ -50,7 +50,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .gemluxjewel-cart__title {
@@ -399,7 +399,7 @@
 
 @media (min-width: 990px) {
   .gemluxjewel-cart__head {
-    margin-bottom: 28px;
+    margin-bottom: 24px;
   }
 
   .gemluxjewel-cart__summary-wrap {
