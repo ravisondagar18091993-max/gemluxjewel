@@ -34,17 +34,14 @@
           }
         }
       },
-      "block_order": [
-        "info_shipping",
-        "info_warranty",
-        "info_care"
-      ],
+      "block_order": ["info_shipping", "info_warranty", "info_care"],
       "settings": {
         "breadcrumb_home": "HOME",
         "breadcrumb_collections": "COLLECTIONS",
         "back_label": "Return to Store",
         "add_to_cart_label": "ADD TO CART",
-        "size_guide_label": "SIZE GUIDE"
+        "size_guide_label": "SIZE GUIDE",
+        "info_accordion_heading": "MORE INFO"
       }
     },
     "gemluxjewel_pdp_shared": {
@@ -58,19 +55,21 @@
           }
         },
         "shared_feature_1": {
-          "type": "feature_split",
+          "type": "promo_card",
           "settings": {
-            "image_position": "left",
+            "image": "shopify://shop_images/ring-oval-halo-on-neck.webp",
             "title": "Premium Materials",
-            "text": "<p>We use only the finest metals and ethically sourced stones, selected for brilliance, durability, and everyday wearability.</p>"
+            "button_label": "Shop Now",
+            "button_link": "shopify://collections/all"
           }
         },
         "shared_feature_2": {
-          "type": "feature_split",
+          "type": "promo_card",
           "settings": {
-            "image_position": "right",
+            "image": "shopify://shop_images/ring-mens-wedding-band.webp",
             "title": "Certified Quality",
-            "text": "<p>Each diamond is graded for cut, color, clarity, and carat weight — so you know exactly what you are investing in.</p>"
+            "button_label": "Shop Now",
+            "button_link": "shopify://collections/all"
           }
         }
       },

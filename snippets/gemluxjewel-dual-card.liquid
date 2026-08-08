@@ -1,0 +1,41 @@
+{% comment %}
+  Image overlay promo card (homepage dual cards + PDP shared).
+  Accepts: image, title, button_label, button_link, seed, shopify_attributes
+{% endcomment %}
+
+<div class="gemluxjewel-dual-cards__card" {{ shopify_attributes }}>
+  <div class="gemluxjewel-dual-cards__media">
+    {%- if image != blank -%}
+      {{
+        image
+        | image_url: width: 1200
+        | image_tag:
+          widths: '600, 800, 1000, 1200',
+          sizes: '(min-width: 1200px) 50vw, 100vw',
+          loading: 'lazy',
+          class: 'gemluxjewel-dual-cards__img',
+          alt: title
+      }}
+    {%- else -%}
+      {% render 'gemluxjewel-theme-image',
+        use_store_media: true,
+        seed: seed,
+        width: 1200,
+        widths: '600,800,1200',
+        sizes: '(min-width: 1200px) 50vw, 100vw',
+        alt: title,
+        class: 'gemluxjewel-dual-cards__img'
+      %}
+    {%- endif -%}
+    <div class="gemluxjewel-dual-cards__overlay" aria-hidden="true"></div>
+  </div>
+
+  <div class="gemluxjewel-dual-cards__content">
+    {%- if title != blank -%}
+      <h2 class="gemluxjewel-dual-cards__title">{{ title | escape }}</h2>
+    {%- endif -%}
+    {%- if button_label != blank -%}
+      {% render 'gemluxjewel-btn', label: button_label, url: button_link, style: 'green' %}
+    {%- endif -%}
+  </div>
+</div>
