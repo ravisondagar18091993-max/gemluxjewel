@@ -129,8 +129,8 @@ class CartItems extends window.StandardEvents.createViewEventElement(HTMLElement
         });
     } else {
       const cartItemsEl = document.getElementById('main-cart-items');
-      const sectionId = cartItemsEl?.dataset.id || 'main-cart-items';
-      return fetch(`${routes.cart_url}?section_id=${sectionId}`)
+      const sectionType = cartItemsEl?.dataset.sectionType || 'main-cart-items';
+      return fetch(`${routes.cart_url}?section_id=${sectionType}`)
         .then((response) => response.text())
         .then((responseText) => {
           const html = new DOMParser().parseFromString(responseText, 'text/html');

@@ -14,22 +14,16 @@
 >
   <section class="gemluxjewel gemluxjewel-cart__section">
     <div class="gemluxjewel-container">
-      <div id="cart-page-head" data-id="{{ section.id }}">
-        <div class="js-contents">
-          <div class="gemluxjewel-cart__head">
-            <h1 class="gemluxjewel-cart__title">
-              {{ section.settings.title | default: 'Your cart' | escape }}
-              {%- if section.settings.show_item_count and cart.item_count > 0 -%}
-                <span class="gemluxjewel-cart__count">({{ cart.item_count }})</span>
-              {%- endif -%}
-            </h1>
-            {%- if cart != empty -%}
-              <a href="{{ routes.all_products_collection_url }}" class="gemluxjewel-cart__continue">
-                {{ section.settings.continue_shopping_label | default: 'Continue shopping' | escape }}
-              </a>
-            {%- endif -%}
-          </div>
-        </div>
+      <div class="gemluxjewel-cart__head">
+        <h1 class="gemluxjewel-cart__title">
+          {{ section.settings.title | default: 'Your cart' | escape }}
+          {%- if section.settings.show_item_count and cart.item_count > 0 -%}
+            <span class="gemluxjewel-cart__count">({{ cart.item_count }})</span>
+          {%- endif -%}
+        </h1>
+        <a href="{{ routes.all_products_collection_url }}" class="gemluxjewel-cart__continue">
+          {{ section.settings.continue_shopping_label | default: 'Continue shopping' | escape }}
+        </a>
       </div>
 
       <div class="gemluxjewel-cart__empty">
