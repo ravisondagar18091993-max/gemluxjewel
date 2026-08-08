@@ -14,7 +14,8 @@
       "settings": {
         "prefix": "Bespoke Service",
         "title": "Design Your Own Jewellery",
-        "text": "Tell us your story and we will create a piece made just for you."
+        "text": "Tell us your story and we will create a piece made just for you.",
+        "image": "shopify://shop_images/Gemlux_Jewels.jpg"
       }
     },
     "custom_process": {
