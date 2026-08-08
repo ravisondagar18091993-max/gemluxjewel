@@ -1,0 +1,206 @@
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-cart.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-discounts.css' | asset_url | stylesheet_tag }}
+
+{%- unless settings.cart_type == 'drawer' -%}
+  <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+{%- endunless -%}
+
+<cart-items
+  class="gemluxjewel-cart{% if cart == empty %} is-empty{% endif %}"
+  view-event-payload="{{ cart | standard_event_data: 'view', context: 'page' | escape }}"
+>
+  <section class="gemluxjewel gemluxjewel-cart__section">
+    <div class="gemluxjewel-container">
+      <div class="gemluxjewel-cart__head">
+        <h1 class="gemluxjewel-cart__title">
+          {{ section.settings.title | default: 'Your cart' | escape }}
+          {%- if section.settings.show_item_count and cart.item_count > 0 -%}
+            <span class="gemluxjewel-cart__count">({{ cart.item_count }})</span>
+          {%- endif -%}
+        </h1>
+        <a href="{{ routes.all_products_collection_url }}" class="gemluxjewel-cart__continue">
+          {{ section.settings.continue_shopping_label | default: 'Continue shopping' | escape }}
+        </a>
+      </div>
+
+      <div class="gemluxjewel-cart__empty">
+        <p class="gemluxjewel-cart__empty-text">{{ section.settings.empty_message | default: 'Your cart is empty' | escape }}</p>
+        <a href="{{ routes.all_products_collection_url }}" class="gemluxjewel-btn gemluxjewel-btn--green">
+          {{ section.settings.empty_button_label | default: 'Continue shopping' | escape }}
+          <span class="gemluxjewel-btn__arrow">
+            <img src="{{ 'green-right-arrow.svg' | asset_url }}" alt="" class="gemluxjewel-btn__arrow-green" width="24" height="24">
+            <img src="{{ 'right-arrow.svg' | asset_url }}" alt="" class="gemluxjewel-btn__arrow-white" width="24" height="24">
+          </span>
+        </a>
+      </div>
+
+      <form action="{{ routes.cart_url }}" class="gemluxjewel-cart__form" method="post" id="cart">
+        <div class="gemluxjewel-cart__layout">
+          <div
+            class="gemluxjewel-cart__items-wrap"
+            id="main-cart-items"
+            data-id="{{ section.id }}"
+            data-section-type="gemluxjewel-cart"
+          >
+            <div class="js-contents">
+              {%- if cart != empty -%}
+                <div class="gemluxjewel-cart__table-head">
+                  <span>{{ section.settings.product_column_label | default: 'Product' | escape }}</span>
+                  <span>{{ section.settings.quantity_column_label | default: 'Quantity' | escape }}</span>
+                  <span>{{ section.settings.total_column_label | default: 'Total' | escape }}</span>
+                  <span class="visually-hidden">{{ 'sections.cart.remove_title' | t }}</span>
+                </div>
+
+                <div class="gemluxjewel-cart__items">
+                  {%- for item in cart.items -%}
+                    {% render 'gemluxjewel-cart-item', item: item %}
+                  {%- endfor -%}
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+
+          <div
+            class="gemluxjewel-cart__summary-wrap{% if cart == empty %} is-empty{% endif %}"
+            id="main-cart-footer"
+            data-id="{{ section.id }}"
+          >
+            <div class="js-contents">
+              {%- if cart != empty -%}
+                <div class="gemluxjewel-cart__summary">
+                  {%- if cart.cart_level_discount_applications.size > 0 -%}
+                    <ul class="gemluxjewel-cart__discounts discounts list-unstyled" role="list">
+                      {%- for discount in cart.cart_level_discount_applications -%}
+                        <li class="discounts__discount discounts__discount--position">
+                          {{- 'icon-discount.svg' | inline_asset_content -}}
+                          {{ discount.title | escape }}
+                          (-{{ discount.total_allocated_amount | money }})
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- endif -%}
+
+                  <div class="gemluxjewel-cart__subtotal-row">
+                    <span class="gemluxjewel-cart__subtotal-label">{{ section.settings.subtotal_label | default: 'Subtotal' | escape }}</span>
+                    <span class="gemluxjewel-cart__subtotal-value">{{ cart.total_price | money_with_currency }}</span>
+                  </div>
+
+                  <p class="gemluxjewel-cart__tax-note">
+                    {%- if cart.duties_included and cart.taxes_included -%}
+                      {{ 'sections.cart.duties_and_taxes_included_shipping_at_checkout_without_policy' | t }}
+                    {%- elsif cart.taxes_included -%}
+                      {{ 'sections.cart.taxes_included_shipping_at_checkout_without_policy' | t }}
+                    {%- else -%}
+                      {{ 'sections.cart.taxes_at_checkout_shipping_at_checkout_without_policy' | t }}
+                    {%- endif -%}
+                  </p>
+
+                  <button
+                    type="submit"
+                    id="checkout"
+                    class="gemluxjewel-cart__checkout gemluxjewel-btn gemluxjewel-btn--green"
+                    name="checkout"
+                    {% if cart == empty %}disabled{% endif %}
+                    form="cart"
+                  >
+                    {{ section.settings.checkout_label | default: 'Check out' | escape }}
+                    <span class="gemluxjewel-btn__arrow">
+                      <img src="{{ 'green-right-arrow.svg' | asset_url }}" alt="" class="gemluxjewel-btn__arrow-green" width="24" height="24">
+                      <img src="{{ 'right-arrow.svg' | asset_url }}" alt="" class="gemluxjewel-btn__arrow-white" width="24" height="24">
+                    </span>
+                  </button>
+
+                  {%- if additional_checkout_buttons -%}
+                    <div class="gemluxjewel-cart__dynamic-checkout additional-checkout-buttons">
+                      {{ content_for_additional_checkout_buttons }}
+                    </div>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <div id="cart-errors" class="gemluxjewel-cart__errors"></div>
+    </div>
+  </section>
+</cart-items>
+
+{% schema %}
+{
+  "name": "gemluxjewel Cart",
+  "tag": "section",
+  "class": "gemluxjewel-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Your cart"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_item_count",
+      "label": "Show item count in heading",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "continue_shopping_label",
+      "label": "Continue shopping label",
+      "default": "Continue shopping"
+    },
+    {
+      "type": "text",
+      "id": "product_column_label",
+      "label": "Product column label",
+      "default": "Product"
+    },
+    {
+      "type": "text",
+      "id": "quantity_column_label",
+      "label": "Quantity column label",
+      "default": "Quantity"
+    },
+    {
+      "type": "text",
+      "id": "total_column_label",
+      "label": "Total column label",
+      "default": "Total"
+    },
+    {
+      "type": "text",
+      "id": "subtotal_label",
+      "label": "Subtotal label",
+      "default": "Subtotal"
+    },
+    {
+      "type": "text",
+      "id": "checkout_label",
+      "label": "Checkout button label",
+      "default": "Check out"
+    },
+    {
+      "type": "text",
+      "id": "empty_message",
+      "label": "Empty cart message",
+      "default": "Your cart is empty"
+    },
+    {
+      "type": "text",
+      "id": "empty_button_label",
+      "label": "Empty cart button label",
+      "default": "Continue shopping"
+    }
+  ],
+  "presets": [
+    {
+      "name": "gemluxjewel Cart"
+    }
+  ]
+}
+{% endschema %}

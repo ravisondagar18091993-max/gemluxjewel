@@ -1,40 +1,42 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "cart-items": {
-      "type": "main-cart-items",
+    "gemluxjewel_cart": {
+      "type": "gemluxjewel-cart",
       "settings": {
-        "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "title": "Your cart",
+        "show_item_count": true,
+        "continue_shopping_label": "Continue shopping",
+        "product_column_label": "Product",
+        "quantity_column_label": "Quantity",
+        "total_column_label": "Total",
+        "subtotal_label": "Subtotal",
+        "checkout_label": "Check out",
+        "empty_message": "Your cart is empty",
+        "empty_button_label": "Continue shopping"
       }
     },
-    "cart-footer": {
-      "type": "main-cart-footer",
-      "settings": {
-        "color_scheme": "scheme-1",
-        "padding_top": 20,
-        "padding_bottom": 40
-      },
+    "gemluxjewel_cart_marquee": {
+      "type": "gemluxjewel-marquee-strip",
       "blocks": {
-        "subtotal": {
-          "type": "subtotal",
-          "settings": {
-          }
-        },
-        "buttons": {
-          "type": "buttons",
-          "settings": {
-          }
-        }
+        "m1": { "type": "text", "settings": { "text": "Timeless Style" } },
+        "m2": { "type": "text", "settings": { "text": "Cold Shield" } },
+        "m3": { "type": "text", "settings": { "text": "Premium Materials" } }
       },
-      "block_order": [
-        "subtotal",
-        "buttons"
-      ]
+      "block_order": ["m1", "m2", "m3"],
+      "settings": { "speed": 30 }
     }
   },
   "order": [
-    "cart-items",
-    "cart-footer"
+    "gemluxjewel_cart",
+    "gemluxjewel_cart_marquee"
   ]
 }
