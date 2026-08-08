@@ -12,13 +12,14 @@
 
 .gemluxjewel-cart__section {
   background: var(--gemluxjewel-secondary);
-  padding: var(--gemluxjewel-header-offset, 218px) 0 150px;
+  padding: calc(var(--gemluxjewel-header-offset, 218px) - 24px) 0 48px;
   font-family: var(--gemluxjewel-font-body);
 }
 
 @media (max-width: 991px) {
   .gemluxjewel-cart__section {
-    padding-bottom: 80px;
+    padding-top: calc(var(--gemluxjewel-header-offset, 180px) - 16px);
+    padding-bottom: 40px;
   }
 }
 
@@ -49,7 +50,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  margin-bottom: 40px;
+  margin-bottom: 24px;
 }
 
 .gemluxjewel-cart__title {
@@ -102,13 +103,13 @@
 .gemluxjewel-cart__layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 40px;
+  gap: 32px;
 }
 
 @media (min-width: 990px) {
   .gemluxjewel-cart__layout {
     grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
-    gap: 64px;
+    gap: 48px;
     align-items: start;
   }
 }
@@ -398,7 +399,7 @@
 
 @media (min-width: 990px) {
   .gemluxjewel-cart__head {
-    margin-bottom: 48px;
+    margin-bottom: 28px;
   }
 
   .gemluxjewel-cart__summary-wrap {
