@@ -1,0 +1,53 @@
+{%- comment -%}
+  Manual pagination for combined article lists.
+  Accepts: current_page, total_pages, base_url
+{%- endcomment -%}
+{%- if total_pages > 1 -%}
+  {{ 'gemluxjewel-pagination.css' | asset_url | stylesheet_tag }}
+
+  {%- liquid
+    assign prev_page = current_page | minus: 1
+    assign next_page = current_page | plus: 1
+    assign base = base_url | default: blog.url
+  -%}
+
+  <nav class="gemluxjewel-pagination" aria-label="{{ 'general.pagination.label' | t }}">
+    <div class="gemluxjewel-pagination__inner">
+      {%- if current_page > 1 -%}
+        <a href="{{ base }}?page={{ prev_page }}" class="gemluxjewel-pagination__btn gemluxjewel-pagination__btn--prev">
+          <span class="gemluxjewel-pagination__chevron" aria-hidden="true">‹</span>
+          <span class="gemluxjewel-pagination__btn-text">{{ 'general.pagination.previous' | t }}</span>
+        </a>
+      {%- else -%}
+        <span class="gemluxjewel-pagination__btn gemluxjewel-pagination__btn--prev is-disabled">
+          <span class="gemluxjewel-pagination__chevron" aria-hidden="true">‹</span>
+          <span class="gemluxjewel-pagination__btn-text">{{ 'general.pagination.previous' | t }}</span>
+        </span>
+      {%- endif -%}
+
+      <div class="gemluxjewel-pagination__pages">
+        {%- for page_num in (1..total_pages) -%}
+          {%- if page_num == current_page -%}
+            <span class="gemluxjewel-pagination__page is-active" aria-current="page">{{ page_num }}</span>
+          {%- else -%}
+            <a href="{{ base }}?page={{ page_num }}" class="gemluxjewel-pagination__page" aria-label="{{ 'general.pagination.page' | t: number: page_num }}">
+              {{ page_num }}
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      {%- if current_page < total_pages -%}
+        <a href="{{ base }}?page={{ next_page }}" class="gemluxjewel-pagination__btn gemluxjewel-pagination__btn--next">
+          <span class="gemluxjewel-pagination__btn-text">{{ 'general.pagination.next' | t }}</span>
+          <span class="gemluxjewel-pagination__chevron" aria-hidden="true">›</span>
+        </a>
+      {%- else -%}
+        <span class="gemluxjewel-pagination__btn gemluxjewel-pagination__btn--next is-disabled">
+          <span class="gemluxjewel-pagination__btn-text">{{ 'general.pagination.next' | t }}</span>
+          <span class="gemluxjewel-pagination__chevron" aria-hidden="true">›</span>
+        </span>
+      {%- endif -%}
+    </div>
+  </nav>
+{%- endif -%}

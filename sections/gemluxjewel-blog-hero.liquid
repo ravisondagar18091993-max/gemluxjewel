@@ -4,12 +4,12 @@
 {%- liquid
   assign page_prefix = section.settings.prefix
   if page_prefix == blank
-    assign page_prefix = blog.title
+    assign page_prefix = 'Blog'
   endif
 
   assign page_title = section.settings.title
   if page_title == blank
-    assign page_title = blog.title
+    assign page_title = 'News & Insights'
   endif
 -%}
 
@@ -32,14 +32,13 @@
       "type": "text",
       "id": "prefix",
       "label": "Prefix label",
-      "info": "Defaults to blog title (e.g. Education)"
+      "default": "Blog"
     },
     {
       "type": "text",
       "id": "title",
       "label": "Page heading",
-      "default": "Lab-Grown Diamond Guidance",
-      "info": "Defaults to blog title if empty"
+      "default": "News & Insights"
     }
   ]
 }

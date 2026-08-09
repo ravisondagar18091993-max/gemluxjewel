@@ -11,7 +11,10 @@
   "sections": {
     "gemluxjewel_blog_hero": {
       "type": "gemluxjewel-blog-hero",
-      "settings": {}
+      "settings": {
+        "prefix": "Blog",
+        "title": "News & Insights"
+      }
     },
     "gemluxjewel_blog_main": {
       "type": "gemluxjewel-blog-main",
