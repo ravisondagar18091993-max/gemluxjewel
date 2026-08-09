@@ -2,7 +2,7 @@
 
 .gemluxjewel {
   --gemluxjewel-primary: #73976a;
-  --gemluxjewel-secondary: #ffffff;
+  --gemluxjewel-secondary: #FDF6ED;
   --gemluxjewel-layer: rgba(67, 63, 63, 0.3);
   --gemluxjewel-orange: #e37859;
   --gemluxjewel-pink: #ffe7e0;
@@ -859,7 +859,7 @@
 /* ── Split Promo (2-column banner) ── */
 .gemluxjewel-split-promo {
   padding: 0 0 100px;
-  background: var(--gemluxjewel-secondary, #fff);
+  background: var(--gemluxjewel-secondary, #FDF6ED);
 }
 
 @media (max-width: 991px) {
@@ -995,7 +995,7 @@
 /* ── Gift Guide ── */
 .gemluxjewel-gift-guide {
   padding: 0 0 100px;
-  background: var(--gemluxjewel-secondary, #fff);
+  background: var(--gemluxjewel-secondary, #FDF6ED);
 }
 
 @media (max-width: 991px) {

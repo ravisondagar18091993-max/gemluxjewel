@@ -1,7 +1,7 @@
 /* gemluxjewel 4Cs of Diamond Quality */
 
 .gemluxjewel-4cs-intro {
-  background: var(--gemluxjewel-secondary, #fff);
+  background: var(--gemluxjewel-secondary, #FDF6ED);
   padding: var(--gemluxjewel-header-offset, 218px) 0 48px;
   color: var(--gemluxjewel-dark, #141414);
 }
@@ -48,7 +48,7 @@
 
 /* Topic sections */
 .gemluxjewel-4cs-topic {
-  background: var(--gemluxjewel-secondary, #fff);
+  background: var(--gemluxjewel-secondary, #FDF6ED);
   color: var(--gemluxjewel-dark, #141414);
 }
 

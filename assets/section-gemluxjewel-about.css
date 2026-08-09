@@ -82,7 +82,7 @@
 
 /* ── History timeline slider ── */
 .gemluxjewel-about-history {
-  background: var(--gemluxjewel-secondary, #fff);
+  background: var(--gemluxjewel-secondary, #FDF6ED);
   padding: 100px 0 90px;
   overflow: hidden;
 }
@@ -312,7 +312,7 @@
 
 /* ── Founder ── */
 .gemluxjewel-about-founder {
-  background: var(--gemluxjewel-secondary, #fff);
+  background: var(--gemluxjewel-secondary, #FDF6ED);
   padding: 120px 0;
 }
 

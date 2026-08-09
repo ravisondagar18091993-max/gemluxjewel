@@ -5,7 +5,7 @@
 .gemluxjewel-pdp-related,
 .gemluxjewel-pdp-shared {
   --gemluxjewel-primary:  #73976a;
-  --gemluxjewel-secondary: #ffffff;
+  --gemluxjewel-secondary: #FDF6ED;
   --gemluxjewel-dark: #141414;
   --gemluxjewel-gray: #818181;
   --gemluxjewel-orange: #e37859;
@@ -824,7 +824,7 @@
 
 /* ── FAQ Page (matches HTML/faq.html) ── */
 .gemluxjewel-faq-page {
-  background: var(--gemluxjewel-secondary, #fff);
+  background: var(--gemluxjewel-secondary, #FDF6ED);
   padding: var(--gemluxjewel-header-offset, 218px) 0 140px;
   font-family: var(--gemluxjewel-font-body);
 }
