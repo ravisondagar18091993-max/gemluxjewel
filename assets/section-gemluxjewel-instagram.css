@@ -1,0 +1,151 @@
+/* ── Instagram feed ── */
+.gemluxjewel-instagram {
+  background: #faf9f7;
+  padding: 80px 0 100px;
+}
+
+@media (max-width: 991px) {
+  .gemluxjewel-instagram {
+    padding: 60px 0 72px;
+  }
+}
+
+.gemluxjewel-instagram__header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 48px;
+}
+
+.gemluxjewel-instagram__title {
+  font-family: var(--gemluxjewel-font-heading);
+  font-size: clamp(32px, 4vw, 44px);
+  line-height: 1.1;
+  font-weight: 400;
+  text-transform: none;
+  color: var(--gemluxjewel-dark);
+  margin: 0 0 16px;
+}
+
+.gemluxjewel-instagram__subtitle {
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 15px;
+  line-height: 24px;
+  color: var(--gemluxjewel-dark);
+  margin: 0;
+}
+
+.gemluxjewel-instagram__profile-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--gemluxjewel-dark);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.gemluxjewel-instagram__profile-link:hover {
+  color: var(--gemluxjewel-primary);
+}
+
+.gemluxjewel-instagram__profile-icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+.gemluxjewel-instagram__app,
+.gemluxjewel-instagram__app-block,
+.gemluxjewel-instagram__embed {
+  width: 100%;
+}
+
+.gemluxjewel-instagram__app-block + .gemluxjewel-instagram__embed {
+  margin-top: 16px;
+}
+
+.gemluxjewel-instagram__app-placeholder {
+  border: 1px dashed rgba(20, 20, 20, 0.18);
+  background: rgba(255, 255, 255, 0.65);
+  padding: 24px;
+  text-align: center;
+  color: var(--gemluxjewel-dark);
+}
+
+.gemluxjewel-instagram__app-placeholder p {
+  margin: 0 0 10px;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.gemluxjewel-instagram__app-placeholder p:last-child {
+  margin-bottom: 0;
+}
+
+.gemluxjewel-instagram__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+@media (min-width: 750px) {
+  .gemluxjewel-instagram__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
+.gemluxjewel-instagram__item {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.gemluxjewel-instagram__media {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #ece8e3;
+}
+
+.gemluxjewel-instagram__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease;
+}
+
+.gemluxjewel-instagram__item:hover .gemluxjewel-instagram__img {
+  transform: scale(1.04);
+}
+
+.gemluxjewel-instagram__icon {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.gemluxjewel-instagram__icon img {
+  width: 18px;
+  height: 18px;
+  display: block;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25));
+}
+
+@media (max-width: 749px) {
+  .gemluxjewel-instagram__header {
+    margin-bottom: 32px;
+  }
+}

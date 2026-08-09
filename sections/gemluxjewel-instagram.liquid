@@ -3,6 +3,36 @@
 
 {%- liquid
   assign instagram_url = section.settings.instagram_url | default: settings.social_instagram_link
+  assign instagram_handle = section.settings.instagram_handle
+
+  if instagram_handle == blank and instagram_url != blank
+    assign instagram_path = instagram_url | split: 'instagram.com/' | last | split: '?' | first | split: '/' | first
+    if instagram_path != blank
+      assign instagram_handle = instagram_path
+    endif
+  endif
+
+  assign has_app_block = false
+  assign has_manual_posts = false
+
+  for block in section.blocks
+    if block.type == '@app'
+      assign has_app_block = true
+    elsif block.type == 'post'
+      assign has_manual_posts = true
+    endif
+  endfor
+
+  assign use_app_feed = false
+  if section.settings.feed_source == 'app'
+    if has_app_block or section.settings.app_embed_code != blank
+      assign use_app_feed = true
+    endif
+  endif
+
+  if use_app_feed == false and has_manual_posts == false and has_app_block
+    assign use_app_feed = true
+  endif
 -%}
 
 <section class="gemluxjewel gemluxjewel-instagram">
@@ -14,9 +44,44 @@
       {%- if section.settings.subtitle != blank -%}
         <p class="gemluxjewel-instagram__subtitle">{{ section.settings.subtitle | escape }}</p>
       {%- endif -%}
+      {%- if section.settings.show_profile_link and instagram_url != blank -%}
+        <a href="{{ instagram_url }}" class="gemluxjewel-instagram__profile-link" target="_blank" rel="noopener noreferrer">
+          {%- if instagram_handle != blank -%}
+            <span>@{{ instagram_handle | escape }}</span>
+          {%- else -%}
+            <span>{{ 'general.social.links.instagram' | t | default: 'Follow on Instagram' }}</span>
+          {%- endif -%}
+          <img src="{{ 'instagram.svg' | asset_url }}" alt="" width="16" height="16" class="gemluxjewel-instagram__profile-icon">
+        </a>
+      {%- endif -%}
     </div>
 
-    {%- if section.blocks.size > 0 -%}
+    {%- if use_app_feed -%}
+      <div class="gemluxjewel-instagram__app">
+        {%- for block in section.blocks -%}
+          {%- if block.type == '@app' -%}
+            <div class="gemluxjewel-instagram__app-block" {{ block.shopify_attributes }}>
+              {% render block %}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- if section.settings.app_embed_code != blank -%}
+          <div class="gemluxjewel-instagram__embed">
+            {{ section.settings.app_embed_code }}
+          </div>
+        {%- endif -%}
+
+        {%- if request.design_mode and has_app_block == false and section.settings.app_embed_code == blank -%}
+          <div class="gemluxjewel-instagram__app-placeholder">
+            <p><strong>Dynamic Instagram feed</strong></p>
+            <p>Install an Instagram app (recommended: Instafeed or FeedGrid), then click <strong>Add block → Apps</strong> in this section.</p>
+            <p>Or paste an app embed snippet in <strong>App embed code</strong> in section settings.</p>
+            <p>Set your profile URL under <strong>Theme settings → Social media → Instagram</strong>.</p>
+          </div>
+        {%- endif -%}
+      </div>
+    {%- elsif has_manual_posts -%}
       <div class="gemluxjewel-instagram__grid">
         {%- for block in section.blocks -%}
           {%- if block.type == 'post' -%}
@@ -30,6 +95,10 @@
           {%- endif -%}
         {%- endfor -%}
       </div>
+    {%- elsif request.design_mode -%}
+      <div class="gemluxjewel-instagram__app-placeholder">
+        <p>Add manual post blocks or switch feed source to <strong>Instagram app</strong> for a dynamic profile feed.</p>
+      </div>
     {%- endif -%}
   </div>
 </section>
@@ -39,8 +108,19 @@
   "name": "gemluxjewel Instagram",
   "tag": "section",
   "class": "section gemluxjewel-section",
-  "max_blocks": 8,
+  "max_blocks": 12,
   "settings": [
+    {
+      "type": "select",
+      "id": "feed_source",
+      "label": "Feed source",
+      "default": "app",
+      "options": [
+        { "value": "app", "label": "Instagram app (dynamic)" },
+        { "value": "manual", "label": "Manual posts" }
+      ],
+      "info": "Dynamic feeds require an Instagram app block or embed code below."
+    },
     {
       "type": "text",
       "id": "title",
@@ -54,16 +134,41 @@
       "default": "Learn, engage and grow. Connect with Gemlux for all things engagement, wedding and fine jewelry."
     },
     {
+      "type": "checkbox",
+      "id": "show_profile_link",
+      "label": "Show Instagram profile link",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "instagram_handle",
+      "label": "Instagram handle",
+      "info": "Optional. Auto-detected from profile URL if empty (e.g. gemluxjewels)."
+    },
+    {
       "type": "url",
       "id": "instagram_url",
-      "label": "Instagram profile link",
-      "info": "Used as fallback when a post link is empty"
+      "label": "Instagram profile URL",
+      "info": "Defaults to Theme settings → Social media → Instagram"
+    },
+    {
+      "type": "html",
+      "id": "app_embed_code",
+      "label": "App embed code",
+      "info": "Optional fallback: paste widget HTML from Elfsight, SnapWidget, etc."
+    },
+    {
+      "type": "paragraph",
+      "content": "Recommended apps: Instafeed (auto-sync, shoppable), FeedGrid (grid/slider, free tier), F2 Instagram Feed (grid/slider/gallery). After installing, add an Apps block to this section."
     }
   ],
   "blocks": [
     {
+      "type": "@app"
+    },
+    {
       "type": "post",
-      "name": "Post",
+      "name": "Manual post",
       "settings": [
         {
           "type": "image_picker",
@@ -81,6 +186,9 @@
   "presets": [
     {
       "name": "gemluxjewel Instagram",
+      "settings": {
+        "feed_source": "app"
+      },
       "blocks": [
         { "type": "post", "settings": {} },
         { "type": "post", "settings": {} },

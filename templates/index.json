@@ -134,41 +134,31 @@
         "c1": {
           "type": "style",
           "settings": {
-            "title": "Solitaire",
-            "collection": "",
-            "link": ""
+            "title": "Solitaire"
           }
         },
         "c2": {
           "type": "style",
           "settings": {
-            "title": "Bezel",
-            "collection": "",
-            "link": ""
+            "title": "Bezel"
           }
         },
         "c3": {
           "type": "style",
           "settings": {
-            "title": "Toi et Moi",
-            "collection": "",
-            "link": ""
+            "title": "Toi et Moi"
           }
         },
         "c4": {
           "type": "style",
           "settings": {
-            "title": "Three Stone",
-            "collection": "",
-            "link": ""
+            "title": "Three Stone"
           }
         },
         "c5": {
           "type": "style",
           "settings": {
-            "title": "Halo",
-            "collection": "",
-            "link": ""
+            "title": "Halo"
           }
         }
       },
@@ -191,7 +181,6 @@
           "type": "card",
           "settings": {
             "layout": "featured",
-            "collection": "",
             "title": "Quick Ship",
             "button_label": "Shop Now",
             "link": "shopify://collections/all"
@@ -201,7 +190,6 @@
           "type": "card",
           "settings": {
             "layout": "featured",
-            "collection": "",
             "title": "For Her",
             "button_label": "Shop Now",
             "link": "shopify://collections/all"
@@ -211,9 +199,7 @@
           "type": "card",
           "settings": {
             "layout": "tile",
-            "collection": "",
             "title": "Essentials",
-            "button_label": "Shop Now",
             "link": "shopify://collections/all"
           }
         },
@@ -221,9 +207,7 @@
           "type": "card",
           "settings": {
             "layout": "tile",
-            "collection": "",
             "title": "Under $1000",
-            "button_label": "Shop Now",
             "link": "shopify://collections/all"
           }
         },
@@ -231,9 +215,7 @@
           "type": "card",
           "settings": {
             "layout": "tile",
-            "collection": "",
             "title": "For Him",
-            "button_label": "Shop Now",
             "link": "shopify://collections/all"
           }
         }
@@ -246,8 +228,7 @@
         "gift_tile_3"
       ],
       "settings": {
-        "title": "Gift Guide",
-        "subtitle": ""
+        "title": "Gift Guide"
       }
     },
     "gemluxjewel_dual_cards": {
@@ -277,20 +258,6 @@
         "card_2"
       ],
       "settings": {}
-    },
-    "gemluxjewel_new_in": {
-      "type": "gemluxjewel-new-in",
-      "settings": {
-        "title": "New In",
-        "subtitle": "Shop the latest additions — newly added pieces sorted by date.",
-        "button_label": "View Collection",
-        "button_link": "shopify://collections/all",
-        "badge_text": "New In",
-        "collection": "all",
-        "products_to_show": 4,
-        "sort_by": "created_at",
-        "new_within_days": 0
-      }
     },
     "gemluxjewel_best_sellers": {
       "type": "gemluxjewel-best-sellers",
@@ -331,6 +298,20 @@
         "split_2"
       ],
       "settings": {}
+    },
+    "gemluxjewel_new_in": {
+      "type": "gemluxjewel-new-in",
+      "settings": {
+        "title": "New In",
+        "subtitle": "Shop the latest additions — newly added pieces sorted by date.",
+        "button_label": "View Collection",
+        "button_link": "shopify://collections/all",
+        "badge_text": "New In",
+        "collection": "all",
+        "products_to_show": 4,
+        "sort_by": "created_at",
+        "new_within_days": 0
+      }
     },
     "gemluxjewel_why": {
       "type": "gemluxjewel-why-choose-us",
@@ -387,8 +368,7 @@
             "rating": 5,
             "author": "Abigail Green",
             "time_ago": "an hour ago",
-            "text": "Absolutely stunning ring! The craftsmanship is incredible and it sparkles beautifully. Customer service was helpful throughout.",
-            "review_url": ""
+            "text": "Absolutely stunning ring! The craftsmanship is incredible and it sparkles beautifully. Customer service was helpful throughout."
           }
         },
         "r2": {
@@ -398,8 +378,7 @@
             "rating": 5,
             "author": "James Mitchell",
             "time_ago": "2 hours ago",
-            "text": "Ordered a lab-grown diamond engagement ring and couldn't be happier. Fast shipping, elegant packaging, and the ring looks even better in person.",
-            "review_url": ""
+            "text": "Ordered a lab-grown diamond engagement ring and couldn't be happier. Fast shipping, elegant packaging, and the ring looks even better in person."
           }
         },
         "r3": {
@@ -409,8 +388,7 @@
             "rating": 5,
             "author": "Sarah Chen",
             "time_ago": "3 hours ago",
-            "text": "Great experience from start to finish. The team helped me choose the perfect setting and the quality is outstanding for the price.",
-            "review_url": ""
+            "text": "Great experience from start to finish. The team helped me choose the perfect setting and the quality is outstanding for the price."
           }
         },
         "r4": {
@@ -420,8 +398,7 @@
             "rating": 5,
             "author": "Michael Roberts",
             "time_ago": "5 hours ago",
-            "text": "My wife loves her new necklace. The diamonds are brilliant and the design is timeless. Will definitely shop here again.",
-            "review_url": ""
+            "text": "My wife loves her new necklace. The diamonds are brilliant and the design is timeless. Will definitely shop here again."
           }
         },
         "r5": {
@@ -431,8 +408,7 @@
             "rating": 5,
             "author": "Emma Wilson",
             "time_ago": "a day ago",
-            "text": "Beautiful jewellery and transparent pricing. Resizing was quick and the ring fits perfectly now.",
-            "review_url": ""
+            "text": "Beautiful jewellery and transparent pricing. Resizing was quick and the ring fits perfectly now."
           }
         }
       },
@@ -517,8 +493,7 @@
           "settings": {
             "title": "Carbon Neutral",
             "text": "<p>We offset our carbon footprint through verified programs and invest in renewable energy across our supply chain.</p>",
-            "link_label": "Learn More",
-            "link": ""
+            "link_label": "Learn More"
           }
         },
         "init_2": {
@@ -526,8 +501,7 @@
           "settings": {
             "title": "Trees for the Future",
             "text": "<p>Every purchase supports reforestation efforts that restore natural habitats and reduce environmental impact.</p>",
-            "link_label": "Learn More",
-            "link": ""
+            "link_label": "Learn More"
           }
         },
         "init_3": {
@@ -535,8 +509,7 @@
           "settings": {
             "title": "Gold Recycling",
             "text": "<p>We prioritize recycled precious metals to reduce mining impact while maintaining exceptional quality and brilliance.</p>",
-            "link_label": "Learn More",
-            "link": ""
+            "link_label": "Learn More"
           }
         }
       },
@@ -546,16 +519,29 @@
         "init_3"
       ],
       "settings": {
-        "prefix": "Initiatives",
-        "default_link": ""
+        "prefix": "Initiatives"
       }
     },
     "gemluxjewel_instagram": {
       "type": "gemluxjewel-instagram",
+      "blocks": {
+        "post_1": { "type": "post", "settings": {} },
+        "post_2": { "type": "post", "settings": {} },
+        "post_3": { "type": "post", "settings": {} },
+        "post_4": { "type": "post", "settings": {} }
+      },
+      "block_order": [
+        "post_1",
+        "post_2",
+        "post_3",
+        "post_4"
+      ],
       "settings": {
+        "feed_source": "app",
         "title": "Instagram",
         "subtitle": "Learn, engage and grow. Connect with Gemlux for all things engagement, wedding and fine jewelry.",
-        "instagram_url": "https://www.instagram.com/gemluxjewels/?hl=en"
+        "show_profile_link": true,
+        "instagram_handle": "gemluxjewels"
       }
     }
   },
