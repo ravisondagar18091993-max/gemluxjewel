@@ -858,14 +858,8 @@
 
 /* ── Split Promo (2-column banner) ── */
 .gemluxjewel-split-promo {
-  padding: 0 0 100px;
+  padding: 0;
   background: var(--gemluxjewel-secondary, #fff);
-}
-
-@media (max-width: 991px) {
-  .gemluxjewel-split-promo {
-    padding-bottom: 60px;
-  }
 }
 
 .gemluxjewel-split-promo__container {
