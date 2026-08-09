@@ -1,0 +1,93 @@
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-instagram.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign instagram_url = section.settings.instagram_url | default: settings.social_instagram_link
+-%}
+
+<section class="gemluxjewel gemluxjewel-instagram">
+  <div class="gemluxjewel-container">
+    <div class="gemluxjewel-instagram__header">
+      {%- if section.settings.title != blank -%}
+        <h2 class="gemluxjewel-instagram__title">{{ section.settings.title | escape }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subtitle != blank -%}
+        <p class="gemluxjewel-instagram__subtitle">{{ section.settings.subtitle | escape }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="gemluxjewel-instagram__grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'post' -%}
+            {% render 'gemluxjewel-instagram-item',
+              image: block.settings.image,
+              link: block.settings.link,
+              instagram_url: instagram_url,
+              seed: forloop.index,
+              shopify_attributes: block.shopify_attributes
+            %}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "gemluxjewel Instagram",
+  "tag": "section",
+  "class": "section gemluxjewel-section",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Instagram"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "Learn, engage and grow. Connect with Gemlux for all things engagement, wedding and fine jewelry."
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Instagram profile link",
+      "info": "Used as fallback when a post link is empty"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "post",
+      "name": "Post",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Post link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "gemluxjewel Instagram",
+      "blocks": [
+        { "type": "post", "settings": {} },
+        { "type": "post", "settings": {} },
+        { "type": "post", "settings": {} },
+        { "type": "post", "settings": {} }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -521,6 +521,25 @@
       "settings": {
         "prefix": "Initiatives"
       }
+    },
+    "gemluxjewel_instagram": {
+      "type": "gemluxjewel-instagram",
+      "blocks": {
+        "post_1": { "type": "post", "settings": {} },
+        "post_2": { "type": "post", "settings": {} },
+        "post_3": { "type": "post", "settings": {} },
+        "post_4": { "type": "post", "settings": {} }
+      },
+      "block_order": [
+        "post_1",
+        "post_2",
+        "post_3",
+        "post_4"
+      ],
+      "settings": {
+        "title": "Instagram",
+        "subtitle": "Learn, engage and grow. Connect with Gemlux for all things engagement, wedding and fine jewelry."
+      }
     }
   },
   "order": [
@@ -535,6 +554,7 @@
     "gemluxjewel_why",
     "gemluxjewel_testimonials",
     "gemluxjewel_faq",
-    "gemluxjewel_initiatives"
+    "gemluxjewel_initiatives",
+    "gemluxjewel_instagram"
   ]
 }

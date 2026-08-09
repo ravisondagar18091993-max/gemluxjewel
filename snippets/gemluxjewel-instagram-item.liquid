@@ -1,0 +1,44 @@
+{% comment %}
+  Instagram grid tile.
+  Accepts: image, link, seed, shopify_attributes
+{% endcomment %}
+{%- liquid
+  assign tile_link = link | default: instagram_url
+  assign tile_seed = seed | default: 1
+-%}
+
+{%- if tile_link != blank -%}
+  <a href="{{ tile_link }}" class="gemluxjewel-instagram__item" target="_blank" rel="noopener noreferrer" {{ shopify_attributes }}>
+{%- else -%}
+  <div class="gemluxjewel-instagram__item" {{ shopify_attributes }}>
+{%- endif -%}
+  <div class="gemluxjewel-instagram__media">
+    {%- if image != blank -%}
+      {{
+        image
+        | image_url: width: 800
+        | image_tag:
+          widths: '300, 400, 600, 800',
+          sizes: '(min-width: 990px) 22vw, (min-width: 750px) 45vw, 50vw',
+          loading: 'lazy',
+          class: 'gemluxjewel-instagram__img'
+      }}
+    {%- else -%}
+      {% render 'gemluxjewel-theme-image',
+        use_store_media: true,
+        seed: tile_seed,
+        width: 800,
+        widths: '300,400,600,800',
+        sizes: '(min-width: 990px) 22vw, (min-width: 750px) 45vw, 50vw',
+        class: 'gemluxjewel-instagram__img'
+      %}
+    {%- endif -%}
+    <span class="gemluxjewel-instagram__icon" aria-hidden="true">
+      <img src="{{ 'white-instagram.svg' | asset_url }}" alt="" width="18" height="18">
+    </span>
+  </div>
+{%- if tile_link != blank -%}
+  </a>
+{%- else -%}
+  </div>
+{%- endif -%}
