@@ -1,0 +1,55 @@
+{% comment %}
+  Split promo card — image with bottom-left overlay content.
+  Accepts: image, title, description, link_label, link, seed, shopify_attributes
+{% endcomment %}
+
+{%- if link != blank -%}
+  <a href="{{ link }}" class="gemluxjewel-split-promo__card" {{ shopify_attributes }}>
+{%- else -%}
+  <div class="gemluxjewel-split-promo__card" {{ shopify_attributes }}>
+{%- endif -%}
+  <div class="gemluxjewel-split-promo__media">
+    {%- if image != blank -%}
+      {{
+        image
+        | image_url: width: 1400
+        | image_tag:
+          widths: '600, 900, 1200, 1400',
+          sizes: '(min-width: 1200px) 50vw, 100vw',
+          loading: 'lazy',
+          class: 'gemluxjewel-split-promo__img',
+          alt: title
+      }}
+    {%- else -%}
+      {% render 'gemluxjewel-theme-image',
+        use_store_media: true,
+        seed: seed,
+        width: 1400,
+        widths: '600,900,1200,1400',
+        sizes: '(min-width: 1200px) 50vw, 100vw',
+        alt: title,
+        class: 'gemluxjewel-split-promo__img'
+      %}
+    {%- endif -%}
+    <div class="gemluxjewel-split-promo__overlay" aria-hidden="true"></div>
+  </div>
+
+  <div class="gemluxjewel-split-promo__content">
+    {%- if title != blank -%}
+      <h2 class="gemluxjewel-split-promo__title">{{ title | escape }}</h2>
+    {%- endif -%}
+    {%- if description != blank -%}
+      <p class="gemluxjewel-split-promo__desc">{{ description | escape }}</p>
+    {%- endif -%}
+    {%- if link_label != blank -%}
+      <span class="gemluxjewel-split-promo__cta">
+        <span>{{ link_label | escape }}</span>
+        <span class="gemluxjewel-split-promo__cta-arrow" aria-hidden="true">&rarr;</span>
+      </span>
+    {%- endif -%}
+  </div>
+{%- if link != blank -%}
+  </a>
+{%- else -%}
+  </div>
+{%- endif -%}
