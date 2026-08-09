@@ -178,38 +178,43 @@
       "type": "gemluxjewel-gift-guide",
       "blocks": {
         "gift_feat_1": {
-          "type": "featured",
+          "type": "card",
           "settings": {
+            "layout": "featured",
             "title": "Quick Ship",
             "button_label": "Shop Now",
             "link": "shopify://collections/all"
           }
         },
         "gift_feat_2": {
-          "type": "featured",
+          "type": "card",
           "settings": {
+            "layout": "featured",
             "title": "For Her",
             "button_label": "Shop Now",
             "link": "shopify://collections/all"
           }
         },
         "gift_tile_1": {
-          "type": "tile",
+          "type": "card",
           "settings": {
+            "layout": "tile",
             "title": "Essentials",
             "link": "shopify://collections/all"
           }
         },
         "gift_tile_2": {
-          "type": "tile",
+          "type": "card",
           "settings": {
+            "layout": "tile",
             "title": "Under $1000",
             "link": "shopify://collections/all"
           }
         },
         "gift_tile_3": {
-          "type": "tile",
+          "type": "card",
           "settings": {
+            "layout": "tile",
             "title": "For Him",
             "link": "shopify://collections/all"
           }
