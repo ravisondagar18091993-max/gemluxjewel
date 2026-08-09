@@ -146,21 +146,8 @@
 }
 
 .gemluxjewel-section-title {
-  font-family: var(--gemluxjewel-font-heading);
-  font-weight: 400;
-  font-size: 38px;
-  line-height: 42px;
-  text-transform: uppercase;
   color: var(--gemluxjewel-dark);
   margin: 0 0 12px;
-}
-
-@media (max-width: 991px) {
-  .gemluxjewel-section-title { font-size: 32px; line-height: 36px; }
-}
-
-@media (max-width: 576px) {
-  .gemluxjewel-section-title { font-size: 28px; line-height: 32px; }
 }
 
 .gemluxjewel-section-desc {

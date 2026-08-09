@@ -11,31 +11,30 @@
 >
 {% style %}
   .gemluxjewel {
-    --gemluxjewel-font-heading: 'Figtree', var(--font-heading-family), sans-serif;
+    --gemluxjewel-font-heading: 'Figtree', sans-serif;
     --gemluxjewel-font-body: 'Outfit', var(--font-body-family), sans-serif;
-    --gemluxjewel-font-heading-weight: 400;
-    --gemluxjewel-font-heading-weight-medium: 500;
+    --gemluxjewel-font-heading-size: 25px;
+    --gemluxjewel-font-heading-line-height: 28px;
+    --gemluxjewel-font-heading-weight: 600;
+    --gemluxjewel-font-heading-weight-medium: 600;
   }
 
-  .gemluxjewel :where(h1, h2, h3, h4, h5, h6) {
-    font-weight: var(--gemluxjewel-font-heading-weight);
-  }
-
-  .gemluxjewel :where(
-    [class*='__title'],
+  .gemluxjewel :is(
+    .gemluxjewel-section-title,
+    h1:not(.gemluxjewel-hero__title):not(.gemluxjewel-pdp__title),
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
     [class*='__heading'],
-    [class*='-heading'],
-    .gemluxjewel-section-title
+    [class*='-heading']
   ) {
+    font-family: var(--gemluxjewel-font-heading);
+    font-size: var(--gemluxjewel-font-heading-size);
+    line-height: var(--gemluxjewel-font-heading-line-height);
     font-weight: var(--gemluxjewel-font-heading-weight);
-  }
-
-  .gemluxjewel :where(
-    [class*='__title--medium'],
-    [class*='__heading--medium'],
-    .gemluxjewel-nunito-medium
-  ) {
-    font-weight: var(--gemluxjewel-font-heading-weight-medium);
+    text-transform: uppercase;
   }
 
   main:has(.gemluxjewel) {
