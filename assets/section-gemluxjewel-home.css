@@ -1224,11 +1224,11 @@
 /* ── Product grid sections ── */
 .gemluxjewel-products {
   background: var(--gemluxjewel-secondary);
-  padding: 120px 0 140px;
+  padding: 0 0 100px;
 }
 
 @media (max-width: 991px) {
-  .gemluxjewel-products { padding: 50px 0 60px; }
+  .gemluxjewel-products { padding-bottom: 60px; }
 }
 
 .gemluxjewel-products__grid {
