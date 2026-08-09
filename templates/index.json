@@ -12,8 +12,9 @@
     "gemluxjewel_hero": {
       "type": "gemluxjewel-hero",
       "settings": {
-        "media_type": "video",
-        "video": "shopify://files/videos/Woman_wearing_jewelry_indoors_1080p_202608061709.mp4",
+        "media_type": "image",
+        "image": "shopify://shop_images/Customized_Jewelry_Gemlux_Jewels_bd4ce8ec-636c-4c4e-af4e-13fd2b0b9b2a.jpg",
+        "video": "shopify://files/videos/create_video____.mp4",
         "prefix": "Engagement Rings",
         "title": "A Shift in Perspective",
         "text": "East-West rings redefining modern bridal styling.",
@@ -127,59 +128,37 @@
         "auto_fetch_shapes": true
       }
     },
-    "gemluxjewel_new_in": {
-      "type": "gemluxjewel-new-in",
-      "settings": {
-        "banner_image": "shopify://shop_images/Round_Lab-Grown_Diamond_Cross_Pendant_Necklace_in_14K_Yellow_Gold_1.png",
-        "prefix": "Just Arrived",
-        "title": "New In",
-        "text": "Discover our latest additions - fresh designs and timeless classics newly available",
-        "button_label": "View Collection",
-        "button_link": "shopify://collections/all",
-        "collection": "all"
-      }
-    },
     "gemluxjewel_collection_slider": {
       "type": "gemluxjewel-collection-slider",
       "blocks": {
         "c1": {
           "type": "style",
           "settings": {
-            "title": "Solitaire",
-            "collection": "",
-            "link": ""
+            "title": "Solitaire"
           }
         },
         "c2": {
           "type": "style",
           "settings": {
-            "title": "Bezel",
-            "collection": "",
-            "link": ""
+            "title": "Bezel"
           }
         },
         "c3": {
           "type": "style",
           "settings": {
-            "title": "Toi et Moi",
-            "collection": "",
-            "link": ""
+            "title": "Toi et Moi"
           }
         },
         "c4": {
           "type": "style",
           "settings": {
-            "title": "Three Stone",
-            "collection": "",
-            "link": ""
+            "title": "Three Stone"
           }
         },
         "c5": {
           "type": "style",
           "settings": {
-            "title": "Halo",
-            "collection": "",
-            "link": ""
+            "title": "Halo"
           }
         }
       },
@@ -407,7 +386,6 @@
   "order": [
     "gemluxjewel_hero",
     "gemluxjewel_stone_shapes",
-    "gemluxjewel_new_in",
     "gemluxjewel_collection_slider",
     "gemluxjewel_dual_cards",
     "gemluxjewel_best_sellers",
