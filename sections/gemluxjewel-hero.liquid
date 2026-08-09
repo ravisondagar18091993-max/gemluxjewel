@@ -4,13 +4,19 @@
 
 {%- liquid
   assign media_type = section.settings.media_type | default: 'image'
+  assign hero_video = section.settings.video
+  assign hero_image = section.settings.image
+  assign hero_poster = section.settings.video_poster | default: hero_image
+  if hero_poster != blank
+    assign hero_poster_url = hero_poster | image_url: width: 1920
+  endif
 -%}
 
 <section class="gemluxjewel gemluxjewel-hero">
   <div class="gemluxjewel-hero__media-wrap" aria-hidden="true">
-    {%- if media_type == 'video' and section.settings.video != blank -%}
+    {%- if media_type == 'video' and hero_video != blank -%}
       {{
-        section.settings.video
+        hero_video
         | video_tag:
           autoplay: true,
           loop: true,
@@ -19,11 +25,12 @@
           playsinline: true,
           class: 'gemluxjewel-hero__media',
           image_size: '3840x',
-          preload: 'auto'
+          preload: 'auto',
+          poster: hero_poster_url
       }}
-    {%- elsif section.settings.image != blank -%}
+    {%- elsif hero_image != blank -%}
       {{
-        section.settings.image
+        hero_image
         | image_url: width: 3840
         | image_tag:
           widths: '750, 1100, 1500, 2000, 3840',
@@ -91,23 +98,32 @@
     {
       "type": "select",
       "id": "media_type",
-      "label": "Media type",
+      "label": "Background media type",
       "default": "image",
       "options": [
         { "value": "image", "label": "Image" },
-        { "value": "video", "label": "Video (MP4)" }
+        { "value": "video", "label": "Video" }
       ]
     },
     {
       "type": "image_picker",
       "id": "image",
-      "label": "Image"
+      "label": "Hero image",
+      "info": "Used as the background when Image is selected. Also used as fallback or poster when Video is selected."
     },
     {
       "type": "video",
       "id": "video",
-      "label": "Video",
-      "info": "Upload an MP4 from Shopify Files. Used when media type is Video."
+      "label": "Hero video",
+      "info": "Upload an MP4 from Shopify Files.",
+      "visible_if": "{{ section.settings.media_type == 'video' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "video_poster",
+      "label": "Video poster image (optional)",
+      "info": "Cover image before video plays. Uses hero image if left blank.",
+      "visible_if": "{{ section.settings.media_type == 'video' }}"
     },
     {
       "type": "header",
