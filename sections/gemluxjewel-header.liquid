@@ -3,8 +3,6 @@
 <script src="{{ 'gemluxjewel-header.js' | asset_url }}" defer="defer"></script>
 
 {%- liquid
-  assign mega_blocks = section.blocks | where: 'type', 'mega_column'
-  assign mega_image_block = section.blocks | where: 'type', 'mega_image' | first
   assign top_links = section.blocks | where: 'type', 'top_link'
   assign highlight_title = section.settings.highlight_link | downcase | strip
   assign logo_label = section.settings.logo_text | default: shop.name
@@ -72,51 +70,22 @@
             <ul class="gemluxjewel-header__nav gemluxjewel-header__nav--left">
               {%- if section.settings.menu != blank -%}
                 {%- for link in section.settings.menu.links -%}
-                  <li class="gemluxjewel-header__nav-item{% if forloop.first and mega_blocks.size > 0 %} has-mega{% endif %}">
+                  {%- liquid
+                    assign link_key = link.title | downcase | strip
+                    assign link_has_mega = false
+                    for block in section.blocks
+                      if block.type == 'mega_column' or block.type == 'mega_featured'
+                        assign block_parent = block.settings.parent_nav | downcase | strip
+                        if block_parent == link_key
+                          assign link_has_mega = true
+                        endif
+                      endif
+                    endfor
+                  -%}
+                  <li class="gemluxjewel-header__nav-item{% if link_has_mega %} has-mega{% endif %}">
                     <a href="{{ link.url }}" class="gemluxjewel-header__nav-link">{{ link.title | escape }}</a>
-                    {%- if forloop.first and mega_blocks.size > 0 -%}
-                      <div class="gemluxjewel-header__mega">
-                        <div class="gemluxjewel-header__mega-inner">
-                          <div class="gemluxjewel-header__mega-grid">
-                            {%- for block in mega_blocks -%}
-                              <div class="gemluxjewel-header__mega-col{% if block.settings.show_border %} gemluxjewel-header__mega-col--border{% endif %}" {{ block.shopify_attributes }}>
-                                {%- if block.settings.title != blank -%}
-                                  <div class="gemluxjewel-header__mega-title">{{ block.settings.title | escape }}</div>
-                                {%- endif -%}
-                                {%- if block.settings.menu != blank -%}
-                                  <ul class="gemluxjewel-header__mega-list">
-                                    {%- for mega_link in block.settings.menu.links -%}
-                                      <li><a href="{{ mega_link.url }}">{{ mega_link.title | escape }}</a></li>
-                                    {%- endfor -%}
-                                  </ul>
-                                {%- endif -%}
-                                {%- liquid
-                                  assign mega_view_all_url = block.settings.view_all_url
-                                  if mega_view_all_url == blank
-                                    assign mega_view_all_url = routes.collections_url | append: '/all'
-                                  endif
-                                -%}
-                                {%- if mega_view_all_url != blank -%}
-                                  <a href="{{ mega_view_all_url }}" class="gemluxjewel-header__mega-view-all">
-                                    {{ block.settings.view_all_label | default: 'View all' }}
-                                  </a>
-                                {%- endif -%}
-                              </div>
-                            {%- endfor -%}
-                            {%- if mega_image_block -%}
-                              <div class="gemluxjewel-header__mega-col" {{ mega_image_block.shopify_attributes }}>
-                                <div class="gemluxjewel-header__mega-img">
-                                  {%- if mega_image_block.settings.image != blank -%}
-                                    {{ mega_image_block.settings.image | image_url: width: 600 | image_tag: widths: '300, 400, 600', sizes: '300px', loading: 'lazy' }}
-                                  {%- else -%}
-                                    {% render 'gemluxjewel-theme-image', use_store_media: true, seed: 5, width: 400, widths: '200,300,400', sizes: '400px' %}
-                                  {%- endif -%}
-                                </div>
-                              </div>
-                            {%- endif -%}
-                          </div>
-                        </div>
-                      </div>
+                    {%- if link_has_mega -%}
+                      {% render 'gemluxjewel-mega-menu', link: link, section: section %}
                     {%- endif -%}
                   </li>
                 {%- endfor -%}
@@ -334,22 +303,48 @@
     },
     {
       "type": "mega_column",
-      "name": "Mega menu column",
-      "limit": 3,
+      "name": "Mega column",
+      "limit": 8,
       "settings": [
-        { "type": "text", "id": "title", "label": "Title", "default": "Popular Collections" },
-        { "type": "link_list", "id": "menu", "label": "Links" },
-        { "type": "url", "id": "view_all_url", "label": "View all link" },
-        { "type": "text", "id": "view_all_label", "label": "View all label", "default": "View all" },
-        { "type": "checkbox", "id": "show_border", "label": "Left border", "default": false }
+        {
+          "type": "text",
+          "id": "parent_nav",
+          "label": "Parent menu item",
+          "default": "Engagement Rings",
+          "info": "Must match a left menu link title (case-insensitive)."
+        },
+        { "type": "text", "id": "title", "label": "Column title", "default": "Lab Grown Diamonds" },
+        { "type": "checkbox", "id": "show_info_icon", "label": "Show info icon", "default": false },
+        { "type": "url", "id": "info_url", "label": "Info icon link" },
+        { "type": "link_list", "id": "menu", "label": "Links menu" },
+        {
+          "type": "textarea",
+          "id": "default_links",
+          "label": "Default links (if no menu)",
+          "info": "One link per line. Optional URL after | e.g. Solitaire Rings|/collections/all",
+          "default": "Solitaire Rings\nHalo Rings\nThree Stone Rings"
+        },
+        { "type": "text", "id": "highlight_link", "label": "Highlighted link title" },
+        { "type": "text", "id": "new_badge_link", "label": "Link title for NEW badge" },
+        { "type": "checkbox", "id": "show_shop_all", "label": "Show Shop All link", "default": true },
+        { "type": "url", "id": "shop_all_url", "label": "Shop All URL" },
+        { "type": "text", "id": "shop_all_label", "label": "Shop All label", "default": "Shop All" }
       ]
     },
     {
-      "type": "mega_image",
-      "name": "Mega menu image",
-      "limit": 1,
+      "type": "mega_featured",
+      "name": "Mega featured image",
+      "limit": 4,
       "settings": [
-        { "type": "image_picker", "id": "image", "label": "Image" }
+        {
+          "type": "text",
+          "id": "parent_nav",
+          "label": "Parent menu item",
+          "default": "Engagement Rings"
+        },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "caption", "label": "Caption", "default": "Solitaire Rings" },
+        { "type": "url", "id": "link", "label": "Link" }
       ]
     }
   ],

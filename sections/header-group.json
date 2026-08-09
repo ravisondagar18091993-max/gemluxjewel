@@ -20,21 +20,94 @@
             "label": "127,778 TREES PLANTED",
             "url": ""
           }
+        },
+        "mega_col_1": {
+          "type": "mega_column",
+          "settings": {
+            "parent_nav": "Engagement Rings",
+            "title": "Lab Grown Diamonds",
+            "show_info_icon": true,
+            "default_links": "Solitaire Rings\nHalo Rings\nThree Stone Rings\nNature Inspired Rings\nPave Rings\nOld Cut Rings\nRose Cut Rings\nColored Diamond Rings\nAntique Cut Rings\nBridal Sets",
+            "show_shop_all": true,
+            "shop_all_label": "Shop All"
+          }
+        },
+        "mega_col_2": {
+          "type": "mega_column",
+          "settings": {
+            "parent_nav": "Engagement Rings",
+            "title": "Moissanite",
+            "show_info_icon": true,
+            "default_links": "Solitaire Rings\nHalo Rings\nThree Stone Rings\nPave Rings\nRose Cut Rings\nAntique Cut Rings\nColored Moissanite Rings\nMen's Rings\nBridal Sets",
+            "show_shop_all": true,
+            "shop_all_label": "Shop All"
+          }
+        },
+        "mega_col_3": {
+          "type": "mega_column",
+          "settings": {
+            "parent_nav": "Engagement Rings",
+            "title": "Gemstones",
+            "show_info_icon": false,
+            "default_links": "Sapphire Rings\nEmerald Rings\nMorganite Rings\nOpal Rings\nTanzanite Rings\nTourmaline Rings",
+            "highlight_link": "Opal Rings",
+            "show_shop_all": true,
+            "shop_all_label": "Shop All"
+          }
+        },
+        "mega_col_4": {
+          "type": "mega_column",
+          "settings": {
+            "parent_nav": "Engagement Rings",
+            "title": "Featured",
+            "show_info_icon": false,
+            "default_links": "Designer Rings\nNew Arrivals\nBest Sellers\nFive Carat & Beyond",
+            "new_badge_link": "Five Carat & Beyond",
+            "show_shop_all": false
+          }
+        },
+        "mega_col_5": {
+          "type": "mega_column",
+          "settings": {
+            "parent_nav": "Engagement Rings",
+            "title": "Education",
+            "show_info_icon": false,
+            "default_links": "Ring Size Chart\nLab Grown Diamond vs Moissanite",
+            "show_shop_all": false
+          }
+        },
+        "mega_feat_1": {
+          "type": "mega_featured",
+          "settings": {
+            "parent_nav": "Engagement Rings",
+            "caption": "Solitaire Rings",
+            "link": "shopify://collections/all"
+          }
         }
       },
       "block_order": [
-        "top_1"
+        "top_1",
+        "mega_col_1",
+        "mega_col_2",
+        "mega_col_3",
+        "mega_col_4",
+        "mega_col_5",
+        "mega_feat_1"
       ],
       "settings": {
         "logo_text": "gemluxjewel",
         "menu": "main-menu",
+        "menu_right": "",
+        "highlight_link": "Visit",
         "slider_speed": 4,
+        "announcement_text": "127,778 TREES PLANTED",
+        "show_announcement_icon": true,
         "enable_search": true,
+        "show_account_icon": false,
+        "show_wishlist_icon": false,
         "locale_text": "IN"
       }
     }
   },
-  "order": [
-    "gemluxjewel_header"
-  ]
+  "order": ["gemluxjewel_header"]
 }

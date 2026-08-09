@@ -1,0 +1,171 @@
+{% comment %}
+  Mega menu panel for a nav link.
+  Accepts: link, section
+{% endcomment %}
+
+{%- liquid
+  assign link_key = link.title | downcase | strip
+  assign has_columns = false
+  assign has_featured = false
+
+  for block in section.blocks
+    if block.type == 'mega_column'
+      assign block_parent = block.settings.parent_nav | downcase | strip
+      if block_parent == link_key
+        assign has_columns = true
+      endif
+    elsif block.type == 'mega_featured'
+      assign block_parent = block.settings.parent_nav | downcase | strip
+      if block_parent == link_key
+        assign has_featured = true
+      endif
+    endif
+  endfor
+-%}
+
+{%- if has_columns or has_featured -%}
+  <div class="gemluxjewel-header__mega" data-gemluxjewel-mega-panel>
+    <div class="gemluxjewel-header__mega-inner">
+      <div class="gemluxjewel-header__mega-grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'mega_column' -%}
+            {%- assign block_parent = block.settings.parent_nav | downcase | strip -%}
+            {%- if block_parent == link_key -%}
+              {%- liquid
+                assign highlight_key = block.settings.highlight_link | downcase | strip
+                assign new_badge_key = block.settings.new_badge_link | downcase | strip
+                assign shop_all_url = block.settings.shop_all_url
+                if shop_all_url == blank
+                  assign shop_all_url = routes.collections_url | append: '/all'
+                endif
+              -%}
+              <div class="gemluxjewel-header__mega-col" {{ block.shopify_attributes }}>
+                {%- if block.settings.title != blank -%}
+                  <div class="gemluxjewel-header__mega-title-row">
+                    <span class="gemluxjewel-header__mega-title">{{ block.settings.title | escape }}</span>
+                    {%- if block.settings.show_info_icon -%}
+                      {%- if block.settings.info_url != blank -%}
+                        <a href="{{ block.settings.info_url }}" class="gemluxjewel-header__mega-info" aria-label="More information about {{ block.settings.title | escape }}">
+                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                            <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1"/>
+                            <path d="M7 6.2V9.4M7 4.6h.01" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                          </svg>
+                        </a>
+                      {%- else -%}
+                        <span class="gemluxjewel-header__mega-info" aria-hidden="true">
+                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                            <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1"/>
+                            <path d="M7 6.2V9.4M7 4.6h.01" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                          </svg>
+                        </span>
+                      {%- endif -%}
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+
+                <ul class="gemluxjewel-header__mega-list">
+                  {%- if block.settings.menu != blank -%}
+                    {%- for mega_link in block.settings.menu.links -%}
+                      {%- assign mega_link_key = mega_link.title | downcase | strip -%}
+                      <li>
+                        <a
+                          href="{{ mega_link.url }}"
+                          class="gemluxjewel-header__mega-link{% if mega_link_key == highlight_key %} is-highlight{% endif %}"
+                        >
+                          <span>{{ mega_link.title | escape }}</span>
+                          {%- if mega_link_key == new_badge_key -%}
+                            <span class="gemluxjewel-header__mega-badge">New</span>
+                          {%- endif -%}
+                        </a>
+                      </li>
+                    {%- endfor -%}
+                  {%- elsif block.settings.default_links != blank -%}
+                    {%- assign default_lines = block.settings.default_links | newline_to_br | split: '<br />' -%}
+                    {%- for line in default_lines -%}
+                      {%- assign line_trim = line | strip -%}
+                      {%- if line_trim != blank -%}
+                        {%- liquid
+                          assign link_parts = line_trim | split: '|'
+                          assign link_label = link_parts[0] | strip
+                          if link_parts.size > 1
+                            assign link_url = link_parts[1] | strip
+                          else
+                            assign link_url = routes.all_products_collection_url
+                          endif
+                          assign link_label_key = link_label | downcase | strip
+                        -%}
+                        <li>
+                          <a
+                            href="{{ link_url }}"
+                            class="gemluxjewel-header__mega-link{% if link_label_key == highlight_key %} is-highlight{% endif %}"
+                          >
+                            <span>{{ link_label | escape }}</span>
+                            {%- if link_label_key == new_badge_key -%}
+                              <span class="gemluxjewel-header__mega-badge">New</span>
+                            {%- endif -%}
+                          </a>
+                        </li>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  {%- endif -%}
+                </ul>
+
+                {%- if block.settings.show_shop_all -%}
+                  <a href="{{ shop_all_url }}" class="gemluxjewel-header__mega-shop-all">
+                    {{ block.settings.shop_all_label | default: 'Shop All' | escape }}
+                  </a>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'mega_featured' -%}
+            {%- assign block_parent = block.settings.parent_nav | downcase | strip -%}
+            {%- if block_parent == link_key -%}
+              <div class="gemluxjewel-header__mega-col gemluxjewel-header__mega-col--featured" {{ block.shopify_attributes }}>
+                {%- if block.settings.link != blank -%}
+                  <a href="{{ block.settings.link }}" class="gemluxjewel-header__mega-featured">
+                {%- else -%}
+                  <div class="gemluxjewel-header__mega-featured">
+                {%- endif -%}
+                  <div class="gemluxjewel-header__mega-featured-img">
+                    {%- if block.settings.image != blank -%}
+                      {{
+                        block.settings.image
+                        | image_url: width: 560
+                        | image_tag:
+                          widths: '280, 360, 560',
+                          sizes: '280px',
+                          loading: 'lazy',
+                          alt: block.settings.caption
+                      }}
+                    {%- else -%}
+                      {% render 'gemluxjewel-theme-image',
+                        use_store_media: true,
+                        seed: 8,
+                        width: 560,
+                        widths: '280,360,560',
+                        sizes: '280px',
+                        alt: block.settings.caption,
+                        class: 'gemluxjewel-header__mega-featured-fallback'
+                      %}
+                    {%- endif -%}
+                  </div>
+                  {%- if block.settings.caption != blank -%}
+                    <span class="gemluxjewel-header__mega-featured-caption">{{ block.settings.caption | escape }}</span>
+                  {%- endif -%}
+                {%- if block.settings.link != blank -%}
+                  </a>
+                {%- else -%}
+                  </div>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}

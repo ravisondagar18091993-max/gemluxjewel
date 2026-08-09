@@ -6,7 +6,6 @@
   var burgerBtn = header.querySelector('[data-gemluxjewel-burger]');
   var closeBtn = mobileMenu && mobileMenu.querySelector('[data-gemluxjewel-menu-close]');
   var mobileLinks = mobileMenu && mobileMenu.querySelectorAll('[data-gemluxjewel-menu-close-on-click]');
-  var megaItem = header.querySelector('.has-mega');
   var mainBar = header.querySelector('[data-gemluxjewel-header-main]');
 
   function setHeaderOffset() {
@@ -54,12 +53,14 @@
     });
   }
 
-  if (megaItem && mainBar) {
-    megaItem.addEventListener('mouseenter', function () {
-      mainBar.classList.add('is-mega-open');
-    });
-    megaItem.addEventListener('mouseleave', function () {
-      mainBar.classList.remove('is-mega-open');
+  if (mainBar) {
+    header.querySelectorAll('.has-mega, [data-gemluxjewel-mega-panel]').forEach(function (el) {
+      el.addEventListener('mouseenter', function () {
+        mainBar.classList.add('is-mega-open');
+      });
+      el.addEventListener('mouseleave', function () {
+        mainBar.classList.remove('is-mega-open');
+      });
     });
   }
 
