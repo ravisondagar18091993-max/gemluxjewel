@@ -11,56 +11,11 @@
   "sections": {
     "gemluxjewel_hero": {
       "type": "gemluxjewel-hero",
-      "blocks": {
-        "slide_1": {
-          "type": "slide",
-          "settings": {
-            "media_type": "video",
-            "video": "shopify://files/videos/create_video____.mp4",
-            "prefix": "",
-            "heading": "",
-            "text": "",
-            "button_label": "",
-            "button_link": ""
-          }
-        },
-        "slide_2": {
-          "type": "slide",
-          "settings": {
-            "media_type": "image",
-            "image": "shopify://shop_images/Customized_Jewelry_Gemlux_Jewels_bd4ce8ec-636c-4c4e-af4e-13fd2b0b9b2a.jpg",
-            "prefix": "",
-            "heading": "",
-            "text": "",
-            "button_label": "",
-            "button_link": ""
-          }
-        },
-        "slide_3": {
-          "type": "slide",
-          "settings": {
-            "media_type": "image",
-            "image": "shopify://shop_images/Gemlux_Jewels.jpg",
-            "prefix": "",
-            "heading": "",
-            "text": "",
-            "button_label": "",
-            "button_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "slide_1",
-        "slide_2",
-        "slide_3"
-      ],
       "settings": {
-        "autoplay_speed": 5000,
-        "prefix": "Hypoallergenic Titanium Jewellery",
-        "title": "Gentle on Your Skin. Perfect for Daily Wear.",
-        "text": "Expert-crafted titanium jewellery that's hypoallergenic, waterproof, and incredibly lightweight.",
-        "button_label": "View Collection",
-        "button_link": "shopify://collections/all"
+        "image": "shopify://shop_images/Customized_Jewelry_Gemlux_Jewels_bd4ce8ec-636c-4c4e-af4e-13fd2b0b9b2a.jpg",
+        "prefix": "Engagement Rings",
+        "title": "A Shift in Perspective",
+        "text": "East-West rings redefining modern bridal styling."
       }
     },
     "gemluxjewel_usp": {

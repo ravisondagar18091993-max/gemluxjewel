@@ -1,115 +1,81 @@
-{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
 {% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'gemluxjewel-home.js' | asset_url }}" defer="defer"></script>
 
 {%- liquid
-  assign slide_count = section.blocks.size
-  assign active_block = section.blocks.first
-
-  assign active_prefix = active_block.settings.prefix | default: section.settings.prefix
-  assign active_heading = active_block.settings.heading | default: section.settings.title
-  assign active_text = active_block.settings.text | default: section.settings.text
-  assign active_button_label = active_block.settings.button_label | default: section.settings.button_label
-  assign active_button_link = active_block.settings.button_link | default: section.settings.button_link
+  assign media_type = section.settings.media_type | default: 'image'
 -%}
 
-<section class="gemluxjewel gemluxjewel-hero" data-gemluxjewel-hero data-autoplay="{{ section.settings.autoplay_speed }}">
-  <div class="gemluxjewel-hero__layer"></div>
-  <div class="gemluxjewel-hero__slides">
-    {%- if slide_count > 0 -%}
-      {%- for block in section.blocks -%}
-        {%- liquid
-          assign media_type = block.settings.media_type | default: 'image'
-
-          assign slide_prefix = block.settings.prefix | default: section.settings.prefix
-          assign slide_heading = block.settings.heading | default: section.settings.title
-          assign slide_text = block.settings.text | default: section.settings.text
-          assign slide_button_label = block.settings.button_label | default: section.settings.button_label
-          assign slide_button_link = block.settings.button_link | default: section.settings.button_link
-        -%}
-        <div
-          class="gemluxjewel-hero__slide{% if forloop.first %} is-active{% endif %}"
-          data-gemluxjewel-hero-slide
-          data-media-type="{{ media_type }}"
-          data-slide-prefix="{{ slide_prefix | escape }}"
-          data-slide-heading="{{ slide_heading | escape }}"
-          data-slide-text="{{ slide_text | escape }}"
-          data-slide-button-label="{{ slide_button_label | escape }}"
-          {% if slide_button_link != blank %}data-slide-button-link="{{ slide_button_link }}"{% endif %}
-          {{ block.shopify_attributes }}
-        >
-          {%- if media_type == 'video' and block.settings.video != blank -%}
-            {{
-              block.settings.video
-              | video_tag:
-                autoplay: forloop.first,
-                loop: true,
-                muted: true,
-                controls: false,
-                playsinline: true,
-                class: 'gemluxjewel-hero__media',
-                image_size: '3840x',
-                preload: 'metadata'
-            }}
-          {%- elsif block.settings.image != blank -%}
-            {{
-              block.settings.image
-              | image_url: width: 3840
-              | image_tag:
-                widths: '750, 1100, 1500, 2000, 3840',
-                sizes: '100vw',
-                class: 'gemluxjewel-hero__media',
-                fetchpriority: forloop.first
-            }}
-          {%- else -%}
-            {%- if forloop.first -%}
-              {% render 'gemluxjewel-theme-image', use_store_media: true, seed: forloop.index, width: 1920, widths: '750,1100,1500,1920', sizes: '100vw', class: 'gemluxjewel-hero__media', loading: 'eager', fetchpriority: 'high' %}
-            {%- else -%}
-              {% render 'gemluxjewel-theme-image', use_store_media: true, seed: forloop.index, width: 1920, widths: '750,1100,1500,1920', sizes: '100vw', class: 'gemluxjewel-hero__media', loading: 'lazy' %}
-            {%- endif -%}
-          {%- endif -%}
-        </div>
-      {%- endfor -%}
+<section class="gemluxjewel gemluxjewel-hero">
+  <div class="gemluxjewel-hero__media-wrap" aria-hidden="true">
+    {%- if media_type == 'video' and section.settings.video != blank -%}
+      {{
+        section.settings.video
+        | video_tag:
+          autoplay: true,
+          loop: true,
+          muted: true,
+          controls: false,
+          playsinline: true,
+          class: 'gemluxjewel-hero__media',
+          image_size: '3840x',
+          preload: 'auto'
+      }}
     {%- elsif section.settings.image != blank -%}
-      <div class="gemluxjewel-hero__slide is-active" data-gemluxjewel-hero-slide>
-        {{ section.settings.image | image_url: width: 3840 | image_tag: widths: '750, 1100, 1500, 2000, 3840', sizes: '100vw', fetchpriority: 'high' }}
-      </div>
+      {{
+        section.settings.image
+        | image_url: width: 3840
+        | image_tag:
+          widths: '750, 1100, 1500, 2000, 3840',
+          sizes: '100vw',
+          class: 'gemluxjewel-hero__media',
+          loading: 'eager',
+          fetchpriority: 'high',
+          alt: section.settings.title
+      }}
     {%- else -%}
-      <div class="gemluxjewel-hero__slide is-active" data-gemluxjewel-hero-slide>
-        {% render 'gemluxjewel-theme-image', use_store_media: true, seed: 1, width: 1920, widths: '750,1100,1500,1920', sizes: '100vw', loading: 'eager', fetchpriority: 'high' %}
-      </div>
+      {% render 'gemluxjewel-theme-image',
+        use_store_media: true,
+        seed: 1,
+        width: 1920,
+        widths: '750,1100,1500,1920',
+        sizes: '100vw',
+        class: 'gemluxjewel-hero__media',
+        loading: 'eager',
+        fetchpriority: 'high'
+      %}
     {%- endif -%}
+    <div class="gemluxjewel-hero__overlay"></div>
   </div>
 
   <div class="gemluxjewel-hero__content">
-    <div class="gemluxjewel-container">
-      <div class="gemluxjewel-hero__content-inner" data-gemluxjewel-hero-content>
-        {%- if active_prefix != blank -%}
-          <p class="gemluxjewel-prefix" data-gemluxjewel-hero-prefix>{{ active_prefix }}</p>
+    <div class="gemluxjewel-hero__content-inner">
+      {%- if section.settings.prefix != blank -%}
+        <p class="gemluxjewel-hero__prefix">{{ section.settings.prefix | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.title != blank -%}
+        <h1 class="gemluxjewel-hero__title">{{ section.settings.title | escape }}</h1>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <p class="gemluxjewel-hero__text">{{ section.settings.text | escape }}</p>
+      {%- endif -%}
+
+      <div class="gemluxjewel-hero__actions">
+        {%- if section.settings.button_1_label != blank -%}
+          <a href="{{ section.settings.button_1_link | default: routes.collections_url }}" class="gemluxjewel-hero__btn gemluxjewel-hero__btn--primary">
+            {{ section.settings.button_1_label | escape }}
+          </a>
         {%- endif -%}
-        {%- if active_heading != blank -%}
-          <h1 class="gemluxjewel-hero__title" data-gemluxjewel-hero-title>{{ active_heading }}</h1>
+        {%- if section.settings.button_2_label != blank -%}
+          <a href="{{ section.settings.button_2_link | default: routes.root_url }}" class="gemluxjewel-hero__btn gemluxjewel-hero__btn--secondary">
+            {{ section.settings.button_2_label | escape }}
+          </a>
         {%- endif -%}
-        {%- if active_text != blank -%}
-          <p class="gemluxjewel-hero__text" data-gemluxjewel-hero-text>{{ active_text }}</p>
-        {%- endif -%}
-        <div data-gemluxjewel-hero-button>
-          {% render 'gemluxjewel-btn', label: active_button_label, url: active_button_link, style: 'green' %}
-        </div>
       </div>
     </div>
   </div>
 
-  {%- if slide_count > 1 -%}
-    <div class="gemluxjewel-hero__nav">
-      <button type="button" class="gemluxjewel-hero__arrow gemluxjewel-hero__arrow--prev" data-gemluxjewel-hero-prev aria-label="Previous slide">
-        <img src="{{ 'green-right-arrow.svg' | asset_url }}" alt="" width="18" height="18" class="gemluxjewel-hero__arrow-icon gemluxjewel-hero__arrow-icon--prev">
-      </button>
-      <button type="button" class="gemluxjewel-hero__arrow gemluxjewel-hero__arrow--next" data-gemluxjewel-hero-next aria-label="Next slide">
-        <img src="{{ 'green-right-arrow.svg' | asset_url }}" alt="" width="18" height="18" class="gemluxjewel-hero__arrow-icon">
-      </button>
-    </div>
-  {%- endif -%}
+  <div class="gemluxjewel-hero__bottom-bar" aria-hidden="true"></div>
 </section>
 
 {% schema %}
@@ -118,59 +84,88 @@
   "tag": "section",
   "class": "section gemluxjewel-section",
   "settings": [
-    { "type": "image_picker", "id": "image", "label": "Fallback slide image" },
-    { "type": "range", "id": "autoplay_speed", "min": 3000, "max": 8000, "step": 500, "default": 5000, "unit": "ms", "label": "Slide speed" },
-    { "type": "header", "content": "Default slide content" },
-    { "type": "paragraph", "content": "Used when a slide leaves fields blank. Each slide can override these." },
-    { "type": "text", "id": "prefix", "label": "Prefix", "default": "Hypoallergenic Titanium Jewellery" },
-    { "type": "text", "id": "title", "label": "Heading", "default": "Gentle on Your Skin. Perfect for Daily Wear." },
-    { "type": "textarea", "id": "text", "label": "Description", "default": "Expert-crafted titanium jewellery that's hypoallergenic, waterproof, and incredibly lightweight." },
-    { "type": "text", "id": "button_label", "label": "Button label", "default": "View Collection" },
-    { "type": "url", "id": "button_link", "label": "Button link" }
-  ],
-  "blocks": [
     {
-      "type": "slide",
-      "name": "Slide",
-      "settings": [
-        {
-          "type": "select",
-          "id": "media_type",
-          "label": "Media type",
-          "default": "image",
-          "options": [
-            { "value": "image", "label": "Image" },
-            { "value": "video", "label": "Video (MP4)" }
-          ]
-        },
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image",
-          "visible_if": "{{ block.settings.media_type == 'image' }}"
-        },
-        {
-          "type": "video",
-          "id": "video",
-          "label": "Video",
-          "info": "Upload an MP4 file from Shopify Files.",
-          "visible_if": "{{ block.settings.media_type == 'video' }}"
-        },
-        {
-          "type": "image_picker",
-          "id": "video_poster",
-          "label": "Video poster (optional)",
-          "visible_if": "{{ block.settings.media_type == 'video' }}"
-        },
-        { "type": "header", "content": "Slide content" },
-        { "type": "text", "id": "prefix", "label": "Prefix", "info": "Shown in the preview box when the previous slide is active." },
-        { "type": "text", "id": "heading", "label": "Heading" },
-        { "type": "textarea", "id": "text", "label": "Description" },
-        { "type": "text", "id": "button_label", "label": "Button label" },
-        { "type": "url", "id": "button_link", "label": "Button link" }
+      "type": "header",
+      "content": "Background media"
+    },
+    {
+      "type": "select",
+      "id": "media_type",
+      "label": "Media type",
+      "default": "image",
+      "options": [
+        { "value": "image", "label": "Image" },
+        { "value": "video", "label": "Video (MP4)" }
       ]
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video",
+      "info": "Upload an MP4 from Shopify Files. Used when media type is Video."
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "prefix",
+      "label": "Eyebrow text",
+      "default": "Engagement Rings"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "A Shift in Perspective"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Subheading",
+      "default": "East-West rings redefining modern bridal styling."
+    },
+    {
+      "type": "header",
+      "content": "Primary button"
+    },
+    {
+      "type": "text",
+      "id": "button_1_label",
+      "label": "Label",
+      "default": "Discover East-West Rings"
+    },
+    {
+      "type": "url",
+      "id": "button_1_link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Secondary button"
+    },
+    {
+      "type": "text",
+      "id": "button_2_label",
+      "label": "Label",
+      "default": "Book an Appointment"
+    },
+    {
+      "type": "url",
+      "id": "button_2_link",
+      "label": "Link"
     }
   ],
-  "presets": [{ "name": "gemluxjewel Hero", "blocks": [{ "type": "slide" }, { "type": "slide" }, { "type": "slide" }] }]
+  "presets": [
+    {
+      "name": "gemluxjewel Hero"
+    }
+  ]
 }
 {% endschema %}
