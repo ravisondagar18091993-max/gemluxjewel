@@ -256,6 +256,7 @@
   transition: transform 0.25s ease;
 }
 
+.gemluxjewel-header__nav-item.has-mega.is-mega-active > .gemluxjewel-header__nav-link .gemluxjewel-header__nav-caret,
 .gemluxjewel-header__nav-item.has-mega:hover > .gemluxjewel-header__nav-link .gemluxjewel-header__nav-caret,
 .gemluxjewel-header__nav-item.has-mega:focus-within > .gemluxjewel-header__nav-link .gemluxjewel-header__nav-caret {
   transform: rotate(180deg);
@@ -370,6 +371,16 @@
   z-index: 99;
 }
 
+.gemluxjewel-header__mega::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: 32px;
+}
+
+.gemluxjewel-header__nav-item.has-mega.is-mega-active .gemluxjewel-header__mega,
 .gemluxjewel-header__nav-item.has-mega:hover .gemluxjewel-header__mega,
 .gemluxjewel-header__nav-item.has-mega:focus-within .gemluxjewel-header__mega,
 .gemluxjewel-header__mega:hover,
@@ -383,6 +394,9 @@
   max-width: 1440px;
   margin: 0 auto;
   padding: 36px 48px 44px;
+  max-height: calc(100vh - var(--gemluxjewel-header-offset, 120px) - 24px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .gemluxjewel-header__mega-grid {
@@ -567,6 +581,7 @@
   text-align: left;
 }
 
+.gemluxjewel-header__nav-item.has-mega.is-mega-active > .gemluxjewel-header__nav-link,
 .gemluxjewel-header__nav-item.has-mega:hover > .gemluxjewel-header__nav-link,
 .gemluxjewel-header__nav-item.has-mega:focus-within > .gemluxjewel-header__nav-link {
   font-weight: 600;

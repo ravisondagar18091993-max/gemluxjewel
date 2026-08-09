@@ -23,6 +23,7 @@
       var prevScroll = window.pageYOffset || document.documentElement.scrollTop;
 
       window.addEventListener('scroll', function () {
+        if (mainBar && mainBar.classList.contains('is-mega-open')) return;
         var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
         if (prevScroll > currentScroll || currentScroll === 0) {
           header.classList.remove('is-hidden');
@@ -57,21 +58,64 @@
         });
       }
 
-      if (mainBar) {
-        header.querySelectorAll('.has-mega, [data-gemluxjewel-mega-panel]').forEach(function (el) {
-          el.addEventListener('mouseenter', function () {
-            mainBar.classList.add('is-mega-open');
-          });
-          el.addEventListener('mouseleave', function () {
-            mainBar.classList.remove('is-mega-open');
-          });
-        });
-      }
+      initMegaMenu(header, mainBar);
 
       header.dataset.gemluxjewelHeaderReady = 'true';
     }
 
     initAnnouncementSlider(header);
+  }
+
+  function initMegaMenu(header, mainBar) {
+    if (!mainBar) return;
+
+    var megaItems = header.querySelectorAll('.gemluxjewel-header__nav-item.has-mega');
+    if (!megaItems.length) return;
+
+    var closeTimer = null;
+
+    function closeAllMega() {
+      megaItems.forEach(function (item) {
+        item.classList.remove('is-mega-active');
+      });
+      mainBar.classList.remove('is-mega-open');
+    }
+
+    function openMega(item) {
+      if (closeTimer) {
+        window.clearTimeout(closeTimer);
+        closeTimer = null;
+      }
+
+      megaItems.forEach(function (other) {
+        if (other !== item) other.classList.remove('is-mega-active');
+      });
+
+      item.classList.add('is-mega-active');
+      mainBar.classList.add('is-mega-open');
+    }
+
+    function scheduleClose() {
+      if (closeTimer) window.clearTimeout(closeTimer);
+      closeTimer = window.setTimeout(closeAllMega, 200);
+    }
+
+    megaItems.forEach(function (item) {
+      var panel = item.querySelector('[data-gemluxjewel-mega-panel]');
+
+      item.addEventListener('mouseenter', function () {
+        openMega(item);
+      });
+
+      item.addEventListener('mouseleave', scheduleClose);
+
+      if (panel) {
+        panel.addEventListener('mouseenter', function () {
+          openMega(item);
+        });
+        panel.addEventListener('mouseleave', scheduleClose);
+      }
+    });
   }
 
   function initAnnouncementSlider(header) {
