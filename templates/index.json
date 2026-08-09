@@ -134,31 +134,41 @@
         "c1": {
           "type": "style",
           "settings": {
-            "title": "Solitaire"
+            "title": "Solitaire",
+            "collection": "",
+            "link": ""
           }
         },
         "c2": {
           "type": "style",
           "settings": {
-            "title": "Bezel"
+            "title": "Bezel",
+            "collection": "",
+            "link": ""
           }
         },
         "c3": {
           "type": "style",
           "settings": {
-            "title": "Toi et Moi"
+            "title": "Toi et Moi",
+            "collection": "",
+            "link": ""
           }
         },
         "c4": {
           "type": "style",
           "settings": {
-            "title": "Three Stone"
+            "title": "Three Stone",
+            "collection": "",
+            "link": ""
           }
         },
         "c5": {
           "type": "style",
           "settings": {
-            "title": "Halo"
+            "title": "Halo",
+            "collection": "",
+            "link": ""
           }
         }
       },
@@ -181,6 +191,7 @@
           "type": "card",
           "settings": {
             "layout": "featured",
+            "collection": "",
             "title": "Quick Ship",
             "button_label": "Shop Now",
             "link": "shopify://collections/all"
@@ -190,6 +201,7 @@
           "type": "card",
           "settings": {
             "layout": "featured",
+            "collection": "",
             "title": "For Her",
             "button_label": "Shop Now",
             "link": "shopify://collections/all"
@@ -199,7 +211,9 @@
           "type": "card",
           "settings": {
             "layout": "tile",
+            "collection": "",
             "title": "Essentials",
+            "button_label": "Shop Now",
             "link": "shopify://collections/all"
           }
         },
@@ -207,7 +221,9 @@
           "type": "card",
           "settings": {
             "layout": "tile",
+            "collection": "",
             "title": "Under $1000",
+            "button_label": "Shop Now",
             "link": "shopify://collections/all"
           }
         },
@@ -215,7 +231,9 @@
           "type": "card",
           "settings": {
             "layout": "tile",
+            "collection": "",
             "title": "For Him",
+            "button_label": "Shop Now",
             "link": "shopify://collections/all"
           }
         }
@@ -228,7 +246,8 @@
         "gift_tile_3"
       ],
       "settings": {
-        "title": "Gift Guide"
+        "title": "Gift Guide",
+        "subtitle": ""
       }
     },
     "gemluxjewel_dual_cards": {
@@ -258,6 +277,20 @@
         "card_2"
       ],
       "settings": {}
+    },
+    "gemluxjewel_new_in": {
+      "type": "gemluxjewel-new-in",
+      "settings": {
+        "title": "New In",
+        "subtitle": "Shop the latest additions — newly added pieces sorted by date.",
+        "button_label": "View Collection",
+        "button_link": "shopify://collections/all",
+        "badge_text": "New In",
+        "collection": "all",
+        "products_to_show": 4,
+        "sort_by": "created_at",
+        "new_within_days": 0
+      }
     },
     "gemluxjewel_best_sellers": {
       "type": "gemluxjewel-best-sellers",
@@ -299,106 +332,62 @@
       ],
       "settings": {}
     },
-    "gemluxjewel_new_in": {
-      "type": "gemluxjewel-new-in",
-      "settings": {
-        "title": "New In",
-        "subtitle": "Shop the latest additions — newly added pieces sorted by date.",
-        "button_label": "View Collection",
-        "button_link": "shopify://collections/all",
-        "badge_text": "New In",
-        "collection": "all",
-        "products_to_show": 4,
-        "sort_by": "created_at",
-        "new_within_days": 0
-      }
-    },
-    "gemluxjewel_why": {
-      "type": "gemluxjewel-why-choose-us",
-      "blocks": {
-        "f1": {
-          "type": "feature",
-          "settings": {
-            "title": "Skin-Safe Comfort",
-            "text": "Designed with hypoallergenic materials that are gentle on sensitive skin all day"
-          }
-        },
-        "f2": {
-          "type": "feature",
-          "settings": {
-            "title": "Premium Quality",
-            "text": "Crafted using durable, high-grade materials for long-lasting shine and strength"
-          }
-        },
-        "f3": {
-          "type": "feature",
-          "settings": {
-            "title": "Everyday Wear",
-            "text": "Lightweight and waterproof jewellery made for daily use without compromise"
-          }
-        },
-        "f4": {
-          "type": "feature",
-          "settings": {
-            "title": "Expert Support",
-            "text": "Get reliable 24/7 guidance to help you choose the perfect piece effortlessly"
-          }
-        }
-      },
-      "block_order": [
-        "f1",
-        "f2",
-        "f3",
-        "f4"
-      ],
-      "settings": {
-        "prefix": "Our Story",
-        "title": "Why Choose Us",
-        "button_label": "View Collection",
-        "button_link": "shopify://collections/all"
-      }
-    },
     "gemluxjewel_testimonials": {
       "type": "gemluxjewel-testimonials",
       "blocks": {
         "r1": {
           "type": "review",
           "settings": {
+            "platform": "trustpilot",
             "rating": 5,
+            "author": "Abigail Green",
+            "time_ago": "an hour ago",
             "text": "Absolutely stunning ring! The craftsmanship is incredible and it sparkles beautifully. Customer service was helpful throughout.",
-            "author": "Abigail Green"
+            "review_url": ""
           }
         },
         "r2": {
           "type": "review",
           "settings": {
+            "platform": "trustpilot",
             "rating": 5,
+            "author": "James Mitchell",
+            "time_ago": "an hour ago",
             "text": "Ordered a lab-grown diamond engagement ring and couldn't be happier. Fast shipping, elegant packaging, and the ring looks even better in person.",
-            "author": "James Mitchell"
+            "review_url": ""
           }
         },
         "r3": {
           "type": "review",
           "settings": {
+            "platform": "trustpilot",
             "rating": 5,
+            "author": "Sarah Chen",
+            "time_ago": "an hour ago",
             "text": "Great experience from start to finish. The team helped me choose the perfect setting and the quality is outstanding for the price.",
-            "author": "Sarah Chen"
+            "review_url": ""
           }
         },
         "r4": {
           "type": "review",
           "settings": {
+            "platform": "trustpilot",
             "rating": 5,
+            "author": "Michael Roberts",
+            "time_ago": "an hour ago",
             "text": "My wife loves her new necklace. The diamonds are brilliant and the design is timeless. Will definitely shop here again.",
-            "author": "Michael Roberts"
+            "review_url": ""
           }
         },
         "r5": {
           "type": "review",
           "settings": {
+            "platform": "trustpilot",
             "rating": 5,
+            "author": "Emma Wilson",
+            "time_ago": "an hour ago",
             "text": "Beautiful jewellery and transparent pricing. Resizing was quick and the ring fits perfectly now.",
-            "author": "Emma Wilson"
+            "review_url": ""
           }
         }
       },
@@ -414,7 +403,11 @@
         "subtitle": "Here's what our clients have to say about their Gemlux experience.",
         "show_summary": true,
         "average_rating": "5.0",
-        "review_count": "250+ reviews"
+        "review_count": "250+ reviews",
+        "write_review_label": "Write a Review",
+        "read_reviews_label": "Read Our Reviews",
+        "trustpilot_reviews_url": "",
+        "trustpilot_write_url": ""
       }
     },
     "gemluxjewel_faq": {
@@ -481,7 +474,6 @@
     "gemluxjewel_new_in",
     "gemluxjewel_best_sellers",
     "gemluxjewel_split_promo",
-    "gemluxjewel_why",
     "gemluxjewel_testimonials",
     "gemluxjewel_faq"
   ]
