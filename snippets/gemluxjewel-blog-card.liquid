@@ -49,7 +49,7 @@
     {%- endif -%}
 
     <h2 class="gemluxjewel-blog-card__title">
-      <a href="{{ article.url }}">{{ article.title | escape }}</a>
+      <a href="{{ article.url }}">{{ article.title | downcase | escape }}</a>
     </h2>
   </article>
 {%- elsif card_style == 'news' -%}
