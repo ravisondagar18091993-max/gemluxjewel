@@ -13,7 +13,48 @@
   "sections": {
     "gemluxjewel_footer": {
       "type": "gemluxjewel-footer",
+      "blocks": {
+        "trust_1": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "shipping",
+            "line_1": "Worldwide",
+            "line_2": "Express Shipping"
+          }
+        },
+        "trust_2": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "resizing",
+            "line_1": "Free",
+            "line_2": "Resizing"
+          }
+        },
+        "trust_3": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "warranty",
+            "line_1": "Lifetime Ring",
+            "line_2": "Warranty"
+          }
+        },
+        "trust_4": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "customization",
+            "line_1": "Free Ring",
+            "line_2": "Customisation"
+          }
+        }
+      },
+      "block_order": [
+        "trust_1",
+        "trust_2",
+        "trust_3",
+        "trust_4"
+      ],
       "settings": {
+        "show_trust_bar": true,
         "subscribe_label": "Subscribe to our emails",
         "newsletter_placeholder": "Sign Me Up",
         "promo_heading": "Join our guest list and receive exclusive access to new collections, offers, and events.",

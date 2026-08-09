@@ -2,11 +2,87 @@
 
 .gemluxjewel-footer {
   position: relative;
-  background: var(--gemluxjewel-primary, #73976a);
   color: #ffffff;
   font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
-  padding: 0 0 32px;
+  padding: 0;
   overflow: hidden;
+}
+
+.gemluxjewel-footer__trust {
+  background: #f5f0e8;
+  border-top: 4px solid #243729;
+  padding: 44px 0 48px;
+}
+
+.gemluxjewel-footer__trust-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px 20px;
+}
+
+@media (min-width: 750px) {
+  .gemluxjewel-footer__trust-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+  }
+}
+
+.gemluxjewel-footer__trust-item {
+  margin: 0;
+}
+
+.gemluxjewel-footer__trust-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.gemluxjewel-footer__trust-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  color: var(--gemluxjewel-dark, #141414);
+}
+
+.gemluxjewel-footer__trust-icon svg {
+  width: 44px;
+  height: 44px;
+  display: block;
+}
+
+.gemluxjewel-footer__trust-icon img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  display: block;
+}
+
+.gemluxjewel-footer__trust-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
+  font-size: 11px;
+  line-height: 1.45;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--gemluxjewel-dark, #141414);
+}
+
+.gemluxjewel-footer__body {
+  position: relative;
+  background: var(--gemluxjewel-primary, #73976a);
+  padding: 0 0 32px;
 }
 
 .gemluxjewel-footer__pattern {
