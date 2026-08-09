@@ -14,6 +14,15 @@
     "gemluxjewel_header": {
       "type": "gemluxjewel-header",
       "blocks": {
+        "mega_banner_CmAQq7": {
+          "type": "mega_banner",
+          "settings": {
+            "parent_nav": "Best seller",
+            "image": "shopify://shop_images/Round_Lab-Grown_Diamond_Cross_Pendant_Necklace_in_14K_Yellow_Gold_1.png",
+            "caption": "Solitaire Rings",
+            "link": ""
+          }
+        },
         "top_1": {
           "type": "top_link",
           "settings": {
@@ -37,6 +46,7 @@
         }
       },
       "block_order": [
+        "mega_banner_CmAQq7",
         "top_1",
         "top_2",
         "top_3"
@@ -53,9 +63,6 @@
         "mega_info_columns": "Lab Grown Diamonds, Moissanite",
         "mega_highlight_links": "",
         "mega_new_badge_links": "",
-        "mega_featured_image": "shopify://shop_images/WhatsAppImage2026-08-06at4.35.02PM.jpg",
-        "mega_featured_caption": "",
-        "mega_featured_link": "",
         "announcement_text": "127,778 TREES PLANTED",
         "announcement_url": "",
         "show_announcement_icon": true,
