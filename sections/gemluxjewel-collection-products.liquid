@@ -3,79 +3,99 @@
 {{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
 {{ 'component-facets.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
-<script src="{{ 'gemluxjewel-collection.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'gemluxjewel-plp-filters.js' | asset_url }}" defer="defer"></script>
 
 <collection-component
   view-event-payload="{{ collection | standard_event_data: 'view' | escape }}"
   data-collection-id="{{ collection.id }}"
 >
-  <section class="gemluxjewel gemluxjewel-shop">
+  <section class="gemluxjewel gemluxjewel-shop{% if section.settings.filter_layout == 'horizontal' %} gemluxjewel-shop--horizontal-filters{% endif %}">
     <div class="gemluxjewel-container">
       {%- paginate collection.products by section.settings.products_per_page -%}
-        <div class="gemluxjewel-shop__toolbar">
-          {%- if section.settings.enable_filtering -%}
-            <button
-              type="button"
-              class="gemluxjewel-shop__filter-toggle"
-              data-gemluxjewel-filter-toggle
-              data-show-label="{{ section.settings.filter_label | default: 'Show Filter' | escape }}"
-              data-hide-label="{{ section.settings.filter_hide_label | default: 'Hide Filter' | escape }}"
-            >
-              <span>{{ section.settings.filter_label | default: 'Show Filter' }}</span>
-              <span class="gemluxjewel-shop__filter-switch">
-                <input
-                  type="checkbox"
-                  data-gemluxjewel-filter-checkbox
-                  {% if section.settings.filters_open_by_default %}checked{% endif %}
-                  aria-label="{{ section.settings.filter_label | default: 'Show Filter' }}"
-                >
-                <span class="gemluxjewel-shop__filter-track"></span>
-              </span>
-            </button>
-          {%- endif -%}
-
-          {%- if section.settings.enable_sorting -%}
-            <facet-filters-form class="gemluxjewel-shop__sort-wrap">
-              <form class="gemluxjewel-shop__sort-form" id="FacetSortForm">
-                {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
-                <select
-                  name="sort_by"
-                  id="SortBy"
-                  class="gemluxjewel-shop__sort"
-                  aria-describedby="a11y-refresh-page-message"
-                >
-                  {%- for option in collection.sort_options -%}
-                    <option value="{{ option.value | escape }}" {% if option.value == sort_by %}selected{% endif %}>
-                      {{ option.name | escape }}
-                    </option>
-                  {%- endfor -%}
-                </select>
-              </form>
-            </facet-filters-form>
-          {%- endif -%}
-        </div>
-
-        <div
-          class="gemluxjewel-shop__layout{% if section.settings.filters_open_by_default and section.settings.enable_filtering %} is-filters-open{% endif %}"
-          data-gemluxjewel-shop-layout
-        >
-          {%- if section.settings.enable_filtering -%}
-            <aside class="gemluxjewel-shop__filters" id="main-collection-filters" data-id="{{ section.id }}">
-              {% render 'gemluxjewel-facets',
-                results: collection,
-                enable_filtering: true,
-                enable_sorting: false,
-                filter_type: 'vertical',
-                paginate: paginate
-              %}
-            </aside>
+        {%- if section.settings.filter_layout == 'horizontal' -%}
+          {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
+            {% render 'gemluxjewel-plp-filter-bar',
+              results: collection,
+              section: section,
+              paginate: paginate,
+              enable_filtering: section.settings.enable_filtering,
+              enable_sorting: section.settings.enable_sorting
+            %}
           {%- endif -%}
 
           <div id="ProductGridContainer">
-            {% render 'gemluxjewel-plp-stone-shapes', collection: collection, section: section %}
+            {%- if section.settings.enable_stone_shapes -%}
+              {% render 'gemluxjewel-plp-stone-shapes', collection: collection, section: section %}
+            {%- endif -%}
             {% render 'gemluxjewel-collection-grid', paginate: paginate %}
           </div>
-        </div>
+        {%- else -%}
+          <script src="{{ 'gemluxjewel-collection.js' | asset_url }}" defer="defer"></script>
+          <div class="gemluxjewel-shop__toolbar">
+            {%- if section.settings.enable_filtering -%}
+              <button
+                type="button"
+                class="gemluxjewel-shop__filter-toggle"
+                data-gemluxjewel-filter-toggle
+                data-show-label="{{ section.settings.filter_label | default: 'Show Filter' | escape }}"
+                data-hide-label="{{ section.settings.filter_hide_label | default: 'Hide Filter' | escape }}"
+              >
+                <span>{{ section.settings.filter_label | default: 'Show Filter' }}</span>
+                <span class="gemluxjewel-shop__filter-switch">
+                  <input
+                    type="checkbox"
+                    data-gemluxjewel-filter-checkbox
+                    {% if section.settings.filters_open_by_default %}checked{% endif %}
+                    aria-label="{{ section.settings.filter_label | default: 'Show Filter' }}"
+                  >
+                  <span class="gemluxjewel-shop__filter-track"></span>
+                </span>
+              </button>
+            {%- endif -%}
+
+            {%- if section.settings.enable_sorting -%}
+              <facet-filters-form class="gemluxjewel-shop__sort-wrap">
+                <form class="gemluxjewel-shop__sort-form" id="FacetSortForm">
+                  {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+                  <select
+                    name="sort_by"
+                    id="SortBy"
+                    class="gemluxjewel-shop__sort"
+                    aria-describedby="a11y-refresh-page-message"
+                  >
+                    {%- for option in collection.sort_options -%}
+                      <option value="{{ option.value | escape }}" {% if option.value == sort_by %}selected{% endif %}>
+                        {{ option.name | escape }}
+                      </option>
+                    {%- endfor -%}
+                  </select>
+                </form>
+              </facet-filters-form>
+            {%- endif -%}
+          </div>
+
+          <div
+            class="gemluxjewel-shop__layout{% if section.settings.filters_open_by_default and section.settings.enable_filtering %} is-filters-open{% endif %}"
+            data-gemluxjewel-shop-layout
+          >
+            {%- if section.settings.enable_filtering -%}
+              <aside class="gemluxjewel-shop__filters" id="main-collection-filters" data-id="{{ section.id }}">
+                {% render 'gemluxjewel-facets',
+                  results: collection,
+                  enable_filtering: true,
+                  enable_sorting: false,
+                  filter_type: 'vertical',
+                  paginate: paginate
+                %}
+              </aside>
+            {%- endif -%}
+
+            <div id="ProductGridContainer">
+              {% render 'gemluxjewel-plp-stone-shapes', collection: collection, section: section %}
+              {% render 'gemluxjewel-collection-grid', paginate: paginate %}
+            </div>
+          </div>
+        {%- endif -%}
       {%- endpaginate -%}
     </div>
   </section>
@@ -97,6 +117,16 @@
       "label": "Products per page"
     },
     {
+      "type": "select",
+      "id": "filter_layout",
+      "label": "Filter layout",
+      "default": "horizontal",
+      "options": [
+        { "value": "horizontal", "label": "Horizontal bar (Cullen style)" },
+        { "value": "sidebar", "label": "Sidebar toggle" }
+      ]
+    },
+    {
       "type": "checkbox",
       "id": "enable_filtering",
       "label": "Enable filtering",
@@ -105,8 +135,9 @@
     {
       "type": "checkbox",
       "id": "filters_open_by_default",
-      "label": "Show filters by default",
-      "default": false
+      "label": "Show sidebar filters by default",
+      "default": false,
+      "info": "Sidebar layout only."
     },
     {
       "type": "text",
@@ -128,17 +159,58 @@
     },
     {
       "type": "header",
+      "content": "Horizontal filter bar"
+    },
+    {
+      "type": "text",
+      "id": "filters_button_label",
+      "label": "Filters button label",
+      "default": "Filters"
+    },
+    {
+      "type": "text",
+      "id": "filters_apply_label",
+      "label": "Drawer apply button",
+      "default": "Apply"
+    },
+    {
+      "type": "text",
+      "id": "search_placeholder",
+      "label": "Search placeholder",
+      "default": "Search by style, shape or metal"
+    },
+    {
+      "type": "text",
+      "id": "metal_filter_label",
+      "label": "Metal filter label match",
+      "default": "Metal",
+      "info": "Must match the filter label in Search & Discovery."
+    },
+    {
+      "type": "text",
+      "id": "shape_filter_label",
+      "label": "Shape filter label match",
+      "default": "Stone shape"
+    },
+    {
+      "type": "text",
+      "id": "setting_filter_label",
+      "label": "Setting style filter label match",
+      "default": "Setting style"
+    },
+    {
+      "type": "header",
       "content": "Stone shapes bar"
     },
     {
       "type": "paragraph",
-      "content": "Shows diamond shapes above the product grid. The currently selected shape filter is hidden. Upload images in blocks below — shape names must match filter values (e.g. Heart, Marquise)."
+      "content": "Optional image grid above products. With horizontal filters, shapes appear in the Shape dropdown instead."
     },
     {
       "type": "checkbox",
       "id": "enable_stone_shapes",
-      "label": "Show stone shapes above products",
-      "default": true
+      "label": "Show stone shapes image grid above products",
+      "default": false
     },
     {
       "type": "text",
@@ -156,19 +228,37 @@
   "blocks": [
     {
       "type": "shape",
-      "name": "Shape image",
+      "name": "Shape icon",
       "settings": [
         {
           "type": "text",
           "id": "title",
           "label": "Shape name",
           "default": "Round",
-          "info": "Must match the Stone shape filter value."
+          "info": "Must match the shape filter value."
         },
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Shape image"
+          "label": "Shape icon"
+        }
+      ]
+    },
+    {
+      "type": "setting",
+      "name": "Setting style icon",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Setting name",
+          "default": "Solitaire",
+          "info": "Must match the setting style filter value."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Setting icon"
         }
       ]
     }
@@ -178,15 +268,17 @@
       "name": "gemluxjewel Shop Grid",
       "blocks": [
         { "type": "shape", "settings": { "title": "Round" } },
-        { "type": "shape", "settings": { "title": "Princess" } },
-        { "type": "shape", "settings": { "title": "Cushion" } },
         { "type": "shape", "settings": { "title": "Oval" } },
         { "type": "shape", "settings": { "title": "Emerald" } },
-        { "type": "shape", "settings": { "title": "Pear" } },
-        { "type": "shape", "settings": { "title": "Marquise" } },
-        { "type": "shape", "settings": { "title": "Asscher" } },
         { "type": "shape", "settings": { "title": "Radiant" } },
-        { "type": "shape", "settings": { "title": "Heart" } }
+        { "type": "shape", "settings": { "title": "Pear" } },
+        { "type": "shape", "settings": { "title": "Cushion" } },
+        { "type": "setting", "settings": { "title": "Solitaire" } },
+        { "type": "setting", "settings": { "title": "Halo" } },
+        { "type": "setting", "settings": { "title": "Trilogy" } },
+        { "type": "setting", "settings": { "title": "Bezel" } },
+        { "type": "setting", "settings": { "title": "East-West" } },
+        { "type": "setting", "settings": { "title": "Toi et Moi" } }
       ]
     }
   ]

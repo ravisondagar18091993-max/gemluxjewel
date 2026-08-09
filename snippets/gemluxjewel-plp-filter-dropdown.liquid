@@ -1,0 +1,150 @@
+{% comment %}
+  Cullen-style PLP filter dropdown (facets.js compatible).
+
+  @param filter {Object} Shopify collection filter
+  @param section {Object} Section object
+  @param dropdown_style {String} metal | shape | setting | default
+  @param section_blocks {Array} Section blocks for shape/setting images
+{% endcomment %}
+
+{%- liquid
+  assign dropdown_style = dropdown_style | default: 'default'
+  assign presentation = filter.presentation | default: 'text'
+  assign active_count = filter.active_values.size
+  assign panel_id = 'Facet-' | append: filter.param_name | escape | append: '-' | append: section.id
+-%}
+
+<details
+  id="Details-{{ filter.param_name | escape }}-{{ section.id }}"
+  class="gemluxjewel-plp-filter-dropdown js-filter"
+  data-gemluxjewel-plp-dropdown
+  data-index="{{ forloop.index | default: 1 }}"
+>
+  <summary class="gemluxjewel-plp-filter-dropdown__trigger">
+    <span class="gemluxjewel-plp-filter-dropdown__label">{{ filter.label | escape }}</span>
+    {%- if active_count > 0 -%}
+      <span class="gemluxjewel-plp-filter-dropdown__count">({{ active_count }})</span>
+    {%- endif -%}
+    <span class="gemluxjewel-plp-filter-dropdown__chevron" aria-hidden="true">
+      {{- 'icon-caret.svg' | inline_asset_content -}}
+    </span>
+  </summary>
+
+  <div id="{{ panel_id }}" class="gemluxjewel-plp-filter-dropdown__panel parent-display">
+    <div class="gemluxjewel-plp-filter-dropdown__panel-head">
+      <span class="gemluxjewel-plp-filter-dropdown__panel-title">{{ filter.label | escape }}</span>
+      <facet-remove>
+        <a href="{{ filter.url_to_remove }}" class="gemluxjewel-plp-filter-dropdown__reset">
+          {{ 'products.facets.reset' | t }}
+        </a>
+      </facet-remove>
+    </div>
+
+    <fieldset class="facets-wrap parent-wrap">
+      <legend class="visually-hidden">{{ filter.label | escape }}</legend>
+      <ul class="gemluxjewel-plp-filter-dropdown__list list-unstyled" role="list">
+        {%- liquid
+          assign sorted_values = filter.values
+          if filter.operator == 'AND'
+            assign active_filter_values = filter.values | where: 'active', true
+            assign inactive_filter_values = filter.values | where: 'active', false
+            assign sorted_values = active_filter_values | concat: inactive_filter_values
+          endif
+        -%}
+
+        {%- for value in sorted_values -%}
+          {%- liquid
+            assign input_id = 'Filter-' | append: filter.param_name | escape | append: '-' | append: forloop.index
+            assign is_disabled = false
+            if value.count == 0 and value.active == false
+              assign is_disabled = true
+            endif
+
+            assign value_label_key = value.label | downcase | strip
+            assign option_image = blank
+
+            if dropdown_style == 'shape' or dropdown_style == 'setting'
+              assign block_type = 'shape'
+              if dropdown_style == 'setting'
+                assign block_type = 'setting'
+              endif
+
+              for block in section_blocks
+                if block.type != block_type
+                  continue
+                endif
+                assign block_title_key = block.settings.title | downcase | strip
+                if block_title_key == value_label_key and block.settings.image != blank
+                  assign option_image = block.settings.image
+                  break
+                endif
+              endfor
+            endif
+
+            assign metal_class = ''
+            if dropdown_style == 'metal'
+              if value_label_key contains 'yellow'
+                assign metal_class = 'gemluxjewel-plp-filter-swatch--yellow-gold'
+              elsif value_label_key contains 'rose'
+                assign metal_class = 'gemluxjewel-plp-filter-swatch--rose-gold'
+              elsif value_label_key contains 'white'
+                assign metal_class = 'gemluxjewel-plp-filter-swatch--white-gold'
+              elsif value_label_key contains 'platinum'
+                assign metal_class = 'gemluxjewel-plp-filter-swatch--platinum'
+              else
+                assign metal_class = 'gemluxjewel-plp-filter-swatch--default'
+              endif
+            endif
+          -%}
+
+          <li class="gemluxjewel-plp-filter-dropdown__item{% if is_disabled %} is-disabled{% endif %}">
+            {%- if presentation == 'swatch' -%}
+              <div class="gemluxjewel-plp-filter-dropdown__option gemluxjewel-plp-filter-dropdown__option--swatch{% if value.active %} is-active{% endif %}">
+                <div class="swatch-input-wrapper">
+                  {% render 'swatch-input',
+                    id: input_id,
+                    type: 'checkbox',
+                    name: value.param_name,
+                    value: value.value,
+                    product_form_id: 'FacetFiltersForm',
+                    swatch: value.swatch,
+                    checked: value.active,
+                    disabled: is_disabled
+                  %}
+                </div>
+                <label for="{{ input_id }}" class="gemluxjewel-plp-filter-dropdown__option-label">
+                  <span>{{ value.label | escape }}</span>
+                </label>
+              </div>
+            {%- else -%}
+              <label for="{{ input_id }}" class="gemluxjewel-plp-filter-dropdown__option{% if value.active %} is-active{% endif %}">
+                <input
+                  type="checkbox"
+                  name="{{ value.param_name }}"
+                  value="{{ value.value }}"
+                  id="{{ input_id }}"
+                  class="gemluxjewel-plp-filter-dropdown__checkbox"
+                  {% if value.active %}checked{% endif %}
+                  {% if is_disabled %}disabled{% endif %}
+                >
+                <span class="gemluxjewel-plp-filter-dropdown__option-label">{{ value.label | escape }}</span>
+
+                {%- if dropdown_style == 'metal' -%}
+                  <span class="gemluxjewel-plp-filter-swatch {{ metal_class }}" aria-hidden="true"></span>
+                {%- elsif option_image != blank -%}
+                  <span class="gemluxjewel-plp-filter-dropdown__option-icon">
+                    {{
+                      option_image
+                      | image_url: width: 80
+                      | image_tag: widths: '40, 60, 80', sizes: '40px', loading: 'lazy', alt: value.label
+                    }}
+                  </span>
+                {%- endif -%}
+              </label>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </fieldset>
+  </div>
+</details>

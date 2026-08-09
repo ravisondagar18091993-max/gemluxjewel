@@ -1,0 +1,318 @@
+{% comment %}
+  Cullen-style horizontal PLP filter bar (facets.js compatible).
+
+  @param results {Collection}
+  @param section {Section}
+  @param paginate {Object}
+  @param enable_filtering {Boolean}
+  @param enable_sorting {Boolean}
+{% endcomment %}
+
+{{ 'component-show-more.css' | asset_url | stylesheet_tag }}
+{{ 'component-swatch-input.css' | asset_url | stylesheet_tag }}
+{{ 'component-swatch.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign sort_by = results.sort_by | default: results.default_sort_by
+  assign results_url = results.url
+
+  assign metal_label = section.settings.metal_filter_label | default: 'Metal' | downcase
+  assign shape_label = section.settings.shape_filter_label | default: 'Stone shape' | downcase
+  assign setting_label = section.settings.setting_filter_label | default: 'Setting style' | downcase
+
+  assign metal_filter = blank
+  assign shape_filter = blank
+  assign setting_filter = blank
+  assign featured_param_names = '|'
+
+  for filter in results.filters
+    assign filter_label = filter.label | downcase
+    assign filter_param = filter.param_name | downcase
+
+    if metal_filter == blank
+      if filter_label contains 'metal' or filter_param contains 'metal'
+        assign metal_filter = filter
+        assign featured_param_names = featured_param_names | append: filter.param_name | append: '|'
+      endif
+    endif
+
+    if shape_filter == blank
+      if filter_label contains 'shape' or filter_param contains 'shape' or filter_label == shape_label
+        assign shape_filter = filter
+        assign featured_param_names = featured_param_names | append: filter.param_name | append: '|'
+      endif
+    endif
+
+    if setting_filter == blank
+      if filter_label contains 'setting' or filter_param contains 'setting' or filter_label == setting_label
+        assign setting_filter = filter
+        assign featured_param_names = featured_param_names | append: filter.param_name | append: '|'
+      endif
+    endif
+  endfor
+-%}
+
+<div
+  class="gemluxjewel-plp-filter-bar facets-container"
+  data-collection-id="{{ results.id }}"
+  data-collection-handle="{{ results.handle }}"
+  data-template="{{ template.name }}"
+  id="main-collection-filters"
+  data-id="{{ section.id }}"
+>
+  <facet-filters-form class="gemluxjewel-plp-filter-bar__form-wrap">
+    <form id="FacetFiltersForm" class="gemluxjewel-plp-filter-bar__form">
+      <div id="FacetsWrapperDesktop" class="gemluxjewel-plp-filter-bar__main">
+        <div class="gemluxjewel-plp-filter-bar__controls">
+          {%- if enable_filtering -%}
+            <button
+              type="button"
+              class="gemluxjewel-plp-filter-bar__filters-btn"
+              data-gemluxjewel-plp-drawer-open
+              aria-controls="GemluxPlpFilterDrawer"
+              aria-expanded="false"
+            >
+              <span class="gemluxjewel-plp-filter-bar__filters-icon" aria-hidden="true">
+                {{- 'icon-filter.svg' | inline_asset_content -}}
+              </span>
+              <span>{{ section.settings.filters_button_label | default: 'Filters' | escape }}</span>
+            </button>
+
+            <div class="gemluxjewel-plp-filter-bar__dropdowns">
+              {%- if metal_filter != blank -%}
+                {% render 'gemluxjewel-plp-filter-dropdown',
+                  filter: metal_filter,
+                  section: section,
+                  section_blocks: section.blocks,
+                  dropdown_style: 'metal'
+                %}
+              {%- endif -%}
+
+              {%- if shape_filter != blank -%}
+                {% render 'gemluxjewel-plp-filter-dropdown',
+                  filter: shape_filter,
+                  section: section,
+                  section_blocks: section.blocks,
+                  dropdown_style: 'shape'
+                %}
+              {%- endif -%}
+
+              {%- if setting_filter != blank -%}
+                {% render 'gemluxjewel-plp-filter-dropdown',
+                  filter: setting_filter,
+                  section: section,
+                  section_blocks: section.blocks,
+                  dropdown_style: 'setting'
+                %}
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+
+          <div class="gemluxjewel-plp-filter-bar__search-wrap">
+            <label class="visually-hidden" for="GemluxPlpSearch-{{ section.id }}">
+              {{ section.settings.search_placeholder | default: 'Search by style, shape or metal' | escape }}
+            </label>
+            <span class="gemluxjewel-plp-filter-bar__search-icon" aria-hidden="true">
+              {{- 'icon-search.svg' | inline_asset_content -}}
+            </span>
+            <input
+              id="GemluxPlpSearch-{{ section.id }}"
+              class="gemluxjewel-plp-filter-bar__search"
+              type="search"
+              name="q"
+              value="{{ results.terms | escape }}"
+              placeholder="{{ section.settings.search_placeholder | default: 'Search by style, shape or metal' | escape }}"
+              autocomplete="off"
+            >
+          </div>
+        </div>
+
+        <div class="gemluxjewel-plp-filter-bar__meta">
+          <div
+            class="gemluxjewel-plp-filter-bar__count product-count"
+            id="ProductCountDesktop"
+            role="status"
+            data-product-count="{{ results.products_count }}"
+            data-total-count="{{ results.all_products_count }}"
+          >
+            <span id="ProductCount">
+              {%- if results.products_count == results.all_products_count -%}
+                {{ 'products.facets.product_count_simple' | t: count: results.products_count }}
+              {%- else -%}
+                {{
+                  'products.facets.product_count'
+                  | t: product_count: results.products_count, count: results.all_products_count
+                }}
+              {%- endif -%}
+            </span>
+            {%- render 'loading-spinner' -%}
+          </div>
+
+          {%- if enable_sorting -%}
+            <div class="gemluxjewel-plp-filter-bar__sort">
+              <label class="visually-hidden" for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
+              <select
+                name="sort_by"
+                id="SortBy"
+                class="gemluxjewel-plp-filter-bar__sort-select"
+                aria-describedby="a11y-refresh-page-message"
+              >
+                {%- for option in results.sort_options -%}
+                  <option value="{{ option.value | escape }}" {% if option.value == sort_by %}selected{% endif %}>
+                    {{ option.name | escape }}
+                  </option>
+                {%- endfor -%}
+              </select>
+              <span class="gemluxjewel-plp-filter-bar__sort-chevron" aria-hidden="true">
+                {{- 'icon-caret.svg' | inline_asset_content -}}
+              </span>
+            </div>
+          {%- endif -%}
+        </div>
+
+        {%- if enable_filtering -%}
+          <div class="gemluxjewel-plp-filter-bar__active active-facets active-facets-desktop">
+            {%- for filter in results.filters -%}
+              {%- for value in filter.active_values -%}
+                <facet-remove>
+                  <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
+                    <span class="active-facets__button-inner button button--tertiary">
+                      {{ filter.label | escape }}: {{ value.label | escape }}
+                      <span class="svg-wrapper">
+                        {{- 'icon-close-small.svg' | inline_asset_content -}}
+                      </span>
+                      <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
+                    </span>
+                  </a>
+                </facet-remove>
+              {%- endfor -%}
+
+              {%- if filter.type == 'price_range' -%}
+                {%- assign min = filter.min_value.value -%}
+                {%- assign max = filter.max_value.value -%}
+                {%- if min != null or max != null -%}
+                  <facet-remove>
+                    <a href="{{ filter.url_to_remove }}" class="active-facets__button active-facets__button--light">
+                      <span class="active-facets__button-inner button button--tertiary">
+                        {{ min | default: 0 | money }} - {{ max | default: filter.range_max | money }}
+                        <span class="svg-wrapper">
+                          {{- 'icon-close-small.svg' | inline_asset_content -}}
+                        </span>
+                        <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
+                      </span>
+                    </a>
+                  </facet-remove>
+                {%- endif -%}
+              {%- endif -%}
+            {%- endfor -%}
+
+            {%- assign has_active = false -%}
+            {%- for filter in results.filters -%}
+              {%- if filter.active_values.size > 0 -%}
+                {%- assign has_active = true -%}
+                {%- break -%}
+              {%- endif -%}
+            {%- endfor -%}
+
+            {%- if has_active -%}
+              <facet-remove class="active-facets__button-wrapper">
+                <a href="{{ results_url }}" class="active-facets__button-remove underlined-link">
+                  <span>{{ 'products.facets.clear_all' | t }}</span>
+                </a>
+              </facet-remove>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- if enable_filtering and results.filters != empty -%}
+        <div class="gemluxjewel-plp-filter-drawer" id="GemluxPlpFilterDrawer" hidden>
+          <div class="gemluxjewel-plp-filter-drawer__overlay" data-gemluxjewel-plp-drawer-close tabindex="-1"></div>
+          <div class="gemluxjewel-plp-filter-drawer__panel" role="dialog" aria-modal="true" aria-label="{{ 'products.facets.filter_by_label' | t }}">
+            <div class="gemluxjewel-plp-filter-drawer__head">
+              <h2 class="gemluxjewel-plp-filter-drawer__title">{{ 'products.facets.filter_by_label' | t }}</h2>
+              <button type="button" class="gemluxjewel-plp-filter-drawer__close" data-gemluxjewel-plp-drawer-close aria-label="{{ 'accessibility.close' | t }}">
+                {{- 'icon-close.svg' | inline_asset_content -}}
+              </button>
+            </div>
+
+            <div class="gemluxjewel-plp-filter-drawer__body">
+              {%- for filter in results.filters -%}
+                {%- liquid
+                  assign param_key = filter.param_name | prepend: '|' | append: '|'
+                  assign is_featured = false
+                  if featured_param_names contains param_key
+                    assign is_featured = true
+                  endif
+                -%}
+
+                {%- if is_featured -%}
+                  {%- continue -%}
+                {%- endif -%}
+
+                {%- case filter.type -%}
+                  {%- when 'boolean', 'list' -%}
+                    <details class="gemluxjewel-plp-filter-drawer__group js-filter" id="Details-drawer-{{ filter.param_name | escape }}-{{ section.id }}">
+                      <summary class="gemluxjewel-plp-filter-drawer__summary">
+                        <span>{{ filter.label | escape }}</span>
+                        {{- 'icon-caret.svg' | inline_asset_content -}}
+                      </summary>
+                      <div class="gemluxjewel-plp-filter-drawer__content parent-display">
+                        <fieldset class="facets-wrap parent-wrap">
+                          <legend class="visually-hidden">{{ filter.label | escape }}</legend>
+                          <ul class="gemluxjewel-plp-filter-drawer__list list-unstyled" role="list">
+                            {%- for value in filter.values -%}
+                              {%- liquid
+                                assign input_id = 'Filter-drawer-' | append: filter.param_name | escape | append: '-' | append: forloop.index
+                                assign is_disabled = false
+                                if value.count == 0 and value.active == false
+                                  assign is_disabled = true
+                                endif
+                              -%}
+                              <li class="gemluxjewel-plp-filter-drawer__item">
+                                <label for="{{ input_id }}" class="gemluxjewel-plp-filter-drawer__option{% if value.active %} is-active{% endif %}{% if is_disabled %} is-disabled{% endif %}">
+                                  <input
+                                    type="checkbox"
+                                    name="{{ value.param_name }}"
+                                    value="{{ value.value }}"
+                                    id="{{ input_id }}"
+                                    {% if value.active %}checked{% endif %}
+                                    {% if is_disabled %}disabled{% endif %}
+                                  >
+                                  <span>{{ value.label | escape }}</span>
+                                  <span class="gemluxjewel-plp-filter-drawer__count">({{ value.count }})</span>
+                                </label>
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        </fieldset>
+                      </div>
+                    </details>
+                  {%- when 'price_range' -%}
+                    <details class="gemluxjewel-plp-filter-drawer__group js-filter" id="Details-drawer-price-{{ section.id }}">
+                      <summary class="gemluxjewel-plp-filter-drawer__summary">
+                        <span>{{ filter.label | escape }}</span>
+                        {{- 'icon-caret.svg' | inline_asset_content -}}
+                      </summary>
+                      <div class="gemluxjewel-plp-filter-drawer__content parent-display">
+                        <price-range class="facets__price">
+                          {% render 'price-facet', filter: filter, id_prefix: 'Filter-drawer-', filter_type: 'vertical' %}
+                        </price-range>
+                      </div>
+                    </details>
+                {%- endcase -%}
+              {%- endfor -%}
+            </div>
+
+            <div class="gemluxjewel-plp-filter-drawer__foot">
+              <a href="{{ results_url }}" class="gemluxjewel-plp-filter-drawer__clear">{{ 'products.facets.clear_all' | t }}</a>
+              <button type="button" class="gemluxjewel-plp-filter-drawer__apply" data-gemluxjewel-plp-drawer-close>
+                {{ section.settings.filters_apply_label | default: 'Apply' | escape }}
+              </button>
+            </div>
+          </div>
+        </div>
+      {%- endif -%}
+    </form>
+  </facet-filters-form>
+</div>
