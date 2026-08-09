@@ -134,31 +134,41 @@
         "c1": {
           "type": "style",
           "settings": {
-            "title": "Solitaire"
+            "title": "Solitaire",
+            "collection": "",
+            "link": ""
           }
         },
         "c2": {
           "type": "style",
           "settings": {
-            "title": "Bezel"
+            "title": "Bezel",
+            "collection": "",
+            "link": ""
           }
         },
         "c3": {
           "type": "style",
           "settings": {
-            "title": "Toi et Moi"
+            "title": "Toi et Moi",
+            "collection": "",
+            "link": ""
           }
         },
         "c4": {
           "type": "style",
           "settings": {
-            "title": "Three Stone"
+            "title": "Three Stone",
+            "collection": "",
+            "link": ""
           }
         },
         "c5": {
           "type": "style",
           "settings": {
-            "title": "Halo"
+            "title": "Halo",
+            "collection": "",
+            "link": ""
           }
         }
       },
@@ -181,6 +191,7 @@
           "type": "card",
           "settings": {
             "layout": "featured",
+            "collection": "",
             "title": "Quick Ship",
             "button_label": "Shop Now",
             "link": "shopify://collections/all"
@@ -190,6 +201,7 @@
           "type": "card",
           "settings": {
             "layout": "featured",
+            "collection": "",
             "title": "For Her",
             "button_label": "Shop Now",
             "link": "shopify://collections/all"
@@ -199,7 +211,9 @@
           "type": "card",
           "settings": {
             "layout": "tile",
+            "collection": "",
             "title": "Essentials",
+            "button_label": "Shop Now",
             "link": "shopify://collections/all"
           }
         },
@@ -207,7 +221,9 @@
           "type": "card",
           "settings": {
             "layout": "tile",
+            "collection": "",
             "title": "Under $1000",
+            "button_label": "Shop Now",
             "link": "shopify://collections/all"
           }
         },
@@ -215,7 +231,9 @@
           "type": "card",
           "settings": {
             "layout": "tile",
+            "collection": "",
             "title": "For Him",
+            "button_label": "Shop Now",
             "link": "shopify://collections/all"
           }
         }
@@ -228,36 +246,9 @@
         "gift_tile_3"
       ],
       "settings": {
-        "title": "Gift Guide"
+        "title": "Gift Guide",
+        "subtitle": ""
       }
-    },
-    "gemluxjewel_dual_cards": {
-      "type": "gemluxjewel-dual-cards",
-      "blocks": {
-        "card_1": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/ring-oval-halo-on-neck.webp",
-            "title": "Engagement Rings",
-            "button_label": "Shop Now",
-            "button_link": "shopify://collections/all"
-          }
-        },
-        "card_2": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/ring-mens-wedding-band.webp",
-            "title": "Diamond Pendants",
-            "button_label": "Shop Now",
-            "button_link": "shopify://collections/all"
-          }
-        }
-      },
-      "block_order": [
-        "card_1",
-        "card_2"
-      ],
-      "settings": {}
     },
     "gemluxjewel_best_sellers": {
       "type": "gemluxjewel-best-sellers",
@@ -298,20 +289,6 @@
         "split_2"
       ],
       "settings": {}
-    },
-    "gemluxjewel_new_in": {
-      "type": "gemluxjewel-new-in",
-      "settings": {
-        "title": "New In",
-        "subtitle": "Shop the latest additions — newly added pieces sorted by date.",
-        "button_label": "View Collection",
-        "button_link": "shopify://collections/all",
-        "badge_text": "New In",
-        "collection": "all",
-        "products_to_show": 4,
-        "sort_by": "created_at",
-        "new_within_days": 0
-      }
     },
     "gemluxjewel_why": {
       "type": "gemluxjewel-why-choose-us",
@@ -487,8 +464,6 @@
     "gemluxjewel_stone_shapes",
     "gemluxjewel_collection_slider",
     "gemluxjewel_gift_guide",
-    "gemluxjewel_dual_cards",
-    "gemluxjewel_new_in",
     "gemluxjewel_best_sellers",
     "gemluxjewel_split_promo",
     "gemluxjewel_why",
