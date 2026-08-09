@@ -34,121 +34,24 @@
             "label": "10% off your first order — Shop now",
             "url": "shopify://collections/all"
           }
-        },
-        "mega_col_1": {
-          "type": "mega_column",
-          "settings": {
-            "parent_nav": "Engagement Rings",
-            "title": "Lab Grown Diamonds",
-            "show_info_icon": true,
-            "info_url": "",
-            "menu": "",
-            "default_links": "Solitaire Rings\nHalo Rings\nThree Stone Rings\nNature Inspired Rings\nPave Rings\nOld Cut Rings\nRose Cut Rings\nColored Diamond Rings\nAntique Cut Rings\nBridal Sets",
-            "highlight_link": "",
-            "new_badge_link": "",
-            "show_shop_all": true,
-            "shop_all_url": "",
-            "shop_all_label": "Shop All"
-          }
-        },
-        "mega_col_2": {
-          "type": "mega_column",
-          "settings": {
-            "parent_nav": "Engagement Rings",
-            "title": "Moissanite",
-            "show_info_icon": true,
-            "info_url": "",
-            "menu": "",
-            "default_links": "Solitaire Rings\nHalo Rings\nThree Stone Rings\nPave Rings\nRose Cut Rings\nAntique Cut Rings\nColored Moissanite Rings\nMen's Rings\nBridal Sets",
-            "highlight_link": "",
-            "new_badge_link": "",
-            "show_shop_all": true,
-            "shop_all_url": "",
-            "shop_all_label": "Shop All"
-          }
-        },
-        "mega_col_3": {
-          "type": "mega_column",
-          "settings": {
-            "parent_nav": "Engagement Rings",
-            "title": "Gemstones",
-            "show_info_icon": false,
-            "info_url": "",
-            "menu": "",
-            "default_links": "Sapphire Rings\nEmerald Rings\nMorganite Rings\nOpal Rings\nTanzanite Rings\nTourmaline Rings",
-            "highlight_link": "Opal Rings",
-            "new_badge_link": "",
-            "show_shop_all": true,
-            "shop_all_url": "",
-            "shop_all_label": "Shop All"
-          }
-        },
-        "mega_col_4": {
-          "type": "mega_column",
-          "settings": {
-            "parent_nav": "Engagement Rings",
-            "title": "Featured",
-            "show_info_icon": false,
-            "info_url": "",
-            "menu": "",
-            "default_links": "Designer Rings\nNew Arrivals\nBest Sellers\nFive Carat & Beyond",
-            "highlight_link": "",
-            "new_badge_link": "Five Carat & Beyond",
-            "show_shop_all": false,
-            "shop_all_url": "",
-            "shop_all_label": "Shop All"
-          }
-        },
-        "mega_col_5": {
-          "type": "mega_column",
-          "settings": {
-            "parent_nav": "Engagement Rings",
-            "title": "Education",
-            "show_info_icon": false,
-            "info_url": "",
-            "menu": "",
-            "default_links": "Ring Size Chart\nLab Grown Diamond vs Moissanite",
-            "highlight_link": "",
-            "new_badge_link": "",
-            "show_shop_all": false,
-            "shop_all_url": "",
-            "shop_all_label": "Shop All"
-          }
-        },
-        "mega_feat_1": {
-          "type": "mega_featured",
-          "settings": {
-            "parent_nav": "Engagement Rings",
-            "caption": "Solitaire Rings",
-            "link": "shopify://collections/all"
-          }
         }
       },
       "block_order": [
         "top_1",
         "top_2",
-        "top_3",
-        "mega_col_1",
-        "mega_col_2",
-        "mega_col_3",
-        "mega_col_4",
-        "mega_col_5",
-        "mega_feat_1"
+        "top_3"
       ],
       "settings": {
         "logo_text": "gemluxjewel",
-        "menu": "left-new-menu",
-        "menu_right": "right-menu",
+        "menu": "main-menu",
+        "menu_right": "",
         "highlight_link": "Visit",
-        "mobile_menu": "",
         "announcement_text": "127,778 TREES PLANTED",
-        "announcement_url": "",
         "show_announcement_icon": true,
         "slider_speed": 4,
         "enable_search": true,
         "show_account_icon": false,
         "show_wishlist_icon": false,
-        "wishlist_url": "",
         "locale_text": "IN"
       }
     }
