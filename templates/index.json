@@ -250,48 +250,6 @@
         "subtitle": ""
       }
     },
-    "gemluxjewel_dual_cards": {
-      "type": "gemluxjewel-dual-cards",
-      "blocks": {
-        "card_1": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/ring-oval-halo-on-neck.webp",
-            "title": "Engagement Rings",
-            "button_label": "Shop Now",
-            "button_link": "shopify://collections/all"
-          }
-        },
-        "card_2": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/ring-mens-wedding-band.webp",
-            "title": "Diamond Pendants",
-            "button_label": "Shop Now",
-            "button_link": "shopify://collections/all"
-          }
-        }
-      },
-      "block_order": [
-        "card_1",
-        "card_2"
-      ],
-      "settings": {}
-    },
-    "gemluxjewel_new_in": {
-      "type": "gemluxjewel-new-in",
-      "settings": {
-        "title": "New In",
-        "subtitle": "Shop the latest additions — newly added pieces sorted by date.",
-        "button_label": "View Collection",
-        "button_link": "shopify://collections/all",
-        "badge_text": "New In",
-        "collection": "all",
-        "products_to_show": 4,
-        "sort_by": "created_at",
-        "new_within_days": 0
-      }
-    },
     "gemluxjewel_best_sellers": {
       "type": "gemluxjewel-best-sellers",
       "settings": {
@@ -331,51 +289,6 @@
         "split_2"
       ],
       "settings": {}
-    },
-    "gemluxjewel_why": {
-      "type": "gemluxjewel-why-choose-us",
-      "blocks": {
-        "f1": {
-          "type": "feature",
-          "settings": {
-            "title": "Skin-Safe Comfort",
-            "text": "Designed with hypoallergenic materials that are gentle on sensitive skin all day"
-          }
-        },
-        "f2": {
-          "type": "feature",
-          "settings": {
-            "title": "Premium Quality",
-            "text": "Crafted using durable, high-grade materials for long-lasting shine and strength"
-          }
-        },
-        "f3": {
-          "type": "feature",
-          "settings": {
-            "title": "Everyday Wear",
-            "text": "Lightweight and waterproof jewellery made for daily use without compromise"
-          }
-        },
-        "f4": {
-          "type": "feature",
-          "settings": {
-            "title": "Expert Support",
-            "text": "Get reliable 24/7 guidance to help you choose the perfect piece effortlessly"
-          }
-        }
-      },
-      "block_order": [
-        "f1",
-        "f2",
-        "f3",
-        "f4"
-      ],
-      "settings": {
-        "prefix": "Our Story",
-        "title": "Why Choose Us",
-        "button_label": "View Collection",
-        "button_link": "shopify://collections/all"
-      }
     },
     "gemluxjewel_testimonials": {
       "type": "gemluxjewel-testimonials",
@@ -556,11 +469,8 @@
     "gemluxjewel_stone_shapes",
     "gemluxjewel_collection_slider",
     "gemluxjewel_gift_guide",
-    "gemluxjewel_dual_cards",
-    "gemluxjewel_new_in",
     "gemluxjewel_best_sellers",
     "gemluxjewel_split_promo",
-    "gemluxjewel_why",
     "gemluxjewel_testimonials",
     "gemluxjewel_faq",
     "gemluxjewel_initiatives"
