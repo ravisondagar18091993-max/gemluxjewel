@@ -1,39 +1,18 @@
-{% comment %} gemluxjewel font faces — include once per page via hero section {% endcomment %}
+{% comment %}
+  gemluxjewel typography
+  Headings: Noto Serif
+  Body / UI: Outfit
+{% endcomment %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+  href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap"
+  rel="stylesheet"
+>
 {% style %}
-  @font-face {
-    font-family: 'Instrument Sans';
-    src: url('{{ 'instrumentsans-regular.ttf' | asset_url }}') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Instrument Sans';
-    src: url('{{ 'instrumentsans-medium.ttf' | asset_url }}') format('truetype');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Nunito';
-    src: url('{{ 'nunito-light.ttf' | asset_url }}') format('truetype');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Nunito';
-    src: url('{{ 'nunito-medium.ttf' | asset_url }}') format('truetype');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Nunito';
-    src: url('{{ 'nunito-semibold.ttf' | asset_url }}') format('truetype');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
+  .gemluxjewel {
+    --gemluxjewel-font-heading: 'Noto Serif', Georgia, 'Times New Roman', serif;
+    --gemluxjewel-font-body: 'Outfit', var(--font-body-family), sans-serif;
   }
 
   main:has(.gemluxjewel) {

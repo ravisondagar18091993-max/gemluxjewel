@@ -4,7 +4,7 @@
   position: relative;
   background: var(--gemluxjewel-primary, #73976a);
   color: #ffffff;
-  font-family: var(--gemluxjewel-font-body, 'Instrument Sans', sans-serif);
+  font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
   padding: 0 0 32px;
   overflow: hidden;
 }
@@ -150,7 +150,7 @@
 
 .gemluxjewel-footer__promo-text {
   margin: 0;
-  font-family: var(--gemluxjewel-font-heading, 'Nunito', sans-serif);
+  font-family: var(--gemluxjewel-font-heading, 'Noto Serif', sans-serif);
   font-weight: 300;
   font-size: 22px;
   line-height: 1.35;

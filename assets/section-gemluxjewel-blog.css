@@ -8,8 +8,8 @@
   --gemluxjewel-gray: #818181;
   --gemluxjewel-radius: 10px;
   --gemluxjewel-radius-pill: 30px;
-  --gemluxjewel-font-body: 'Instrument Sans', var(--font-body-family), sans-serif;
-  --gemluxjewel-font-heading: 'Nunito', var(--font-heading-family), sans-serif;
+  --gemluxjewel-font-body: 'Outfit', var(--font-body-family), sans-serif;
+  --gemluxjewel-font-heading: 'Noto Serif', var(--font-heading-family), sans-serif;
 }
 
 .gemluxjewel-blog-hero {

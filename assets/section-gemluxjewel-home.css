@@ -13,8 +13,8 @@
   --gemluxjewel-radius-sm: 5px;
   --gemluxjewel-radius: 10px;
   --gemluxjewel-radius-pill: 30px;
-  --gemluxjewel-font-body: 'Instrument Sans', var(--font-body-family), sans-serif;
-  --gemluxjewel-font-heading: 'Nunito', var(--font-heading-family), sans-serif;
+  --gemluxjewel-font-body: 'Outfit', var(--font-body-family), sans-serif;
+  --gemluxjewel-font-heading: 'Noto Serif', var(--font-heading-family), sans-serif;
   font-family: var(--gemluxjewel-font-body);
   color: var(--gemluxjewel-dark);
 }
@@ -234,7 +234,7 @@
 }
 
 .gemluxjewel-hero__prefix {
-  font-family: var(--gemluxjewel-font-body, 'Instrument Sans', sans-serif);
+  font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
   font-size: 11px;
   line-height: 1.2;
   letter-spacing: 0.14em;
@@ -254,7 +254,7 @@
 }
 
 .gemluxjewel-hero__text {
-  font-family: var(--gemluxjewel-font-body, 'Instrument Sans', sans-serif);
+  font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
   font-size: clamp(15px, 2vw, 18px);
   line-height: 1.5;
   font-weight: 500;
@@ -278,7 +278,7 @@
   min-width: 240px;
   min-height: 48px;
   padding: 14px 28px;
-  font-family: var(--gemluxjewel-font-body, 'Instrument Sans', sans-serif);
+  font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
   font-size: 11px;
   line-height: 1;
   letter-spacing: 0.12em;

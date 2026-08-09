@@ -75,7 +75,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--gemluxjewel-font-body, 'Instrument Sans', sans-serif);
+  font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
   font-size: 11px;
   line-height: 1;
   letter-spacing: 0.08em;
@@ -154,7 +154,7 @@
 
 /* ── Logo ── */
 .gemluxjewel-header__logo {
-  font-family: var(--gemluxjewel-font-body, 'Instrument Sans', sans-serif);
+  font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
   font-weight: 400;
   font-size: 22px;
   line-height: 1;
@@ -213,7 +213,7 @@
 }
 
 .gemluxjewel-header__nav-link {
-  font-family: var(--gemluxjewel-font-body, 'Instrument Sans', sans-serif);
+  font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
   font-size: 11px;
   line-height: 1;
   letter-spacing: 0.1em;
@@ -277,7 +277,7 @@
 }
 
 .gemluxjewel-header__locale {
-  font-family: var(--gemluxjewel-font-body, 'Instrument Sans', sans-serif);
+  font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
   font-size: 11px;
   line-height: 1;
   letter-spacing: 0.1em;
@@ -439,7 +439,7 @@
 }
 
 .gemluxjewel-header__mega-title {
-  font-family: var(--gemluxjewel-font-body, 'Instrument Sans', sans-serif);
+  font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
   font-size: 12px;
   line-height: 1.2;
   letter-spacing: 0.08em;
@@ -494,7 +494,7 @@
   flex-wrap: wrap;
   gap: 8px;
   max-width: 100%;
-  font-family: var(--gemluxjewel-font-body, 'Instrument Sans', sans-serif);
+  font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
   font-size: 14px;
   line-height: 1.35;
   font-weight: 400;
@@ -535,7 +535,7 @@
 .gemluxjewel-header__mega-shop-all {
   display: inline-block;
   margin-top: 18px;
-  font-family: var(--gemluxjewel-font-body, 'Instrument Sans', sans-serif);
+  font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
   font-size: 14px;
   line-height: 1.35;
   color: #1a2744;
@@ -574,7 +574,7 @@
 .gemluxjewel-header__mega-featured-caption {
   display: block;
   margin-top: 14px;
-  font-family: var(--gemluxjewel-font-body, 'Instrument Sans', sans-serif);
+  font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
   font-size: 14px;
   line-height: 1.35;
   color: #1a2744;
@@ -637,7 +637,7 @@
 }
 
 .gemluxjewel-mobile-menu__link {
-  font-family: var(--gemluxjewel-font-body, 'Instrument Sans', sans-serif);
+  font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
   font-size: 36px;
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -669,7 +669,7 @@
 }
 
 .gemluxjewel-mobile-menu__subhead {
-  font-family: var(--gemluxjewel-font-body, 'Instrument Sans', sans-serif);
+  font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
   font-size: 11px;
   line-height: 1.2;
   letter-spacing: 0.08em;
@@ -681,7 +681,7 @@
 }
 
 .gemluxjewel-mobile-menu__sublink {
-  font-family: var(--gemluxjewel-font-body, 'Instrument Sans', sans-serif);
+  font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
   font-size: 18px;
   line-height: 1.3;
   color: var(--gemluxjewel-dark, #141414);
