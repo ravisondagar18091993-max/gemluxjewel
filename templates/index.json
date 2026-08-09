@@ -263,12 +263,21 @@
       "type": "gemluxjewel-best-sellers",
       "settings": {
         "title": "Best Sellers",
-        "subtitle": "Discover our latest additions - fresh designs and timeless classics newly available",
+        "subtitle": "Discover our customer favorites — timeless designs loved by shoppers worldwide.",
         "button_label": "View Collection",
         "button_link": "shopify://collections/all",
-        "badge_text": "New In",
+        "badge_text": "Best Seller",
         "collection": "all",
         "products_to_show": 4
+      }
+    },
+    "gemluxjewel_new_in": {
+      "type": "gemluxjewel-new-in",
+      "settings": {
+        "title": "New In",
+        "button_label": "View Collection",
+        "button_link": "shopify://collections/all",
+        "collection": "all"
       }
     },
     "gemluxjewel_why": {
@@ -446,6 +455,7 @@
     "gemluxjewel_collection_slider",
     "gemluxjewel_gift_guide",
     "gemluxjewel_dual_cards",
+    "gemluxjewel_new_in",
     "gemluxjewel_best_sellers",
     "gemluxjewel_why",
     "gemluxjewel_testimonials",
