@@ -12,10 +12,15 @@
     "gemluxjewel_hero": {
       "type": "gemluxjewel-hero",
       "settings": {
-        "image": "shopify://shop_images/Customized_Jewelry_Gemlux_Jewels_bd4ce8ec-636c-4c4e-af4e-13fd2b0b9b2a.jpg",
+        "media_type": "video",
+        "video": "shopify://files/videos/Woman_wearing_jewelry_indoors_1080p_202608061709.mp4",
         "prefix": "Engagement Rings",
         "title": "A Shift in Perspective",
-        "text": "East-West rings redefining modern bridal styling."
+        "text": "East-West rings redefining modern bridal styling.",
+        "button_1_label": "Discover East-West Rings",
+        "button_1_link": "",
+        "button_2_label": "Book an Appointment",
+        "button_2_link": ""
       }
     },
     "gemluxjewel_usp": {
@@ -171,31 +176,41 @@
         "c1": {
           "type": "style",
           "settings": {
-            "title": "Solitaire"
+            "title": "Solitaire",
+            "collection": "",
+            "link": ""
           }
         },
         "c2": {
           "type": "style",
           "settings": {
-            "title": "Bezel"
+            "title": "Bezel",
+            "collection": "",
+            "link": ""
           }
         },
         "c3": {
           "type": "style",
           "settings": {
-            "title": "Toi et Moi"
+            "title": "Toi et Moi",
+            "collection": "",
+            "link": ""
           }
         },
         "c4": {
           "type": "style",
           "settings": {
-            "title": "Three Stone"
+            "title": "Three Stone",
+            "collection": "",
+            "link": ""
           }
         },
         "c5": {
           "type": "style",
           "settings": {
-            "title": "Halo"
+            "title": "Halo",
+            "collection": "",
+            "link": ""
           }
         }
       },
