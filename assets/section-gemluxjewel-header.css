@@ -455,9 +455,10 @@
 
 .gemluxjewel-header__mega-link {
   display: inline-flex;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
   gap: 8px;
+  max-width: 100%;
   font-family: var(--gemluxjewel-font-body, 'Instrument Sans', sans-serif);
   font-size: 14px;
   line-height: 1.35;
@@ -465,6 +466,7 @@
   color: #1a2744;
   text-decoration: none;
   transition: color 0.2s ease, opacity 0.2s ease;
+  word-break: break-word;
 }
 
 .gemluxjewel-header__mega-link:hover {

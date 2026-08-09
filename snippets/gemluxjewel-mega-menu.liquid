@@ -102,7 +102,7 @@
               <ul class="gemluxjewel-header__mega-list">
                 <li>
                   <a href="{{ child.url }}" class="gemluxjewel-header__mega-link">
-                    <span>{{ section.settings.view_column_label | default: 'View all' | escape }}</span>
+                    <span>{{ child.title | escape }}</span>
                   </a>
                 </li>
               </ul>
