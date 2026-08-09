@@ -1,0 +1,249 @@
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign featured_blocks = section.blocks | where: 'type', 'featured'
+  assign tile_blocks = section.blocks | where: 'type', 'tile'
+-%}
+
+<section class="gemluxjewel gemluxjewel-gift-guide">
+  <div class="gemluxjewel-container">
+    {%- if section.settings.title != blank or section.settings.subtitle != blank -%}
+      <div class="gemluxjewel-section-header gemluxjewel-section-header--center gemluxjewel-gift-guide__header">
+        <div>
+          {%- if section.settings.title != blank -%}
+            <h2 class="gemluxjewel-section-title">{{ section.settings.title | escape }}</h2>
+          {%- endif -%}
+          {%- if section.settings.subtitle != blank -%}
+            <p class="gemluxjewel-section-desc">{{ section.settings.subtitle | escape }}</p>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- if featured_blocks.size > 0 -%}
+      <div class="gemluxjewel-gift-guide__featured">
+        {%- for block in featured_blocks -%}
+          {%- liquid
+            assign card_url = block.settings.link
+            assign card_title = block.settings.title
+            assign card_image = block.settings.image
+            assign button_label = block.settings.button_label | default: 'Shop Now'
+          -%}
+          {%- if card_url != blank -%}
+            <a href="{{ card_url }}" class="gemluxjewel-gift-guide__featured-card" {{ block.shopify_attributes }}>
+          {%- else -%}
+            <div class="gemluxjewel-gift-guide__featured-card" {{ block.shopify_attributes }}>
+          {%- endif -%}
+            <div class="gemluxjewel-gift-guide__featured-media">
+              {%- if card_image != blank -%}
+                {{
+                  card_image
+                  | image_url: width: 1400
+                  | image_tag:
+                    widths: '700, 900, 1200, 1400',
+                    sizes: '(min-width: 1200px) 50vw, 100vw',
+                    loading: 'lazy',
+                    class: 'gemluxjewel-gift-guide__featured-img',
+                    alt: card_title
+                }}
+              {%- else -%}
+                {% render 'gemluxjewel-theme-image',
+                  use_store_media: true,
+                  seed: forloop.index,
+                  width: 1400,
+                  widths: '700,900,1200,1400',
+                  sizes: '(min-width: 1200px) 50vw, 100vw',
+                  alt: card_title,
+                  class: 'gemluxjewel-gift-guide__featured-img'
+                %}
+              {%- endif -%}
+              <div class="gemluxjewel-gift-guide__featured-overlay" aria-hidden="true"></div>
+            </div>
+            <div class="gemluxjewel-gift-guide__featured-content">
+              {%- if card_title != blank -%}
+                <p class="gemluxjewel-gift-guide__featured-title">{{ card_title | escape }}</p>
+              {%- endif -%}
+              {%- if button_label != blank -%}
+                <span class="gemluxjewel-gift-guide__featured-btn">{{ button_label | escape }}</span>
+              {%- endif -%}
+            </div>
+          {%- if card_url != blank -%}
+            </a>
+          {%- else -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if tile_blocks.size > 0 -%}
+      <div class="gemluxjewel-gift-guide__tiles">
+        {%- for block in tile_blocks -%}
+          {%- liquid
+            assign tile_url = block.settings.link
+            assign tile_title = block.settings.title
+            assign tile_image = block.settings.image
+          -%}
+          {%- if tile_url != blank -%}
+            <a href="{{ tile_url }}" class="gemluxjewel-gift-guide__tile" {{ block.shopify_attributes }}>
+          {%- else -%}
+            <div class="gemluxjewel-gift-guide__tile" {{ block.shopify_attributes }}>
+          {%- endif -%}
+            <div class="gemluxjewel-gift-guide__tile-media">
+              {%- if tile_image != blank -%}
+                {{
+                  tile_image
+                  | image_url: width: 900
+                  | image_tag:
+                    widths: '400, 600, 900',
+                    sizes: '(min-width: 1200px) 33vw, (min-width: 768px) 50vw, 100vw',
+                    loading: 'lazy',
+                    class: 'gemluxjewel-gift-guide__tile-img',
+                    alt: tile_title
+                }}
+              {%- else -%}
+                {%- assign tile_seed = forloop.index | plus: 4 -%}
+                {% render 'gemluxjewel-theme-image',
+                  use_store_media: true,
+                  seed: tile_seed,
+                  width: 900,
+                  widths: '400,600,900',
+                  sizes: '(min-width: 1200px) 33vw, (min-width: 768px) 50vw, 100vw',
+                  alt: tile_title,
+                  class: 'gemluxjewel-gift-guide__tile-img'
+                %}
+              {%- endif -%}
+            </div>
+            {%- if tile_title != blank -%}
+              <p class="gemluxjewel-gift-guide__tile-title">{{ tile_title | escape }}</p>
+            {%- endif -%}
+          {%- if tile_url != blank -%}
+            </a>
+          {%- else -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "gemluxjewel Gift Guide",
+  "tag": "section",
+  "class": "section gemluxjewel-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Gift Guide"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Description"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "featured",
+      "name": "Featured card",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Quick Ship"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "Shop Now"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    },
+    {
+      "type": "tile",
+      "name": "Guide tile",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Caption",
+          "default": "Essentials"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "gemluxjewel Gift Guide",
+      "blocks": [
+        {
+          "type": "featured",
+          "settings": {
+            "title": "Quick Ship",
+            "button_label": "Shop Now",
+            "link": "shopify://collections/all"
+          }
+        },
+        {
+          "type": "featured",
+          "settings": {
+            "title": "For Her",
+            "button_label": "Shop Now",
+            "link": "shopify://collections/all"
+          }
+        },
+        {
+          "type": "tile",
+          "settings": {
+            "title": "Essentials",
+            "link": "shopify://collections/all"
+          }
+        },
+        {
+          "type": "tile",
+          "settings": {
+            "title": "Under $1000",
+            "link": "shopify://collections/all"
+          }
+        },
+        {
+          "type": "tile",
+          "settings": {
+            "title": "For Him",
+            "link": "shopify://collections/all"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

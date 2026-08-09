@@ -855,6 +855,192 @@
   color: var(--gemluxjewel-primary);
 }
 
+/* ── Gift Guide ── */
+.gemluxjewel-gift-guide {
+  padding: 0 0 100px;
+  background: var(--gemluxjewel-secondary, #fff);
+}
+
+@media (max-width: 991px) {
+  .gemluxjewel-gift-guide {
+    padding-bottom: 60px;
+  }
+}
+
+.gemluxjewel-gift-guide__header {
+  margin-bottom: 48px;
+}
+
+@media (max-width: 991px) {
+  .gemluxjewel-gift-guide__header {
+    margin-bottom: 32px;
+  }
+}
+
+.gemluxjewel-gift-guide__featured {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 768px) {
+  .gemluxjewel-gift-guide__featured {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+.gemluxjewel-gift-guide__featured-card {
+  position: relative;
+  display: block;
+  min-height: 360px;
+  border-radius: var(--gemluxjewel-radius, 0);
+  overflow: hidden;
+  background: #e8e4df;
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (min-width: 1200px) {
+  .gemluxjewel-gift-guide__featured-card {
+    min-height: 480px;
+  }
+}
+
+.gemluxjewel-gift-guide__featured-media {
+  position: absolute;
+  inset: 0;
+}
+
+.gemluxjewel-gift-guide__featured-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease;
+}
+
+.gemluxjewel-gift-guide__featured-card:hover .gemluxjewel-gift-guide__featured-img {
+  transform: scale(1.03);
+}
+
+.gemluxjewel-gift-guide__featured-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.18);
+  pointer-events: none;
+}
+
+.gemluxjewel-gift-guide__featured-content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.gemluxjewel-gift-guide__featured-title {
+  font-family: var(--gemluxjewel-font-heading);
+  font-size: 28px;
+  line-height: 1.15;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 991px) {
+  .gemluxjewel-gift-guide__featured-title {
+    font-size: 24px;
+  }
+}
+
+.gemluxjewel-gift-guide__featured-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 140px;
+  padding: 12px 28px;
+  border: 1px solid #fff;
+  background: transparent;
+  color: #fff;
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.gemluxjewel-gift-guide__featured-card:hover .gemluxjewel-gift-guide__featured-btn {
+  background: #fff;
+  color: var(--gemluxjewel-dark, #141414);
+}
+
+.gemluxjewel-gift-guide__tiles {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px 16px;
+}
+
+@media (min-width: 768px) {
+  .gemluxjewel-gift-guide__tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .gemluxjewel-gift-guide__tiles {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.gemluxjewel-gift-guide__tile {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.gemluxjewel-gift-guide__tile-media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: #e8e4df;
+}
+
+.gemluxjewel-gift-guide__tile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease;
+}
+
+.gemluxjewel-gift-guide__tile:hover .gemluxjewel-gift-guide__tile-img {
+  transform: scale(1.03);
+}
+
+.gemluxjewel-gift-guide__tile-title {
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gemluxjewel-dark, #141414);
+  margin: 12px 0 0;
+}
+
 /* ── Marquee Strip ── */
 .gemluxjewel-marquee-strip {
   background: var(--gemluxjewel-primary);

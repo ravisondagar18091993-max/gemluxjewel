@@ -174,6 +174,58 @@
         "subtitle": "Discover our signature setting styles, including solitaire, three stone, halo, toi et moi and bezel."
       }
     },
+    "gemluxjewel_gift_guide": {
+      "type": "gemluxjewel-gift-guide",
+      "blocks": {
+        "gift_feat_1": {
+          "type": "featured",
+          "settings": {
+            "title": "Quick Ship",
+            "button_label": "Shop Now",
+            "link": "shopify://collections/all"
+          }
+        },
+        "gift_feat_2": {
+          "type": "featured",
+          "settings": {
+            "title": "For Her",
+            "button_label": "Shop Now",
+            "link": "shopify://collections/all"
+          }
+        },
+        "gift_tile_1": {
+          "type": "tile",
+          "settings": {
+            "title": "Essentials",
+            "link": "shopify://collections/all"
+          }
+        },
+        "gift_tile_2": {
+          "type": "tile",
+          "settings": {
+            "title": "Under $1000",
+            "link": "shopify://collections/all"
+          }
+        },
+        "gift_tile_3": {
+          "type": "tile",
+          "settings": {
+            "title": "For Him",
+            "link": "shopify://collections/all"
+          }
+        }
+      },
+      "block_order": [
+        "gift_feat_1",
+        "gift_feat_2",
+        "gift_tile_1",
+        "gift_tile_2",
+        "gift_tile_3"
+      ],
+      "settings": {
+        "title": "Gift Guide"
+      }
+    },
     "gemluxjewel_dual_cards": {
       "type": "gemluxjewel-dual-cards",
       "blocks": {
@@ -387,6 +439,7 @@
     "gemluxjewel_hero",
     "gemluxjewel_stone_shapes",
     "gemluxjewel_collection_slider",
+    "gemluxjewel_gift_guide",
     "gemluxjewel_dual_cards",
     "gemluxjewel_best_sellers",
     "gemluxjewel_why",
