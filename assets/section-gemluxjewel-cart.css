@@ -24,7 +24,8 @@
 }
 
 .gemluxjewel-cart .gemluxjewel-container {
-  max-width: 1440px;
+  width: 88%;
+  max-width: 100%;
   margin: 0 auto;
   padding-left: 60px;
   padding-right: 60px;
