@@ -1517,10 +1517,12 @@
 
 .gemluxjewel-testimonials__slider {
   position: relative;
+  width: 100%;
 }
 
 .gemluxjewel-testimonials__viewport {
   overflow: hidden;
+  width: 100%;
 }
 
 .gemluxjewel-testimonials__track {
@@ -1531,7 +1533,7 @@
 }
 
 .gemluxjewel-testimonials__card {
-  flex: 0 0 calc(100% - 8px);
+  flex: 0 0 100%;
   background: #fff;
   border-radius: 0;
   padding: 22px 20px 24px;
@@ -1542,13 +1544,13 @@
 
 @media (min-width: 750px) {
   .gemluxjewel-testimonials__card {
-    flex-basis: calc(50% - 6px);
+    flex: 0 0 calc((100% - 12px) / 2);
   }
 }
 
 @media (min-width: 990px) {
   .gemluxjewel-testimonials__card {
-    flex-basis: calc(25% - 9px);
+    flex: 0 0 calc((100% - 36px) / 4);
     min-height: 300px;
   }
 }
@@ -1744,11 +1746,11 @@
 }
 
 .gemluxjewel-testimonials__nav--prev {
-  left: -8px;
+  left: 0;
 }
 
 .gemluxjewel-testimonials__nav--next {
-  right: -8px;
+  right: 0;
 }
 
 .gemluxjewel-testimonials__nav-icon {
@@ -1798,7 +1800,7 @@
 
   .gemluxjewel-testimonials__card {
     scroll-snap-align: start;
-    flex-basis: calc(100% - 24px);
+    flex: 0 0 100%;
   }
 }
 
