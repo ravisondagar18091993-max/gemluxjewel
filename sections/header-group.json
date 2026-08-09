@@ -44,17 +44,25 @@
       "settings": {
         "logo_text": "gemluxjewel",
         "menu": "left-new-menu",
-        "menu_right": "",
+        "menu_right": "right-menu",
         "highlight_link": "Visit",
+        "mobile_menu": "",
         "show_shop_all": true,
         "shop_all_label": "Shop All",
+        "view_column_label": "View all",
         "mega_info_columns": "Lab Grown Diamonds, Moissanite",
+        "mega_highlight_links": "",
+        "mega_new_badge_links": "",
+        "mega_featured_caption": "",
+        "mega_featured_link": "",
         "announcement_text": "127,778 TREES PLANTED",
+        "announcement_url": "",
         "show_announcement_icon": true,
         "slider_speed": 4,
         "enable_search": true,
         "show_account_icon": false,
         "show_wishlist_icon": false,
+        "wishlist_url": "",
         "locale_text": "IN"
       }
     }
