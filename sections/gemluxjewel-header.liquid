@@ -71,7 +71,16 @@
               {%- if section.settings.menu != blank -%}
                 {%- for link in section.settings.menu.links -%}
                   <li class="gemluxjewel-header__nav-item{% if link.links.size > 0 %} has-mega{% endif %}">
-                    <a href="{{ link.url }}" class="gemluxjewel-header__nav-link">{{ link.title | escape }}</a>
+                    <a href="{{ link.url }}" class="gemluxjewel-header__nav-link{% if link.links.size > 0 %} gemluxjewel-header__nav-link--has-dropdown{% endif %}">
+                      <span>{{ link.title | escape }}</span>
+                      {%- if link.links.size > 0 -%}
+                        <span class="gemluxjewel-header__nav-caret" aria-hidden="true">
+                          <svg width="8" height="5" viewBox="0 0 8 5" fill="none">
+                            <path d="M1 1L4 4L7 1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                        </span>
+                      {%- endif -%}
+                    </a>
                     {%- if link.links.size > 0 -%}
                       {% render 'gemluxjewel-mega-menu', link: link, section: section %}
                     {%- endif -%}
