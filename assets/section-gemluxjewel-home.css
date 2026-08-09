@@ -456,7 +456,7 @@
   min-width: 0;
   text-align: center;
   text-decoration: none;
-  color: var(--gemluxjewel-primary);
+  color: var(--gemluxjewel-dark);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -502,7 +502,7 @@
   line-height: 18px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: var(--gemluxjewel-primary);
+  color: var(--gemluxjewel-dark);
 }
 
 @media (max-width: 749px) {
