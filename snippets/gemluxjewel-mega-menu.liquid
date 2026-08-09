@@ -9,10 +9,34 @@
 
 {%- if link.links.size > 0 -%}
   {%- liquid
+    assign link_key = link.title | downcase | strip
     assign highlight_titles = section.settings.mega_highlight_links | downcase | split: ','
     assign new_badge_titles = section.settings.mega_new_badge_links | downcase | split: ','
+    assign banner_image = blank
+    assign banner_caption = blank
+    assign banner_link = blank
+    assign banner_block = nil
+
+    for block in section.blocks
+      if block.type == 'mega_banner'
+        assign block_parent = block.settings.parent_nav | downcase | strip
+        if block_parent == link_key and block.settings.image != blank
+          assign banner_block = block
+          assign banner_image = block.settings.image
+          assign banner_caption = block.settings.caption
+          assign banner_link = block.settings.link
+        endif
+      endif
+    endfor
+
+    if banner_image == blank and section.settings.mega_featured_image != blank
+      assign banner_image = section.settings.mega_featured_image
+      assign banner_caption = section.settings.mega_featured_caption
+      assign banner_link = section.settings.mega_featured_link
+    endif
+
     assign show_featured = false
-    if section.settings.mega_featured_image != blank
+    if banner_image != blank
       assign show_featured = true
     endif
   -%}
@@ -111,27 +135,27 @@
         {%- endfor -%}
 
         {%- if show_featured -%}
-          <div class="gemluxjewel-header__mega-col gemluxjewel-header__mega-col--featured">
-            {%- if section.settings.mega_featured_link != blank -%}
-              <a href="{{ section.settings.mega_featured_link }}" class="gemluxjewel-header__mega-featured">
+          <div class="gemluxjewel-header__mega-col gemluxjewel-header__mega-col--featured"{% if banner_block %} {{ banner_block.shopify_attributes }}{% endif %}>
+            {%- if banner_link != blank -%}
+              <a href="{{ banner_link }}" class="gemluxjewel-header__mega-featured">
             {%- else -%}
               <div class="gemluxjewel-header__mega-featured">
             {%- endif -%}
               <div class="gemluxjewel-header__mega-featured-img">
                 {{
-                  section.settings.mega_featured_image
+                  banner_image
                   | image_url: width: 560
                   | image_tag:
                     widths: '280, 360, 560',
                     sizes: '280px',
                     loading: 'lazy',
-                    alt: section.settings.mega_featured_caption
+                    alt: banner_caption
                 }}
               </div>
-              {%- if section.settings.mega_featured_caption != blank -%}
-                <span class="gemluxjewel-header__mega-featured-caption">{{ section.settings.mega_featured_caption | escape }}</span>
+              {%- if banner_caption != blank -%}
+                <span class="gemluxjewel-header__mega-featured-caption">{{ banner_caption | escape }}</span>
               {%- endif -%}
-            {%- if section.settings.mega_featured_link != blank -%}
+            {%- if banner_link != blank -%}
               </a>
             {%- else -%}
               </div>
