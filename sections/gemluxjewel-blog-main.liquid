@@ -1,6 +1,5 @@
-{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{% render 'gemluxjewel-fonts' %}
 {{ 'section-gemluxjewel-blog.css' | asset_url | stylesheet_tag }}
-{{ 'section-gemluxjewel-shop.css' | asset_url | stylesheet_tag }}
 
 {%- paginate blog.articles by section.settings.articles_per_page -%}
   <section class="gemluxjewel gemluxjewel-blog">
@@ -8,9 +7,9 @@
       {%- if blog.articles.size == 0 -%}
         <p class="gemluxjewel-blog__empty">{{ 'blogs.article.no_articles' | t | default: 'No articles yet.' }}</p>
       {%- else -%}
-        <div class="gemluxjewel-blog__grid" data-gemluxjewel-blog-grid>
+        <div class="gemluxjewel-blog__grid">
           {%- for article in blog.articles -%}
-            {% render 'gemluxjewel-blog-card', article: article %}
+            {% render 'gemluxjewel-blog-card', article: article, card_style: 'education' %}
           {%- endfor -%}
         </div>
         {% render 'gemluxjewel-pagination', paginate: paginate %}
@@ -28,9 +27,9 @@
     {
       "type": "range",
       "id": "articles_per_page",
-      "min": 4,
+      "min": 6,
       "max": 24,
-      "step": 4,
+      "step": 3,
       "default": 12,
       "label": "Articles per page"
     }
