@@ -1,106 +1,269 @@
 {% render 'gemluxjewel-fonts' %}
+
 {{ 'section-gemluxjewel-blog.css' | asset_url | stylesheet_tag }}
 
+
+
 {%- liquid
+
   assign per_page = section.settings.articles_per_page | default: 12
+
   assign show_all_blogs = section.settings.show_all_blogs
 
+
+
   assign current_page = 1
+
   if request.query_parameters.page != blank
+
     assign current_page = request.query_parameters.page | plus: 0
+
     if current_page < 1
+
       assign current_page = 1
+
     endif
+
   endif
+
+
 
   assign combined_articles = '' | split: ''
 
+  assign blog_handles_raw = section.settings.blog_handles | default: 'news,engagement-rings,lab-grown-diamond,engagement-jewelry,diamond-rings'
+
+
+
   if show_all_blogs
-    for blog_item in blogs
-      assign combined_articles = combined_articles | concat: blog_item.articles
+
+    assign blog_handles = blog_handles_raw | split: ','
+
+    assign processed_handles = '|'
+
+
+
+    if blog.handle != blank
+
+      assign blog_handles = blog.handle | append: ',' | append: blog_handles_raw | split: ','
+
+    endif
+
+
+
+    for handle in blog_handles
+
+      assign blog_handle = handle | strip
+
+      if blog_handle != blank
+
+        assign handle_key = blog_handle | prepend: '|' | append: '|'
+
+        unless processed_handles contains handle_key
+
+          assign processed_handles = processed_handles | append: blog_handle | append: '|'
+
+          assign source_blog = blogs[blog_handle]
+
+          if source_blog != blank and source_blog.articles.size > 0
+
+            assign combined_articles = combined_articles | concat: source_blog.articles
+
+          endif
+
+        endunless
+
+      endif
+
     endfor
+
+
+
+    if combined_articles.size == 0 and blog != blank
+
+      assign combined_articles = blog.articles
+
+    endif
+
+
+
     assign sorted_articles = combined_articles | sort: 'published_at' | reverse
+
     assign total_articles = sorted_articles.size
+
   else
+
     assign sorted_articles = blog.articles | sort: 'published_at' | reverse
+
     assign total_articles = blog.articles_count
+
   endif
+
+
 
   assign total_pages = total_articles | times: 1.0 | divided_by: per_page | ceil
+
   if total_pages < 1
+
     assign total_pages = 1
+
   endif
+
+
 
   if current_page > total_pages
+
     assign current_page = total_pages
+
   endif
 
+
+
   assign start_index = current_page | minus: 1 | times: per_page
-  assign end_index = start_index | plus: per_page | minus: 1
 -%}
 
+
+
 <section class="gemluxjewel gemluxjewel-blog">
+
   <div class="gemluxjewel-container">
+
     {%- if total_articles == 0 -%}
+
       <p class="gemluxjewel-blog__empty">{{ section.settings.empty_message | default: 'No articles yet.' | escape }}</p>
+
     {%- else -%}
+
       <div class="gemluxjewel-blog__grid">
+
         {%- assign article_index = 0 -%}
+
         {%- assign shown_count = 0 -%}
+
         {%- for article in sorted_articles -%}
+
           {%- if article_index >= start_index and shown_count < per_page -%}
+
             {% render 'gemluxjewel-blog-card', article: article, card_style: 'education' %}
+
             {%- assign shown_count = shown_count | plus: 1 -%}
+
           {%- endif -%}
+
           {%- assign article_index = article_index | plus: 1 -%}
+
           {%- if shown_count >= per_page -%}
+
             {%- break -%}
+
           {%- endif -%}
+
         {%- endfor -%}
+
       </div>
 
+
+
       {% render 'gemluxjewel-blog-pagination',
+
         current_page: current_page,
+
         total_pages: total_pages,
+
         base_url: blog.url
+
       %}
+
     {%- endif -%}
+
   </div>
+
 </section>
 
+
+
 {% schema %}
+
 {
+
   "name": "Gemlux Blog List",
+
   "tag": "section",
+
   "class": "gemluxjewel-section",
+
   "settings": [
+
     {
+
       "type": "checkbox",
+
       "id": "show_all_blogs",
+
       "label": "Show articles from all blogs",
+
       "default": true,
-      "info": "Combines every Shopify blog into one list on this page."
+
+      "info": "Combines articles from every blog handle listed below into one list."
+
     },
+
     {
+
+      "type": "textarea",
+
+      "id": "blog_handles",
+
+      "label": "Blog handles",
+
+      "default": "news,engagement-rings,lab-grown-diamond,engagement-jewelry,diamond-rings",
+
+      "info": "Comma-separated Shopify blog handles (URL slugs). Add new blogs here when you create them."
+
+    },
+
+    {
+
       "type": "range",
+
       "id": "articles_per_page",
+
       "min": 6,
+
       "max": 24,
+
       "step": 3,
+
       "default": 12,
+
       "label": "Articles per page"
+
     },
+
     {
+
       "type": "text",
+
       "id": "empty_message",
+
       "label": "Empty state message",
+
       "default": "No articles yet."
+
     }
+
   ],
+
   "presets": [
+
     {
+
       "name": "Gemlux Blog List"
+
     }
+
   ]
+
 }
+
 {% endschema %}
+

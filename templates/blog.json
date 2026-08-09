@@ -19,6 +19,7 @@
     "gemluxjewel_blog_main": {
       "type": "gemluxjewel-blog-main",
       "settings": {
+        "show_all_blogs": true,
         "articles_per_page": 12
       }
     }
