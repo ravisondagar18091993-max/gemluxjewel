@@ -341,31 +341,6 @@
   }
 }
 
-/* ── USP Marquee ── */
-.gemluxjewel-usp-marquee {
-  background: var(--gemluxjewel-primary);
-  padding: 16px 0;
-  overflow: hidden;
-}
-
-.gemluxjewel-usp-marquee__item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: #fff;
-  font-family: var(--gemluxjewel-font-heading);
-  font-weight: 300;
-  font-size: 15px;
-  line-height: 15px;
-  white-space: nowrap;
-}
-
-.gemluxjewel-usp-marquee__icon {
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
-}
-
 /* ── Categories ── */
 .gemluxjewel-categories {
   background: var(--gemluxjewel-secondary);

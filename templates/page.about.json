@@ -18,16 +18,6 @@
         "text_2": "Our goal is to combine modern style with lasting quality. From minimal designs to bold essentials, every piece is thoughtfully made to fit seamlessly into your lifestyle while maintaining a premium look and feel."
       }
     },
-    "gemluxjewel_usp": {
-      "type": "gemluxjewel-usp-marquee",
-      "blocks": {
-        "u1": { "type": "item", "settings": { "label": "Free Shipping in UK" } },
-        "u2": { "type": "item", "settings": { "label": "Premium Materials" } },
-        "u3": { "type": "item", "settings": { "label": "24/7 Expert Guidance" } }
-      },
-      "block_order": ["u1", "u2", "u3"],
-      "settings": {}
-    },
     "gemluxjewel_about_history": {
       "type": "gemluxjewel-about-history",
       "blocks": {
@@ -131,7 +121,6 @@
   },
   "order": [
     "gemluxjewel_about_hero",
-    "gemluxjewel_usp",
     "gemluxjewel_about_history",
     "gemluxjewel_about_mission",
     "gemluxjewel_marquee",
