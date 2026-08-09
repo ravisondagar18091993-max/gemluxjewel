@@ -13,6 +13,29 @@
   .gemluxjewel {
     --gemluxjewel-font-heading: 'Noto Serif', Georgia, 'Times New Roman', serif;
     --gemluxjewel-font-body: 'Outfit', var(--font-body-family), sans-serif;
+    --gemluxjewel-font-heading-weight: 400;
+    --gemluxjewel-font-heading-weight-medium: 500;
+  }
+
+  .gemluxjewel :where(h1, h2, h3, h4, h5, h6) {
+    font-weight: var(--gemluxjewel-font-heading-weight);
+  }
+
+  .gemluxjewel :where(
+    [class*='__title'],
+    [class*='__heading'],
+    [class*='-heading'],
+    .gemluxjewel-section-title
+  ) {
+    font-weight: var(--gemluxjewel-font-heading-weight);
+  }
+
+  .gemluxjewel :where(
+    [class*='__title--medium'],
+    [class*='__heading--medium'],
+    .gemluxjewel-nunito-medium
+  ) {
+    font-weight: var(--gemluxjewel-font-heading-weight-medium);
   }
 
   main:has(.gemluxjewel) {

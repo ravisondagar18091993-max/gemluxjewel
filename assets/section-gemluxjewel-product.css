@@ -352,7 +352,7 @@
 
 .gemluxjewel-pdp__accordian-heading {
   font-family: var(--gemluxjewel-font-heading);
-  font-weight: 300;
+  font-weight: 400;
   font-size: 25px;
   line-height: 50px;
   text-transform: uppercase;
@@ -465,7 +465,7 @@
 }
 
 .gemluxjewel-pdp__info-accordion .closet-content__inner strong {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 @media (max-width: 991px) {
@@ -1094,7 +1094,7 @@
   gap: 12px;
   color: #fff;
   font-family: var(--gemluxjewel-font-heading);
-  font-weight: 300;
+  font-weight: 400;
   font-size: 15px;
   line-height: 15px;
   white-space: nowrap;

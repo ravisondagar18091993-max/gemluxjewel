@@ -86,7 +86,7 @@
 
 .gemluxjewel-collection-hero__title {
   font-family: var(--gemluxjewel-font-heading);
-  font-weight: 300;
+  font-weight: 400;
   font-size: 50px;
   line-height: 60px;
   text-transform: uppercase;
@@ -335,7 +335,7 @@
 
 .gemluxjewel-facets .facets__heading--vertical {
   font-family: var(--gemluxjewel-font-heading);
-  font-weight: 300;
+  font-weight: 400;
   font-size: 18px;
   line-height: 1.2;
   letter-spacing: 0.5px;
