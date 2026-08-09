@@ -29,12 +29,6 @@
       endif
     endfor
 
-    if banner_image == blank and section.settings.mega_featured_image != blank
-      assign banner_image = section.settings.mega_featured_image
-      assign banner_caption = section.settings.mega_featured_caption
-      assign banner_link = section.settings.mega_featured_link
-    endif
-
     assign show_featured = false
     if banner_image != blank
       assign show_featured = true

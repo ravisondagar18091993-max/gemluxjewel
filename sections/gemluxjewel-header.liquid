@@ -282,20 +282,8 @@
       "info": "Comma-separated link titles to show a NEW badge."
     },
     {
-      "type": "image_picker",
-      "id": "mega_featured_image",
-      "label": "Default banner image",
-      "info": "Fallback image for mega menus without a Mega menu banner block."
-    },
-    {
-      "type": "text",
-      "id": "mega_featured_caption",
-      "label": "Default banner caption"
-    },
-    {
-      "type": "url",
-      "id": "mega_featured_link",
-      "label": "Default banner link"
+      "type": "paragraph",
+      "content": "Add a Mega menu banner block below for each nav item that needs its own right-side image. Menus without a banner block will not show an image."
     },
     {
       "type": "header",
@@ -375,14 +363,14 @@
     {
       "type": "mega_banner",
       "name": "Mega menu banner",
-      "limit": 6,
+      "limit": 10,
       "settings": [
         {
           "type": "text",
           "id": "parent_nav",
           "label": "Parent menu item",
           "default": "Best seller",
-          "info": "Must match the top nav link title exactly (case-insensitive), e.g. Best seller or Engagement Rings."
+          "info": "Must match the top nav link title (case-insensitive). Each mega menu gets its own image."
         },
         { "type": "image_picker", "id": "image", "label": "Banner image" },
         { "type": "text", "id": "caption", "label": "Caption", "default": "Solitaire Rings" },
