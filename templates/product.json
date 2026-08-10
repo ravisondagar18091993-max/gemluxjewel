@@ -17,7 +17,16 @@
         "back_label": "Return to Store",
         "add_to_cart_label": "ADD TO CART",
         "size_guide_label": "SIZE GUIDE",
-        "info_accordion_heading": "MORE INFO"
+        "size_guide_url": "",
+        "info_accordion_heading": "MORE INFO",
+        "show_description": true,
+        "description_title": "Description",
+        "shipping_title": "Shipping Policy",
+        "shipping_content": "<p>We offer complimentary shipping on all orders. Delivery times vary by location — most orders arrive within 2-3 weeks. You will receive tracking details once your order ships.</p>",
+        "warranty_title": "",
+        "warranty_content": "",
+        "care_title": "Jewelry Care Instructions",
+        "care_content": "<p>Store your jewellery in a soft pouch away from moisture. Clean gently with warm water and mild soap, then pat dry with a soft cloth. Avoid harsh chemicals, perfumes, and abrasive surfaces.</p>"
       }
     },
     "gemluxjewel_pdp_shared": {
@@ -26,6 +35,7 @@
         "shared_banner": {
           "type": "intro_banner",
           "settings": {
+            "prefix": "Discover More",
             "title": "Quality Features & Why",
             "text": "<p>Every piece is thoughtfully designed and expertly crafted to deliver lasting beauty, comfort, and confidence — from premium materials to the finest finishing details.</p>"
           }
@@ -108,7 +118,8 @@
         "prefix": "NEED HELP?",
         "title": "FREQUENTLY ASKED QUESTIONS",
         "text": "Find answers to common questions about our jewellery, materials, and care to help you shop with confidence.",
-        "button_label": "View All FAQ's"
+        "button_label": "View All FAQ's",
+        "button_link": ""
       }
     },
     "gemluxjewel_pdp_trust": {
@@ -128,6 +139,8 @@
         "title": "YOU MAY ALSO LIKE",
         "subtitle": "Discover our latest additions - fresh designs and timeless classics newly available",
         "button_label": "View Collection",
+        "button_link": "",
+        "collection": "",
         "products_to_show": 4
       }
     }
