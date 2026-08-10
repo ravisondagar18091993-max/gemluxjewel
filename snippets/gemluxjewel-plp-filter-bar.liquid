@@ -209,22 +209,7 @@
 
           {%- if enable_sorting -%}
             <div class="gemluxjewel-plp-filter-bar__sort">
-              <label class="visually-hidden" for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
-              <select
-                name="sort_by"
-                id="SortBy"
-                class="gemluxjewel-plp-filter-bar__sort-select"
-                aria-describedby="a11y-refresh-page-message"
-              >
-                {%- for option in results.sort_options -%}
-                  <option value="{{ option.value | escape }}" {% if option.value == sort_by %}selected{% endif %}>
-                    {{ option.name | escape }}
-                  </option>
-                {%- endfor -%}
-              </select>
-              <span class="gemluxjewel-plp-filter-bar__sort-chevron" aria-hidden="true">
-                {{- 'icon-caret.svg' | inline_asset_content -}}
-              </span>
+              {% render 'gemluxjewel-plp-sort-dropdown', results: results, sort_by: sort_by %}
             </div>
           {%- endif -%}
         </div>

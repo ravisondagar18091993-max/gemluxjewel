@@ -6,6 +6,84 @@
     });
   }
 
+  function closeAllSortDropdowns(except) {
+    document.querySelectorAll('[data-gemluxjewel-plp-sort-dropdown]').forEach(function (dropdown) {
+      if (except && dropdown === except) return;
+      dropdown.open = false;
+    });
+  }
+
+  function syncSortLabel(sortWrap) {
+    var nativeSelect = sortWrap.querySelector('.gemluxjewel-plp-sort__native');
+    var label = sortWrap.querySelector('[data-gemluxjewel-plp-sort-label]');
+    if (!nativeSelect || !label) return;
+
+    var selectedOption = nativeSelect.options[nativeSelect.selectedIndex];
+    if (selectedOption) {
+      label.textContent = selectedOption.textContent;
+    }
+
+    sortWrap.querySelectorAll('[data-gemluxjewel-plp-sort-option]').forEach(function (button) {
+      var isActive = button.getAttribute('data-value') === nativeSelect.value;
+      button.classList.toggle('is-active', isActive);
+      button.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+  }
+
+  function initSortDropdowns(root) {
+    root.querySelectorAll('[data-gemluxjewel-plp-sort]').forEach(function (sortWrap) {
+      if (sortWrap.dataset.gemluxjewelPlpSortInit === 'true') return;
+      sortWrap.dataset.gemluxjewelPlpSortInit = 'true';
+
+      var nativeSelect = sortWrap.querySelector('.gemluxjewel-plp-sort__native');
+      var dropdown = sortWrap.querySelector('[data-gemluxjewel-plp-sort-dropdown]');
+      if (!nativeSelect || !dropdown) return;
+
+      var trigger = dropdown.querySelector('summary');
+      if (trigger) {
+        trigger.addEventListener('click', function (event) {
+          event.stopPropagation();
+        });
+      }
+
+      var panel = dropdown.querySelector('.gemluxjewel-plp-sort__panel');
+      if (panel) {
+        panel.addEventListener('click', function (event) {
+          event.stopPropagation();
+        });
+      }
+
+      dropdown.addEventListener('toggle', function () {
+        if (dropdown.open) {
+          closeAllSortDropdowns(dropdown);
+          closeAllDropdowns();
+        }
+      });
+
+      sortWrap.querySelectorAll('[data-gemluxjewel-plp-sort-option]').forEach(function (button) {
+        button.addEventListener('click', function (event) {
+          event.preventDefault();
+          var value = button.getAttribute('data-value');
+          if (!value || nativeSelect.value === value) {
+            dropdown.open = false;
+            return;
+          }
+
+          nativeSelect.value = value;
+          syncSortLabel(sortWrap);
+          dropdown.open = false;
+          nativeSelect.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+      });
+
+      nativeSelect.addEventListener('change', function () {
+        syncSortLabel(sortWrap);
+      });
+
+      syncSortLabel(sortWrap);
+    });
+  }
+
   function initDropdowns(root) {
     root.querySelectorAll('[data-gemluxjewel-plp-dropdown]').forEach(function (dropdown) {
       if (dropdown.dataset.gemluxjewelPlpDropdownInit === 'true') return;
@@ -75,6 +153,8 @@
     sidebarSort.addEventListener('change', function () {
       mainSort.value = sidebarSort.value;
       mainSort.dispatchEvent(new Event('change', { bubbles: true }));
+      var sortWrap = document.querySelector('[data-gemluxjewel-plp-sort]');
+      if (sortWrap) syncSortLabel(sortWrap);
     });
 
     mainSort.addEventListener('change', function () {
@@ -142,6 +222,7 @@
   function init(root) {
     root = root || document;
     initDropdowns(root);
+    initSortDropdowns(root);
     initDrawer(root);
     initFilterLabels(root);
     initDropdownOptions(root);
@@ -150,11 +231,15 @@
   document.addEventListener('click', function (event) {
     if (event.target.closest('[data-gemluxjewel-plp-dropdown]')) return;
     closeAllDropdowns();
+    if (!event.target.closest('[data-gemluxjewel-plp-sort-dropdown]')) {
+      closeAllSortDropdowns();
+    }
   });
 
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape') {
       closeAllDropdowns();
+      closeAllSortDropdowns();
       closeDrawer();
     }
   });

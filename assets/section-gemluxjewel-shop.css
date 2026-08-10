@@ -1348,41 +1348,147 @@
 
 .gemluxjewel-plp-filter-bar__sort {
   position: relative;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-self: end;
   width: 100%;
   max-width: 360px;
   justify-content: flex-end;
+  overflow: visible;
 }
 
-.gemluxjewel-plp-filter-bar__sort-select {
-  appearance: none;
-  -webkit-appearance: none;
-  min-height: 32px;
-  padding: 0 28px 0 0;
+/* ── Custom sort dropdown ── */
+.gemluxjewel-plp-sort {
+  position: relative;
+  display: inline-flex;
+  justify-content: flex-end;
+  max-width: 100%;
+}
+
+.gemluxjewel-plp-sort__native {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.gemluxjewel-plp-sort__dropdown {
+  position: relative;
+}
+
+.gemluxjewel-plp-sort__dropdown[open] {
+  z-index: 40;
+}
+
+.gemluxjewel-plp-sort__trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 4px 0 12px;
   border: none;
+  border-radius: 4px;
   background: transparent;
   color: var(--gemluxjewel-dark);
   font-family: var(--gemluxjewel-font-body);
   font-size: 12px;
   font-weight: 500;
   cursor: pointer;
+  list-style: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.gemluxjewel-plp-sort__trigger::-webkit-details-marker {
+  display: none;
+}
+
+.gemluxjewel-plp-sort__trigger:focus {
+  outline: none;
+}
+
+.gemluxjewel-plp-sort__trigger:focus-visible {
+  outline: 2px solid rgba(115, 151, 106, 0.35);
+  outline-offset: 2px;
+}
+
+.gemluxjewel-plp-sort__value {
+  line-height: 1.2;
   text-align: right;
 }
 
-.gemluxjewel-plp-filter-bar__sort-chevron {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+.gemluxjewel-plp-sort__chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 10px;
   width: 10px;
-  pointer-events: none;
+  height: 10px;
+  line-height: 0;
+  transition: transform 0.2s ease;
+  transform-origin: center center;
 }
 
-.gemluxjewel-plp-filter-bar__sort-chevron svg {
+.gemluxjewel-plp-sort__dropdown[open] .gemluxjewel-plp-sort__chevron {
+  transform: rotate(180deg);
+}
+
+.gemluxjewel-plp-sort__chevron svg {
+  display: block;
   width: 10px;
-  height: auto;
+  height: 6px;
+}
+
+.gemluxjewel-plp-sort__panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  left: auto;
+  z-index: 50;
+  min-width: 240px;
+  max-width: min(320px, 90vw);
+  max-height: min(360px, 70vh);
+  margin: 0;
+  padding: 8px 0;
+  overflow: auto;
+  border: none;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 12px 36px rgba(20, 20, 20, 0.12);
+  list-style: none;
+}
+
+.gemluxjewel-plp-sort__item {
+  margin: 0;
+  padding: 0;
+}
+
+.gemluxjewel-plp-sort__option {
+  display: block;
+  width: 100%;
+  padding: 11px 18px;
+  border: none;
+  background: transparent;
+  color: var(--gemluxjewel-dark);
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.35;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.gemluxjewel-plp-sort__option:hover,
+.gemluxjewel-plp-sort__option.is-active {
+  background: rgba(115, 151, 106, 0.1);
+  color: var(--gemluxjewel-primary);
+}
+
+.gemluxjewel-plp-sort__option.is-active {
+  font-weight: 500;
 }
 
 .gemluxjewel-plp-filter-bar__active {
@@ -1758,8 +1864,14 @@ html.gemluxjewel-plp-drawer-open {
     justify-content: flex-start;
   }
 
-  .gemluxjewel-plp-filter-bar__sort-select {
-    text-align: left;
+  .gemluxjewel-plp-sort {
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .gemluxjewel-plp-sort__panel {
+    left: 0;
+    right: auto;
   }
 }
 
