@@ -1003,7 +1003,8 @@
 .gemluxjewel-plp-filter-dropdown__trigger {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  justify-content: flex-start;
+  gap: 8px;
   min-height: 40px;
   height: 100%;
   min-width: 0;
@@ -1019,7 +1020,17 @@
   list-style: none;
   user-select: none;
   white-space: nowrap;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.gemluxjewel-plp-filter-dropdown__trigger:focus {
+  outline: none;
+}
+
+.gemluxjewel-plp-filter-dropdown__trigger:focus-visible {
+  outline: 2px solid rgba(115, 151, 106, 0.35);
+  outline-offset: 1px;
 }
 
 .gemluxjewel-plp-filter-dropdown__trigger:hover {
@@ -1032,14 +1043,24 @@
 
 .gemluxjewel-plp-filter-dropdown[open] .gemluxjewel-plp-filter-dropdown__trigger {
   border-color: var(--gemluxjewel-primary);
-  box-shadow: 0 0 0 1px rgba(115, 151, 106, 0.2);
+}
+
+.gemluxjewel-plp-filter-dropdown__label {
+  flex: 1 1 auto;
+  line-height: 1.2;
 }
 
 .gemluxjewel-plp-filter-dropdown__chevron {
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 10px;
   width: 10px;
-  margin-left: auto;
-  transition: transform 0.25s ease;
+  height: 10px;
+  margin-left: 4px;
+  line-height: 0;
+  transition: transform 0.2s ease;
+  transform-origin: center center;
 }
 
 .gemluxjewel-plp-filter-dropdown[open] .gemluxjewel-plp-filter-dropdown__chevron {
@@ -1047,8 +1068,19 @@
 }
 
 .gemluxjewel-plp-filter-dropdown__chevron svg {
+  display: block;
   width: 10px;
-  height: auto;
+  height: 6px;
+}
+
+.gemluxjewel-plp-filter-dropdown,
+.gemluxjewel-plp-filter-dropdown__panel {
+  outline: none;
+}
+
+.gemluxjewel-plp-filter-dropdown__option--swatch {
+  padding: 10px 18px;
+  border: none;
 }
 
 .gemluxjewel-plp-filter-dropdown__count {
@@ -1058,7 +1090,7 @@
 
 .gemluxjewel-plp-filter-dropdown__panel {
   position: absolute;
-  top: calc(100% + 6px);
+  top: calc(100% + 10px);
   left: 0;
   z-index: 50;
   min-width: 260px;
@@ -1066,10 +1098,23 @@
   max-height: min(420px, 70vh);
   overflow: auto;
   padding: 14px 0;
-  border: 1px solid #e8e8e8;
+  border: none;
   border-radius: 6px;
   background: #fff;
-  box-shadow: 0 16px 40px rgba(20, 20, 20, 0.14);
+  box-shadow: 0 12px 36px rgba(20, 20, 20, 0.12);
+}
+
+.gemluxjewel-plp-filter-dropdown fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.gemluxjewel-plp-filter-dropdown .facets-wrap {
+  border: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .gemluxjewel-plp-filter-dropdown[open] > .gemluxjewel-plp-filter-dropdown__panel {
