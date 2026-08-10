@@ -27,6 +27,22 @@
     "gemluxjewel_stone_shapes": {
       "type": "gemluxjewel-stone-shapes",
       "blocks": {
+        "shape_tYFh6K": {
+          "type": "shape",
+          "settings": {
+            "title": "Round",
+            "collection": "",
+            "link": ""
+          }
+        },
+        "shape_dX4KQk": {
+          "type": "shape",
+          "settings": {
+            "title": "Round",
+            "collection": "",
+            "link": ""
+          }
+        },
         "s1": {
           "type": "shape",
           "settings": {
@@ -111,6 +127,8 @@
         }
       },
       "block_order": [
+        "shape_tYFh6K",
+        "shape_dX4KQk",
         "s1",
         "s2",
         "s3",
