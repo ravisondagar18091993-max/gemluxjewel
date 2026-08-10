@@ -223,6 +223,7 @@
           "settings": {
             "layout": "featured",
             "collection": "",
+            "image": "shopify://shop_images/gemlux-website-earrings-square-copy.png",
             "title": "For Her",
             "button_label": "Shop Now",
             "link": "shopify://collections/all"
