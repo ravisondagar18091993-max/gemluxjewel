@@ -91,6 +91,9 @@
       });
       mainBar.classList.remove('is-mega-open');
       document.documentElement.classList.remove('gemluxjewel-mega-open');
+
+      var backdrop = header.querySelector('[data-gemluxjewel-mega-backdrop]');
+      if (backdrop) backdrop.setAttribute('aria-hidden', 'true');
     }
 
     closeAllMegaFn = closeAllMega;
@@ -108,6 +111,9 @@
       item.classList.add('is-mega-active');
       mainBar.classList.add('is-mega-open');
       document.documentElement.classList.add('gemluxjewel-mega-open');
+
+      var backdrop = header.querySelector('[data-gemluxjewel-mega-backdrop]');
+      if (backdrop) backdrop.setAttribute('aria-hidden', 'false');
     }
 
     function scheduleClose() {
@@ -131,6 +137,13 @@
         panel.addEventListener('mouseleave', scheduleClose);
       }
     });
+
+    var backdrop = header.querySelector('[data-gemluxjewel-mega-backdrop]');
+    if (backdrop) {
+      backdrop.addEventListener('click', function () {
+        closeAllMega();
+      });
+    }
   }
 
   function initAnnouncementSlider(header) {
