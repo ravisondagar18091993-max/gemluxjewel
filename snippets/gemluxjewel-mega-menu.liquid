@@ -120,11 +120,6 @@
                   </li>
                 {%- endfor -%}
               </ul>
-              {%- if section.settings.show_shop_all and child.url != blank -%}
-                <a href="{{ child.url }}" class="gemluxjewel-header__mega-shop-all">
-                  {{ section.settings.shop_all_label | default: 'Shop All' | escape }}
-                </a>
-              {%- endif -%}
             {%- elsif child.url != blank -%}
               <ul class="gemluxjewel-header__mega-list">
                 <li>

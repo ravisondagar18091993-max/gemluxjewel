@@ -122,20 +122,26 @@
   width: 88%;
   max-width: 100%;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--gemluxjewel-header-gutter, 24px);
   min-height: 68px;
 }
 
 @media (min-width: 1200px) {
+  :root {
+    --gemluxjewel-header-gutter: 48px;
+  }
+
   .gemluxjewel-header__inner {
-    padding: 0 48px;
     min-height: 72px;
   }
 }
 
 @media (max-width: 991px) {
+  :root {
+    --gemluxjewel-header-gutter: 16px;
+  }
+
   .gemluxjewel-header__inner {
-    padding: 0 16px;
     min-height: 60px;
   }
 }
@@ -396,7 +402,7 @@
   width: 88%;
   max-width: 100%;
   margin: 0 auto;
-  padding: 32px 0 40px;
+  padding: 32px var(--gemluxjewel-header-gutter, 24px) 40px;
   max-height: calc(100vh - var(--gemluxjewel-header-offset, 120px) - 24px);
   overflow-y: auto;
   overscroll-behavior: contain;
