@@ -366,7 +366,6 @@
   background: #fff;
   border-top: 1px solid rgba(20, 20, 20, 0.12);
   border-bottom: 1px solid rgba(20, 20, 20, 0.1);
-  box-shadow: 0 16px 40px rgba(20, 20, 20, 0.12);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
