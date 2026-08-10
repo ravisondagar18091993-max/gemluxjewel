@@ -39,7 +39,8 @@
   min-height: 320px;
   display: flex;
   align-items: center;
-  padding: calc(var(--gemluxjewel-header-offset, 218px) + 24px) 0 51px;
+  margin-top: var(--gemluxjewel-header-offset, 108px);
+  padding: 48px 0 51px;
   border-top: 1px solid rgba(255, 248, 244, 0.2);
   border-bottom: 1px solid rgba(255, 248, 244, 0.2);
   color: #fff;
@@ -87,7 +88,7 @@
 @media (max-width: 991px) {
   .gemluxjewel-collection-hero {
     min-height: 280px;
-    padding-bottom: 40px;
+    padding: 36px 0 40px;
   }
 
   .gemluxjewel-collection-hero__overlay {
