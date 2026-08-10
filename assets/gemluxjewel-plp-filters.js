@@ -11,6 +11,20 @@
       if (dropdown.dataset.gemluxjewelPlpDropdownInit === 'true') return;
       dropdown.dataset.gemluxjewelPlpDropdownInit = 'true';
 
+      var trigger = dropdown.querySelector('summary');
+      if (trigger) {
+        trigger.addEventListener('click', function (event) {
+          event.stopPropagation();
+        });
+      }
+
+      var panel = dropdown.querySelector('.gemluxjewel-plp-filter-dropdown__panel');
+      if (panel) {
+        panel.addEventListener('click', function (event) {
+          event.stopPropagation();
+        });
+      }
+
       dropdown.addEventListener('toggle', function () {
         if (dropdown.open) {
           closeAllDropdowns(dropdown);
@@ -134,9 +148,8 @@
   }
 
   document.addEventListener('click', function (event) {
-    if (!event.target.closest('[data-gemluxjewel-plp-dropdown]')) {
-      closeAllDropdowns();
-    }
+    if (event.target.closest('[data-gemluxjewel-plp-dropdown]')) return;
+    closeAllDropdowns();
   });
 
   document.addEventListener('keydown', function (event) {
