@@ -1,0 +1,148 @@
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-product.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-engagement-ring.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'gemluxjewel-engagement-ring.js' | asset_url }}" defer="defer"></script>
+
+<section class="gemluxjewel gemluxjewel-engagement gemluxjewel-engagement-faq" data-gemluxjewel-engagement-faq>
+  <div class="gemluxjewel-container">
+    {%- if section.settings.title != blank -%}
+      <h2 class="gemluxjewel-engagement-faq__title">{{ section.settings.title | escape }}</h2>
+    {%- endif -%}
+
+    <div class="gemluxjewel-engagement-faq__tabs" role="tablist" aria-label="FAQ categories">
+      <button
+        type="button"
+        class="gemluxjewel-engagement-faq__tab is-active"
+        role="tab"
+        aria-selected="true"
+        data-gemluxjewel-engagement-faq-tab
+        data-category="lab_grown"
+      >
+        {{ section.settings.tab_1_label | default: 'Lab Grown Diamond' | escape }}
+      </button>
+      <button
+        type="button"
+        class="gemluxjewel-engagement-faq__tab"
+        role="tab"
+        aria-selected="false"
+        data-gemluxjewel-engagement-faq-tab
+        data-category="moissanite"
+      >
+        {{ section.settings.tab_2_label | default: 'Moissanite' | escape }}
+      </button>
+      {%- if section.settings.show_returns_tab -%}
+        <button
+          type="button"
+          class="gemluxjewel-engagement-faq__tab"
+          role="tab"
+          aria-selected="false"
+          data-gemluxjewel-engagement-faq-tab
+          data-category="returns"
+        >
+          {{ section.settings.tab_3_label | default: 'Returns & Exchanges' | escape }}
+        </button>
+      {%- endif -%}
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="gemluxjewel-engagement-faq__accordion">
+        <div class="closet-accordion" data-gemluxjewel-accordion>
+          {%- for block in section.blocks -%}
+            <div
+              class="closet-item gemluxjewel-engagement-faq__item{% unless block.settings.category == 'lab_grown' %} is-hidden{% endunless %}"
+              data-gemluxjewel-engagement-faq-item
+              data-category="{{ block.settings.category | default: 'lab_grown' }}"
+              {{ block.shopify_attributes }}
+            >
+              <div class="closet-header" role="button" tabindex="0" aria-expanded="false">
+                <div class="closet-header-title">{{ block.settings.question | escape }}</div>
+                <div class="accordion-close">
+                  <img src="{{ 'down-arrow.svg' | asset_url }}" alt="" width="24" height="24">
+                </div>
+              </div>
+              <div class="closet-content">
+                <div class="closet-content__inner rte">
+                  {{ block.settings.answer }}
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "GL Engagement FAQ",
+  "tag": "section",
+  "class": "gemluxjewel-section",
+  "max_blocks": 30,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "id": "tab_1_label",
+      "label": "Tab 1 label",
+      "default": "Lab Grown Diamond"
+    },
+    {
+      "type": "text",
+      "id": "tab_2_label",
+      "label": "Tab 2 label",
+      "default": "Moissanite"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_returns_tab",
+      "label": "Show returns tab",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "tab_3_label",
+      "label": "Tab 3 label",
+      "default": "Returns & Exchanges"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "category",
+          "label": "Category",
+          "default": "lab_grown",
+          "options": [
+            { "value": "lab_grown", "label": "Lab Grown Diamond" },
+            { "value": "moissanite", "label": "Moissanite" },
+            { "value": "returns", "label": "Returns & Exchanges" }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "What types of engagement rings do you offer?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>We offer a wide range of lab-grown diamond and moissanite engagement rings in solitaire, halo, vintage, and custom styles.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [{ "name": "GL Engagement FAQ" }]
+}
+{% endschema %}

@@ -1,0 +1,148 @@
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-engagement-ring.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign layout_class = 'gemluxjewel-engagement-showcase__grid--feature-left'
+  if section.settings.featured_position == 'right'
+    assign layout_class = 'gemluxjewel-engagement-showcase__grid--feature-right'
+  endif
+-%}
+
+<section class="gemluxjewel gemluxjewel-engagement gemluxjewel-engagement-showcase">
+  <div class="gemluxjewel-container">
+    {%- if section.settings.title != blank -%}
+      <h2 class="gemluxjewel-engagement-showcase__title">{{ section.settings.title | escape }}</h2>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="gemluxjewel-engagement-showcase__grid {{ layout_class }}">
+        {%- for block in section.blocks -%}
+          <div
+            class="gemluxjewel-engagement-showcase__item{% if block.settings.featured %} gemluxjewel-engagement-showcase__item--featured{% endif %}"
+            {{ block.shopify_attributes }}
+          >
+            <a href="{{ block.settings.link | default: routes.collections_url }}" class="gemluxjewel-engagement-showcase__link">
+              <div class="gemluxjewel-engagement-showcase__img-wrap">
+                {%- if block.settings.image != blank -%}
+                  {%- liquid
+                    if block.settings.featured
+                      assign showcase_sizes = '(min-width: 990px) 35vw, 100vw'
+                    else
+                      assign showcase_sizes = '(min-width: 990px) 22vw, 50vw'
+                    endif
+                  -%}
+                  {{
+                    block.settings.image
+                    | image_url: width: 900
+                    | image_tag:
+                      widths: '400, 600, 900',
+                      sizes: showcase_sizes,
+                      loading: 'lazy',
+                      alt: block.settings.title
+                  }}
+                {%- else -%}
+                  {% render 'gemluxjewel-theme-image',
+                    use_store_media: true,
+                    seed: forloop.index,
+                    width: 900,
+                    widths: '400,600,900',
+                    sizes: '(min-width: 990px) 25vw, 50vw',
+                    alt: block.settings.title
+                  %}
+                {%- endif -%}
+              </div>
+              {%- if block.settings.title != blank -%}
+                <p class="gemluxjewel-engagement-showcase__item-title">{{ block.settings.title | escape }}</p>
+              {%- endif -%}
+              {%- if section.settings.link_label != blank -%}
+                <span class="gemluxjewel-engagement-showcase__item-cta">{{ section.settings.link_label | escape }}</span>
+              {%- endif -%}
+            </a>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.button_label != blank -%}
+      <div class="gemluxjewel-engagement-showcase__footer">
+        {% render 'gemluxjewel-btn', label: section.settings.button_label, url: section.settings.button_link, style: 'green' %}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "GL Engagement Showcase",
+  "tag": "section",
+  "class": "gemluxjewel-section",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Popular Lab Grown Diamond Rings"
+    },
+    {
+      "type": "select",
+      "id": "featured_position",
+      "label": "Large image position",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Product link label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "View all button label",
+      "default": "View All"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "View all button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product feature",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "featured",
+          "label": "Large featured image",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Engagement Ring"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [{ "name": "GL Engagement Showcase" }]
+}
+{% endschema %}

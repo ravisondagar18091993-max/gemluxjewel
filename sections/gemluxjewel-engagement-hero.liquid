@@ -1,0 +1,73 @@
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-engagement-ring.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'gemluxjewel-engagement-ring.js' | asset_url }}" defer="defer"></script>
+
+<section class="gemluxjewel gemluxjewel-engagement gemluxjewel-engagement-hero" data-gemluxjewel-engagement-hero>
+  <div class="gemluxjewel-container">
+    <h1 class="gemluxjewel-engagement-hero__title">{{ section.settings.title | default: page.title | escape }}</h1>
+    {%- if section.settings.text != blank -%}
+      <div class="gemluxjewel-engagement-hero__text-wrap">
+        <p
+          class="gemluxjewel-engagement-hero__text{% if section.settings.enable_read_more %} is-collapsed{% endif %}"
+          data-gemluxjewel-engagement-hero-text
+        >
+          {{ section.settings.text | escape }}
+        </p>
+        {%- if section.settings.enable_read_more -%}
+          <button
+            type="button"
+            class="gemluxjewel-engagement-hero__toggle"
+            data-gemluxjewel-engagement-hero-toggle
+            data-more-label="{{ section.settings.read_more_label | default: 'Read more' | escape }}"
+            data-less-label="{{ section.settings.read_less_label | default: 'Read less' | escape }}"
+            aria-expanded="false"
+          >
+            {{ section.settings.read_more_label | default: 'Read more' | escape }}
+          </button>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "GL Engagement Hero",
+  "tag": "section",
+  "class": "gemluxjewel-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Engagement Ring"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Introduction",
+      "default": "Explore our stunning engagement ring collection, featuring both lab-grown diamonds and moissanite options. Each ring is designed to capture the essence of love and commitment. Perfect for those seeking elegance and sustainability, our rings offer a brilliant choice for your special moment. Find your dream ring with us today."
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_read_more",
+      "label": "Show read more toggle",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "read_more_label",
+      "label": "Read more label",
+      "default": "Read more"
+    },
+    {
+      "type": "text",
+      "id": "read_less_label",
+      "label": "Read less label",
+      "default": "Read less"
+    }
+  ],
+  "presets": [{ "name": "GL Engagement Hero" }]
+}
+{% endschema %}

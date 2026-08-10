@@ -1,0 +1,134 @@
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-engagement-ring.css' | asset_url | stylesheet_tag }}
+
+<section class="gemluxjewel gemluxjewel-engagement gemluxjewel-engagement-dual">
+  <div class="gemluxjewel-container">
+    {%- if section.blocks.size > 0 -%}
+      <div class="gemluxjewel-engagement-dual__grid">
+        {%- for block in section.blocks -%}
+          <article
+            class="gemluxjewel-engagement-dual__card gemluxjewel-engagement-dual__card--{{ block.settings.background | default: 'beige' }}"
+            {{ block.shopify_attributes }}
+          >
+            <div class="gemluxjewel-engagement-dual__media">
+              {%- if block.settings.image != blank -%}
+                {{
+                  block.settings.image
+                  | image_url: width: 1000
+                  | image_tag:
+                    widths: '500, 700, 1000',
+                    sizes: '(min-width: 768px) 44vw, 100vw',
+                    loading: 'lazy',
+                    alt: block.settings.title
+                }}
+              {%- else -%}
+                {% render 'gemluxjewel-theme-image',
+                  use_store_media: true,
+                  seed: forloop.index,
+                  width: 1000,
+                  widths: '500,700,1000',
+                  sizes: '(min-width: 768px) 44vw, 100vw',
+                  alt: block.settings.title
+                %}
+              {%- endif -%}
+            </div>
+            <div class="gemluxjewel-engagement-dual__body">
+              {%- if block.settings.title != blank -%}
+                <h2 class="gemluxjewel-engagement-dual__title">{{ block.settings.title | escape }}</h2>
+              {%- endif -%}
+              {%- if block.settings.text != blank -%}
+                <p class="gemluxjewel-engagement-dual__desc">{{ block.settings.text | escape }}</p>
+              {%- endif -%}
+              {%- if block.settings.button_label != blank -%}
+                <a href="{{ block.settings.button_link | default: routes.collections_url }}" class="gemluxjewel-engagement-btn--outline">
+                  {{ block.settings.button_label | escape }}
+                </a>
+              {%- endif -%}
+            </div>
+          </article>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "GL Engagement Dual CTA",
+  "tag": "section",
+  "class": "gemluxjewel-section",
+  "max_blocks": 2,
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Category card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Lab Grown Diamond"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Explore our collection of lab-grown diamond engagement rings, available in a variety of sizes and styles to create a unique proposal experience."
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "Shop Lab Grown Engagement Rings"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "select",
+          "id": "background",
+          "label": "Background",
+          "default": "beige",
+          "options": [
+            { "value": "beige", "label": "Beige" },
+            { "value": "sand", "label": "Light sand" }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "GL Engagement Dual CTA",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "title": "Lab Grown Diamond",
+            "text": "Explore our collection of lab-grown diamond engagement rings, available in a variety of sizes and styles to create a unique proposal experience.",
+            "button_label": "Shop Lab Grown Engagement Rings",
+            "background": "beige"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "Moissanite",
+            "text": "Thinking about popping the question? Discover our elegant collection of moissanite engagement rings for your special moment.",
+            "button_label": "Shop Moissanite Rings",
+            "background": "sand"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
