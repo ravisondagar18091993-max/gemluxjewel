@@ -3,8 +3,8 @@
 
   @param filter {Object} Shopify collection filter
   @param section {Object} Section object
-  @param dropdown_style {String} metal | shape | setting | default
-  @param section_blocks {Array} Section blocks for shape/setting images
+  @param dropdown_style {String} metal | shape | setting | gemstone | ring-design | color | default
+  @param section_blocks {Array} Section blocks for shape/setting/gemstone/ring images
 {% endcomment %}
 
 {%- liquid
@@ -12,11 +12,20 @@
   assign presentation = filter.presentation | default: 'text'
   assign active_count = filter.active_values.size
   assign panel_id = 'Facet-' | append: filter.param_name | escape | append: '-' | append: section.id
+
+  assign use_icon_grid = false
+  if dropdown_style == 'shape' or dropdown_style == 'setting' or dropdown_style == 'gemstone' or dropdown_style == 'ring-design'
+    assign use_icon_grid = true
+  endif
+
+  if presentation == 'swatch' or dropdown_style == 'metal' or dropdown_style == 'color'
+    assign use_icon_grid = false
+  endif
 -%}
 
 <details
   id="Details-{{ filter.param_name | escape }}-{{ section.id }}"
-  class="gemluxjewel-plp-filter-dropdown js-filter"
+  class="gemluxjewel-plp-filter-dropdown js-filter{% if use_icon_grid %} gemluxjewel-plp-filter-dropdown--icon-grid{% endif %}"
   data-gemluxjewel-plp-dropdown
   data-index="{{ forloop.index | default: 1 }}"
 >
@@ -62,13 +71,18 @@
 
             assign value_label_key = value.label | downcase | strip
             assign option_image = blank
+            assign block_type = 'shape'
 
-            if dropdown_style == 'shape' or dropdown_style == 'setting'
-              assign block_type = 'shape'
-              if dropdown_style == 'setting'
-                assign block_type = 'setting'
+            if dropdown_style == 'setting' or dropdown_style == 'ring-design'
+              assign block_type = 'setting'
+              if dropdown_style == 'ring-design'
+                assign block_type = 'ring_design'
               endif
+            elsif dropdown_style == 'gemstone'
+              assign block_type = 'gemstone'
+            endif
 
+            if use_icon_grid
               for block in section_blocks
                 if block.type != block_type
                   continue
@@ -116,6 +130,33 @@
                   <span>{{ value.label | escape }}</span>
                 </label>
               </div>
+            {%- elsif use_icon_grid -%}
+              <label
+                for="{{ input_id }}"
+                class="gemluxjewel-plp-filter-dropdown__option gemluxjewel-plp-filter-dropdown__option--grid{% if value.active %} is-active{% endif %}"
+              >
+                <input
+                  type="checkbox"
+                  name="{{ value.param_name }}"
+                  value="{{ value.value }}"
+                  id="{{ input_id }}"
+                  class="gemluxjewel-plp-filter-dropdown__checkbox"
+                  {% if value.active %}checked{% endif %}
+                  {% if is_disabled %}disabled{% endif %}
+                >
+                <span class="gemluxjewel-plp-filter-dropdown__option-icon">
+                  {%- if option_image != blank -%}
+                    {{
+                      option_image
+                      | image_url: width: 120
+                      | image_tag: widths: '60, 90, 120', sizes: '56px', loading: 'lazy', alt: value.label
+                    }}
+                  {%- else -%}
+                    <span class="gemluxjewel-plp-filter-dropdown__option-icon-fallback" aria-hidden="true"></span>
+                  {%- endif -%}
+                </span>
+                <span class="gemluxjewel-plp-filter-dropdown__option-label">{{ value.label | escape }}</span>
+              </label>
             {%- else -%}
               <label for="{{ input_id }}" class="gemluxjewel-plp-filter-dropdown__option{% if value.active %} is-active{% endif %}">
                 <input

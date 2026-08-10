@@ -19,17 +19,27 @@
   assign metal_label = section.settings.metal_filter_label | default: 'Metal' | downcase
   assign shape_label = section.settings.shape_filter_label | default: 'Stone shape' | downcase
   assign setting_label = section.settings.setting_filter_label | default: 'Setting style' | downcase
+  assign gemstone_label = section.settings.gemstone_filter_label | default: 'Gemstone type' | downcase
+  assign ring_design_label = section.settings.ring_design_filter_label | default: 'Ring design' | downcase
+  assign color_label = section.settings.color_filter_label | default: 'Color' | downcase
 
   assign metal_filter = blank
   assign shape_filter = blank
   assign setting_filter = blank
+  assign gemstone_filter = blank
+  assign ring_design_filter = blank
+  assign color_filter = blank
 
   for filter in results.filters
     assign filter_label = filter.label | downcase
     assign filter_param = filter.param_name | downcase
 
+    if filter.type != 'list' and filter.type != 'boolean'
+      continue
+    endif
+
     if metal_filter == blank
-      if filter_label contains 'metal' or filter_param contains 'metal'
+      if filter_label contains 'metal' or filter_param contains 'metal' or filter_label == metal_label
         assign metal_filter = filter
       endif
     endif
@@ -43,6 +53,24 @@
     if setting_filter == blank
       if filter_label contains 'setting' or filter_param contains 'setting' or filter_label == setting_label
         assign setting_filter = filter
+      endif
+    endif
+
+    if gemstone_filter == blank
+      if filter_label contains 'gemstone' or filter_label contains 'stone type' or filter_param contains 'gemstone' or filter_label == gemstone_label
+        assign gemstone_filter = filter
+      endif
+    endif
+
+    if ring_design_filter == blank
+      if filter_label contains 'ring design' or filter_param contains 'ring-design' or filter_param contains 'ring_design' or filter_label == ring_design_label
+        assign ring_design_filter = filter
+      endif
+    endif
+
+    if color_filter == blank
+      if filter_label == color_label or filter_label contains 'color' or filter_param contains 'color'
+        assign color_filter = filter
       endif
     endif
   endfor
@@ -74,47 +102,59 @@
               <span>{{ section.settings.filters_button_label | default: 'Filters' | escape }}</span>
             </button>
 
-            <div class="gemluxjewel-plp-filter-bar__quick">
+            <div class="gemluxjewel-plp-filter-bar__dropdowns">
               {%- if metal_filter != blank -%}
-                <button
-                  type="button"
-                  class="gemluxjewel-plp-filter-bar__quick-btn"
-                  data-gemluxjewel-plp-drawer-open
-                  data-gemluxjewel-plp-scroll-to="{{ metal_filter.label | handleize }}"
-                >
-                  {{ metal_filter.label | escape }}
-                  <span class="gemluxjewel-plp-filter-bar__quick-chevron" aria-hidden="true">
-                    {{- 'icon-caret.svg' | inline_asset_content -}}
-                  </span>
-                </button>
+                {% render 'gemluxjewel-plp-filter-dropdown',
+                  filter: metal_filter,
+                  section: section,
+                  section_blocks: section.blocks,
+                  dropdown_style: 'metal'
+                %}
               {%- endif -%}
 
               {%- if shape_filter != blank -%}
-                <button
-                  type="button"
-                  class="gemluxjewel-plp-filter-bar__quick-btn"
-                  data-gemluxjewel-plp-drawer-open
-                  data-gemluxjewel-plp-scroll-to="{{ shape_filter.label | handleize }}"
-                >
-                  {{ shape_filter.label | escape }}
-                  <span class="gemluxjewel-plp-filter-bar__quick-chevron" aria-hidden="true">
-                    {{- 'icon-caret.svg' | inline_asset_content -}}
-                  </span>
-                </button>
+                {% render 'gemluxjewel-plp-filter-dropdown',
+                  filter: shape_filter,
+                  section: section,
+                  section_blocks: section.blocks,
+                  dropdown_style: 'shape'
+                %}
               {%- endif -%}
 
               {%- if setting_filter != blank -%}
-                <button
-                  type="button"
-                  class="gemluxjewel-plp-filter-bar__quick-btn"
-                  data-gemluxjewel-plp-drawer-open
-                  data-gemluxjewel-plp-scroll-to="{{ setting_filter.label | handleize }}"
-                >
-                  {{ setting_filter.label | escape }}
-                  <span class="gemluxjewel-plp-filter-bar__quick-chevron" aria-hidden="true">
-                    {{- 'icon-caret.svg' | inline_asset_content -}}
-                  </span>
-                </button>
+                {% render 'gemluxjewel-plp-filter-dropdown',
+                  filter: setting_filter,
+                  section: section,
+                  section_blocks: section.blocks,
+                  dropdown_style: 'setting'
+                %}
+              {%- endif -%}
+
+              {%- if gemstone_filter != blank -%}
+                {% render 'gemluxjewel-plp-filter-dropdown',
+                  filter: gemstone_filter,
+                  section: section,
+                  section_blocks: section.blocks,
+                  dropdown_style: 'gemstone'
+                %}
+              {%- endif -%}
+
+              {%- if ring_design_filter != blank -%}
+                {% render 'gemluxjewel-plp-filter-dropdown',
+                  filter: ring_design_filter,
+                  section: section,
+                  section_blocks: section.blocks,
+                  dropdown_style: 'ring-design'
+                %}
+              {%- endif -%}
+
+              {%- if color_filter != blank -%}
+                {% render 'gemluxjewel-plp-filter-dropdown',
+                  filter: color_filter,
+                  section: section,
+                  section_blocks: section.blocks,
+                  dropdown_style: 'color'
+                %}
               {%- endif -%}
             </div>
           {%- endif -%}
@@ -289,6 +329,10 @@
                         elsif filter_label contains 'shape' or filter_param contains 'shape'
                           assign sidebar_layout = 'icon-grid'
                         elsif filter_label contains 'setting style' or filter_param contains 'setting-style' or filter_param contains 'setting_style'
+                          assign sidebar_layout = 'icon-grid'
+                        elsif filter_label contains 'gemstone' or filter_label contains 'stone type' or filter_param contains 'gemstone'
+                          assign sidebar_layout = 'icon-grid'
+                        elsif filter_label contains 'ring design' or filter_param contains 'ring-design' or filter_param contains 'ring_design'
                           assign sidebar_layout = 'icon-grid'
                         elsif filter_label contains 'band' or filter_param contains 'band'
                           assign sidebar_layout = 'icon-grid'

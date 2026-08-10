@@ -205,6 +205,24 @@
       "default": "Setting style"
     },
     {
+      "type": "text",
+      "id": "gemstone_filter_label",
+      "label": "Gemstone type filter label match",
+      "default": "Gemstone type"
+    },
+    {
+      "type": "text",
+      "id": "ring_design_filter_label",
+      "label": "Ring design filter label match",
+      "default": "Ring design"
+    },
+    {
+      "type": "text",
+      "id": "color_filter_label",
+      "label": "Color filter label match",
+      "default": "Color"
+    },
+    {
       "type": "header",
       "content": "Stone shapes bar"
     },
@@ -265,6 +283,42 @@
           "type": "image_picker",
           "id": "image",
           "label": "Setting icon"
+        }
+      ]
+    },
+    {
+      "type": "gemstone",
+      "name": "Gemstone type icon",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Gemstone name",
+          "default": "Diamond",
+          "info": "Must match the gemstone type filter value."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Gemstone icon"
+        }
+      ]
+    },
+    {
+      "type": "ring_design",
+      "name": "Ring design icon",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Ring design name",
+          "default": "Solitaire",
+          "info": "Must match the ring design filter value."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Ring design icon"
         }
       ]
     }

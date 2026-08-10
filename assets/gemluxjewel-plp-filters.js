@@ -110,11 +110,27 @@
     });
   }
 
+  function initDropdownOptions(root) {
+    root.querySelectorAll('.gemluxjewel-plp-filter-dropdown__option').forEach(function (option) {
+      if (option.dataset.gemluxjewelDropdownOptionInit === 'true') return;
+      option.dataset.gemluxjewelDropdownOptionInit = 'true';
+
+      option.addEventListener('click', function (event) {
+        var input = option.querySelector('input[type="checkbox"]');
+        if (!input || input.disabled || event.target === input) return;
+        event.preventDefault();
+        input.checked = !input.checked;
+        input.dispatchEvent(new Event('change', { bubbles: true }));
+      });
+    });
+  }
+
   function init(root) {
     root = root || document;
     initDropdowns(root);
     initDrawer(root);
     initFilterLabels(root);
+    initDropdownOptions(root);
   }
 
   document.addEventListener('click', function (event) {

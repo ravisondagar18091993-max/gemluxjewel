@@ -39,6 +39,10 @@
             if layout == 'icon-grid' or layout == 'icon-grid-2'
               if filter.label contains 'Setting' or filter.label contains 'setting'
                 assign block_type = 'setting'
+              elsif filter.label contains 'Gemstone' or filter.label contains 'gemstone' or filter.label contains 'Stone type'
+                assign block_type = 'gemstone'
+              elsif filter.label contains 'Ring design' or filter.label contains 'ring design'
+                assign block_type = 'ring_design'
               endif
 
               for block in section_blocks

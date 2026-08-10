@@ -18,18 +18,78 @@
     "gemluxjewel_collection_products": {
       "type": "gemluxjewel-collection-products",
       "blocks": {
-        "shape_1": { "type": "shape", "settings": { "title": "Round" } },
-        "shape_2": { "type": "shape", "settings": { "title": "Oval" } },
-        "shape_3": { "type": "shape", "settings": { "title": "Emerald" } },
-        "shape_4": { "type": "shape", "settings": { "title": "Radiant" } },
-        "shape_5": { "type": "shape", "settings": { "title": "Pear" } },
-        "shape_6": { "type": "shape", "settings": { "title": "Cushion" } },
-        "setting_1": { "type": "setting", "settings": { "title": "Solitaire" } },
-        "setting_2": { "type": "setting", "settings": { "title": "Halo" } },
-        "setting_3": { "type": "setting", "settings": { "title": "Trilogy" } },
-        "setting_4": { "type": "setting", "settings": { "title": "Bezel" } },
-        "setting_5": { "type": "setting", "settings": { "title": "East-West" } },
-        "setting_6": { "type": "setting", "settings": { "title": "Toi et Moi" } }
+        "shape_1": {
+          "type": "shape",
+          "settings": {
+            "title": "Round"
+          }
+        },
+        "shape_2": {
+          "type": "shape",
+          "settings": {
+            "title": "Oval"
+          }
+        },
+        "shape_3": {
+          "type": "shape",
+          "settings": {
+            "title": "Emerald"
+          }
+        },
+        "shape_4": {
+          "type": "shape",
+          "settings": {
+            "title": "Radiant"
+          }
+        },
+        "shape_5": {
+          "type": "shape",
+          "settings": {
+            "title": "Pear"
+          }
+        },
+        "shape_6": {
+          "type": "shape",
+          "settings": {
+            "title": "Cushion"
+          }
+        },
+        "setting_1": {
+          "type": "setting",
+          "settings": {
+            "title": "Solitaire"
+          }
+        },
+        "setting_2": {
+          "type": "setting",
+          "settings": {
+            "title": "Halo"
+          }
+        },
+        "setting_3": {
+          "type": "setting",
+          "settings": {
+            "title": "Trilogy"
+          }
+        },
+        "setting_4": {
+          "type": "setting",
+          "settings": {
+            "title": "Bezel"
+          }
+        },
+        "setting_5": {
+          "type": "setting",
+          "settings": {
+            "title": "East-West"
+          }
+        },
+        "setting_6": {
+          "type": "setting",
+          "settings": {
+            "title": "Toi et Moi"
+          }
+        }
       },
       "block_order": [
         "shape_1",
@@ -50,12 +110,12 @@
         "filter_layout": "horizontal",
         "enable_filtering": true,
         "enable_sorting": true,
-        "enable_stone_shapes": false,
         "filters_button_label": "Filters",
         "search_placeholder": "Search by style, shape or metal",
         "metal_filter_label": "Metal",
         "shape_filter_label": "Stone shape",
-        "setting_filter_label": "Setting style"
+        "setting_filter_label": "Setting style",
+        "enable_stone_shapes": false
       }
     }
   },

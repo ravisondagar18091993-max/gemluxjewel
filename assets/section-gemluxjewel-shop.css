@@ -1007,7 +1007,7 @@
   background: #fff;
   color: var(--gemluxjewel-dark);
   font-family: var(--gemluxjewel-font-body);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 400;
   cursor: pointer;
   list-style: none;
@@ -1111,9 +1111,73 @@
 .gemluxjewel-plp-filter-dropdown__option-label {
   flex: 1 1 auto;
   font-family: var(--gemluxjewel-font-body);
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.35;
   color: var(--gemluxjewel-dark);
+}
+
+.gemluxjewel-plp-filter-dropdown--icon-grid .gemluxjewel-plp-filter-dropdown__panel {
+  min-width: 320px;
+  max-width: 420px;
+  max-height: 420px;
+  padding: 14px 12px 16px;
+}
+
+.gemluxjewel-plp-filter-dropdown--icon-grid .gemluxjewel-plp-filter-dropdown__panel-head {
+  padding: 0 8px 12px;
+}
+
+.gemluxjewel-plp-filter-dropdown--icon-grid .gemluxjewel-plp-filter-dropdown__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  padding: 0 4px;
+}
+
+.gemluxjewel-plp-filter-dropdown__option--grid {
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 12px 8px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.gemluxjewel-plp-filter-dropdown__option--grid:hover,
+.gemluxjewel-plp-filter-dropdown__option--grid.is-active {
+  background: rgba(115, 151, 106, 0.08);
+  border-color: rgba(115, 151, 106, 0.35);
+}
+
+.gemluxjewel-plp-filter-dropdown__option--grid .gemluxjewel-plp-filter-dropdown__option-label {
+  flex: 0 0 auto;
+  width: 100%;
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+.gemluxjewel-plp-filter-dropdown__option--grid .gemluxjewel-plp-filter-dropdown__option-icon {
+  flex: 0 0 56px;
+  width: 56px;
+  height: 56px;
+}
+
+.gemluxjewel-plp-filter-dropdown__option-icon-fallback {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #f3f3f3 0%, #e4e4e4 100%);
+}
+
+.gemluxjewel-plp-filter-dropdown__option--swatch {
+  padding: 10px 18px;
+}
+
+.gemluxjewel-plp-filter-dropdown__option--swatch .gemluxjewel-plp-filter-dropdown__option-label {
+  font-size: 12px;
 }
 
 .gemluxjewel-plp-filter-dropdown__checkbox {
@@ -1618,8 +1682,9 @@ html.gemluxjewel-plp-drawer-open {
     align-items: stretch;
   }
 
-  .gemluxjewel-plp-filter-bar__quick {
+  .gemluxjewel-plp-filter-bar__dropdowns {
     order: 2;
+    width: 100%;
   }
 
   .gemluxjewel-plp-filter-bar__search-wrap {
@@ -1632,8 +1697,23 @@ html.gemluxjewel-plp-drawer-open {
     width: 100%;
   }
 
-  .gemluxjewel-plp-filter-bar__quick-btn {
+  .gemluxjewel-plp-filter-dropdown {
     flex: 1 1 calc(50% - 5px);
     min-width: 0;
+  }
+
+  .gemluxjewel-plp-filter-dropdown__trigger {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .gemluxjewel-plp-filter-dropdown--icon-grid .gemluxjewel-plp-filter-dropdown__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gemluxjewel-plp-filter-dropdown--icon-grid .gemluxjewel-plp-filter-dropdown__panel {
+    min-width: min(100vw - 32px, 320px);
+    left: 0;
+    right: auto;
   }
 }
