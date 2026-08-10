@@ -214,8 +214,12 @@ class FacetFiltersForm extends HTMLElement {
           }
         }
 
-        if (elementToRender.parentElement) {
-          document.querySelector(`#${elementToRender.parentElement.id} .js-filter`).before(elementToRender);
+        if (elementToRender.parentElement?.id) {
+          const parentSelector = `#${CSS.escape(elementToRender.parentElement.id)} .js-filter`;
+          const anchor = document.querySelector(parentSelector);
+          if (anchor) {
+            anchor.before(elementToRender);
+          }
         }
       }
     });
@@ -248,7 +252,9 @@ class FacetFiltersForm extends HTMLElement {
             // Fallback to summary/close button if the checkbox can't be found
             const fallbackSelector = newFacetDetailsElement.classList.contains('mobile-facets__details')
               ? `.mobile-facets__close-button`
-              : `.facets__summary`;
+              : newFacetDetailsElement.classList.contains('gemluxjewel-plp-filter-dropdown')
+                ? `.gemluxjewel-plp-filter-dropdown__trigger`
+                : `.facets__summary`;
             const fallbackElement = newFacetDetailsElement.querySelector(fallbackSelector);
             if (fallbackElement) fallbackElement.focus();
           }
@@ -287,8 +293,10 @@ class FacetFiltersForm extends HTMLElement {
   }
 
   static renderCounts(source, target) {
-    const targetSummary = target.querySelector('.facets__summary');
-    const sourceSummary = source.querySelector('.facets__summary');
+    const targetSummary =
+      target.querySelector('.facets__summary') || target.querySelector('.gemluxjewel-plp-filter-dropdown__trigger');
+    const sourceSummary =
+      source.querySelector('.facets__summary') || source.querySelector('.gemluxjewel-plp-filter-dropdown__trigger');
 
     if (sourceSummary && targetSummary) {
       targetSummary.outerHTML = sourceSummary.outerHTML;

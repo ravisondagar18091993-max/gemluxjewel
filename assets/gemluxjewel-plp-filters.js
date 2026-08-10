@@ -244,7 +244,23 @@
     }
   });
 
+  function resetInitFlags(root) {
+    root.querySelectorAll('[data-gemluxjewel-plp-dropdown]').forEach(function (el) {
+      delete el.dataset.gemluxjewelPlpDropdownInit;
+    });
+    root.querySelectorAll('[data-gemluxjewel-plp-sort]').forEach(function (el) {
+      delete el.dataset.gemluxjewelPlpSortInit;
+    });
+    root.querySelectorAll('[data-gemluxjewel-filter-option-init]').forEach(function (el) {
+      delete el.dataset.gemluxjewelFilterOptionInit;
+    });
+    root.querySelectorAll('[data-gemluxjewel-dropdown-option-init]').forEach(function (el) {
+      delete el.dataset.gemluxjewelDropdownOptionInit;
+    });
+  }
+
   document.addEventListener('gemluxjewel:facets-updated', function () {
+    resetInitFlags(document);
     init(document);
   });
 

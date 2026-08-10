@@ -13,8 +13,8 @@
 -%}
 
 <section
-  class="gemluxjewel-plp-sidebar-group js-filter gemluxjewel-plp-sidebar-group--{{ layout }}"
-  id="Details-{{ filter.param_name | escape }}-{{ section.id }}"
+  class="gemluxjewel-plp-sidebar-group js-filter js-filter--sidebar gemluxjewel-plp-sidebar-group--{{ layout }}"
+  id="{{ group_id }}"
   data-gemluxjewel-sidebar-group="{{ filter.label | handleize }}"
 >
   <h3 class="gemluxjewel-plp-sidebar-group__title">{{ filter.label | escape }}</h3>

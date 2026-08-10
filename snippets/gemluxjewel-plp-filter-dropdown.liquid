@@ -26,8 +26,8 @@
 -%}
 
 <details
-  id="Details-{{ filter.param_name | escape }}-{{ section.id }}"
-  class="gemluxjewel-plp-filter-dropdown js-filter{% if use_icon_grid %} gemluxjewel-plp-filter-dropdown--icon-grid{% endif %}"
+  id="FacetDropdown-{{ filter.param_name | escape }}-{{ section.id }}"
+  class="gemluxjewel-plp-filter-dropdown js-filter js-filter--dropdown{% if use_icon_grid %} gemluxjewel-plp-filter-dropdown--icon-grid{% endif %}"
   data-gemluxjewel-plp-dropdown
   data-index="{{ forloop.index | default: 1 }}"
 >
