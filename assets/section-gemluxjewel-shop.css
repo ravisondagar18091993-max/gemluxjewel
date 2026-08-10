@@ -771,16 +771,26 @@
 /* Product grid */
 .gemluxjewel-shop__grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 12px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
+.gemluxjewel-shop__grid > li {
+  display: flex;
+  min-width: 0;
+}
+
+.gemluxjewel-shop__grid .gemluxjewel-card {
+  margin-bottom: 0;
+  width: 100%;
+}
+
 @media (min-width: 768px) {
   .gemluxjewel-shop__grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 32px 20px;
   }
 }
@@ -798,6 +808,12 @@
 
 .gemluxjewel-shop__grid .gemluxjewel-card {
   margin-bottom: 0;
+}
+
+@media (max-width: 767px) {
+  .gemluxjewel-shop--horizontal-filters .gemluxjewel-shop__grid {
+    gap: 16px 10px;
+  }
 }
 
 .gemluxjewel-shop .gemluxjewel-pagination {
