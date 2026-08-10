@@ -895,20 +895,36 @@
 /* ── Horizontal PLP filter bar (Cullen style) ── */
 .gemluxjewel-shop--horizontal-filters {
   padding-top: 40px;
+  overflow: visible;
+}
+
+.gemluxjewel-shop--horizontal-filters .gemluxjewel-container {
+  overflow: visible;
 }
 
 .gemluxjewel-plp-filter-bar {
   margin-bottom: 24px;
+  position: relative;
+  z-index: 5;
+}
+
+.gemluxjewel-plp-filter-bar.facets-container {
+  display: block;
+  grid-template-columns: none;
+  grid-template-rows: none;
+  padding-top: 0;
 }
 
 .gemluxjewel-plp-filter-bar__form-wrap {
   display: block;
+  overflow: visible;
 }
 
 .gemluxjewel-plp-filter-bar__main {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  overflow: visible;
 }
 
 .gemluxjewel-plp-filter-bar__controls {
@@ -916,6 +932,7 @@
   grid-template-columns: minmax(0, 1fr) minmax(220px, 360px);
   align-items: stretch;
   gap: 12px;
+  overflow: visible;
 }
 
 .gemluxjewel-plp-filter-bar__filters-cluster {
@@ -923,6 +940,7 @@
   align-items: stretch;
   gap: 8px;
   min-width: 0;
+  overflow: visible;
 }
 
 .gemluxjewel-plp-filter-bar__filters-btn {
@@ -930,7 +948,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  min-height: 44px;
+  min-height: 40px;
   padding: 0 16px;
   border: none;
   border-radius: 4px;
@@ -970,12 +988,7 @@
   gap: 8px;
   flex: 1 1 auto;
   min-width: 0;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.gemluxjewel-plp-filter-bar__dropdowns::-webkit-scrollbar {
-  display: none;
+  overflow: visible;
 }
 
 .gemluxjewel-plp-filter-dropdown {
@@ -983,25 +996,34 @@
   flex: 0 0 auto;
 }
 
+.gemluxjewel-plp-filter-dropdown[open] {
+  z-index: 40;
+}
+
 .gemluxjewel-plp-filter-dropdown__trigger {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  min-height: 44px;
+  min-height: 40px;
   height: 100%;
   min-width: 0;
-  padding: 0 12px;
+  padding: 0 14px;
   border: 1px solid #d9d9d9;
   border-radius: 4px;
   background: #fff;
   color: var(--gemluxjewel-dark);
   font-family: var(--gemluxjewel-font-body);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 400;
   cursor: pointer;
   list-style: none;
   user-select: none;
   white-space: nowrap;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gemluxjewel-plp-filter-dropdown__trigger:hover {
+  border-color: #bdbdbd;
 }
 
 .gemluxjewel-plp-filter-dropdown__trigger::-webkit-details-marker {
@@ -1010,6 +1032,7 @@
 
 .gemluxjewel-plp-filter-dropdown[open] .gemluxjewel-plp-filter-dropdown__trigger {
   border-color: var(--gemluxjewel-primary);
+  box-shadow: 0 0 0 1px rgba(115, 151, 106, 0.2);
 }
 
 .gemluxjewel-plp-filter-dropdown__chevron {
@@ -1035,18 +1058,22 @@
 
 .gemluxjewel-plp-filter-dropdown__panel {
   position: absolute;
-  top: calc(100% + 8px);
+  top: calc(100% + 6px);
   left: 0;
-  z-index: 20;
+  z-index: 50;
   min-width: 260px;
   max-width: 320px;
-  max-height: 360px;
+  max-height: min(420px, 70vh);
   overflow: auto;
   padding: 14px 0;
   border: 1px solid #e8e8e8;
-  border-radius: 4px;
+  border-radius: 6px;
   background: #fff;
-  box-shadow: 0 12px 32px rgba(20, 20, 20, 0.12);
+  box-shadow: 0 16px 40px rgba(20, 20, 20, 0.14);
+}
+
+.gemluxjewel-plp-filter-dropdown[open] > .gemluxjewel-plp-filter-dropdown__panel {
+  display: block;
 }
 
 .gemluxjewel-plp-filter-dropdown__panel-head {
@@ -1241,7 +1268,7 @@
 
 .gemluxjewel-plp-filter-bar__search {
   width: 100%;
-  min-height: 44px;
+  min-height: 40px;
   padding: 0 16px 0 44px;
   border: none;
   border-radius: 4px;

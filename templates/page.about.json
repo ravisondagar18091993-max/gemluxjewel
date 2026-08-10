@@ -21,15 +21,72 @@
     "gemluxjewel_about_history": {
       "type": "gemluxjewel-about-history",
       "blocks": {
-        "h1": { "type": "milestone", "settings": { "year": "2020", "title": "The Beginning", "text": "The idea was born to create jewellery that combines comfort, durability, and modern design for everyday wear." } },
-        "h2": { "type": "milestone", "settings": { "year": "2021", "title": "First Collection Launch", "text": "Introduced the first range of titanium jewellery focused on skin-safe and lightweight designs." } },
-        "h3": { "type": "milestone", "settings": { "year": "2022", "title": "Growing Community", "text": "Built a loyal customer base by delivering quality products and consistent customer satisfaction." } },
-        "h4": { "type": "milestone", "settings": { "year": "2023", "title": "Expanding Collections", "text": "Expanded into new styles, offering minimal, statement, and everyday essentials for modern lifestyles." } },
-        "h5": { "type": "milestone", "settings": { "year": "2024", "title": "Innovation & Quality Focus", "text": "Enhanced product quality with better materials, improved finishes, and refined craftsmanship." } },
-        "h6": { "type": "milestone", "settings": { "year": "2025", "title": "Global Expansion", "text": "Reached new international markets and introduced eco-conscious packaging worldwide." } },
-        "h7": { "type": "milestone", "settings": { "year": "2026", "title": "Flagship Boutique", "text": "Opened our first immersive retail space for customers to experience our craftsmanship in person." } }
+        "h1": {
+          "type": "milestone",
+          "settings": {
+            "year": "2020",
+            "title": "The Beginning",
+            "text": "The idea was born to create jewellery that combines comfort, durability, and modern design for everyday wear."
+          }
+        },
+        "h2": {
+          "type": "milestone",
+          "settings": {
+            "year": "2021",
+            "title": "First Collection Launch",
+            "text": "Introduced the first range of titanium jewellery focused on skin-safe and lightweight designs."
+          }
+        },
+        "h3": {
+          "type": "milestone",
+          "settings": {
+            "year": "2022",
+            "title": "Growing Community",
+            "text": "Built a loyal customer base by delivering quality products and consistent customer satisfaction."
+          }
+        },
+        "h4": {
+          "type": "milestone",
+          "settings": {
+            "year": "2023",
+            "title": "Expanding Collections",
+            "text": "Expanded into new styles, offering minimal, statement, and everyday essentials for modern lifestyles."
+          }
+        },
+        "h5": {
+          "type": "milestone",
+          "settings": {
+            "year": "2024",
+            "title": "Innovation & Quality Focus",
+            "text": "Enhanced product quality with better materials, improved finishes, and refined craftsmanship."
+          }
+        },
+        "h6": {
+          "type": "milestone",
+          "settings": {
+            "year": "2025",
+            "title": "Global Expansion",
+            "text": "Reached new international markets and introduced eco-conscious packaging worldwide."
+          }
+        },
+        "h7": {
+          "type": "milestone",
+          "settings": {
+            "year": "2026",
+            "title": "Flagship Boutique",
+            "text": "Opened our first immersive retail space for customers to experience our craftsmanship in person."
+          }
+        }
       },
-      "block_order": ["h1", "h2", "h3", "h4", "h5", "h6", "h7"],
+      "block_order": [
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "h7"
+      ],
       "settings": {
         "title": "Our History"
       }
@@ -48,12 +105,37 @@
     "gemluxjewel_marquee": {
       "type": "gemluxjewel-marquee-strip",
       "blocks": {
-        "m1": { "type": "text", "settings": { "text": "Timeless Elegance" } },
-        "m2": { "type": "text", "settings": { "text": "Premium Craftsmanship" } },
-        "m3": { "type": "text", "settings": { "text": "Skin-Safe Comfort" } },
-        "m4": { "type": "text", "settings": { "text": "Everyday Luxury" } }
+        "m1": {
+          "type": "text",
+          "settings": {
+            "text": "Timeless Elegance"
+          }
+        },
+        "m2": {
+          "type": "text",
+          "settings": {
+            "text": "Premium Craftsmanship"
+          }
+        },
+        "m3": {
+          "type": "text",
+          "settings": {
+            "text": "Skin-Safe Comfort"
+          }
+        },
+        "m4": {
+          "type": "text",
+          "settings": {
+            "text": "Everyday Luxury"
+          }
+        }
       },
-      "block_order": ["m1", "m2", "m3", "m4"],
+      "block_order": [
+        "m1",
+        "m2",
+        "m3",
+        "m4"
+      ],
       "settings": {}
     },
     "gemluxjewel_about_founder": {
@@ -71,12 +153,41 @@
     "gemluxjewel_why": {
       "type": "gemluxjewel-why-choose-us",
       "blocks": {
-        "f1": { "type": "feature", "settings": { "title": "Skin-Safe Comfort", "text": "Designed with hypoallergenic materials that are gentle on sensitive skin all day" } },
-        "f2": { "type": "feature", "settings": { "title": "Premium Quality", "text": "Crafted using durable, high-grade materials for long-lasting shine and strength" } },
-        "f3": { "type": "feature", "settings": { "title": "Everyday Wear", "text": "Lightweight and waterproof jewellery made for daily use without compromise" } },
-        "f4": { "type": "feature", "settings": { "title": "Expert Support", "text": "Get reliable 24/7 guidance to help you choose the perfect piece effortlessly" } }
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "title": "Skin-Safe Comfort",
+            "text": "Designed with hypoallergenic materials that are gentle on sensitive skin all day"
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "title": "Premium Quality",
+            "text": "Crafted using durable, high-grade materials for long-lasting shine and strength"
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "title": "Everyday Wear",
+            "text": "Lightweight and waterproof jewellery made for daily use without compromise"
+          }
+        },
+        "f4": {
+          "type": "feature",
+          "settings": {
+            "title": "Expert Support",
+            "text": "Get reliable 24/7 guidance to help you choose the perfect piece effortlessly"
+          }
+        }
       },
-      "block_order": ["f1", "f2", "f3", "f4"],
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4"
+      ],
       "settings": {
         "prefix": "Our Story",
         "title": "Why Choose Us",
@@ -87,19 +198,67 @@
     "gemluxjewel_testimonials": {
       "type": "gemluxjewel-testimonials",
       "blocks": {
-        "r1": { "type": "review", "settings": { "rating": 5, "text": "Really impressed with how lightweight and comfortable the jewellery feels all day. No irritation at all, even after wearing it continuously for long hours.", "author": "Aarav Mehta – India" } },
-        "r2": { "type": "review", "settings": { "rating": 5, "text": "The quality is excellent and it looks even better in person. Been wearing it daily and it still feels as good as new.", "author": "Oliver Smith – United Kingdom" } },
-        "r3": { "type": "review", "settings": { "rating": 5, "text": "Simple, stylish, and perfect for everyday use without any discomfort. You can tell it's made with care and premium materials.", "author": "Ethan Carter – United States" } },
-        "r4": { "type": "review", "settings": { "rating": 5, "text": "Great value for money and the design is exactly what I wanted. Will definitely order again.", "author": "Sofia Rossi – Italy" } },
-        "r5": { "type": "review", "settings": { "rating": 5, "text": "Fast delivery and beautiful packaging. The jewellery exceeded my expectations in every way.", "author": "Yuki Tanaka – Japan" } },
-        "r6": { "type": "review", "settings": { "rating": 5, "text": "My go-to brand for daily wear jewellery. Comfortable, elegant, and always gets compliments.", "author": "Emma Wilson – Australia" } }
+        "r1": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "author": "Aarav Mehta – India",
+            "text": "Really impressed with how lightweight and comfortable the jewellery feels all day. No irritation at all, even after wearing it continuously for long hours."
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "author": "Oliver Smith – United Kingdom",
+            "text": "The quality is excellent and it looks even better in person. Been wearing it daily and it still feels as good as new."
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "author": "Ethan Carter – United States",
+            "text": "Simple, stylish, and perfect for everyday use without any discomfort. You can tell it's made with care and premium materials."
+          }
+        },
+        "r4": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "author": "Sofia Rossi – Italy",
+            "text": "Great value for money and the design is exactly what I wanted. Will definitely order again."
+          }
+        },
+        "r5": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "author": "Yuki Tanaka – Japan",
+            "text": "Fast delivery and beautiful packaging. The jewellery exceeded my expectations in every way."
+          }
+        },
+        "r6": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "author": "Emma Wilson – Australia",
+            "text": "My go-to brand for daily wear jewellery. Comfortable, elegant, and always gets compliments."
+          }
+        }
       },
-      "block_order": ["r1", "r2", "r3", "r4", "r5", "r6"],
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6"
+      ],
       "settings": {
         "title": "Customer Voices",
         "subtitle": "Real experiences from people who value comfort, quality, and everyday style.",
         "show_summary": true,
-        "summary_label": "Trusted Rating",
         "average_rating": "4.6",
         "review_count": "2000 reviews"
       }
