@@ -6,51 +6,59 @@
   if hero_image == blank and section.settings.image != blank
     assign hero_image = section.settings.image
   endif
-  assign show_hero_media = true
+  assign has_bg_image = true
   if section.settings.hide_image
-    assign show_hero_media = false
+    assign has_bg_image = false
   endif
 -%}
 
-<section class="gemluxjewel gemluxjewel-collection-hero">
+<section class="gemluxjewel gemluxjewel-collection-hero{% unless has_bg_image %} gemluxjewel-collection-hero--solid{% endunless %}">
+  {%- if has_bg_image -%}
+    <div class="gemluxjewel-collection-hero__bg" aria-hidden="true">
+      {%- if hero_image != blank -%}
+        {{
+          hero_image
+          | image_url: width: 2400
+          | image_tag:
+            widths: '750, 1100, 1500, 2000, 2400',
+            sizes: '100vw',
+            loading: 'eager',
+            fetchpriority: 'high',
+            alt: ''
+        }}
+      {%- else -%}
+        {% render 'gemluxjewel-theme-image',
+          asset: 'sub-hero-img.png',
+          width: 2400,
+          widths: '750,1100,1500,2000,2400',
+          sizes: '100vw',
+          loading: 'eager',
+          fetchpriority: 'high',
+          alt: ''
+        %}
+      {%- endif -%}
+      <div class="gemluxjewel-collection-hero__overlay"></div>
+    </div>
+  {%- endif -%}
+
   <div class="gemluxjewel-container">
-    <div class="gemluxjewel-collection-hero__grid{% unless show_hero_media %} gemluxjewel-collection-hero__grid--no-image{% endunless %}">
-      <div class="gemluxjewel-collection-hero__content">
-        <p class="gemluxjewel-collection-hero__breadcrumb">
-          <a href="{{ routes.root_url }}">{{ section.settings.breadcrumb_home | default: 'Home' | escape }}</a>
-          |
-          {%- if section.settings.breadcrumb_collections_link != blank -%}
-            <a href="{{ section.settings.breadcrumb_collections_link }}">{{ section.settings.breadcrumb_collections | default: 'Collections' | escape }}</a>
-          {%- else -%}
-            {{ section.settings.breadcrumb_collections | default: 'Collections' | escape }}
-          {%- endif -%}
-          |
-          <span>{{ collection.title | escape }}</span>
-        </p>
-        <h1 class="gemluxjewel-collection-hero__title">{{ collection.title | escape }}</h1>
-        {%- if collection.description != blank -%}
-          <div class="gemluxjewel-collection-hero__desc">{{ collection.description }}</div>
-        {%- elsif section.settings.fallback_description != blank -%}
-          <p class="gemluxjewel-collection-hero__desc">{{ section.settings.fallback_description | escape }}</p>
+    <div class="gemluxjewel-collection-hero__content">
+      <p class="gemluxjewel-collection-hero__breadcrumb">
+        <a href="{{ routes.root_url }}">{{ section.settings.breadcrumb_home | default: 'Home' | escape }}</a>
+        |
+        {%- if section.settings.breadcrumb_collections_link != blank -%}
+          <a href="{{ section.settings.breadcrumb_collections_link }}">{{ section.settings.breadcrumb_collections | default: 'Collections' | escape }}</a>
+        {%- else -%}
+          {{ section.settings.breadcrumb_collections | default: 'Collections' | escape }}
         {%- endif -%}
-      </div>
-      {%- if show_hero_media -%}
-        <div class="gemluxjewel-collection-hero__media">
-          <div class="gemluxjewel-collection-hero__img">
-            {%- if hero_image != blank -%}
-              {{ hero_image | image_url: width: 1036 | image_tag: widths: '400, 600, 800, 1036', sizes: '(min-width: 990px) 518px, 100vw', loading: 'eager', alt: collection.title }}
-            {%- else -%}
-              {% render 'gemluxjewel-theme-image',
-                asset: 'sub-hero-img.png',
-                width: 1036,
-                widths: '400,600,800,1036',
-                sizes: '(min-width: 990px) 518px, 100vw',
-                loading: 'eager',
-                alt: collection.title
-              %}
-            {%- endif -%}
-          </div>
-        </div>
+        |
+        <span>{{ collection.title | escape }}</span>
+      </p>
+      <h1 class="gemluxjewel-collection-hero__title">{{ collection.title | escape }}</h1>
+      {%- if collection.description != blank -%}
+        <div class="gemluxjewel-collection-hero__desc">{{ collection.description }}</div>
+      {%- elsif section.settings.fallback_description != blank -%}
+        <p class="gemluxjewel-collection-hero__desc">{{ section.settings.fallback_description | escape }}</p>
       {%- endif -%}
     </div>
   </div>
@@ -88,13 +96,13 @@
     {
       "type": "image_picker",
       "id": "image",
-      "label": "Hero image",
-      "info": "Used when the collection has no image. Leave empty to use the default shop hero image."
+      "label": "Background image",
+      "info": "Full-width background. Uses collection image first, then this setting, then the default shop image."
     },
     {
       "type": "checkbox",
       "id": "hide_image",
-      "label": "Hide hero image",
+      "label": "Use solid green background only",
       "default": false
     }
   ]

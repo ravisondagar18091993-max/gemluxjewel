@@ -34,32 +34,65 @@
 
 /* ── Collection hero ── */
 .gemluxjewel-collection-hero {
-  background: var(--gemluxjewel-primary);
-  padding: var(--gemluxjewel-header-offset, 218px) 0 51px;
+  position: relative;
+  overflow: hidden;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  padding: calc(var(--gemluxjewel-header-offset, 218px) + 24px) 0 51px;
   border-top: 1px solid rgba(255, 248, 244, 0.2);
   border-bottom: 1px solid rgba(255, 248, 244, 0.2);
+  color: #fff;
 }
 
-.gemluxjewel-collection-hero__grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 30px;
-  align-items: center;
+.gemluxjewel-collection-hero--solid {
+  background: var(--gemluxjewel-primary);
 }
 
-@media (min-width: 990px) {
-  .gemluxjewel-collection-hero__grid {
-    grid-template-columns: 1fr 1fr;
-  }
+.gemluxjewel-collection-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
 
-  .gemluxjewel-collection-hero__grid--no-image {
-    grid-template-columns: 1fr;
-    max-width: 640px;
-  }
+.gemluxjewel-collection-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gemluxjewel-collection-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(115, 151, 106, 0.94) 0%,
+    rgba(115, 151, 106, 0.82) 42%,
+    rgba(115, 151, 106, 0.68) 100%
+  );
+  pointer-events: none;
+}
+
+.gemluxjewel-collection-hero .gemluxjewel-container {
+  position: relative;
+  z-index: 1;
 }
 
 .gemluxjewel-collection-hero__content {
   min-width: 0;
+  max-width: 640px;
+}
+
+@media (max-width: 991px) {
+  .gemluxjewel-collection-hero {
+    min-height: 280px;
+    padding-bottom: 40px;
+  }
+
+  .gemluxjewel-collection-hero__overlay {
+    background: rgba(115, 151, 106, 0.88);
+  }
 }
 
 .gemluxjewel-collection-hero__breadcrumb {
@@ -115,34 +148,6 @@
   .gemluxjewel-collection-hero__desc {
     font-size: 16px;
     line-height: 30px;
-  }
-}
-
-.gemluxjewel-collection-hero__media {
-  justify-self: end;
-  width: 100%;
-  max-width: 518px;
-}
-
-.gemluxjewel-collection-hero__img {
-  width: 100%;
-  max-width: 518px;
-  border-radius: var(--gemluxjewel-radius);
-  overflow: hidden;
-  aspect-ratio: 518 / 469;
-}
-
-.gemluxjewel-collection-hero__img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-@media (max-width: 991px) {
-  .gemluxjewel-collection-hero__media {
-    max-width: 100%;
-    justify-self: stretch;
   }
 }
 
