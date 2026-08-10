@@ -416,7 +416,7 @@
   }
 
   .gemluxjewel-header__mega-grid--featured {
-    grid-template-columns: repeat(var(--mega-menu-cols, 5), minmax(0, 1fr)) minmax(200px, 240px);
+    grid-template-columns: repeat(var(--mega-menu-cols, 6), minmax(0, 1fr));
   }
 }
 
@@ -426,17 +426,9 @@
 }
 
 .gemluxjewel-header__mega-col--featured {
-  grid-column: auto;
+  min-width: 0;
+  max-width: 100%;
   justify-self: stretch;
-  max-width: 240px;
-  margin-left: auto;
-}
-
-@media (min-width: 990px) {
-  .gemluxjewel-header__mega-col--featured {
-    grid-column: -1;
-    justify-self: end;
-  }
 }
 
 .gemluxjewel-header__mega-title-row {

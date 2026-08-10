@@ -33,14 +33,19 @@
     if banner_image != blank
       assign show_featured = true
     endif
+
+    assign mega_menu_cols = link.links.size
+    if show_featured
+      assign mega_menu_cols = link.links.size | plus: 1
+    endif
   -%}
 
   <div class="gemluxjewel-header__mega" data-gemluxjewel-mega-panel>
     <div class="gemluxjewel-header__mega-inner">
       <div
         class="gemluxjewel-header__mega-grid{% if show_featured %} gemluxjewel-header__mega-grid--featured{% endif %}"
-        style="--mega-menu-cols: {{ link.links.size }};"
-        data-mega-cols="{{ link.links.size }}"
+        style="--mega-menu-cols: {{ mega_menu_cols }};"
+        data-mega-cols="{{ mega_menu_cols }}"
       >
         {%- for child in link.links -%}
           {%- liquid
@@ -145,7 +150,7 @@
                   | image_url: width: 560
                   | image_tag:
                     widths: '280, 360, 560',
-                    sizes: '280px',
+                    sizes: '(min-width: 990px) calc((100vw - 120px) / 6), 100vw',
                     loading: 'lazy',
                     alt: banner_caption
                 }}
