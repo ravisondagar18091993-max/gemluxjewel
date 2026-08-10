@@ -12,9 +12,9 @@
     "gemluxjewel_hero": {
       "type": "gemluxjewel-hero",
       "settings": {
-        "media_type": "image",
+        "media_type": "video",
         "image": "shopify://shop_images/Customized_Jewelry_Gemlux_Jewels_bd4ce8ec-636c-4c4e-af4e-13fd2b0b9b2a.jpg",
-        "video": "shopify://files/videos/create_video____.mp4",
+        "video": "shopify://files/videos/Woman_wearing_jewelry_indoors_1080p_202608061709.mp4",
         "prefix": "Engagement Rings",
         "title": "A Shift in Perspective",
         "text": "East-West rings redefining modern bridal styling.",
