@@ -89,73 +89,81 @@
       <div id="FacetsWrapperDesktop" class="gemluxjewel-plp-filter-bar__main">
         <div class="gemluxjewel-plp-filter-bar__controls">
           {%- if enable_filtering -%}
-            <button
-              type="button"
-              class="gemluxjewel-plp-filter-bar__filters-btn"
-              data-gemluxjewel-plp-drawer-open
-              aria-controls="GemluxPlpFilterDrawer"
-              aria-expanded="false"
-            >
-              <span class="gemluxjewel-plp-filter-bar__filters-icon" aria-hidden="true">
-                {{- 'icon-filter.svg' | inline_asset_content -}}
-              </span>
-              <span>{{ section.settings.filters_button_label | default: 'Filters' | escape }}</span>
-            </button>
+            <div class="gemluxjewel-plp-filter-bar__filters-cluster">
+              <button
+                type="button"
+                class="gemluxjewel-plp-filter-bar__filters-btn"
+                data-gemluxjewel-plp-drawer-open
+                aria-controls="GemluxPlpFilterDrawer"
+                aria-expanded="false"
+              >
+                <span class="gemluxjewel-plp-filter-bar__filters-icon" aria-hidden="true">
+                  {{- 'icon-filter.svg' | inline_asset_content -}}
+                </span>
+                <span>{{ section.settings.filters_button_label | default: 'Filters' | escape }}</span>
+              </button>
 
-            <div class="gemluxjewel-plp-filter-bar__dropdowns">
-              {%- if metal_filter != blank -%}
-                {% render 'gemluxjewel-plp-filter-dropdown',
-                  filter: metal_filter,
-                  section: section,
-                  section_blocks: section.blocks,
-                  dropdown_style: 'metal'
-                %}
-              {%- endif -%}
+              <div class="gemluxjewel-plp-filter-bar__dropdowns">
+                {%- if metal_filter != blank -%}
+                  {% render 'gemluxjewel-plp-filter-dropdown',
+                    filter: metal_filter,
+                    section: section,
+                    section_blocks: section.blocks,
+                    dropdown_style: 'metal',
+                    trigger_label: section.settings.metal_dropdown_label
+                  %}
+                {%- endif -%}
 
-              {%- if shape_filter != blank -%}
-                {% render 'gemluxjewel-plp-filter-dropdown',
-                  filter: shape_filter,
-                  section: section,
-                  section_blocks: section.blocks,
-                  dropdown_style: 'shape'
-                %}
-              {%- endif -%}
+                {%- if shape_filter != blank -%}
+                  {% render 'gemluxjewel-plp-filter-dropdown',
+                    filter: shape_filter,
+                    section: section,
+                    section_blocks: section.blocks,
+                    dropdown_style: 'shape',
+                    trigger_label: section.settings.shape_dropdown_label
+                  %}
+                {%- endif -%}
 
-              {%- if setting_filter != blank -%}
-                {% render 'gemluxjewel-plp-filter-dropdown',
-                  filter: setting_filter,
-                  section: section,
-                  section_blocks: section.blocks,
-                  dropdown_style: 'setting'
-                %}
-              {%- endif -%}
+                {%- if setting_filter != blank -%}
+                  {% render 'gemluxjewel-plp-filter-dropdown',
+                    filter: setting_filter,
+                    section: section,
+                    section_blocks: section.blocks,
+                    dropdown_style: 'setting',
+                    trigger_label: section.settings.setting_dropdown_label
+                  %}
+                {%- endif -%}
 
-              {%- if gemstone_filter != blank -%}
-                {% render 'gemluxjewel-plp-filter-dropdown',
-                  filter: gemstone_filter,
-                  section: section,
-                  section_blocks: section.blocks,
-                  dropdown_style: 'gemstone'
-                %}
-              {%- endif -%}
+                {%- if gemstone_filter != blank -%}
+                  {% render 'gemluxjewel-plp-filter-dropdown',
+                    filter: gemstone_filter,
+                    section: section,
+                    section_blocks: section.blocks,
+                    dropdown_style: 'gemstone',
+                    trigger_label: section.settings.gemstone_dropdown_label
+                  %}
+                {%- endif -%}
 
-              {%- if ring_design_filter != blank -%}
-                {% render 'gemluxjewel-plp-filter-dropdown',
-                  filter: ring_design_filter,
-                  section: section,
-                  section_blocks: section.blocks,
-                  dropdown_style: 'ring-design'
-                %}
-              {%- endif -%}
+                {%- if ring_design_filter != blank -%}
+                  {% render 'gemluxjewel-plp-filter-dropdown',
+                    filter: ring_design_filter,
+                    section: section,
+                    section_blocks: section.blocks,
+                    dropdown_style: 'ring-design',
+                    trigger_label: section.settings.ring_design_dropdown_label
+                  %}
+                {%- endif -%}
 
-              {%- if color_filter != blank -%}
-                {% render 'gemluxjewel-plp-filter-dropdown',
-                  filter: color_filter,
-                  section: section,
-                  section_blocks: section.blocks,
-                  dropdown_style: 'color'
-                %}
-              {%- endif -%}
+                {%- if color_filter != blank -%}
+                  {% render 'gemluxjewel-plp-filter-dropdown',
+                    filter: color_filter,
+                    section: section,
+                    section_blocks: section.blocks,
+                    dropdown_style: 'color',
+                    trigger_label: section.settings.color_dropdown_label
+                  %}
+                {%- endif -%}
+              </div>
             </div>
           {%- endif -%}
 

@@ -898,39 +898,52 @@
 }
 
 .gemluxjewel-plp-filter-bar {
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .gemluxjewel-plp-filter-bar__form-wrap {
   display: block;
 }
 
-.gemluxjewel-plp-filter-bar__controls {
+.gemluxjewel-plp-filter-bar__main {
   display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
+  flex-direction: column;
   gap: 10px;
-  margin-bottom: 18px;
+}
+
+.gemluxjewel-plp-filter-bar__controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 360px);
+  align-items: stretch;
+  gap: 12px;
+}
+
+.gemluxjewel-plp-filter-bar__filters-cluster {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  min-width: 0;
 }
 
 .gemluxjewel-plp-filter-bar__filters-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  min-height: 48px;
-  padding: 0 18px;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 16px;
   border: none;
   border-radius: 4px;
   background: var(--gemluxjewel-primary);
   color: #fff;
   font-family: var(--gemluxjewel-font-body);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.02em;
   cursor: pointer;
   transition: opacity 0.25s ease;
   flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .gemluxjewel-plp-filter-bar__filters-btn:hover {
@@ -952,66 +965,43 @@
 .gemluxjewel-plp-filter-bar__dropdowns,
 .gemluxjewel-plp-filter-bar__quick {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: stretch;
-  gap: 10px;
-  flex: 1 1 auto;
-}
-
-.gemluxjewel-plp-filter-bar__quick-btn {
-  display: inline-flex;
-  align-items: center;
   gap: 8px;
-  min-height: 48px;
-  min-width: 120px;
-  padding: 0 16px;
-  border: 1px solid #d9d9d9;
-  border-radius: 4px;
-  background: #fff;
-  color: var(--gemluxjewel-dark);
-  font-family: var(--gemluxjewel-font-body);
-  font-size: 13px;
-  cursor: pointer;
-  transition: border-color 0.2s ease;
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
 
-.gemluxjewel-plp-filter-bar__quick-btn:hover {
-  border-color: var(--gemluxjewel-primary);
-}
-
-.gemluxjewel-plp-filter-bar__quick-chevron {
-  display: inline-flex;
-  width: 10px;
-  margin-left: auto;
-}
-
-.gemluxjewel-plp-filter-bar__quick-chevron svg {
-  width: 10px;
-  height: auto;
+.gemluxjewel-plp-filter-bar__dropdowns::-webkit-scrollbar {
+  display: none;
 }
 
 .gemluxjewel-plp-filter-dropdown {
   position: relative;
-  flex: 0 1 auto;
+  flex: 0 0 auto;
 }
 
 .gemluxjewel-plp-filter-dropdown__trigger {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  min-height: 48px;
-  min-width: 120px;
-  padding: 0 16px;
+  gap: 6px;
+  min-height: 44px;
+  height: 100%;
+  min-width: 0;
+  padding: 0 12px;
   border: 1px solid #d9d9d9;
   border-radius: 4px;
   background: #fff;
   color: var(--gemluxjewel-dark);
   font-family: var(--gemluxjewel-font-body);
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 400;
   cursor: pointer;
   list-style: none;
   user-select: none;
+  white-space: nowrap;
 }
 
 .gemluxjewel-plp-filter-dropdown__trigger::-webkit-details-marker {
@@ -1228,9 +1218,9 @@
 
 .gemluxjewel-plp-filter-bar__search-wrap {
   position: relative;
-  flex: 1 1 280px;
-  min-width: min(100%, 280px);
-  margin-left: auto;
+  width: 100%;
+  max-width: 360px;
+  justify-self: end;
 }
 
 .gemluxjewel-plp-filter-bar__search-icon {
@@ -1238,27 +1228,27 @@
   left: 16px;
   top: 50%;
   transform: translateY(-50%);
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   opacity: 0.45;
   pointer-events: none;
 }
 
 .gemluxjewel-plp-filter-bar__search-icon svg {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
 }
 
 .gemluxjewel-plp-filter-bar__search {
   width: 100%;
-  min-height: 48px;
+  min-height: 44px;
   padding: 0 16px 0 44px;
   border: none;
   border-radius: 4px;
   background: #f3f3f3;
   color: var(--gemluxjewel-dark);
   font-family: var(--gemluxjewel-font-body);
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .gemluxjewel-plp-filter-bar__search::placeholder {
@@ -1271,16 +1261,15 @@
 }
 
 .gemluxjewel-plp-filter-bar__meta {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 360px);
   align-items: center;
-  justify-content: space-between;
-  gap: 12px 20px;
+  gap: 12px;
 }
 
 .gemluxjewel-plp-filter-bar__count {
   font-family: var(--gemluxjewel-font-body);
-  font-size: 14px;
+  font-size: 12px;
   color: var(--gemluxjewel-gray);
 }
 
@@ -1292,20 +1281,25 @@
   position: relative;
   display: inline-flex;
   align-items: center;
+  justify-self: end;
+  width: 100%;
+  max-width: 360px;
+  justify-content: flex-end;
 }
 
 .gemluxjewel-plp-filter-bar__sort-select {
   appearance: none;
   -webkit-appearance: none;
-  min-height: 36px;
+  min-height: 32px;
   padding: 0 28px 0 0;
   border: none;
   background: transparent;
   color: var(--gemluxjewel-dark);
   font-family: var(--gemluxjewel-font-body);
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
   cursor: pointer;
+  text-align: right;
 }
 
 .gemluxjewel-plp-filter-bar__sort-chevron {
@@ -1678,33 +1672,50 @@ html.gemluxjewel-plp-drawer-open {
 
 @media (max-width: 989px) {
   .gemluxjewel-plp-filter-bar__controls {
+    grid-template-columns: 1fr;
+  }
+
+  .gemluxjewel-plp-filter-bar__meta {
+    grid-template-columns: 1fr;
+  }
+
+  .gemluxjewel-plp-filter-bar__search-wrap,
+  .gemluxjewel-plp-filter-bar__sort {
+    max-width: none;
+  }
+
+  .gemluxjewel-plp-filter-bar__sort {
+    justify-self: start;
+    justify-content: flex-start;
+  }
+
+  .gemluxjewel-plp-filter-bar__sort-select {
+    text-align: left;
+  }
+}
+
+@media (max-width: 749px) {
+  .gemluxjewel-plp-filter-bar__filters-cluster {
     flex-direction: column;
     align-items: stretch;
   }
 
   .gemluxjewel-plp-filter-bar__dropdowns {
-    order: 2;
-    width: 100%;
-  }
-
-  .gemluxjewel-plp-filter-bar__search-wrap {
-    order: 3;
-    margin-left: 0;
+    flex-wrap: wrap;
+    overflow-x: visible;
   }
 
   .gemluxjewel-plp-filter-bar__filters-btn {
-    order: 1;
     width: 100%;
   }
 
   .gemluxjewel-plp-filter-dropdown {
-    flex: 1 1 calc(50% - 5px);
+    flex: 1 1 calc(50% - 4px);
     min-width: 0;
   }
 
   .gemluxjewel-plp-filter-dropdown__trigger {
     width: 100%;
-    min-width: 0;
   }
 
   .gemluxjewel-plp-filter-dropdown--icon-grid .gemluxjewel-plp-filter-dropdown__list {

@@ -5,6 +5,7 @@
   @param section {Object} Section object
   @param dropdown_style {String} metal | shape | setting | gemstone | ring-design | color | default
   @param section_blocks {Array} Section blocks for shape/setting/gemstone/ring images
+  @param trigger_label {String} Optional short label for the dropdown button
 {% endcomment %}
 
 {%- liquid
@@ -12,6 +13,7 @@
   assign presentation = filter.presentation | default: 'text'
   assign active_count = filter.active_values.size
   assign panel_id = 'Facet-' | append: filter.param_name | escape | append: '-' | append: section.id
+  assign display_label = trigger_label | default: filter.label
 
   assign use_icon_grid = false
   if dropdown_style == 'shape' or dropdown_style == 'setting' or dropdown_style == 'gemstone' or dropdown_style == 'ring-design'
@@ -30,7 +32,7 @@
   data-index="{{ forloop.index | default: 1 }}"
 >
   <summary class="gemluxjewel-plp-filter-dropdown__trigger">
-    <span class="gemluxjewel-plp-filter-dropdown__label">{{ filter.label | escape }}</span>
+    <span class="gemluxjewel-plp-filter-dropdown__label">{{ display_label | escape }}</span>
     {%- if active_count > 0 -%}
       <span class="gemluxjewel-plp-filter-dropdown__count">({{ active_count }})</span>
     {%- endif -%}

@@ -115,6 +115,9 @@
         "metal_filter_label": "Metal",
         "shape_filter_label": "Stone shape",
         "setting_filter_label": "Setting style",
+        "gemstone_filter_label": "Gemstone type",
+        "ring_design_filter_label": "Ring design",
+        "color_filter_label": "Color",
         "enable_stone_shapes": false
       }
     }
