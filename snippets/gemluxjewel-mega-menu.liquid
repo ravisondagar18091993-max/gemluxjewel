@@ -37,7 +37,11 @@
 
   <div class="gemluxjewel-header__mega" data-gemluxjewel-mega-panel>
     <div class="gemluxjewel-header__mega-inner">
-      <div class="gemluxjewel-header__mega-grid{% if show_featured %} gemluxjewel-header__mega-grid--featured{% endif %}">
+      <div
+        class="gemluxjewel-header__mega-grid{% if show_featured %} gemluxjewel-header__mega-grid--featured{% endif %}"
+        style="--mega-menu-cols: {{ link.links.size }};"
+        data-mega-cols="{{ link.links.size }}"
+      >
         {%- for child in link.links -%}
           {%- liquid
             assign child_key = child.title | downcase | strip

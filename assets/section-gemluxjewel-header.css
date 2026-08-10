@@ -395,7 +395,7 @@
   width: 88%;
   max-width: 100%;
   margin: 0 auto;
-  padding: 36px 48px 44px;
+  padding: 32px 0 40px;
   max-height: calc(100vh - var(--gemluxjewel-header-offset, 120px) - 24px);
   overflow-y: auto;
   overscroll-behavior: contain;
@@ -410,26 +410,31 @@
 
 @media (min-width: 990px) {
   .gemluxjewel-header__mega-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 20px 28px;
+    gap: 24px 20px;
+    grid-template-columns: repeat(var(--mega-menu-cols, 4), minmax(0, 1fr));
   }
 
   .gemluxjewel-header__mega-grid--featured {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) minmax(220px, 280px);
+    grid-template-columns: repeat(var(--mega-menu-cols, 5), minmax(0, 1fr)) minmax(200px, 240px);
   }
 }
 
 .gemluxjewel-header__mega-col {
   min-width: 0;
+  max-width: 100%;
 }
 
 .gemluxjewel-header__mega-col--featured {
   grid-column: auto;
+  justify-self: stretch;
+  max-width: 240px;
+  margin-left: auto;
 }
 
 @media (min-width: 990px) {
   .gemluxjewel-header__mega-col--featured {
-    grid-column: auto;
+    grid-column: -1;
+    justify-self: end;
   }
 }
 
@@ -497,13 +502,21 @@
   gap: 8px;
   max-width: 100%;
   font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
-  font-size: 14px;
-  line-height: 1.35;
+  font-size: 13px;
+  line-height: 1.45;
   font-weight: 400;
   color: #1a2744;
   text-decoration: none;
   transition: color 0.2s ease, opacity 0.2s ease;
-  word-break: break-word;
+}
+
+.gemluxjewel-header__mega-link > span:first-child {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  word-break: normal;
+  overflow-wrap: anywhere;
 }
 
 .gemluxjewel-header__mega-link:hover {
