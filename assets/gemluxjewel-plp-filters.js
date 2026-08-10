@@ -55,11 +55,12 @@
   }
 
   function syncSidebarSort(sidebarSort, mainSort) {
-    if (!sidebarSort || !mainSort) return;
+    if (!sidebarSort || !mainSort || sidebarSort.dataset.gemluxjewelSortSync === 'true') return;
+    sidebarSort.dataset.gemluxjewelSortSync = 'true';
 
     sidebarSort.addEventListener('change', function () {
       mainSort.value = sidebarSort.value;
-      mainSort.dispatchEvent(new Event('input', { bubbles: true }));
+      mainSort.dispatchEvent(new Event('change', { bubbles: true }));
     });
 
     mainSort.addEventListener('change', function () {
@@ -94,10 +95,26 @@
     );
   }
 
+  function initFilterLabels(root) {
+    root.querySelectorAll('.gemluxjewel-plp-sidebar-group__option').forEach(function (option) {
+      if (option.dataset.gemluxjewelFilterOptionInit === 'true') return;
+      option.dataset.gemluxjewelFilterOptionInit = 'true';
+
+      option.addEventListener('click', function (event) {
+        var input = option.querySelector('input[type="checkbox"]');
+        if (!input || input.disabled || event.target === input) return;
+        event.preventDefault();
+        input.checked = !input.checked;
+        input.dispatchEvent(new Event('change', { bubbles: true }));
+      });
+    });
+  }
+
   function init(root) {
     root = root || document;
     initDropdowns(root);
     initDrawer(root);
+    initFilterLabels(root);
   }
 
   document.addEventListener('click', function (event) {
@@ -111,6 +128,10 @@
       closeAllDropdowns();
       closeDrawer();
     }
+  });
+
+  document.addEventListener('gemluxjewel:facets-updated', function () {
+    init(document);
   });
 
   init(document);
