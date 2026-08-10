@@ -234,6 +234,7 @@
           "settings": {
             "layout": "tile",
             "collection": "",
+            "image": "shopify://shop_images/ChatGPT_Image_Aug_10_2026_12_25_11_PM.png",
             "title": "Essentials",
             "button_label": "Shop Now",
             "link": "shopify://collections/all"
