@@ -4,7 +4,7 @@
   --gemluxjewel-pagination-primary: #73976a;
   --gemluxjewel-pagination-dark: #141414;
   --gemluxjewel-pagination-muted: rgba(115, 151, 106, 0.08);
-  --gemluxjewel-pagination-font: 'Instrument Sans', var(--font-body-family), sans-serif;
+  --gemluxjewel-pagination-font: 'Outfit', var(--font-body-family), sans-serif;
   margin-top: 40px;
   padding-top: 8px;
 }

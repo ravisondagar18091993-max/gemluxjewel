@@ -3,13 +3,15 @@
     "gemluxjewel_blog_hero": {
       "type": "gemluxjewel-blog-hero",
       "settings": {
-        "button_label": "View Collection",
-        "button_link": "shopify://collections/all"
+        "prefix": "Blog",
+        "title": "News & Insights"
       }
     },
     "gemluxjewel_blog_main": {
       "type": "gemluxjewel-blog-main",
       "settings": {
+        "show_all_blogs": true,
+        "blog_handles": "news,engagement-rings,lab-grown-diamond,engagement-jewelry,diamond-rings",
         "articles_per_page": 12
       }
     }

@@ -15,7 +15,44 @@
   endfor
 -%}
 
-{%- if card_style == 'news' -%}
+{%- if card_style == 'education' -%}
+  <article class="gemluxjewel-blog-card gemluxjewel-blog-card--education" {{ shopify_attributes }}>
+    <a href="{{ article.url }}" class="gemluxjewel-blog-card__media" tabindex="-1" aria-hidden="true">
+      {%- if article.image -%}
+        {{
+          article.image
+          | image_url: width: 900
+          | image_tag:
+            widths: '400, 600, 900',
+            sizes: '(min-width: 990px) 30vw, (min-width: 750px) 45vw, 100vw',
+            loading: 'lazy',
+            alt: article.title,
+            class: 'gemluxjewel-blog-card__photo'
+        }}
+      {%- else -%}
+        {% render 'gemluxjewel-theme-image',
+          use_store_media: true,
+          seed: article.id,
+          width: 900,
+          widths: '400,600,900',
+          sizes: '(min-width: 990px) 30vw, (min-width: 750px) 45vw, 100vw',
+          alt: article.title,
+          class: 'gemluxjewel-blog-card__photo'
+        %}
+      {%- endif -%}
+    </a>
+
+    {%- if card_tag != blank -%}
+      <p class="gemluxjewel-blog-card__tag">{{ card_tag | upcase | escape }}</p>
+    {%- elsif article.blog.title != blank -%}
+      <p class="gemluxjewel-blog-card__tag">{{ article.blog.title | upcase | escape }}</p>
+    {%- endif -%}
+
+    <h2 class="gemluxjewel-blog-card__title">
+      <a href="{{ article.url }}">{{ article.title | downcase | escape }}</a>
+    </h2>
+  </article>
+{%- elsif card_style == 'news' -%}
   <article class="gemluxjewel-news__card">
     <div class="gemluxjewel-news__img">
       <a href="{{ article.url }}" tabindex="-1" aria-hidden="true">

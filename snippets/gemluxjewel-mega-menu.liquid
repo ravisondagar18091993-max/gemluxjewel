@@ -1,0 +1,166 @@
+{% comment %}
+  Mega menu built from Shopify navigation links.
+  Accepts: link (top-level nav item with children), section
+  Menu structure in Shopify Admin → Navigation:
+  - Level 1: Top nav item (e.g. Engagement Rings)
+  - Level 2: Column headings (e.g. Lab Grown Diamonds)
+  - Level 3: Links inside each column (e.g. Solitaire Rings)
+{% endcomment %}
+
+{%- if link.links.size > 0 -%}
+  {%- liquid
+    assign link_key = link.title | downcase | strip
+    assign highlight_titles = section.settings.mega_highlight_links | downcase | split: ','
+    assign new_badge_titles = section.settings.mega_new_badge_links | downcase | split: ','
+    assign banner_image = blank
+    assign banner_caption = blank
+    assign banner_link = blank
+    assign banner_block = nil
+
+    for block in section.blocks
+      if block.type == 'mega_banner'
+        assign block_parent = block.settings.parent_nav | downcase | strip
+        if block_parent == link_key and block.settings.image != blank
+          assign banner_block = block
+          assign banner_image = block.settings.image
+          assign banner_caption = block.settings.caption
+          assign banner_link = block.settings.link
+        endif
+      endif
+    endfor
+
+    assign show_featured = false
+    if banner_image != blank
+      assign show_featured = true
+    endif
+  -%}
+
+  <div class="gemluxjewel-header__mega" data-gemluxjewel-mega-panel>
+    <div class="gemluxjewel-header__mega-inner">
+      <div
+        class="gemluxjewel-header__mega-grid{% if show_featured %} gemluxjewel-header__mega-grid--featured{% endif %}"
+        style="--mega-menu-cols: {{ link.links.size }};"
+        data-mega-cols="{{ link.links.size }}"
+      >
+        {%- for child in link.links -%}
+          {%- liquid
+            assign child_key = child.title | downcase | strip
+            assign show_info = false
+            if section.settings.mega_info_columns != blank
+              assign info_columns = section.settings.mega_info_columns | downcase | split: ','
+              for info_col in info_columns
+                assign info_col_trim = info_col | strip
+                if info_col_trim == child_key
+                  assign show_info = true
+                endif
+              endfor
+            endif
+          -%}
+          <div class="gemluxjewel-header__mega-col">
+            <div class="gemluxjewel-header__mega-title-row">
+              {%- if child.url != blank -%}
+                <a href="{{ child.url }}" class="gemluxjewel-header__mega-title gemluxjewel-header__mega-title--link">
+                  {{ child.title | escape }}
+                </a>
+              {%- else -%}
+                <span class="gemluxjewel-header__mega-title">{{ child.title | escape }}</span>
+              {%- endif -%}
+              {%- if show_info and child.url != blank -%}
+                <a href="{{ child.url }}" class="gemluxjewel-header__mega-info" aria-label="More information about {{ child.title | escape }}">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1"/>
+                    <path d="M7 6.2V9.4M7 4.6h.01" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                  </svg>
+                </a>
+              {%- elsif show_info -%}
+                <span class="gemluxjewel-header__mega-info" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1"/>
+                    <path d="M7 6.2V9.4M7 4.6h.01" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                  </svg>
+                </span>
+              {%- endif -%}
+            </div>
+
+            {%- if child.links.size > 0 -%}
+              <ul class="gemluxjewel-header__mega-list">
+                {%- for grandchild in child.links -%}
+                  {%- liquid
+                    assign grandchild_key = grandchild.title | downcase | strip
+                    assign is_highlight = false
+                    assign is_new = false
+                    for highlight in highlight_titles
+                      assign highlight_trim = highlight | strip
+                      if highlight_trim == grandchild_key
+                        assign is_highlight = true
+                      endif
+                    endfor
+                    for new_item in new_badge_titles
+                      assign new_trim = new_item | strip
+                      if new_trim == grandchild_key
+                        assign is_new = true
+                      endif
+                    endfor
+                  -%}
+                  <li>
+                    <a
+                      href="{{ grandchild.url }}"
+                      class="gemluxjewel-header__mega-link{% if is_highlight %} is-highlight{% endif %}"
+                    >
+                      <span>{{ grandchild.title | escape }}</span>
+                      {%- if is_new -%}
+                        <span class="gemluxjewel-header__mega-badge">New</span>
+                      {%- endif -%}
+                    </a>
+                  </li>
+                {%- endfor -%}
+              </ul>
+              {%- if section.settings.show_shop_all and child.url != blank -%}
+                <a href="{{ child.url }}" class="gemluxjewel-header__mega-shop-all">
+                  {{ section.settings.shop_all_label | default: 'Shop All' | escape }}
+                </a>
+              {%- endif -%}
+            {%- elsif child.url != blank -%}
+              <ul class="gemluxjewel-header__mega-list">
+                <li>
+                  <a href="{{ child.url }}" class="gemluxjewel-header__mega-link">
+                    <span>{{ child.title | escape }}</span>
+                  </a>
+                </li>
+              </ul>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+
+        {%- if show_featured -%}
+          <div class="gemluxjewel-header__mega-col gemluxjewel-header__mega-col--featured"{% if banner_block %} {{ banner_block.shopify_attributes }}{% endif %}>
+            {%- if banner_link != blank -%}
+              <a href="{{ banner_link }}" class="gemluxjewel-header__mega-featured">
+            {%- else -%}
+              <div class="gemluxjewel-header__mega-featured">
+            {%- endif -%}
+              <div class="gemluxjewel-header__mega-featured-img">
+                {{
+                  banner_image
+                  | image_url: width: 560
+                  | image_tag:
+                    widths: '280, 360, 560',
+                    sizes: '280px',
+                    loading: 'lazy',
+                    alt: banner_caption
+                }}
+              </div>
+              {%- if banner_caption != blank -%}
+                <span class="gemluxjewel-header__mega-featured-caption">{{ banner_caption | escape }}</span>
+              {%- endif -%}
+            {%- if banner_link != blank -%}
+              </a>
+            {%- else -%}
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}

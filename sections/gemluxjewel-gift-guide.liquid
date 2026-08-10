@@ -1,0 +1,182 @@
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign has_featured = false
+  assign has_tiles = false
+
+  for block in section.blocks
+    if block.type == 'card'
+      if block.settings.layout == 'tile'
+        assign has_tiles = true
+      else
+        assign has_featured = true
+      endif
+    endif
+  endfor
+-%}
+
+<section class="gemluxjewel gemluxjewel-gift-guide">
+  <div class="gemluxjewel-container">
+    {%- if section.settings.title != blank or section.settings.subtitle != blank -%}
+      <div class="gemluxjewel-section-header gemluxjewel-section-header--center gemluxjewel-gift-guide__header">
+        <div>
+          {%- if section.settings.title != blank -%}
+            <h2 class="gemluxjewel-section-title">{{ section.settings.title | escape }}</h2>
+          {%- endif -%}
+          {%- if section.settings.subtitle != blank -%}
+            <p class="gemluxjewel-section-desc">{{ section.settings.subtitle | escape }}</p>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- if has_featured -%}
+      <div class="gemluxjewel-gift-guide__featured">
+        {%- assign featured_index = 0 -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'card' and block.settings.layout != 'tile' -%}
+            {%- assign featured_index = featured_index | plus: 1 -%}
+            {% render 'gemluxjewel-gift-guide-card',
+              block: block,
+              layout: 'featured',
+              seed: featured_index
+            %}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if has_tiles -%}
+      <div class="gemluxjewel-gift-guide__tiles">
+        {%- assign tile_index = 0 -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'card' and block.settings.layout == 'tile' -%}
+            {%- assign tile_index = tile_index | plus: 1 -%}
+            {% render 'gemluxjewel-gift-guide-card',
+              block: block,
+              layout: 'tile',
+              seed: tile_index
+            %}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "gemluxjewel Gift Guide",
+  "tag": "section",
+  "class": "section gemluxjewel-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Gift Guide"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Description"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "select",
+          "id": "layout",
+          "label": "Card style",
+          "options": [
+            { "value": "featured", "label": "Featured (large overlay)" },
+            { "value": "tile", "label": "Tile (caption below)" }
+          ],
+          "default": "featured"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection",
+          "info": "Optional. Uses collection image and link when card fields are empty."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "Shop Now",
+          "info": "Featured cards only"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "gemluxjewel Gift Guide",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "layout": "featured",
+            "title": "Quick Ship",
+            "button_label": "Shop Now",
+            "link": "shopify://collections/all"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "layout": "featured",
+            "title": "For Her",
+            "button_label": "Shop Now",
+            "link": "shopify://collections/all"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "layout": "tile",
+            "title": "Essentials",
+            "link": "shopify://collections/all"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "layout": "tile",
+            "title": "Under $1000",
+            "link": "shopify://collections/all"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "layout": "tile",
+            "title": "For Him",
+            "link": "shopify://collections/all"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

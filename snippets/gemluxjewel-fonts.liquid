@@ -1,39 +1,41 @@
-{% comment %} gemluxjewel font faces — include once per page via hero section {% endcomment %}
+{% comment %}
+  gemluxjewel typography
+  Headings: Figtree
+  Body / UI: Outfit
+{% endcomment %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+  href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap"
+  rel="stylesheet"
+>
 {% style %}
-  @font-face {
-    font-family: 'Instrument Sans';
-    src: url('{{ 'instrumentsans-regular.ttf' | asset_url }}') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
+  .gemluxjewel {
+    --gemluxjewel-font-heading: 'Figtree', sans-serif;
+    --gemluxjewel-font-body: 'Outfit', var(--font-body-family), sans-serif;
+    --gemluxjewel-font-heading-size: 25px;
+    --gemluxjewel-font-heading-line-height: 28px;
+    --gemluxjewel-font-heading-weight: 600;
+    --gemluxjewel-font-heading-weight-medium: 600;
+    --gemluxjewel-secondary: #ffffff;
   }
-  @font-face {
-    font-family: 'Instrument Sans';
-    src: url('{{ 'instrumentsans-medium.ttf' | asset_url }}') format('truetype');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Nunito';
-    src: url('{{ 'nunito-light.ttf' | asset_url }}') format('truetype');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Nunito';
-    src: url('{{ 'nunito-medium.ttf' | asset_url }}') format('truetype');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Nunito';
-    src: url('{{ 'nunito-semibold.ttf' | asset_url }}') format('truetype');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
+
+  .gemluxjewel :is(
+    .gemluxjewel-section-title,
+    h1:not(.gemluxjewel-hero__title):not(.gemluxjewel-pdp__title),
+    h2:not(.gemluxjewel-blog-card__title),
+    h3,
+    h4,
+    h5,
+    h6,
+    [class*='__heading'],
+    [class*='-heading']
+  ) {
+    font-family: var(--gemluxjewel-font-heading);
+    font-size: var(--gemluxjewel-font-heading-size);
+    line-height: var(--gemluxjewel-font-heading-line-height);
+    font-weight: var(--gemluxjewel-font-heading-weight);
+    text-transform: uppercase;
   }
 
   main:has(.gemluxjewel) {
@@ -44,5 +46,12 @@
     margin-top: 0 !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
+  }
+
+  .gemluxjewel .gemluxjewel-container {
+    width: 88%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
 {% endstyle %}

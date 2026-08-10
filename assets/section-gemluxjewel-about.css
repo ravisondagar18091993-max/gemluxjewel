@@ -33,7 +33,7 @@
 
 .gemluxjewel-about-hero__title {
   font-family: var(--gemluxjewel-font-heading);
-  font-weight: 300;
+  font-weight: 400;
   font-size: 42px;
   line-height: 46px;
   text-transform: uppercase;
@@ -82,7 +82,7 @@
 
 /* ── History timeline slider ── */
 .gemluxjewel-about-history {
-  background: var(--gemluxjewel-secondary, #fff);
+  background: var(--gemluxjewel-secondary, #ffffff);
   padding: 100px 0 90px;
   overflow: hidden;
 }
@@ -312,7 +312,7 @@
 
 /* ── Founder ── */
 .gemluxjewel-about-founder {
-  background: var(--gemluxjewel-secondary, #fff);
+  background: var(--gemluxjewel-secondary, #ffffff);
   padding: 120px 0;
 }
 
@@ -357,7 +357,7 @@
 
 .gemluxjewel-about-founder__name {
   font-family: var(--gemluxjewel-font-heading);
-  font-weight: 300;
+  font-weight: 400;
   font-size: 38px;
   line-height: 42px;
   text-transform: uppercase;
@@ -383,7 +383,7 @@
 
 .gemluxjewel-about-founder__quote {
   font-family: var(--gemluxjewel-font-heading);
-  font-weight: 300;
+  font-weight: 400;
   font-size: 22px;
   line-height: 32px;
   font-style: italic;
@@ -429,7 +429,7 @@
 
 .gemluxjewel-about-appointment__heading {
   font-family: var(--gemluxjewel-font-heading);
-  font-weight: 300;
+  font-weight: 400;
   font-size: 38px;
   line-height: 42px;
   text-transform: uppercase;

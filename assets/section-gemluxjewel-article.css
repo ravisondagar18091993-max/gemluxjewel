@@ -7,8 +7,8 @@
   --gemluxjewel-gray: #818181;
   --gemluxjewel-radius: 10px;
   --gemluxjewel-radius-pill: 30px;
-  --gemluxjewel-font-body: 'Instrument Sans', var(--font-body-family), sans-serif;
-  --gemluxjewel-font-heading: 'Nunito', var(--font-heading-family), sans-serif;
+  --gemluxjewel-font-body: 'Outfit', var(--font-body-family), sans-serif;
+  --gemluxjewel-font-heading: 'Figtree', var(--font-heading-family), sans-serif;
 
   background: var(--gemluxjewel-secondary);
   padding: 0 0 100px;
@@ -215,7 +215,7 @@
 
 .gemluxjewel-article__title {
   font-family: var(--gemluxjewel-font-heading);
-  font-weight: 300;
+  font-weight: 400;
   font-size: 40px;
   line-height: 1.25;
   text-transform: uppercase;

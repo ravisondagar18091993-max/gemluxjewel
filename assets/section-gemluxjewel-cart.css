@@ -6,8 +6,8 @@
   --gemluxjewel-dark: #141414;
   --gemluxjewel-gray: #818181;
   --gemluxjewel-radius: 10px;
-  --gemluxjewel-font-body: 'Instrument Sans', var(--font-body-family), sans-serif;
-  --gemluxjewel-font-heading: 'Nunito', var(--font-heading-family), sans-serif;
+  --gemluxjewel-font-body: 'Outfit', var(--font-body-family), sans-serif;
+  --gemluxjewel-font-heading: 'Figtree', var(--font-heading-family), sans-serif;
 }
 
 .gemluxjewel-cart__section {
@@ -24,7 +24,8 @@
 }
 
 .gemluxjewel-cart .gemluxjewel-container {
-  max-width: 1440px;
+  width: 88%;
+  max-width: 100%;
   margin: 0 auto;
   padding-left: 60px;
   padding-right: 60px;

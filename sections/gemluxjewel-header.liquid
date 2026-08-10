@@ -3,20 +3,16 @@
 <script src="{{ 'gemluxjewel-header.js' | asset_url }}" defer="defer"></script>
 
 {%- liquid
-  assign use_dark = section.settings.dark_style
-  assign mega_blocks = section.blocks | where: 'type', 'mega_column'
-  assign mega_image_block = section.blocks | where: 'type', 'mega_image' | first
+  assign top_links = section.blocks | where: 'type', 'top_link'
+  assign highlight_title = section.settings.highlight_link | downcase | strip
+  assign logo_label = section.settings.logo_text | default: shop.name
 -%}
 
-<header
-  class="gemluxjewel gemluxjewel-header{% if use_dark %} gemluxjewel-header--dark{% endif %}"
-  data-gemluxjewel-header
->
+<header class="gemluxjewel gemluxjewel-header" data-gemluxjewel-header>
   <div class="gemluxjewel-header__top">
-    {%- assign top_links = section.blocks | where: 'type', 'top_link' -%}
     {%- if top_links.size > 0 -%}
       <div
-        class="gemluxjewel-header__top-slider"
+        class="gemluxjewel-header__top-slider{% if top_links.size == 1 %} gemluxjewel-header__top-slider--static{% endif %}"
         data-gemluxjewel-header-slider
         data-interval="{{ section.settings.slider_speed | default: 4 | times: 1000 }}"
       >
@@ -26,12 +22,42 @@
             {{ block.shopify_attributes }}
           >
             {%- if block.settings.url != blank -%}
-              <a href="{{ block.settings.url }}" class="gemluxjewel-header__top-link">{{ block.settings.label | escape }}</a>
+              <a href="{{ block.settings.url }}" class="gemluxjewel-header__top-link">
+                {%- if section.settings.show_announcement_icon -%}
+                  <img src="{{ 'header-leaf.svg' | asset_url }}" alt="" class="gemluxjewel-header__top-icon" width="14" height="14">
+                {%- endif -%}
+                <span>{{ block.settings.label | escape }}</span>
+              </a>
             {%- else -%}
-              <span class="gemluxjewel-header__top-link">{{ block.settings.label | escape }}</span>
+              <span class="gemluxjewel-header__top-link">
+                {%- if section.settings.show_announcement_icon -%}
+                  <img src="{{ 'header-leaf.svg' | asset_url }}" alt="" class="gemluxjewel-header__top-icon" width="14" height="14">
+                {%- endif -%}
+                <span>{{ block.settings.label | escape }}</span>
+              </span>
             {%- endif -%}
           </div>
         {%- endfor -%}
+      </div>
+    {%- elsif section.settings.announcement_text != blank -%}
+      <div class="gemluxjewel-header__top-slider gemluxjewel-header__top-slider--static">
+        <div class="gemluxjewel-header__top-slide is-active">
+          {%- if section.settings.announcement_url != blank -%}
+            <a href="{{ section.settings.announcement_url }}" class="gemluxjewel-header__top-link">
+              {%- if section.settings.show_announcement_icon -%}
+                <img src="{{ 'header-leaf.svg' | asset_url }}" alt="" class="gemluxjewel-header__top-icon" width="14" height="14">
+              {%- endif -%}
+              <span>{{ section.settings.announcement_text | escape }}</span>
+            </a>
+          {%- else -%}
+            <span class="gemluxjewel-header__top-link">
+              {%- if section.settings.show_announcement_icon -%}
+                <img src="{{ 'header-leaf.svg' | asset_url }}" alt="" class="gemluxjewel-header__top-icon" width="14" height="14">
+              {%- endif -%}
+              <span>{{ section.settings.announcement_text | escape }}</span>
+            </span>
+          {%- endif -%}
+        </div>
       </div>
     {%- endif -%}
   </div>
@@ -40,148 +66,97 @@
     <div class="gemluxjewel-header__main" data-gemluxjewel-header-main>
       <div class="gemluxjewel-header__inner">
         <div class="gemluxjewel-header__left">
-          <nav aria-label="Main">
-            {%- if section.settings.menu != blank -%}
-              <ul class="gemluxjewel-header__nav">
+          <nav class="gemluxjewel-header__nav-wrap" aria-label="Main">
+            <ul class="gemluxjewel-header__nav gemluxjewel-header__nav--left">
+              {%- if section.settings.menu != blank -%}
                 {%- for link in section.settings.menu.links -%}
-                  <li class="gemluxjewel-header__nav-item{% if forloop.first and mega_blocks.size > 0 %} has-mega{% endif %}">
-                    <a href="{{ link.url }}" class="gemluxjewel-header__nav-link">{{ link.title | escape }}</a>
-                    {%- if forloop.first and mega_blocks.size > 0 -%}
-                      <div class="gemluxjewel-header__mega">
-                        <div class="gemluxjewel-header__mega-inner">
-                          <div class="gemluxjewel-header__mega-grid">
-                            {%- for block in mega_blocks -%}
-                              <div class="gemluxjewel-header__mega-col{% if block.settings.show_border %} gemluxjewel-header__mega-col--border{% endif %}" {{ block.shopify_attributes }}>
-                                {%- if block.settings.title != blank -%}
-                                  <div class="gemluxjewel-header__mega-title">{{ block.settings.title | escape }}</div>
-                                {%- endif -%}
-                                {%- if block.settings.menu != blank -%}
-                                  <ul class="gemluxjewel-header__mega-list">
-                                    {%- for mega_link in block.settings.menu.links -%}
-                                      <li><a href="{{ mega_link.url }}">{{ mega_link.title | escape }}</a></li>
-                                    {%- endfor -%}
-                                  </ul>
-                                {%- else -%}
-                                  <ul class="gemluxjewel-header__mega-list">
-                                    {%- case forloop.index -%}
-                                      {%- when 1 -%}
-                                        <li><a href="{{ routes.collections_url }}/all">Titanium Rings</a></li>
-                                        <li><a href="{{ routes.collections_url }}/all">Chain Necklaces</a></li>
-                                        <li><a href="{{ routes.collections_url }}/all">Stud Earrings</a></li>
-                                        <li><a href="{{ routes.collections_url }}/all">Minimal Jewellery</a></li>
-                                        <li><a href="{{ routes.collections_url }}/all">Statement Pieces</a></li>
-                                        <li><a href="{{ routes.collections_url }}/all">Daily Wear Collection</a></li>
-                                        <li><a href="{{ routes.collections_url }}/all">Waterproof Jewellery</a></li>
-                                        <li><a href="{{ routes.collections_url }}/all">Hypoallergenic Picks</a></li>
-                                        <li><a href="{{ routes.collections_url }}/all">Premium Essentials</a></li>
-                                      {%- when 2 -%}
-                                        <li><a href="{{ routes.collections_url }}/all">Titan Edge Ring</a></li>
-                                        <li><a href="{{ routes.collections_url }}/all">Core Steel Chain</a></li>
-                                        <li><a href="{{ routes.collections_url }}/all">Apex Kada Bracelet</a></li>
-                                        <li><a href="{{ routes.collections_url }}/all">Urban Link Necklace</a></li>
-                                        <li><a href="{{ routes.collections_url }}/all">Prime Band Ring</a></li>
-                                        <li><a href="{{ routes.collections_url }}/all">Steel Fusion Bracelet</a></li>
-                                        <li><a href="{{ routes.collections_url }}/all">Bold Line Chain</a></li>
-                                        <li><a href="{{ routes.collections_url }}/all">Elite Titanium Ring</a></li>
-                                        <li><a href="{{ routes.collections_url }}/all">Power Kada</a></li>
-                                      {%- when 3 -%}
-                                        <li><a href="{{ routes.collections_url }}/all">Nova Titanium Ring</a></li>
-                                        <li><a href="{{ routes.collections_url }}/all">Orbit Chain Necklace</a></li>
-                                        <li><a href="{{ routes.collections_url }}/all">Pulse Kada Bracelet</a></li>
-                                        <li><a href="{{ routes.collections_url }}/all">Aero Link Chain</a></li>
-                                        <li><a href="{{ routes.collections_url }}/all">Flux Band Ring</a></li>
-                                        <li><a href="{{ routes.collections_url }}/all">Neo Steel Bracelet</a></li>
-                                        <li><a href="{{ routes.collections_url }}/all">Vertex Chain</a></li>
-                                        <li><a href="{{ routes.collections_url }}/all">Quantum Ring</a></li>
-                                        <li><a href="{{ routes.collections_url }}/all">Drift Necklace</a></li>
-                                    {%- endcase -%}
-                                  </ul>
-                                {%- endif -%}
-                                {%- liquid
-                                  assign mega_view_all_url = block.settings.view_all_url
-                                  if mega_view_all_url == blank
-                                    assign mega_view_all_url = routes.collections_url | append: '/all'
-                                  endif
-                                -%}
-                                {%- if mega_view_all_url != blank -%}
-                                  <a href="{{ mega_view_all_url }}" class="gemluxjewel-header__mega-view-all">
-                                    {{ block.settings.view_all_label | default: 'View all' }}
-                                  </a>
-                                {%- endif -%}
-                              </div>
-                            {%- endfor -%}
-                            {%- if mega_image_block -%}
-                              <div class="gemluxjewel-header__mega-col" {{ mega_image_block.shopify_attributes }}>
-                                <div class="gemluxjewel-header__mega-img">
-                                  {%- if mega_image_block.settings.image != blank -%}
-                                    {{ mega_image_block.settings.image | image_url: width: 600 | image_tag: widths: '300, 400, 600', sizes: '300px', loading: 'lazy' }}
-                                  {%- else -%}
-                                    {% render 'gemluxjewel-theme-image', use_store_media: true, seed: 5, width: 400, widths: '200,300,400', sizes: '400px' %}
-                                  {%- endif -%}
-                                </div>
-                              </div>
-                            {%- endif -%}
-                          </div>
-                        </div>
-                      </div>
+                  <li class="gemluxjewel-header__nav-item{% if link.links.size > 0 %} has-mega{% endif %}">
+                    <a href="{{ link.url }}" class="gemluxjewel-header__nav-link{% if link.links.size > 0 %} gemluxjewel-header__nav-link--has-dropdown{% endif %}">
+                      <span>{{ link.title | escape }}</span>
+                      {%- if link.links.size > 0 -%}
+                        <span class="gemluxjewel-header__nav-caret" aria-hidden="true">
+                          <svg width="8" height="5" viewBox="0 0 8 5" fill="none">
+                            <path d="M1 1L4 4L7 1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                        </span>
+                      {%- endif -%}
+                    </a>
+                    {%- if link.links.size > 0 -%}
+                      {% render 'gemluxjewel-mega-menu', link: link, section: section %}
                     {%- endif -%}
                   </li>
                 {%- endfor -%}
-              </ul>
-            {%- endif -%}
+              {%- else -%}
+                <li class="gemluxjewel-header__nav-item"><a href="{{ routes.collections_url }}/all" class="gemluxjewel-header__nav-link">Ready-to-ship</a></li>
+                <li class="gemluxjewel-header__nav-item"><a href="{{ routes.collections_url }}/all" class="gemluxjewel-header__nav-link">Engagement</a></li>
+                <li class="gemluxjewel-header__nav-item"><a href="{{ routes.collections_url }}/all" class="gemluxjewel-header__nav-link">Wedding</a></li>
+                <li class="gemluxjewel-header__nav-item"><a href="{{ routes.collections_url }}/all" class="gemluxjewel-header__nav-link">Fine Jewelry</a></li>
+              {%- endif -%}
+            </ul>
           </nav>
         </div>
 
-        <a href="{{ routes.root_url }}" class="gemluxjewel-header__logo">
-          {%- if section.settings.logo_text != blank -%}
-            {{ section.settings.logo_text | escape }}
-          {%- else -%}
-            {{ shop.name | escape }}
-          {%- endif -%}
-        </a>
+        <a href="{{ routes.root_url }}" class="gemluxjewel-header__logo">{{ logo_label | escape }}</a>
 
         <div class="gemluxjewel-header__actions">
           <div class="gemluxjewel-header__burger">
             <button type="button" class="gemluxjewel-header__burger-btn" data-gemluxjewel-burger aria-label="Open menu">
-              <img src="{{ 'burgermenu.svg' | asset_url }}" alt="" class="gemluxjewel-header__burger-light" width="40" height="40">
-              <img src="{{ 'dark-header-burgermenu.svg' | asset_url }}" alt="" class="gemluxjewel-header__burger-dark" width="40" height="40">
+              <span class="gemluxjewel-header__burger-line"></span>
+              <span class="gemluxjewel-header__burger-line"></span>
+              <span class="gemluxjewel-header__burger-line"></span>
             </button>
           </div>
 
           <div class="gemluxjewel-header__right">
-          {%- if section.settings.locale_text != blank -%}
-            <span class="gemluxjewel-header__locale">{{ section.settings.locale_text | escape }}</span>
-          {%- endif -%}
+            <nav class="gemluxjewel-header__nav-wrap" aria-label="Secondary">
+              <ul class="gemluxjewel-header__nav gemluxjewel-header__nav--right">
+                {%- if section.settings.menu_right != blank -%}
+                  {%- for link in section.settings.menu_right.links -%}
+                    {%- assign link_title_down = link.title | downcase | strip -%}
+                    <li class="gemluxjewel-header__nav-item">
+                      <a
+                        href="{{ link.url }}"
+                        class="gemluxjewel-header__nav-link{% if link_title_down == highlight_title %} is-highlight{% endif %}"
+                      >
+                        {{ link.title | escape }}
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                {%- else -%}
+                  <li class="gemluxjewel-header__nav-item"><a href="{{ routes.root_url }}" class="gemluxjewel-header__nav-link">Education</a></li>
+                  <li class="gemluxjewel-header__nav-item"><a href="{{ routes.root_url }}" class="gemluxjewel-header__nav-link">Contact</a></li>
+                  <li class="gemluxjewel-header__nav-item"><a href="{{ routes.root_url }}" class="gemluxjewel-header__nav-link is-highlight">Visit</a></li>
+                {%- endif -%}
+              </ul>
+            </nav>
 
-          <div class="gemluxjewel-header__icons">
-            {%- if section.settings.enable_search -%}
-              <a href="{{ routes.search_url }}" class="gemluxjewel-header__icon" aria-label="Search">
-                <img src="{{ 'header-icon1.svg' | asset_url }}" alt="" class="gemluxjewel-header__icon-light" width="25" height="25">
-                <img src="{{ 'dark-header-icon1.svg' | asset_url }}" alt="" class="gemluxjewel-header__icon-dark" width="25" height="25">
-              </a>
+            {%- if section.settings.locale_text != blank -%}
+              <span class="gemluxjewel-header__locale">{{ section.settings.locale_text | escape }}</span>
             {%- endif -%}
-            <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="gemluxjewel-header__icon" aria-label="Account">
-              <img src="{{ 'header-icon2.svg' | asset_url }}" alt="" class="gemluxjewel-header__icon-light" width="25" height="25">
-              <img src="{{ 'dark-header-icon2.svg' | asset_url }}" alt="" class="gemluxjewel-header__icon-dark" width="25" height="25">
-            </a>
-            {%- if section.settings.wishlist_url != blank -%}
-              <a href="{{ section.settings.wishlist_url }}" class="gemluxjewel-header__icon" aria-label="Wishlist">
-                <img src="{{ 'header-icon3.svg' | asset_url }}" alt="" class="gemluxjewel-header__icon-light" width="25" height="25">
-                <img src="{{ 'dark-header-icon3.svg' | asset_url }}" alt="" class="gemluxjewel-header__icon-dark" width="25" height="25">
-              </a>
-            {%- else -%}
-              <span class="gemluxjewel-header__icon" aria-hidden="true">
-                <img src="{{ 'header-icon3.svg' | asset_url }}" alt="" class="gemluxjewel-header__icon-light" width="25" height="25">
-                <img src="{{ 'dark-header-icon3.svg' | asset_url }}" alt="" class="gemluxjewel-header__icon-dark" width="25" height="25">
-              </span>
-            {%- endif -%}
-            <a href="{{ routes.cart_url }}" class="gemluxjewel-header__icon" id="gemluxjewel-cart-icon" aria-label="Cart">
-              <img src="{{ 'header-icon4.svg' | asset_url }}" alt="" class="gemluxjewel-header__icon-light" width="25" height="25">
-              <img src="{{ 'dark-header-icon4.svg' | asset_url }}" alt="" class="gemluxjewel-header__icon-dark" width="25" height="25">
-              {%- if cart.item_count > 0 -%}
-                <span class="gemluxjewel-header__cart-count">{{ cart.item_count }}</span>
+
+            <div class="gemluxjewel-header__icons">
+              {%- if section.settings.enable_search -%}
+                <a href="{{ routes.search_url }}" class="gemluxjewel-header__icon" aria-label="Search">
+                  <img src="{{ 'header-search-thin.svg' | asset_url }}" alt="" width="18" height="18">
+                </a>
               {%- endif -%}
-            </a>
+              {%- if section.settings.show_account_icon -%}
+                <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="gemluxjewel-header__icon" aria-label="Account">
+                  <img src="{{ 'header-icon2.svg' | asset_url }}" alt="" width="18" height="18">
+                </a>
+              {%- endif -%}
+              {%- if section.settings.show_wishlist_icon and section.settings.wishlist_url != blank -%}
+                <a href="{{ section.settings.wishlist_url }}" class="gemluxjewel-header__icon" aria-label="Wishlist">
+                  <img src="{{ 'header-icon3.svg' | asset_url }}" alt="" width="18" height="18">
+                </a>
+              {%- endif -%}
+              <a href="{{ routes.cart_url }}" class="gemluxjewel-header__icon" id="gemluxjewel-cart-icon" aria-label="Cart">
+                <img src="{{ 'header-bag-thin.svg' | asset_url }}" alt="" width="18" height="18">
+                {%- if cart.item_count > 0 -%}
+                  <span class="gemluxjewel-header__cart-count">{{ cart.item_count }}</span>
+                {%- endif -%}
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -191,7 +166,7 @@
 
 <div class="gemluxjewel gemluxjewel-mobile-menu" data-gemluxjewel-mobile-menu id="gemluxjewelMobileMenu">
   <div class="gemluxjewel-mobile-menu__head">
-    <a href="{{ routes.root_url }}" class="gemluxjewel-header__logo">{{ section.settings.logo_text | default: shop.name | escape }}</a>
+    <a href="{{ routes.root_url }}" class="gemluxjewel-header__logo">{{ logo_label | escape }}</a>
     <button type="button" class="gemluxjewel-mobile-menu__close" data-gemluxjewel-menu-close aria-label="Close menu">
       <img src="{{ 'close-btn.svg' | asset_url }}" alt="" width="32" height="32">
     </button>
@@ -199,6 +174,27 @@
   <nav class="gemluxjewel-mobile-menu__nav" aria-label="Mobile">
     {%- if section.settings.menu != blank -%}
       {%- for link in section.settings.menu.links -%}
+        {%- if link.links.size > 0 -%}
+          <div class="gemluxjewel-mobile-menu__group">
+            <a href="{{ link.url }}" class="gemluxjewel-mobile-menu__link gemluxjewel-mobile-menu__link--parent" data-gemluxjewel-menu-close-on-click>{{ link.title | escape }}</a>
+            {%- for child in link.links -%}
+              {%- if child.links.size > 0 -%}
+                <p class="gemluxjewel-mobile-menu__subhead">{{ child.title | escape }}</p>
+                {%- for grandchild in child.links -%}
+                  <a href="{{ grandchild.url }}" class="gemluxjewel-mobile-menu__sublink" data-gemluxjewel-menu-close-on-click>{{ grandchild.title | escape }}</a>
+                {%- endfor -%}
+              {%- else -%}
+                <a href="{{ child.url }}" class="gemluxjewel-mobile-menu__sublink" data-gemluxjewel-menu-close-on-click>{{ child.title | escape }}</a>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- else -%}
+          <a href="{{ link.url }}" class="gemluxjewel-mobile-menu__link" data-gemluxjewel-menu-close-on-click>{{ link.title | escape }}</a>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+    {%- if section.settings.menu_right != blank -%}
+      {%- for link in section.settings.menu_right.links -%}
         <a href="{{ link.url }}" class="gemluxjewel-mobile-menu__link" data-gemluxjewel-menu-close-on-click>{{ link.title | escape }}</a>
       {%- endfor -%}
     {%- endif -%}
@@ -224,13 +220,91 @@
     {
       "type": "link_list",
       "id": "menu",
-      "label": "Main menu",
-      "default": "main-menu"
+      "label": "Left menu",
+      "default": "main-menu",
+      "info": "Mega menu: add child links as column headings, and grandchild links as items inside each column."
+    },
+    {
+      "type": "link_list",
+      "id": "menu_right",
+      "label": "Right menu"
+    },
+    {
+      "type": "text",
+      "id": "highlight_link",
+      "label": "Highlighted right link",
+      "default": "Visit",
+      "info": "Matches link title (case-insensitive) and styles it in brand green."
     },
     {
       "type": "link_list",
       "id": "mobile_menu",
       "label": "Extra mobile links"
+    },
+    {
+      "type": "header",
+      "content": "Mega menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_shop_all",
+      "label": "Show Shop All link on columns",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "shop_all_label",
+      "label": "Shop All label",
+      "default": "Shop All"
+    },
+    {
+      "type": "text",
+      "id": "view_column_label",
+      "label": "Single-link column label",
+      "default": "View all"
+    },
+    {
+      "type": "text",
+      "id": "mega_info_columns",
+      "label": "Columns with info icon",
+      "info": "Comma-separated column titles, e.g. Lab Grown Diamonds, Moissanite"
+    },
+    {
+      "type": "text",
+      "id": "mega_highlight_links",
+      "label": "Highlighted link titles",
+      "info": "Comma-separated link titles to highlight in green."
+    },
+    {
+      "type": "text",
+      "id": "mega_new_badge_links",
+      "label": "NEW badge link titles",
+      "info": "Comma-separated link titles to show a NEW badge."
+    },
+    {
+      "type": "paragraph",
+      "content": "Add a Mega menu banner block below for each nav item that needs its own right-side image. Menus without a banner block will not show an image."
+    },
+    {
+      "type": "header",
+      "content": "Announcement bar"
+    },
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": "Announcement text (if no offer blocks)",
+      "default": "127,778 TREES PLANTED"
+    },
+    {
+      "type": "url",
+      "id": "announcement_url",
+      "label": "Announcement link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_announcement_icon",
+      "label": "Show announcement icon",
+      "default": true
     },
     {
       "type": "range",
@@ -239,15 +313,13 @@
       "max": 10,
       "step": 1,
       "unit": "s",
-      "label": "Top offers slider speed",
-      "default": 4
+      "label": "Announcement slider speed",
+      "default": 4,
+      "info": "Add 2 or more Offer blocks below to enable the rotating announcement bar."
     },
     {
-      "type": "checkbox",
-      "id": "dark_style",
-      "label": "Dark header style",
-      "default": false,
-      "info": "Uses green header bar with white text. Off = light cream header on all pages."
+      "type": "header",
+      "content": "Utilities"
     },
     {
       "type": "checkbox",
@@ -256,21 +328,27 @@
       "default": true
     },
     {
+      "type": "checkbox",
+      "id": "show_account_icon",
+      "label": "Show account icon",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_wishlist_icon",
+      "label": "Show wishlist icon",
+      "default": false
+    },
+    {
       "type": "url",
       "id": "wishlist_url",
       "label": "Wishlist link"
     },
     {
-      "type": "checkbox",
-      "id": "enable_country_selector",
-      "label": "Show country/currency",
-      "default": true
-    },
-    {
       "type": "text",
       "id": "locale_text",
-      "label": "Locale text (fallback)",
-      "default": "France (EUR €) +"
+      "label": "Locale / region text",
+      "default": "IN"
     }
   ],
   "blocks": [
@@ -278,28 +356,25 @@
       "type": "top_link",
       "name": "Offer",
       "settings": [
-        { "type": "text", "id": "label", "label": "Offer text", "default": "Free shipping on orders over $100" },
+        { "type": "text", "id": "label", "label": "Offer text", "default": "127,778 TREES PLANTED" },
         { "type": "url", "id": "url", "label": "Offer link" }
       ]
     },
     {
-      "type": "mega_column",
-      "name": "Mega menu column",
-      "limit": 3,
+      "type": "mega_banner",
+      "name": "Mega menu banner",
+      "limit": 10,
       "settings": [
-        { "type": "text", "id": "title", "label": "Title", "default": "Popular Collections" },
-        { "type": "link_list", "id": "menu", "label": "Links" },
-        { "type": "url", "id": "view_all_url", "label": "View all link" },
-        { "type": "text", "id": "view_all_label", "label": "View all label", "default": "View all" },
-        { "type": "checkbox", "id": "show_border", "label": "Left border", "default": false }
-      ]
-    },
-    {
-      "type": "mega_image",
-      "name": "Mega menu image",
-      "limit": 1,
-      "settings": [
-        { "type": "image_picker", "id": "image", "label": "Image" }
+        {
+          "type": "text",
+          "id": "parent_nav",
+          "label": "Parent menu item",
+          "default": "Best seller",
+          "info": "Must match the top nav link title (case-insensitive). Each mega menu gets its own image."
+        },
+        { "type": "image_picker", "id": "image", "label": "Banner image" },
+        { "type": "text", "id": "caption", "label": "Caption", "default": "Solitaire Rings" },
+        { "type": "url", "id": "link", "label": "Banner link" }
       ]
     }
   ],
@@ -307,13 +382,9 @@
     {
       "name": "gemluxjewel Header",
       "blocks": [
+        { "type": "top_link", "settings": { "label": "127,778 TREES PLANTED", "url": "" } },
         { "type": "top_link", "settings": { "label": "Free shipping on orders over $100", "url": "shopify://collections/all" } },
-        { "type": "top_link", "settings": { "label": "10% off your first order — Shop now", "url": "shopify://collections/all" } },
-        { "type": "top_link", "settings": { "label": "New arrivals — Explore the collection", "url": "shopify://collections/all" } },
-        { "type": "mega_column", "settings": { "title": "Popular Collections", "show_border": false } },
-        { "type": "mega_column", "settings": { "title": "Best Seller", "show_border": false } },
-        { "type": "mega_column", "settings": { "title": "New Arrival", "show_border": true } },
-        { "type": "mega_image", "settings": {} }
+        { "type": "top_link", "settings": { "label": "10% off your first order — Shop now", "url": "shopify://collections/all" } }
       ]
     }
   ]

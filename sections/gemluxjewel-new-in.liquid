@@ -1,63 +1,80 @@
+{% render 'gemluxjewel-fonts' %}
 {{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
 
-{%- assign collection = section.settings.collection -%}
+{%- liquid
+  assign source_collection = section.settings.collection
+  if source_collection == blank
+    assign source_collection = collections.all
+  endif
 
-<section class="gemluxjewel gemluxjewel-new-in">
+  assign sort_key = section.settings.sort_by | default: 'created_at'
+  assign products_limit = section.settings.products_to_show | default: 4
+  assign new_within_days = section.settings.new_within_days | default: 0
+  assign badge_label = section.settings.badge_text | default: 'New In'
+  assign shown_count = 0
+
+  if new_within_days > 0
+    assign seconds_cutoff = new_within_days | times: 86400
+    assign now_seconds = 'now' | date: '%s' | plus: 0
+    assign cutoff_seconds = now_seconds | minus: seconds_cutoff
+  endif
+-%}
+
+<section class="gemluxjewel gemluxjewel-products gemluxjewel-new-in-products">
   <div class="gemluxjewel-container">
-    <div class="gemluxjewel-new-in__grid">
-      <div class="gemluxjewel-new-in__banner">
-        {%- liquid
-          assign banner = section.settings.banner_image
-          assign use_custom_banner = false
-          if banner != blank and banner.width != nil and banner.width > 0
-            assign use_custom_banner = true
-          endif
-        -%}
-        {%- if use_custom_banner -%}
-          {{
-            banner
-            | image_url: width: 1200
-            | image_tag:
-              widths: '600, 800, 1200',
-              sizes: '(min-width: 1200px) 50vw, 100vw',
-              loading: 'lazy',
-              class: 'gemluxjewel-new-in__banner-img'
-          }}
-        {%- else -%}
-          {% render 'gemluxjewel-theme-image',
-            use_store_media: true,
-            seed: 3,
-            width: 1200,
-            widths: '600,800,1200',
-            sizes: '(min-width: 1200px) 50vw, 100vw',
-            alt: section.settings.title,
-            class: 'gemluxjewel-new-in__banner-img'
-          %}
+    <div class="gemluxjewel-section-header">
+      <div>
+        {%- if section.settings.title != blank -%}
+          <h2 class="gemluxjewel-section-title">{{ section.settings.title | escape }}</h2>
         {%- endif -%}
-        <div class="gemluxjewel-new-in__banner-content">
-          {%- if section.settings.prefix != blank -%}
-            <p class="gemluxjewel-prefix">{{ section.settings.prefix }}</p>
-          {%- endif -%}
-          {%- if section.settings.title != blank -%}
-            <h2 class="gemluxjewel-section-title">{{ section.settings.title }}</h2>
-          {%- endif -%}
-          {%- if section.settings.text != blank -%}
-            <p class="gemluxjewel-section-desc" style="color:#fff;margin-bottom:24px;">{{ section.settings.text }}</p>
-          {%- endif -%}
-          {% render 'gemluxjewel-btn', label: section.settings.button_label, url: section.settings.button_link, style: 'green' %}
-        </div>
-      </div>
-      <div class="gemluxjewel-new-in__products">
-        {%- if collection != blank -%}
-          {%- for product in collection.products limit: 4 -%}
-            {% render 'gemluxjewel-product-card', product: product, badge_text: 'New In', show_discount: true %}
-          {%- endfor -%}
-        {%- else -%}
-          {%- for i in (1..4) -%}
-            {% render 'gemluxjewel-product-card', product: blank, badge_text: 'New In', show_discount: true %}
-          {%- endfor -%}
+        {%- if section.settings.subtitle != blank -%}
+          <p class="gemluxjewel-section-desc">{{ section.settings.subtitle | escape }}</p>
         {%- endif -%}
       </div>
+      {%- if section.settings.button_label != blank -%}
+        {% render 'gemluxjewel-btn',
+          label: section.settings.button_label,
+          url: section.settings.button_link,
+          style: 'green'
+        %}
+      {%- endif -%}
+    </div>
+
+    <div class="gemluxjewel-products__grid">
+      {%- paginate source_collection.products by 250 -%}
+        {%- assign sorted_products = source_collection.products | sort: sort_key | reverse -%}
+        {%- if sorted_products.size > 0 -%}
+          {%- for product in sorted_products -%}
+            {%- if shown_count >= products_limit -%}
+              {%- break -%}
+            {%- endif -%}
+
+            {%- liquid
+              assign show_product = true
+
+              if new_within_days > 0
+                assign product_seconds = product.created_at | date: '%s' | plus: 0
+                if product_seconds < cutoff_seconds
+                  assign show_product = false
+                endif
+              endif
+            -%}
+
+            {%- if show_product -%}
+              {% render 'gemluxjewel-product-card',
+                product: product,
+                badge_text: badge_label,
+                show_discount: true
+              %}
+              {%- assign shown_count = shown_count | plus: 1 -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- else -%}
+          {%- for i in (1..products_limit) -%}
+            {% render 'gemluxjewel-product-card', product: blank, badge_text: badge_label, show_discount: true %}
+          {%- endfor -%}
+        {%- endif -%}
+      {%- endpaginate -%}
     </div>
   </div>
 </section>
@@ -68,14 +85,86 @@
   "tag": "section",
   "class": "section gemluxjewel-section",
   "settings": [
-    { "type": "image_picker", "id": "banner_image", "label": "Banner image" },
-    { "type": "text", "id": "prefix", "label": "Prefix", "default": "Just Arrived" },
-    { "type": "text", "id": "title", "label": "Heading", "default": "New In" },
-    { "type": "textarea", "id": "text", "label": "Description", "default": "Discover our latest additions - fresh designs and timeless classics newly available" },
-    { "type": "text", "id": "button_label", "label": "Button label", "default": "View Collection" },
-    { "type": "url", "id": "button_link", "label": "Button link" },
-    { "type": "collection", "id": "collection", "label": "Collection" }
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "New In"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "Shop the latest additions — newly added pieces sorted by date."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "View Collection"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Product badge",
+      "default": "New In"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection",
+      "info": "Products are pulled from this collection. Leave empty to use all products."
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "default": 4,
+      "label": "Products to show"
+    },
+    {
+      "type": "select",
+      "id": "sort_by",
+      "label": "Sort by",
+      "default": "created_at",
+      "options": [
+        { "value": "created_at", "label": "Date added (newest first)" },
+        { "value": "published_at", "label": "Date published (newest first)" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "new_within_days",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "default": 0,
+      "unit": "d",
+      "label": "Only show products added within",
+      "info": "Set to 0 to show the newest products regardless of date."
+    }
   ],
-  "presets": [{ "name": "gemluxjewel New In" }]
+  "presets": [
+    {
+      "name": "gemluxjewel New In",
+      "settings": {
+        "title": "New In",
+        "subtitle": "Shop the latest additions — newly added pieces sorted by date.",
+        "button_label": "View Collection",
+        "button_link": "shopify://collections/all",
+        "badge_text": "New In",
+        "products_to_show": 4,
+        "sort_by": "created_at",
+        "new_within_days": 0
+      }
+    }
+  ]
 }
 {% endschema %}

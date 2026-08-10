@@ -8,7 +8,10 @@ class FacetFiltersForm extends HTMLElement {
     }, 800);
 
     const facetForm = this.querySelector('form');
+    if (!facetForm) return;
+
     facetForm.addEventListener('input', this.debouncedOnSubmit.bind(this));
+    facetForm.addEventListener('change', this.debouncedOnSubmit.bind(this));
 
     const facetWrapper = this.querySelector('#FacetsWrapperDesktop');
     if (facetWrapper) facetWrapper.addEventListener('keyup', onKeyUpEscape);
@@ -134,6 +137,7 @@ class FacetFiltersForm extends HTMLElement {
     FacetFiltersForm.renderProductGridContainer(html);
     FacetFiltersForm.renderProductCount(html, updateEvent);
     if (typeof initializeScrollAnimationTrigger === 'function') initializeScrollAnimationTrigger(html.innerHTML);
+    document.dispatchEvent(new CustomEvent('gemluxjewel:facets-updated'));
   }
 
   static renderProductGridContainer(html) {
@@ -270,10 +274,16 @@ class FacetFiltersForm extends HTMLElement {
 
     mobileElementSelectors.forEach((selector) => {
       if (!html.querySelector(selector)) return;
-      document.querySelector(selector).innerHTML = html.querySelector(selector).innerHTML;
+      const target = document.querySelector(selector);
+      if (!target) return;
+      target.innerHTML = html.querySelector(selector).innerHTML;
     });
 
-    document.getElementById('FacetFiltersFormMobile').closest('menu-drawer').bindEvents();
+    const mobileForm = document.getElementById('FacetFiltersFormMobile');
+    const menuDrawer = mobileForm?.closest('menu-drawer');
+    if (menuDrawer && typeof menuDrawer.bindEvents === 'function') {
+      menuDrawer.bindEvents();
+    }
   }
 
   static renderCounts(source, target) {

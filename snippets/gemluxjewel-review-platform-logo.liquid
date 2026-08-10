@@ -1,0 +1,29 @@
+{% comment %}
+  Renders Google or Trustpilot logo mark.
+  Accepts:
+  - platform: 'google' | 'trustpilot'
+  - class: optional extra class
+{% endcomment %}
+{%- liquid
+  assign platform_name = platform | default: 'trustpilot'
+  assign logo_class = class | default: 'gemluxjewel-testimonials__platform-logo'
+-%}
+
+{%- if platform_name == 'google' -%}
+  <span class="{{ logo_class }} {{ logo_class }}--google" aria-label="Google">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 24" role="img" aria-hidden="true">
+      <path fill="#4285F4" d="M11.52 10.2V14.1h6.48c-.28 1.62-1.98 4.74-6.48 4.74-3.9 0-7.08-3.22-7.08-7.2S7.62 4.44 11.52 4.44c2.22 0 3.72.94 4.56 1.76l2.94-2.82C17.34 1.74 14.76.84 11.52.84 5.34.84.24 5.94.24 12.12s5.1 11.28 11.28 11.28c6.6 0 11.04-4.62 11.04-11.1 0-.72-.06-1.32-.18-1.86H11.52z"/>
+      <path fill="#EA4335" d="M23.52 12.12c0-.72-.06-1.32-.18-1.86H11.52v3.84h6.78c-.3 1.44-1.2 2.64-2.58 3.48v2.88h4.14c2.4-2.22 3.66-5.52 3.66-8.34z"/>
+      <path fill="#FBBC05" d="M5.88 14.34a6.72 6.72 0 0 1-.36-2.22c0-.78.12-1.56.36-2.22V7.02H1.74a11.16 11.16 0 0 0 0 10.2l4.14-2.88z"/>
+      <path fill="#34A853" d="M11.52 23.28c3.12 0 5.76-1.02 7.68-2.76l-4.14-2.88c-1.14.78-2.64 1.26-3.54 1.26-2.76 0-5.1-1.86-5.94-4.38H1.74v2.94a11.28 11.28 0 0 0 9.78 5.82z"/>
+      <text x="30" y="17" fill="#5F6368" font-family="Arial, sans-serif" font-size="14" font-weight="700">Google</text>
+    </svg>
+  </span>
+{%- else -%}
+  <span class="{{ logo_class }} {{ logo_class }}--trustpilot" aria-label="Trustpilot">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 118 26" role="img" aria-hidden="true">
+      <path fill="#00B67A" d="M12.5 0l3.9 7.9 8.7 1.3-6.3 6.1 1.5 8.6L12.5 20.8 6.7 24.9l1.5-8.6L2 9.2l8.7-1.3z"/>
+      <text x="28" y="18" fill="#191919" font-family="Arial, sans-serif" font-size="15" font-weight="700">Trustpilot</text>
+    </svg>
+  </span>
+{%- endif -%}

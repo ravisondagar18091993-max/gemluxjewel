@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var index = 0;
 
     function getVisibleCount() {
-      if (window.matchMedia('(min-width: 990px)').matches) return 3;
+      if (window.matchMedia('(min-width: 990px)').matches) return 4;
       if (window.matchMedia('(min-width: 750px)').matches) return 2;
       return 1;
     }

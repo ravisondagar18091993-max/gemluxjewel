@@ -1,0 +1,52 @@
+{% comment %}
+  Trustpilot-style review card.
+  Accepts:
+  - platform, author, rating, time_ago, text, review_url, avatar_color, shopify_attributes
+{% endcomment %}
+{%- liquid
+  assign card_platform = platform | default: 'trustpilot'
+  assign card_rating = rating | default: 5
+  assign card_review_url = review_url | default: 'https://www.trustpilot.com/review/gemluxjewels.com'
+  assign author_name = author | default: 'Customer'
+  assign author_initial = author_name | strip | slice: 0, 1 | upcase
+  assign avatar_bg = avatar_color | default: '#2d6a6a'
+  assign star_tone = 'green'
+  if card_platform == 'google'
+    assign star_tone = 'gold'
+  endif
+-%}
+
+<article class="gemluxjewel-testimonials__card gemluxjewel-testimonials__card--review" {{ shopify_attributes }}>
+  <div class="gemluxjewel-testimonials__card-top">
+    {% render 'gemluxjewel-review-platform-logo', platform: card_platform %}
+  </div>
+
+  <div class="gemluxjewel-testimonials__reviewer">
+    <span class="gemluxjewel-testimonials__avatar" style="--avatar-bg: {{ avatar_bg }};">
+      <span aria-hidden="true">{{ author_initial }}</span>
+    </span>
+    {%- if author_name != blank -%}
+      <p class="gemluxjewel-testimonials__name">{{ author_name | upcase | escape }}</p>
+    {%- endif -%}
+  </div>
+
+  <div class="gemluxjewel-testimonials__meta">
+    <div class="gemluxjewel-testimonials__stars gemluxjewel-testimonials__stars--{{ star_tone }}" aria-label="{{ card_rating }} out of 5 stars">
+      {%- for i in (1..card_rating) -%}
+        <span class="gemluxjewel-testimonials__star" aria-hidden="true">&#9733;</span>
+      {%- endfor -%}
+    </div>
+    {%- if time_ago != blank -%}
+      <span class="gemluxjewel-testimonials__time">{{ time_ago | escape }}</span>
+    {%- endif -%}
+  </div>
+
+  {%- if text != blank -%}
+    <p class="gemluxjewel-testimonials__text">
+      {{ text | escape }}
+      {%- if card_review_url != blank -%}
+        <a href="{{ card_review_url }}" class="gemluxjewel-testimonials__read-more" target="_blank" rel="noopener noreferrer">Read more</a>
+      {%- endif -%}
+    </p>
+  {%- endif -%}
+</article>

@@ -1,0 +1,37 @@
+{% comment %}
+  Footer trust bar icons.
+  Accepts: icon {String} shipping | resizing | warranty | customization
+{% endcomment %}
+{%- case icon -%}
+  {%- when 'shipping' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <path d="M8 18h3l2-4h14v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M27 14h8l4 6v8h-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M11 32h22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M15 36a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm20 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M4 18h4M2 22h4M4 26h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  {%- when 'resizing' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <circle cx="24" cy="26" r="10" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M20 22l8 8M28 22l-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M24 10v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  {%- when 'warranty' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <path d="M24 6l14 5v12c0 9-6 15-14 19-8-4-14-10-14-19V11l14-5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M18 24c2.5 3 5 4.5 6 5 1-.5 3.5-2 6-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  {%- when 'customization' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <circle cx="24" cy="28" r="9" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M24 19v-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M14 12l6 6M34 12l-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M30 8l4 4-8 8-4-4 8-8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>
+  {%- else -%}
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <circle cx="24" cy="24" r="14" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M24 16v16M16 24h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+{%- endcase -%}

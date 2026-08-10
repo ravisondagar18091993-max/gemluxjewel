@@ -1,0 +1,121 @@
+{% comment %}
+  Cullen-style sidebar filter group.
+
+  @param filter {Object}
+  @param section {Object}
+  @param section_blocks {Array}
+  @param layout {String} swatch-row | icon-grid | icon-grid-2 | pills | list
+{% endcomment %}
+
+{%- liquid
+  assign layout = layout | default: 'list'
+  assign group_id = 'sidebar-' | append: filter.param_name | escape | append: '-' | append: section.id
+-%}
+
+<section
+  class="gemluxjewel-plp-sidebar-group js-filter gemluxjewel-plp-sidebar-group--{{ layout }}"
+  id="Details-{{ filter.param_name | escape }}-{{ section.id }}"
+  data-gemluxjewel-sidebar-group="{{ filter.label | handleize }}"
+>
+  <h3 class="gemluxjewel-plp-sidebar-group__title">{{ filter.label | escape }}</h3>
+
+  <div class="gemluxjewel-plp-sidebar-group__content parent-display">
+    <fieldset class="facets-wrap parent-wrap">
+      <legend class="visually-hidden">{{ filter.label | escape }}</legend>
+
+      <ul class="gemluxjewel-plp-sidebar-group__list list-unstyled" role="list">
+        {%- for value in filter.values -%}
+          {%- liquid
+            assign input_id = 'Filter-sidebar-' | append: filter.param_name | escape | append: '-' | append: forloop.index
+            assign is_disabled = false
+            if value.count == 0 and value.active == false
+              assign is_disabled = true
+            endif
+
+            assign value_label_key = value.label | downcase | strip
+            assign option_image = blank
+            assign block_type = 'shape'
+
+            if layout == 'icon-grid' or layout == 'icon-grid-2'
+              if filter.label contains 'Setting' or filter.label contains 'setting'
+                assign block_type = 'setting'
+              elsif filter.label contains 'Gemstone' or filter.label contains 'gemstone' or filter.label contains 'Stone type'
+                assign block_type = 'gemstone'
+              elsif filter.label contains 'Ring design' or filter.label contains 'ring design'
+                assign block_type = 'ring_design'
+              endif
+
+              for block in section_blocks
+                if block.type != block_type
+                  continue
+                endif
+                assign block_title_key = block.settings.title | downcase | strip
+                if block_title_key == value_label_key and block.settings.image != blank
+                  assign option_image = block.settings.image
+                  break
+                endif
+              endfor
+            endif
+
+            assign metal_class = 'gemluxjewel-plp-filter-swatch--default'
+            if layout == 'swatch-row'
+              if value_label_key contains 'yellow'
+                assign metal_class = 'gemluxjewel-plp-filter-swatch--yellow-gold'
+              elsif value_label_key contains 'rose'
+                assign metal_class = 'gemluxjewel-plp-filter-swatch--rose-gold'
+              elsif value_label_key contains 'white'
+                assign metal_class = 'gemluxjewel-plp-filter-swatch--white-gold'
+              elsif value_label_key contains 'platinum'
+                assign metal_class = 'gemluxjewel-plp-filter-swatch--platinum'
+              endif
+            endif
+          -%}
+
+          <li class="gemluxjewel-plp-sidebar-group__item{% if is_disabled %} is-disabled{% endif %}">
+            <label
+              for="{{ input_id }}"
+              class="gemluxjewel-plp-sidebar-group__option{% if value.active %} is-active{% endif %}"
+            >
+              <input
+                type="checkbox"
+                name="{{ value.param_name }}"
+                value="{{ value.value }}"
+                id="{{ input_id }}"
+                class="gemluxjewel-plp-sidebar-group__input"
+                {% if value.active %}checked{% endif %}
+                {% if is_disabled %}disabled{% endif %}
+              >
+
+              {%- case layout -%}
+                {%- when 'swatch-row' -%}
+                  <span class="gemluxjewel-plp-filter-swatch {{ metal_class }}" aria-hidden="true"></span>
+                  <span class="gemluxjewel-plp-sidebar-group__option-label">{{ value.label | escape }}</span>
+
+                {%- when 'icon-grid', 'icon-grid-2' -%}
+                  <span class="gemluxjewel-plp-sidebar-group__icon">
+                    {%- if option_image != blank -%}
+                      {{
+                        option_image
+                        | image_url: width: 120
+                        | image_tag: widths: '60, 90, 120', sizes: '60px', loading: 'lazy', alt: value.label
+                      }}
+                    {%- else -%}
+                      <span class="gemluxjewel-plp-sidebar-group__icon-fallback" aria-hidden="true"></span>
+                    {%- endif -%}
+                  </span>
+                  <span class="gemluxjewel-plp-sidebar-group__option-label">{{ value.label | escape }}</span>
+
+                {%- when 'pills' -%}
+                  <span class="gemluxjewel-plp-sidebar-group__pill">{{ value.label | escape }}</span>
+
+                {%- else -%}
+                  <span class="gemluxjewel-plp-sidebar-group__option-label">{{ value.label | escape }}</span>
+                  <span class="gemluxjewel-plp-sidebar-group__count">({{ value.count }})</span>
+              {%- endcase -%}
+            </label>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </fieldset>
+  </div>
+</section>
