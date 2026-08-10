@@ -5,7 +5,7 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 99;
+  z-index: 200;
   transition: transform 0.7s ease;
 }
 
@@ -359,17 +359,18 @@
 
 /* ── Mega menu (CULLEN-style) ── */
 .gemluxjewel-header__mega {
-  position: absolute;
-  top: 100%;
+  position: fixed;
+  top: var(--gemluxjewel-header-height, var(--gemluxjewel-header-offset, 108px));
   left: 0;
   right: 0;
   background: #fff;
   border-bottom: 1px solid rgba(20, 20, 20, 0.1);
+  box-shadow: 0 16px 40px rgba(20, 20, 20, 0.12);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transition: opacity 0.25s ease, visibility 0.25s ease;
-  z-index: 99;
+  z-index: 201;
 }
 
 .gemluxjewel-header__mega::before {
@@ -712,6 +713,13 @@
 
 html.gemluxjewel-menu-open {
   overflow: hidden;
+}
+
+html.gemluxjewel-mega-open .gemluxjewel-shop,
+html.gemluxjewel-mega-open .gemluxjewel-plp-filter-bar,
+html.gemluxjewel-mega-open .gemluxjewel-plp-filter-dropdown,
+html.gemluxjewel-mega-open .gemluxjewel-plp-sort__dropdown {
+  z-index: auto;
 }
 
 /* ── Page offset ── */

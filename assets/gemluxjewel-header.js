@@ -1,5 +1,6 @@
 (function () {
   var headerSliderTimer = null;
+  var closeAllMegaFn = null;
 
   function initGemluxjewelHeader() {
     var header = document.querySelector('[data-gemluxjewel-header]');
@@ -13,8 +14,9 @@
 
     if (header.dataset.gemluxjewelHeaderReady !== 'true') {
       function setHeaderOffset() {
-        var offset = header.offsetHeight + 24;
-        document.documentElement.style.setProperty('--gemluxjewel-header-offset', offset + 'px');
+        var height = header.offsetHeight;
+        document.documentElement.style.setProperty('--gemluxjewel-header-height', height + 'px');
+        document.documentElement.style.setProperty('--gemluxjewel-header-offset', height + 24 + 'px');
       }
 
       setHeaderOffset();
@@ -23,6 +25,8 @@
       var prevScroll = window.pageYOffset || document.documentElement.scrollTop;
 
       window.addEventListener('scroll', function () {
+        if (closeAllMegaFn) closeAllMegaFn();
+
         if (mainBar && mainBar.classList.contains('is-mega-open')) return;
         var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
         if (prevScroll > currentScroll || currentScroll === 0) {
@@ -32,6 +36,12 @@
         }
         prevScroll = currentScroll;
       }, { passive: true });
+
+      document.addEventListener('click', function (event) {
+        if (!event.target.closest('[data-gemluxjewel-header]') && closeAllMegaFn) {
+          closeAllMegaFn();
+        }
+      });
 
       function openMenu() {
         if (!mobileMenu) return;
@@ -59,6 +69,7 @@
       }
 
       initMegaMenu(header, mainBar);
+      if (closeAllMegaFn) closeAllMegaFn();
 
       header.dataset.gemluxjewelHeaderReady = 'true';
     }
@@ -79,7 +90,10 @@
         item.classList.remove('is-mega-active');
       });
       mainBar.classList.remove('is-mega-open');
+      document.documentElement.classList.remove('gemluxjewel-mega-open');
     }
+
+    closeAllMegaFn = closeAllMega;
 
     function openMega(item) {
       if (closeTimer) {
@@ -93,6 +107,7 @@
 
       item.classList.add('is-mega-active');
       mainBar.classList.add('is-mega-open');
+      document.documentElement.classList.add('gemluxjewel-mega-open');
     }
 
     function scheduleClose() {

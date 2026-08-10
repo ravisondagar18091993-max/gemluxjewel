@@ -939,7 +939,6 @@
 .gemluxjewel-plp-filter-bar {
   margin-bottom: 24px;
   position: relative;
-  z-index: 5;
 }
 
 .gemluxjewel-plp-filter-bar.facets-container {
@@ -947,6 +946,18 @@
   grid-template-columns: none;
   grid-template-rows: none;
   padding-top: 0;
+}
+
+.gemluxjewel-plp-filter-bar.facets-container > * {
+  grid-column: auto;
+  grid-row: auto;
+}
+
+.gemluxjewel-plp-filter-bar .facets__form,
+.gemluxjewel-plp-filter-bar .product-count {
+  display: block;
+  grid-column: auto;
+  grid-row: auto;
 }
 
 .gemluxjewel-plp-filter-bar__form-wrap {
