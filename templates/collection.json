@@ -12,24 +12,89 @@
     "gemluxjewel_collection_hero": {
       "type": "gemluxjewel-collection-hero",
       "settings": {
-        "fallback_description": "Crafted by our jewelers with care and precision."
+        "breadcrumb_home": "HOME",
+        "breadcrumb_collections": "COLLECTIONS",
+        "breadcrumb_collections_link": "",
+        "fallback_description": "Crafted by our jewelers with care and precision.",
+        "image": "shopify://shop_images/Lab_Diamond_Gemlux_Jewelry.avif",
+        "hide_image": false
       }
     },
     "gemluxjewel_collection_products": {
       "type": "gemluxjewel-collection-products",
       "blocks": {
-        "shape_1": { "type": "shape", "settings": { "title": "Round" } },
-        "shape_2": { "type": "shape", "settings": { "title": "Oval" } },
-        "shape_3": { "type": "shape", "settings": { "title": "Emerald" } },
-        "shape_4": { "type": "shape", "settings": { "title": "Radiant" } },
-        "shape_5": { "type": "shape", "settings": { "title": "Pear" } },
-        "shape_6": { "type": "shape", "settings": { "title": "Cushion" } },
-        "setting_1": { "type": "setting", "settings": { "title": "Solitaire" } },
-        "setting_2": { "type": "setting", "settings": { "title": "Halo" } },
-        "setting_3": { "type": "setting", "settings": { "title": "Trilogy" } },
-        "setting_4": { "type": "setting", "settings": { "title": "Bezel" } },
-        "setting_5": { "type": "setting", "settings": { "title": "East-West" } },
-        "setting_6": { "type": "setting", "settings": { "title": "Toi et Moi" } }
+        "shape_1": {
+          "type": "shape",
+          "settings": {
+            "title": "Round"
+          }
+        },
+        "shape_2": {
+          "type": "shape",
+          "settings": {
+            "title": "Oval"
+          }
+        },
+        "shape_3": {
+          "type": "shape",
+          "settings": {
+            "title": "Emerald"
+          }
+        },
+        "shape_4": {
+          "type": "shape",
+          "settings": {
+            "title": "Radiant"
+          }
+        },
+        "shape_5": {
+          "type": "shape",
+          "settings": {
+            "title": "Pear"
+          }
+        },
+        "shape_6": {
+          "type": "shape",
+          "settings": {
+            "title": "Cushion"
+          }
+        },
+        "setting_1": {
+          "type": "setting",
+          "settings": {
+            "title": "Solitaire"
+          }
+        },
+        "setting_2": {
+          "type": "setting",
+          "settings": {
+            "title": "Halo"
+          }
+        },
+        "setting_3": {
+          "type": "setting",
+          "settings": {
+            "title": "Trilogy"
+          }
+        },
+        "setting_4": {
+          "type": "setting",
+          "settings": {
+            "title": "Bezel"
+          }
+        },
+        "setting_5": {
+          "type": "setting",
+          "settings": {
+            "title": "East-West"
+          }
+        },
+        "setting_6": {
+          "type": "setting",
+          "settings": {
+            "title": "Toi et Moi"
+          }
+        }
       },
       "block_order": [
         "shape_1",
@@ -49,9 +114,13 @@
         "products_per_page": 15,
         "filter_layout": "horizontal",
         "enable_filtering": true,
+        "filters_open_by_default": false,
+        "filter_label": "Show Filter",
+        "filter_hide_label": "Hide Filter",
         "enable_sorting": true,
-        "enable_stone_shapes": false,
         "filters_button_label": "Filters",
+        "filters_apply_label": "Apply",
+        "filters_empty_message": "Add filters in Shopify Search & Discovery to enable product filtering.",
         "search_placeholder": "Search by style, shape or metal",
         "metal_filter_label": "Metal",
         "shape_filter_label": "Stone shape",
@@ -59,10 +128,15 @@
         "gemstone_filter_label": "Gemstone type",
         "ring_design_filter_label": "Ring design",
         "color_filter_label": "Color",
+        "metal_dropdown_label": "Metal",
         "shape_dropdown_label": "Stone shape",
+        "setting_dropdown_label": "Setting style",
         "gemstone_dropdown_label": "Gemstone type",
         "ring_design_dropdown_label": "Ring design",
-        "color_dropdown_label": "Color"
+        "color_dropdown_label": "Color",
+        "enable_stone_shapes": false,
+        "stone_shapes_heading": "Diamond Shapes",
+        "stone_shape_filter_label": "Stone shape"
       }
     }
   },
