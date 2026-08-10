@@ -800,6 +800,18 @@
   margin-bottom: 0;
 }
 
+.gemluxjewel-shop .gemluxjewel-pagination {
+  margin-top: 72px;
+  padding-top: 16px;
+}
+
+@media (max-width: 767px) {
+  .gemluxjewel-shop .gemluxjewel-pagination {
+    margin-top: 48px;
+    padding-top: 12px;
+  }
+}
+
 .gemluxjewel-shop__empty {
   text-align: center;
   padding: 60px 20px;
