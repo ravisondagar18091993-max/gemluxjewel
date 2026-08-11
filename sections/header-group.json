@@ -73,9 +73,16 @@
         "wishlist_url": "",
         "locale_text": "IN"
       }
+    },
+    "1786465025b78da423": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
-    "gemluxjewel_header"
+    "gemluxjewel_header",
+    "1786465025b78da423"
   ]
 }
