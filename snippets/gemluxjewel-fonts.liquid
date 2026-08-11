@@ -22,14 +22,14 @@
 
   .gemluxjewel :is(
     .gemluxjewel-section-title,
-    h1:not(.gemluxjewel-hero__title):not(.gemluxjewel-pdp__title),
-    h2:not(.gemluxjewel-blog-card__title),
-    h3,
-    h4,
-    h5,
-    h6,
-    [class*='__heading'],
-    [class*='-heading']
+    h1:not(.gemluxjewel-hero__title):not(.gemluxjewel-pdp__title):not([class*='gemluxjewel-engagement-']),
+    h2:not(.gemluxjewel-blog-card__title):not([class*='gemluxjewel-engagement-']),
+    h3:not([class*='gemluxjewel-engagement-']),
+    h4:not([class*='gemluxjewel-engagement-']),
+    h5:not([class*='gemluxjewel-engagement-']),
+    h6:not([class*='gemluxjewel-engagement-']),
+    [class*='__heading']:not([class*='gemluxjewel-engagement-']),
+    [class*='-heading']:not([class*='gemluxjewel-engagement-'])
   ) {
     font-family: var(--gemluxjewel-font-heading);
     font-size: var(--gemluxjewel-font-heading-size);

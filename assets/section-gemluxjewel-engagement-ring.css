@@ -1,11 +1,18 @@
 /* gemluxjewel Engagement Ring landing page */
 
 .gemluxjewel-engagement {
+  --gemluxjewel-primary: #73976a;
+  --gemluxjewel-orange: #e37859;
+  --gemluxjewel-dark: #141414;
+  --gemluxjewel-gray: #818181;
+  --gemluxjewel-gray-border: #bec7c7;
+  --gemluxjewel-radius: 10px;
   --gemluxjewel-engagement-blue: #f4f8fb;
   --gemluxjewel-engagement-beige: #f7f5f2;
   --gemluxjewel-engagement-sand: #fafafa;
   --gemluxjewel-engagement-space-section: 64px;
   --gemluxjewel-engagement-space-section-tight: 48px;
+  --gemluxjewel-engagement-space-section-top: 80px;
   --gemluxjewel-engagement-space-page-bottom: 80px;
   --gemluxjewel-engagement-space-heading: 32px;
 }
@@ -14,24 +21,46 @@
   .gemluxjewel-engagement {
     --gemluxjewel-engagement-space-section: 80px;
     --gemluxjewel-engagement-space-section-tight: 64px;
+    --gemluxjewel-engagement-space-section-top: 100px;
     --gemluxjewel-engagement-space-page-bottom: 100px;
     --gemluxjewel-engagement-space-heading: 40px;
   }
 }
 
-/* Shared vertical rhythm — each section adds space below only */
-.gemluxjewel-engagement-dual,
+/* Section spacing */
 .gemluxjewel-engagement-showcase,
 .gemluxjewel-engagement-custom,
-.gemluxjewel-engagement-trust,
-.gemluxjewel-engagement-categories,
-.gemluxjewel-engagement-faq {
+.gemluxjewel-engagement-trust {
   padding-top: 0;
   padding-bottom: var(--gemluxjewel-engagement-space-section);
 }
 
+.gemluxjewel-engagement-dual {
+  padding-top: var(--gemluxjewel-engagement-space-section-top);
+  padding-bottom: var(--gemluxjewel-engagement-space-section);
+}
+
+.gemluxjewel-engagement-categories {
+  padding-top: var(--gemluxjewel-engagement-space-section-top);
+  padding-bottom: var(--gemluxjewel-engagement-space-section);
+}
+
 .gemluxjewel-engagement-faq {
+  padding-top: var(--gemluxjewel-engagement-space-section-top);
   padding-bottom: var(--gemluxjewel-engagement-space-page-bottom);
+}
+
+/* Prevent double gaps between adjacent sections */
+.shopify-section:has(.gemluxjewel-engagement-hero):has(+ .shopify-section .gemluxjewel-engagement-dual) .gemluxjewel-engagement-hero {
+  padding-bottom: 0;
+}
+
+.shopify-section:has(.gemluxjewel-engagement-trust):has(+ .shopify-section .gemluxjewel-engagement-categories) .gemluxjewel-engagement-trust {
+  padding-bottom: 0;
+}
+
+.shopify-section:has(.gemluxjewel-engagement-categories):has(+ .shopify-section .gemluxjewel-engagement-faq) .gemluxjewel-engagement-categories {
+  padding-bottom: 0;
 }
 
 /* Tighter gap between back-to-back product showcases */
@@ -133,6 +162,13 @@
 .gemluxjewel-engagement-dual__media {
   aspect-ratio: 4 / 3;
   overflow: hidden;
+  background: #ece8e3;
+}
+
+.gemluxjewel-engagement-dual__media .placeholder-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .gemluxjewel-engagement-dual__media img {
@@ -220,11 +256,20 @@
   gap: 10px;
 }
 
+.gemluxjewel-engagement-showcase__item {
+  width: 100%;
+  min-width: 0;
+}
+
+.gemluxjewel-engagement-showcase__item--featured {
+  width: 100%;
+}
+
 @media (min-width: 990px) {
   .gemluxjewel-engagement-showcase__grid--feature-left,
   .gemluxjewel-engagement-showcase__grid--feature-right {
     grid-template-columns: 1.12fr 1fr 1fr;
-    grid-template-rows: repeat(2, minmax(0, auto));
+    grid-auto-rows: auto;
     align-items: start;
   }
 
@@ -236,6 +281,31 @@
   .gemluxjewel-engagement-showcase__grid--feature-right .gemluxjewel-engagement-showcase__item--featured {
     grid-row: 1 / span 2;
     grid-column: 3;
+  }
+
+  .gemluxjewel-engagement-showcase__item--featured {
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+    min-height: 100%;
+  }
+
+  .gemluxjewel-engagement-showcase__item--featured .gemluxjewel-card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .gemluxjewel-engagement-showcase__item--featured .gemluxjewel-card__info {
+    flex-shrink: 0;
+  }
+
+  .gemluxjewel-engagement-showcase__item--featured .gemluxjewel-card__img-wrap {
+    flex: 1 1 auto;
+    width: 100%;
+    height: auto;
+    min-height: 358px;
   }
 }
 
@@ -265,6 +335,14 @@
 .gemluxjewel-engagement-custom__media {
   min-height: 280px;
   overflow: hidden;
+  background: #ece8e3;
+}
+
+.gemluxjewel-engagement-custom__media .placeholder-svg {
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  display: block;
 }
 
 .gemluxjewel-engagement-custom__media img {
@@ -655,10 +733,12 @@
   transition: transform 0.35s ease;
 }
 
-.gemluxjewel-engagement-faq .accordion-close img {
+.gemluxjewel-engagement-faq .accordion-close img,
+.gemluxjewel-engagement-faq .accordion-close svg {
   width: 24px;
   height: 24px;
   display: block;
+  color: var(--gemluxjewel-dark);
 }
 
 .gemluxjewel-engagement-faq .closet-header.active .accordion-close {
