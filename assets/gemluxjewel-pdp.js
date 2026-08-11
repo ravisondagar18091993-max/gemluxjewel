@@ -125,6 +125,110 @@
 
   function init(root) {
     (root || document).querySelectorAll('[data-gemluxjewel-pdp-variant-picker]').forEach(initPicker);
+    initWishlist(root);
+  }
+
+  var WISHLIST_STORAGE_KEY = 'gemluxjewel_wishlist';
+
+  function readWishlist() {
+    try {
+      var raw = localStorage.getItem(WISHLIST_STORAGE_KEY);
+      var parsed = raw ? JSON.parse(raw) : [];
+      return Array.isArray(parsed) ? parsed.map(String) : [];
+    } catch (error) {
+      return [];
+    }
+  }
+
+  function writeWishlist(items) {
+    try {
+      localStorage.setItem(WISHLIST_STORAGE_KEY, JSON.stringify(items));
+    } catch (error) {
+      /* ignore storage errors */
+    }
+  }
+
+  function isWishlisted(productId) {
+    return readWishlist().indexOf(String(productId)) !== -1;
+  }
+
+  function toggleWishlist(productId) {
+    var items = readWishlist();
+    var id = String(productId);
+    var index = items.indexOf(id);
+    if (index === -1) items.push(id);
+    else items.splice(index, 1);
+    writeWishlist(items);
+    return index === -1;
+  }
+
+  function setWishlistUi(productId, isActive) {
+    document.querySelectorAll('[data-gemluxjewel-wishlist-btn][data-product-id="' + productId + '"]').forEach(function (button) {
+      var label = button.querySelector('[data-gemluxjewel-wishlist-label]');
+      var addLabel = button.getAttribute('data-label-add') || 'Add to Wishlist';
+      var addedLabel = button.getAttribute('data-label-added') || 'In Wishlist';
+
+      button.classList.toggle('is-active', isActive);
+      button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      button.setAttribute('aria-label', isActive ? addedLabel : addLabel);
+      if (label) label.textContent = isActive ? addedLabel : addLabel;
+    });
+
+    document.querySelectorAll('[data-gemluxjewel-wishlist-heart][data-product-id="' + productId + '"]').forEach(function (button) {
+      button.classList.toggle('is-active', isActive);
+      button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      button.setAttribute('aria-label', isActive ? 'Remove from wishlist' : 'Add to wishlist');
+    });
+  }
+
+  function initWishlist(root) {
+    var scope = root || document;
+
+    scope.querySelectorAll('[data-gemluxjewel-wishlist-btn]').forEach(function (button) {
+      if (button.dataset.gemluxjewelWishlistReady === 'true') return;
+      button.dataset.gemluxjewelWishlistReady = 'true';
+
+      var productId = button.getAttribute('data-product-id');
+      setWishlistUi(productId, isWishlisted(productId));
+
+      button.addEventListener('click', function () {
+        var added = toggleWishlist(productId);
+        setWishlistUi(productId, added);
+        document.dispatchEvent(
+          new CustomEvent('gemluxjewel:wishlist-updated', {
+            detail: {
+              productId: productId,
+              handle: button.getAttribute('data-product-handle') || '',
+              variantId: button.getAttribute('data-variant-id') || '',
+              added: added,
+              items: readWishlist()
+            }
+          })
+        );
+      });
+    });
+
+    scope.querySelectorAll('[data-gemluxjewel-wishlist-heart]').forEach(function (button) {
+      if (button.dataset.gemluxjewelWishlistReady === 'true') return;
+      button.dataset.gemluxjewelWishlistReady = 'true';
+
+      var productId = button.getAttribute('data-product-id');
+      setWishlistUi(productId, isWishlisted(productId));
+
+      button.addEventListener('click', function () {
+        var added = toggleWishlist(productId);
+        setWishlistUi(productId, added);
+        document.dispatchEvent(
+          new CustomEvent('gemluxjewel:wishlist-updated', {
+            detail: {
+              productId: productId,
+              added: added,
+              items: readWishlist()
+            }
+          })
+        );
+      });
+    });
   }
 
   document.addEventListener('DOMContentLoaded', function () {

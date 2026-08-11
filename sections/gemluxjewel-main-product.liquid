@@ -56,7 +56,14 @@
         <div class="gemluxjewel-pdp__info">
           <div class="gemluxjewel-pdp__title-row">
             <h1 class="gemluxjewel-pdp__title">{{ product.title | escape }}</h1>
-            <button type="button" class="gemluxjewel-pdp__heart" aria-label="Add to wishlist">
+            <button
+              type="button"
+              class="gemluxjewel-pdp__heart"
+              data-gemluxjewel-wishlist-heart
+              data-product-id="{{ product.id }}"
+              aria-label="Add to wishlist"
+              aria-pressed="false"
+            >
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" stroke-width="1.5" fill="none"/>
               </svg>
@@ -95,22 +102,47 @@
                 class="product-variant-id"
               >
 
-              <button
-                type="submit"
-                name="add"
-                id="ProductSubmitButton-{{ section.id }}"
-                class="gemluxjewel-pdp__submit gemluxjewel-pdp__submit--full"
-                {% if current_variant.available == false %}disabled{% endif %}
-              >
-                <span class="gemluxjewel-pdp__submit-label">
-                  {%- if current_variant.available -%}
-                    {{ section.settings.add_to_cart_label | default: 'Add to Cart' | escape }}
-                  {%- else -%}
-                    {{ 'products.product.sold_out' | t }}
-                  {%- endif -%}
-                </span>
-                {%- render 'loading-spinner' -%}
-              </button>
+              <div class="gemluxjewel-pdp__actions">
+                <button
+                  type="submit"
+                  name="add"
+                  id="ProductSubmitButton-{{ section.id }}"
+                  class="gemluxjewel-pdp__submit gemluxjewel-pdp__submit--full"
+                  {% if current_variant.available == false %}disabled{% endif %}
+                >
+                  <span class="gemluxjewel-pdp__submit-label">
+                    {%- if current_variant.available -%}
+                      {{ section.settings.add_to_cart_label | default: 'Add to Cart' | escape }}
+                    {%- else -%}
+                      {{ 'products.product.sold_out' | t }}
+                    {%- endif -%}
+                  </span>
+                  {%- render 'loading-spinner' -%}
+                </button>
+
+                {%- if section.settings.show_wishlist_button -%}
+                  <button
+                    type="button"
+                    class="gemluxjewel-pdp__wishlist-btn"
+                    data-gemluxjewel-wishlist-btn
+                    data-product-id="{{ product.id }}"
+                    data-product-handle="{{ product.handle | escape }}"
+                    data-variant-id="{{ current_variant.id }}"
+                    data-label-add="{{ section.settings.wishlist_label | default: 'Add to Wishlist' | escape }}"
+                    data-label-added="{{ section.settings.wishlist_added_label | default: 'In Wishlist' | escape }}"
+                    {% if section.settings.wishlist_url != blank %}data-wishlist-url="{{ section.settings.wishlist_url | escape }}"{% endif %}
+                    aria-pressed="false"
+                    aria-label="{{ section.settings.wishlist_label | default: 'Add to Wishlist' | escape }}"
+                  >
+                    <svg class="gemluxjewel-pdp__wishlist-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                    </svg>
+                    <span class="gemluxjewel-pdp__wishlist-label" data-gemluxjewel-wishlist-label>
+                      {{ section.settings.wishlist_label | default: 'Add to Wishlist' | escape }}
+                    </span>
+                  </button>
+                {%- endif -%}
+              </div>
             {%- endform -%}
           </product-form>
 
@@ -215,6 +247,34 @@
       "id": "add_to_cart_label",
       "label": "Add to cart label",
       "default": "Add to Cart"
+    },
+    {
+      "type": "header",
+      "content": "Wishlist button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_wishlist_button",
+      "label": "Show wishlist button next to add to cart",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "wishlist_label",
+      "label": "Wishlist button label",
+      "default": "Add to Wishlist"
+    },
+    {
+      "type": "text",
+      "id": "wishlist_added_label",
+      "label": "Wishlist button label when added",
+      "default": "In Wishlist"
+    },
+    {
+      "type": "url",
+      "id": "wishlist_url",
+      "label": "Wishlist page URL (optional)",
+      "info": "Optional. Used by some wishlist apps. Leave blank to save items in the browser."
     },
     {
       "type": "text",

@@ -341,6 +341,76 @@
   padding-right: 36px;
 }
 
+/* Add to cart + wishlist row */
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__actions {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  margin: 4px 0 12px;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__actions .gemluxjewel-pdp__submit--full {
+  flex: 1 1 auto;
+  width: auto;
+  min-width: 0;
+  margin: 0;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__wishlist-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex: 0 0 auto;
+  min-height: 50px;
+  padding: 0 16px;
+  border: 1px solid var(--pdp-navy);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--pdp-navy);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__wishlist-btn:hover {
+  background: var(--pdp-navy);
+  color: #fff;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__wishlist-btn.is-active,
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__heart.is-active {
+  color: #c0392b;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__wishlist-btn.is-active {
+  background: #fff;
+  border-color: #c0392b;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__wishlist-btn.is-active .gemluxjewel-pdp__wishlist-icon path {
+  fill: currentColor;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__heart.is-active svg path {
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+@media (max-width: 749px) {
+  .gemluxjewel-pdp--ref .gemluxjewel-pdp__wishlist-label {
+    display: none;
+  }
+
+  .gemluxjewel-pdp--ref .gemluxjewel-pdp__wishlist-btn {
+    min-width: 50px;
+    padding: 0 14px;
+  }
+}
+
 /* Add to cart */
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__submit--full {
   min-height: 50px;
@@ -350,7 +420,6 @@
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  margin: 4px 0 12px;
 }
 
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__submit--full:hover:not(:disabled) {

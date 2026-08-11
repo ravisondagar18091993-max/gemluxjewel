@@ -1357,6 +1357,76 @@
   color: var(--gemluxjewel-dark);
 }
 
+/* Add to cart + wishlist row */
+.gemluxjewel-pdp__actions {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  margin: 8px 0 16px;
+}
+
+.gemluxjewel-pdp__actions .gemluxjewel-pdp__submit--full {
+  flex: 1 1 auto;
+  width: auto;
+  min-width: 0;
+  margin: 0;
+}
+
+.gemluxjewel-pdp__wishlist-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex: 0 0 auto;
+  min-height: 52px;
+  padding: 0 18px;
+  border: 1px solid var(--gemluxjewel-pdp-navy);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--gemluxjewel-pdp-navy);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.gemluxjewel-pdp__wishlist-btn:hover {
+  background: var(--gemluxjewel-pdp-navy);
+  color: #fff;
+}
+
+.gemluxjewel-pdp__wishlist-btn.is-active,
+.gemluxjewel-pdp__heart.is-active {
+  color: #c0392b;
+}
+
+.gemluxjewel-pdp__wishlist-btn.is-active {
+  background: #fff;
+  border-color: #c0392b;
+}
+
+.gemluxjewel-pdp__wishlist-btn.is-active .gemluxjewel-pdp__wishlist-icon path {
+  fill: currentColor;
+}
+
+.gemluxjewel-pdp__heart.is-active svg path {
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+@media (max-width: 749px) {
+  .gemluxjewel-pdp__wishlist-label {
+    display: none;
+  }
+
+  .gemluxjewel-pdp__wishlist-btn {
+    min-width: 52px;
+    padding: 0 14px;
+  }
+}
+
 /* Full-width add to cart */
 .gemluxjewel-pdp__submit--full {
   display: flex;
@@ -1364,7 +1434,6 @@
   justify-content: center;
   width: 100%;
   min-height: 52px;
-  margin: 8px 0 16px;
   padding: 14px 24px;
   border: none;
   border-radius: 6px;
