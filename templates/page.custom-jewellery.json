@@ -23,94 +23,6 @@
     "custom_form": {
       "type": "gemluxjewel-custom-form",
       "blocks": {
-        "f_first": {
-          "type": "text_field",
-          "settings": {
-            "label": "First Name",
-            "field_name": "first_name",
-            "placeholder": "First Name",
-            "required": true
-          }
-        },
-        "f_last": {
-          "type": "text_field",
-          "settings": {
-            "label": "Last Name",
-            "field_name": "last_name",
-            "placeholder": "Last Name",
-            "required": true
-          }
-        },
-        "f_metal": {
-          "type": "select_field",
-          "settings": {
-            "label": "What metal color do you prefer?",
-            "field_name": "metal_color",
-            "placeholder": "e.g. 14K White Gold",
-            "options": "14K White Gold, 14K Yellow Gold, 14K Rose Gold, 18K White Gold, 18K Yellow Gold, 18K Rose Gold, Platinum, 925 Sterling Silver",
-            "full_width": true
-          }
-        },
-        "f_shape": {
-          "type": "select_field",
-          "settings": {
-            "label": "Choose Your Diamond Shape",
-            "field_name": "diamond_shape",
-            "placeholder": "Select a shape",
-            "options": "Round, Oval, Cushion, Princess, Pear, Marquise, Emerald, Radiant, Asscher, Heart, Antique Cut, Rose Cut",
-            "full_width": true
-          }
-        },
-        "f_carat": {
-          "type": "select_field",
-          "settings": {
-            "label": "What is the carat weight you're looking for?",
-            "field_name": "carat_weight",
-            "placeholder": "1.00 - 1.25 ct",
-            "options": "0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, Undecided",
-            "full_width": true
-          }
-        },
-        "f_budget": {
-          "type": "select_field",
-          "settings": {
-            "label": "What is your budget for your ring and center stone?",
-            "field_name": "budget",
-            "placeholder": "Choose an option",
-            "options": "$800-$1199, $1200-$1999, $2000-$2999, $3000-$3999, $4000-$4999, $5000-$7499, $7500-$9999, $10k+",
-            "full_width": true
-          }
-        },
-        "f_setting": {
-          "type": "select_field",
-          "settings": {
-            "label": "What ring setting style do you like?",
-            "field_name": "setting_style",
-            "placeholder": "Solitaire",
-            "options": "Solitaire, Halo, Three Stone, Pavé, Vintage, Hidden Halo, Bezel, Undecided",
-            "full_width": true
-          }
-        },
-        "f_size": {
-          "type": "select_field",
-          "settings": {
-            "label": "What is your preferred ring size?",
-            "field_name": "ring_size",
-            "placeholder": "Choose an option",
-            "options": "I don't know yet, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10",
-            "full_width": true
-          }
-        },
-        "f_vision": {
-          "type": "textarea_field",
-          "settings": {
-            "label": "Tell us about your vision",
-            "field_name": "body",
-            "placeholder": "Share your ideas, inspiration, and any details about your dream piece...",
-            "rows": 5,
-            "full_width": true
-          }
-        },
         "u_size": {
           "type": "utility_card",
           "settings": {
@@ -130,26 +42,13 @@
         }
       },
       "block_order": [
-        "f_first",
-        "f_last",
-        "f_metal",
-        "f_shape",
-        "f_carat",
-        "f_budget",
-        "f_setting",
-        "f_size",
-        "f_vision",
         "u_size",
         "u_gem"
       ],
       "settings": {
-        "button_label": "Submit",
-        "show_file_upload": true,
-        "file_upload_label": "Upload Image here",
-        "file_upload_help": "Max file size: 5MB",
-        "file_upload_button": "Browse File",
-        "show_ring_sizer": true,
-        "ring_sizer_label": "Get a free ring sizer kit. Usually $15 Value."
+        "hulk_form_id": "978R1lbxhx17O5o1yMDqYsA",
+        "show_file_upload": false,
+        "show_ring_sizer": false
       }
     },
     "custom_trust": {

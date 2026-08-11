@@ -229,6 +229,18 @@
   margin: 0 auto;
 }
 
+.gemluxjewel-custom-form__panel--hulk {
+  padding-top: clamp(20px, 3vw, 32px);
+}
+
+.gemluxjewel-custom-form__hulk {
+  min-height: 120px;
+}
+
+.gemluxjewel-custom-form__hulk .hulk-form-builder {
+  width: 100%;
+}
+
 .gemluxjewel-custom-form__intro {
   margin: 0 0 28px;
   font-size: 15px;

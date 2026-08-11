@@ -6,11 +6,24 @@
 
 <section class="gemluxjewel gemluxjewel-custom-form">
   <div class="gemluxjewel-container">
-    {%- if section.settings.title != blank -%}
-      <h2 class="gemluxjewel-custom-form__page-title">{{ section.settings.title | escape }}</h2>
-    {%- endif -%}
+    {%- liquid
+      assign hulk_form_id = section.settings.hulk_form_id | strip
+    -%}
 
-    <div class="gemluxjewel-custom-form__panel" data-gemluxjewel-custom-form>
+    <div class="gemluxjewel-custom-form__panel{% if hulk_form_id != blank %} gemluxjewel-custom-form__panel--hulk{% endif %}">
+      {%- if hulk_form_id != blank -%}
+        {%- if section.settings.intro_text != blank -%}
+          <p class="gemluxjewel-custom-form__intro">{{ section.settings.intro_text | escape }}</p>
+        {%- endif -%}
+
+        <div
+          class="gemluxjewel-custom-form__hulk"
+          data-hulk-form-id="{{ hulk_form_id | escape }}"
+        >
+          <div class="hulk-form-builder" data-form-id="{{ hulk_form_id | escape }}"></div>
+        </div>
+      {%- else -%}
+      <div data-gemluxjewel-custom-form>
       {%- form 'contact', id: 'GemluxCustomJewelleryForm', class: 'gemluxjewel-custom-form__form' -%}
         <input type="hidden" name="contact[subject]" value="{{ section.settings.email_subject | default: 'Custom Engagement Ring Request' | escape }}">
 
@@ -98,6 +111,8 @@
           </button>
         </div>
       {%- endform -%}
+      </div>
+      {%- endif -%}
     </div>
 
     {%- assign utility_blocks = section.blocks | where: 'type', 'utility_card' -%}
@@ -136,6 +151,25 @@
   "tag": "section",
   "class": "section gemluxjewel-section",
   "settings": [
+    {
+      "type": "header",
+      "content": "Hulk Form Builder"
+    },
+    {
+      "type": "text",
+      "id": "hulk_form_id",
+      "label": "Hulk Form ID",
+      "default": "978R1lbxhx17O5o1yMDqYsA",
+      "info": "From Hulk → Forms → Custom Engagement Ring → Form ID. When set, submissions go to Hulk (not Shopify email)."
+    },
+    {
+      "type": "paragraph",
+      "content": "Enable Hulk in Theme Customize → App embeds → Hulk Form Builder ON."
+    },
+    {
+      "type": "header",
+      "content": "Theme form (fallback if Hulk ID is empty)"
+    },
     {
       "type": "text",
       "id": "title",
