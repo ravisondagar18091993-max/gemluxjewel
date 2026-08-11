@@ -146,6 +146,11 @@
         "type": "shopify://apps/blockify-fraud-filter/blocks/app_embed/2e3e0ba5-0e70-447a-9ec5-3bf76b5ef12e",
         "disabled": false,
         "settings": {}
+      },
+      "5550728556201851227": {
+        "type": "shopify://apps/geolocation-glc/blocks/selector/e347b539-0714-46e4-9e69-23a73992ae3a",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
