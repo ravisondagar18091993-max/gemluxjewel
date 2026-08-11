@@ -3,7 +3,7 @@
 /* ── Hero / intro ── */
 .gemluxjewel-custom-hero--intro {
   background: #fff;
-  padding: calc(var(--gemluxjewel-header-offset, 108px) + 24px) 0 32px;
+  padding: calc(var(--gemluxjewel-header-offset, 108px) + 24px) 0 8px;
   color: #1e392a;
 }
 
@@ -40,16 +40,22 @@
   line-height: 1.2;
   text-transform: none;
   color: #1e392a;
-  margin: 0;
+  margin: 0 auto;
   max-width: 900px;
+  text-align: center;
 }
 
 .gemluxjewel-custom-hero--intro .gemluxjewel-custom-hero__text {
-  margin: 16px 0 0;
-  max-width: 720px;
-  font-size: 16px;
+  margin: 16px auto 0;
+  max-width: 760px;
+  font-size: 15px;
   line-height: 1.65;
-  color: rgba(30, 57, 42, 0.75);
+  color: rgba(30, 57, 42, 0.78);
+  text-align: center;
+}
+
+.gemluxjewel-custom-hero--intro .gemluxjewel-container {
+  text-align: center;
 }
 
 /* Legacy full-bleed hero (if used elsewhere) */
@@ -204,7 +210,7 @@
 /* ── Request form ── */
 .gemluxjewel-custom-form {
   background: #fff;
-  padding: 0 0 56px;
+  padding: 24px 0 56px;
 }
 
 .gemluxjewel-custom-form__page-title {
@@ -219,14 +225,22 @@
   background-size: 28px 28px;
   border-radius: 0;
   padding: clamp(28px, 4vw, 48px);
-  max-width: 920px;
+  max-width: 760px;
   margin: 0 auto;
+}
+
+.gemluxjewel-custom-form__intro {
+  margin: 0 0 28px;
+  font-size: 15px;
+  line-height: 1.65;
+  text-align: center;
+  color: rgba(30, 57, 42, 0.78);
 }
 
 .gemluxjewel-custom-form__fields {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 18px;
+  gap: 20px;
 }
 
 @media (min-width: 750px) {
@@ -279,8 +293,79 @@
 }
 
 .gemluxjewel-custom-form__textarea {
-  min-height: 120px;
+  min-height: 140px;
   resize: vertical;
+}
+
+.gemluxjewel-custom-form__field--upload {
+  margin-top: 4px;
+}
+
+.gemluxjewel-custom-form__upload-help {
+  margin: 0 0 12px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: rgba(30, 57, 42, 0.65);
+}
+
+.gemluxjewel-custom-form__upload-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: #fff;
+  border: 1px solid rgba(30, 57, 42, 0.15);
+  border-radius: 4px;
+}
+
+.gemluxjewel-custom-form__upload-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.gemluxjewel-custom-form__upload-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  padding: 10px 18px;
+  background: #1e392a;
+  color: #fff;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.gemluxjewel-custom-form__upload-btn:hover {
+  opacity: 0.88;
+}
+
+.gemluxjewel-custom-form__upload-names {
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(30, 57, 42, 0.65);
+  word-break: break-word;
+}
+
+.gemluxjewel-custom-form__upload-error {
+  margin: 8px 0 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #c0392b;
 }
 
 .gemluxjewel-custom-form__sizer {
@@ -369,7 +454,7 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 24px;
-  max-width: 920px;
+  max-width: 760px;
   margin: 32px auto 0;
 }
 
@@ -382,11 +467,14 @@
 .gemluxjewel-custom-form__utility {
   background: #f7f7f7;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .gemluxjewel-custom-form__utility-media {
   aspect-ratio: 16 / 10;
   overflow: hidden;
+  background: #ececec;
 }
 
 .gemluxjewel-custom-form__utility-media img {
@@ -398,10 +486,13 @@
 
 .gemluxjewel-custom-form__utility-body {
   padding: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .gemluxjewel-custom-form__utility-title {
-  margin: 0 0 8px;
+  margin: 0 0 10px;
   font-family: 'Libre Baskerville', Georgia, serif;
   font-size: 22px;
   line-height: 1.3;
@@ -410,10 +501,34 @@
 }
 
 .gemluxjewel-custom-form__utility-text {
-  margin: 0 0 12px;
+  margin: 0 0 16px;
   font-size: 14px;
   line-height: 1.6;
   color: rgba(30, 57, 42, 0.75);
+  flex: 1;
+}
+
+.gemluxjewel-custom-form__utility-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  min-width: 120px;
+  padding: 12px 20px;
+  background: #1e392a;
+  color: #fff;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.gemluxjewel-custom-form__utility-btn:hover {
+  opacity: 0.88;
+  color: #fff;
 }
 
 .gemluxjewel-custom-form__utility-link {

@@ -24,13 +24,58 @@
           </div>
         {%- endif -%}
 
+        {%- if section.settings.intro_text != blank -%}
+          <p class="gemluxjewel-custom-form__intro">{{ section.settings.intro_text | escape }}</p>
+        {%- endif -%}
+
         <div class="gemluxjewel-custom-form__fields">
           {%- for block in section.blocks -%}
-            {%- if block.type != 'utility_card' -%}
+            {%- unless block.type == 'utility_card' or block.type == 'textarea_field' -%}
               {% render 'gemluxjewel-custom-form-field', block: block, form: form %}
-            {%- endif -%}
+            {%- endunless -%}
           {%- endfor -%}
         </div>
+
+        {%- if section.settings.show_file_upload -%}
+          <div class="gemluxjewel-custom-form__field gemluxjewel-custom-form__field--full gemluxjewel-custom-form__field--upload" data-gemluxjewel-custom-upload>
+            <span class="gemluxjewel-custom-form__label">{{ section.settings.file_upload_label | default: 'Upload Image here' | escape }}</span>
+            <p class="gemluxjewel-custom-form__upload-help">{{ section.settings.file_upload_help | default: 'Max file size: 5MB' | escape }}</p>
+            <input type="hidden" name="contact[uploaded_files]" value="" data-gemluxjewel-custom-upload-value>
+            <div class="gemluxjewel-custom-form__upload-row">
+              <label class="gemluxjewel-custom-form__upload-btn" for="GemluxCustomForm-files">
+                {{ section.settings.file_upload_button | default: 'Browse File' | escape }}
+              </label>
+              <input
+                class="gemluxjewel-custom-form__upload-input"
+                type="file"
+                id="GemluxCustomForm-files"
+                data-gemluxjewel-custom-upload-input
+                accept="image/*,.pdf"
+                multiple
+              >
+              <span class="gemluxjewel-custom-form__upload-names" data-gemluxjewel-custom-upload-names>No file chosen</span>
+            </div>
+            <p class="gemluxjewel-custom-form__upload-error" data-gemluxjewel-custom-upload-error hidden></p>
+          </div>
+        {%- endif -%}
+
+        {%- assign vision_blocks = section.blocks | where: 'type', 'textarea_field' -%}
+        {%- if vision_blocks.size > 0 -%}
+          {%- for block in vision_blocks -%}
+            {% render 'gemluxjewel-custom-form-field', block: block, form: form %}
+          {%- endfor -%}
+        {%- else -%}
+          <div class="gemluxjewel-custom-form__field gemluxjewel-custom-form__field--full">
+            <label class="gemluxjewel-custom-form__label" for="GemluxCustomForm-vision">Tell us about your vision</label>
+            <textarea
+              class="gemluxjewel-custom-form__textarea"
+              id="GemluxCustomForm-vision"
+              name="contact[body]"
+              rows="5"
+              placeholder="Share your ideas, inspiration, and any details about your dream piece..."
+            >{{ form.body }}</textarea>
+          </div>
+        {%- endif -%}
 
         {%- if section.settings.show_ring_sizer -%}
           <label class="gemluxjewel-custom-form__sizer">
@@ -73,7 +118,7 @@
                 <p class="gemluxjewel-custom-form__utility-text">{{ block.settings.text | escape }}</p>
               {%- endif -%}
               {%- if block.settings.button_label != blank -%}
-                <a href="{{ block.settings.button_link | default: routes.root_url }}" class="gemluxjewel-custom-form__utility-link">
+                <a href="{{ block.settings.button_link | default: routes.root_url }}" class="gemluxjewel-custom-form__utility-btn">
                   {{ block.settings.button_label | escape }}
                 </a>
               {%- endif -%}
@@ -98,6 +143,12 @@
       "default": "Custom Lab Grown Diamond Engagement Rings"
     },
     {
+      "type": "textarea",
+      "id": "intro_text",
+      "label": "Intro text above form",
+      "default": "Design your unique jewelry with Gemlux. Tailor every detail to your taste for a truly personal touch. Create the one-of-a-kind piece you've always dreamed of."
+    },
+    {
       "type": "text",
       "id": "email_subject",
       "label": "Email subject line",
@@ -107,13 +158,35 @@
       "type": "text",
       "id": "button_label",
       "label": "Submit button",
-      "default": "Next Step"
+      "default": "Submit"
+    },
+    {
+      "type": "header",
+      "content": "File upload"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_file_upload",
+      "label": "Show browse file field",
+      "default": true
     },
     {
       "type": "text",
-      "id": "success_message",
-      "label": "Success message",
-      "default": "Thank you! Our design team will be in touch within 24 hours."
+      "id": "file_upload_label",
+      "label": "Upload label",
+      "default": "Upload Image here"
+    },
+    {
+      "type": "text",
+      "id": "file_upload_help",
+      "label": "Upload help text",
+      "default": "Max file size: 5MB"
+    },
+    {
+      "type": "text",
+      "id": "file_upload_button",
+      "label": "Browse button label",
+      "default": "Browse File"
     },
     {
       "type": "header",
@@ -135,6 +208,12 @@
       "type": "image_picker",
       "id": "ring_sizer_image",
       "label": "Ring sizer image"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "Thank you! Our design team will be in touch within 24 hours."
     }
   ],
   "blocks": [
@@ -195,9 +274,9 @@
       "name": "Message field",
       "limit": 1,
       "settings": [
-        { "type": "text", "id": "label", "label": "Label", "default": "Additional details" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Tell us about your vision" },
         { "type": "text", "id": "field_name", "label": "Field name", "default": "body" },
-        { "type": "text", "id": "placeholder", "label": "Placeholder", "default": "Tell us more about your dream ring..." },
+        { "type": "text", "id": "placeholder", "label": "Placeholder", "default": "Share your ideas, inspiration, and any details about your dream piece..." },
         { "type": "range", "id": "rows", "min": 3, "max": 10, "step": 1, "label": "Rows", "default": 5 },
         { "type": "checkbox", "id": "required", "label": "Required", "default": false },
         { "type": "checkbox", "id": "full_width", "label": "Full width", "default": true }

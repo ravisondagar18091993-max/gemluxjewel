@@ -16,7 +16,8 @@
         "breadcrumb_home": "Home",
         "breadcrumb_parent": "Rings",
         "breadcrumb_current": "Engagement Ring",
-        "title": "Custom Lab Grown Diamond Engagement Rings"
+        "title": "Custom Lab Grown Diamond Engagement Rings",
+        "text": "Design your unique jewelry with Gemlux. Tailor every detail to your taste for a truly personal touch. Create the one-of-a-kind piece you've always dreamed of."
       }
     },
     "custom_form": {
@@ -46,7 +47,7 @@
             "label": "What metal color do you prefer?",
             "field_name": "metal_color",
             "placeholder": "e.g. 14K White Gold",
-            "options": "14K White Gold, 14K Yellow Gold, 14K Rose Gold, 18K White Gold, 18K Yellow Gold, Platinum",
+            "options": "14K White Gold, 14K Yellow Gold, 14K Rose Gold, 18K White Gold, 18K Yellow Gold, 18K Rose Gold, Platinum, 925 Sterling Silver",
             "full_width": true
           }
         },
@@ -56,7 +57,7 @@
             "label": "Choose Your Diamond Shape",
             "field_name": "diamond_shape",
             "placeholder": "Select a shape",
-            "options": "Round, Oval, Cushion, Princess, Pear, Marquise, Emerald, Radiant, Asscher, Heart",
+            "options": "Round, Oval, Cushion, Princess, Pear, Marquise, Emerald, Radiant, Asscher, Heart, Antique Cut, Rose Cut",
             "full_width": true
           }
         },
@@ -66,7 +67,7 @@
             "label": "What is the carat weight you're looking for?",
             "field_name": "carat_weight",
             "placeholder": "1.00 - 1.25 ct",
-            "options": "Under 1.00 ct, 1.00 - 1.25 ct, 1.25 - 1.50 ct, 1.50 - 2.00 ct, 2.00 - 3.00 ct, Over 3.00 ct",
+            "options": "0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, Undecided",
             "full_width": true
           }
         },
@@ -76,7 +77,7 @@
             "label": "What is your budget for your ring and center stone?",
             "field_name": "budget",
             "placeholder": "Choose an option",
-            "options": "Under $1,000, $1,000 - $2,500, $2,500 - $5,000, $5,000 - $10,000, Over $10,000",
+            "options": "$800-$1199, $1200-$1999, $2000-$2999, $3000-$3999, $4000-$4999, $5000-$7499, $7500-$9999, $10k+",
             "full_width": true
           }
         },
@@ -86,7 +87,7 @@
             "label": "What ring setting style do you like?",
             "field_name": "setting_style",
             "placeholder": "Solitaire",
-            "options": "Solitaire, Halo, Three Stone, Pavé, Vintage, Hidden Halo, Bezel",
+            "options": "Solitaire, Halo, Three Stone, Pavé, Vintage, Hidden Halo, Bezel, Undecided",
             "full_width": true
           }
         },
@@ -100,20 +101,30 @@
             "full_width": true
           }
         },
+        "f_vision": {
+          "type": "textarea_field",
+          "settings": {
+            "label": "Tell us about your vision",
+            "field_name": "body",
+            "placeholder": "Share your ideas, inspiration, and any details about your dream piece...",
+            "rows": 5,
+            "full_width": true
+          }
+        },
         "u_size": {
           "type": "utility_card",
           "settings": {
             "title": "Find Your Ring Size",
-            "text": "Use our ring size guide to find your perfect fit before you order.",
-            "button_label": "Ring Size Guide"
+            "text": "Unsure of Your Ring Size? No Problem! Click on 'Find Now' and let us assist you in choosing the right ring size for you.",
+            "button_label": "Find Now"
           }
         },
         "u_gem": {
           "type": "utility_card",
           "settings": {
-            "title": "Talk with a Gemologist",
-            "text": "Book a virtual consultation with our experts for personalized guidance.",
-            "button_label": "Book Consultation",
+            "title": "Talk with Gemologist",
+            "text": "Do you have inquiries about diamonds and moissanite? Arrange a virtual meeting with a skilled gemologist to get your questions answered.",
+            "button_label": "Book Now",
             "button_link": "shopify://pages/contact"
           }
         }
@@ -127,12 +138,16 @@
         "f_budget",
         "f_setting",
         "f_size",
+        "f_vision",
         "u_size",
         "u_gem"
       ],
       "settings": {
-        "title": "Custom Lab Grown Diamond Engagement Rings",
-        "button_label": "Next Step",
+        "button_label": "Submit",
+        "show_file_upload": true,
+        "file_upload_label": "Upload Image here",
+        "file_upload_help": "Max file size: 5MB",
+        "file_upload_button": "Browse File",
         "show_ring_sizer": true,
         "ring_sizer_label": "Get a free ring sizer kit. Usually $15 Value."
       }
@@ -140,12 +155,12 @@
     "custom_trust": {
       "type": "gemluxjewel-pdp-trust",
       "settings": {
-        "label_1": "GIA Certified",
-        "label_2": "Conflict-free",
-        "label_3": "Made in Studio",
-        "label_4": "Responsibly Sourced",
-        "label_5": "Lifetime Warranty",
-        "label_6": "Free Shipping"
+        "label_1": "Free Shipping Worldwide",
+        "label_2": "24/7 Customer Service",
+        "label_3": "100% Money Back Guarantee",
+        "label_4": "Unbeatable Market Price",
+        "label_5": "Eco Friendly Element",
+        "label_6": "Responsibly Sourced"
       }
     },
     "custom_promo": {
@@ -205,31 +220,16 @@
       "type": "gemluxjewel-custom-expert",
       "settings": {
         "title": "Need Expert Advice?",
-        "text": "Our gemologists are available for virtual consultations to help you design the perfect ring.",
+        "text": "Looking for Professional Guidance? If you require assistance with custom orders or designing your perfect piece, don't hesitate to schedule a consultation with our experts.",
         "button_label": "Book a Consultation",
         "button_link": "shopify://pages/contact"
-      }
-    },
-    "custom_portfolio": {
-      "type": "gemluxjewel-custom-portfolio",
-      "blocks": {
-        "p1": { "type": "item", "settings": { "title": "View" } },
-        "p2": { "type": "item", "settings": { "title": "View" } },
-        "p3": { "type": "item", "settings": { "title": "View" } },
-        "p4": { "type": "item", "settings": { "title": "View" } }
-      },
-      "block_order": ["p1", "p2", "p3", "p4"],
-      "settings": {
-        "prefix": "",
-        "title": "Your Perfect Ring, Made to Order",
-        "subtitle": "Browse recent custom creations from our studio."
       }
     },
     "custom_why": {
       "type": "gemluxjewel-custom-why",
       "settings": {
-        "title": "Why to Buy Custom Engagement Ring?",
-        "content": "<p>A custom engagement ring lets you choose every detail — from the diamond shape and carat weight to the metal and setting — so the final piece reflects your story. Our lab grown diamonds offer exceptional beauty and value, with expert guidance at every step.</p><p>Unlike ready-to-ship designs, a custom ring is made to your exact specifications, ensuring a one-of-a-kind piece you will cherish forever.</p>"
+        "title": "Why To Buy Custom Engagement Ring?",
+        "content": "<p>The custom engagement ring has more sentiment and attachment than premade rings, which are specially made only for you — so it's one of a kind. Gemlux allows you to get your dream engagement ring with 100% customization and design your own ring your way. Submit the details in the form above, including reference or inspiration images, and we can create the same design for you.</p><p>We custom make engagement rings in any shape, size, and color of lab grown diamonds, moissanite, or other gemstones. If you have questions or would like an expert opinion, schedule a virtual appointment with us.</p>"
       }
     }
   },
@@ -240,7 +240,6 @@
     "custom_promo",
     "custom_faq",
     "custom_expert",
-    "custom_portfolio",
     "custom_why"
   ]
 }
