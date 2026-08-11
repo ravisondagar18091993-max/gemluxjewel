@@ -135,17 +135,6 @@
             </div>
           {%- endif -%}
 
-          {%- if section.settings.show_shipping_estimate -%}
-            <div class="gemluxjewel-pdp__shipping-estimate">
-              <div class="gemluxjewel-pdp__shipping-estimate-item">
-                <span class="gemluxjewel-pdp__shipping-estimate-icon" aria-hidden="true">🕐</span>
-                <div>
-                  <span class="gemluxjewel-pdp__shipping-estimate-label">When Ordered by 12 PM PST, Today</span>
-                </div>
-              </div>
-            </div>
-          {%- endif -%}
-
           {%- if section.settings.show_inline_trust -%}
             {% render 'gemluxjewel-pdp-trust-inline' %}
           {%- endif -%}
@@ -293,16 +282,6 @@
       "id": "consultation_open_new_tab",
       "label": "Open link in new tab",
       "default": false
-    },
-    {
-      "type": "header",
-      "content": "Shipping estimate"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_shipping_estimate",
-      "label": "Show order-by shipping note",
-      "default": true
     },
     {
       "type": "header",

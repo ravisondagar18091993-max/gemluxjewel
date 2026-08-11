@@ -25,7 +25,7 @@
 
 @media (min-width: 990px) {
   .gemluxjewel-pdp--ref .gemluxjewel-pdp__layout {
-    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    grid-template-columns: minmax(0, 9fr) minmax(0, 11fr);
     gap: 32px 56px;
     align-items: start;
   }
@@ -400,42 +400,6 @@
   cursor: default;
 }
 
-/* Shipping estimate */
-.gemluxjewel-pdp--ref .gemluxjewel-pdp__shipping-estimate {
-  display: block;
-  padding: 14px 16px;
-  margin-bottom: 20px;
-  background: #fafbfc;
-  border: 1px solid var(--pdp-border);
-  border-radius: 4px;
-}
-
-.gemluxjewel-pdp--ref .gemluxjewel-pdp__shipping-estimate-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-}
-
-.gemluxjewel-pdp--ref .gemluxjewel-pdp__shipping-estimate-icon {
-  font-size: 18px;
-  line-height: 1;
-  flex-shrink: 0;
-}
-
-.gemluxjewel-pdp--ref .gemluxjewel-pdp__shipping-estimate-label {
-  display: block;
-  font-size: 12px;
-  line-height: 1.4;
-  color: var(--pdp-muted);
-  margin-bottom: 2px;
-}
-
-.gemluxjewel-pdp--ref .gemluxjewel-pdp__shipping-estimate-value {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--pdp-text);
-}
-
 /* Trust badges */
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__trust-inline {
   grid-template-columns: repeat(4, 1fr);
@@ -564,10 +528,6 @@
 }
 
 @media (max-width: 989px) {
-  .gemluxjewel-pdp--ref .gemluxjewel-pdp__shipping-estimate {
-    grid-template-columns: 1fr;
-  }
-
   .gemluxjewel-pdp--ref .gemluxjewel-pdp__gallery-col {
     position: static;
   }

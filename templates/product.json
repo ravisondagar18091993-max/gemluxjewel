@@ -26,7 +26,6 @@
         "consultation_label": "Book a Virtual Consultation",
         "consultation_url": "",
         "consultation_open_new_tab": false,
-        "show_shipping_estimate": true,
         "show_inline_trust": true,
         "trust_label_1": "Worldwide Shipping",
         "trust_label_2": "Free and Secure Shipping",
