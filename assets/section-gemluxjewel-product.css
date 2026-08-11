@@ -116,7 +116,7 @@
 
 @media (min-width: 990px) {
   .gemluxjewel-pdp__layout {
-    grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
     gap: 32px 56px;
     align-items: start;
   }
@@ -126,7 +126,7 @@
     top: var(--gemluxjewel-header-offset, 218px);
     align-self: start;
     z-index: 1;
-    max-width: 420px;
+    max-width: none;
   }
 
   .gemluxjewel-pdp__info {
