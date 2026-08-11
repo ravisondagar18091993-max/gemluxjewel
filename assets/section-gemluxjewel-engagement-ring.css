@@ -61,7 +61,7 @@
 
 /* ── Hero ── */
 .gemluxjewel-engagement-hero {
-  background: var(--gemluxjewel-engagement-blue);
+  background:#73976a14;
   padding: calc(var(--gemluxjewel-header-offset, 108px) + 48px) 0 var(--gemluxjewel-engagement-space-section-top);
   text-align: center;
 }
