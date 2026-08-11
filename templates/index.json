@@ -12,9 +12,9 @@
     "gemluxjewel_hero": {
       "type": "gemluxjewel-hero",
       "settings": {
-        "media_type": "image",
+        "media_type": "video",
         "image": "shopify://shop_images/Customized_Jewelry_Gemlux_Jewels_bd4ce8ec-636c-4c4e-af4e-13fd2b0b9b2a.jpg",
-        "video": "shopify://files/videos/create_video____.mp4",
+        "video": "shopify://files/videos/Woman_wearing_jewelry_indoors_1080p_202608061709_gwr_video_mvp.mp4",
         "prefix": "Engagement Rings",
         "title": "A Shift in Perspective",
         "text": "East-West rings redefining modern bridal styling.",
@@ -27,10 +27,36 @@
     "gemluxjewel_stone_shapes": {
       "type": "gemluxjewel-stone-shapes",
       "blocks": {
+        "shape_tYFh6K": {
+          "type": "shape",
+          "settings": {
+            "title": "Round",
+            "image": "shopify://shop_images/round_shape_diamond_png.png",
+            "collection": "",
+            "link": ""
+          }
+        },
+        "shape_dX4KQk": {
+          "type": "shape",
+          "settings": {
+            "title": "Round",
+            "collection": "",
+            "link": ""
+          }
+        },
+        "shape_VwCLPd": {
+          "type": "shape",
+          "settings": {
+            "title": "Round",
+            "collection": "",
+            "link": ""
+          }
+        },
         "s1": {
           "type": "shape",
           "settings": {
             "title": "Round",
+            "image": "shopify://shop_images/round.avif",
             "collection": "",
             "link": ""
           }
@@ -39,6 +65,7 @@
           "type": "shape",
           "settings": {
             "title": "Princess",
+            "image": "shopify://shop_images/Princecs_shape_diamond_png.png",
             "collection": "",
             "link": ""
           }
@@ -47,6 +74,7 @@
           "type": "shape",
           "settings": {
             "title": "Cushion",
+            "image": "shopify://shop_images/cushion_shape_diamond.png",
             "collection": "",
             "link": ""
           }
@@ -55,6 +83,7 @@
           "type": "shape",
           "settings": {
             "title": "Oval",
+            "image": "shopify://shop_images/oval_shape_diamond_png.png",
             "collection": "",
             "link": ""
           }
@@ -63,6 +92,7 @@
           "type": "shape",
           "settings": {
             "title": "Emerald",
+            "image": "shopify://shop_images/emerald_shape_diamond_png.png",
             "collection": "",
             "link": ""
           }
@@ -71,6 +101,7 @@
           "type": "shape",
           "settings": {
             "title": "Pear",
+            "image": "shopify://shop_images/pear_shape_diamond.png",
             "collection": "",
             "link": ""
           }
@@ -79,6 +110,7 @@
           "type": "shape",
           "settings": {
             "title": "Marquise",
+            "image": "shopify://shop_images/marquiese_shape_diamond.png",
             "collection": "",
             "link": ""
           }
@@ -95,6 +127,7 @@
           "type": "shape",
           "settings": {
             "title": "Radiant",
+            "image": "shopify://shop_images/rediant_shape_diamond.png",
             "collection": "",
             "link": ""
           }
@@ -103,12 +136,16 @@
           "type": "shape",
           "settings": {
             "title": "Heart",
+            "image": "shopify://shop_images/heart_shape_diamond.png",
             "collection": "",
             "link": ""
           }
         }
       },
       "block_order": [
+        "shape_tYFh6K",
+        "shape_dX4KQk",
+        "shape_VwCLPd",
         "s1",
         "s2",
         "s3",
@@ -192,6 +229,7 @@
           "settings": {
             "layout": "featured",
             "collection": "",
+            "image": "shopify://shop_images/Elegant_ivory_jewelry_boxes_with_gemluxj_jewels_png.png",
             "title": "Quick Ship",
             "button_label": "Shop Now",
             "link": "shopify://collections/all"
@@ -202,6 +240,7 @@
           "settings": {
             "layout": "featured",
             "collection": "",
+            "image": "shopify://shop_images/gemlux-website-earrings-square-copy.png",
             "title": "For Her",
             "button_label": "Shop Now",
             "link": "shopify://collections/all"
@@ -212,6 +251,7 @@
           "settings": {
             "layout": "tile",
             "collection": "",
+            "image": "shopify://shop_images/ChatGPT_Image_Aug_10_2026_12_25_11_PM.png",
             "title": "Essentials",
             "button_label": "Shop Now",
             "link": "shopify://collections/all"
