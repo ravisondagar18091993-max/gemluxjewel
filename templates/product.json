@@ -47,45 +47,6 @@
         "complete_set_limit": 4
       }
     },
-    "gemluxjewel_pdp_shared": {
-      "type": "gemluxjewel-pdp-shared",
-      "blocks": {
-        "shared_banner": {
-          "type": "intro_banner",
-          "settings": {
-            "prefix": "Discover More",
-            "title": "Quality Features & Why",
-            "text": "<p>Every piece is thoughtfully designed and expertly crafted to deliver lasting beauty, comfort, and confidence — from premium materials to the finest finishing details.</p>"
-          }
-        },
-        "shared_feature_1": {
-          "type": "promo_card",
-          "settings": {
-            "image": "shopify://shop_images/ring-oval-halo-on-neck.webp",
-            "title": "Premium Materials",
-            "description": "<p>We use only the finest metals and ethically sourced stones, selected for brilliance, durability, and everyday wearability.</p>",
-            "button_label": "Shop Now",
-            "button_link": "shopify://collections/all"
-          }
-        },
-        "shared_feature_2": {
-          "type": "promo_card",
-          "settings": {
-            "image": "shopify://shop_images/ring-mens-wedding-band.webp",
-            "title": "Certified Quality",
-            "description": "<p>Each diamond is graded for cut, color, clarity, and carat weight — so you know exactly what you are investing in.</p>",
-            "button_label": "Shop Now",
-            "button_link": "shopify://collections/all"
-          }
-        }
-      },
-      "block_order": [
-        "shared_banner",
-        "shared_feature_1",
-        "shared_feature_2"
-      ],
-      "settings": {}
-    },
     "gemluxjewel_product_faq": {
       "type": "gemluxjewel-product-faq",
       "blocks": {
@@ -165,7 +126,6 @@
   },
   "order": [
     "gemluxjewel_main_product",
-    "gemluxjewel_pdp_shared",
     "gemluxjewel_product_faq",
     "gemluxjewel_pdp_trust",
     "gemluxjewel_product_related"
