@@ -2,40 +2,35 @@
   if (window.__gemluxjewelAccordionBound) return;
   window.__gemluxjewelAccordionBound = true;
 
-  function setContentState(content, isOpen) {
-    if (!content) return;
+  function setItemState(item, isOpen) {
+    if (!item) return;
+
+    var header = item.querySelector('.closet-header');
+    var content = item.querySelector('.closet-content');
+    if (!header || !content) return;
+
+    item.classList.toggle('is-open', isOpen);
+    header.classList.toggle('active', isOpen);
+    header.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+
     if (isOpen) {
-      content.style.display = 'block';
       content.removeAttribute('hidden');
     } else {
-      content.style.display = 'none';
       content.setAttribute('hidden', '');
     }
   }
 
   function toggleAccordion(root, header) {
-    var content = header.nextElementSibling;
-    if (!content || !content.classList.contains('closet-content')) return;
+    var item = header.closest('.closet-item');
+    if (!item) return;
 
-    var isOpen = header.classList.contains('active');
+    var isOpen = item.classList.contains('is-open');
 
-    root.querySelectorAll('.closet-header.active').forEach(function (openHeader) {
-      if (openHeader !== header) {
-        openHeader.classList.remove('active');
-        openHeader.setAttribute('aria-expanded', 'false');
-        setContentState(openHeader.nextElementSibling, false);
-      }
+    root.querySelectorAll('.closet-item.is-open').forEach(function (openItem) {
+      if (openItem !== item) setItemState(openItem, false);
     });
 
-    if (isOpen) {
-      header.classList.remove('active');
-      header.setAttribute('aria-expanded', 'false');
-      setContentState(content, false);
-    } else {
-      header.classList.add('active');
-      header.setAttribute('aria-expanded', 'true');
-      setContentState(content, true);
-    }
+    setItemState(item, !isOpen);
   }
 
   function handleToggle(event) {
@@ -54,24 +49,12 @@
   function initAccordionDefaults() {
     document.querySelectorAll('[data-gemluxjewel-accordion]').forEach(function (root) {
       root.querySelectorAll('.closet-item').forEach(function (item) {
-        var header = item.querySelector('.closet-header');
-        var content = item.querySelector('.closet-content');
-        if (!header || !content) return;
-
-        var shouldOpen = item.classList.contains('is-open');
-        if (shouldOpen) {
-          header.classList.add('active');
-          header.setAttribute('aria-expanded', 'true');
-          setContentState(content, true);
-        } else {
-          header.classList.remove('active');
-          header.setAttribute('aria-expanded', 'false');
-          setContentState(content, false);
-        }
+        setItemState(item, item.classList.contains('is-open'));
       });
     });
   }
 
+  initAccordionDefaults();
   document.addEventListener('DOMContentLoaded', initAccordionDefaults);
   document.addEventListener('shopify:section:load', initAccordionDefaults);
 

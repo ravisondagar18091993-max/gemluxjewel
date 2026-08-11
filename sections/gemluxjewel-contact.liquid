@@ -209,33 +209,6 @@
       {%- endif -%}
     </div>
   </div>
-
-  {%- if section.settings.show_trust_strip -%}
-    <div class="gemluxjewel-contact-page__trust">
-      <div class="gemluxjewel-container gemluxjewel-contact-page__trust-inner">
-        {%- for i in (1..4) -%}
-          {%- liquid
-            assign label_key = 'trust_label_' | append: i
-            assign icon_key = 'trust_icon_' | append: i
-            assign trust_label = section.settings[label_key]
-            assign trust_icon = section.settings[icon_key]
-          -%}
-          {%- if trust_label != blank -%}
-            <div class="gemluxjewel-contact-page__trust-item">
-              <span class="gemluxjewel-contact-page__trust-icon">
-                {%- if trust_icon != blank -%}
-                  {{ trust_icon | image_url: width: 80 | image_tag: widths: '40, 80', sizes: '28px', loading: 'lazy', alt: '' }}
-                {%- else -%}
-                  <img src="{{ 'diamond.svg' | asset_url }}" alt="" width="24" height="24">
-                {%- endif -%}
-              </span>
-              <span class="gemluxjewel-contact-page__trust-label">{{ trust_label | escape }}</span>
-            </div>
-          {%- endif -%}
-        {%- endfor -%}
-      </div>
-    </div>
-  {%- endif -%}
 </section>
 
 {% schema %}
@@ -358,25 +331,7 @@
       "id": "legal_text",
       "label": "Legal / privacy text below submit",
       "default": "<p>This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.</p>"
-    },
-    {
-      "type": "header",
-      "content": "Trust strip"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_trust_strip",
-      "label": "Show trust strip",
-      "default": true
-    },
-    { "type": "text", "id": "trust_label_1", "label": "Trust 1", "default": "Worldwide Express Shipping" },
-    { "type": "image_picker", "id": "trust_icon_1", "label": "Trust icon 1" },
-    { "type": "text", "id": "trust_label_2", "label": "Trust 2", "default": "Free Resizing" },
-    { "type": "image_picker", "id": "trust_icon_2", "label": "Trust icon 2" },
-    { "type": "text", "id": "trust_label_3", "label": "Trust 3", "default": "Lifetime Ring Warranty" },
-    { "type": "image_picker", "id": "trust_icon_3", "label": "Trust icon 3" },
-    { "type": "text", "id": "trust_label_4", "label": "Trust 4", "default": "Free Ring Customisation" },
-    { "type": "image_picker", "id": "trust_icon_4", "label": "Trust icon 4" }
+    }
   ],
   "blocks": [
     {

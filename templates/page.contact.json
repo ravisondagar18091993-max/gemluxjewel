@@ -69,12 +69,7 @@
         "button_label": "Submit",
         "show_mailing_list": true,
         "mailing_list_checked": true,
-        "show_stone_type": true,
-        "show_trust_strip": true,
-        "trust_label_1": "Worldwide Express Shipping",
-        "trust_label_2": "Free Resizing",
-        "trust_label_3": "Lifetime Ring Warranty",
-        "trust_label_4": "Free Ring Customisation"
+        "show_stone_type": true
       }
     }
   },

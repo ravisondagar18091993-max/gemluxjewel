@@ -265,56 +265,6 @@ a.gemluxjewel-contact-page__quick-link-text:hover {
   text-decoration: underline;
 }
 
-/* Trust strip */
-.gemluxjewel-contact-page__trust {
-  background: #f7f3ed;
-  padding: 40px 0;
-}
-
-.gemluxjewel-contact-page__trust-inner {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 28px 24px;
-}
-
-.gemluxjewel-contact-page__trust-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 12px;
-}
-
-.gemluxjewel-contact-page__trust-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-}
-
-.gemluxjewel-contact-page__trust-icon img {
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
-}
-
-.gemluxjewel-contact-page__trust-label {
-  font-family: 'Outfit', var(--font-body-family), sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1.45;
-  letter-spacing: 0.04em;
-  text-transform: capitalize;
-  color: #1e392a;
-}
-
-@media (min-width: 750px) {
-  .gemluxjewel-contact-page__trust-inner {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-}
-
 @media (max-width: 749px) {
   .gemluxjewel-contact-page__fields,
   .gemluxjewel-contact-page__quick-links {
@@ -333,7 +283,6 @@ a.gemluxjewel-contact-page__quick-link-text:hover {
 /* Override global uppercase heading styles */
 .gemluxjewel-contact-page__hero-title,
 .gemluxjewel-contact-page__label,
-.gemluxjewel-contact-page__quick-link-text,
-.gemluxjewel-contact-page__trust-label {
+.gemluxjewel-contact-page__quick-link-text {
   text-transform: capitalize;
 }

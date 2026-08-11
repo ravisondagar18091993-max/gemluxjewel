@@ -615,8 +615,16 @@
   display: none;
 }
 
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion .closet-item:not(.is-open) .closet-content {
+  display: none !important;
+}
+
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion .closet-content[hidden] {
   display: none !important;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion .closet-item.is-open .closet-content {
+  display: block;
 }
 
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion .closet-header.active + .closet-content {

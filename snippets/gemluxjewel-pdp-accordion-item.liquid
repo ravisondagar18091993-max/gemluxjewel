@@ -5,15 +5,20 @@
 
 {%- liquid
   assign open_by_default = open_by_default | default: false
+  if open_by_default == true or open_by_default == 'true'
+    assign is_accordion_open = true
+  else
+    assign is_accordion_open = false
+  endif
 -%}
 
 {%- if title != blank and content != blank -%}
-  <div class="closet-item{% if open_by_default %} is-open{% endif %}" {{ shopify_attributes }}>
+  <div class="closet-item{% if is_accordion_open %} is-open{% endif %}" {{ shopify_attributes }}>
     <div
-      class="closet-header{% if open_by_default %} active{% endif %}"
+      class="closet-header{% if is_accordion_open %} active{% endif %}"
       role="button"
       tabindex="0"
-      aria-expanded="{% if open_by_default %}true{% else %}false{% endif %}"
+      aria-expanded="{% if is_accordion_open %}true{% else %}false{% endif %}"
     >
       <div class="closet-header-title">{{ title | escape }}</div>
       <span class="accordion-close" aria-hidden="true">
@@ -22,7 +27,7 @@
         </svg>
       </span>
     </div>
-    <div class="closet-content"{% unless open_by_default %} hidden{% endunless %}>
+    <div class="closet-content"{% unless is_accordion_open %} hidden{% endunless %}>
       <div class="closet-content__inner rte">
         {{ content }}
       </div>
