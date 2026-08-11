@@ -1,0 +1,329 @@
+/* gemluxjewel product card — loaded globally for consistent cards sitewide */
+
+.gemluxjewel {
+  --gemluxjewel-primary: #73976a;
+  --gemluxjewel-orange: #e37859;
+  --gemluxjewel-dark: #141414;
+  --gemluxjewel-yellow: #d6c372;
+  --gemluxjewel-gray-border: #bec7c7;
+  --gemluxjewel-radius: 10px;
+  --gemluxjewel-radius-sm: 5px;
+  --gemluxjewel-font-body: 'Outfit', var(--font-body-family), sans-serif;
+  --gemluxjewel-font-heading: 'Figtree', var(--font-heading-family), sans-serif;
+}
+
+.gemluxjewel-badge {
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--gemluxjewel-radius-sm);
+  padding: 0 10px;
+  background: var(--gemluxjewel-primary);
+  color: #fff;
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 10px;
+  line-height: 13px;
+  text-transform: uppercase;
+}
+
+.gemluxjewel-badge--orange {
+  background: var(--gemluxjewel-orange);
+  font-size: 13px;
+  line-height: 13px;
+}
+
+.gemluxjewel-card {
+  margin-bottom: 70px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+}
+
+.gemluxjewel-card__info {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.gemluxjewel-card__img-wrap {
+  position: relative;
+  height: 358px;
+  border-radius: var(--gemluxjewel-radius);
+  overflow: hidden;
+  margin-bottom: 22px;
+  background: #f7f7f7;
+  flex-shrink: 0;
+}
+
+.gemluxjewel-card__media-link {
+  display: block;
+  height: 100%;
+  position: relative;
+}
+
+.gemluxjewel-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.4s ease, transform 0.7s ease;
+}
+
+.gemluxjewel-card__img--primary {
+  position: relative;
+  z-index: 0;
+}
+
+.gemluxjewel-card__img--secondary {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+}
+
+.gemluxjewel-card--has-secondary:hover .gemluxjewel-card__img--primary {
+  opacity: 0;
+}
+
+.gemluxjewel-card--has-secondary:hover .gemluxjewel-card__img--secondary {
+  opacity: 1;
+}
+
+.gemluxjewel-card:not(.gemluxjewel-card--has-secondary):hover .gemluxjewel-card__img--primary {
+  transform: scale(1.1);
+}
+
+.gemluxjewel-card__top {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.gemluxjewel-card__top a {
+  pointer-events: auto;
+}
+
+.gemluxjewel-card__heart {
+  width: 22px;
+  display: block;
+}
+
+.gemluxjewel-card__heart img {
+  width: 22px;
+  height: auto;
+}
+
+.gemluxjewel-card__basket {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  width: 100%;
+  background: var(--gemluxjewel-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.7s ease, opacity 0.7s ease;
+  z-index: 3;
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.gemluxjewel-card:hover .gemluxjewel-card__basket {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.gemluxjewel-card__basket img {
+  width: 24px;
+  height: auto;
+}
+
+.gemluxjewel-card__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+  gap: 10px;
+}
+
+.gemluxjewel-card__title {
+  font-family: var(--gemluxjewel-font-heading);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: var(--gemluxjewel-dark);
+  text-decoration: none;
+  flex: 1 1 auto;
+  min-width: 0;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.gemluxjewel-card__row .gemluxjewel-badge--orange {
+  flex-shrink: 0;
+  margin-top: 2px;
+  white-space: nowrap;
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .gemluxjewel-card__title {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .gemluxjewel-card {
+    margin-bottom: 0;
+  }
+
+  .gemluxjewel-card__img-wrap {
+    height: auto;
+    aspect-ratio: 1 / 1.05;
+    margin-bottom: 12px;
+    border-radius: 12px;
+  }
+
+  .gemluxjewel-card__top {
+    top: 8px;
+    left: 8px;
+    right: 8px;
+  }
+
+  .gemluxjewel-card__heart img {
+    width: 18px;
+  }
+
+  .gemluxjewel-card__row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  .gemluxjewel-card__title {
+    font-size: 13px;
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .gemluxjewel-card__row .gemluxjewel-badge--orange {
+    margin-top: 0;
+    height: 20px;
+    padding: 0 8px;
+    font-size: 10px;
+    line-height: 1;
+  }
+
+  .gemluxjewel-card__price-row {
+    margin-top: auto;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .gemluxjewel-card__price {
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+  .gemluxjewel-card__swatches {
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .gemluxjewel-swatch {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+.gemluxjewel-card__price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.gemluxjewel-card__price {
+  font-family: var(--gemluxjewel-font-body);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.gemluxjewel-card__swatches {
+  display: flex;
+  gap: 8px;
+}
+
+.gemluxjewel-swatch {
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  padding: 2px;
+  border: 1px solid var(--gemluxjewel-yellow);
+  cursor: pointer;
+  transition: transform 0.3s;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+.gemluxjewel-swatch:hover {
+  transform: scale(1.2);
+}
+
+.gemluxjewel-swatch__inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--gemluxjewel-yellow);
+  display: block;
+}
+
+.gemluxjewel-swatch--gray {
+  border-color: var(--gemluxjewel-gray-border);
+}
+
+.gemluxjewel-swatch--gray .gemluxjewel-swatch__inner {
+  background: var(--gemluxjewel-gray-border);
+}
+
+/* Grid wrappers — same card sizing in every product grid */
+.gemluxjewel-products__grid,
+.gemluxjewel-shop__grid,
+.gemluxjewel-engagement-showcase__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.gemluxjewel-products__grid > li,
+.gemluxjewel-shop__grid > li,
+.gemluxjewel-engagement-showcase__grid > li,
+.gemluxjewel-engagement-showcase__item {
+  display: flex;
+  min-width: 0;
+}
+
+.gemluxjewel-products__grid .gemluxjewel-card,
+.gemluxjewel-shop__grid .gemluxjewel-card,
+.gemluxjewel-engagement-showcase__grid .gemluxjewel-card,
+.gemluxjewel-pdp-related .gemluxjewel-card {
+  margin-bottom: 0;
+  width: 100%;
+}

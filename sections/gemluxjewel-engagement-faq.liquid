@@ -1,6 +1,4 @@
 {% render 'gemluxjewel-fonts' %}
-{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
-{{ 'section-gemluxjewel-product.css' | asset_url | stylesheet_tag }}
 {{ 'section-gemluxjewel-engagement-ring.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'gemluxjewel-engagement-ring.js' | asset_url }}" defer="defer"></script>
 
@@ -12,66 +10,72 @@
 
     <div class="gemluxjewel-engagement-faq__inner">
       <div class="gemluxjewel-engagement-faq__tabs" role="tablist" aria-label="FAQ categories">
-      <button
-        type="button"
-        class="gemluxjewel-engagement-faq__tab is-active"
-        role="tab"
-        aria-selected="true"
-        data-gemluxjewel-engagement-faq-tab
-        data-category="lab_grown"
-      >
-        {{ section.settings.tab_1_label | default: 'Lab Grown Diamond' | escape }}
-      </button>
-      <button
-        type="button"
-        class="gemluxjewel-engagement-faq__tab"
-        role="tab"
-        aria-selected="false"
-        data-gemluxjewel-engagement-faq-tab
-        data-category="moissanite"
-      >
-        {{ section.settings.tab_2_label | default: 'Moissanite' | escape }}
-      </button>
-      {%- if section.settings.show_returns_tab -%}
+        <button
+          type="button"
+          class="gemluxjewel-engagement-faq__tab is-active"
+          role="tab"
+          aria-selected="true"
+          data-gemluxjewel-engagement-faq-tab
+          data-category="lab_grown"
+        >
+          {{ section.settings.tab_1_label | default: 'Lab Grown Diamond' | escape }}
+        </button>
         <button
           type="button"
           class="gemluxjewel-engagement-faq__tab"
           role="tab"
           aria-selected="false"
           data-gemluxjewel-engagement-faq-tab
-          data-category="returns"
+          data-category="moissanite"
         >
-          {{ section.settings.tab_3_label | default: 'Returns & Exchanges' | escape }}
+          {{ section.settings.tab_2_label | default: 'Moissanite' | escape }}
         </button>
-      {%- endif -%}
-    </div>
-
-    {%- if section.blocks.size > 0 -%}
-      <div class="gemluxjewel-engagement-faq__accordion">
-        <div class="closet-accordion" data-gemluxjewel-accordion>
-          {%- for block in section.blocks -%}
-            <div
-              class="closet-item gemluxjewel-engagement-faq__item{% unless block.settings.category == 'lab_grown' %} is-hidden{% endunless %}"
-              data-gemluxjewel-engagement-faq-item
-              data-category="{{ block.settings.category | default: 'lab_grown' }}"
-              {{ block.shopify_attributes }}
-            >
-              <div class="closet-header" role="button" tabindex="0" aria-expanded="false">
-                <div class="closet-header-title">{{ block.settings.question | escape }}</div>
-                <div class="accordion-close">
-                  <img src="{{ 'down-arrow.svg' | asset_url }}" alt="" width="24" height="24">
-                </div>
-              </div>
-              <div class="closet-content">
-                <div class="closet-content__inner rte">
-                  {{ block.settings.answer }}
-                </div>
-              </div>
-            </div>
-          {%- endfor -%}
-        </div>
+        {%- if section.settings.show_returns_tab -%}
+          <button
+            type="button"
+            class="gemluxjewel-engagement-faq__tab"
+            role="tab"
+            aria-selected="false"
+            data-gemluxjewel-engagement-faq-tab
+            data-category="returns"
+          >
+            {{ section.settings.tab_3_label | default: 'Returns & Exchanges' | escape }}
+          </button>
+        {%- endif -%}
       </div>
-    {%- endif -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <div class="gemluxjewel-engagement-faq__accordion">
+          <div class="closet-accordion" data-gemluxjewel-accordion>
+            {%- for block in section.blocks -%}
+              <div
+                class="closet-item gemluxjewel-engagement-faq__item{% unless block.settings.category == 'lab_grown' %} is-hidden{% endunless %}"
+                data-gemluxjewel-engagement-faq-item
+                data-category="{{ block.settings.category | default: 'lab_grown' }}"
+                {{ block.shopify_attributes }}
+              >
+                <button
+                  type="button"
+                  class="closet-header gemluxjewel-engagement-faq__trigger"
+                  aria-expanded="false"
+                >
+                  <span class="closet-header-title">{{ block.settings.question | escape }}</span>
+                  <span class="accordion-close" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                </button>
+                <div class="closet-content" hidden>
+                  <div class="closet-content__inner rte">
+                    {{ block.settings.answer }}
+                  </div>
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
     </div>
   </div>
 </section>

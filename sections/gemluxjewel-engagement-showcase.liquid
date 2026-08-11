@@ -1,5 +1,4 @@
 {% render 'gemluxjewel-fonts' %}
-{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
 {{ 'section-gemluxjewel-engagement-ring.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
@@ -7,6 +6,30 @@
   if section.settings.featured_position == 'right'
     assign layout_class = 'gemluxjewel-engagement-showcase__grid--feature-right'
   endif
+
+  assign collection = section.settings.collection
+  if collection == blank
+    assign collection = collections.all
+  endif
+
+  assign products_limit = 5
+  assign featured_index = 0
+  if section.settings.featured_position == 'right'
+    assign featured_index = 4
+  endif
+
+  assign has_collection_products = false
+  if collection != blank and collection.all_products_count > 0
+    assign has_collection_products = true
+  endif
+
+  assign has_block_products = false
+  for block in section.blocks
+    if block.settings.product != blank
+      assign has_block_products = true
+      break
+    endif
+  endfor
 -%}
 
 <section class="gemluxjewel gemluxjewel-engagement gemluxjewel-engagement-showcase">
@@ -15,26 +38,56 @@
       <h2 class="gemluxjewel-engagement-showcase__title">{{ section.settings.title | escape }}</h2>
     {%- endif -%}
 
-    {%- if section.blocks.size > 0 -%}
-      <div class="gemluxjewel-engagement-showcase__grid {{ layout_class }}">
-        {%- for block in section.blocks -%}
-          <div
-            class="gemluxjewel-engagement-showcase__item{% if block.settings.featured %} gemluxjewel-engagement-showcase__item--featured{% endif %}"
-            {{ block.shopify_attributes }}
-          >
-            {% render 'gemluxjewel-product-card',
-              product: block.settings.product,
-              badge_text: section.settings.badge_text,
-              show_discount: section.settings.show_discount
-            %}
-          </div>
-        {%- endfor -%}
-      </div>
+    {%- if has_collection_products or has_block_products or section.blocks.size > 0 -%}
+      <ul class="gemluxjewel-engagement-showcase__grid {{ layout_class }}">
+        {%- if has_collection_products -%}
+          {%- for product in collection.products limit: products_limit -%}
+            {%- liquid
+              assign is_featured = false
+              assign item_index = forloop.index0
+              if item_index == featured_index
+                assign is_featured = true
+              endif
+
+              assign item_badge = section.settings.badge_text
+              if item_badge == blank
+                if product.tags contains 'new' or product.tags contains 'New In' or product.tags contains 'NEW IN'
+                  assign item_badge = 'NEW IN'
+                endif
+              endif
+            -%}
+            <li class="gemluxjewel-engagement-showcase__item{% if is_featured %} gemluxjewel-engagement-showcase__item--featured{% endif %}">
+              {% render 'gemluxjewel-product-card',
+                product: product,
+                badge_text: item_badge,
+                show_discount: section.settings.show_discount
+              %}
+            </li>
+          {%- endfor -%}
+        {%- else -%}
+          {%- for block in section.blocks -%}
+            <li
+              class="gemluxjewel-engagement-showcase__item{% if block.settings.featured %} gemluxjewel-engagement-showcase__item--featured{% endif %}"
+              {{ block.shopify_attributes }}
+            >
+              {% render 'gemluxjewel-product-card',
+                product: block.settings.product,
+                badge_text: section.settings.badge_text,
+                show_discount: section.settings.show_discount
+              %}
+            </li>
+          {%- endfor -%}
+        {%- endif -%}
+      </ul>
     {%- endif -%}
 
     {%- if section.settings.button_label != blank -%}
       <div class="gemluxjewel-engagement-showcase__footer">
-        {% render 'gemluxjewel-btn', label: section.settings.button_label, url: section.settings.button_link, style: 'green' %}
+        {% render 'gemluxjewel-btn',
+          label: section.settings.button_label,
+          url: section.settings.button_link | default: collection.url,
+          style: 'green'
+        %}
       </div>
     {%- endif -%}
   </div>
@@ -54,9 +107,15 @@
       "default": "Popular Lab Grown Diamond Rings"
     },
     {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection",
+      "info": "Shows 5 products from this collection. Featured product is first (left) or last (right)."
+    },
+    {
       "type": "select",
       "id": "featured_position",
-      "label": "Large image position",
+      "label": "Large featured card position",
       "default": "left",
       "options": [
         { "value": "left", "label": "Left" },
@@ -67,7 +126,8 @@
       "type": "text",
       "id": "badge_text",
       "label": "Product badge",
-      "default": "New In"
+      "default": "New In",
+      "info": "Used when product has no New In tag."
     },
     {
       "type": "checkbox",
@@ -101,7 +161,8 @@
           "type": "checkbox",
           "id": "featured",
           "label": "Large featured card",
-          "default": false
+          "default": false,
+          "info": "Used only when no collection is selected."
         }
       ]
     }

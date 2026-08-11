@@ -1,0 +1,110 @@
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-engagement-ring.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign layout_class = 'gemluxjewel-engagement-showcase__grid--feature-left'
+  if section.settings.featured_position == 'right'
+    assign layout_class = 'gemluxjewel-engagement-showcase__grid--feature-right'
+  endif
+-%}
+
+<section class="gemluxjewel gemluxjewel-engagement gemluxjewel-engagement-showcase">
+  <div class="gemluxjewel-container">
+    {%- if section.settings.title != blank -%}
+      <h2 class="gemluxjewel-engagement-showcase__title">{{ section.settings.title | escape }}</h2>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <ul class="gemluxjewel-engagement-showcase__grid {{ layout_class }}">
+        {%- for block in section.blocks -%}
+          <li
+            class="gemluxjewel-engagement-showcase__item{% if block.settings.featured %} gemluxjewel-engagement-showcase__item--featured{% endif %}"
+            {{ block.shopify_attributes }}
+          >
+            {% render 'gemluxjewel-product-card',
+              product: block.settings.product,
+              badge_text: section.settings.badge_text,
+              show_discount: section.settings.show_discount
+            %}
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+
+    {%- if section.settings.button_label != blank -%}
+      <div class="gemluxjewel-engagement-showcase__footer">
+        {% render 'gemluxjewel-btn', label: section.settings.button_label, url: section.settings.button_link, style: 'green' %}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "GL Engagement Showcase",
+  "tag": "section",
+  "class": "gemluxjewel-section",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Popular Lab Grown Diamond Rings"
+    },
+    {
+      "type": "select",
+      "id": "featured_position",
+      "label": "Large image position",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Product badge",
+      "default": "New In"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_discount",
+      "label": "Show discount badge",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "View all button label",
+      "default": "View All"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "View all button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "checkbox",
+          "id": "featured",
+          "label": "Large featured card",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [{ "name": "GL Engagement Showcase" }]
+}
+{% endschema %}

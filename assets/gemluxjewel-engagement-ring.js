@@ -4,6 +4,20 @@ document.addEventListener('shopify:section:load', initGemluxjewelEngagementRing)
 function initGemluxjewelEngagementRing() {
   initEngagementHeroReadMore();
   initEngagementFaqTabs();
+  initEngagementFaqAccordion();
+}
+
+function initEngagementFaqAccordion() {
+  document.querySelectorAll('[data-gemluxjewel-engagement-faq] .closet-content').forEach(function (content) {
+    var header = content.previousElementSibling;
+    var isOpen = header && header.classList.contains('active');
+    content.style.display = isOpen ? 'block' : 'none';
+    if (isOpen) {
+      content.removeAttribute('hidden');
+    } else {
+      content.setAttribute('hidden', '');
+    }
+  });
 }
 
 function initEngagementHeroReadMore() {
@@ -43,6 +57,7 @@ function initEngagementFaqTabs() {
         header.setAttribute('aria-expanded', 'false');
         if (header.nextElementSibling) {
           header.nextElementSibling.style.display = 'none';
+          header.nextElementSibling.setAttribute('hidden', '');
         }
       });
     }
