@@ -47,6 +47,48 @@
         "complete_set_limit": 4
       }
     },
+    "gemluxjewel_pdp_how_made": {
+      "type": "gemluxjewel-pdp-how-made",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "Design & Selection",
+            "text": "From custom to ready-to-ship, every ring is thoughtfully designed for timeless elegance"
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Expert Craftsmanship",
+            "text": "Our skilled artisans shape, cast, and refine each ring with precision and care."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Stone Setting & Polishing",
+            "text": "Each diamond is carefully set and polished to achieve flawless radiance."
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "title": "Quality Check & Packaging",
+            "text": "Each ring passes a strict quality check before being elegantly packaged."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ],
+      "settings": {
+        "title": "How Our Rings are Made"
+      }
+    },
     "gemluxjewel_product_faq": {
       "type": "gemluxjewel-product-faq",
       "blocks": {
@@ -120,12 +162,15 @@
         "button_label": "View Collection",
         "button_link": "",
         "collection": "",
+        "show_collection_name": false,
+        "show_placeholders": false,
         "products_to_show": 4
       }
     }
   },
   "order": [
     "gemluxjewel_main_product",
+    "gemluxjewel_pdp_how_made",
     "gemluxjewel_product_faq",
     "gemluxjewel_pdp_trust",
     "gemluxjewel_product_related"

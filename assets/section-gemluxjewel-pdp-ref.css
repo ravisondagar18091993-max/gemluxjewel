@@ -25,7 +25,7 @@
 
 @media (min-width: 990px) {
   .gemluxjewel-pdp--ref .gemluxjewel-pdp__layout {
-    grid-template-columns: minmax(0, 9fr) minmax(0, 11fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 32px 56px;
     align-items: start;
   }

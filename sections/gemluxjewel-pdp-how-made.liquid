@@ -1,0 +1,125 @@
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-pdp-how-made.css' | asset_url | stylesheet_tag }}
+
+<section class="gemluxjewel gemluxjewel-pdp-how-made">
+  <div class="gemluxjewel-container gemluxjewel-pdp-how-made__container">
+    {%- if section.settings.title != blank -%}
+      <h2 class="gemluxjewel-pdp-how-made__title">{{ section.settings.title | escape }}</h2>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="gemluxjewel-pdp-how-made__grid">
+        {%- for block in section.blocks -%}
+          <article class="gemluxjewel-pdp-how-made__item" {{ block.shopify_attributes }}>
+            <div class="gemluxjewel-pdp-how-made__image">
+              {%- if block.settings.image != blank -%}
+                {{
+                  block.settings.image
+                  | image_url: width: 800
+                  | image_tag:
+                    widths: '400, 600, 800',
+                    sizes: '(min-width: 990px) 25vw, (min-width: 750px) 50vw, 100vw',
+                    loading: 'lazy',
+                    alt: block.settings.title
+                }}
+              {%- else -%}
+                {% render 'gemluxjewel-theme-image',
+                  use_store_media: true,
+                  seed: forloop.index,
+                  width: 800,
+                  widths: '400,600,800',
+                  sizes: '(min-width: 990px) 25vw, (min-width: 750px) 50vw, 100vw',
+                  alt: block.settings.title
+                %}
+              {%- endif -%}
+            </div>
+
+            {%- if block.settings.title != blank -%}
+              <h3 class="gemluxjewel-pdp-how-made__item-title">{{ block.settings.title | escape }}</h3>
+            {%- endif -%}
+
+            {%- if block.settings.text != blank -%}
+              <p class="gemluxjewel-pdp-how-made__item-text">{{ block.settings.text | escape }}</p>
+            {%- endif -%}
+          </article>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PDP How Rings Are Made",
+  "tag": "section",
+  "class": "gemluxjewel-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "How Our Rings are Made"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Design & Selection"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "From custom to ready-to-ship, every ring is thoughtfully designed for timeless elegance"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "PDP How Rings Are Made",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "title": "Design & Selection",
+            "text": "From custom to ready-to-ship, every ring is thoughtfully designed for timeless elegance"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Expert Craftsmanship",
+            "text": "Our skilled artisans shape, cast, and refine each ring with precision and care."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Stone Setting & Polishing",
+            "text": "Each diamond is carefully set and polished to achieve flawless radiance."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Quality Check & Packaging",
+            "text": "Each ring passes a strict quality check before being elegantly packaged."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -2,14 +2,51 @@
 {{ 'section-gemluxjewel-product.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
-  assign source_collection = section.settings.collection
-  if source_collection == blank and product.collections.first
-    assign source_collection = product.collections.first
+  assign source_collection = blank
+  assign collection_source = blank
+
+  comment
+    1. Current collection from PDP URL (/collections/handle/products/product)
+    2. Product's primary collection (skip All / Frontpage)
+    3. Theme editor manual collection override
+    4. First product collection fallback
+  endcomment
+
+  if collection != blank
+    assign source_collection = collection
+    assign collection_source = 'context'
   endif
+
+  if source_collection == blank
+    for coll in product.collections
+      if coll.handle == 'all' or coll.handle == 'frontpage'
+        continue
+      endif
+      assign source_collection = coll
+      assign collection_source = 'product'
+      break
+    endfor
+  endif
+
+  if source_collection == blank and section.settings.collection != blank
+    assign source_collection = section.settings.collection
+    assign collection_source = 'manual'
+  endif
+
+  if source_collection == blank and product.collections.first != blank
+    assign source_collection = product.collections.first
+    assign collection_source = 'product'
+  endif
+
+  assign collection_button_url = section.settings.button_link
+  if collection_button_url == blank and source_collection != blank
+    assign collection_button_url = source_collection.url
+  endif
+
   assign shown = 0
 -%}
 
-<section class="gemluxjewel gemluxjewel-pdp-related">
+<section class="gemluxjewel gemluxjewel-pdp-related" data-gemluxjewel-pdp-related data-collection-source="{{ collection_source }}">
   <div class="gemluxjewel-container">
     <div class="gemluxjewel-section-header">
       <div>
@@ -19,11 +56,14 @@
         {%- if section.settings.subtitle != blank -%}
           <p class="gemluxjewel-section-desc">{{ section.settings.subtitle | escape }}</p>
         {%- endif -%}
+        {%- if section.settings.show_collection_name and source_collection != blank -%}
+          <p class="gemluxjewel-pdp-related__collection-name">{{ source_collection.title | escape }}</p>
+        {%- endif -%}
       </div>
-      {%- if section.settings.button_label != blank -%}
+      {%- if section.settings.button_label != blank and collection_button_url != blank -%}
         {% render 'gemluxjewel-btn',
           label: section.settings.button_label,
-          url: section.settings.button_link | default: source_collection.url,
+          url: collection_button_url,
           style: 'green'
         %}
       {%- endif -%}
@@ -48,8 +88,8 @@
         {%- endfor -%}
       {%- endif -%}
 
-      {%- if shown == 0 -%}
-        {%- for i in (1..4) -%}
+      {%- if shown == 0 and section.settings.show_placeholders -%}
+        {%- for i in (1..section.settings.products_to_show) -%}
           {% render 'gemluxjewel-product-card', product: blank, badge_text: 'NEW IN', show_discount: true %}
         {%- endfor -%}
       {%- endif -%}
@@ -63,16 +103,46 @@
   "tag": "section",
   "class": "gemluxjewel-section",
   "settings": [
-    { "type": "text", "id": "title", "label": "Heading", "default": "YOU MAY ALSO LIKE" },
+    {
+      "type": "paragraph",
+      "content": "Automatically shows products from the open collection on the product page. If the product was opened directly, it uses the product's primary collection (excluding All Products)."
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "YOU MAY ALSO LIKE"
+    },
     {
       "type": "textarea",
       "id": "subtitle",
       "label": "Subheading",
       "default": "Discover our latest additions - fresh designs and timeless classics newly available"
     },
-    { "type": "text", "id": "button_label", "label": "Button label", "default": "View Collection" },
-    { "type": "url", "id": "button_link", "label": "Button link" },
-    { "type": "collection", "id": "collection", "label": "Collection (fallback: product's first collection)" },
+    {
+      "type": "checkbox",
+      "id": "show_collection_name",
+      "label": "Show collection name under heading",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "View Collection"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link override",
+      "info": "Leave blank to link to the auto-detected collection."
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection override",
+      "info": "Optional. Used only when the product has no suitable collection."
+    },
     {
       "type": "range",
       "id": "products_to_show",
@@ -81,6 +151,12 @@
       "step": 1,
       "default": 4,
       "label": "Products to show"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_placeholders",
+      "label": "Show placeholder cards when no products found",
+      "default": false
     }
   ],
   "presets": [{ "name": "gemluxjewel Related Prods" }]

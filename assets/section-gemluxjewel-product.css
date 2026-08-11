@@ -116,7 +116,7 @@
 
 @media (min-width: 990px) {
   .gemluxjewel-pdp__layout {
-    grid-template-columns: minmax(0, 9fr) minmax(0, 11fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 32px 56px;
     align-items: start;
   }
@@ -980,6 +980,13 @@
 
 .gemluxjewel-pdp-related .gemluxjewel-section-header {
   margin-bottom: 24px;
+}
+
+.gemluxjewel-pdp-related__collection-name {
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(20, 20, 20, 0.65);
 }
 
 .gemluxjewel-pdp-related .gemluxjewel-products__grid {

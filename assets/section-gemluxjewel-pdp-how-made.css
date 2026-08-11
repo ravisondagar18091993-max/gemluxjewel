@@ -1,0 +1,90 @@
+.gemluxjewel-pdp-how-made {
+  padding: 56px 0 72px;
+  background: #fff;
+  color: #1e392a;
+}
+
+.gemluxjewel-pdp-how-made__container {
+  width: min(1280px, 94%);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.gemluxjewel-pdp-how-made__title {
+  margin: 0 0 32px;
+  font-family: 'Figtree', var(--font-heading-family), sans-serif;
+  font-size: clamp(24px, 2.2vw, 32px);
+  font-weight: 700;
+  line-height: 1.25;
+  color: #1e392a;
+  text-align: left;
+}
+
+.gemluxjewel-pdp-how-made__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px 20px;
+}
+
+@media (min-width: 750px) {
+  .gemluxjewel-pdp-how-made__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 24px;
+  }
+}
+
+@media (min-width: 990px) {
+  .gemluxjewel-pdp-how-made__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+  }
+}
+
+.gemluxjewel-pdp-how-made__item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.gemluxjewel-pdp-how-made__image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  margin-bottom: 16px;
+  background: #f5f5f5;
+}
+
+.gemluxjewel-pdp-how-made__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gemluxjewel-pdp-how-made__item-title {
+  margin: 0 0 10px;
+  font-family: 'Figtree', var(--font-heading-family), sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #1e392a;
+}
+
+.gemluxjewel-pdp-how-made__item-text {
+  margin: 0;
+  font-family: 'Outfit', var(--font-body-family), sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #1e392a;
+}
+
+@media (max-width: 749px) {
+  .gemluxjewel-pdp-how-made {
+    padding: 40px 0 56px;
+  }
+
+  .gemluxjewel-pdp-how-made__title {
+    margin-bottom: 24px;
+  }
+}
