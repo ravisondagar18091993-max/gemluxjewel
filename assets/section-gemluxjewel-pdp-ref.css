@@ -427,6 +427,42 @@
   opacity: 1;
 }
 
+/* Support zone — consultation + trust badges */
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__support-zone {
+  margin: 20px 0 24px;
+  border-top: 1px solid var(--pdp-border);
+  border-bottom: 1px solid var(--pdp-border);
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__support-zone .gemluxjewel-pdp__consultation {
+  text-align: center;
+  padding: 18px 0;
+  margin: 0;
+  border-bottom: 1px solid var(--pdp-border);
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__support-zone .gemluxjewel-pdp__consultation:last-child {
+  border-bottom: 0;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__support-zone .gemluxjewel-pdp__trust-inline {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding: 18px 0;
+  margin: 0;
+}
+
+@media (max-width: 749px) {
+  .gemluxjewel-pdp--ref .gemluxjewel-pdp__support-zone .gemluxjewel-pdp__trust-inline,
+  .gemluxjewel-pdp--ref .gemluxjewel-pdp__trust-inline {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__support-zone + .gemluxjewel-pdp__info-accordion .closet-item:first-child {
+  border-top: 0;
+}
+
 /* Consultation link */
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__consultation {
   text-align: center;
@@ -475,12 +511,6 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
   margin-bottom: 20px;
-}
-
-@media (max-width: 749px) {
-  .gemluxjewel-pdp--ref .gemluxjewel-pdp__trust-inline {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__trust-inline-item {

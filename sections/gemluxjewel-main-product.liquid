@@ -146,31 +146,35 @@
             {%- endform -%}
           </product-form>
 
-          {%- if section.settings.show_consultation -%}
-            <div class="gemluxjewel-pdp__consultation">
-              <p class="gemluxjewel-pdp__consultation-line">
-                {%- if section.settings.consultation_intro != blank -%}
-                  <span class="gemluxjewel-pdp__consultation-intro">{{ section.settings.consultation_intro | escape }}</span>
-                {%- endif -%}
-                {%- if section.settings.consultation_url != blank -%}
-                  <a
-                    href="{{ section.settings.consultation_url }}"
-                    class="gemluxjewel-pdp__consultation-link"
-                    {% if section.settings.consultation_open_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
-                  >
-                    {{ section.settings.consultation_label | default: 'Book a Virtual Consultation' | escape }}
-                  </a>
-                {%- elsif section.settings.consultation_label != blank -%}
-                  <span class="gemluxjewel-pdp__consultation-link gemluxjewel-pdp__consultation-link--static">
-                    {{ section.settings.consultation_label | escape }}
-                  </span>
-                {%- endif -%}
-              </p>
-            </div>
-          {%- endif -%}
+          {%- if section.settings.show_consultation or section.settings.show_inline_trust -%}
+            <div class="gemluxjewel-pdp__support-zone">
+              {%- if section.settings.show_consultation -%}
+                <div class="gemluxjewel-pdp__consultation">
+                  <p class="gemluxjewel-pdp__consultation-line">
+                    {%- if section.settings.consultation_intro != blank -%}
+                      <span class="gemluxjewel-pdp__consultation-intro">{{ section.settings.consultation_intro | escape }}</span>
+                    {%- endif -%}
+                    {%- if section.settings.consultation_url != blank -%}
+                      <a
+                        href="{{ section.settings.consultation_url }}"
+                        class="gemluxjewel-pdp__consultation-link"
+                        {% if section.settings.consultation_open_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+                      >
+                        {{ section.settings.consultation_label | default: 'Book a Virtual Consultation' | escape }}
+                      </a>
+                    {%- elsif section.settings.consultation_label != blank -%}
+                      <span class="gemluxjewel-pdp__consultation-link gemluxjewel-pdp__consultation-link--static">
+                        {{ section.settings.consultation_label | escape }}
+                      </span>
+                    {%- endif -%}
+                  </p>
+                </div>
+              {%- endif -%}
 
-          {%- if section.settings.show_inline_trust -%}
-            {% render 'gemluxjewel-pdp-trust-inline' %}
+              {%- if section.settings.show_inline_trust -%}
+                {% render 'gemluxjewel-pdp-trust-inline' %}
+              {%- endif -%}
+            </div>
           {%- endif -%}
 
           {%- liquid
