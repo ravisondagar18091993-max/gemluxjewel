@@ -9,52 +9,61 @@
 }
 
 .gemluxjewel-footer__trust {
-  background: #ffffff;
-  padding: 44px 0 48px;
+  background: #73976a14;
+  padding: 32px 0 36px;
+}
+
+.gemluxjewel-footer__trust .gemluxjewel-container {
+  width: 100%;
+  max-width: 100%;
 }
 
 .gemluxjewel-footer__trust-grid {
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 61px 60px;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px 16px;
+  justify-items: center;
+  align-items: start;
 }
-
-
 
 .gemluxjewel-footer__trust-item {
   margin: 0;
+  width: 100%;
+  max-width: 168px;
 }
 
 .gemluxjewel-footer__trust-link {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 18px;
+  gap: 12px;
   text-decoration: none;
   color: inherit;
+  width: 100%;
 }
 
 .gemluxjewel-footer__trust-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
   color: var(--gemluxjewel-dark, #141414);
 }
 
 .gemluxjewel-footer__trust-icon svg {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   display: block;
 }
 
 .gemluxjewel-footer__trust-icon img {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   object-fit: contain;
   display: block;
 }
@@ -64,13 +73,92 @@
   flex-direction: column;
   align-items: center;
   gap: 2px;
+  width: 100%;
   font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
-  font-size: 11px;
-  line-height: 1.45;
-  letter-spacing: 0.14em;
+  font-size: 10px;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   text-align: center;
   color: var(--gemluxjewel-dark, #141414);
+}
+
+@media (min-width: 576px) {
+  .gemluxjewel-footer__trust {
+    padding: 36px 0 40px;
+  }
+
+  .gemluxjewel-footer__trust-grid {
+    gap: 32px 24px;
+  }
+
+  .gemluxjewel-footer__trust-item {
+    max-width: 180px;
+  }
+
+  .gemluxjewel-footer__trust-label {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+  }
+}
+
+@media (min-width: 768px) {
+  .gemluxjewel-footer__trust {
+    padding: 40px 0 44px;
+  }
+
+  .gemluxjewel-footer__trust-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px 20px;
+  }
+
+  .gemluxjewel-footer__trust-item {
+    max-width: none;
+  }
+
+  .gemluxjewel-footer__trust-link {
+    gap: 16px;
+  }
+
+  .gemluxjewel-footer__trust-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .gemluxjewel-footer__trust-icon svg,
+  .gemluxjewel-footer__trust-icon img {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (min-width: 990px) {
+  .gemluxjewel-footer__trust {
+    padding: 44px 0 48px;
+  }
+
+  .gemluxjewel-footer__trust-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px 48px;
+  }
+
+  .gemluxjewel-footer__trust-item {
+    flex: 0 1 auto;
+    width: auto;
+  }
+
+  .gemluxjewel-footer__trust-link {
+    gap: 18px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .gemluxjewel-footer__trust-grid {
+    gap: 48px 61px;
+  }
 }
 
 .gemluxjewel-footer__body {

@@ -34,32 +34,66 @@
 
 /* ── Collection hero ── */
 .gemluxjewel-collection-hero {
-  background: var(--gemluxjewel-primary);
-  padding: var(--gemluxjewel-header-offset, 218px) 0 51px;
+  position: relative;
+  overflow: hidden;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  margin-top: var(--gemluxjewel-header-offset, 108px);
+  padding: 48px 0 51px;
   border-top: 1px solid rgba(255, 248, 244, 0.2);
   border-bottom: 1px solid rgba(255, 248, 244, 0.2);
+  color: #fff;
 }
 
-.gemluxjewel-collection-hero__grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 30px;
-  align-items: center;
+.gemluxjewel-collection-hero--solid {
+  background: var(--gemluxjewel-primary);
 }
 
-@media (min-width: 990px) {
-  .gemluxjewel-collection-hero__grid {
-    grid-template-columns: 1fr 1fr;
-  }
+.gemluxjewel-collection-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
 
-  .gemluxjewel-collection-hero__grid--no-image {
-    grid-template-columns: 1fr;
-    max-width: 640px;
-  }
+.gemluxjewel-collection-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gemluxjewel-collection-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(115, 151, 106, 0.94) 0%,
+    rgba(115, 151, 106, 0.82) 42%,
+    rgba(115, 151, 106, 0.68) 100%
+  );
+  pointer-events: none;
+}
+
+.gemluxjewel-collection-hero .gemluxjewel-container {
+  position: relative;
+  z-index: 1;
 }
 
 .gemluxjewel-collection-hero__content {
   min-width: 0;
+  max-width: 640px;
+}
+
+@media (max-width: 991px) {
+  .gemluxjewel-collection-hero {
+    min-height: 280px;
+    padding: 36px 0 40px;
+  }
+
+  .gemluxjewel-collection-hero__overlay {
+    background: rgba(115, 151, 106, 0.88);
+  }
 }
 
 .gemluxjewel-collection-hero__breadcrumb {
@@ -115,34 +149,6 @@
   .gemluxjewel-collection-hero__desc {
     font-size: 16px;
     line-height: 30px;
-  }
-}
-
-.gemluxjewel-collection-hero__media {
-  justify-self: end;
-  width: 100%;
-  max-width: 518px;
-}
-
-.gemluxjewel-collection-hero__img {
-  width: 100%;
-  max-width: 518px;
-  border-radius: var(--gemluxjewel-radius);
-  overflow: hidden;
-  aspect-ratio: 518 / 469;
-}
-
-.gemluxjewel-collection-hero__img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-@media (max-width: 991px) {
-  .gemluxjewel-collection-hero__media {
-    max-width: 100%;
-    justify-self: stretch;
   }
 }
 
@@ -771,16 +777,26 @@
 /* Product grid */
 .gemluxjewel-shop__grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 12px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
+.gemluxjewel-shop__grid > li {
+  display: flex;
+  min-width: 0;
+}
+
+.gemluxjewel-shop__grid .gemluxjewel-card {
+  margin-bottom: 0;
+  width: 100%;
+}
+
 @media (min-width: 768px) {
   .gemluxjewel-shop__grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 32px 20px;
   }
 }
@@ -798,6 +814,24 @@
 
 .gemluxjewel-shop__grid .gemluxjewel-card {
   margin-bottom: 0;
+}
+
+@media (max-width: 767px) {
+  .gemluxjewel-shop--horizontal-filters .gemluxjewel-shop__grid {
+    gap: 16px 10px;
+  }
+}
+
+.gemluxjewel-shop .gemluxjewel-pagination {
+  margin-top: 72px;
+  padding-top: 16px;
+}
+
+@media (max-width: 767px) {
+  .gemluxjewel-shop .gemluxjewel-pagination {
+    margin-top: 48px;
+    padding-top: 12px;
+  }
 }
 
 .gemluxjewel-shop__empty {
@@ -905,7 +939,6 @@
 .gemluxjewel-plp-filter-bar {
   margin-bottom: 24px;
   position: relative;
-  z-index: 5;
 }
 
 .gemluxjewel-plp-filter-bar.facets-container {
@@ -913,6 +946,18 @@
   grid-template-columns: none;
   grid-template-rows: none;
   padding-top: 0;
+}
+
+.gemluxjewel-plp-filter-bar.facets-container > * {
+  grid-column: auto;
+  grid-row: auto;
+}
+
+.gemluxjewel-plp-filter-bar .facets__form,
+.gemluxjewel-plp-filter-bar .product-count {
+  display: block;
+  grid-column: auto;
+  grid-row: auto;
 }
 
 .gemluxjewel-plp-filter-bar__form-wrap {
@@ -1348,41 +1393,147 @@
 
 .gemluxjewel-plp-filter-bar__sort {
   position: relative;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-self: end;
   width: 100%;
   max-width: 360px;
   justify-content: flex-end;
+  overflow: visible;
 }
 
-.gemluxjewel-plp-filter-bar__sort-select {
-  appearance: none;
-  -webkit-appearance: none;
-  min-height: 32px;
-  padding: 0 28px 0 0;
+/* ── Custom sort dropdown ── */
+.gemluxjewel-plp-sort {
+  position: relative;
+  display: inline-flex;
+  justify-content: flex-end;
+  max-width: 100%;
+}
+
+.gemluxjewel-plp-sort__native {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.gemluxjewel-plp-sort__dropdown {
+  position: relative;
+}
+
+.gemluxjewel-plp-sort__dropdown[open] {
+  z-index: 40;
+}
+
+.gemluxjewel-plp-sort__trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 4px 0 12px;
   border: none;
+  border-radius: 4px;
   background: transparent;
   color: var(--gemluxjewel-dark);
   font-family: var(--gemluxjewel-font-body);
   font-size: 12px;
   font-weight: 500;
   cursor: pointer;
+  list-style: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.gemluxjewel-plp-sort__trigger::-webkit-details-marker {
+  display: none;
+}
+
+.gemluxjewel-plp-sort__trigger:focus {
+  outline: none;
+}
+
+.gemluxjewel-plp-sort__trigger:focus-visible {
+  outline: 2px solid rgba(115, 151, 106, 0.35);
+  outline-offset: 2px;
+}
+
+.gemluxjewel-plp-sort__value {
+  line-height: 1.2;
   text-align: right;
 }
 
-.gemluxjewel-plp-filter-bar__sort-chevron {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+.gemluxjewel-plp-sort__chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 10px;
   width: 10px;
-  pointer-events: none;
+  height: 10px;
+  line-height: 0;
+  transition: transform 0.2s ease;
+  transform-origin: center center;
 }
 
-.gemluxjewel-plp-filter-bar__sort-chevron svg {
+.gemluxjewel-plp-sort__dropdown[open] .gemluxjewel-plp-sort__chevron {
+  transform: rotate(180deg);
+}
+
+.gemluxjewel-plp-sort__chevron svg {
+  display: block;
   width: 10px;
-  height: auto;
+  height: 6px;
+}
+
+.gemluxjewel-plp-sort__panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  left: auto;
+  z-index: 50;
+  min-width: 240px;
+  max-width: min(320px, 90vw);
+  max-height: min(360px, 70vh);
+  margin: 0;
+  padding: 8px 0;
+  overflow: auto;
+  border: none;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 12px 36px rgba(20, 20, 20, 0.12);
+  list-style: none;
+}
+
+.gemluxjewel-plp-sort__item {
+  margin: 0;
+  padding: 0;
+}
+
+.gemluxjewel-plp-sort__option {
+  display: block;
+  width: 100%;
+  padding: 11px 18px;
+  border: none;
+  background: transparent;
+  color: var(--gemluxjewel-dark);
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.35;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.gemluxjewel-plp-sort__option:hover,
+.gemluxjewel-plp-sort__option.is-active {
+  background: rgba(115, 151, 106, 0.1);
+  color: var(--gemluxjewel-primary);
+}
+
+.gemluxjewel-plp-sort__option.is-active {
+  font-weight: 500;
 }
 
 .gemluxjewel-plp-filter-bar__active {
@@ -1758,8 +1909,14 @@ html.gemluxjewel-plp-drawer-open {
     justify-content: flex-start;
   }
 
-  .gemluxjewel-plp-filter-bar__sort-select {
-    text-align: left;
+  .gemluxjewel-plp-sort {
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .gemluxjewel-plp-sort__panel {
+    left: 0;
+    right: auto;
   }
 }
 

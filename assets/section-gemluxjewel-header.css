@@ -5,7 +5,7 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 99;
+  z-index: 200;
   transition: transform 0.7s ease;
 }
 
@@ -122,20 +122,26 @@
   width: 88%;
   max-width: 100%;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--gemluxjewel-header-gutter, 24px);
   min-height: 68px;
 }
 
 @media (min-width: 1200px) {
+  :root {
+    --gemluxjewel-header-gutter: 48px;
+  }
+
   .gemluxjewel-header__inner {
-    padding: 0 48px;
     min-height: 72px;
   }
 }
 
 @media (max-width: 991px) {
+  :root {
+    --gemluxjewel-header-gutter: 16px;
+  }
+
   .gemluxjewel-header__inner {
-    padding: 0 16px;
     min-height: 60px;
   }
 }
@@ -357,19 +363,40 @@
   background: var(--gemluxjewel-dark, #141414);
 }
 
+.gemluxjewel-header__mega-backdrop {
+  position: fixed;
+  top: var(--gemluxjewel-header-height, var(--gemluxjewel-header-offset, 108px));
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background: rgba(20, 20, 20, 0.45);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
 /* ── Mega menu (CULLEN-style) ── */
 .gemluxjewel-header__mega {
-  position: absolute;
-  top: 100%;
+  position: fixed;
+  top: var(--gemluxjewel-header-height, var(--gemluxjewel-header-offset, 108px));
   left: 0;
   right: 0;
   background: #fff;
+  border-top: 1px solid rgba(20, 20, 20, 0.12);
   border-bottom: 1px solid rgba(20, 20, 20, 0.1);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transition: opacity 0.25s ease, visibility 0.25s ease;
-  z-index: 99;
+  z-index: 201;
 }
 
 .gemluxjewel-header__mega::before {
@@ -395,7 +422,7 @@
   width: 88%;
   max-width: 100%;
   margin: 0 auto;
-  padding: 32px 0 40px;
+  padding: 32px var(--gemluxjewel-header-gutter, 24px) 40px;
   max-height: calc(100vh - var(--gemluxjewel-header-offset, 120px) - 24px);
   overflow-y: auto;
   overscroll-behavior: contain;
@@ -415,7 +442,7 @@
   }
 
   .gemluxjewel-header__mega-grid--featured {
-    grid-template-columns: repeat(var(--mega-menu-cols, 5), minmax(0, 1fr)) minmax(200px, 240px);
+    grid-template-columns: repeat(var(--mega-menu-cols, 6), minmax(0, 1fr));
   }
 }
 
@@ -425,17 +452,9 @@
 }
 
 .gemluxjewel-header__mega-col--featured {
-  grid-column: auto;
+  min-width: 0;
+  max-width: 100%;
   justify-self: stretch;
-  max-width: 240px;
-  margin-left: auto;
-}
-
-@media (min-width: 990px) {
-  .gemluxjewel-header__mega-col--featured {
-    grid-column: -1;
-    justify-self: end;
-  }
 }
 
 .gemluxjewel-header__mega-title-row {
@@ -714,6 +733,13 @@ html.gemluxjewel-menu-open {
   overflow: hidden;
 }
 
+html.gemluxjewel-mega-open .gemluxjewel-shop,
+html.gemluxjewel-mega-open .gemluxjewel-plp-filter-bar,
+html.gemluxjewel-mega-open .gemluxjewel-plp-filter-dropdown,
+html.gemluxjewel-mega-open .gemluxjewel-plp-sort__dropdown {
+  z-index: auto;
+}
+
 /* ── Page offset ── */
 :root {
   --gemluxjewel-header-offset: 108px;
@@ -740,6 +766,8 @@ body:has(.gemluxjewel-blog-hero) .content-for-layout,
 body:has(.gemluxjewel-contact) .content-for-layout,
 body:has(.gemluxjewel-policy) .content-for-layout,
 body:has(.gemluxjewel-custom-hero) .content-for-layout,
-body:has(.gemluxjewel-about-hero) .content-for-layout {
+body:has(.gemluxjewel-about-hero) .content-for-layout,
+body:has(.gemluxjewel-collection-hero) .content-for-layout,
+body:has(.gemluxjewel-engagement-hero) .content-for-layout {
   padding-top: 0;
 }

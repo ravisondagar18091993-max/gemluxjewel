@@ -1,0 +1,47 @@
+{% comment %}
+  Engagement trust bar icons.
+  Accepts: icon {String} shipping | support | guarantee | certified | value | eco
+{% endcomment %}
+{%- case icon -%}
+  {%- when 'shipping' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <path d="M8 18h3l2-4h14v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M27 14h8l4 6v8h-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M11 32h22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M15 36a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm20 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M4 18h4M2 22h4M4 26h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  {%- when 'support' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <path d="M8 22a16 16 0 0 1 32 0v8a4 4 0 0 1-4 4h-2v-8h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M8 22v8a4 4 0 0 0 4 4h2v-8H8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M20 36h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  {%- when 'guarantee' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <path d="M24 6l14 5v12c0 9-6 15-14 19-8-4-14-10-14-19V11l14-5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M17 24l4 4 10-10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  {%- when 'certified' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <rect x="10" y="8" width="28" height="32" rx="2" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M16 16h16M16 22h16M16 28h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="32" cy="32" r="8" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M29 32l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  {%- when 'value' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <path d="M24 8 34 18 24 40 14 18 24 8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M14 18h20M24 8v32" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  {%- when 'eco' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <path d="M24 40V24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M24 24c-8-2-14-8-14-16 0 0 8 2 14 8 6-6 14-8 14-8 0 8-6 14-14 16Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>
+  {%- else -%}
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <path d="M24 8 34 18 24 40 14 18 24 8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M14 18h20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+{%- endcase -%}

@@ -1,0 +1,124 @@
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-product.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-engagement-ring.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'gemluxjewel-engagement-ring.js' | asset_url }}" defer="defer"></script>
+
+<section class="gemluxjewel gemluxjewel-engagement gemluxjewel-engagement-categories">
+  <div class="gemluxjewel-container">
+    {%- if section.settings.title != blank -%}
+      <h2 class="gemluxjewel-engagement-categories__title">{{ section.settings.title | escape }}</h2>
+    {%- endif -%}
+
+    <div class="gemluxjewel-engagement-categories__cards">
+      {%- for card_block in section.blocks -%}
+        {%- if card_block.type == 'category_card' -%}
+          <article class="gemluxjewel-engagement-categories__card" {{ card_block.shopify_attributes }}>
+            {%- if card_block.settings.title != blank -%}
+              <h3 class="gemluxjewel-engagement-categories__card-title">{{ card_block.settings.title | escape }}</h3>
+            {%- endif -%}
+            <div class="gemluxjewel-engagement-categories__columns">
+              {%- for block in section.blocks -%}
+                {%- if block.type == 'link_column' and block.settings.category == card_block.settings.category_key -%}
+                  <div class="gemluxjewel-engagement-categories__col" {{ block.shopify_attributes }}>
+                    {%- if block.settings.column_title != blank -%}
+                      <p class="gemluxjewel-engagement-categories__col-title">{{ block.settings.column_title | escape }}</p>
+                    {%- endif -%}
+                    {%- if block.settings.links != blank -%}
+                      <div class="gemluxjewel-engagement-categories__links rte">
+                        {{ block.settings.links }}
+                      </div>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          </article>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.button_label != blank -%}
+      <div class="gemluxjewel-engagement-categories__cta">
+        <a href="{{ section.settings.button_link | default: routes.root_url }}" class="gemluxjewel-engagement-btn--outline">
+          {{ section.settings.button_label | escape }}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "GL Engagement Categories",
+  "tag": "section",
+  "class": "gemluxjewel-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Engagement Rings By Category"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Bottom button label",
+      "default": "Design Your Own Engagement Ring"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Bottom button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category_card",
+      "name": "Category card",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card title",
+          "default": "Lab Grown Diamonds"
+        },
+        {
+          "type": "text",
+          "id": "category_key",
+          "label": "Category key",
+          "default": "lab_grown",
+          "info": "Must match link column category keys in this section."
+        }
+      ]
+    },
+    {
+      "type": "link_column",
+      "name": "Link column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Category key",
+          "default": "lab_grown"
+        },
+        {
+          "type": "text",
+          "id": "column_title",
+          "label": "Column title",
+          "default": "Shop by Style"
+        },
+        {
+          "type": "richtext",
+          "id": "links",
+          "label": "Links",
+          "default": "<ul><li><a href=\"/collections/all\">Solitaire</a></li><li><a href=\"/collections/all\">Halo</a></li><li><a href=\"/collections/all\">Vintage</a></li></ul>",
+          "info": "Use a bullet list with links."
+        }
+      ]
+    }
+  ],
+  "presets": [{ "name": "GL Engagement Categories" }]
+}
+{% endschema %}

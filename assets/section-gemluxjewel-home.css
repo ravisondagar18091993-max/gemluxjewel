@@ -1239,7 +1239,20 @@
 }
 
 /* Product card */
-.gemluxjewel-card { margin-bottom: 70px; }
+.gemluxjewel-card {
+  margin-bottom: 70px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+}
+
+.gemluxjewel-card__info {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-width: 0;
+}
 
 .gemluxjewel-card__img-wrap {
   position: relative;
@@ -1248,6 +1261,7 @@
   overflow: hidden;
   margin-bottom: 22px;
   background: #f7f7f7;
+  flex-shrink: 0;
 }
 
 .gemluxjewel-card__media-link {
@@ -1350,8 +1364,10 @@
   line-height: 24px;
   color: var(--gemluxjewel-dark);
   text-decoration: none;
-  flex: 1;
+  flex: 1 1 auto;
   min-width: 0;
+  word-break: normal;
+  overflow-wrap: break-word;
 }
 
 .gemluxjewel-card__row .gemluxjewel-badge--orange {
@@ -1361,13 +1377,84 @@
 }
 
 @media (min-width: 992px) and (max-width: 1200px) {
-  .gemluxjewel-card__title { font-size: 14px; }
+  .gemluxjewel-card__title { font-size: 14px; line-height: 20px; }
+}
+
+@media (max-width: 767px) {
+  .gemluxjewel-card {
+    margin-bottom: 0;
+  }
+
+  .gemluxjewel-card__img-wrap {
+    height: auto;
+    aspect-ratio: 1 / 1.05;
+    margin-bottom: 12px;
+    border-radius: 12px;
+  }
+
+  .gemluxjewel-card__top {
+    top: 8px;
+    left: 8px;
+    right: 8px;
+  }
+
+  .gemluxjewel-card__heart img {
+    width: 18px;
+  }
+
+  .gemluxjewel-card__row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  .gemluxjewel-card__title {
+    font-size: 13px;
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .gemluxjewel-card__row .gemluxjewel-badge--orange {
+    margin-top: 0;
+    height: 20px;
+    padding: 0 8px;
+    font-size: 10px;
+    line-height: 1;
+  }
+
+  .gemluxjewel-card__price-row {
+    margin-top: auto;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .gemluxjewel-card__price {
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+  .gemluxjewel-card__swatches {
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .gemluxjewel-swatch {
+    width: 22px;
+    height: 22px;
+  }
 }
 
 .gemluxjewel-card__price-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
+  margin-top: auto;
 }
 
 .gemluxjewel-card__price {

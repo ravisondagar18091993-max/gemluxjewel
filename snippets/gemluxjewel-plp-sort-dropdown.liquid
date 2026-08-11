@@ -1,0 +1,67 @@
+{% comment %}
+  Custom PLP sort dropdown (facets.js compatible via hidden #SortBy select).
+
+  @param results {Collection}
+  @param sort_by {String}
+  @param select_id {String} Optional select id, defaults to SortBy
+{% endcomment %}
+
+{%- liquid
+  assign select_id = select_id | default: 'SortBy'
+  assign selected_label = blank
+
+  for option in results.sort_options
+    if option.value == sort_by
+      assign selected_label = option.name
+      break
+    endif
+  endfor
+
+  if selected_label == blank and results.sort_options.size > 0
+    assign selected_label = results.sort_options.first.name
+  endif
+-%}
+
+<div class="gemluxjewel-plp-sort" data-gemluxjewel-plp-sort>
+  <label class="visually-hidden" for="{{ select_id }}">{{ 'products.facets.sort_by_label' | t }}</label>
+
+  <select
+    name="sort_by"
+    id="{{ select_id }}"
+    class="gemluxjewel-plp-sort__native visually-hidden"
+    tabindex="-1"
+    aria-describedby="a11y-refresh-page-message"
+  >
+    {%- for option in results.sort_options -%}
+      <option value="{{ option.value | escape }}" {% if option.value == sort_by %}selected{% endif %}>
+        {{ option.name | escape }}
+      </option>
+    {%- endfor -%}
+  </select>
+
+  <details class="gemluxjewel-plp-sort__dropdown" data-gemluxjewel-plp-sort-dropdown>
+    <summary class="gemluxjewel-plp-sort__trigger">
+      <span class="gemluxjewel-plp-sort__value" data-gemluxjewel-plp-sort-label>{{ selected_label | escape }}</span>
+      <span class="gemluxjewel-plp-sort__chevron" aria-hidden="true">
+        {{- 'icon-caret.svg' | inline_asset_content -}}
+      </span>
+    </summary>
+
+    <ul class="gemluxjewel-plp-sort__panel list-unstyled" role="listbox" aria-label="{{ 'products.facets.sort_by_label' | t }}">
+      {%- for option in results.sort_options -%}
+        <li class="gemluxjewel-plp-sort__item" role="none">
+          <button
+            type="button"
+            class="gemluxjewel-plp-sort__option{% if option.value == sort_by %} is-active{% endif %}"
+            data-gemluxjewel-plp-sort-option
+            data-value="{{ option.value | escape }}"
+            role="option"
+            aria-selected="{% if option.value == sort_by %}true{% else %}false{% endif %}"
+          >
+            {{ option.name | escape }}
+          </button>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </details>
+</div>
