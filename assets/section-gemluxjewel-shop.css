@@ -846,8 +846,8 @@
 
 /* ── PLP stone shapes slider ── */
 .gemluxjewel-stone-shapes--plp {
-  padding: 0 0 32px;
-  margin-bottom: 12px;
+  padding: 8px 0 12px;
+  margin-bottom: 4px;
   background: transparent;
 }
 
@@ -892,7 +892,7 @@
 
 @media (min-width: 1200px) {
   .gemluxjewel-stone-shapes__track--plp {
-    --stone-shapes-visible: 7;
+    --stone-shapes-visible: 8;
   }
 }
 
@@ -939,7 +939,7 @@
 
 @media (max-width: 749px) {
   .gemluxjewel-stone-shapes--plp {
-    padding-bottom: 24px;
+    padding: 6px 0 10px;
   }
 
   .gemluxjewel-stone-shapes__nav--plp.gemluxjewel-stone-shapes__nav--prev {
