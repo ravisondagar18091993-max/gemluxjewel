@@ -768,6 +768,8 @@ body:has(.gemluxjewel-policy) .content-for-layout,
 body:has(.gemluxjewel-custom-hero) .content-for-layout,
 body:has(.gemluxjewel-about-hero) .content-for-layout,
 body:has(.gemluxjewel-collection-hero) .content-for-layout,
-body:has(.gemluxjewel-engagement-hero) .content-for-layout {
+body:has(.gemluxjewel-engagement-hero) .content-for-layout,
+body:has(.gemluxjewel-privacy-choices) .content-for-layout,
+body:has(.gemluxjewel-faq-page) .content-for-layout {
   padding-top: 0;
 }

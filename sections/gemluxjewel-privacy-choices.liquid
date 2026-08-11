@@ -1,0 +1,129 @@
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-privacy-choices.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'gemluxjewel-privacy-choices.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign page_title = section.settings.title
+  if page_title == blank
+    assign page_title = page.title
+  endif
+
+  assign page_body = section.settings.content
+  if page_body == blank
+    assign page_body = page.content
+  endif
+
+  assign privacy_url = section.settings.privacy_policy_link
+  if privacy_url == blank and shop.privacy_policy
+    assign privacy_url = shop.privacy_policy.url
+  endif
+-%}
+
+<section class="gemluxjewel gemluxjewel-privacy-choices" data-gemluxjewel-privacy-choices>
+  <div class="gemluxjewel-container">
+    <div class="gemluxjewel-privacy-choices__inner">
+      {%- if page_title != blank -%}
+        <h1 class="gemluxjewel-privacy-choices__title">{{ page_title | escape }}</h1>
+      {%- endif -%}
+
+      {%- if page_body != blank -%}
+        <div class="gemluxjewel-privacy-choices__content rte">
+          {{ page_body }}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.show_opt_out_button -%}
+        <div class="gemluxjewel-privacy-choices__actions">
+          <button
+            type="button"
+            class="gemluxjewel-privacy-choices__opt-out"
+            data-gemluxjewel-privacy-opt-out
+            data-label="{{ section.settings.opt_out_button_label | default: 'Opt out on this device' | escape }}"
+            data-success="{{ section.settings.opt_out_success_message | default: 'You have opted out of data sharing on this device.' | escape }}"
+          >
+            {{ section.settings.opt_out_button_label | default: 'Opt out on this device' | escape }}
+          </button>
+          <p class="gemluxjewel-privacy-choices__status" data-gemluxjewel-privacy-status hidden></p>
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.notice != blank -%}
+        <div class="gemluxjewel-privacy-choices__notice rte">
+          {{ section.settings.notice }}
+        </div>
+      {%- endif -%}
+
+      {%- if privacy_url != blank and section.settings.show_privacy_link -%}
+        <p class="gemluxjewel-privacy-choices__policy-link">
+          <a href="{{ privacy_url }}">{{ section.settings.privacy_link_label | default: 'View Privacy Policy' | escape }}</a>
+        </p>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "GL Privacy Choices",
+  "tag": "section",
+  "class": "gemluxjewel-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Your Privacy Choices"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content",
+      "info": "Leave blank to use the page content from Shopify admin."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_opt_out_button",
+      "label": "Show opt-out button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "opt_out_button_label",
+      "label": "Opt-out button label",
+      "default": "Opt out on this device"
+    },
+    {
+      "type": "text",
+      "id": "opt_out_success_message",
+      "label": "Opt-out success message",
+      "default": "You have opted out of data sharing on this device."
+    },
+    {
+      "type": "richtext",
+      "id": "notice",
+      "label": "Notice",
+      "default": "<p><strong>Please note that if you opt out, you will still see ads, but they will not be personalized based on your personal information.</strong></p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_privacy_link",
+      "label": "Show privacy policy link",
+      "default": true
+    },
+    {
+      "type": "url",
+      "id": "privacy_policy_link",
+      "label": "Privacy policy link",
+      "info": "Defaults to your store privacy policy."
+    },
+    {
+      "type": "text",
+      "id": "privacy_link_label",
+      "label": "Privacy policy link label",
+      "default": "View Privacy Policy"
+    }
+  ],
+  "presets": [{ "name": "GL Privacy Choices" }]
+}
+{% endschema %}

@@ -1,0 +1,27 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "privacy_choices": {
+      "type": "gemluxjewel-privacy-choices",
+      "settings": {
+        "title": "Your Privacy Choices",
+        "content": "",
+        "show_opt_out_button": true,
+        "opt_out_button_label": "Opt out on this device",
+        "opt_out_success_message": "You have opted out of data sharing on this device.",
+        "notice": "<p><strong>Please note that if you opt out, you will still see ads, but they will not be personalized based on your personal information.</strong></p>",
+        "show_privacy_link": true,
+        "privacy_link_label": "View Privacy Policy"
+      }
+    }
+  },
+  "order": ["privacy_choices"]
+}
