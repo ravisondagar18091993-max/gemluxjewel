@@ -9,6 +9,8 @@
   --gemluxjewel-dark: #141414;
   --gemluxjewel-gray: #818181;
   --gemluxjewel-orange: #e37859;
+  --gemluxjewel-pdp-navy: #1b2a4a;
+  --gemluxjewel-pdp-accent: #4a90a4;
   --gemluxjewel-radius: 10px;
   --gemluxjewel-radius-pill: 30px;
   --gemluxjewel-font-body: 'Outfit', var(--font-body-family), sans-serif;
@@ -1119,6 +1121,452 @@
 .gemluxjewel-pdp-trust__label {
   text-transform: uppercase;
   letter-spacing: 0.02em;
+}
+
+.gemluxjewel-pdp__gallery-item--featured {
+  grid-column: 1 / -1;
+  height: 420px;
+}
+
+@media (max-width: 989px) {
+  .gemluxjewel-pdp__gallery-item--featured {
+    height: 320px;
+  }
+}
+
+/* Title row */
+.gemluxjewel-pdp__title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.gemluxjewel-pdp__title-row .gemluxjewel-pdp__title {
+  margin: 0;
+  flex: 1;
+  font-size: clamp(28px, 3vw, 36px);
+  line-height: 1.25;
+  color: var(--gemluxjewel-pdp-navy);
+}
+
+.gemluxjewel-pdp__specs,
+.gemluxjewel-pdp__sku {
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--gemluxjewel-gray);
+  margin: 0 0 12px;
+}
+
+.gemluxjewel-pdp__sell-price {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--gemluxjewel-dark);
+}
+
+.gemluxjewel-badge--save {
+  background: rgba(74, 144, 164, 0.12);
+  color: var(--gemluxjewel-pdp-accent);
+  font-size: 13px;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+/* Variant picker — DiamondRensu layout */
+.gemluxjewel-pdp__variants-block {
+  margin: 24px 0;
+}
+
+.gemluxjewel-pdp__variant-selects {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.gemluxjewel-pdp__option-label--stacked {
+  display: block;
+  width: 100%;
+  padding: 0 0 12px;
+  font-size: 15px;
+  font-weight: 500;
+  text-transform: none;
+  color: var(--gemluxjewel-dark);
+}
+
+.gemluxjewel-pdp__option-label--inline {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 10px;
+  padding: 0;
+}
+
+.gemluxjewel-pdp__metal-selected {
+  font-weight: 400;
+  color: var(--gemluxjewel-gray);
+}
+
+.gemluxjewel-pdp__metal-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.gemluxjewel-pdp__metal-tabs input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.gemluxjewel-pdp__metal-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid #d8dde6;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--gemluxjewel-dark);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.gemluxjewel-pdp__metal-tabs input:checked + .gemluxjewel-pdp__metal-tab {
+  background: var(--gemluxjewel-pdp-navy);
+  border-color: var(--gemluxjewel-pdp-navy);
+  color: #fff;
+}
+
+.gemluxjewel-pdp__gold-options {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(20, 20, 20, 0.08);
+}
+
+.gemluxjewel-pdp__gold-options[hidden] {
+  display: none !important;
+}
+
+.gemluxjewel-pdp__karat-row,
+.gemluxjewel-pdp__color-swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.gemluxjewel-pdp__karat-row input,
+.gemluxjewel-pdp__color-swatches input,
+.gemluxjewel-pdp__diamond-grid input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.gemluxjewel-pdp__karat-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 52px;
+  min-height: 52px;
+  padding: 8px;
+  border: 1px solid #d8dde6;
+  border-radius: 50%;
+  background: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.gemluxjewel-pdp__karat-row input:checked + .gemluxjewel-pdp__karat-btn {
+  border-color: var(--gemluxjewel-pdp-navy);
+  box-shadow: 0 0 0 2px var(--gemluxjewel-pdp-navy);
+}
+
+.gemluxjewel-pdp__color-swatch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border: 2px solid #d8dde6;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.gemluxjewel-pdp__color-swatch--white { background: linear-gradient(135deg, #f5f5f5, #e0e0e0); }
+.gemluxjewel-pdp__color-swatch--yellow { background: linear-gradient(135deg, #f5d76e, #d4af37); }
+.gemluxjewel-pdp__color-swatch--rose { background: linear-gradient(135deg, #e8b4b8, #b76e79); }
+
+.gemluxjewel-pdp__color-swatches input:checked + .gemluxjewel-pdp__color-swatch {
+  border-color: var(--gemluxjewel-pdp-navy);
+  box-shadow: 0 0 0 2px var(--gemluxjewel-pdp-navy);
+}
+
+.gemluxjewel-pdp__diamond-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.gemluxjewel-pdp__diamond-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 56px;
+  min-height: 40px;
+  padding: 8px 14px;
+  border: 1px solid #d8dde6;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.gemluxjewel-pdp__diamond-grid input:checked + .gemluxjewel-pdp__diamond-btn {
+  background: var(--gemluxjewel-pdp-navy);
+  border-color: var(--gemluxjewel-pdp-navy);
+  color: #fff;
+}
+
+.gemluxjewel-pdp__ring-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.gemluxjewel-pdp__find-size {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gemluxjewel-pdp-accent);
+  text-decoration: none;
+}
+
+.gemluxjewel-pdp__ring-select {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 16px;
+  border: 1px solid #d8dde6;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 15px;
+  color: var(--gemluxjewel-dark);
+}
+
+/* Full-width add to cart */
+.gemluxjewel-pdp__submit--full {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 52px;
+  margin: 8px 0 16px;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 6px;
+  background: var(--gemluxjewel-pdp-navy);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.gemluxjewel-pdp__submit--full:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.gemluxjewel-pdp__consultation {
+  text-align: center;
+  font-size: 14px;
+  margin: 0 0 20px;
+}
+
+.gemluxjewel-pdp__consultation a {
+  color: var(--gemluxjewel-pdp-accent);
+  text-decoration: underline;
+}
+
+.gemluxjewel-pdp__shipping-estimate {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 16px 0;
+  margin-bottom: 16px;
+  border-top: 1px solid rgba(20, 20, 20, 0.08);
+  border-bottom: 1px solid rgba(20, 20, 20, 0.08);
+}
+
+.gemluxjewel-pdp__shipping-estimate-label {
+  display: block;
+  font-size: 12px;
+  color: var(--gemluxjewel-gray);
+  margin-bottom: 4px;
+}
+
+.gemluxjewel-pdp__trust-inline {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 24px;
+  list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+}
+
+.gemluxjewel-pdp__trust-inline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--gemluxjewel-dark);
+}
+
+.gemluxjewel-pdp__trust-inline-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.gemluxjewel-pdp__trust-inline-icon img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.gemluxjewel-pdp__gift-banner {
+  padding: 14px 16px;
+  margin-bottom: 24px;
+  background: rgba(74, 144, 164, 0.08);
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--gemluxjewel-dark);
+}
+
+.gemluxjewel-pdp__gift-banner p {
+  margin: 0;
+}
+
+.gemluxjewel-pdp__info-accordion {
+  margin: 0 0 32px;
+}
+
+.gemluxjewel-pdp__info-accordion .closet-header {
+  padding: 20px 0;
+}
+
+/* Complete the set */
+.gemluxjewel-pdp__complete-set {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(20, 20, 20, 0.08);
+}
+
+.gemluxjewel-pdp__complete-set-heading {
+  font-family: var(--gemluxjewel-font-heading);
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0 0 20px;
+  color: var(--gemluxjewel-dark);
+}
+
+.gemluxjewel-pdp__complete-set-slider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.gemluxjewel-pdp__complete-set-viewport {
+  flex: 1;
+  overflow: hidden;
+}
+
+.gemluxjewel-pdp__complete-set-track {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.4s ease;
+}
+
+.gemluxjewel-pdp__complete-set-item {
+  flex: 0 0 calc(50% - 8px);
+  min-width: 0;
+}
+
+@media (min-width: 750px) {
+  .gemluxjewel-pdp__complete-set-item {
+    flex: 0 0 calc(33.333% - 11px);
+  }
+}
+
+.gemluxjewel-pdp__complete-set-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.gemluxjewel-pdp__complete-set-image {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f5f5f5;
+  margin-bottom: 10px;
+}
+
+.gemluxjewel-pdp__complete-set-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gemluxjewel-pdp__complete-set-title {
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 0 0 6px;
+  color: var(--gemluxjewel-dark);
+}
+
+.gemluxjewel-pdp__complete-set-price {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--gemluxjewel-dark);
+}
+
+.gemluxjewel-pdp__complete-set-nav {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #d8dde6;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.gemluxjewel-pdp__complete-set-nav:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.gemluxjewel-pdp__complete-set-nav-icon--prev {
+  transform: rotate(180deg);
 }
 
 .visually-hidden {

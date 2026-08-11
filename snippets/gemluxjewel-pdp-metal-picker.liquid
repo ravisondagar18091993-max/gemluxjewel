@@ -1,0 +1,114 @@
+{% comment %}
+  Metal type tabs + conditional gold karat/color swatches.
+  @param demo_mode {Boolean}
+  @param metal_option {Object} — Shopify option (live mode)
+  @param karat_option {Object}
+  @param color_option {Object}
+  @param metal_values {Array} — demo mode
+  @param karat_values {Array}
+  @param color_values {Array}
+{% endcomment %}
+
+{%- liquid
+  assign product_form_id = product_form_id | default: 'product-form-' | append: section.id
+  assign metal_name = 'Metal Type'
+  assign karat_name = 'Karat'
+  assign color_name = 'Metal Color'
+
+  if demo_mode == false and metal_option != blank
+    assign metal_name = metal_option.name
+    assign metal_values_list = metal_option.values
+  else
+    assign metal_values_list = metal_values
+  endif
+-%}
+
+<div class="gemluxjewel-pdp__metal-block" data-gemluxjewel-pdp-metal-block>
+  <fieldset class="js product-form__input gemluxjewel-pdp__option gemluxjewel-pdp__option--metal">
+    <legend class="gemluxjewel-pdp__option-label gemluxjewel-pdp__option-label--stacked">
+      Metal: <span class="gemluxjewel-pdp__metal-selected" data-gemluxjewel-pdp-metal-label>Select Metal Type</span>
+    </legend>
+    <div class="gemluxjewel-pdp__metal-tabs">
+      {%- if demo_mode -%}
+        {%- for value in metal_values -%}
+          {%- assign input_id = section.id | append: '-metal-' | append: forloop.index0 -%}
+          <input
+            type="radio"
+            id="{{ input_id }}"
+            name="demo-metal"
+            value="{{ value | escape }}"
+            {% if forloop.index == 2 %}checked{% endif %}
+            data-gemluxjewel-pdp-metal-tab
+          >
+          <label for="{{ input_id }}" class="gemluxjewel-pdp__metal-tab">{{ value | upcase }}</label>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for value in metal_option.values -%}
+          {%- liquid
+            assign option_disabled = false
+            unless value.available
+              assign option_disabled = true
+            endunless
+            assign input_id = section.id | append: '-metal-' | append: forloop.index0
+            assign input_name = metal_option.name | append: '-' | append: metal_option.position
+          -%}
+          <input
+            type="radio"
+            id="{{ input_id }}"
+            name="{{ input_name | escape }}"
+            value="{{ value | escape }}"
+            form="{{ product_form_id }}"
+            {% if value.selected %}checked{% endif %}
+            {% if option_disabled %}class="disabled"{% endif %}
+            data-option-value-id="{{ value.id }}"
+            data-option-name="{{ metal_option.name | escape }}"
+            data-gemluxjewel-pdp-metal-tab
+          >
+          <label for="{{ input_id }}" class="gemluxjewel-pdp__metal-tab">{{ value | upcase }}</label>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </fieldset>
+
+  <div class="gemluxjewel-pdp__gold-options{% unless demo_mode %} is-hidden{% endunless %}" data-gemluxjewel-pdp-gold-panel hidden>
+    {% render 'gemluxjewel-pdp-gold-grid',
+      demo_mode: demo_mode,
+      section: section,
+      product_form_id: product_form_id,
+      karat_option: karat_option,
+      color_option: color_option
+    %}
+  </div>
+</div>
+
+{%- if demo_mode -%}
+  <fieldset class="gemluxjewel-pdp__option gemluxjewel-pdp__option--diamond">
+    <legend class="gemluxjewel-pdp__option-label gemluxjewel-pdp__option-label--stacked">Select Diamond Size:</legend>
+    <div class="gemluxjewel-pdp__diamond-grid">
+      {%- for value in diamond_values -%}
+        {%- assign input_id = section.id | append: '-demo-diamond-' | append: forloop.index0 -%}
+        <input type="radio" id="{{ input_id }}" name="demo-diamond" value="{{ value | escape }}" {% if forloop.first %}checked{% endif %}>
+        <label for="{{ input_id }}" class="gemluxjewel-pdp__diamond-btn">{{ value }}</label>
+      {%- endfor -%}
+    </div>
+  </fieldset>
+
+  <div class="gemluxjewel-pdp__option gemluxjewel-pdp__option--ring">
+    <div class="gemluxjewel-pdp__ring-head">
+      <label class="gemluxjewel-pdp__option-label gemluxjewel-pdp__option-label--stacked" for="RingSize-demo-{{ section.id }}">
+        Select Ring Size (IN):
+      </label>
+      {%- if section.settings.size_guide_url != blank -%}
+        <a href="{{ section.settings.size_guide_url }}" class="gemluxjewel-pdp__find-size">
+          {{ section.settings.size_guide_label | default: 'FIND RING SIZE' | escape }}
+        </a>
+      {%- endif -%}
+    </div>
+    <select id="RingSize-demo-{{ section.id }}" class="gemluxjewel-pdp__ring-select select__select" disabled aria-hidden="true">
+      <option selected>Select Ring Size</option>
+      {%- for value in ring_values -%}
+        <option value="{{ value | escape }}">{{ value }}</option>
+      {%- endfor -%}
+    </select>
+  </div>
+{%- endif -%}

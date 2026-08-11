@@ -1,0 +1,31 @@
+<ul class="gemluxjewel-pdp__trust-inline">
+  {%- for i in (1..4) -%}
+    {%- liquid
+      assign label_key = 'trust_label_' | append: i
+      assign icon_key = 'trust_icon_' | append: i
+      assign item_label = section.settings[label_key]
+      assign item_icon = section.settings[icon_key]
+    -%}
+    {%- if item_label != blank -%}
+      <li class="gemluxjewel-pdp__trust-inline-item">
+        <span class="gemluxjewel-pdp__trust-inline-icon">
+          {%- if item_icon != blank -%}
+            {{ item_icon | image_url: width: 80 | image_tag: widths: '40, 80', sizes: '24px', loading: 'lazy', alt: '' }}
+          {%- else -%}
+            {%- case i -%}
+              {%- when 1 -%}
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20" stroke="currentColor" stroke-width="1.5"/></svg>
+              {%- when 2 -%}
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7h11v8H3V7zM14 10h4l3 3v2h-7v-5z" stroke="currentColor" stroke-width="1.5"/><circle cx="7" cy="17" r="2" stroke="currentColor" stroke-width="1.5"/><circle cx="17" cy="17" r="2" stroke="currentColor" stroke-width="1.5"/></svg>
+              {%- when 3 -%}
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l2.2 4.5 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5L4.8 8.2l5-.7L12 3z" stroke="currentColor" stroke-width="1.5"/></svg>
+              {%- else -%}
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12a8 8 0 0116 0" stroke="currentColor" stroke-width="1.5"/><path d="M8 12h8" stroke="currentColor" stroke-width="1.5"/></svg>
+            {%- endcase -%}
+          {%- endif -%}
+        </span>
+        <span class="gemluxjewel-pdp__trust-inline-label">{{ item_label | escape }}</span>
+      </li>
+    {%- endif -%}
+  {%- endfor -%}
+</ul>

@@ -15,18 +15,34 @@
         "breadcrumb_home": "Home",
         "breadcrumb_collections": "Collections",
         "back_label": "Return to Store",
-        "add_to_cart_label": "ADD TO CART",
-        "size_guide_label": "SIZE GUIDE",
+        "add_to_cart_label": "Add to Cart",
+        "size_guide_label": "FIND RING SIZE",
         "size_guide_url": "",
-        "info_accordion_heading": "MORE INFO",
+        "show_reviews": true,
+        "review_count": 17,
+        "show_specs_row": true,
+        "default_specs": "Lab Grown Diamond • Dutch Marquise Cut • F Color • 1.00 To 4.00 CT • VS Clarity",
+        "show_sku": true,
+        "consultation_label": "Have Questions? Book a Virtual Consultation",
+        "consultation_url": "",
+        "show_shipping_estimate": true,
+        "ship_date_label": "24 Aug",
+        "show_inline_trust": true,
+        "trust_label_1": "Worldwide Shipping",
+        "trust_label_2": "Free and Secure Shipping",
+        "trust_label_3": "100% Diamond Value Guarantee",
+        "trust_label_4": "30 Day Return or Exchange",
+        "show_gift_banner": true,
+        "gift_banner_text": "<p><strong>Complimentary Gift</strong> — Receive free diamond stud earrings on orders over $1,000.</p>",
         "show_description": true,
-        "description_title": "Description",
-        "shipping_title": "Shipping Policy",
-        "shipping_content": "<p>We offer complimentary shipping on all orders. Delivery times vary by location — most orders arrive within 2-3 weeks. You will receive tracking details once your order ships.</p>",
-        "warranty_title": "",
-        "warranty_content": "",
-        "care_title": "Jewelry Care Instructions",
-        "care_content": "<p>Store your jewellery in a soft pouch away from moisture. Clean gently with warm water and mild soap, then pat dry with a soft cloth. Avoid harsh chemicals, perfumes, and abrasive surfaces.</p>"
+        "description_title": "Overview",
+        "ring_size_title": "Ring Size",
+        "ring_size_content": "<p>We offer complimentary resizing within 30 days of delivery. Use our ring size guide to find your perfect fit.</p>",
+        "ring_details_title": "Ring Details",
+        "ring_details_content": "<p>Metal options include sterling silver, solid gold (10K, 14K, 18K), and platinum. Center stone is lab grown diamond in Dutch Marquise cut. Handcrafted to order.</p>",
+        "show_complete_set": true,
+        "complete_set_heading": "Complete The Set",
+        "complete_set_limit": 4
       }
     },
     "gemluxjewel_pdp_shared": {
@@ -82,7 +98,7 @@
           "type": "faq",
           "settings": {
             "question": "Can I Wear The Jewellery Daily?",
-            "answer": "<p>Yes! In fact, it is designed for it. Titanium is incredibly lightweight yet remarkably strong. You will barely feel it on your skin, making it the perfect, comfortable choice for everyday, all-day wear.</p>"
+            "answer": "<p>Yes! In fact, it is designed for it. Titanium is incredibly lightweight yet remarkably strong. You will barely feel it on your skin, making it the the perfect, comfortable choice for everyday, all-day wear.</p>"
           }
         },
         "faq_3": {

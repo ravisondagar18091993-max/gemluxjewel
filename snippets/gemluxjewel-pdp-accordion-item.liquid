@@ -4,19 +4,19 @@
 {% endcomment %}
 
 {%- if title != blank and content != blank -%}
-  <div class="closet-item" {{ shopify_attributes }}>
+  <div class="closet-item{% if open_by_default %} is-open{% endif %}" {{ shopify_attributes }}>
     <div
-      class="closet-header"
+      class="closet-header{% if open_by_default %} active{% endif %}"
       role="button"
       tabindex="0"
-      aria-expanded="false"
+      aria-expanded="{% if open_by_default %}true{% else %}false{% endif %}"
     >
       <div class="closet-header-title">{{ title | escape }}</div>
       <div class="accordion-close">
         <img src="{{ 'down-arrow.svg' | asset_url }}" alt="" width="24" height="24">
       </div>
     </div>
-    <div class="closet-content">
+    <div class="closet-content"{% if open_by_default %} style="display: block;"{% endif %}>
       <div class="closet-content__inner rte">
         {{ content }}
       </div>

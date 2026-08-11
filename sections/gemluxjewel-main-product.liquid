@@ -1,10 +1,16 @@
 {% render 'gemluxjewel-fonts' %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 {{ 'section-gemluxjewel-product.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-pdp-ref.css' | asset_url | stylesheet_tag }}
 {{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 
 <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'gemluxjewel-pdp.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'gemluxjewel-collection-slider.js' | asset_url }}" defer="defer"></script>
 
 {%- liquid
   assign product_form_id = 'product-form-' | append: section.id
@@ -35,68 +41,47 @@
   data-update-url="true"
   data-url="{{ product.url }}"
 >
-  <section class="gemluxjewel gemluxjewel-pdp">
-    <div class="gemluxjewel-container">
-      <div class="gemluxjewel-pdp__topbar">
-        <p class="gemluxjewel-pdp__breadcrumb">
-          <a href="{{ routes.root_url }}">{{ section.settings.breadcrumb_home | default: 'HOME' | escape }}</a>
-          |
-          {%- if breadcrumb_collection != blank -%}
-            {%- if back_url != blank -%}
-              <a href="{{ back_url }}">{{ section.settings.breadcrumb_collections | default: 'COLLECTIONS' | escape }}</a>
-            {%- else -%}
-              {{ section.settings.breadcrumb_collections | default: 'COLLECTIONS' | escape }}
-            {%- endif -%}
-            |
-            <span>{{ breadcrumb_collection | escape }}</span>
-          {%- else -%}
-            <span>{{ product.title | escape }}</span>
-          {%- endif -%}
-        </p>
-        <a href="{{ back_url }}" class="gemluxjewel-pdp__back">
-          <span class="gemluxjewel-pdp__back-arrow">
-            <img src="{{ 'green-right-arrow.svg' | asset_url }}" alt="" width="24" height="24">
-          </span>
-          {{ section.settings.back_label | default: 'Return to Store' | escape }}
-        </a>
-      </div>
-
+  <section class="gemluxjewel gemluxjewel-pdp gemluxjewel-pdp--ref">
+    <div class="gemluxjewel-container gemluxjewel-pdp__container">
       <div class="gemluxjewel-pdp__layout">
         <div class="gemluxjewel-pdp__gallery-col">
+          <nav class="gemluxjewel-pdp__breadcrumb" aria-label="Breadcrumb">
+            <a href="{{ routes.root_url }}">{{ section.settings.breadcrumb_home | default: 'Home' | escape }}</a>
+            <span class="gemluxjewel-pdp__breadcrumb-sep">/</span>
+            <span class="gemluxjewel-pdp__breadcrumb-current">{{ product.title | escape }}</span>
+          </nav>
           {% render 'gemluxjewel-pdp-gallery' %}
         </div>
 
         <div class="gemluxjewel-pdp__info">
-          <div class="gemluxjewel-pdp__meta-row">
-            {%- if badge_text != blank -%}
-              <span class="gemluxjewel-badge">{{ badge_text }}</span>
-            {%- else -%}
-              <span aria-hidden="true"></span>
-            {%- endif -%}
-            <a href="#" class="gemluxjewel-pdp__heart" aria-label="Wishlist">
-              <img src="{{ 'heart.svg' | asset_url }}" alt="" width="22" height="22">
-            </a>
+          <div class="gemluxjewel-pdp__title-row">
+            <h1 class="gemluxjewel-pdp__title">{{ product.title | escape }}</h1>
+            <button type="button" class="gemluxjewel-pdp__heart" aria-label="Add to wishlist">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              </svg>
+            </button>
           </div>
 
-          <h1 class="gemluxjewel-pdp__title">{{ product.title | escape }}</h1>
+          {% render 'gemluxjewel-pdp-reviews', sku: current_variant.sku, section: section %}
+
+          {%- if section.settings.show_specs_row -%}
+            <p class="gemluxjewel-pdp__specs">
+              {%- if product.metafields.custom.specs != blank -%}
+                {{ product.metafields.custom.specs }}
+              {%- else -%}
+                {{ section.settings.default_specs | escape }}
+              {%- endif -%}
+            </p>
+          {%- endif -%}
 
           <div id="price-{{ section.id }}" role="status">
             {% render 'gemluxjewel-pdp-price' %}
           </div>
 
-          {%- unless product.has_only_default_variant -%}
-            <div class="gemluxjewel-pdp__variants-block">
-              {% render 'gemluxjewel-pdp-variant-picker' %}
-            </div>
-          {%- else -%}
-            {%- if section.settings.size_guide_url != blank -%}
-              <div class="gemluxjewel-pdp__variants-block">
-                <a href="{{ section.settings.size_guide_url }}" class="gemluxjewel-pdp__size-guide gemluxjewel-pdp__size-guide--solo">
-                  {{ section.settings.size_guide_label | default: 'Size Guide' | escape }}
-                </a>
-              </div>
-            {%- endif -%}
-          {%- endunless -%}
+          <div class="gemluxjewel-pdp__variants-block">
+            {% render 'gemluxjewel-pdp-variant-picker' %}
+          </div>
 
           <product-form class="product-form" data-section-id="{{ section.id }}">
             {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
@@ -108,49 +93,62 @@
                 class="product-variant-id"
               >
 
-              <div class="gemluxjewel-pdp__cart-row product-form__quantity">
-                <div class="gemluxjewel-pdp__cart-pill">
-                  <div class="gemluxjewel-pdp__qty-box">
-                    <quantity-input class="gemluxjewel-pdp__qty">
-                      <button class="gemluxjewel-pdp__qty-btn" name="minus" type="button" aria-label="{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}">−</button>
-                      <input
-                        class="gemluxjewel-pdp__qty-input quantity__input"
-                        type="number"
-                        name="quantity"
-                        id="Quantity-{{ section.id }}"
-                        min="1"
-                        value="1"
-                        form="{{ product_form_id }}"
-                        aria-label="{{ 'products.product.quantity.input_label' | t: product: product.title | escape }}"
-                      >
-                      <button class="gemluxjewel-pdp__qty-btn" name="plus" type="button" aria-label="{{ 'products.product.quantity.increase' | t: product: product.title | escape }}">+</button>
-                    </quantity-input>
-                  </div>
-
-                  <button
-                    type="submit"
-                    name="add"
-                    id="ProductSubmitButton-{{ section.id }}"
-                    class="gemluxjewel-pdp__submit"
-                    {% if current_variant.available == false %}disabled{% endif %}
-                  >
-                    <span class="gemluxjewel-pdp__basket-icon" aria-hidden="true">
-                      <img src="{{ 'basket.svg' | asset_url }}" alt="" class="gemluxjewel-pdp__basket-white" width="22" height="22">
-                      <img src="{{ 'green-basket.svg' | asset_url }}" alt="" class="gemluxjewel-pdp__basket-green" width="22" height="22">
-                    </span>
-                    <span class="gemluxjewel-pdp__submit-label">
-                      {%- if current_variant.available -%}
-                        {{ section.settings.add_to_cart_label | default: 'ADD TO CART' | escape }}
-                      {%- else -%}
-                        {{ 'products.product.sold_out' | t }}
-                      {%- endif -%}
-                    </span>
-                    {%- render 'loading-spinner' -%}
-                  </button>
-                </div>
-              </div>
+              <button
+                type="submit"
+                name="add"
+                id="ProductSubmitButton-{{ section.id }}"
+                class="gemluxjewel-pdp__submit gemluxjewel-pdp__submit--full"
+                {% if current_variant.available == false %}disabled{% endif %}
+              >
+                <span class="gemluxjewel-pdp__submit-label">
+                  {%- if current_variant.available -%}
+                    {{ section.settings.add_to_cart_label | default: 'Add to Cart' | escape }}
+                  {%- else -%}
+                    {{ 'products.product.sold_out' | t }}
+                  {%- endif -%}
+                </span>
+                {%- render 'loading-spinner' -%}
+              </button>
             {%- endform -%}
           </product-form>
+
+          {%- if section.settings.consultation_label != blank -%}
+            <p class="gemluxjewel-pdp__consultation">
+              {%- if section.settings.consultation_url != blank -%}
+                <a href="{{ section.settings.consultation_url }}">{{ section.settings.consultation_label | escape }}</a>
+              {%- else -%}
+                {{ section.settings.consultation_label | escape }}
+              {%- endif -%}
+            </p>
+          {%- endif -%}
+
+          {%- if section.settings.show_shipping_estimate -%}
+            <div class="gemluxjewel-pdp__shipping-estimate">
+              <div class="gemluxjewel-pdp__shipping-estimate-item">
+                <span class="gemluxjewel-pdp__shipping-estimate-icon" aria-hidden="true">📅</span>
+                <div>
+                  <span class="gemluxjewel-pdp__shipping-estimate-label">Estimated Ship Date</span>
+                  <strong class="gemluxjewel-pdp__shipping-estimate-value">{{ section.settings.ship_date_label | default: '24 Aug' | escape }}</strong>
+                </div>
+              </div>
+              <div class="gemluxjewel-pdp__shipping-estimate-item">
+                <span class="gemluxjewel-pdp__shipping-estimate-icon" aria-hidden="true">🕐</span>
+                <div>
+                  <span class="gemluxjewel-pdp__shipping-estimate-label">When Ordered by 12 PM PST, Today</span>
+                </div>
+              </div>
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.show_inline_trust -%}
+            {% render 'gemluxjewel-pdp-trust-inline' %}
+          {%- endif -%}
+
+          {%- if section.settings.show_gift_banner and section.settings.gift_banner_text != blank -%}
+            <div class="gemluxjewel-pdp__gift-banner">
+              {{ section.settings.gift_banner_text }}
+            </div>
+          {%- endif -%}
 
           {%- liquid
             assign show_description = false
@@ -159,51 +157,75 @@
             endif
 
             assign show_info_accordion = false
-            if show_description
-              assign show_info_accordion = true
-            endif
-            if section.settings.shipping_content != blank
-              assign show_info_accordion = true
-            endif
-            if section.settings.warranty_content != blank
-              assign show_info_accordion = true
-            endif
-            if section.settings.care_content != blank
+            if show_description or section.settings.ring_size_content != blank or section.settings.ring_details_content != blank
               assign show_info_accordion = true
             endif
           -%}
 
           {%- if show_info_accordion -%}
             <div class="gemluxjewel-pdp__accordian-block gemluxjewel-pdp__info-accordion">
-              {%- if section.settings.info_accordion_heading != blank -%}
-                <h2 class="gemluxjewel-pdp__accordian-heading">{{ section.settings.info_accordion_heading | escape }}</h2>
-              {%- endif -%}
               <div class="gemluxjewel-pdp__product-accordian">
                 <div class="closet-accordion" data-gemluxjewel-accordion>
                   {%- if show_description -%}
                     {% render 'gemluxjewel-pdp-accordion-item',
                       title: section.settings.description_title,
-                      content: product.description
+                      content: product.description,
+                      open_by_default: true
                     %}
                   {%- endif -%}
 
                   {% render 'gemluxjewel-pdp-accordion-item',
-                    title: section.settings.shipping_title,
-                    content: section.settings.shipping_content
+                    title: section.settings.ring_size_title,
+                    content: section.settings.ring_size_content
                   %}
 
                   {% render 'gemluxjewel-pdp-accordion-item',
-                    title: section.settings.warranty_title,
-                    content: section.settings.warranty_content
-                  %}
-
-                  {% render 'gemluxjewel-pdp-accordion-item',
-                    title: section.settings.care_title,
-                    content: section.settings.care_content
+                    title: section.settings.ring_details_title,
+                    content: section.settings.ring_details_content
                   %}
                 </div>
               </div>
             </div>
+          {%- endif -%}
+
+          {%- if section.settings.show_complete_set -%}
+            <product-recommendations
+              class="gemluxjewel-pdp__complete-set"
+              data-url="{{ routes.product_recommendations_url }}?limit={{ section.settings.complete_set_limit | default: 4 }}&intent=complementary"
+              data-section-id="{{ section.id }}"
+              data-product-id="{{ product.id }}"
+            >
+              {%- if recommendations.performed and recommendations.products_count > 0 -%}
+                <div class="gemluxjewel-pdp__complete-set-inner">
+                  <h2 class="gemluxjewel-pdp__complete-set-heading">{{ section.settings.complete_set_heading | default: 'Complete The Set' | escape }}</h2>
+                  <div class="gemluxjewel-pdp__complete-set-slider" data-gemluxjewel-collection-slider>
+                    <button type="button" class="gemluxjewel-pdp__complete-set-nav gemluxjewel-pdp__complete-set-nav--prev" data-gemluxjewel-collection-slider-prev aria-label="Previous" disabled>
+                      <img src="{{ 'green-right-arrow.svg' | asset_url }}" alt="" width="16" height="16" class="gemluxjewel-pdp__complete-set-nav-icon gemluxjewel-pdp__complete-set-nav-icon--prev">
+                    </button>
+                    <div class="gemluxjewel-pdp__complete-set-viewport">
+                      <div class="gemluxjewel-pdp__complete-set-track gemluxjewel-collection-slider__track" data-gemluxjewel-collection-slider-track>
+                        {%- for rec_product in recommendations.products -%}
+                          <div class="gemluxjewel-pdp__complete-set-item gemluxjewel-collection-slider__item">
+                            <a href="{{ rec_product.url }}" class="gemluxjewel-pdp__complete-set-card">
+                              <div class="gemluxjewel-pdp__complete-set-image">
+                                {%- if rec_product.featured_media -%}
+                                  {{ rec_product.featured_media | image_url: width: 400 | image_tag: widths: '200,300,400', sizes: '200px', loading: 'lazy', alt: rec_product.title }}
+                                {%- endif -%}
+                              </div>
+                              <p class="gemluxjewel-pdp__complete-set-title">{{ rec_product.title | escape }}</p>
+                              <p class="gemluxjewel-pdp__complete-set-price">{{ rec_product.price | money }}</p>
+                            </a>
+                          </div>
+                        {%- endfor -%}
+                      </div>
+                    </div>
+                    <button type="button" class="gemluxjewel-pdp__complete-set-nav gemluxjewel-pdp__complete-set-nav--next" data-gemluxjewel-collection-slider-next aria-label="Next">
+                      <img src="{{ 'green-right-arrow.svg' | asset_url }}" alt="" width="16" height="16" class="gemluxjewel-pdp__complete-set-nav-icon">
+                    </button>
+                  </div>
+                </div>
+              {%- endif -%}
+            </product-recommendations>
           {%- endif -%}
         </div>
       </div>
@@ -239,97 +261,178 @@
       "type": "text",
       "id": "add_to_cart_label",
       "label": "Add to cart label",
-      "default": "ADD TO CART"
+      "default": "Add to Cart"
     },
     {
       "type": "text",
       "id": "size_guide_label",
-      "label": "Size guide label",
-      "default": "SIZE GUIDE"
+      "label": "Ring size guide label",
+      "default": "FIND RING SIZE"
     },
     {
       "type": "url",
       "id": "size_guide_url",
-      "label": "Size guide link"
+      "label": "Ring size guide link"
     },
     {
       "type": "header",
-      "content": "Product info accordion"
+      "content": "Product details"
     },
     {
-      "type": "paragraph",
-      "content": "Shipping, warranty, and care content is shared across all products. Edit once here — no need to set up per product."
+      "type": "checkbox",
+      "id": "show_reviews",
+      "label": "Show star reviews row",
+      "default": true
+    },
+    {
+      "type": "number",
+      "id": "review_count",
+      "label": "Review count",
+      "default": 17
+    },
+    {
+      "type": "checkbox",
+      "id": "show_specs_row",
+      "label": "Show specs line",
+      "default": true
     },
     {
       "type": "text",
-      "id": "info_accordion_heading",
-      "label": "Accordion heading",
-      "default": "MORE INFO",
-      "info": "Optional. Leave blank to hide."
+      "id": "default_specs",
+      "label": "Default specs (when product metafield empty)",
+      "default": "Lab Grown Diamond • Dutch Marquise Cut • F Color • 1.00 To 4.00 CT • VS Clarity"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sku",
+      "label": "Show SKU",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "consultation_label",
+      "label": "Consultation link text",
+      "default": "Have Questions? Book a Virtual Consultation"
+    },
+    {
+      "type": "url",
+      "id": "consultation_url",
+      "label": "Consultation link URL"
     },
     {
       "type": "header",
-      "content": "Description (per product)"
+      "content": "Shipping estimate"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_shipping_estimate",
+      "label": "Show shipping estimate row",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "ship_date_label",
+      "label": "Estimated ship date",
+      "default": "24 Aug"
+    },
+    {
+      "type": "header",
+      "content": "Inline trust badges"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_inline_trust",
+      "label": "Show trust badges below add to cart",
+      "default": true
+    },
+    { "type": "text", "id": "trust_label_1", "label": "Trust 1", "default": "Worldwide Shipping" },
+    { "type": "image_picker", "id": "trust_icon_1", "label": "Trust icon 1" },
+    { "type": "text", "id": "trust_label_2", "label": "Trust 2", "default": "Free and Secure Shipping" },
+    { "type": "image_picker", "id": "trust_icon_2", "label": "Trust icon 2" },
+    { "type": "text", "id": "trust_label_3", "label": "Trust 3", "default": "100% Diamond Value Guarantee" },
+    { "type": "image_picker", "id": "trust_icon_3", "label": "Trust icon 3" },
+    { "type": "text", "id": "trust_label_4", "label": "Trust 4", "default": "30 Day Return or Exchange" },
+    { "type": "image_picker", "id": "trust_icon_4", "label": "Trust icon 4" },
+    {
+      "type": "header",
+      "content": "Complimentary gift banner"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_gift_banner",
+      "label": "Show gift banner",
+      "default": true
+    },
+    {
+      "type": "richtext",
+      "id": "gift_banner_text",
+      "label": "Gift banner text",
+      "default": "<p><strong>Complimentary Gift</strong> — Receive free diamond stud earrings on orders over $1,000.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Accordions"
     },
     {
       "type": "checkbox",
       "id": "show_description",
-      "label": "Show product description accordion",
+      "label": "Show overview accordion",
       "default": true
     },
     {
       "type": "text",
       "id": "description_title",
-      "label": "Description title",
-      "default": "Description"
-    },
-    {
-      "type": "header",
-      "content": "Shipping policy"
+      "label": "Overview title",
+      "default": "Overview"
     },
     {
       "type": "text",
-      "id": "shipping_title",
-      "label": "Title",
-      "default": "Shipping Policy"
+      "id": "ring_size_title",
+      "label": "Ring size title",
+      "default": "Ring Size"
     },
     {
       "type": "richtext",
-      "id": "shipping_content",
-      "label": "Content",
-      "default": "<p>We offer complimentary shipping on all orders. Delivery times vary by location — most orders arrive within 5–7 business days. You will receive tracking details once your order ships.</p>"
-    },
-    {
-      "type": "header",
-      "content": "Lifetime warranty"
+      "id": "ring_size_content",
+      "label": "Ring size content",
+      "default": "<p>We offer complimentary resizing within 30 days of delivery. Refer to our ring size guide to find your perfect fit.</p>"
     },
     {
       "type": "text",
-      "id": "warranty_title",
-      "label": "Title",
-      "default": "Lifetime Warranty"
+      "id": "ring_details_title",
+      "label": "Ring details title",
+      "default": "Ring Details"
     },
     {
       "type": "richtext",
-      "id": "warranty_content",
-      "label": "Content",
-      "default": "<p>Every piece is backed by our lifetime warranty against manufacturing defects. If something goes wrong due to craftsmanship, we will repair or replace it at no extra cost.</p>"
+      "id": "ring_details_content",
+      "label": "Ring details content",
+      "default": "<p>Metal options include sterling silver, solid gold (10K, 14K, 18K), and platinum. Center stone is lab grown diamond. All rings are handcrafted to order.</p>"
     },
     {
       "type": "header",
-      "content": "Jewelry care"
+      "content": "Complete the set"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_complete_set",
+      "label": "Show complementary products carousel",
+      "default": true
     },
     {
       "type": "text",
-      "id": "care_title",
-      "label": "Title",
-      "default": "Jewelry Care Instructions"
+      "id": "complete_set_heading",
+      "label": "Heading",
+      "default": "Complete The Set"
     },
     {
-      "type": "richtext",
-      "id": "care_content",
-      "label": "Content",
-      "default": "<p>Store your jewellery in a soft pouch away from moisture. Clean gently with warm water and mild soap, then pat dry with a soft cloth. Avoid harsh chemicals, perfumes, and abrasive surfaces.</p>"
+      "type": "range",
+      "id": "complete_set_limit",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "default": 4,
+      "label": "Products to show"
     }
   ],
   "presets": [

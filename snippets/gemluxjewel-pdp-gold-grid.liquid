@@ -1,0 +1,105 @@
+{% comment %}
+  Combined 3×3 gold karat × color swatch grid (DiamondRensu style).
+{% endcomment %}
+{%- liquid
+  assign karats = '10K,14K,18K' | split: ','
+  assign colors = 'White Gold,Yellow Gold,Rose Gold' | split: ','
+  assign color_keys = 'white,yellow,rose' | split: ','
+-%}
+
+<fieldset class="js product-form__input gemluxjewel-pdp__option gemluxjewel-pdp__option--gold-grid">
+  <legend class="visually-hidden">Gold karat and color</legend>
+  <div class="gemluxjewel-pdp__gold-grid">
+    {%- for karat in karats -%}
+      {%- for color in colors -%}
+        {%- liquid
+          assign color_index = forloop.index0
+          assign grid_index = forloop.parentloop.index0 | times: 3 | plus: color_index
+          assign input_id = section.id | append: '-gold-grid-' | append: grid_index
+          assign color_key = color_keys[color_index]
+          assign is_first = false
+          if grid_index == 0
+            assign is_first = true
+          endif
+        -%}
+        <div class="gemluxjewel-pdp__gold-grid-cell">
+          {%- if demo_mode -%}
+            <input type="radio" id="{{ input_id }}" name="demo-gold-grid" value="{{ karat | escape }}|{{ color | escape }}" {% if is_first %}checked{% endif %} data-gemluxjewel-pdp-gold-grid>
+            <label for="{{ input_id }}" class="gemluxjewel-pdp__gold-grid-swatch gemluxjewel-pdp__gold-grid-swatch--{{ color_key }}" title="{{ karat }} {{ color }}">
+              <span>{{ karat }}</span>
+            </label>
+          {%- else -%}
+            <input
+              type="radio"
+              id="{{ input_id }}"
+              name="gold-grid-{{ section.id }}"
+              value="{{ karat | escape }}|{{ color | escape }}"
+              data-gemluxjewel-pdp-gold-grid
+              data-karat-value="{{ karat | escape }}"
+              data-color-value="{{ color | escape }}"
+              {% if is_first %}checked{% endif %}
+            >
+            <label for="{{ input_id }}" class="gemluxjewel-pdp__gold-grid-swatch gemluxjewel-pdp__gold-grid-swatch--{{ color_key }}" title="{{ karat }} {{ color }}">
+              <span>{{ karat }}</span>
+            </label>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    {%- endfor -%}
+  </div>
+
+  {%- unless demo_mode -%}
+    <div class="visually-hidden" data-gemluxjewel-pdp-gold-radios>
+      {%- if karat_option != blank -%}
+        {%- for value in karat_option.values -%}
+          {%- liquid
+            assign value_down = value | downcase
+            assign is_na = false
+            if value_down == 'standard' or value_down == 'n/a' or value_down == '—' or value_down == '-'
+              assign is_na = true
+            endif
+            assign input_id = section.id | append: '-karat-hidden-' | append: forloop.index0
+            assign input_name = karat_option.name | append: '-' | append: karat_option.position
+          -%}
+          <input
+            type="radio"
+            id="{{ input_id }}"
+            name="{{ input_name | escape }}"
+            value="{{ value | escape }}"
+            form="{{ product_form_id }}"
+            {% if value.selected %}checked{% endif %}
+            {% if is_na %}data-gemluxjewel-pdp-na="true"{% endif %}
+            data-option-value-id="{{ value.id }}"
+            data-option-name="{{ karat_option.name | escape }}"
+            data-gemluxjewel-pdp-karat
+          >
+        {%- endfor -%}
+      {%- endif -%}
+      {%- if color_option != blank -%}
+        {%- for value in color_option.values -%}
+          {%- liquid
+            assign value_down = value | downcase
+            assign is_na = false
+            if value_down == 'standard' or value_down == 'n/a' or value_down == '—' or value_down == '-'
+              assign is_na = true
+            endif
+            assign input_id = section.id | append: '-color-hidden-' | append: forloop.index0
+            assign input_name = color_option.name | append: '-' | append: color_option.position
+          -%}
+          <input
+            type="radio"
+            id="{{ input_id }}"
+            name="{{ input_name | escape }}"
+            value="{{ value | escape }}"
+            form="{{ product_form_id }}"
+            {% if value.selected %}checked{% endif %}
+            {% if is_na %}data-gemluxjewel-pdp-na="true"{% endif %}
+            data-option-value-id="{{ value.id }}"
+            data-option-name="{{ color_option.name | escape }}"
+            data-gemluxjewel-pdp-color
+          >
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  {%- endunless -%}
+</fieldset>

@@ -1,14 +1,69 @@
 {% comment %}
-  gemluxjewel PDP variant picker — works with Dawn variant-selects / product-info.js
+  DiamondRensu-style PDP variant picker — metal tabs, gold karat swatches, diamond size, ring size dropdown.
 {% endcomment %}
 {%- liquid
   assign product_form_id = 'product-form-' | append: section.id
+  assign use_demo_picker = false
+  if product.has_only_default_variant
+    assign use_demo_picker = true
+  endif
+
+  assign metal_option = blank
+  assign karat_option = blank
+  assign color_option = blank
+  assign diamond_option = blank
+  assign ring_option = blank
+
+  unless use_demo_picker
+    for option in product.options_with_values
+      assign option_downcase = option.name | downcase
+      if metal_option == blank
+        if option_downcase contains 'metal type' or option_downcase == 'metal'
+          assign metal_option = option
+          continue
+        endif
+      endif
+      if karat_option == blank and option_downcase contains 'karat'
+        assign karat_option = option
+        continue
+      endif
+      if color_option == blank
+        if option_downcase contains 'metal color' or option_downcase contains 'gold color'
+          assign color_option = option
+          continue
+        endif
+      endif
+      if diamond_option == blank
+        if option_downcase contains 'diamond size' or option_downcase contains 'diamond carat' or option_downcase == 'carat'
+          assign diamond_option = option
+          continue
+        endif
+      endif
+      if ring_option == blank and option_downcase contains 'ring size'
+        assign ring_option = option
+      endif
+    endfor
+  endunless
 -%}
 
-{%- unless product.has_only_default_variant -%}
+{%- if use_demo_picker -%}
+  <div class="gemluxjewel-pdp__variant-selects gemluxjewel-pdp__variant-selects--demo" data-gemluxjewel-pdp-variant-picker data-gemluxjewel-pdp-demo="true">
+    {%- render 'gemluxjewel-pdp-metal-picker',
+      demo_mode: true,
+      product_form_id: product_form_id,
+      section: section,
+      metal_values: 'Silver,Gold,Platinum' | split: ',',
+      karat_values: '10K,14K,18K' | split: ',',
+      color_values: 'White Gold,Yellow Gold,Rose Gold' | split: ',',
+      diamond_values: '1.00,1.70,2.00,3.00,4.00' | split: ',',
+      ring_values: '4,5,6,7,8,9,10' | split: ','
+    -%}
+  </div>
+{%- else -%}
   <variant-selects
     id="variant-selects-{{ section.id }}"
     class="gemluxjewel-pdp__variant-selects"
+    data-gemluxjewel-pdp-variant-picker
     data-section="{{ section.id }}"
     data-product-handle="{{ product.handle }}"
     data-product-title="{{ product.title | escape }}"
@@ -16,17 +71,115 @@
     data-currency-code="{{ cart.currency.iso_code }}"
     data-selected-price-amount="{{ product.selected_or_first_available_variant.price | default: 0 | money_amount | escape }}"
   >
-    {%- for option in product.options_with_values -%}
-      {%- liquid
-        assign option_downcase = option.name | downcase
-        assign is_color = false
-        if option_downcase == 'color' or option_downcase == 'colour'
-          assign is_color = true
-        endif
+    {%- if metal_option != blank -%}
+      {%- render 'gemluxjewel-pdp-metal-picker',
+        demo_mode: false,
+        product_form_id: product_form_id,
+        section: section,
+        metal_option: metal_option,
+        karat_option: karat_option,
+        color_option: color_option
       -%}
-      <fieldset class="js product-form__input gemluxjewel-pdp__option gemluxjewel-pdp__option--pill{% if is_color %} gemluxjewel-pdp__option--color{% endif %}">
-        <legend class="gemluxjewel-pdp__option-label">{{ option.name | upcase }}:</legend>
-        <div class="gemluxjewel-pdp__option-right">
+    {%- endif -%}
+
+    {%- if diamond_option != blank -%}
+      <fieldset class="js product-form__input gemluxjewel-pdp__option gemluxjewel-pdp__option--diamond">
+        <legend class="gemluxjewel-pdp__option-label gemluxjewel-pdp__option-label--stacked">Select Diamond Size:</legend>
+        <div class="gemluxjewel-pdp__diamond-grid">
+          {%- for value in diamond_option.values -%}
+            {%- liquid
+              assign option_disabled = false
+              unless value.available
+                assign option_disabled = true
+              endunless
+              assign input_id = section.id | append: '-diamond-' | append: forloop.index0
+              assign input_name = diamond_option.name | append: '-' | append: diamond_option.position
+            -%}
+            <input
+              type="radio"
+              id="{{ input_id }}"
+              name="{{ input_name | escape }}"
+              value="{{ value | escape }}"
+              form="{{ product_form_id }}"
+              {% if value.selected %}checked{% endif %}
+              {% if option_disabled %}class="disabled"{% endif %}
+              data-option-value-id="{{ value.id }}"
+              data-option-name="{{ diamond_option.name | escape }}"
+            >
+            <label for="{{ input_id }}" class="gemluxjewel-pdp__diamond-btn">{{ value }}</label>
+          {%- endfor -%}
+        </div>
+      </fieldset>
+    {%- endif -%}
+
+    {%- if ring_option != blank -%}
+      <div class="js product-form__input gemluxjewel-pdp__option gemluxjewel-pdp__option--ring product-form__input--dropdown">
+        <div class="gemluxjewel-pdp__ring-head">
+          <label class="gemluxjewel-pdp__option-label gemluxjewel-pdp__option-label--stacked" for="RingSize-{{ section.id }}">
+            Select Ring Size ({{ localization.country.iso_code | default: 'US' }}):
+          </label>
+          {%- if section.settings.size_guide_url != blank -%}
+            <a href="{{ section.settings.size_guide_url }}" class="gemluxjewel-pdp__find-size">
+              {{ section.settings.size_guide_label | default: 'FIND RING SIZE' | escape }}
+            </a>
+          {%- endif -%}
+        </div>
+        <select
+          id="RingSize-{{ section.id }}"
+          name="{{ ring_option.name | append: '-' | append: ring_option.position | escape }}"
+          form="{{ product_form_id }}"
+          class="gemluxjewel-pdp__ring-select select__select"
+        >
+          <option value="" disabled {% unless ring_option.selected_value %}selected{% endunless %}>Select Ring Size</option>
+          {%- for value in ring_option.values -%}
+            {%- liquid
+              assign option_disabled = false
+              unless value.available
+                assign option_disabled = true
+              endunless
+            -%}
+            <option
+              value="{{ value | escape }}"
+              {% if value.selected %}selected{% endif %}
+              {% if option_disabled %}disabled{% endif %}
+              data-option-value-id="{{ value.id }}"
+              data-option-name="{{ ring_option.name | escape }}"
+            >
+              {{ value }}
+            </option>
+          {%- endfor -%}
+        </select>
+      </div>
+    {%- endif -%}
+
+    {%- if metal_option == blank -%}
+      {%- comment -%} Fallback: standard pill picker for unrecognized option names {%- endcomment -%}
+      {%- for option in product.options_with_values -%}
+        <fieldset class="js product-form__input gemluxjewel-pdp__option gemluxjewel-pdp__option--pill">
+          <legend class="gemluxjewel-pdp__option-label">{{ option.name }}:</legend>
+          <div class="gemluxjewel-pdp__option-values">
+            {%- for value in option.values -%}
+              {%- liquid
+                assign option_disabled = false
+                unless value.available
+                  assign option_disabled = true
+                endunless
+                assign input_id = section.id | append: '-fb-' | append: option.position | append: '-' | append: forloop.index0
+                assign input_name = option.name | append: '-' | append: option.position
+              -%}
+              <input type="radio" id="{{ input_id }}" name="{{ input_name | escape }}" value="{{ value | escape }}" form="{{ product_form_id }}" {% if value.selected %}checked{% endif %} {% if option_disabled %}class="disabled"{% endif %} data-option-value-id="{{ value.id }}" data-option-name="{{ option.name | escape }}">
+              <label for="{{ input_id }}" class="gemluxjewel-pdp__pill">{{ value }}</label>
+            {%- endfor -%}
+          </div>
+        </fieldset>
+      {%- endfor -%}
+    {%- else -%}
+      {%- for option in product.options_with_values -%}
+        {%- if option == metal_option or option == karat_option or option == color_option or option == diamond_option or option == ring_option -%}
+          {%- continue -%}
+        {%- endif -%}
+        <fieldset class="js product-form__input gemluxjewel-pdp__option gemluxjewel-pdp__option--pill">
+          <legend class="gemluxjewel-pdp__option-label">{{ option.name }}:</legend>
           <div class="gemluxjewel-pdp__option-values">
             {%- for value in option.values -%}
               {%- liquid
@@ -45,23 +198,18 @@
                 form="{{ product_form_id }}"
                 {% if value.selected %}checked{% endif %}
                 {% if option_disabled %}class="disabled"{% endif %}
-                data-product-url="{{ value.product_url }}"
                 data-option-value-id="{{ value.id }}"
                 data-option-name="{{ option.name | escape }}"
               >
               <label for="{{ input_id }}" class="gemluxjewel-pdp__pill">{{ value }}</label>
             {%- endfor -%}
           </div>
-          {%- if is_color and section.settings.size_guide_url != blank -%}
-            <a href="{{ section.settings.size_guide_url }}" class="gemluxjewel-pdp__size-guide">
-              {{ section.settings.size_guide_label | default: 'Size Guide' | escape }}
-            </a>
-          {%- endif -%}
-        </div>
-      </fieldset>
-    {%- endfor -%}
+        </fieldset>
+      {%- endfor -%}
+    {%- endif -%}
+
     <script type="application/json" data-selected-variant>
       {{ product.selected_or_first_available_variant | json }}
     </script>
   </variant-selects>
-{%- endunless -%}
+{%- endif -%}

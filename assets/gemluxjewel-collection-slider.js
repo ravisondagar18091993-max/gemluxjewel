@@ -62,3 +62,12 @@ function initGemluxjewelCollectionSlider() {
     update();
   });
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('product-recommendations').forEach(function (el) {
+    var observer = new MutationObserver(function () {
+      initGemluxjewelCollectionSlider();
+    });
+    observer.observe(el, { childList: true, subtree: true });
+  });
+});

@@ -1,0 +1,21 @@
+{%- liquid
+  assign review_count = section.settings.review_count | default: 17
+  assign show_reviews = section.settings.show_reviews
+-%}
+{%- if show_reviews -%}
+  <div class="gemluxjewel-pdp__reviews-row">
+    <div class="gemluxjewel-pdp__stars" aria-label="{{ review_count }} reviews, 5 out of 5 stars">
+      {%- for i in (1..5) -%}
+        <svg class="gemluxjewel-pdp__star" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M8 1.5l1.76 3.57 3.94.57-2.85 2.78.67 3.92L8 10.67l-3.52 1.85.67-3.92L2.3 5.64l3.94-.57L8 1.5z" fill="currentColor"/>
+        </svg>
+      {%- endfor -%}
+      <span class="gemluxjewel-pdp__review-count">({{ review_count }} Reviews)</span>
+    </div>
+    {%- if sku != blank -%}
+      <span class="gemluxjewel-pdp__sku-inline">SKU: {{ sku | escape }}</span>
+    {%- endif -%}
+  </div>
+{%- elsif sku != blank -%}
+  <p class="gemluxjewel-pdp__sku">SKU: {{ sku | escape }}</p>
+{%- endif -%}

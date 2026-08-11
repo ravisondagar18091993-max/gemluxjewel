@@ -10,6 +10,6 @@
   {%- if on_sale -%}
     <span class="gemluxjewel-pdp__regular-price">{{ target.compare_at_price | money }}</span>
     {%- assign discount = target.compare_at_price | minus: target.price | times: 100 | divided_by: target.compare_at_price -%}
-    <span class="gemluxjewel-badge gemluxjewel-badge--orange">{{ discount }}% Off</span>
+    <span class="gemluxjewel-badge gemluxjewel-badge--save">Save {{ discount }}%</span>
   {%- endif -%}
 </div>

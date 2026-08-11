@@ -1,0 +1,70 @@
+{%- liquid
+  assign heading = section.settings.complete_set_heading | default: 'Complete The Set'
+  assign limit = section.settings.complete_set_limit | default: 4
+-%}
+
+<product-recommendations
+  class="gemluxjewel-pdp__complete-set"
+  data-url="{{ routes.product_recommendations_url }}?limit={{ limit }}&intent=complementary"
+  data-section-id="{{ section.id }}"
+  data-product-id="{{ product.id }}"
+>
+  {%- if recommendations.performed and recommendations.products_count > 0 -%}
+    <div class="gemluxjewel-pdp__complete-set-inner">
+      <h2 class="gemluxjewel-pdp__complete-set-heading">{{ heading | escape }}</h2>
+      <div class="gemluxjewel-pdp__complete-set-slider" data-gemluxjewel-collection-slider>
+        <button type="button" class="gemluxjewel-pdp__complete-set-nav gemluxjewel-pdp__complete-set-nav--prev" data-gemluxjewel-collection-slider-prev aria-label="Previous" disabled>
+          <img src="{{ 'green-right-arrow.svg' | asset_url }}" alt="" width="16" height="16" class="gemluxjewel-pdp__complete-set-nav-icon gemluxjewel-pdp__complete-set-nav-icon--prev">
+        </button>
+        <div class="gemluxjewel-pdp__complete-set-viewport">
+          <div class="gemluxjewel-pdp__complete-set-track gemluxjewel-collection-slider__track" data-gemluxjewel-collection-slider-track>
+            {%- for rec_product in recommendations.products -%}
+              <div class="gemluxjewel-pdp__complete-set-item gemluxjewel-collection-slider__item">
+                <a href="{{ rec_product.url }}" class="gemluxjewel-pdp__complete-set-card">
+                  <div class="gemluxjewel-pdp__complete-set-image">
+                    {%- if rec_product.featured_media -%}
+                      {{ rec_product.featured_media | image_url: width: 400 | image_tag: widths: '200,300,400', sizes: '200px', loading: 'lazy', alt: rec_product.title }}
+                    {%- else -%}
+                      {% render 'gemluxjewel-theme-image', use_store_media: true, seed: rec_product.id, width: 400, alt: rec_product.title %}
+                    {%- endif -%}
+                  </div>
+                  <p class="gemluxjewel-pdp__complete-set-title">{{ rec_product.title | escape }}</p>
+                  <p class="gemluxjewel-pdp__complete-set-price">{{ rec_product.price | money }}</p>
+                </a>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+        <button type="button" class="gemluxjewel-pdp__complete-set-nav gemluxjewel-pdp__complete-set-nav--next" data-gemluxjewel-collection-slider-next aria-label="Next">
+          <img src="{{ 'green-right-arrow.svg' | asset_url }}" alt="" width="16" height="16" class="gemluxjewel-pdp__complete-set-nav-icon">
+        </button>
+      </div>
+    </div>
+  {%- endif -%}
+</product-recommendations>
+
+{% schema %}
+{
+  "name": "PDP Complete Set",
+  "tag": "section",
+  "class": "gemluxjewel-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "complete_set_heading",
+      "label": "Heading",
+      "default": "Complete The Set"
+    },
+    {
+      "type": "range",
+      "id": "complete_set_limit",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "default": 4,
+      "label": "Products to show"
+    }
+  ],
+  "presets": [{ "name": "PDP Complete Set" }]
+}
+{% endschema %}

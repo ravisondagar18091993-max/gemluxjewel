@@ -1,0 +1,551 @@
+/**
+ * DiamondRensu reference PDP — 100% visual match overrides
+ */
+
+.gemluxjewel-pdp--ref {
+  --pdp-navy: #243654;
+  --pdp-navy-dark: #1a2840;
+  --pdp-teal: #4a9fb0;
+  --pdp-teal-light: #e8f4f7;
+  --pdp-border: #dde3ea;
+  --pdp-text: #2c3444;
+  --pdp-muted: #6b7280;
+  --pdp-font-serif: 'Libre Baskerville', Georgia, serif;
+  --pdp-font-sans: 'Inter', 'Outfit', sans-serif;
+  font-family: var(--pdp-font-sans);
+  color: var(--pdp-text);
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__container {
+  width: min(1280px, 94%);
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 20px 80px;
+}
+
+@media (min-width: 990px) {
+  .gemluxjewel-pdp--ref .gemluxjewel-pdp__layout {
+    grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+    gap: 40px 48px;
+    align-items: start;
+  }
+
+  .gemluxjewel-pdp--ref .gemluxjewel-pdp__info {
+    padding-left: 8px;
+  }
+
+  .gemluxjewel-pdp--ref .gemluxjewel-pdp__gallery-col {
+    position: sticky;
+    top: calc(var(--gemluxjewel-header-offset, 120px) + 16px);
+  }
+}
+
+/* Breadcrumb — left column */
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 16px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--pdp-muted);
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__breadcrumb a {
+  color: var(--pdp-muted);
+  text-decoration: none;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__breadcrumb a:hover {
+  color: var(--pdp-navy);
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__breadcrumb-current {
+  color: var(--pdp-text);
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__topbar,
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__back {
+  display: none;
+}
+
+/* Gallery masonry */
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__gallery {
+  gap: 12px;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__gallery-item {
+  height: auto;
+  min-height: 200px;
+  aspect-ratio: 1;
+  border-radius: 4px;
+  background: #f4f6f8;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__gallery-item--featured {
+  grid-column: 1 / -1;
+  aspect-ratio: 16 / 11;
+  min-height: 280px;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__gallery-item img {
+  object-fit: cover;
+}
+
+/* Title + wishlist */
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__title-row {
+  margin-bottom: 10px;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__title {
+  font-family: var(--pdp-font-serif);
+  font-size: clamp(26px, 2.4vw, 34px);
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--pdp-navy);
+  letter-spacing: -0.01em;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__heart {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: var(--pdp-navy);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__heart:hover {
+  color: #c0392b;
+}
+
+/* Reviews + SKU */
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__reviews-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  margin-bottom: 12px;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  color: #f5a623;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__review-count {
+  margin-left: 6px;
+  font-size: 13px;
+  color: var(--pdp-muted);
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__sku-inline {
+  font-size: 13px;
+  color: var(--pdp-muted);
+}
+
+/* Specs */
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__specs {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--pdp-muted);
+  margin: 0 0 16px;
+}
+
+/* Price */
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__price-row {
+  gap: 10px 14px;
+  margin-bottom: 20px;
+  align-items: baseline;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__sell-price {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--pdp-text);
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__regular-price {
+  font-size: 16px;
+  color: #9ca3af;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-badge--save {
+  background: transparent;
+  color: var(--pdp-teal);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0;
+}
+
+/* Variant sections */
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__variants-block {
+  margin: 0 0 20px;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__variant-selects {
+  gap: 20px;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__option {
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__option-label--stacked {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--pdp-text);
+  padding-bottom: 10px;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__metal-selected {
+  font-weight: 400;
+  color: var(--pdp-muted);
+}
+
+/* Metal tabs */
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__metal-tabs {
+  gap: 8px;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__metal-tab {
+  min-height: 46px;
+  border: 1px solid var(--pdp-border);
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--pdp-text);
+  background: #fff;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__metal-tabs input:checked + .gemluxjewel-pdp__metal-tab {
+  background: var(--pdp-navy);
+  border-color: var(--pdp-navy);
+  color: #fff;
+}
+
+/* Gold 3×3 grid */
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__gold-options {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--pdp-border);
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__gold-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  max-width: 240px;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__gold-grid-cell {
+  position: relative;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__gold-grid-cell input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__gold-grid-swatch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1;
+  max-width: 72px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__gold-grid-swatch span {
+  position: relative;
+  z-index: 1;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__gold-grid-swatch--white {
+  background: linear-gradient(145deg, #f8f8f8, #d4d4d4);
+  color: #555;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__gold-grid-swatch--yellow {
+  background: linear-gradient(145deg, #ffe9a0, #d4af37);
+  color: #5c4a1a;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__gold-grid-swatch--rose {
+  background: linear-gradient(145deg, #f0c4c8, #b76e79);
+  color: #5c2a32;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__gold-grid-cell input:checked + .gemluxjewel-pdp__gold-grid-swatch {
+  border-color: var(--pdp-navy);
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--pdp-navy);
+}
+
+/* Diamond size */
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__diamond-grid {
+  gap: 8px;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__diamond-btn {
+  min-width: 58px;
+  min-height: 42px;
+  padding: 8px 12px;
+  border: 1px solid var(--pdp-border);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--pdp-text);
+  background: #fff;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__diamond-grid input:checked + .gemluxjewel-pdp__diamond-btn {
+  background: var(--pdp-navy);
+  border-color: var(--pdp-navy);
+  color: #fff;
+}
+
+/* Ring size */
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__ring-head {
+  margin-bottom: 8px;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__find-size {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--pdp-teal);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__ring-select {
+  min-height: 46px;
+  border: 1px solid var(--pdp-border);
+  border-radius: 4px;
+  font-size: 14px;
+  color: var(--pdp-muted);
+  appearance: auto;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='1.5' fill='none'/%3E%3C/svg%3E") no-repeat right 14px center;
+  padding-right: 36px;
+}
+
+/* Add to cart */
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__submit--full {
+  min-height: 50px;
+  border-radius: 4px;
+  background: var(--pdp-navy-dark);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 4px 0 12px;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__submit--full:hover:not(:disabled) {
+  background: var(--pdp-navy);
+  opacity: 1;
+}
+
+/* Consultation */
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__consultation {
+  text-align: center;
+  font-size: 13px;
+  margin: 0 0 20px;
+  color: var(--pdp-muted);
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__consultation a {
+  color: var(--pdp-teal);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Shipping estimate */
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__shipping-estimate {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 16px;
+  margin-bottom: 20px;
+  background: #fafbfc;
+  border: 1px solid var(--pdp-border);
+  border-radius: 4px;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__shipping-estimate-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__shipping-estimate-icon {
+  font-size: 18px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__shipping-estimate-label {
+  display: block;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--pdp-muted);
+  margin-bottom: 2px;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__shipping-estimate-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--pdp-text);
+}
+
+/* Trust badges */
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__trust-inline {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 749px) {
+  .gemluxjewel-pdp--ref .gemluxjewel-pdp__trust-inline {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__trust-inline-item {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  font-size: 11px;
+  line-height: 1.35;
+  color: var(--pdp-muted);
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__trust-inline-icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__trust-inline-icon img {
+  width: 24px;
+  height: 24px;
+  opacity: 0.7;
+}
+
+/* Gift banner */
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__gift-banner {
+  padding: 14px 16px;
+  margin-bottom: 24px;
+  background: var(--pdp-teal-light);
+  border: 1px solid rgba(74, 159, 176, 0.25);
+  border-radius: 4px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Accordions */
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion {
+  margin-bottom: 28px;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion .closet-header {
+  padding: 16px 0;
+  border-top: 1px solid var(--pdp-border);
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion .closet-item:last-child .closet-header {
+  border-bottom: 1px solid var(--pdp-border);
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion .closet-header-title {
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: none;
+  color: var(--pdp-text);
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion .accordion-close img {
+  height: 14px;
+  opacity: 0.5;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion .closet-content__inner {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--pdp-muted);
+  padding-bottom: 16px;
+}
+
+/* Complete the set */
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__complete-set {
+  margin-top: 8px;
+  padding-top: 24px;
+  border-top: 1px solid var(--pdp-border);
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__complete-set-heading {
+  font-family: var(--pdp-font-serif);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--pdp-navy);
+  margin-bottom: 16px;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__complete-set-nav {
+  border-color: var(--pdp-border);
+  width: 36px;
+  height: 36px;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__complete-set-title {
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__complete-set-price {
+  font-size: 13px;
+  color: var(--pdp-navy);
+}
+
+/* Hide legacy green pill styles inside ref PDP */
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__option--pill .gemluxjewel-pdp__pill {
+  border-color: var(--pdp-border);
+  color: var(--pdp-text);
+  border-radius: 4px;
+  min-width: auto;
+  min-height: 40px;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__option--pill input:checked + .gemluxjewel-pdp__pill {
+  background: var(--pdp-navy);
+  border-color: var(--pdp-navy);
+  color: #fff;
+}
+
+@media (max-width: 989px) {
+  .gemluxjewel-pdp--ref .gemluxjewel-pdp__shipping-estimate {
+    grid-template-columns: 1fr;
+  }
+
+  .gemluxjewel-pdp--ref .gemluxjewel-pdp__gallery-col {
+    position: static;
+  }
+}
