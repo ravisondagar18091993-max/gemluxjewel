@@ -46,7 +46,7 @@
 
 .gemluxjewel-engagement-categories {
   padding-top: var(--gemluxjewel-engagement-space-section-top);
-  padding-bottom: var(--gemluxjewel-engagement-space-section);
+  padding-bottom: var(--gemluxjewel-engagement-space-section-top);
 }
 
 .gemluxjewel-engagement-faq {
@@ -63,8 +63,8 @@
   padding-top: 0;
 }
 
-.shopify-section:has(.gemluxjewel-engagement-categories):has(+ .shopify-section .gemluxjewel-engagement-faq) .gemluxjewel-engagement-categories {
-  padding-bottom: 0;
+.shopify-section:has(.gemluxjewel-engagement-categories) + .shopify-section:has(.gemluxjewel-engagement-faq) .gemluxjewel-engagement-faq {
+  padding-top: 0;
 }
 
 /* Tighter gap between back-to-back product showcases */
