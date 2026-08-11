@@ -1,9 +1,8 @@
 {{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
 {{ 'section-gemluxjewel-custom-jewellery.css' | asset_url | stylesheet_tag }}
 
-<section class="gemluxjewel gemluxjewel-custom-promo">
-  <div class="gemluxjewel-container">
-    <div class="gemluxjewel-custom-promo__banner">
+<section class="gemluxjewel gemluxjewel-custom-promo gemluxjewel-custom-promo--full">
+  <div class="gemluxjewel-custom-promo__banner">
       <div class="gemluxjewel-custom-promo__bg" aria-hidden="true">
         {%- if section.settings.image != blank -%}
           {{
@@ -35,10 +34,11 @@
         {%- if section.settings.text != blank -%}
           <p class="gemluxjewel-custom-promo__text">{{ section.settings.text | escape }}</p>
         {%- endif -%}
-        {%- if section.settings.button_label != blank -%}
-          {% render 'gemluxjewel-btn', label: section.settings.button_label, url: section.settings.button_link, style: 'green' %}
-        {%- endif -%}
-      </div>
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ section.settings.button_link | default: routes.root_url }}" class="gemluxjewel-custom-form__btn gemluxjewel-custom-form__btn--inline">
+          {{ section.settings.button_label | escape }}
+        </a>
+      {%- endif -%}
     </div>
   </div>
 </section>

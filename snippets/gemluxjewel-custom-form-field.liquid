@@ -1,0 +1,91 @@
+{% comment %}
+  Renders a custom jewellery form field.
+  Accepts: block (with type select_field | text_field | email_field | tel_field | textarea_field)
+{% endcomment %}
+
+{%- liquid
+  assign field_id = 'GemluxCustomForm-' | append: block.id
+  assign field_name = block.settings.field_name | default: block.settings.label | handleize
+  assign contact_key = 'contact[' | append: field_name | append: ']'
+  assign is_required = block.settings.required
+  assign placeholder = block.settings.placeholder
+-%}
+
+<div
+  class="gemluxjewel-custom-form__field{% if block.settings.full_width %} gemluxjewel-custom-form__field--full{% endif %}"
+  {{ block.shopify_attributes }}
+>
+  {%- if block.settings.label != blank -%}
+    <label class="gemluxjewel-custom-form__label" for="{{ field_id }}">
+      {{ block.settings.label | escape }}{% if is_required %} *{% endif %}
+    </label>
+  {%- endif -%}
+
+  {%- case block.type -%}
+    {%- when 'select_field' -%}
+      {%- assign options = block.settings.options | split: ',' -%}
+      <select
+        class="gemluxjewel-custom-form__select"
+        id="{{ field_id }}"
+        name="{{ contact_key }}"
+        {% if is_required %}required{% endif %}
+      >
+        <option value="">{{ placeholder | default: 'Choose an option' | escape }}</option>
+        {%- for option in options -%}
+          {%- assign option_label = option | strip -%}
+          {%- if option_label != blank -%}
+            <option value="{{ option_label | escape }}">{{ option_label | escape }}</option>
+          {%- endif -%}
+        {%- endfor -%}
+      </select>
+
+    {%- when 'textarea_field' -%}
+      {%- if field_name == 'body' -%}
+        {%- assign textarea_name = 'contact[body]' -%}
+      {%- else -%}
+        {%- assign textarea_name = contact_key -%}
+      {%- endif -%}
+      <textarea
+        class="gemluxjewel-custom-form__textarea"
+        id="{{ field_id }}"
+        name="{{ textarea_name }}"
+        rows="{{ block.settings.rows | default: 5 }}"
+        placeholder="{{ placeholder | escape }}"
+        {% if is_required %}required{% endif %}
+      >{% if field_name == 'body' %}{{ form.body }}{% endif %}</textarea>
+
+    {%- when 'email_field' -%}
+      <input
+        class="gemluxjewel-custom-form__input"
+        type="email"
+        id="{{ field_id }}"
+        name="contact[email]"
+        placeholder="{{ placeholder | escape }}"
+        autocomplete="email"
+        {% if is_required %}required{% endif %}
+      >
+
+    {%- when 'tel_field' -%}
+      <input
+        class="gemluxjewel-custom-form__input"
+        type="tel"
+        id="{{ field_id }}"
+        name="{{ contact_key }}"
+        placeholder="{{ placeholder | escape }}"
+        autocomplete="tel"
+        {% if is_required %}required{% endif %}
+      >
+
+    {%- else -%}
+      <input
+        class="gemluxjewel-custom-form__input"
+        type="text"
+        id="{{ field_id }}"
+        name="{{ contact_key }}"
+        placeholder="{{ placeholder | escape }}"
+        {% if block.type == 'text_field' and field_name == 'first_name' %}autocomplete="given-name"{% endif %}
+        {% if block.type == 'text_field' and field_name == 'last_name' %}autocomplete="family-name"{% endif %}
+        {% if is_required %}required{% endif %}
+      >
+  {%- endcase -%}
+</div>

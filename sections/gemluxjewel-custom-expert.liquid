@@ -3,27 +3,42 @@
 
 <section class="gemluxjewel gemluxjewel-custom-expert">
   <div class="gemluxjewel-container">
-    <div class="gemluxjewel-custom-expert__inner">
-      <div class="gemluxjewel-custom-expert__icon">
-        {%- if section.settings.icon != blank -%}
+    <div class="gemluxjewel-custom-expert__grid">
+      <div class="gemluxjewel-custom-expert__media">
+        {%- if section.settings.image != blank -%}
           {{
-            section.settings.icon
-            | image_url: width: 56
-            | image_tag: widths: '28, 56', sizes: '28px', loading: 'lazy', alt: ''
+            section.settings.image
+            | image_url: width: 1200
+            | image_tag:
+              widths: '600, 900, 1200',
+              sizes: '(min-width: 990px) 50vw, 100vw',
+              loading: 'lazy',
+              alt: section.settings.title
           }}
         {%- else -%}
-          <img src="{{ 'diamond.svg' | asset_url }}" alt="" width="28" height="28">
+          {% render 'gemluxjewel-theme-image',
+            use_store_media: true,
+            seed: 5,
+            width: 1200,
+            widths: '600,900,1200',
+            sizes: '(min-width: 990px) 50vw, 100vw',
+            alt: section.settings.title
+          %}
         {%- endif -%}
       </div>
-      {%- if section.settings.title != blank -%}
-        <h2 class="gemluxjewel-custom-expert__title">{{ section.settings.title | escape }}</h2>
-      {%- endif -%}
-      {%- if section.settings.text != blank -%}
-        <p class="gemluxjewel-custom-expert__text">{{ section.settings.text | escape }}</p>
-      {%- endif -%}
-      {%- if section.settings.button_label != blank -%}
-        {% render 'gemluxjewel-btn', label: section.settings.button_label, url: section.settings.button_link, style: 'green' %}
-      {%- endif -%}
+      <div class="gemluxjewel-custom-expert__content">
+        {%- if section.settings.title != blank -%}
+          <h2 class="gemluxjewel-custom-expert__title">{{ section.settings.title | escape }}</h2>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <p class="gemluxjewel-custom-expert__text">{{ section.settings.text | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.button_label != blank -%}
+          <a href="{{ section.settings.button_link | default: routes.root_url }}" class="gemluxjewel-custom-form__btn gemluxjewel-custom-form__btn--inline">
+            {{ section.settings.button_label | escape }}
+          </a>
+        {%- endif -%}
+      </div>
     </div>
   </div>
 </section>
@@ -34,15 +49,15 @@
   "tag": "section",
   "class": "section gemluxjewel-section",
   "settings": [
-    { "type": "image_picker", "id": "icon", "label": "Icon" },
-    { "type": "text", "id": "title", "label": "Heading", "default": "Need Assistance? Speak with Our Expert!" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "title", "label": "Heading", "default": "Need Expert Advice?" },
     {
       "type": "textarea",
       "id": "text",
       "label": "Description",
-      "default": "Our jewellery specialists are here to answer your questions and guide you through the custom design process."
+      "default": "Our gemologists are available for virtual consultations to help you design the perfect ring."
     },
-    { "type": "text", "id": "button_label", "label": "Button label", "default": "Speak with Our Expert" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Book a Consultation" },
     { "type": "url", "id": "button_link", "label": "Button link" }
   ],
   "presets": [{ "name": "GL Custom Expert" }]

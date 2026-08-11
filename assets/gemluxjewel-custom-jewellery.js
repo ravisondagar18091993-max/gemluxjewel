@@ -2,64 +2,8 @@ document.addEventListener('DOMContentLoaded', initGemluxjewelCustomJewellery);
 document.addEventListener('shopify:section:load', initGemluxjewelCustomJewellery);
 
 function initGemluxjewelCustomJewellery() {
-  initCustomFormTabs();
-  initCustomFormMetalTags();
   initCustomFaqTabs();
   initCustomPortfolioSlider();
-}
-
-function initCustomFormTabs() {
-  document.querySelectorAll('[data-gemluxjewel-custom-form]').forEach(function (formWrap) {
-    if (formWrap.dataset.gemluxjewelCustomFormReady === 'true') return;
-
-    var tabs = formWrap.querySelectorAll('[data-gemluxjewel-custom-form-tab]');
-    var hiddenInput = formWrap.querySelector('[data-gemluxjewel-custom-form-type]');
-    if (!tabs.length || !hiddenInput) return;
-
-    tabs.forEach(function (tab) {
-      tab.addEventListener('click', function () {
-        tabs.forEach(function (t) {
-          t.classList.remove('is-active');
-          t.setAttribute('aria-selected', 'false');
-        });
-        tab.classList.add('is-active');
-        tab.setAttribute('aria-selected', 'true');
-        hiddenInput.value = tab.dataset.value || tab.textContent.trim();
-      });
-    });
-
-    formWrap.dataset.gemluxjewelCustomFormReady = 'true';
-  });
-}
-
-function initCustomFormMetalTags() {
-  document.querySelectorAll('[data-gemluxjewel-custom-metal]').forEach(function (wrap) {
-    if (wrap.dataset.gemluxjewelCustomMetalReady === 'true') return;
-
-    var tags = wrap.querySelectorAll('[data-gemluxjewel-custom-metal-tag]');
-    var hiddenInput = wrap.querySelector('[data-gemluxjewel-custom-metal-value]');
-    if (!tags.length || !hiddenInput) return;
-
-    var selected = [];
-
-    tags.forEach(function (tag) {
-      tag.addEventListener('click', function () {
-        var value = tag.dataset.value || tag.textContent.trim();
-        if (tag.classList.contains('is-active')) {
-          tag.classList.remove('is-active');
-          selected = selected.filter(function (v) {
-            return v !== value;
-          });
-        } else {
-          tag.classList.add('is-active');
-          selected.push(value);
-        }
-        hiddenInput.value = selected.join(', ');
-      });
-    });
-
-    wrap.dataset.gemluxjewelCustomMetalReady = 'true';
-  });
 }
 
 function initCustomFaqTabs() {

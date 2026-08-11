@@ -1,44 +1,34 @@
 {% render 'gemluxjewel-fonts' %}
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
 {{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
 {{ 'section-gemluxjewel-custom-jewellery.css' | asset_url | stylesheet_tag }}
 
-<section class="gemluxjewel gemluxjewel-custom-hero">
-  <div class="gemluxjewel-custom-hero__bg" aria-hidden="true">
-    {%- if section.settings.image != blank -%}
-      {{
-        section.settings.image
-        | image_url: width: 2000
-        | image_tag:
-          widths: '800, 1200, 1600, 2000',
-          sizes: '100vw',
-          loading: 'eager',
-          alt: ''
-      }}
-    {%- else -%}
-      {% render 'gemluxjewel-theme-image',
-        use_store_media: true,
-        seed: 1,
-        width: 2000,
-        widths: '800,1200,2000',
-        sizes: '100vw',
-        alt: section.settings.title
-      %}
-    {%- endif -%}
-    <div class="gemluxjewel-custom-hero__overlay"></div>
-  </div>
-
+<section class="gemluxjewel gemluxjewel-custom-hero gemluxjewel-custom-hero--intro">
   <div class="gemluxjewel-container">
-    <div class="gemluxjewel-custom-hero__content">
-      {%- if section.settings.prefix != blank -%}
-        <p class="gemluxjewel-prefix gemluxjewel-custom-hero__prefix">{{ section.settings.prefix | escape }}</p>
-      {%- endif -%}
-      {%- if section.settings.title != blank -%}
-        <h1 class="gemluxjewel-custom-hero__title">{{ section.settings.title | escape }}</h1>
-      {%- endif -%}
-      {%- if section.settings.text != blank -%}
-        <p class="gemluxjewel-custom-hero__text">{{ section.settings.text | escape }}</p>
-      {%- endif -%}
-    </div>
+    {%- if section.settings.show_breadcrumb -%}
+      <nav class="gemluxjewel-custom-hero__breadcrumb" aria-label="Breadcrumb">
+        <a href="{{ routes.root_url }}">{{ section.settings.breadcrumb_home | default: 'Home' | escape }}</a>
+        {%- if section.settings.breadcrumb_parent != blank -%}
+          <span class="gemluxjewel-custom-hero__breadcrumb-sep">/</span>
+          {%- if section.settings.breadcrumb_parent_link != blank -%}
+            <a href="{{ section.settings.breadcrumb_parent_link }}">{{ section.settings.breadcrumb_parent | escape }}</a>
+          {%- else -%}
+            <span>{{ section.settings.breadcrumb_parent | escape }}</span>
+          {%- endif -%}
+        {%- endif -%}
+        {%- if section.settings.breadcrumb_current != blank -%}
+          <span class="gemluxjewel-custom-hero__breadcrumb-sep">/</span>
+          <span class="gemluxjewel-custom-hero__breadcrumb-current">{{ section.settings.breadcrumb_current | escape }}</span>
+        {%- endif -%}
+      </nav>
+    {%- endif -%}
+
+    {%- if section.settings.title != blank -%}
+      <h1 class="gemluxjewel-custom-hero__title">{{ section.settings.title | escape }}</h1>
+    {%- endif -%}
+    {%- if section.settings.text != blank -%}
+      <p class="gemluxjewel-custom-hero__text">{{ section.settings.text | escape }}</p>
+    {%- endif -%}
   </div>
 </section>
 
@@ -48,15 +38,28 @@
   "tag": "section",
   "class": "section gemluxjewel-section",
   "settings": [
-    { "type": "text", "id": "prefix", "label": "Prefix", "default": "Bespoke Service" },
-    { "type": "text", "id": "title", "label": "Heading", "default": "Design Your Own Jewellery" },
+    {
+      "type": "checkbox",
+      "id": "show_breadcrumb",
+      "label": "Show breadcrumb",
+      "default": true
+    },
+    { "type": "text", "id": "breadcrumb_home", "label": "Breadcrumb home", "default": "Home" },
+    { "type": "text", "id": "breadcrumb_parent", "label": "Breadcrumb parent", "default": "Rings" },
+    { "type": "url", "id": "breadcrumb_parent_link", "label": "Breadcrumb parent link" },
+    { "type": "text", "id": "breadcrumb_current", "label": "Breadcrumb current", "default": "Engagement Ring" },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Custom Lab Grown Diamond Engagement Rings"
+    },
     {
       "type": "textarea",
       "id": "text",
       "label": "Subheading",
-      "default": "Tell us your story and we will create a piece made just for you."
-    },
-    { "type": "image_picker", "id": "image", "label": "Background image" }
+      "info": "Optional — leave blank to hide."
+    }
   ],
   "presets": [{ "name": "gemluxjewel Custom Hero" }]
 }

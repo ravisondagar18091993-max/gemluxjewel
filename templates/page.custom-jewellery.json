@@ -12,161 +12,149 @@
     "custom_hero": {
       "type": "gemluxjewel-custom-hero",
       "settings": {
-        "prefix": "Bespoke Service",
-        "title": "Design Your Own Jewellery",
-        "text": "Tell us your story and we will create a piece made just for you."
-      }
-    },
-    "custom_process": {
-      "type": "gemluxjewel-custom-process",
-      "blocks": {
-        "s1": {
-          "type": "step",
-          "settings": {
-            "title": "Explore & Share",
-            "text": "Share your ideas, inspiration, and budget with our design team."
-          }
-        },
-        "s2": {
-          "type": "step",
-          "settings": {
-            "title": "3D Visualization",
-            "text": "We create detailed 3D renders so you can see your piece before it is made."
-          }
-        },
-        "s3": {
-          "type": "step",
-          "settings": {
-            "title": "Craftsmanship",
-            "text": "Skilled artisans handcraft your jewellery using ethically sourced materials."
-          }
-        },
-        "s4": {
-          "type": "step",
-          "settings": {
-            "title": "Final Delivery",
-            "text": "Your finished piece is carefully packaged and delivered to your door."
-          }
-        }
-      },
-      "block_order": ["s1", "s2", "s3", "s4"],
-      "settings": {
-        "prefix": "How It Works",
-        "title": "Your Custom Design Process",
-        "subtitle": "From first sketch to final delivery — a seamless journey crafted around your vision."
+        "show_breadcrumb": true,
+        "breadcrumb_home": "Home",
+        "breadcrumb_parent": "Rings",
+        "breadcrumb_current": "Engagement Ring",
+        "title": "Custom Lab Grown Diamond Engagement Rings"
       }
     },
     "custom_form": {
       "type": "gemluxjewel-custom-form",
       "blocks": {
-        "t1": { "type": "type_tab", "settings": { "label": "Engagement Ring" } },
-        "t2": { "type": "type_tab", "settings": { "label": "Wedding Ring" } },
-        "t3": { "type": "type_tab", "settings": { "label": "Earrings" } },
-        "t4": { "type": "type_tab", "settings": { "label": "Necklaces" } },
-        "t5": { "type": "type_tab", "settings": { "label": "Bracelets" } },
-        "t6": { "type": "type_tab", "settings": { "label": "Others" } }
+        "f_first": {
+          "type": "text_field",
+          "settings": {
+            "label": "First Name",
+            "field_name": "first_name",
+            "placeholder": "First Name",
+            "required": true
+          }
+        },
+        "f_last": {
+          "type": "text_field",
+          "settings": {
+            "label": "Last Name",
+            "field_name": "last_name",
+            "placeholder": "Last Name",
+            "required": true
+          }
+        },
+        "f_metal": {
+          "type": "select_field",
+          "settings": {
+            "label": "What metal color do you prefer?",
+            "field_name": "metal_color",
+            "placeholder": "e.g. 14K White Gold",
+            "options": "14K White Gold, 14K Yellow Gold, 14K Rose Gold, 18K White Gold, 18K Yellow Gold, Platinum",
+            "full_width": true
+          }
+        },
+        "f_shape": {
+          "type": "select_field",
+          "settings": {
+            "label": "Choose Your Diamond Shape",
+            "field_name": "diamond_shape",
+            "placeholder": "Select a shape",
+            "options": "Round, Oval, Cushion, Princess, Pear, Marquise, Emerald, Radiant, Asscher, Heart",
+            "full_width": true
+          }
+        },
+        "f_carat": {
+          "type": "select_field",
+          "settings": {
+            "label": "What is the carat weight you're looking for?",
+            "field_name": "carat_weight",
+            "placeholder": "1.00 - 1.25 ct",
+            "options": "Under 1.00 ct, 1.00 - 1.25 ct, 1.25 - 1.50 ct, 1.50 - 2.00 ct, 2.00 - 3.00 ct, Over 3.00 ct",
+            "full_width": true
+          }
+        },
+        "f_budget": {
+          "type": "select_field",
+          "settings": {
+            "label": "What is your budget for your ring and center stone?",
+            "field_name": "budget",
+            "placeholder": "Choose an option",
+            "options": "Under $1,000, $1,000 - $2,500, $2,500 - $5,000, $5,000 - $10,000, Over $10,000",
+            "full_width": true
+          }
+        },
+        "f_setting": {
+          "type": "select_field",
+          "settings": {
+            "label": "What ring setting style do you like?",
+            "field_name": "setting_style",
+            "placeholder": "Solitaire",
+            "options": "Solitaire, Halo, Three Stone, Pavé, Vintage, Hidden Halo, Bezel",
+            "full_width": true
+          }
+        },
+        "f_size": {
+          "type": "select_field",
+          "settings": {
+            "label": "What is your preferred ring size?",
+            "field_name": "ring_size",
+            "placeholder": "Choose an option",
+            "options": "I don't know yet, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10",
+            "full_width": true
+          }
+        },
+        "u_size": {
+          "type": "utility_card",
+          "settings": {
+            "title": "Find Your Ring Size",
+            "text": "Use our ring size guide to find your perfect fit before you order.",
+            "button_label": "Ring Size Guide"
+          }
+        },
+        "u_gem": {
+          "type": "utility_card",
+          "settings": {
+            "title": "Talk with a Gemologist",
+            "text": "Book a virtual consultation with our experts for personalized guidance.",
+            "button_label": "Book Consultation",
+            "button_link": "shopify://pages/contact"
+          }
+        }
       },
-      "block_order": ["t1", "t2", "t3", "t4", "t5", "t6"],
+      "block_order": [
+        "f_first",
+        "f_last",
+        "f_metal",
+        "f_shape",
+        "f_carat",
+        "f_budget",
+        "f_setting",
+        "f_size",
+        "u_size",
+        "u_gem"
+      ],
       "settings": {
-        "prefix": "Get Started",
-        "title": "Start Your Custom Design Request",
-        "subtitle": "Fill in the details below and our experts will guide you through every step.",
-        "default_type": "Engagement Ring",
-        "metals": "White Gold,Yellow Gold,Rose Gold,Platinum,Silver",
-        "button_label": "Submit Request",
-        "success_message": "Thank you! Our design team will be in touch within 24 hours."
+        "title": "Custom Lab Grown Diamond Engagement Rings",
+        "button_label": "Next Step",
+        "show_ring_sizer": true,
+        "ring_sizer_label": "Get a free ring sizer kit. Usually $15 Value."
       }
     },
     "custom_trust": {
       "type": "gemluxjewel-pdp-trust",
       "settings": {
-        "label_1": "Certified Diamonds",
-        "label_2": "Made in Studio",
-        "label_3": "Responsibly Sourced",
-        "label_4": "Lifetime Warranty",
-        "label_5": "Free Shipping",
-        "label_6": "Expert Guidance"
-      }
-    },
-    "custom_portfolio": {
-      "type": "gemluxjewel-custom-portfolio",
-      "blocks": {
-        "p1": { "type": "item", "settings": { "title": "View" } },
-        "p2": { "type": "item", "settings": { "title": "View" } },
-        "p3": { "type": "item", "settings": { "title": "View" } },
-        "p4": { "type": "item", "settings": { "title": "View" } },
-        "p5": { "type": "item", "settings": { "title": "View" } },
-        "p6": { "type": "item", "settings": { "title": "View" } }
-      },
-      "block_order": ["p1", "p2", "p3", "p4", "p5", "p6"],
-      "settings": {
-        "prefix": "Our Work",
-        "title": "Our Recent Custom Work",
-        "subtitle": "Browse bespoke pieces crafted for our clients."
-      }
-    },
-    "custom_testimonials": {
-      "type": "gemluxjewel-testimonials",
-      "blocks": {
-        "r1": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "text": "The custom engagement ring exceeded every expectation. The 3D preview made the whole process feel personal and exciting.",
-            "author": "James & Sarah – United Kingdom"
-          }
-        },
-        "r2": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "text": "From the first consultation to delivery, the team was patient, creative, and incredibly detail-oriented.",
-            "author": "Priya Sharma – India"
-          }
-        },
-        "r3": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "text": "I had a very specific vision for my wedding band and they brought it to life perfectly. Could not be happier.",
-            "author": "Michael Torres – United States"
-          }
-        },
-        "r4": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "text": "Beautiful craftsmanship and excellent communication throughout. Highly recommend for bespoke jewellery.",
-            "author": "Emma Laurent – France"
-          }
-        }
-      },
-      "block_order": ["r1", "r2", "r3", "r4"],
-      "settings": {
-        "title": "Custom Creation Reviews",
-        "subtitle": "Real stories from clients who designed their dream pieces with us.",
-        "show_summary": true,
-        "summary_label": "Trusted Rating",
-        "average_rating": "4.9",
-        "review_count": "500+ custom reviews"
-      }
-    },
-    "custom_expert": {
-      "type": "gemluxjewel-custom-expert",
-      "settings": {
-        "title": "Need Assistance? Speak with Our Expert!",
-        "text": "Our jewellery specialists are here to answer your questions and guide you through the custom design process.",
-        "button_label": "Speak with Our Expert",
-        "button_link": "shopify://pages/contact"
+        "label_1": "GIA Certified",
+        "label_2": "Conflict-free",
+        "label_3": "Made in Studio",
+        "label_4": "Responsibly Sourced",
+        "label_5": "Lifetime Warranty",
+        "label_6": "Free Shipping"
       }
     },
     "custom_promo": {
       "type": "gemluxjewel-custom-promo",
       "settings": {
-        "title": "Timeless Ring Styles",
-        "text": "Explore our curated collection of ready-to-wear rings while your custom piece is being crafted.",
-        "button_label": "Shop Now",
-        "button_link": "shopify://collections/all"
+        "title": "Crafted by Hand, Designed for You",
+        "text": "Every custom ring begins with your vision and is brought to life by our master artisans.",
+        "button_label": "Explore Our Process",
+        "button_link": "shopify://pages/contact"
       }
     },
     "custom_faq": {
@@ -175,85 +163,84 @@
         "f1": {
           "type": "faq",
           "settings": {
-            "category": "product",
-            "question": "How long does a custom piece take to create?",
-            "answer": "<p>Most custom pieces take 4–6 weeks from design approval to delivery. Complex designs may require additional time.</p>"
+            "question": "What is custom jewelry?",
+            "answer": "<p>Custom jewelry is designed and crafted specifically for you, based on your preferences for metal, stone, shape, and setting style.</p>"
           }
         },
         "f2": {
           "type": "faq",
           "settings": {
-            "category": "product",
-            "question": "Can I see a 3D render before production?",
-            "answer": "<p>Yes. We provide detailed 3D visualisations for your approval before any manufacturing begins.</p>"
+            "question": "How is custom jewelry made at Gemlux?",
+            "answer": "<p>Our team guides you from initial consultation through 3D design, stone selection, and handcrafting in our studio.</p>"
           }
         },
         "f3": {
           "type": "faq",
           "settings": {
-            "category": "product",
-            "question": "What materials can I choose from?",
-            "answer": "<p>We offer white gold, yellow gold, rose gold, platinum, and silver — all ethically sourced and certified.</p>"
+            "question": "How much does it cost to get a custom design?",
+            "answer": "<p>Pricing depends on metal, stone size, and complexity. Share your budget in the form above and we will recommend options within your range.</p>"
           }
         },
         "f4": {
           "type": "faq",
           "settings": {
-            "category": "shipping",
-            "question": "Do you offer free shipping on custom orders?",
-            "answer": "<p>Yes, all custom jewellery orders include complimentary insured shipping within the UK.</p>"
+            "question": "How long does a custom ring take?",
+            "answer": "<p>Most custom engagement rings take 4–6 weeks from design approval to delivery.</p>"
           }
         },
         "f5": {
           "type": "faq",
           "settings": {
-            "category": "shipping",
-            "question": "Can you ship internationally?",
-            "answer": "<p>We ship worldwide. International delivery times and costs vary by destination.</p>"
-          }
-        },
-        "f6": {
-          "type": "faq",
-          "settings": {
-            "category": "returns",
-            "question": "Can I return a custom piece?",
-            "answer": "<p>Because each custom piece is made to your specifications, returns are handled on a case-by-case basis. We work closely with you during the design phase to ensure complete satisfaction.</p>"
-          }
-        },
-        "f7": {
-          "type": "faq",
-          "settings": {
-            "category": "general",
-            "question": "How do I get started?",
-            "answer": "<p>Simply fill in the custom design request form above, or book a consultation with one of our experts.</p>"
-          }
-        },
-        "f8": {
-          "type": "faq",
-          "settings": {
-            "category": "general",
-            "question": "Is there a minimum budget for custom work?",
-            "answer": "<p>We welcome projects of all sizes. Our team will work with you to create something beautiful within your budget.</p>"
+            "question": "Can I see a 3D render before production?",
+            "answer": "<p>Yes. We provide detailed 3D visualisations for your approval before any manufacturing begins.</p>"
           }
         }
       },
-      "block_order": ["f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8"],
+      "block_order": ["f1", "f2", "f3", "f4", "f5"],
       "settings": {
-        "prefix": "Need Help?",
-        "title": "Frequently Asked Questions",
-        "subtitle": "Everything you need to know about our custom jewellery service."
+        "title": "Because It Means More When It's Made Just For You!"
+      }
+    },
+    "custom_expert": {
+      "type": "gemluxjewel-custom-expert",
+      "settings": {
+        "title": "Need Expert Advice?",
+        "text": "Our gemologists are available for virtual consultations to help you design the perfect ring.",
+        "button_label": "Book a Consultation",
+        "button_link": "shopify://pages/contact"
+      }
+    },
+    "custom_portfolio": {
+      "type": "gemluxjewel-custom-portfolio",
+      "blocks": {
+        "p1": { "type": "item", "settings": { "title": "View" } },
+        "p2": { "type": "item", "settings": { "title": "View" } },
+        "p3": { "type": "item", "settings": { "title": "View" } },
+        "p4": { "type": "item", "settings": { "title": "View" } }
+      },
+      "block_order": ["p1", "p2", "p3", "p4"],
+      "settings": {
+        "prefix": "",
+        "title": "Your Perfect Ring, Made to Order",
+        "subtitle": "Browse recent custom creations from our studio."
+      }
+    },
+    "custom_why": {
+      "type": "gemluxjewel-custom-why",
+      "settings": {
+        "title": "Why to Buy Custom Engagement Ring?",
+        "content": "<p>A custom engagement ring lets you choose every detail — from the diamond shape and carat weight to the metal and setting — so the final piece reflects your story. Our lab grown diamonds offer exceptional beauty and value, with expert guidance at every step.</p><p>Unlike ready-to-ship designs, a custom ring is made to your exact specifications, ensuring a one-of-a-kind piece you will cherish forever.</p>"
       }
     }
   },
   "order": [
     "custom_hero",
-    "custom_process",
     "custom_form",
     "custom_trust",
-    "custom_portfolio",
-    "custom_testimonials",
-    "custom_expert",
     "custom_promo",
-    "custom_faq"
+    "custom_faq",
+    "custom_expert",
+    "custom_portfolio",
+    "custom_why"
   ]
 }

@@ -6,27 +6,9 @@
 
 <section class="gemluxjewel gemluxjewel-custom-faq" data-gemluxjewel-custom-faq>
   <div class="gemluxjewel-container">
-    <div class="gemluxjewel-section-header gemluxjewel-section-header--center">
-      <div>
-        {%- if section.settings.prefix != blank -%}
-          <p class="gemluxjewel-prefix">{{ section.settings.prefix | escape }}</p>
-        {%- endif -%}
-        {%- if section.settings.title != blank -%}
-          <h2 class="gemluxjewel-section-title">{{ section.settings.title | escape }}</h2>
-        {%- endif -%}
-        {%- if section.settings.subtitle != blank -%}
-          <p class="gemluxjewel-section-desc">{{ section.settings.subtitle | escape }}</p>
-        {%- endif -%}
-      </div>
-    </div>
-
-    <div class="gemluxjewel-custom-faq__tabs" role="tablist" aria-label="FAQ categories">
-      <button type="button" class="gemluxjewel-custom-faq__tab is-active" role="tab" aria-selected="true" data-gemluxjewel-custom-faq-tab data-category="all">All</button>
-      <button type="button" class="gemluxjewel-custom-faq__tab" role="tab" aria-selected="false" data-gemluxjewel-custom-faq-tab data-category="product">Product</button>
-      <button type="button" class="gemluxjewel-custom-faq__tab" role="tab" aria-selected="false" data-gemluxjewel-custom-faq-tab data-category="shipping">Shipping</button>
-      <button type="button" class="gemluxjewel-custom-faq__tab" role="tab" aria-selected="false" data-gemluxjewel-custom-faq-tab data-category="returns">Returns</button>
-      <button type="button" class="gemluxjewel-custom-faq__tab" role="tab" aria-selected="false" data-gemluxjewel-custom-faq-tab data-category="general">General</button>
-    </div>
+    {%- if section.settings.title != blank -%}
+      <h2 class="gemluxjewel-custom-faq__title">{{ section.settings.title | escape }}</h2>
+    {%- endif -%}
 
     {%- if section.blocks.size > 0 -%}
       <div class="gemluxjewel-custom-faq__accordion">
@@ -40,11 +22,13 @@
             >
               <div class="closet-header" role="button" tabindex="0" aria-expanded="false">
                 <div class="closet-header-title">{{ block.settings.question | escape }}</div>
-                <div class="accordion-close">
-                  <img src="{{ 'down-arrow.svg' | asset_url }}" alt="" width="24" height="24">
-                </div>
+                <span class="accordion-close" aria-hidden="true">
+                  <svg width="12" height="12" viewBox="0 0 12 12" focusable="false">
+                    <path d="M2 4.5 6 8.5 10 4.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
               </div>
-              <div class="closet-content">
+              <div class="closet-content" hidden>
                 <div class="closet-content__inner rte">
                   {{ block.settings.answer }}
                 </div>
@@ -64,13 +48,11 @@
   "class": "section gemluxjewel-section",
   "max_blocks": 30,
   "settings": [
-    { "type": "text", "id": "prefix", "label": "Prefix", "default": "Need Help?" },
-    { "type": "text", "id": "title", "label": "Heading", "default": "Frequently Asked Questions" },
     {
-      "type": "textarea",
-      "id": "subtitle",
-      "label": "Subheading",
-      "default": "Everything you need to know about our custom jewellery service."
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Because It Means More When It's Made Just For You!"
     }
   ],
   "blocks": [
@@ -94,13 +76,13 @@
           "type": "text",
           "id": "question",
           "label": "Question",
-          "default": "How long does a custom piece take to create?"
+          "default": "What is custom jewelry?"
         },
         {
           "type": "richtext",
           "id": "answer",
           "label": "Answer",
-          "default": "<p>Most custom pieces take 4–6 weeks from design approval to delivery. Complex designs may require additional time.</p>"
+          "default": "<p>Custom jewelry is designed and crafted specifically for you, based on your preferences for metal, stone, shape, and setting style.</p>"
         }
       ]
     }
@@ -112,65 +94,22 @@
         {
           "type": "faq",
           "settings": {
-            "category": "product",
-            "question": "How long does a custom piece take to create?",
-            "answer": "<p>Most custom pieces take 4–6 weeks from design approval to delivery. Complex designs may require additional time.</p>"
+            "question": "What is custom jewelry?",
+            "answer": "<p>Custom jewelry is designed and crafted specifically for you, based on your preferences for metal, stone, shape, and setting style.</p>"
           }
         },
         {
           "type": "faq",
           "settings": {
-            "category": "product",
-            "question": "Can I see a 3D render before production?",
-            "answer": "<p>Yes. We provide detailed 3D visualisations for your approval before any manufacturing begins.</p>"
+            "question": "How is custom jewelry made at Gemlux?",
+            "answer": "<p>Our team guides you from initial consultation through 3D design, stone selection, and handcrafting in our studio.</p>"
           }
         },
         {
           "type": "faq",
           "settings": {
-            "category": "product",
-            "question": "What materials can I choose from?",
-            "answer": "<p>We offer white gold, yellow gold, rose gold, platinum, and silver — all ethically sourced and certified.</p>"
-          }
-        },
-        {
-          "type": "faq",
-          "settings": {
-            "category": "shipping",
-            "question": "Do you offer free shipping on custom orders?",
-            "answer": "<p>Yes, all custom jewellery orders include complimentary insured shipping within the UK.</p>"
-          }
-        },
-        {
-          "type": "faq",
-          "settings": {
-            "category": "shipping",
-            "question": "Can you ship internationally?",
-            "answer": "<p>We ship worldwide. International delivery times and costs vary by destination.</p>"
-          }
-        },
-        {
-          "type": "faq",
-          "settings": {
-            "category": "returns",
-            "question": "Can I return a custom piece?",
-            "answer": "<p>Because each custom piece is made to your specifications, returns are handled on a case-by-case basis. We work closely with you during the design phase to ensure complete satisfaction.</p>"
-          }
-        },
-        {
-          "type": "faq",
-          "settings": {
-            "category": "general",
-            "question": "How do I get started?",
-            "answer": "<p>Simply fill in the custom design request form above, or book a consultation with one of our experts.</p>"
-          }
-        },
-        {
-          "type": "faq",
-          "settings": {
-            "category": "general",
-            "question": "Is there a minimum budget for custom work?",
-            "answer": "<p>We welcome projects of all sizes. Our team will work with you to create something beautiful within your budget.</p>"
+            "question": "How much does it cost to get a custom design?",
+            "answer": "<p>Pricing depends on metal, stone size, and complexity. Share your budget in the form above and we will recommend options within your range.</p>"
           }
         }
       ]
