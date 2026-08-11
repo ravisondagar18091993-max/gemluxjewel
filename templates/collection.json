@@ -26,37 +26,71 @@
         "shape_1": {
           "type": "shape",
           "settings": {
-            "title": "Round"
+            "title": "Round",
+            "image": "shopify://shop_images/round.avif"
           }
         },
         "shape_2": {
           "type": "shape",
           "settings": {
-            "title": "Oval"
+            "title": "Princess",
+            "image": "shopify://shop_images/Princecs_shape_diamond_png.png"
           }
         },
         "shape_3": {
           "type": "shape",
           "settings": {
-            "title": "Emerald"
+            "title": "Cushion",
+            "image": "shopify://shop_images/cushion_shape_diamond.png"
           }
         },
         "shape_4": {
           "type": "shape",
           "settings": {
-            "title": "Radiant"
+            "title": "Oval",
+            "image": "shopify://shop_images/oval_shape_diamond_png.png"
           }
         },
         "shape_5": {
           "type": "shape",
           "settings": {
-            "title": "Pear"
+            "title": "Emerald",
+            "image": "shopify://shop_images/emerald_shape_diamond_png.png"
           }
         },
         "shape_6": {
           "type": "shape",
           "settings": {
-            "title": "Cushion"
+            "title": "Pear",
+            "image": "shopify://shop_images/pear_shape_diamond.png"
+          }
+        },
+        "shape_7": {
+          "type": "shape",
+          "settings": {
+            "title": "Marquise",
+            "image": "shopify://shop_images/marquiese_shape_diamond.png"
+          }
+        },
+        "shape_8": {
+          "type": "shape",
+          "settings": {
+            "title": "Radiant",
+            "image": "shopify://shop_images/rediant_shape_diamond.png"
+          }
+        },
+        "shape_9": {
+          "type": "shape",
+          "settings": {
+            "title": "Heart",
+            "image": "shopify://shop_images/heart_shape_diamond.png"
+          }
+        },
+        "shape_10": {
+          "type": "shape",
+          "settings": {
+            "title": "Square",
+            "image": "shopify://shop_images/Princecs_shape_diamond_png.png"
           }
         },
         "setting_1": {
@@ -103,6 +137,10 @@
         "shape_4",
         "shape_5",
         "shape_6",
+        "shape_7",
+        "shape_8",
+        "shape_9",
+        "shape_10",
         "setting_1",
         "setting_2",
         "setting_3",
@@ -134,8 +172,10 @@
         "gemstone_dropdown_label": "Gemstone type",
         "ring_design_dropdown_label": "Ring design",
         "color_dropdown_label": "Color",
-        "enable_stone_shapes": false,
-        "stone_shapes_heading": "Diamond Shapes",
+        "enable_stone_shapes": true,
+        "auto_fetch_stone_shapes": true,
+        "stone_shapes_source_collection": "all",
+        "stone_shapes_heading": "Shop by Stone Shape",
         "stone_shape_filter_label": "Stone shape"
       }
     }

@@ -6,6 +6,10 @@ document.addEventListener('gemluxjewel:stone-shapes:refresh', function () {
   initGemluxjewelStoneShapes();
 });
 
+document.addEventListener('gemluxjewel:facets-updated', function () {
+  initGemluxjewelStoneShapes();
+});
+
 function initGemluxjewelStoneShapes() {
   document.querySelectorAll('[data-gemluxjewel-stone-shapes-slider]').forEach(function (slider) {
     if (slider.dataset.gemluxjewelStoneShapesReady === 'true') return;
@@ -23,8 +27,8 @@ function initGemluxjewelStoneShapes() {
 
     function getVisibleCount() {
       if (isPlp) {
-        if (window.matchMedia('(min-width: 1200px)').matches) return 5;
-        if (window.matchMedia('(min-width: 750px)').matches) return 4;
+        if (window.matchMedia('(min-width: 1200px)').matches) return 7;
+        if (window.matchMedia('(min-width: 750px)').matches) return 5;
         return 3;
       }
 

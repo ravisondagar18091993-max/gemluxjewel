@@ -4,6 +4,7 @@
 {{ 'component-facets.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'gemluxjewel-plp-filters.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'gemluxjewel-stone-shapes.js' | asset_url }}" defer="defer"></script>
 
 <collection-component
   view-event-payload="{{ collection | standard_event_data: 'view' | escape }}"
@@ -91,7 +92,9 @@
             {%- endif -%}
 
             <div id="ProductGridContainer">
-              {% render 'gemluxjewel-plp-stone-shapes', collection: collection, section: section %}
+              {%- if section.settings.enable_stone_shapes -%}
+                {% render 'gemluxjewel-plp-stone-shapes', collection: collection, section: section %}
+              {%- endif -%}
               {% render 'gemluxjewel-collection-grid', paginate: paginate %}
             </div>
           </div>
@@ -284,13 +287,26 @@
     },
     {
       "type": "paragraph",
-      "content": "Optional image grid above products. With horizontal filters, shapes appear in the Shape dropdown instead."
+      "content": "Optional shape slider above products — uses shape blocks below for icons (same as homepage Shop by Stone Shape)."
     },
     {
       "type": "checkbox",
       "id": "enable_stone_shapes",
-      "label": "Show stone shapes image grid above products",
-      "default": false
+      "label": "Show stone shapes slider above products",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_fetch_stone_shapes",
+      "label": "Auto-fetch shapes from source collection",
+      "default": true,
+      "info": "When enabled, all stone shape filter values from the source collection are shown (same as homepage). Shape blocks only override images."
+    },
+    {
+      "type": "collection",
+      "id": "stone_shapes_source_collection",
+      "label": "Stone shapes source collection",
+      "info": "Collection used to load all stone shapes. Defaults to All products."
     },
     {
       "type": "text",
