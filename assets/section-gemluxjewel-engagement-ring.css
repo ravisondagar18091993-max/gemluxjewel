@@ -51,8 +51,8 @@
 }
 
 /* Prevent double gaps between adjacent sections */
-.shopify-section:has(.gemluxjewel-engagement-hero):has(+ .shopify-section .gemluxjewel-engagement-dual) .gemluxjewel-engagement-hero {
-  padding-bottom: 0;
+.shopify-section:has(.gemluxjewel-engagement-hero) + .shopify-section:has(.gemluxjewel-engagement-dual) .gemluxjewel-engagement-dual {
+  padding-top: 0;
 }
 
 .shopify-section:has(.gemluxjewel-engagement-trust):has(+ .shopify-section .gemluxjewel-engagement-categories) .gemluxjewel-engagement-trust {
@@ -71,7 +71,7 @@
 /* ── Hero ── */
 .gemluxjewel-engagement-hero {
   background: var(--gemluxjewel-engagement-blue);
-  padding: calc(var(--gemluxjewel-header-offset, 108px) + 48px) 0 var(--gemluxjewel-engagement-space-section);
+  padding: calc(var(--gemluxjewel-header-offset, 108px) + 48px) 0 var(--gemluxjewel-engagement-space-section-top);
   text-align: center;
 }
 
