@@ -193,18 +193,20 @@
                     {% render 'gemluxjewel-pdp-accordion-item',
                       title: section.settings.description_title,
                       content: product.description,
-                      open_by_default: true
+                      open_by_default: section.settings.accordion_default_open == 'overview'
                     %}
                   {%- endif -%}
 
                   {% render 'gemluxjewel-pdp-accordion-item',
                     title: section.settings.ring_size_title,
-                    content: section.settings.ring_size_content
+                    content: section.settings.ring_size_content,
+                    open_by_default: section.settings.accordion_default_open == 'ring_size'
                   %}
 
                   {% render 'gemluxjewel-pdp-accordion-item',
                     title: section.settings.ring_details_title,
-                    content: section.settings.ring_details_content
+                    content: section.settings.ring_details_content,
+                    open_by_default: section.settings.accordion_default_open == 'ring_details'
                   %}
                 </div>
               </div>
@@ -366,6 +368,18 @@
     {
       "type": "header",
       "content": "Accordions"
+    },
+    {
+      "type": "select",
+      "id": "accordion_default_open",
+      "label": "Open accordion by default",
+      "options": [
+        { "value": "none", "label": "None (all collapsed)" },
+        { "value": "overview", "label": "Overview" },
+        { "value": "ring_size", "label": "Ring Size" },
+        { "value": "ring_details", "label": "Ring Details" }
+      ],
+      "default": "none"
     },
     {
       "type": "checkbox",

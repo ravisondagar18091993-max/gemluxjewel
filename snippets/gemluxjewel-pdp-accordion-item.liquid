@@ -12,11 +12,13 @@
       aria-expanded="{% if open_by_default %}true{% else %}false{% endif %}"
     >
       <div class="closet-header-title">{{ title | escape }}</div>
-      <div class="accordion-close">
-        <img src="{{ 'down-arrow.svg' | asset_url }}" alt="" width="24" height="24">
-      </div>
+      <span class="accordion-close" aria-hidden="true">
+        <svg class="gemluxjewel-pdp__accordion-icon" width="12" height="12" viewBox="0 0 12 12" focusable="false">
+          <path d="M2 4.5 6 8.5 10 4.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
     </div>
-    <div class="closet-content"{% if open_by_default %} style="display: block;"{% endif %}>
+    <div class="closet-content"{% unless open_by_default %} hidden{% endunless %}{% if open_by_default %} style="display: block;"{% endif %}>
       <div class="closet-content__inner rte">
         {{ content }}
       </div>

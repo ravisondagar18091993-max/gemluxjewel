@@ -520,35 +520,100 @@
 
 /* Accordions */
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion {
-  margin-bottom: 28px;
+  margin: 8px 0 28px;
 }
 
-.gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion .closet-header {
-  padding: 16px 0;
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion .closet-accordion {
+  border: 0;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion .closet-accordion:last-child {
+  border-bottom: 0;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion .closet-item {
   border-top: 1px solid var(--pdp-border);
 }
 
-.gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion .closet-item:last-child .closet-header {
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion .closet-item:last-child {
   border-bottom: 1px solid var(--pdp-border);
 }
 
-.gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion .closet-header-title {
-  font-size: 15px;
-  font-weight: 600;
-  text-transform: none;
-  color: var(--pdp-text);
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion .closet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
 }
 
-.gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion .accordion-close img {
-  height: 14px;
-  opacity: 0.5;
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion .closet-header-title {
+  font-family: var(--pdp-font-sans);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.35;
+  text-transform: none;
+  color: var(--pdp-text);
+  margin: 0;
+  padding: 0;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion .accordion-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--pdp-muted);
+  transition: transform 0.25s ease;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion .gemluxjewel-pdp__accordion-icon {
+  display: block;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion .closet-header.active .accordion-close {
+  transform: rotate(180deg);
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion .closet-content {
+  display: none;
 }
 
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion .closet-content__inner {
+  margin: 0;
+  padding: 0 0 20px;
+  font-family: var(--pdp-font-sans);
   font-size: 14px;
   line-height: 1.65;
   color: var(--pdp-muted);
-  padding-bottom: 16px;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion .closet-content__inner p {
+  margin: 0;
+  color: inherit;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion .closet-content__inner p + p {
+  margin-top: 12px;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion .closet-content__inner ul {
+  margin: 12px 0 0;
+  padding-left: 18px;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion .closet-content__inner li {
+  margin-bottom: 8px;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion .closet-content__inner li:last-child {
+  margin-bottom: 0;
 }
 
 /* Complete the set */
