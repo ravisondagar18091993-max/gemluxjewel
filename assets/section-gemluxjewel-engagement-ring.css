@@ -29,10 +29,14 @@
 
 /* Section spacing */
 .gemluxjewel-engagement-showcase,
-.gemluxjewel-engagement-custom,
-.gemluxjewel-engagement-trust {
+.gemluxjewel-engagement-custom {
   padding-top: 0;
   padding-bottom: var(--gemluxjewel-engagement-space-section);
+}
+
+.gemluxjewel-engagement-trust {
+  padding-top: 0;
+  padding-bottom: var(--gemluxjewel-engagement-space-section-top);
 }
 
 .gemluxjewel-engagement-dual {
@@ -51,12 +55,12 @@
 }
 
 /* Prevent double gaps between adjacent sections */
-.shopify-section:has(.gemluxjewel-engagement-hero):has(+ .shopify-section .gemluxjewel-engagement-dual) .gemluxjewel-engagement-hero {
-  padding-bottom: 0;
+.shopify-section:has(.gemluxjewel-engagement-hero) + .shopify-section:has(.gemluxjewel-engagement-dual) .gemluxjewel-engagement-dual {
+  padding-top: 0;
 }
 
-.shopify-section:has(.gemluxjewel-engagement-trust):has(+ .shopify-section .gemluxjewel-engagement-categories) .gemluxjewel-engagement-trust {
-  padding-bottom: 0;
+.shopify-section:has(.gemluxjewel-engagement-trust) + .shopify-section:has(.gemluxjewel-engagement-categories) .gemluxjewel-engagement-categories {
+  padding-top: 0;
 }
 
 .shopify-section:has(.gemluxjewel-engagement-categories):has(+ .shopify-section .gemluxjewel-engagement-faq) .gemluxjewel-engagement-categories {
@@ -71,7 +75,7 @@
 /* ── Hero ── */
 .gemluxjewel-engagement-hero {
   background: var(--gemluxjewel-engagement-blue);
-  padding: calc(var(--gemluxjewel-header-offset, 108px) + 48px) 0 var(--gemluxjewel-engagement-space-section);
+  padding: calc(var(--gemluxjewel-header-offset, 108px) + 48px) 0 var(--gemluxjewel-engagement-space-section-top);
   text-align: center;
 }
 
