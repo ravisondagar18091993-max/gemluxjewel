@@ -35,8 +35,8 @@
         "trust_label_2": "Free and Secure Shipping",
         "trust_label_3": "100% Diamond Value Guarantee",
         "trust_label_4": "30 Day Return or Exchange",
-        "show_description": true,
         "accordion_default_open": "none",
+        "show_description": true,
         "description_title": "Overview",
         "ring_size_title": "Ring Size",
         "ring_size_content": "<p>We offer complimentary resizing within 30 days of delivery. Use our ring size guide to find your perfect fit.</p>",
@@ -160,18 +160,62 @@
       "settings": {
         "title": "YOU MAY ALSO LIKE",
         "subtitle": "Discover our latest additions - fresh designs and timeless classics newly available",
+        "show_collection_name": false,
         "button_label": "View Collection",
         "button_link": "",
         "collection": "",
-        "show_collection_name": false,
-        "show_placeholders": false,
-        "products_to_show": 4
+        "products_to_show": 4,
+        "show_placeholders": false
+      }
+    },
+    "1786465595f85eb7a3": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_reviews_grid_widget_RE4rEC": {
+          "type": "shopify://apps/judge-me-reviews/blocks/reviews_grid_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "show_sample_reviews": true,
+            "review_selection": "all",
+            "products": [],
+            "filter_pinned": false,
+            "filter_featured": false,
+            "filter_custom_tags": "",
+            "show_media_only": false,
+            "display_order": "media_first",
+            "card_grouping": "per_media",
+            "columns_desktop": 3,
+            "rows_desktop": 3,
+            "columns_mobile": "2",
+            "rows_mobile": 6,
+            "show_stars": true,
+            "show_reviewer_name": true,
+            "show_review_title_on_hover_desktop": true,
+            "max_width": 1100,
+            "corner_styling": "soft",
+            "card_spacing": "medium",
+            "header_text_color": "#000000",
+            "star_and_reviewer_name_color": "#F9F9F9",
+            "drop_shadow_color": "#000000",
+            "overlay_and_background_color": "#000000",
+            "content_color": "#F9F9F9",
+            "header_text": "From our customers",
+            "show_average_rating": true,
+            "rating_display": "default"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_reviews_grid_widget_RE4rEC"
+      ],
+      "settings": {
+        "include_margins": true
       }
     }
   },
   "order": [
     "gemluxjewel_main_product",
     "gemluxjewel_pdp_how_made",
+    "1786465595f85eb7a3",
     "gemluxjewel_product_faq",
     "gemluxjewel_pdp_trust",
     "gemluxjewel_product_related"
