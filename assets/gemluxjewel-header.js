@@ -16,7 +16,7 @@
       function setHeaderOffset() {
         var height = header.offsetHeight;
         document.documentElement.style.setProperty('--gemluxjewel-header-height', height + 'px');
-        document.documentElement.style.setProperty('--gemluxjewel-header-offset', height + 24 + 'px');
+        document.documentElement.style.setProperty('--gemluxjewel-header-offset', height + 'px');
       }
 
       setHeaderOffset();
@@ -25,6 +25,7 @@
       var prevScroll = window.pageYOffset || document.documentElement.scrollTop;
 
       window.addEventListener('scroll', function () {
+        if (document.documentElement.classList.contains('gemluxjewel-menu-open')) return;
         if (closeAllMegaFn) closeAllMegaFn();
 
         if (mainBar && mainBar.classList.contains('is-mega-open')) return;
@@ -47,12 +48,15 @@
         if (!mobileMenu) return;
         mobileMenu.classList.add('is-open');
         document.documentElement.classList.add('gemluxjewel-menu-open');
+        if (burgerBtn) burgerBtn.setAttribute('aria-expanded', 'true');
+        header.classList.remove('is-hidden');
       }
 
       function closeMenu() {
         if (!mobileMenu) return;
         mobileMenu.classList.remove('is-open');
         document.documentElement.classList.remove('gemluxjewel-menu-open');
+        if (burgerBtn) burgerBtn.setAttribute('aria-expanded', 'false');
       }
 
       if (burgerBtn) burgerBtn.addEventListener('click', function (e) {

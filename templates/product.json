@@ -36,6 +36,7 @@
         "trust_label_3": "100% Diamond Value Guarantee",
         "trust_label_4": "30 Day Return or Exchange",
         "show_description": true,
+        "accordion_default_open": "none",
         "description_title": "Overview",
         "ring_size_title": "Ring Size",
         "ring_size_content": "<p>We offer complimentary resizing within 30 days of delivery. Use our ring size guide to find your perfect fit.</p>",

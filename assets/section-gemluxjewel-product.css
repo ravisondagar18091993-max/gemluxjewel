@@ -441,6 +441,14 @@
   display: none;
 }
 
+.gemluxjewel-pdp__info-accordion .closet-content[hidden] {
+  display: none !important;
+}
+
+.gemluxjewel-pdp__info-accordion .closet-header.active + .closet-content {
+  display: block;
+}
+
 .gemluxjewel-pdp__info-accordion .closet-content__inner {
   margin-right: 24px;
   padding-bottom: 35px;

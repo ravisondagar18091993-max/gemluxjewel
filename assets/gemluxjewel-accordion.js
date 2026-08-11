@@ -51,6 +51,30 @@
     toggleAccordion(root, header);
   }
 
+  function initAccordionDefaults() {
+    document.querySelectorAll('[data-gemluxjewel-accordion]').forEach(function (root) {
+      root.querySelectorAll('.closet-item').forEach(function (item) {
+        var header = item.querySelector('.closet-header');
+        var content = item.querySelector('.closet-content');
+        if (!header || !content) return;
+
+        var shouldOpen = item.classList.contains('is-open');
+        if (shouldOpen) {
+          header.classList.add('active');
+          header.setAttribute('aria-expanded', 'true');
+          setContentState(content, true);
+        } else {
+          header.classList.remove('active');
+          header.setAttribute('aria-expanded', 'false');
+          setContentState(content, false);
+        }
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initAccordionDefaults);
+  document.addEventListener('shopify:section:load', initAccordionDefaults);
+
   document.addEventListener('click', handleToggle);
   document.addEventListener('keydown', handleToggle);
 })();

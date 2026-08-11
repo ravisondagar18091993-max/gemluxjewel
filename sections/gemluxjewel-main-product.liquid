@@ -193,24 +193,27 @@
             <div class="gemluxjewel-pdp__accordian-block gemluxjewel-pdp__info-accordion">
               <div class="gemluxjewel-pdp__product-accordian">
                 <div class="closet-accordion" data-gemluxjewel-accordion>
+                  {%- liquid
+                    assign default_open = section.settings.accordion_default_open | default: 'none'
+                  -%}
                   {%- if show_description -%}
                     {% render 'gemluxjewel-pdp-accordion-item',
                       title: section.settings.description_title,
                       content: product.description,
-                      open_by_default: section.settings.accordion_default_open == 'overview'
+                      open_by_default: default_open == 'overview'
                     %}
                   {%- endif -%}
 
                   {% render 'gemluxjewel-pdp-accordion-item',
                     title: section.settings.ring_size_title,
                     content: section.settings.ring_size_content,
-                    open_by_default: section.settings.accordion_default_open == 'ring_size'
+                    open_by_default: default_open == 'ring_size'
                   %}
 
                   {% render 'gemluxjewel-pdp-accordion-item',
                     title: section.settings.ring_details_title,
                     content: section.settings.ring_details_content,
-                    open_by_default: section.settings.accordion_default_open == 'ring_details'
+                    open_by_default: default_open == 'ring_details'
                   %}
                 </div>
               </div>

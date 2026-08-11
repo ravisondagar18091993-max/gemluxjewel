@@ -18,6 +18,7 @@
   line-height: 1.25;
   color: #1e392a;
   text-align: left;
+  text-transform: capitalize;
 }
 
 .gemluxjewel-pdp-how-made__grid {
@@ -65,10 +66,11 @@
 .gemluxjewel-pdp-how-made__item-title {
   margin: 0 0 10px;
   font-family: 'Figtree', var(--font-heading-family), sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
-  line-height: 1.35;
+  line-height: 1.4;
   color: #1e392a;
+  text-transform: capitalize;
 }
 
 .gemluxjewel-pdp-how-made__item-text {

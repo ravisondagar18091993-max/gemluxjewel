@@ -2,17 +2,70 @@
   "sections": {
     "gemluxjewel_contact": {
       "type": "gemluxjewel-contact",
+      "blocks": {
+        "quick_1": {
+          "type": "quick_link",
+          "settings": {
+            "icon": "appointment",
+            "label": "Book an appointment"
+          }
+        },
+        "quick_2": {
+          "type": "quick_link",
+          "settings": {
+            "icon": "clock",
+            "label": "Client care hours: Weekdays 9am - 5pm · Saturday 8am - 4pm"
+          }
+        },
+        "quick_3": {
+          "type": "quick_link",
+          "settings": {
+            "icon": "faq",
+            "label": "View frequently asked questions"
+          }
+        },
+        "quick_4": {
+          "type": "quick_link",
+          "settings": {
+            "icon": "phone",
+            "label": "+1 000 000 0000"
+          }
+        },
+        "quick_5": {
+          "type": "quick_link",
+          "settings": {
+            "icon": "chat",
+            "label": "Live chat"
+          }
+        },
+        "quick_6": {
+          "type": "quick_link",
+          "settings": {
+            "icon": "email",
+            "label": "info@gemluxjewels.com"
+          }
+        }
+      },
+      "block_order": [
+        "quick_1",
+        "quick_2",
+        "quick_3",
+        "quick_4",
+        "quick_5",
+        "quick_6"
+      ],
       "settings": {
-        "heading": "Contact",
-        "subheading": "Get in touch with our expert team",
-        "phone": "+1 000 000 000",
-        "email": "info@gemluxjewels.com",
-        "address": "49, Bremner Blvd, Rogers Centre, Ontario Toronto, M5J 0A1",
-        "directions_label": "Get directions",
-        "hours_line_1": "Monday - Friday: 10:00am - 15:00pm",
-        "hours_line_2": "Saturday & Sunday: CLOSED",
-        "form_heading": "Let's connect and start a conversation",
-        "button_label": "Send Message"
+        "hero_heading": "Need assistance?",
+        "hero_subheading": "Send us your questions and we will get straight back to you.",
+        "button_label": "Submit",
+        "show_mailing_list": true,
+        "mailing_list_checked": true,
+        "show_stone_type": true,
+        "show_trust_strip": true,
+        "trust_label_1": "Worldwide Express Shipping",
+        "trust_label_2": "Free Resizing",
+        "trust_label_3": "Lifetime Ring Warranty",
+        "trust_label_4": "Free Ring Customisation"
       }
     }
   },
