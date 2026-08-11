@@ -75,6 +75,7 @@
       "block_order": ["lab_1", "lab_2", "lab_3", "lab_4", "lab_5"],
       "settings": {
         "title": "Popular Lab Grown Diamond Rings",
+        "collection": "all",
         "featured_position": "left",
         "badge_text": "New In",
         "show_discount": true,
@@ -111,6 +112,7 @@
       "block_order": ["moi_1", "moi_2", "moi_3", "moi_4", "moi_5"],
       "settings": {
         "title": "Popular Moissanite Rings",
+        "collection": "all",
         "featured_position": "right",
         "badge_text": "New In",
         "show_discount": true,
