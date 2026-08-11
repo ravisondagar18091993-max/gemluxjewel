@@ -63,7 +63,9 @@
             </button>
           </div>
 
-          {% render 'gemluxjewel-pdp-reviews', sku: current_variant.sku, section: section %}
+          {%- if section.settings.show_sku and current_variant.sku != blank -%}
+            <p class="gemluxjewel-pdp__sku">SKU: {{ current_variant.sku | escape }}</p>
+          {%- endif -%}
 
           {%- if section.settings.show_specs_row -%}
             <p class="gemluxjewel-pdp__specs">
@@ -112,25 +114,29 @@
             {%- endform -%}
           </product-form>
 
-          {%- if section.settings.consultation_label != blank -%}
-            <p class="gemluxjewel-pdp__consultation">
-              {%- if section.settings.consultation_url != blank -%}
-                <a href="{{ section.settings.consultation_url }}">{{ section.settings.consultation_label | escape }}</a>
-              {%- else -%}
-                {{ section.settings.consultation_label | escape }}
+          {%- if section.settings.show_consultation -%}
+            <div class="gemluxjewel-pdp__consultation">
+              {%- if section.settings.consultation_intro != blank -%}
+                <p class="gemluxjewel-pdp__consultation-intro">{{ section.settings.consultation_intro | escape }}</p>
               {%- endif -%}
-            </p>
+              {%- if section.settings.consultation_url != blank -%}
+                <a
+                  href="{{ section.settings.consultation_url }}"
+                  class="gemluxjewel-pdp__consultation-btn"
+                  {% if section.settings.consultation_open_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+                >
+                  {{ section.settings.consultation_label | default: 'Book a Virtual Consultation' | escape }}
+                </a>
+              {%- elsif section.settings.consultation_label != blank -%}
+                <span class="gemluxjewel-pdp__consultation-btn gemluxjewel-pdp__consultation-btn--static">
+                  {{ section.settings.consultation_label | escape }}
+                </span>
+              {%- endif -%}
+            </div>
           {%- endif -%}
 
           {%- if section.settings.show_shipping_estimate -%}
             <div class="gemluxjewel-pdp__shipping-estimate">
-              <div class="gemluxjewel-pdp__shipping-estimate-item">
-                <span class="gemluxjewel-pdp__shipping-estimate-icon" aria-hidden="true">📅</span>
-                <div>
-                  <span class="gemluxjewel-pdp__shipping-estimate-label">Estimated Ship Date</span>
-                  <strong class="gemluxjewel-pdp__shipping-estimate-value">{{ section.settings.ship_date_label | default: '24 Aug' | escape }}</strong>
-                </div>
-              </div>
               <div class="gemluxjewel-pdp__shipping-estimate-item">
                 <span class="gemluxjewel-pdp__shipping-estimate-icon" aria-hidden="true">🕐</span>
                 <div>
@@ -142,12 +148,6 @@
 
           {%- if section.settings.show_inline_trust -%}
             {% render 'gemluxjewel-pdp-trust-inline' %}
-          {%- endif -%}
-
-          {%- if section.settings.show_gift_banner and section.settings.gift_banner_text != blank -%}
-            <div class="gemluxjewel-pdp__gift-banner">
-              {{ section.settings.gift_banner_text }}
-            </div>
           {%- endif -%}
 
           {%- liquid
@@ -189,43 +189,7 @@
           {%- endif -%}
 
           {%- if section.settings.show_complete_set -%}
-            <product-recommendations
-              class="gemluxjewel-pdp__complete-set"
-              data-url="{{ routes.product_recommendations_url }}?limit={{ section.settings.complete_set_limit | default: 4 }}&intent=complementary"
-              data-section-id="{{ section.id }}"
-              data-product-id="{{ product.id }}"
-            >
-              {%- if recommendations.performed and recommendations.products_count > 0 -%}
-                <div class="gemluxjewel-pdp__complete-set-inner">
-                  <h2 class="gemluxjewel-pdp__complete-set-heading">{{ section.settings.complete_set_heading | default: 'Complete The Set' | escape }}</h2>
-                  <div class="gemluxjewel-pdp__complete-set-slider" data-gemluxjewel-collection-slider>
-                    <button type="button" class="gemluxjewel-pdp__complete-set-nav gemluxjewel-pdp__complete-set-nav--prev" data-gemluxjewel-collection-slider-prev aria-label="Previous" disabled>
-                      <img src="{{ 'green-right-arrow.svg' | asset_url }}" alt="" width="16" height="16" class="gemluxjewel-pdp__complete-set-nav-icon gemluxjewel-pdp__complete-set-nav-icon--prev">
-                    </button>
-                    <div class="gemluxjewel-pdp__complete-set-viewport">
-                      <div class="gemluxjewel-pdp__complete-set-track gemluxjewel-collection-slider__track" data-gemluxjewel-collection-slider-track>
-                        {%- for rec_product in recommendations.products -%}
-                          <div class="gemluxjewel-pdp__complete-set-item gemluxjewel-collection-slider__item">
-                            <a href="{{ rec_product.url }}" class="gemluxjewel-pdp__complete-set-card">
-                              <div class="gemluxjewel-pdp__complete-set-image">
-                                {%- if rec_product.featured_media -%}
-                                  {{ rec_product.featured_media | image_url: width: 400 | image_tag: widths: '200,300,400', sizes: '200px', loading: 'lazy', alt: rec_product.title }}
-                                {%- endif -%}
-                              </div>
-                              <p class="gemluxjewel-pdp__complete-set-title">{{ rec_product.title | escape }}</p>
-                              <p class="gemluxjewel-pdp__complete-set-price">{{ rec_product.price | money }}</p>
-                            </a>
-                          </div>
-                        {%- endfor -%}
-                      </div>
-                    </div>
-                    <button type="button" class="gemluxjewel-pdp__complete-set-nav gemluxjewel-pdp__complete-set-nav--next" data-gemluxjewel-collection-slider-next aria-label="Next">
-                      <img src="{{ 'green-right-arrow.svg' | asset_url }}" alt="" width="16" height="16" class="gemluxjewel-pdp__complete-set-nav-icon">
-                    </button>
-                  </div>
-                </div>
-              {%- endif -%}
-            </product-recommendations>
+            {% render 'gemluxjewel-pdp-complete-set', product: product, section: section %}
           {%- endif -%}
         </div>
       </div>
@@ -280,18 +244,6 @@
     },
     {
       "type": "checkbox",
-      "id": "show_reviews",
-      "label": "Show star reviews row",
-      "default": true
-    },
-    {
-      "type": "number",
-      "id": "review_count",
-      "label": "Review count",
-      "default": 17
-    },
-    {
-      "type": "checkbox",
       "id": "show_specs_row",
       "label": "Show specs line",
       "default": true
@@ -309,15 +261,38 @@
       "default": true
     },
     {
+      "type": "header",
+      "content": "Virtual consultation button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_consultation",
+      "label": "Show consultation button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "consultation_intro",
+      "label": "Text above button",
+      "default": "Have Questions?"
+    },
+    {
       "type": "text",
       "id": "consultation_label",
-      "label": "Consultation link text",
-      "default": "Have Questions? Book a Virtual Consultation"
+      "label": "Button label",
+      "default": "Book a Virtual Consultation"
     },
     {
       "type": "url",
       "id": "consultation_url",
-      "label": "Consultation link URL"
+      "label": "Button link",
+      "info": "Add your booking page, contact page, or Calendly URL."
+    },
+    {
+      "type": "checkbox",
+      "id": "consultation_open_new_tab",
+      "label": "Open link in new tab",
+      "default": false
     },
     {
       "type": "header",
@@ -326,14 +301,8 @@
     {
       "type": "checkbox",
       "id": "show_shipping_estimate",
-      "label": "Show shipping estimate row",
+      "label": "Show order-by shipping note",
       "default": true
-    },
-    {
-      "type": "text",
-      "id": "ship_date_label",
-      "label": "Estimated ship date",
-      "default": "24 Aug"
     },
     {
       "type": "header",
@@ -353,22 +322,6 @@
     { "type": "image_picker", "id": "trust_icon_3", "label": "Trust icon 3" },
     { "type": "text", "id": "trust_label_4", "label": "Trust 4", "default": "30 Day Return or Exchange" },
     { "type": "image_picker", "id": "trust_icon_4", "label": "Trust icon 4" },
-    {
-      "type": "header",
-      "content": "Complimentary gift banner"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_gift_banner",
-      "label": "Show gift banner",
-      "default": true
-    },
-    {
-      "type": "richtext",
-      "id": "gift_banner_text",
-      "label": "Gift banner text",
-      "default": "<p><strong>Complimentary Gift</strong> — Receive free diamond stud earrings on orders over $1,000.</p>"
-    },
     {
       "type": "header",
       "content": "Accordions"
@@ -414,9 +367,19 @@
       "content": "Complete the set"
     },
     {
+      "type": "paragraph",
+      "content": "On each product in Admin, open Metafields and add products to Complete The Set (custom.complete_the_set). Selected products appear in the slider. If empty, Shopify complementary recommendations are used when fallback is enabled."
+    },
+    {
       "type": "checkbox",
       "id": "show_complete_set",
-      "label": "Show complementary products carousel",
+      "label": "Show Complete The Set carousel",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "complete_set_use_recommendations_fallback",
+      "label": "Use Shopify recommendations when metafield is empty",
       "default": true
     },
     {
@@ -429,10 +392,10 @@
       "type": "range",
       "id": "complete_set_limit",
       "min": 2,
-      "max": 8,
+      "max": 12,
       "step": 1,
       "default": 4,
-      "label": "Products to show"
+      "label": "Maximum products to show"
     }
   ],
   "presets": [

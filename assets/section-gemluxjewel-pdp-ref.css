@@ -3,8 +3,8 @@
  */
 
 .gemluxjewel-pdp--ref {
-  --pdp-navy: #243654;
-  --pdp-navy-dark: #1a2840;
+  --pdp-navy: #1e392a;
+  --pdp-navy-dark: #1e392a;
   --pdp-teal: #4a9fb0;
   --pdp-teal-light: #e8f4f7;
   --pdp-border: #dde3ea;
@@ -25,18 +25,20 @@
 
 @media (min-width: 990px) {
   .gemluxjewel-pdp--ref .gemluxjewel-pdp__layout {
-    grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
-    gap: 40px 48px;
+    grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+    gap: 32px 56px;
     align-items: start;
-  }
-
-  .gemluxjewel-pdp--ref .gemluxjewel-pdp__info {
-    padding-left: 8px;
   }
 
   .gemluxjewel-pdp--ref .gemluxjewel-pdp__gallery-col {
     position: sticky;
     top: calc(var(--gemluxjewel-header-offset, 120px) + 16px);
+    max-width: 420px;
+  }
+
+  .gemluxjewel-pdp--ref .gemluxjewel-pdp__info {
+    padding-left: 0;
+    min-width: 0;
   }
 }
 
@@ -70,23 +72,18 @@
   display: none;
 }
 
-/* Gallery masonry */
+/* Gallery — uniform 2-column grid */
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__gallery {
-  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
 }
 
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__gallery-item {
   height: auto;
-  min-height: 200px;
+  min-height: 0;
   aspect-ratio: 1;
   border-radius: 4px;
   background: #f4f6f8;
-}
-
-.gemluxjewel-pdp--ref .gemluxjewel-pdp__gallery-item--featured {
-  grid-column: 1 / -1;
-  aspect-ratio: 16 / 11;
-  min-height: 280px;
 }
 
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__gallery-item img {
@@ -361,26 +358,52 @@
   opacity: 1;
 }
 
-/* Consultation */
+/* Consultation button */
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__consultation {
   text-align: center;
-  font-size: 13px;
   margin: 0 0 20px;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__consultation-intro {
+  margin: 0 0 10px;
+  font-size: 14px;
+  line-height: 1.4;
   color: var(--pdp-muted);
 }
 
-.gemluxjewel-pdp--ref .gemluxjewel-pdp__consultation a {
-  color: var(--pdp-teal);
-  text-decoration: underline;
-  text-underline-offset: 2px;
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__consultation-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 20px;
+  border: 1px solid var(--pdp-navy);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--pdp-navy);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__consultation-btn:hover {
+  background: var(--pdp-navy);
+  border-color: var(--pdp-navy);
+  color: #fff;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__consultation-btn--static {
+  opacity: 0.55;
+  cursor: default;
 }
 
 /* Shipping estimate */
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__shipping-estimate {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  padding: 16px;
+  display: block;
+  padding: 14px 16px;
   margin-bottom: 20px;
   background: #fafbfc;
   border: 1px solid var(--pdp-border);

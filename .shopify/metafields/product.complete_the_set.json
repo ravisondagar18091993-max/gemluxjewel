@@ -1,0 +1,7 @@
+{
+  "name": "Complete The Set",
+  "namespace": "custom",
+  "key": "complete_the_set",
+  "description": "Select products to show in the Complete The Set slider on this product page.",
+  "type": "list.product_reference"
+}

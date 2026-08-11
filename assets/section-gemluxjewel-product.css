@@ -9,7 +9,7 @@
   --gemluxjewel-dark: #141414;
   --gemluxjewel-gray: #818181;
   --gemluxjewel-orange: #e37859;
-  --gemluxjewel-pdp-navy: #1b2a4a;
+  --gemluxjewel-pdp-navy: #1e392a;
   --gemluxjewel-pdp-accent: #4a90a4;
   --gemluxjewel-radius: 10px;
   --gemluxjewel-radius-pill: 30px;
@@ -116,8 +116,8 @@
 
 @media (min-width: 990px) {
   .gemluxjewel-pdp__layout {
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
+    grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+    gap: 32px 56px;
     align-items: start;
   }
 
@@ -126,10 +126,12 @@
     top: var(--gemluxjewel-header-offset, 218px);
     align-self: start;
     z-index: 1;
+    max-width: 420px;
   }
 
   .gemluxjewel-pdp__info {
-    padding-left: 32px;
+    padding-left: 0;
+    min-width: 0;
   }
 }
 
@@ -141,7 +143,9 @@
 }
 
 .gemluxjewel-pdp__gallery-item {
-  height: 358px;
+  aspect-ratio: 1;
+  height: auto;
+  min-height: 0;
   border-radius: var(--gemluxjewel-radius);
   overflow: hidden;
   background: #f7f7f7;
@@ -1123,17 +1127,6 @@
   letter-spacing: 0.02em;
 }
 
-.gemluxjewel-pdp__gallery-item--featured {
-  grid-column: 1 / -1;
-  height: 420px;
-}
-
-@media (max-width: 989px) {
-  .gemluxjewel-pdp__gallery-item--featured {
-    height: 320px;
-  }
-}
-
 /* Title row */
 .gemluxjewel-pdp__title-row {
   display: flex;
@@ -1391,13 +1384,43 @@
 
 .gemluxjewel-pdp__consultation {
   text-align: center;
-  font-size: 14px;
   margin: 0 0 20px;
 }
 
-.gemluxjewel-pdp__consultation a {
-  color: var(--gemluxjewel-pdp-accent);
-  text-decoration: underline;
+.gemluxjewel-pdp__consultation-intro {
+  margin: 0 0 10px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(20, 20, 20, 0.65);
+}
+
+.gemluxjewel-pdp__consultation-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 20px;
+  border: 1px solid var(--gemluxjewel-pdp-accent, #1e392a);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--gemluxjewel-pdp-accent, #1e392a);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.gemluxjewel-pdp__consultation-btn:hover {
+  background: var(--gemluxjewel-pdp-accent, #1e392a);
+  border-color: var(--gemluxjewel-pdp-accent, #1e392a);
+  color: #fff;
+}
+
+.gemluxjewel-pdp__consultation-btn--static {
+  opacity: 0.55;
+  cursor: default;
 }
 
 .gemluxjewel-pdp__shipping-estimate {
