@@ -148,22 +148,24 @@
 
           {%- if section.settings.show_consultation -%}
             <div class="gemluxjewel-pdp__consultation">
-              {%- if section.settings.consultation_intro != blank -%}
-                <p class="gemluxjewel-pdp__consultation-intro">{{ section.settings.consultation_intro | escape }}</p>
-              {%- endif -%}
-              {%- if section.settings.consultation_url != blank -%}
-                <a
-                  href="{{ section.settings.consultation_url }}"
-                  class="gemluxjewel-pdp__consultation-btn"
-                  {% if section.settings.consultation_open_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
-                >
-                  {{ section.settings.consultation_label | default: 'Book a Virtual Consultation' | escape }}
-                </a>
-              {%- elsif section.settings.consultation_label != blank -%}
-                <span class="gemluxjewel-pdp__consultation-btn gemluxjewel-pdp__consultation-btn--static">
-                  {{ section.settings.consultation_label | escape }}
-                </span>
-              {%- endif -%}
+              <p class="gemluxjewel-pdp__consultation-line">
+                {%- if section.settings.consultation_intro != blank -%}
+                  <span class="gemluxjewel-pdp__consultation-intro">{{ section.settings.consultation_intro | escape }}</span>
+                {%- endif -%}
+                {%- if section.settings.consultation_url != blank -%}
+                  <a
+                    href="{{ section.settings.consultation_url }}"
+                    class="gemluxjewel-pdp__consultation-link"
+                    {% if section.settings.consultation_open_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+                  >
+                    {{ section.settings.consultation_label | default: 'Book a Virtual Consultation' | escape }}
+                  </a>
+                {%- elsif section.settings.consultation_label != blank -%}
+                  <span class="gemluxjewel-pdp__consultation-link gemluxjewel-pdp__consultation-link--static">
+                    {{ section.settings.consultation_label | escape }}
+                  </span>
+                {%- endif -%}
+              </p>
             </div>
           {%- endif -%}
 

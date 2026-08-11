@@ -427,45 +427,46 @@
   opacity: 1;
 }
 
-/* Consultation button */
+/* Consultation link */
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__consultation {
   text-align: center;
   margin: 0 0 20px;
 }
 
-.gemluxjewel-pdp--ref .gemluxjewel-pdp__consultation-intro {
-  margin: 0 0 10px;
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__consultation-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 0;
   font-size: 14px;
-  line-height: 1.4;
+  line-height: 1.5;
   color: var(--pdp-muted);
 }
 
-.gemluxjewel-pdp--ref .gemluxjewel-pdp__consultation-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  padding: 10px 20px;
-  border: 1px solid var(--pdp-navy);
-  border-radius: 4px;
-  background: #fff;
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__consultation-intro {
+  margin: 0;
+  color: var(--pdp-muted);
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__consultation-link {
+  color: var(--pdp-text);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__consultation-link:hover {
   color: var(--pdp-navy);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
-.gemluxjewel-pdp--ref .gemluxjewel-pdp__consultation-btn:hover {
-  background: var(--pdp-navy);
-  border-color: var(--pdp-navy);
-  color: #fff;
-}
-
-.gemluxjewel-pdp--ref .gemluxjewel-pdp__consultation-btn--static {
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__consultation-link--static {
   opacity: 0.55;
+  text-decoration: underline;
   cursor: default;
 }
 
