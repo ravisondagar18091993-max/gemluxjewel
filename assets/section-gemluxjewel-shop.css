@@ -789,11 +789,6 @@
   min-width: 0;
 }
 
-.gemluxjewel-shop__grid .gemluxjewel-card {
-  margin-bottom: 0;
-  width: 100%;
-}
-
 @media (min-width: 768px) {
   .gemluxjewel-shop__grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -810,10 +805,6 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 40px 20px;
   }
-}
-
-.gemluxjewel-shop__grid .gemluxjewel-card {
-  margin-bottom: 0;
 }
 
 @media (max-width: 767px) {

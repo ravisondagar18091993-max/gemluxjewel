@@ -4,18 +4,51 @@
   --gemluxjewel-engagement-blue: #f4f8fb;
   --gemluxjewel-engagement-beige: #f7f5f2;
   --gemluxjewel-engagement-sand: #fafafa;
+  --gemluxjewel-engagement-space-section: 64px;
+  --gemluxjewel-engagement-space-section-tight: 48px;
+  --gemluxjewel-engagement-space-page-bottom: 80px;
+  --gemluxjewel-engagement-space-heading: 32px;
+}
+
+@media (min-width: 990px) {
+  .gemluxjewel-engagement {
+    --gemluxjewel-engagement-space-section: 80px;
+    --gemluxjewel-engagement-space-section-tight: 64px;
+    --gemluxjewel-engagement-space-page-bottom: 100px;
+    --gemluxjewel-engagement-space-heading: 40px;
+  }
+}
+
+/* Shared vertical rhythm — each section adds space below only */
+.gemluxjewel-engagement-dual,
+.gemluxjewel-engagement-showcase,
+.gemluxjewel-engagement-custom,
+.gemluxjewel-engagement-trust,
+.gemluxjewel-engagement-categories,
+.gemluxjewel-engagement-faq {
+  padding-top: 0;
+  padding-bottom: var(--gemluxjewel-engagement-space-section);
+}
+
+.gemluxjewel-engagement-faq {
+  padding-bottom: var(--gemluxjewel-engagement-space-page-bottom);
+}
+
+/* Tighter gap between back-to-back product showcases */
+.gemluxjewel-engagement-showcase + .gemluxjewel-engagement-showcase {
+  margin-top: calc(var(--gemluxjewel-engagement-space-section-tight) - var(--gemluxjewel-engagement-space-section));
 }
 
 /* ── Hero ── */
 .gemluxjewel-engagement-hero {
   background: var(--gemluxjewel-engagement-blue);
-  padding: calc(var(--gemluxjewel-header-offset, 108px) + 48px) 0 56px;
+  padding: calc(var(--gemluxjewel-header-offset, 108px) + 48px) 0 var(--gemluxjewel-engagement-space-section);
   text-align: center;
 }
 
 @media (max-width: 991px) {
   .gemluxjewel-engagement-hero {
-    padding: calc(var(--gemluxjewel-header-offset, 88px) + 32px) 0 40px;
+    padding-top: calc(var(--gemluxjewel-header-offset, 88px) + 32px);
   }
 }
 
@@ -66,13 +99,6 @@
 /* ── Dual category CTA ── */
 .gemluxjewel-engagement-dual {
   background: #fff;
-  padding: 48px 0 80px;
-}
-
-@media (min-width: 990px) {
-  .gemluxjewel-engagement-dual {
-    padding-top: 64px;
-  }
 }
 
 .gemluxjewel-engagement-dual__grid {
@@ -175,7 +201,6 @@
 /* ── Product showcase ── */
 .gemluxjewel-engagement-showcase {
   background: #fff;
-  padding: 0 0 80px;
 }
 
 .gemluxjewel-engagement-showcase__title {
@@ -186,34 +211,26 @@
   text-transform: uppercase;
   text-align: center;
   color: var(--gemluxjewel-dark);
-  margin: 0 0 40px;
+  margin: 0 0 var(--gemluxjewel-engagement-space-heading);
 }
 
 .gemluxjewel-engagement-showcase__grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
+  gap: 10px;
 }
 
 @media (min-width: 990px) {
-  .gemluxjewel-engagement-showcase__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
-  }
-
-  .gemluxjewel-engagement-showcase__grid--feature-left {
-    grid-template-columns: 1.15fr 1fr 1fr;
-    grid-template-rows: repeat(2, minmax(0, 1fr));
+  .gemluxjewel-engagement-showcase__grid--feature-left,
+  .gemluxjewel-engagement-showcase__grid--feature-right {
+    grid-template-columns: 1.12fr 1fr 1fr;
+    grid-template-rows: repeat(2, minmax(0, auto));
+    align-items: start;
   }
 
   .gemluxjewel-engagement-showcase__grid--feature-left .gemluxjewel-engagement-showcase__item--featured {
     grid-row: 1 / span 2;
     grid-column: 1;
-  }
-
-  .gemluxjewel-engagement-showcase__grid--feature-right {
-    grid-template-columns: 1fr 1fr 1.15fr;
-    grid-template-rows: repeat(2, minmax(0, 1fr));
   }
 
   .gemluxjewel-engagement-showcase__grid--feature-right .gemluxjewel-engagement-showcase__item--featured {
@@ -222,72 +239,14 @@
   }
 }
 
-.gemluxjewel-engagement-showcase__item {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
-
-.gemluxjewel-engagement-showcase__link {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  text-decoration: none;
-  color: inherit;
-}
-
-.gemluxjewel-engagement-showcase__img-wrap {
-  background: #f3f3f3;
-  overflow: hidden;
-  border-radius: var(--gemluxjewel-radius-sm, 5px);
-}
-
-.gemluxjewel-engagement-showcase__item--featured .gemluxjewel-engagement-showcase__img-wrap {
-  aspect-ratio: 3 / 4;
-}
-
-.gemluxjewel-engagement-showcase__item:not(.gemluxjewel-engagement-showcase__item--featured) .gemluxjewel-engagement-showcase__img-wrap {
-  aspect-ratio: 1;
-}
-
-.gemluxjewel-engagement-showcase__img-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.35s ease;
-}
-
-.gemluxjewel-engagement-showcase__link:hover .gemluxjewel-engagement-showcase__img-wrap img {
-  transform: scale(1.03);
-}
-
-.gemluxjewel-engagement-showcase__item-title {
-  margin: 14px 0 6px;
-  font-family: var(--gemluxjewel-font-body);
-  font-size: 14px;
-  line-height: 1.45;
-  color: var(--gemluxjewel-dark);
-}
-
-.gemluxjewel-engagement-showcase__item-cta {
-  font-family: var(--gemluxjewel-font-body);
-  font-size: 12px;
-  line-height: 1.4;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--gemluxjewel-primary);
-}
-
 .gemluxjewel-engagement-showcase__footer {
-  margin-top: 40px;
+  margin-top: var(--gemluxjewel-engagement-space-heading);
   text-align: center;
 }
 
 /* ── Custom banner ── */
 .gemluxjewel-engagement-custom {
   background: #fff;
-  padding: 0 0 80px;
 }
 
 .gemluxjewel-engagement-custom__grid {
@@ -353,7 +312,6 @@
 /* ── Trust ── */
 .gemluxjewel-engagement-trust {
   background: #fff;
-  padding: 0 0 80px;
   text-align: center;
 }
 
@@ -374,7 +332,7 @@
   font-weight: 400;
   text-transform: uppercase;
   color: var(--gemluxjewel-dark);
-  margin: 0 0 40px;
+  margin: 0 0 var(--gemluxjewel-engagement-space-heading);
 }
 
 .gemluxjewel-engagement-trust__list {
@@ -412,12 +370,21 @@
   justify-content: center;
   width: 44px;
   height: 44px;
+  color: var(--gemluxjewel-primary);
 }
 
-.gemluxjewel-engagement-trust__icon img {
+.gemluxjewel-engagement-trust__icon svg {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
+.gemluxjewel-engagement-trust__icon img,
+.gemluxjewel-engagement-trust__icon-img {
   width: 28px;
   height: 28px;
   object-fit: contain;
+  display: block;
 }
 
 .gemluxjewel-engagement-trust__label {
@@ -432,7 +399,6 @@
 /* ── Categories ── */
 .gemluxjewel-engagement-categories {
   background: var(--gemluxjewel-engagement-beige);
-  padding: 80px 0;
 }
 
 .gemluxjewel-engagement-categories__title {
@@ -443,7 +409,7 @@
   text-transform: uppercase;
   text-align: center;
   color: var(--gemluxjewel-dark);
-  margin: 0 0 40px;
+  margin: 0 0 var(--gemluxjewel-engagement-space-heading);
 }
 
 .gemluxjewel-engagement-categories__cards {
@@ -555,7 +521,7 @@
 }
 
 .gemluxjewel-engagement-categories__cta {
-  margin-top: 40px;
+  margin-top: var(--gemluxjewel-engagement-space-heading);
   text-align: center;
 }
 
@@ -567,7 +533,6 @@
 /* ── FAQ ── */
 .gemluxjewel-engagement-faq {
   background: #fff;
-  padding: 0 0 100px;
 }
 
 .gemluxjewel-engagement-faq__title {
@@ -578,7 +543,12 @@
   text-transform: uppercase;
   text-align: center;
   color: var(--gemluxjewel-dark);
-  margin: 0 0 32px;
+  margin: 0 0 var(--gemluxjewel-engagement-space-heading);
+}
+
+.gemluxjewel-engagement-faq__inner {
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .gemluxjewel-engagement-faq__tabs {
@@ -586,7 +556,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 32px;
+  margin-bottom: var(--gemluxjewel-engagement-space-heading);
 }
 
 .gemluxjewel-engagement-faq__tab {
@@ -615,13 +585,115 @@
   display: none;
 }
 
+.gemluxjewel-engagement-faq__accordion {
+  text-align: left;
+}
+
+.gemluxjewel-engagement-faq .closet-accordion:last-child {
+  border-bottom: 1px solid rgba(20, 20, 20, 0.25);
+}
+
 .gemluxjewel-engagement-faq .closet-item {
-  border-bottom: 1px solid #e8e8e8;
+  margin: 0;
+}
+
+.gemluxjewel-engagement-faq__trigger.closet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  margin: 0;
+  padding: 28px 0;
+  border: 0;
+  border-top: 1px solid rgba(20, 20, 20, 0.25);
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: color 0.2s ease;
+}
+
+@media (min-width: 768px) {
+  .gemluxjewel-engagement-faq__trigger.closet-header {
+    padding-top: 35px;
+    padding-bottom: 35px;
+  }
 }
 
 .gemluxjewel-engagement-faq .closet-header-title {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: var(--gemluxjewel-font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--gemluxjewel-dark);
+  text-transform: none;
+  margin: 0;
+  padding-right: 16px;
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .gemluxjewel-engagement-faq .closet-header-title {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
+
+.gemluxjewel-engagement-faq .accordion-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  transition: transform 0.35s ease;
+}
+
+.gemluxjewel-engagement-faq .accordion-close img {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.gemluxjewel-engagement-faq .closet-header.active .accordion-close {
+  transform: rotate(180deg);
+}
+
+.gemluxjewel-engagement-faq .closet-content {
+  display: none;
+}
+
+.gemluxjewel-engagement-faq .closet-content[hidden] {
+  display: none !important;
+}
+
+.gemluxjewel-engagement-faq .closet-content__inner {
+  padding: 0 0 28px;
   font-family: var(--gemluxjewel-font-body);
   font-size: 15px;
-  line-height: 1.45;
-  color: var(--gemluxjewel-dark);
+  line-height: 1.75;
+  color: var(--gemluxjewel-gray);
+}
+
+@media (min-width: 768px) {
+  .gemluxjewel-engagement-faq .closet-content__inner {
+    padding-bottom: 35px;
+    font-size: 16px;
+    line-height: 28px;
+    color: var(--gemluxjewel-dark);
+  }
+}
+
+.gemluxjewel-engagement-faq .closet-content__inner p {
+  margin: 0;
+}
+
+.gemluxjewel-engagement-faq .closet-content__inner p + p {
+  margin-top: 12px;
 }

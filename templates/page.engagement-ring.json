@@ -52,45 +52,32 @@
         "lab_1": {
           "type": "product",
           "settings": {
-            "featured": true,
-            "title": "Vintage Engagement Ring with Marquise Cut Diamond",
-            "link": "shopify://collections/all"
+            "featured": true
           }
         },
         "lab_2": {
           "type": "product",
-          "settings": {
-            "title": "Round Rose Cut Twisted Shank Lab Diamond Ring",
-            "link": "shopify://collections/all"
-          }
+          "settings": {}
         },
         "lab_3": {
           "type": "product",
-          "settings": {
-            "title": "Oval Lab Created Diamond Engagement Ring",
-            "link": "shopify://collections/all"
-          }
+          "settings": {}
         },
         "lab_4": {
           "type": "product",
-          "settings": {
-            "title": "Dutch Marquise Cut Diamond Solitaire Ring",
-            "link": "shopify://collections/all"
-          }
+          "settings": {}
         },
         "lab_5": {
           "type": "product",
-          "settings": {
-            "title": "Three Stone Marquise Engagement Ring",
-            "link": "shopify://collections/all"
-          }
+          "settings": {}
         }
       },
       "block_order": ["lab_1", "lab_2", "lab_3", "lab_4", "lab_5"],
       "settings": {
         "title": "Popular Lab Grown Diamond Rings",
         "featured_position": "left",
-        "link_label": "Shop Now",
+        "badge_text": "New In",
+        "show_discount": true,
         "button_label": "View All",
         "button_link": "shopify://collections/all"
       }
@@ -100,38 +87,24 @@
       "blocks": {
         "moi_1": {
           "type": "product",
-          "settings": {
-            "title": "Portuguese Cut Ring With Snow Flake Halo",
-            "link": "shopify://collections/all"
-          }
+          "settings": {}
         },
         "moi_2": {
           "type": "product",
-          "settings": {
-            "title": "Cushion Cut Moissanite Hidden Halo Ring",
-            "link": "shopify://collections/all"
-          }
+          "settings": {}
         },
         "moi_3": {
           "type": "product",
-          "settings": {
-            "title": "Emerald Cut Solitaire Ring",
-            "link": "shopify://collections/all"
-          }
+          "settings": {}
         },
         "moi_4": {
           "type": "product",
-          "settings": {
-            "title": "Cyan Blue Portuguese Cut Solitaire Ring",
-            "link": "shopify://collections/all"
-          }
+          "settings": {}
         },
         "moi_5": {
           "type": "product",
           "settings": {
-            "featured": true,
-            "title": "Radiant Cut Moissanite Pave Engagement Ring",
-            "link": "shopify://collections/all"
+            "featured": true
           }
         }
       },
@@ -139,7 +112,8 @@
       "settings": {
         "title": "Popular Moissanite Rings",
         "featured_position": "right",
-        "link_label": "Shop Now",
+        "badge_text": "New In",
+        "show_discount": true,
         "button_label": "View All",
         "button_link": "shopify://collections/all"
       }
@@ -159,11 +133,17 @@
         "prefix": "Gemluxjewel Promise",
         "title": "You Should Know Before You Buy",
         "label_1": "Free Shipping Worldwide",
+        "icon_1": "shipping",
         "label_2": "24/7 Customer Service",
+        "icon_2": "support",
         "label_3": "100% Money Back Guarantee",
+        "icon_3": "guarantee",
         "label_4": "Certified Quality",
+        "icon_4": "certified",
         "label_5": "Unbeatable Value",
-        "label_6": "Eco Friendly"
+        "icon_5": "value",
+        "label_6": "Eco Friendly",
+        "icon_6": "eco"
       }
     },
     "engagement_categories": {

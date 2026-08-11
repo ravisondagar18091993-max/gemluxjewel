@@ -2,6 +2,17 @@
   if (window.__gemluxjewelAccordionBound) return;
   window.__gemluxjewelAccordionBound = true;
 
+  function setContentState(content, isOpen) {
+    if (!content) return;
+    if (isOpen) {
+      content.style.display = 'block';
+      content.removeAttribute('hidden');
+    } else {
+      content.style.display = 'none';
+      content.setAttribute('hidden', '');
+    }
+  }
+
   function toggleAccordion(root, header) {
     var content = header.nextElementSibling;
     if (!content || !content.classList.contains('closet-content')) return;
@@ -12,20 +23,18 @@
       if (openHeader !== header) {
         openHeader.classList.remove('active');
         openHeader.setAttribute('aria-expanded', 'false');
-        if (openHeader.nextElementSibling) {
-          openHeader.nextElementSibling.style.display = 'none';
-        }
+        setContentState(openHeader.nextElementSibling, false);
       }
     });
 
     if (isOpen) {
       header.classList.remove('active');
       header.setAttribute('aria-expanded', 'false');
-      content.style.display = 'none';
+      setContentState(content, false);
     } else {
       header.classList.add('active');
       header.setAttribute('aria-expanded', 'true');
-      content.style.display = 'block';
+      setContentState(content, true);
     }
   }
 

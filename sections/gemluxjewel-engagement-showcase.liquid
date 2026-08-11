@@ -1,5 +1,4 @@
 {% render 'gemluxjewel-fonts' %}
-{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
 {{ 'section-gemluxjewel-engagement-ring.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
@@ -16,52 +15,20 @@
     {%- endif -%}
 
     {%- if section.blocks.size > 0 -%}
-      <div class="gemluxjewel-engagement-showcase__grid {{ layout_class }}">
+      <ul class="gemluxjewel-engagement-showcase__grid {{ layout_class }}">
         {%- for block in section.blocks -%}
-          <div
+          <li
             class="gemluxjewel-engagement-showcase__item{% if block.settings.featured %} gemluxjewel-engagement-showcase__item--featured{% endif %}"
             {{ block.shopify_attributes }}
           >
-            <a href="{{ block.settings.link | default: routes.collections_url }}" class="gemluxjewel-engagement-showcase__link">
-              <div class="gemluxjewel-engagement-showcase__img-wrap">
-                {%- if block.settings.image != blank -%}
-                  {%- liquid
-                    if block.settings.featured
-                      assign showcase_sizes = '(min-width: 990px) 35vw, 100vw'
-                    else
-                      assign showcase_sizes = '(min-width: 990px) 22vw, 50vw'
-                    endif
-                  -%}
-                  {{
-                    block.settings.image
-                    | image_url: width: 900
-                    | image_tag:
-                      widths: '400, 600, 900',
-                      sizes: showcase_sizes,
-                      loading: 'lazy',
-                      alt: block.settings.title
-                  }}
-                {%- else -%}
-                  {% render 'gemluxjewel-theme-image',
-                    use_store_media: true,
-                    seed: forloop.index,
-                    width: 900,
-                    widths: '400,600,900',
-                    sizes: '(min-width: 990px) 25vw, 50vw',
-                    alt: block.settings.title
-                  %}
-                {%- endif -%}
-              </div>
-              {%- if block.settings.title != blank -%}
-                <p class="gemluxjewel-engagement-showcase__item-title">{{ block.settings.title | escape }}</p>
-              {%- endif -%}
-              {%- if section.settings.link_label != blank -%}
-                <span class="gemluxjewel-engagement-showcase__item-cta">{{ section.settings.link_label | escape }}</span>
-              {%- endif -%}
-            </a>
-          </div>
+            {% render 'gemluxjewel-product-card',
+              product: block.settings.product,
+              badge_text: section.settings.badge_text,
+              show_discount: section.settings.show_discount
+            %}
+          </li>
         {%- endfor -%}
-      </div>
+      </ul>
     {%- endif -%}
 
     {%- if section.settings.button_label != blank -%}
@@ -97,9 +64,15 @@
     },
     {
       "type": "text",
-      "id": "link_label",
-      "label": "Product link label",
-      "default": "Shop Now"
+      "id": "badge_text",
+      "label": "Product badge",
+      "default": "New In"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_discount",
+      "label": "Show discount badge",
+      "default": true
     },
     {
       "type": "text",
@@ -116,29 +89,18 @@
   "blocks": [
     {
       "type": "product",
-      "name": "Product feature",
+      "name": "Product",
       "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
         {
           "type": "checkbox",
           "id": "featured",
-          "label": "Large featured image",
+          "label": "Large featured card",
           "default": false
-        },
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-          "default": "Engagement Ring"
-        },
-        {
-          "type": "url",
-          "id": "link",
-          "label": "Link"
         }
       ]
     }

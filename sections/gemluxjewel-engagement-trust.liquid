@@ -15,20 +15,22 @@
         {%- liquid
           assign label_key = 'label_' | append: i
           assign icon_key = 'icon_' | append: i
+          assign image_key = 'icon_image_' | append: i
           assign item_label = section.settings[label_key]
           assign item_icon = section.settings[icon_key]
+          assign item_icon_image = section.settings[image_key]
         -%}
         {%- if item_label != blank -%}
           <li class="gemluxjewel-engagement-trust__item">
             <span class="gemluxjewel-engagement-trust__icon">
-              {%- if item_icon != blank -%}
+              {%- if item_icon_image != blank -%}
                 {{
-                  item_icon
+                  item_icon_image
                   | image_url: width: 80
                   | image_tag: widths: '40, 80', sizes: '28px', loading: 'lazy', alt: '', class: 'gemluxjewel-engagement-trust__icon-img'
                 }}
               {%- else -%}
-                <img src="{{ 'diamond.svg' | asset_url }}" alt="" width="28" height="28">
+                {% render 'gemluxjewel-engagement-trust-icon', icon: item_icon %}
               {%- endif -%}
             </span>
             <span class="gemluxjewel-engagement-trust__label">{{ item_label | escape }}</span>
@@ -58,17 +60,101 @@
       "default": "You Should Know Before You Buy"
     },
     { "type": "text", "id": "label_1", "label": "Item 1", "default": "Free Shipping Worldwide" },
-    { "type": "image_picker", "id": "icon_1", "label": "Icon 1" },
+    {
+      "type": "select",
+      "id": "icon_1",
+      "label": "Icon 1",
+      "default": "shipping",
+      "options": [
+        { "value": "shipping", "label": "Shipping" },
+        { "value": "support", "label": "Customer service" },
+        { "value": "guarantee", "label": "Guarantee" },
+        { "value": "certified", "label": "Certified quality" },
+        { "value": "value", "label": "Value" },
+        { "value": "eco", "label": "Eco friendly" }
+      ]
+    },
+    { "type": "image_picker", "id": "icon_image_1", "label": "Custom icon 1 (optional)" },
     { "type": "text", "id": "label_2", "label": "Item 2", "default": "24/7 Customer Service" },
-    { "type": "image_picker", "id": "icon_2", "label": "Icon 2" },
+    {
+      "type": "select",
+      "id": "icon_2",
+      "label": "Icon 2",
+      "default": "support",
+      "options": [
+        { "value": "shipping", "label": "Shipping" },
+        { "value": "support", "label": "Customer service" },
+        { "value": "guarantee", "label": "Guarantee" },
+        { "value": "certified", "label": "Certified quality" },
+        { "value": "value", "label": "Value" },
+        { "value": "eco", "label": "Eco friendly" }
+      ]
+    },
+    { "type": "image_picker", "id": "icon_image_2", "label": "Custom icon 2 (optional)" },
     { "type": "text", "id": "label_3", "label": "Item 3", "default": "100% Money Back Guarantee" },
-    { "type": "image_picker", "id": "icon_3", "label": "Icon 3" },
+    {
+      "type": "select",
+      "id": "icon_3",
+      "label": "Icon 3",
+      "default": "guarantee",
+      "options": [
+        { "value": "shipping", "label": "Shipping" },
+        { "value": "support", "label": "Customer service" },
+        { "value": "guarantee", "label": "Guarantee" },
+        { "value": "certified", "label": "Certified quality" },
+        { "value": "value", "label": "Value" },
+        { "value": "eco", "label": "Eco friendly" }
+      ]
+    },
+    { "type": "image_picker", "id": "icon_image_3", "label": "Custom icon 3 (optional)" },
     { "type": "text", "id": "label_4", "label": "Item 4", "default": "Certified Quality" },
-    { "type": "image_picker", "id": "icon_4", "label": "Icon 4" },
+    {
+      "type": "select",
+      "id": "icon_4",
+      "label": "Icon 4",
+      "default": "certified",
+      "options": [
+        { "value": "shipping", "label": "Shipping" },
+        { "value": "support", "label": "Customer service" },
+        { "value": "guarantee", "label": "Guarantee" },
+        { "value": "certified", "label": "Certified quality" },
+        { "value": "value", "label": "Value" },
+        { "value": "eco", "label": "Eco friendly" }
+      ]
+    },
+    { "type": "image_picker", "id": "icon_image_4", "label": "Custom icon 4 (optional)" },
     { "type": "text", "id": "label_5", "label": "Item 5", "default": "Unbeatable Value" },
-    { "type": "image_picker", "id": "icon_5", "label": "Icon 5" },
+    {
+      "type": "select",
+      "id": "icon_5",
+      "label": "Icon 5",
+      "default": "value",
+      "options": [
+        { "value": "shipping", "label": "Shipping" },
+        { "value": "support", "label": "Customer service" },
+        { "value": "guarantee", "label": "Guarantee" },
+        { "value": "certified", "label": "Certified quality" },
+        { "value": "value", "label": "Value" },
+        { "value": "eco", "label": "Eco friendly" }
+      ]
+    },
+    { "type": "image_picker", "id": "icon_image_5", "label": "Custom icon 5 (optional)" },
     { "type": "text", "id": "label_6", "label": "Item 6", "default": "Eco Friendly" },
-    { "type": "image_picker", "id": "icon_6", "label": "Icon 6" }
+    {
+      "type": "select",
+      "id": "icon_6",
+      "label": "Icon 6",
+      "default": "eco",
+      "options": [
+        { "value": "shipping", "label": "Shipping" },
+        { "value": "support", "label": "Customer service" },
+        { "value": "guarantee", "label": "Guarantee" },
+        { "value": "certified", "label": "Certified quality" },
+        { "value": "value", "label": "Value" },
+        { "value": "eco", "label": "Eco friendly" }
+      ]
+    },
+    { "type": "image_picker", "id": "icon_image_6", "label": "Custom icon 6 (optional)" }
   ],
   "presets": [{ "name": "GL Engagement Trust" }]
 }
