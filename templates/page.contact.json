@@ -16,42 +16,48 @@
           "type": "quick_link",
           "settings": {
             "icon": "appointment",
-            "label": "Book an appointment"
+            "label": "Book an appointment",
+            "url": ""
           }
         },
         "quick_2": {
           "type": "quick_link",
           "settings": {
             "icon": "clock",
-            "label": "Client care hours: Weekdays 9am - 5pm · Saturday 8am - 4pm"
+            "label": "Client care hours: Weekdays 9am - 5pm · Saturday 8am - 4pm",
+            "url": ""
           }
         },
         "quick_3": {
           "type": "quick_link",
           "settings": {
             "icon": "faq",
-            "label": "View frequently asked questions"
+            "label": "View frequently asked questions",
+            "url": ""
           }
         },
         "quick_4": {
           "type": "quick_link",
           "settings": {
             "icon": "phone",
-            "label": "+1 000 000 0000"
+            "label": "+1 000 000 0000",
+            "url": ""
           }
         },
         "quick_5": {
           "type": "quick_link",
           "settings": {
             "icon": "chat",
-            "label": "Live chat"
+            "label": "Live chat",
+            "url": ""
           }
         },
         "quick_6": {
           "type": "quick_link",
           "settings": {
             "icon": "email",
-            "label": "info@gemluxjewels.com"
+            "label": "info@gemluxjewels.com",
+            "url": ""
           }
         }
       },
@@ -64,12 +70,24 @@
         "quick_6"
       ],
       "settings": {
+        "hero_image": "shopify://shop_images/ChatGPT_Image_Aug_10_2026_12_25_11_PM.png",
         "hero_heading": "Need assistance?",
         "hero_subheading": "Send us your questions and we will get straight back to you.",
+        "first_name_label": "Your first name",
+        "last_name_label": "Your last name",
+        "email_label": "Your email",
+        "phone_label": "Your phone number (optional)",
+        "message_label": "Message",
         "button_label": "Submit",
+        "success_message": "Thanks for contacting us. We'll get back to you as soon as possible.",
         "show_mailing_list": true,
+        "mailing_list_label": "Subscribe to our mailing list",
         "mailing_list_checked": true,
-        "show_stone_type": true
+        "show_stone_type": true,
+        "stone_type_heading": "What stone type are you interested in?",
+        "stone_type_1": "Lab-Grown Diamonds",
+        "stone_type_2": "Moissanite",
+        "legal_text": "<p>This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.</p>"
       }
     }
   },
