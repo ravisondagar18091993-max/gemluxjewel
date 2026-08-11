@@ -63,10 +63,6 @@
   padding-top: 0;
 }
 
-.shopify-section:has(.gemluxjewel-engagement-categories) + .shopify-section:has(.gemluxjewel-engagement-faq) .gemluxjewel-engagement-faq {
-  padding-top: 0;
-}
-
 /* Tighter gap between back-to-back product showcases */
 .gemluxjewel-engagement-showcase + .gemluxjewel-engagement-showcase {
   margin-top: calc(var(--gemluxjewel-engagement-space-section-tight) - var(--gemluxjewel-engagement-space-section));
