@@ -58,6 +58,7 @@
           "type": "utility_card",
           "settings": {
             "card_style": "ring_size",
+            "image": "shopify://shop_images/sizing-a-ring-while-using-a-loupe.jpg",
             "title": "Find Your Ring Size",
             "text": "Unsure of Your Ring Size? No Problem! Click on 'Find Now' and let us assist you in choosing the right ring size for you.",
             "button_label": "Find Now",
@@ -72,6 +73,7 @@
           "type": "utility_card",
           "settings": {
             "card_style": "gemologist",
+            "image": "shopify://shop_images/sizing-a-ring-while-using-a-loupe.jpg",
             "title": "Talk with Gemologist",
             "text": "Do you have inquiries about diamonds and moissanite? Arrange a virtual meeting with a skilled gemologist to get your questions answered.",
             "button_label": "Book an Appointment",
@@ -192,6 +194,7 @@
     "custom_expert": {
       "type": "gemluxjewel-custom-expert",
       "settings": {
+        "left_image": "shopify://shop_images/gemlux-website-earrings-square-copy.png",
         "left_title": "Need Expert Advice?",
         "left_text": "Looking for Professional Guidance?\nIf you require assistance with custom orders or designing your perfect piece, don't hesitate to schedule a consultation with our experts.",
         "left_button_label": "Book an Appointment",
