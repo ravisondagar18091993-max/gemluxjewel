@@ -103,6 +103,85 @@
         "button_link": "shopify://pages/contact",
         "image": "shopify://shop_images/ChatGPT_Image_Aug_10_2026_12_25_11_PM.png"
       }
+    },
+    "gemluxjewel_testimonials_keTPpW": {
+      "type": "gemluxjewel-testimonials",
+      "blocks": {
+        "review_Fz6KmF": {
+          "type": "review",
+          "settings": {
+            "platform": "google",
+            "rating": 5,
+            "author": "Abigail Green",
+            "time_ago": "an hour ago",
+            "text": "Absolutely stunning ring! The craftsmanship is incredible and it sparkles beautifully. Customer service was helpful throughout.",
+            "review_url": ""
+          }
+        },
+        "review_UE94kt": {
+          "type": "review",
+          "settings": {
+            "platform": "trustpilot",
+            "rating": 5,
+            "author": "James Mitchell",
+            "time_ago": "2 hours ago",
+            "text": "Ordered a lab-grown diamond engagement ring and couldn't be happier. Fast shipping, elegant packaging, and the ring looks even better in person.",
+            "review_url": ""
+          }
+        },
+        "review_NdpVUG": {
+          "type": "review",
+          "settings": {
+            "platform": "google",
+            "rating": 5,
+            "author": "Sarah Chen",
+            "time_ago": "3 hours ago",
+            "text": "Great experience from start to finish. The team helped me choose the perfect setting and the quality is outstanding for the price.",
+            "review_url": ""
+          }
+        },
+        "review_KyzA6T": {
+          "type": "review",
+          "settings": {
+            "platform": "trustpilot",
+            "rating": 5,
+            "author": "Michael Roberts",
+            "time_ago": "5 hours ago",
+            "text": "My wife loves her new necklace. The diamonds are brilliant and the design is timeless. Will definitely shop here again.",
+            "review_url": ""
+          }
+        },
+        "review_Bhkbnw": {
+          "type": "review",
+          "settings": {
+            "platform": "trustpilot",
+            "rating": 5,
+            "author": "Emma Wilson",
+            "time_ago": "a day ago",
+            "text": "Beautiful jewellery and transparent pricing. Resizing was quick and the ring fits perfectly now.",
+            "review_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "review_Fz6KmF",
+        "review_UE94kt",
+        "review_NdpVUG",
+        "review_KyzA6T",
+        "review_Bhkbnw"
+      ],
+      "name": "gemluxjewel Testimonials",
+      "settings": {
+        "title": "What Our Clients Say",
+        "subtitle": "Here's what our clients have to say about their Gemlux experience.",
+        "show_summary": true,
+        "average_rating": "5.0",
+        "review_count": "250+ reviews",
+        "write_review_label": "Write a Review",
+        "read_reviews_label": "Read Our Reviews",
+        "trustpilot_reviews_url": "",
+        "trustpilot_write_url": ""
+      }
     }
   },
   "order": [
@@ -110,6 +189,7 @@
     "our_story_founder",
     "our_story_blocks",
     "our_story_quote",
-    "our_story_cta"
+    "our_story_cta",
+    "gemluxjewel_testimonials_keTPpW"
   ]
 }
