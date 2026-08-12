@@ -3,7 +3,7 @@
 {{ 'section-gemluxjewel-custom-jewellery.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'gemluxjewel-custom-jewellery.js' | asset_url }}" defer="defer"></script>
 
-{%- assign pair_image_sizes = '(min-width: 990px) 22vw, 42vw' -%}
+{%- assign slide_image_sizes = '(min-width: 990px) 11vw, 22vw' -%}
 
 <section class="gemluxjewel gemluxjewel-custom-made-to-order">
   <div class="gemluxjewel-custom-made-to-order__inner gemluxjewel-container">
@@ -35,6 +35,11 @@
         <div class="gemluxjewel-custom-made-to-order__viewport">
           <div class="gemluxjewel-custom-made-to-order__track" data-gemluxjewel-made-to-order-track>
             {%- for block in section.blocks -%}
+              {%- assign pair_index = forloop.index0 | modulo: 2 -%}
+              {%- if pair_index == 0 -%}
+                <div class="gemluxjewel-custom-made-to-order__slide">
+              {%- endif -%}
+
               {%- liquid
                 assign reference_alt = 'Reference design'
                 assign reality_alt = 'Finished ring'
@@ -55,7 +60,7 @@
                         | image_url: width: 800
                         | image_tag:
                           widths: '300, 400, 600, 800',
-                          sizes: pair_image_sizes,
+                          sizes: slide_image_sizes,
                           loading: 'lazy',
                           alt: reference_alt
                       }}
@@ -65,7 +70,7 @@
                         seed: forloop.index,
                         width: 600,
                         widths: '300,400,600,800',
-                        sizes: pair_image_sizes,
+                        sizes: slide_image_sizes,
                         alt: 'Reference design'
                       %}
                     {%- endif -%}
@@ -80,7 +85,7 @@
                         | image_url: width: 800
                         | image_tag:
                           widths: '300, 400, 600, 800',
-                          sizes: pair_image_sizes,
+                          sizes: slide_image_sizes,
                           loading: 'lazy',
                           alt: reality_alt
                       }}
@@ -90,13 +95,17 @@
                         seed: forloop.index | plus: 10,
                         width: 600,
                         widths: '300,400,600,800',
-                        sizes: pair_image_sizes,
+                        sizes: slide_image_sizes,
                         alt: 'Finished ring'
                       %}
                     {%- endif -%}
                   </div>
                 </div>
               </div>
+
+              {%- if pair_index == 1 or forloop.last -%}
+                </div>
+              {%- endif -%}
             {%- endfor -%}
           </div>
         </div>
@@ -181,6 +190,7 @@
     {
       "name": "GL Made to Order",
       "blocks": [
+        { "type": "pair" },
         { "type": "pair" },
         { "type": "pair" },
         { "type": "pair" }

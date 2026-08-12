@@ -5,63 +5,43 @@
 <section class="gemluxjewel gemluxjewel-custom-expert">
   <div class="gemluxjewel-container">
     <div class="gemluxjewel-custom-expert__grid">
-      <div class="gemluxjewel-custom-expert__card gemluxjewel-custom-expert__card--split">
-        <div class="gemluxjewel-custom-expert__card-media">
-          {%- if section.settings.left_image != blank -%}
-            {{
-              section.settings.left_image
-              | image_url: width: 900
-              | image_tag:
-                widths: '450, 700, 900',
-                sizes: '(min-width: 990px) 280px, 100vw',
-                loading: 'lazy',
-                alt: section.settings.left_title
-            }}
-          {%- else -%}
-            <img
-              src="{{ 'gemluxjewel-custom-expert-banner.png' | asset_url }}"
-              alt="{{ section.settings.left_title | escape }}"
-              loading="lazy"
-              width="900"
-              height="600"
-            >
-          {%- endif -%}
-        </div>
-        <div class="gemluxjewel-custom-expert__card-body">
-          {%- if section.settings.left_title != blank -%}
-            <h2 class="gemluxjewel-custom-expert__card-title">{{ section.settings.left_title | escape }}</h2>
-          {%- endif -%}
-          {%- if section.settings.left_text != blank -%}
-            <p class="gemluxjewel-custom-expert__card-text">{{ section.settings.left_text | escape | newline_to_br }}</p>
-          {%- endif -%}
-          {%- if section.settings.left_button_label != blank -%}
-            <a
-              href="{{ section.settings.left_button_link | default: routes.root_url }}"
-              class="gemluxjewel-custom-expert__btn"
-            >
-              {{ section.settings.left_button_label | escape }}
-            </a>
-          {%- endif -%}
-        </div>
+      <div class="gemluxjewel-custom-expert__media">
+        {%- if section.settings.image != blank -%}
+          {{
+            section.settings.image
+            | image_url: width: 900
+            | image_tag:
+              widths: '450, 700, 900',
+              sizes: '(min-width: 990px) 42vw, 100vw',
+              loading: 'lazy',
+              alt: section.settings.title | default: 'Expert consultation'
+          }}
+        {%- else -%}
+          <img
+            src="{{ 'gemluxjewel-custom-expert-banner.png' | asset_url }}"
+            alt="{{ section.settings.title | escape }}"
+            loading="lazy"
+            width="900"
+            height="600"
+          >
+        {%- endif -%}
       </div>
 
-      <div class="gemluxjewel-custom-expert__card gemluxjewel-custom-expert__card--solid">
-        <div class="gemluxjewel-custom-expert__card-body">
-          {%- if section.settings.right_title != blank -%}
-            <h2 class="gemluxjewel-custom-expert__card-title gemluxjewel-custom-expert__card-title--caps">{{ section.settings.right_title | escape }}</h2>
-          {%- endif -%}
-          {%- if section.settings.right_text != blank -%}
-            <p class="gemluxjewel-custom-expert__card-text">{{ section.settings.right_text | escape | newline_to_br }}</p>
-          {%- endif -%}
-          {%- if section.settings.right_button_label != blank -%}
-            <a
-              href="{{ section.settings.right_button_link | default: routes.root_url }}"
-              class="gemluxjewel-custom-expert__btn"
-            >
-              {{ section.settings.right_button_label | escape }}
-            </a>
-          {%- endif -%}
-        </div>
+      <div class="gemluxjewel-custom-expert__content">
+        {%- if section.settings.title != blank -%}
+          <h2 class="gemluxjewel-custom-expert__title">{{ section.settings.title | escape }}</h2>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <p class="gemluxjewel-custom-expert__text">{{ section.settings.text | escape | newline_to_br }}</p>
+        {%- endif -%}
+        {%- if section.settings.button_label != blank -%}
+          <a
+            href="{{ section.settings.button_link | default: routes.root_url }}"
+            class="gemluxjewel-custom-expert__btn"
+          >
+            {{ section.settings.button_label | escape }}
+          </a>
+        {%- endif -%}
       </div>
     </div>
   </div>
@@ -73,27 +53,16 @@
   "tag": "section",
   "class": "section gemluxjewel-section",
   "settings": [
-    { "type": "header", "content": "Left card" },
-    { "type": "image_picker", "id": "left_image", "label": "Image" },
-    { "type": "text", "id": "left_title", "label": "Heading", "default": "Need Expert Advice?" },
+    { "type": "image_picker", "id": "image", "label": "Left image" },
+    { "type": "text", "id": "title", "label": "Heading", "default": "Need Expert Advice?" },
     {
       "type": "textarea",
-      "id": "left_text",
-      "label": "Description",
-      "default": "Looking for Professional Guidance?\nIf you require assistance with custom orders or designing your perfect piece, don't hesitate to schedule a consultation with our experts."
-    },
-    { "type": "text", "id": "left_button_label", "label": "Button label", "default": "Book an Appointment" },
-    { "type": "url", "id": "left_button_link", "label": "Button link" },
-    { "type": "header", "content": "Right card" },
-    { "type": "text", "id": "right_title", "label": "Heading", "default": "Need Expert Advice?" },
-    {
-      "type": "textarea",
-      "id": "right_text",
+      "id": "text",
       "label": "Description",
       "default": "No idea where to start? Let us help you find the perfect ring to celebrate your story. Book a consultation with a gemologist today for free expert advice."
     },
-    { "type": "text", "id": "right_button_label", "label": "Button label", "default": "Contact Design Experts" },
-    { "type": "url", "id": "right_button_link", "label": "Button link" }
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Contact Design Experts" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
   ],
   "presets": [{ "name": "GL Custom Expert" }]
 }

@@ -12,13 +12,13 @@
     "custom_hero": {
       "type": "gemluxjewel-custom-hero",
       "settings": {
-        "show_breadcrumb": true,
+        "show_breadcrumb": false,
         "breadcrumb_home": "Home",
         "breadcrumb_parent": "Rings",
         "breadcrumb_parent_link": "",
         "breadcrumb_current": "Engagement Ring",
         "title": "Custom Lab Grown Diamond Engagement Rings",
-        "text": ""
+        "text": "Design your unique jewelry with Gemlux. Tailor every detail to your taste for a truly personal touch. Create the one-of-a-kind piece you've always dreamed of."
       }
     },
     "custom_form": {
@@ -93,7 +93,7 @@
       "settings": {
         "hulk_form_id": "978R1lbxhx17O5o1yMDqYsA",
         "title": "Custom Lab Grown Diamond Engagement Rings",
-        "intro_text": "Design your unique jewelry with Gemlux. Tailor every detail to your taste for a truly personal touch. Create the one-of-a-kind piece you've always dreamed of.",
+        "intro_text": "",
         "email_subject": "Custom Engagement Ring Request",
         "button_label": "Submit",
         "show_file_upload": false,
@@ -195,15 +195,11 @@
     "custom_expert": {
       "type": "gemluxjewel-custom-expert",
       "settings": {
-        "left_image": "shopify://shop_images/gemlux-website-earrings-square-copy.png",
-        "left_title": "Need Expert Advice?",
-        "left_text": "Looking for Professional Guidance?\nIf you require assistance with custom orders or designing your perfect piece, don't hesitate to schedule a consultation with our experts.",
-        "left_button_label": "Book an Appointment",
-        "left_button_link": "shopify://pages/contact",
-        "right_title": "Need Expert Advice?",
-        "right_text": "No idea where to start? Let us help you find the perfect ring to celebrate your story. Book a consultation with a gemologist today for free expert advice.",
-        "right_button_label": "Contact Design Experts",
-        "right_button_link": "shopify://pages/contact"
+        "image": "shopify://shop_images/gemlux-website-earrings-square-copy.png",
+        "title": "Need Expert Advice?",
+        "text": "No idea where to start? Let us help you find the perfect ring to celebrate your story. Book a consultation with a gemologist today for free expert advice.",
+        "button_label": "Contact Design Experts",
+        "button_link": "shopify://pages/contact"
       }
     },
     "custom_made_to_order": {
@@ -220,12 +216,17 @@
         "pair_3": {
           "type": "pair",
           "settings": {}
+        },
+        "pair_4": {
+          "type": "pair",
+          "settings": {}
         }
       },
       "block_order": [
         "pair_1",
         "pair_2",
-        "pair_3"
+        "pair_3",
+        "pair_4"
       ],
       "settings": {
         "title": "Your Perfect Ring, Made to Order.",

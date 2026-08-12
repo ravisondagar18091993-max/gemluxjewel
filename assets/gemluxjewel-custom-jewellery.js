@@ -188,21 +188,21 @@ function initCustomMadeToOrderSlider() {
     var nextBtn = slider.querySelector('[data-gemluxjewel-made-to-order-next]');
     if (!track || !prevBtn || !nextBtn) return;
 
-    var pairs = track.querySelectorAll('.gemluxjewel-custom-made-to-order__pair');
-    if (!pairs.length) return;
+    var slides = track.querySelectorAll('.gemluxjewel-custom-made-to-order__slide');
+    if (!slides.length) return;
 
     var index = 0;
 
     function getMaxIndex() {
-      return Math.max(0, pairs.length - 1);
+      return Math.max(0, slides.length - 1);
     }
 
     function update() {
-      var pair = pairs[0];
-      if (!pair) return;
+      var slide = slides[0];
+      if (!slide) return;
 
-      var gap = parseFloat(getComputedStyle(track).gap) || 16;
-      var offset = index * (pair.offsetWidth + gap);
+      var gap = parseFloat(getComputedStyle(track).gap) || 0;
+      var offset = index * (slide.offsetWidth + gap);
       track.style.transform = 'translate3d(-' + offset + 'px, 0, 0)';
 
       prevBtn.disabled = index <= 0;
