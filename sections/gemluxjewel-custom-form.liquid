@@ -134,6 +134,8 @@
   {%- assign utility_blocks = section.blocks | where: 'type', 'utility_card' -%}
   {%- if utility_blocks.size > 0 -%}
     <div class="gemluxjewel-custom-form__utilities">
+      <div class="gemluxjewel-container">
+        <div class="gemluxjewel-custom-form__utilities-stack">
         {%- for block in utility_blocks -%}
           {%- liquid
             assign card_style = block.settings.card_style | default: 'ring_size'
@@ -149,7 +151,7 @@
             class="gemluxjewel-custom-form__utility gemluxjewel-custom-form__utility--{{ card_style }}"
             {{ block.shopify_attributes }}
           >
-            <div class="gemluxjewel-custom-form__utility-inner gemluxjewel-container">
+            <div class="gemluxjewel-custom-form__utility-inner">
               {%- if card_style == 'gemologist' -%}
                 <div class="gemluxjewel-custom-form__utility-media">
                   {%- if block.settings.image != blank -%}
@@ -226,6 +228,8 @@
             </div>
           </div>
         {%- endfor -%}
+        </div>
+      </div>
     </div>
   {%- endif -%}
 </section>
