@@ -687,22 +687,29 @@ html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
 
 /* ── Contact mega menu (CULLEN-style) ── */
 .gemluxjewel-header__mega--contact .gemluxjewel-header__mega-inner {
-  padding-top: 36px;
-  padding-bottom: 44px;
+  width: 88%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 28px var(--gemluxjewel-header-gutter, 24px) 32px;
 }
 
 .gemluxjewel-header__mega-contact-layout {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 32px;
+  gap: 28px;
   align-items: start;
 }
 
 @media (min-width: 990px) {
   .gemluxjewel-header__mega-contact-layout {
-    grid-template-columns: minmax(160px, 220px) minmax(0, 1fr);
-    gap: 48px 72px;
+    grid-template-columns: 200px minmax(0, 1fr);
+    gap: 40px 80px;
+    align-items: start;
   }
+}
+
+.gemluxjewel-header__mega-contact-links-wrap {
+  padding-top: 4px;
 }
 
 .gemluxjewel-header__mega-contact-links {
@@ -712,7 +719,7 @@ html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
 }
 
 .gemluxjewel-header__mega-contact-links li {
-  margin: 0 0 14px;
+  margin: 0 0 12px;
 }
 
 .gemluxjewel-header__mega-contact-links li:last-child {
@@ -723,11 +730,11 @@ html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
   display: inline-block;
   font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
   font-size: 14px;
-  line-height: 1.45;
+  line-height: 1.5;
   font-weight: 400;
   color: #141414;
   text-decoration: none;
-  transition: color 0.2s ease, opacity 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 .gemluxjewel-header__mega-contact-link:hover {
@@ -737,16 +744,16 @@ html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
 .gemluxjewel-header__mega-contact-features {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 24px;
   min-width: 0;
 }
 
 .gemluxjewel-header__mega-contact-feature-title {
-  margin: 0 0 12px;
+  margin: 0 0 10px;
   font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
   font-size: 11px;
   line-height: 1.2;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   font-weight: 500;
   text-transform: uppercase;
   color: #141414;
@@ -761,7 +768,7 @@ html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
 
 .gemluxjewel-header__mega-contact-feature-media img {
   width: 100%;
-  height: 100%;
+  height: auto;
   aspect-ratio: 16 / 5;
   object-fit: cover;
   display: block;
@@ -779,9 +786,11 @@ html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
 }
 
 .gemluxjewel-header__nav-item.has-mega.is-mega-active > .gemluxjewel-header__nav-link,
+.gemluxjewel-header__nav-item.has-mega.is-mega-active > .gemluxjewel-header__nav-link.is-highlight,
 .gemluxjewel-header__nav-item.has-mega:hover > .gemluxjewel-header__nav-link,
 .gemluxjewel-header__nav-item.has-mega:focus-within > .gemluxjewel-header__nav-link {
   font-weight: 500;
+  color: var(--gemluxjewel-primary, #73976a);
 }
 
 /* ── Mobile menu ── */

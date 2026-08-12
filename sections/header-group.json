@@ -26,7 +26,7 @@
         "mega_contact_get_in_touch": {
           "type": "mega_contact_feature",
           "settings": {
-            "parent_nav": "Contact",
+            "parent_nav": "Contact Us",
             "title": "Get In Touch",
             "link": "shopify://pages/contact"
           }
@@ -34,7 +34,7 @@
         "mega_contact_book": {
           "type": "mega_contact_feature",
           "settings": {
-            "parent_nav": "Contact",
+            "parent_nav": "Contact Us",
             "title": "Book an Appointment",
             "link": "shopify://pages/contact"
           }
@@ -78,7 +78,7 @@
         "show_shop_all": true,
         "shop_all_label": "Shop All",
         "view_column_label": "View all",
-        "contact_mega_nav": "Contact",
+        "contact_mega_nav": "Contact, Contact Us",
         "mega_info_columns": "Lab Grown Diamonds, Moissanite",
         "mega_highlight_links": "",
         "mega_new_badge_links": "",

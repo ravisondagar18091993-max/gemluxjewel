@@ -5,9 +5,19 @@
 
 {%- liquid
   assign link_key = link.title | downcase | strip
-  assign contact_nav = section.settings.contact_mega_nav | downcase | strip
   assign use_contact_mega = false
-  if contact_nav != blank and link_key == contact_nav
+
+  if section.settings.contact_mega_nav != blank
+    assign contact_nav_items = section.settings.contact_mega_nav | downcase | split: ','
+    for nav_item in contact_nav_items
+      assign nav_item_trim = nav_item | strip
+      if nav_item_trim != blank and link_key == nav_item_trim
+        assign use_contact_mega = true
+      endif
+    endfor
+  endif
+
+  if use_contact_mega == false and link_key contains 'contact'
     assign use_contact_mega = true
   endif
 -%}

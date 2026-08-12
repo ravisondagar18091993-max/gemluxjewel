@@ -24,7 +24,7 @@
                     </a>
                   </li>
                 {%- endfor -%}
-              {%- else -%}
+              {%- elsif child.url != blank -%}
                 <li>
                   <a href="{{ child.url }}" class="gemluxjewel-header__mega-contact-link">
                     {{ child.title | escape }}
@@ -38,8 +38,18 @@
         <div class="gemluxjewel-header__mega-contact-features">
           {%- assign feature_count = 0 -%}
           {%- for block in contact_features -%}
-            {%- assign block_parent = block.settings.parent_nav | downcase | strip -%}
-            {%- if block_parent == link_key -%}
+            {%- liquid
+              assign block_parent = block.settings.parent_nav | downcase | strip
+              assign block_match = false
+              if block_parent == link_key
+                assign block_match = true
+              elsif block_parent != blank and link_key contains block_parent
+                assign block_match = true
+              elsif link_key != blank and block_parent contains link_key
+                assign block_match = true
+              endif
+            -%}
+            {%- if block_match -%}
               {%- assign feature_count = feature_count | plus: 1 -%}
               <div class="gemluxjewel-header__mega-contact-feature" {{ block.shopify_attributes }}>
                 {%- if block.settings.title != blank -%}
