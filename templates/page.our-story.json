@@ -1,0 +1,145 @@
+{
+  "sections": {
+    "our_story_hero": {
+      "type": "gemluxjewel-our-story-hero",
+      "settings": {
+        "title": "Our Story"
+      }
+    },
+    "our_story_founder": {
+      "type": "gemluxjewel-our-story-founder",
+      "settings": {
+        "quote": "In 2018, as I searched for the perfect engagement ring, I could not have imagined where that journey would lead.",
+        "founder_name": "GemLux Jewel — Founder"
+      }
+    },
+    "our_story_blocks": {
+      "type": "gemluxjewel-our-story-alternating",
+      "blocks": {
+        "row_1": {
+          "type": "row",
+          "settings": {
+            "eyebrow": "Our Origin",
+            "heading": "A modern approach to an ancient craft.",
+            "text": "<p>GemLux Jewel began with a simple search for an engagement ring — and the realisation that the industry could be gentler, clearer, and far more considered.</p><p>What started as one custom ring became the catalyst for a different kind of jewellery experience: one shaped by conscience, craftsmanship and care.</p><p>We have crafted a name for ourselves by creating lab-grown diamond, moissanite and gemstone pieces designed for a lifetime — chosen by clients who expect beauty and integrity in equal measure.</p>",
+            "image_position": "right"
+          }
+        },
+        "row_2": {
+          "type": "row",
+          "settings": {
+            "eyebrow": "Where We Are Today",
+            "heading": "Trusted by couples around the world.",
+            "text": "<p>GemLux Jewel has grown into a premium jewellery brand trusted by thousands of couples worldwide. We create distinctive engagement rings, wedding bands and fine jewellery — crafted for longevity, with beauty and conscience at the heart of every decision.</p><p>With showrooms and personalised virtual appointments available anywhere, we serve a global community — helping people mark the stories and moments that matter most with pieces designed to last.</p>",
+            "image_position": "left"
+          }
+        },
+        "row_3": {
+          "type": "row",
+          "settings": {
+            "eyebrow": "Our Promise",
+            "heading": "Unreasonable care in every detail.",
+            "text": "<p>Our promise shows up in the smallest details. It's in the way a showroom is considered and laid out. It's in how a ring is engineered to wear beautifully for decades. And it's in how we remember a client's story and respond with genuine attention.</p><p>This commitment shapes everything we do — design, service, production, aftercare — and it's what makes the GemLux Jewel experience distinct, consistent and deeply human.</p>",
+            "image_position": "right"
+          }
+        },
+        "row_4": {
+          "type": "row",
+          "settings": {
+            "eyebrow": "Our Mission",
+            "heading": "Beautiful jewellery made with conscience. Lasting experiences wrapped in care.",
+            "text": "<p>From ethically sourced materials to considered design and personalised guidance, every detail reflects a belief that how something is made — and how it's experienced — matters just as much as how it looks.</p>",
+            "image_position": "left"
+          }
+        },
+        "row_5": {
+          "type": "row",
+          "settings": {
+            "eyebrow": "Our Purpose",
+            "heading": "To craft amazing moments in people's lives.",
+            "text": "<p>Each piece marks a moment to remember. GemLux Jewel exists to honour life's milestones with heirlooms in the making, designed to be worn often, loved deeply, and carried forward through time.</p>",
+            "image_position": "right"
+          }
+        }
+      },
+      "block_order": ["row_1", "row_2", "row_3", "row_4", "row_5"]
+    },
+    "our_story_quote": {
+      "type": "gemluxjewel-our-story-quote",
+      "settings": {
+        "quote": "GemLux Jewel was founded with the goal of bringing accessible and transparent information to the jewellery industry, allowing people to better understand all the options available when purchasing engagement rings and wedding bands.",
+        "attribution": "GemLux Jewel — Founder"
+      }
+    },
+    "our_story_cta": {
+      "type": "gemluxjewel-our-story-cta",
+      "settings": {
+        "title": "Need a hand?",
+        "text": "Visit us in person or virtually. We're here to help you find the perfect ring, no matter where you are.",
+        "button_label": "Get In Touch",
+        "button_link": "shopify://pages/contact"
+      }
+    },
+    "our_story_reviews": {
+      "type": "gemluxjewel-our-story-reviews",
+      "blocks": {
+        "r1": {
+          "type": "review",
+          "settings": {
+            "platform": "google",
+            "rating": 5,
+            "text": "Absolutely stunning ring and exceptional service from start to finish. The team made the entire process feel personal and stress-free."
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "platform": "trustpilot",
+            "rating": 5,
+            "text": "The quality exceeded our expectations. Beautiful craftsmanship and they were so helpful choosing the perfect design."
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "platform": "google",
+            "rating": 5,
+            "text": "We felt genuinely cared for throughout. Transparent pricing, expert guidance, and a ring we will treasure forever."
+          }
+        },
+        "r4": {
+          "type": "review",
+          "settings": {
+            "platform": "trustpilot",
+            "rating": 5,
+            "text": "From virtual consultation to delivery, everything was seamless. Highly recommend GemLux Jewel for engagement rings."
+          }
+        }
+      },
+      "block_order": ["r1", "r2", "r3", "r4"],
+      "settings": {
+        "title": "What Our Clients Say",
+        "subtitle": "Here's what our clients have to say about their GemLux Jewel experience."
+      }
+    },
+    "our_story_trust": {
+      "type": "gemluxjewel-our-story-trust",
+      "blocks": {
+        "t1": { "type": "item", "settings": { "label": "Ethical & Sustainable", "icon": "eco" } },
+        "t2": { "type": "item", "settings": { "label": "Lifetime Warranty", "icon": "trust" } },
+        "t3": { "type": "item", "settings": { "label": "Free Resizing", "icon": "support" } },
+        "t4": { "type": "item", "settings": { "label": "Free Shipping", "icon": "shipping" } }
+      },
+      "block_order": ["t1", "t2", "t3", "t4"]
+    }
+  },
+  "order": [
+    "our_story_hero",
+    "our_story_founder",
+    "our_story_blocks",
+    "our_story_quote",
+    "our_story_cta",
+    "our_story_reviews",
+    "our_story_trust"
+  ]
+}

@@ -842,15 +842,15 @@ html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
   color: var(--gemluxjewel-primary, #73976a);
 }
 
-/* ── Mobile menu ── */
+/* ── Mobile menu (premium drill-down) ── */
 .gemluxjewel-mobile-menu {
   position: fixed;
   inset: 0;
-  background: #fff;
+  background: #fafafa;
   z-index: 9999;
   transform: translateY(-100%);
   visibility: hidden;
-  transition: transform 0.7s ease, visibility 0.7s ease;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.55s ease;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -866,23 +866,33 @@ html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
   justify-content: space-between;
   align-items: center;
   flex-shrink: 0;
-  padding: 20px var(--gemluxjewel-header-gutter, 20px) 16px;
+  padding: 18px var(--gemluxjewel-header-gutter, 20px) 14px;
+  background: #fff;
+  border-bottom: 1px solid rgba(20, 20, 20, 0.06);
 }
 
 .gemluxjewel-mobile-menu__head .gemluxjewel-header__logo {
-  font-size: 16px;
-  letter-spacing: 0.2em;
-  padding-left: 0.2em;
+  font-family: var(--gemluxjewel-font-heading, 'Figtree', sans-serif);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  padding-left: 0.22em;
   text-align: left;
+  color: var(--gemluxjewel-dark, #141414);
 }
 
 .gemluxjewel-mobile-menu__close {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   background: transparent;
   border: none;
   cursor: pointer;
   padding: 0;
+  transition: transform 0.25s ease;
+}
+
+.gemluxjewel-mobile-menu__close:hover {
+  transform: scale(1.06);
 }
 
 .gemluxjewel-mobile-menu__close img {
@@ -891,84 +901,377 @@ html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
   object-fit: contain;
 }
 
-.gemluxjewel-mobile-menu__nav {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  padding: 8px var(--gemluxjewel-header-gutter, 20px) 32px;
+.gemluxjewel-mobile-menu__body {
   flex: 1;
   min-height: 0;
+  overflow: hidden;
+  background: #fafafa;
+}
+
+.gemluxjewel-mobile-menu__panels {
+  position: relative;
+  height: 100%;
+}
+
+.gemluxjewel-mobile-menu__panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
   overflow-y: auto;
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
-  justify-content: flex-start;
+  padding: 0 var(--gemluxjewel-header-gutter, 20px) 28px;
+  background: #fafafa;
+  transform: translateX(100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.38s ease, visibility 0.38s ease;
 }
 
-.gemluxjewel-mobile-menu__link {
-  font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
-  font-size: 36px;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  color: var(--gemluxjewel-dark, #141414);
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: color 0.3s, padding-left 0.3s;
+.gemluxjewel-mobile-menu__panel.is-active {
+  position: relative;
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
 }
 
-@media (max-width: 575px) {
-  .gemluxjewel-mobile-menu__link {
-    font-size: 28px;
-  }
+.gemluxjewel-mobile-menu__panel.is-leaving {
+  position: absolute;
+  transform: translateX(-28%);
+  opacity: 0;
 }
 
-.gemluxjewel-mobile-menu__link:hover {
-  color: var(--gemluxjewel-primary, #73976a);
-  padding-left: 8px;
+.gemluxjewel-mobile-menu__nav {
+  padding-top: 4px;
 }
 
-.gemluxjewel-mobile-menu__group {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.gemluxjewel-mobile-menu__link--parent {
-  margin-bottom: 4px;
-}
-
-.gemluxjewel-mobile-menu__subhead {
-  font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
-  font-size: 11px;
-  line-height: 1.2;
-  letter-spacing: 0.08em;
-  font-weight: 500;
-  text-transform: uppercase;
-  color: rgba(20, 20, 20, 0.55);
-  margin: 8px 0 0;
+.gemluxjewel-mobile-menu__list {
+  list-style: none;
+  margin: 0;
   padding: 0;
 }
 
+.gemluxjewel-mobile-menu__list-item--divider {
+  height: 1px;
+  margin: 8px 0 16px;
+  background: rgba(20, 20, 20, 0.08);
+}
+
+.gemluxjewel-mobile-menu__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 18px 0;
+  border: none;
+  border-bottom: 1px solid rgba(20, 20, 20, 0.07);
+  background: transparent;
+  font-family: var(--gemluxjewel-font-heading, 'Figtree', sans-serif);
+  font-size: clamp(28px, 8vw, 40px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--gemluxjewel-dark, #141414);
+  text-decoration: none;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.25s ease, padding-left 0.25s ease;
+}
+
+.gemluxjewel-mobile-menu__item:hover,
+.gemluxjewel-mobile-menu__item:focus-visible {
+  color: var(--gemluxjewel-primary, #73976a);
+  padding-left: 6px;
+  outline: none;
+}
+
+.gemluxjewel-mobile-menu__item.is-highlight {
+  color: var(--gemluxjewel-primary, #73976a);
+}
+
+.gemluxjewel-mobile-menu__item-label {
+  flex: 1;
+  min-width: 0;
+}
+
+.gemluxjewel-mobile-menu__item-chevron {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin-left: 12px;
+  color: rgba(20, 20, 20, 0.45);
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.gemluxjewel-mobile-menu__item--expand:hover .gemluxjewel-mobile-menu__item-chevron,
+.gemluxjewel-mobile-menu__item--expand:focus-visible .gemluxjewel-mobile-menu__item-chevron {
+  color: var(--gemluxjewel-primary, #73976a);
+  transform: translateX(3px);
+}
+
+.gemluxjewel-mobile-menu__subhead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 0 8px;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #fafafa;
+}
+
+.gemluxjewel-mobile-menu__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(20, 20, 20, 0.65);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.gemluxjewel-mobile-menu__back:hover,
+.gemluxjewel-mobile-menu__back:focus-visible {
+  color: var(--gemluxjewel-primary, #73976a);
+  outline: none;
+}
+
+.gemluxjewel-mobile-menu__view-all {
+  font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: var(--gemluxjewel-dark, #141414);
+  white-space: nowrap;
+}
+
+.gemluxjewel-mobile-menu__view-all:hover {
+  color: var(--gemluxjewel-primary, #73976a);
+}
+
+.gemluxjewel-mobile-menu__panel-title {
+  margin: 0 0 20px;
+  font-family: var(--gemluxjewel-font-heading, 'Figtree', sans-serif);
+  font-size: clamp(24px, 6vw, 32px);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--gemluxjewel-dark, #141414);
+}
+
+.gemluxjewel-mobile-menu__feature {
+  margin-bottom: 24px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.gemluxjewel-mobile-menu__feature-link {
+  display: block;
+  text-decoration: none;
+}
+
+.gemluxjewel-mobile-menu__feature-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+.gemluxjewel-mobile-menu__accordions {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.gemluxjewel-mobile-menu__accordion {
+  border-bottom: 1px solid rgba(20, 20, 20, 0.08);
+  background: #fff;
+}
+
+.gemluxjewel-mobile-menu__accordion:first-child {
+  border-top: 1px solid rgba(20, 20, 20, 0.08);
+}
+
+.gemluxjewel-mobile-menu__accordion-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 18px 16px;
+  border: none;
+  background: #fff;
+  font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
+  font-size: 11px;
+  line-height: 1.2;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--gemluxjewel-dark, #141414);
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.gemluxjewel-mobile-menu__accordion-trigger:hover,
+.gemluxjewel-mobile-menu__accordion-trigger:focus-visible {
+  color: var(--gemluxjewel-primary, #73976a);
+  outline: none;
+}
+
+.gemluxjewel-mobile-menu__accordion-icon {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.gemluxjewel-mobile-menu__accordion-icon::before,
+.gemluxjewel-mobile-menu__accordion-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 1px;
+  background: currentColor;
+  transform: translate(-50%, -50%);
+  transition: transform 0.25s ease;
+}
+
+.gemluxjewel-mobile-menu__accordion-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.gemluxjewel-mobile-menu__accordion.is-open .gemluxjewel-mobile-menu__accordion-icon::after {
+  transform: translate(-50%, -50%) rotate(0deg);
+  opacity: 0;
+}
+
+.gemluxjewel-mobile-menu__accordion-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.32s ease;
+}
+
+.gemluxjewel-mobile-menu__accordion.is-open .gemluxjewel-mobile-menu__accordion-panel {
+  grid-template-rows: 1fr;
+}
+
+.gemluxjewel-mobile-menu__accordion-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.gemluxjewel-mobile-menu__sublinks {
+  list-style: none;
+  margin: 0;
+  padding: 0 16px 16px;
+}
+
+.gemluxjewel-mobile-menu__sublinks li {
+  margin-bottom: 2px;
+}
+
 .gemluxjewel-mobile-menu__sublink {
+  display: block;
+  padding: 10px 0;
+  font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
+  font-size: 16px;
+  line-height: 1.35;
+  color: rgba(20, 20, 20, 0.82);
+  text-decoration: none;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.gemluxjewel-mobile-menu__sublink:hover {
+  color: var(--gemluxjewel-primary, #73976a);
+  padding-left: 6px;
+}
+
+.gemluxjewel-mobile-menu__flat-links {
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+}
+
+.gemluxjewel-mobile-menu__flat-link {
+  display: block;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(20, 20, 20, 0.07);
   font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
   font-size: 18px;
   line-height: 1.3;
   color: var(--gemluxjewel-dark, #141414);
   text-decoration: none;
-  padding-left: 12px;
-  transition: color 0.3s, padding-left 0.3s;
+  transition: color 0.2s ease, padding-left 0.2s ease;
 }
 
-.gemluxjewel-mobile-menu__sublink:hover {
+.gemluxjewel-mobile-menu__flat-link:hover {
   color: var(--gemluxjewel-primary, #73976a);
-  padding-left: 20px;
+  padding-left: 6px;
+}
+
+.gemluxjewel-mobile-menu__contact-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.gemluxjewel-mobile-menu__contact-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.gemluxjewel-mobile-menu__contact-card-img,
+.gemluxjewel-mobile-menu__contact-card-placeholder {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+
+.gemluxjewel-mobile-menu__contact-card-placeholder {
+  background: linear-gradient(135deg, #dde5e8 0%, #eef2f4 100%);
+}
+
+.gemluxjewel-mobile-menu__contact-card-title {
+  display: block;
+  margin-top: 12px;
+  font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
+  font-size: 12px;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--gemluxjewel-dark, #141414);
 }
 
 .gemluxjewel-mobile-menu__utilities {
   display: flex;
   align-items: center;
-  gap: 24px;
+  justify-content: center;
+  gap: 28px;
   flex-shrink: 0;
-  padding: 20px var(--gemluxjewel-header-gutter, 20px);
+  padding: 18px var(--gemluxjewel-header-gutter, 20px);
+  background: #fff;
   border-top: 1px solid rgba(20, 20, 20, 0.08);
 }
 
@@ -977,9 +1280,9 @@ html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
   align-items: center;
   gap: 8px;
   font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--gemluxjewel-dark, #141414);
   text-decoration: none;
@@ -991,9 +1294,18 @@ html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
 }
 
 .gemluxjewel-mobile-menu__utility img {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   object-fit: contain;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gemluxjewel-mobile-menu,
+  .gemluxjewel-mobile-menu__panel,
+  .gemluxjewel-mobile-menu__item,
+  .gemluxjewel-mobile-menu__accordion-panel {
+    transition: none;
+  }
 }
 
 html.gemluxjewel-menu-open {

@@ -1,0 +1,47 @@
+{% render 'gemluxjewel-fonts' %}
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-our-story.css' | asset_url | stylesheet_tag }}
+
+<section class="gemluxjewel gemluxjewel-our-story gemluxjewel-our-story-hero">
+  <div class="gemluxjewel-our-story-hero__media">
+    {%- if section.settings.image != blank -%}
+      {{
+        section.settings.image
+        | image_url: width: 2000
+        | image_tag:
+          widths: '800, 1200, 1600, 2000',
+          sizes: '100vw',
+          loading: 'eager',
+          fetchpriority: 'high',
+          alt: section.settings.title
+      }}
+    {%- else -%}
+      <img
+        class="gemluxjewel-our-story-hero__fallback"
+        src="{{ 'sub-hero-img.png' | asset_url }}"
+        alt="{{ section.settings.title | escape }}"
+        width="1600"
+        height="900"
+        loading="eager"
+      >
+    {%- endif -%}
+    <div class="gemluxjewel-our-story-hero__overlay" aria-hidden="true"></div>
+  </div>
+  {%- if section.settings.title != blank -%}
+    <h1 class="gemluxjewel-our-story-hero__title">{{ section.settings.title | escape }}</h1>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "GL Our Story Hero",
+  "tag": "section",
+  "class": "section gemluxjewel-section",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "Our Story" },
+    { "type": "image_picker", "id": "image", "label": "Background image" }
+  ],
+  "presets": [{ "name": "GL Our Story Hero" }]
+}
+{% endschema %}

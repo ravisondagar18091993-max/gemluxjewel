@@ -1,0 +1,32 @@
+{% render 'gemluxjewel-fonts' %}
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+{{ 'section-gemluxjewel-our-story.css' | asset_url | stylesheet_tag }}
+
+<section class="gemluxjewel gemluxjewel-our-story gemluxjewel-our-story-quote">
+  <div class="gemluxjewel-our-story-quote__inner">
+    {%- if section.settings.quote != blank -%}
+      <blockquote class="gemluxjewel-our-story-quote__text">{{ section.settings.quote | escape }}</blockquote>
+    {%- endif -%}
+    {%- if section.settings.attribution != blank -%}
+      <p class="gemluxjewel-our-story-quote__name">{{ section.settings.attribution | escape }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "GL Our Story Quote",
+  "tag": "section",
+  "class": "section gemluxjewel-section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Quote",
+      "default": "GemLux Jewel was founded with the goal of bringing accessible and transparent information to the jewellery industry, allowing people to better understand all the options available when purchasing engagement rings and wedding bands."
+    },
+    { "type": "text", "id": "attribution", "label": "Attribution", "default": "GemLux Jewel — Founder" }
+  ],
+  "presets": [{ "name": "GL Our Story Quote" }]
+}
+{% endschema %}

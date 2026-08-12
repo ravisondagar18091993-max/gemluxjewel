@@ -1,0 +1,121 @@
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-our-story.css' | asset_url | stylesheet_tag }}
+
+<section class="gemluxjewel gemluxjewel-our-story gemluxjewel-our-story-reviews">
+  <div class="gemluxjewel-our-story-reviews__head">
+    {%- if section.settings.title != blank -%}
+      <h2 class="gemluxjewel-our-story-reviews__title">{{ section.settings.title | escape }}</h2>
+    {%- endif -%}
+    {%- if section.settings.subtitle != blank -%}
+      <p class="gemluxjewel-our-story-reviews__subtitle">{{ section.settings.subtitle | escape }}</p>
+    {%- endif -%}
+  </div>
+  <div class="gemluxjewel-our-story-reviews__grid-wrap">
+    <div class="gemluxjewel-container">
+      <ul class="gemluxjewel-our-story-reviews__grid">
+        {%- for block in section.blocks -%}
+          <li {{ block.shopify_attributes }}>
+            <article class="gemluxjewel-our-story-reviews__card">
+              <div class="gemluxjewel-our-story-reviews__card-logo">
+                {% render 'gemluxjewel-review-platform-logo', platform: block.settings.platform %}
+              </div>
+              <div
+                class="gemluxjewel-our-story-reviews__stars{% if block.settings.platform == 'trustpilot' %} gemluxjewel-our-story-reviews__stars--green{% endif %}"
+                aria-label="{{ block.settings.rating | default: 5 }} out of 5 stars"
+              >
+                {%- assign rating = block.settings.rating | default: 5 -%}
+                {%- for i in (1..rating) -%}
+                  <span aria-hidden="true">&#9733;</span>
+                {%- endfor -%}
+              </div>
+              {%- if block.settings.text != blank -%}
+                <p class="gemluxjewel-our-story-reviews__text">{{ block.settings.text | escape }}</p>
+              {%- endif -%}
+            </article>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "GL Our Story Reviews",
+  "tag": "section",
+  "class": "section gemluxjewel-section",
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "select",
+          "id": "platform",
+          "label": "Platform",
+          "default": "trustpilot",
+          "options": [
+            { "value": "trustpilot", "label": "Trustpilot" },
+            { "value": "google", "label": "Google" }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        { "type": "textarea", "id": "text", "label": "Review text" }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "Trusted by Thousands" },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Here's what our clients have to say about their GemLux Jewel experience."
+    }
+  ],
+  "presets": [
+    {
+      "name": "GL Our Story Reviews",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "platform": "google",
+            "text": "Absolutely stunning ring and exceptional service from start to finish. The team made the entire process feel personal and stress-free."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "platform": "trustpilot",
+            "text": "The quality exceeded our expectations. Beautiful craftsmanship and they were so helpful choosing the perfect design."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "platform": "google",
+            "text": "We felt genuinely cared for throughout. Transparent pricing, expert guidance, and a ring we will treasure forever."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "platform": "trustpilot",
+            "text": "From virtual consultation to delivery, everything was seamless. Highly recommend GemLux Jewel for engagement rings."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

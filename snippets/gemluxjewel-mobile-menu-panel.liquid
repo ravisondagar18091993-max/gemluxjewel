@@ -1,0 +1,192 @@
+{% comment %}
+  Mobile sub-panel for a nav item with children.
+  Accepts: link, panel_id, section, contact_nav_raw
+{% endcomment %}
+
+{%- liquid
+  assign link_key = link.title | downcase | strip
+  assign use_contact_mega = false
+  assign contact_nav_items = contact_nav_raw | downcase | split: ','
+
+  for nav_item in contact_nav_items
+    assign nav_item_trim = nav_item | strip
+    if nav_item_trim != blank and link_key == nav_item_trim
+      assign use_contact_mega = true
+    endif
+  endfor
+
+  if use_contact_mega == false and link_key contains 'contact'
+    assign use_contact_mega = true
+  endif
+
+  assign panel_image = blank
+  assign panel_link = link.url
+  assign contact_features = section.blocks | where: 'type', 'mega_contact_feature'
+
+  for block in section.blocks
+    if block.type == 'mega_banner'
+      assign block_parent = block.settings.parent_nav | downcase | strip
+      if block_parent == link_key
+        if block.settings.image != blank
+          assign panel_image = block.settings.image
+        endif
+        if block.settings.link != blank
+          assign panel_link = block.settings.link
+        endif
+      endif
+    endif
+  endfor
+-%}
+
+<div
+  class="gemluxjewel-mobile-menu__panel"
+  data-mobile-panel="{{ panel_id }}"
+  id="gemluxjewelMobilePanel-{{ panel_id }}"
+  hidden
+>
+  <div class="gemluxjewel-mobile-menu__subhead">
+    <button type="button" class="gemluxjewel-mobile-menu__back" data-mobile-back aria-label="Back to menu">
+      <svg width="10" height="16" viewBox="0 0 10 16" fill="none" aria-hidden="true">
+        <path d="M8.5 1.5L2 8L8.5 14.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>Menu</span>
+    </button>
+    {%- if panel_link != blank -%}
+      <a href="{{ panel_link }}" class="gemluxjewel-mobile-menu__view-all" data-gemluxjewel-menu-close-on-click>
+        View all
+      </a>
+    {%- endif -%}
+  </div>
+
+  <p class="gemluxjewel-mobile-menu__panel-title">{{ link.title | escape }}</p>
+
+  {%- if panel_image != blank and use_contact_mega == false -%}
+    <div class="gemluxjewel-mobile-menu__feature">
+      {%- if panel_link != blank -%}
+        <a href="{{ panel_link }}" class="gemluxjewel-mobile-menu__feature-link" data-gemluxjewel-menu-close-on-click>
+      {%- endif -%}
+      {{
+        panel_image
+        | image_url: width: 800
+        | image_tag:
+          widths: '400, 600, 800',
+          sizes: '100vw',
+          loading: 'lazy',
+          alt: link.title,
+          class: 'gemluxjewel-mobile-menu__feature-img'
+      }}
+      {%- if panel_link != blank -%}
+        </a>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  {%- if use_contact_mega -%}
+    <ul class="gemluxjewel-mobile-menu__flat-links">
+      {%- for child in link.links -%}
+        {%- if child.links.size > 0 -%}
+          {%- for grandchild in child.links -%}
+            <li>
+              <a href="{{ grandchild.url }}" class="gemluxjewel-mobile-menu__flat-link" data-gemluxjewel-menu-close-on-click>
+                {{ grandchild.title | escape }}
+              </a>
+            </li>
+          {%- endfor -%}
+        {%- elsif child.url != blank -%}
+          <li>
+            <a href="{{ child.url }}" class="gemluxjewel-mobile-menu__flat-link" data-gemluxjewel-menu-close-on-click>
+              {{ child.title | escape }}
+            </a>
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+
+    <div class="gemluxjewel-mobile-menu__contact-cards">
+      {%- assign feature_count = 0 -%}
+      {%- for block in contact_features -%}
+        {%- liquid
+          assign block_parent = block.settings.parent_nav | downcase | strip
+          assign block_match = false
+          if block_parent == link_key
+            assign block_match = true
+          elsif block_parent != blank and link_key contains block_parent
+            assign block_match = true
+          elsif link_key != blank and block_parent contains link_key
+            assign block_match = true
+          endif
+        -%}
+        {%- if block_match -%}
+          {%- assign feature_count = feature_count | plus: 1 -%}
+          <div class="gemluxjewel-mobile-menu__contact-card">
+            {%- if block.settings.link != blank -%}
+              <a href="{{ block.settings.link }}" class="gemluxjewel-mobile-menu__contact-card-link" data-gemluxjewel-menu-close-on-click>
+            {%- endif -%}
+              {%- if block.settings.image != blank -%}
+                {{
+                  block.settings.image
+                  | image_url: width: 800
+                  | image_tag:
+                    widths: '400, 600, 800',
+                    sizes: '100vw',
+                    loading: 'lazy',
+                    alt: block.settings.title,
+                    class: 'gemluxjewel-mobile-menu__contact-card-img'
+                }}
+              {%- else -%}
+                <div class="gemluxjewel-mobile-menu__contact-card-placeholder" aria-hidden="true"></div>
+              {%- endif -%}
+              {%- if block.settings.title != blank -%}
+                <span class="gemluxjewel-mobile-menu__contact-card-title">{{ block.settings.title | escape }}</span>
+              {%- endif -%}
+            {%- if block.settings.link != blank -%}
+              </a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  {%- else -%}
+    <div class="gemluxjewel-mobile-menu__accordions">
+      {%- for child in link.links -%}
+        {%- assign accordion_open = false -%}
+        {%- if forloop.first -%}
+          {%- assign accordion_open = true -%}
+        {%- endif -%}
+        <div class="gemluxjewel-mobile-menu__accordion{% if accordion_open %} is-open{% endif %}">
+          <button
+            type="button"
+            class="gemluxjewel-mobile-menu__accordion-trigger"
+            aria-expanded="{% if accordion_open %}true{% else %}false{% endif %}"
+          >
+            <span>{{ child.title | escape }}</span>
+            <span class="gemluxjewel-mobile-menu__accordion-icon" aria-hidden="true"></span>
+          </button>
+          <div class="gemluxjewel-mobile-menu__accordion-panel">
+            <div class="gemluxjewel-mobile-menu__accordion-inner">
+              {%- if child.links.size > 0 -%}
+                <ul class="gemluxjewel-mobile-menu__sublinks">
+                  {%- for grandchild in child.links -%}
+                    <li>
+                      <a href="{{ grandchild.url }}" class="gemluxjewel-mobile-menu__sublink" data-gemluxjewel-menu-close-on-click>
+                        {{ grandchild.title | escape }}
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {%- elsif child.url != blank -%}
+                <ul class="gemluxjewel-mobile-menu__sublinks">
+                  <li>
+                    <a href="{{ child.url }}" class="gemluxjewel-mobile-menu__sublink" data-gemluxjewel-menu-close-on-click>
+                      View {{ child.title | escape }}
+                    </a>
+                  </li>
+                </ul>
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</div>

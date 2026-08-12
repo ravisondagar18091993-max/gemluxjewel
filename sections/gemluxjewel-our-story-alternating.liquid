@@ -1,0 +1,128 @@
+{% render 'gemluxjewel-fonts' %}
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+{{ 'section-gemluxjewel-our-story.css' | asset_url | stylesheet_tag }}
+
+<section class="gemluxjewel gemluxjewel-our-story gemluxjewel-our-story-alternating">
+  {%- for block in section.blocks -%}
+    <div
+      class="gemluxjewel-our-story-split{% if block.settings.image_position == 'left' %} is-image-left{% endif %}"
+      {{ block.shopify_attributes }}
+    >
+      <div class="gemluxjewel-our-story-split__text">
+        {%- if block.settings.eyebrow != blank -%}
+          <h2 class="gemluxjewel-our-story-split__eyebrow">{{ block.settings.eyebrow | escape }}</h2>
+        {%- endif -%}
+        {%- if block.settings.heading != blank -%}
+          <h3 class="gemluxjewel-our-story-split__heading">{{ block.settings.heading | escape }}</h3>
+        {%- endif -%}
+        {%- if block.settings.text != blank -%}
+          <div class="gemluxjewel-our-story-split__body">{{ block.settings.text }}</div>
+        {%- endif -%}
+      </div>
+      <div class="gemluxjewel-our-story-split__media">
+        {%- if block.settings.image != blank -%}
+          {{
+            block.settings.image
+            | image_url: width: 1200
+            | image_tag:
+              widths: '600, 900, 1200',
+              sizes: '(min-width: 990px) 50vw, 100vw',
+              loading: 'lazy',
+              alt: block.settings.eyebrow
+          }}
+        {%- else -%}
+          {%- assign fallback_seed = forloop.index | modulo: 3 -%}
+          {%- if fallback_seed == 1 -%}
+            <img class="gemluxjewel-our-story-split__fallback" src="{{ 'hero-img.png' | asset_url }}" alt="" width="1200" height="800" loading="lazy">
+          {%- elsif fallback_seed == 2 -%}
+            <img class="gemluxjewel-our-story-split__fallback" src="{{ 'left-right-img.png' | asset_url }}" alt="" width="1200" height="800" loading="lazy">
+          {%- else -%}
+            <img class="gemluxjewel-our-story-split__fallback" src="{{ 'mega-menu-img.png' | asset_url }}" alt="" width="1200" height="800" loading="lazy">
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endfor -%}
+</section>
+
+{% schema %}
+{
+  "name": "GL Our Story Blocks",
+  "tag": "section",
+  "class": "section gemluxjewel-section",
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Content row",
+      "settings": [
+        { "type": "text", "id": "eyebrow", "label": "Section title", "default": "Our Origin" },
+        { "type": "text", "id": "heading", "label": "Subheading", "default": "A modern approach to an ancient craft." },
+        { "type": "richtext", "id": "text", "label": "Body text" },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        {
+          "type": "select",
+          "id": "image_position",
+          "label": "Image position (desktop)",
+          "default": "right",
+          "options": [
+            { "value": "right", "label": "Right" },
+            { "value": "left", "label": "Left" }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "GL Our Story Blocks",
+      "blocks": [
+        {
+          "type": "row",
+          "settings": {
+            "eyebrow": "Our Origin",
+            "heading": "A modern approach to an ancient craft.",
+            "text": "<p>GemLux Jewel began with a simple search for an engagement ring — and the realisation that the industry could be gentler, clearer, and far more considered.</p><p>What started as one custom ring became the catalyst for a different kind of jewellery experience: one shaped by conscience, craftsmanship and care.</p>",
+            "image_position": "right"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "eyebrow": "What We Do",
+            "heading": "We're here to guide you through your journey.",
+            "text": "<p>We create lab-grown diamond, moissanite and gemstone pieces designed for a lifetime — chosen by clients who expect beauty and integrity in equal measure.</p>",
+            "image_position": "left"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "eyebrow": "The Modern Alternative",
+            "heading": "A new era of luxury that doesn't cost the earth.",
+            "text": "<p>With showrooms and personalised virtual appointments available anywhere, GemLux Jewel serves a global community — helping people mark the stories and moments that matter most.</p>",
+            "image_position": "right"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "eyebrow": "Our Mission",
+            "heading": "Ethically made, consciously created.",
+            "text": "<p>From ethically sourced materials to considered design and personalised guidance, every detail reflects a belief that how something is made — and how it's experienced — matters just as much as how it looks.</p>",
+            "image_position": "left"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "eyebrow": "Our Showroom",
+            "heading": "Experience the sparkle in person.",
+            "text": "<p>Visit us in person or virtually. Our showrooms are designed to feel calm, considered and welcoming — so you can explore rings and fine jewellery at your own pace.</p>",
+            "image_position": "right"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

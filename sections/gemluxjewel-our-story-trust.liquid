@@ -1,0 +1,69 @@
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-our-story.css' | asset_url | stylesheet_tag }}
+
+<section class="gemluxjewel gemluxjewel-our-story gemluxjewel-our-story-trust">
+  <div class="gemluxjewel-container">
+    <ul class="gemluxjewel-our-story-trust__list">
+      {%- for block in section.blocks -%}
+        <li class="gemluxjewel-our-story-trust__item" {{ block.shopify_attributes }}>
+          <span class="gemluxjewel-our-story-trust__icon">
+            {%- if block.settings.icon_image != blank -%}
+              {{
+                block.settings.icon_image
+                | image_url: width: 96
+                | image_tag: widths: '48, 96', sizes: '48px', loading: 'lazy', alt: ''
+              }}
+            {%- else -%}
+              {% render 'gemluxjewel-pdp-trust-icon', icon: block.settings.icon %}
+            {%- endif -%}
+          </span>
+          {%- if block.settings.label != blank -%}
+            <span class="gemluxjewel-our-story-trust__label">{{ block.settings.label | escape }}</span>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "GL Our Story Trust",
+  "tag": "section",
+  "class": "section gemluxjewel-section",
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Trust item",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Ethical & Sustainable" },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "eco",
+          "options": [
+            { "value": "eco", "label": "Eco friendly" },
+            { "value": "trust", "label": "Trust / warranty" },
+            { "value": "support", "label": "Support" },
+            { "value": "shipping", "label": "Shipping" },
+            { "value": "money_back", "label": "Money back" }
+          ]
+        },
+        { "type": "image_picker", "id": "icon_image", "label": "Custom icon (optional)" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "GL Our Story Trust",
+      "blocks": [
+        { "type": "item", "settings": { "label": "Ethical & Sustainable", "icon": "eco" } },
+        { "type": "item", "settings": { "label": "Lifetime Warranty", "icon": "trust" } },
+        { "type": "item", "settings": { "label": "Free Resizing", "icon": "support" } },
+        { "type": "item", "settings": { "label": "Free Shipping", "icon": "shipping" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

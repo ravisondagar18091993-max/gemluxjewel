@@ -1,0 +1,57 @@
+{% render 'gemluxjewel-fonts' %}
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+{{ 'section-gemluxjewel-our-story.css' | asset_url | stylesheet_tag }}
+
+<section class="gemluxjewel gemluxjewel-our-story gemluxjewel-our-story-founder">
+  <div class="gemluxjewel-our-story-founder__grid">
+    <div class="gemluxjewel-our-story-founder__media">
+      {%- if section.settings.image != blank -%}
+        {{
+          section.settings.image
+          | image_url: width: 900
+          | image_tag:
+            widths: '500, 700, 900',
+            sizes: '(min-width: 990px) 42vw, 100vw',
+            loading: 'lazy',
+            alt: section.settings.founder_name
+        }}
+      {%- else -%}
+        <img
+          class="gemluxjewel-our-story-founder__fallback"
+          src="{{ 'left-right-img.png' | asset_url }}"
+          alt="{{ section.settings.founder_name | escape }}"
+          width="900"
+          height="1200"
+          loading="lazy"
+        >
+      {%- endif -%}
+    </div>
+    <div class="gemluxjewel-our-story-founder__content">
+      {%- if section.settings.quote != blank -%}
+        <blockquote class="gemluxjewel-our-story-founder__quote">{{ section.settings.quote | escape }}</blockquote>
+      {%- endif -%}
+      {%- if section.settings.founder_name != blank -%}
+        <p class="gemluxjewel-our-story-founder__name">{{ section.settings.founder_name | escape }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "GL Our Story Founder",
+  "tag": "section",
+  "class": "section gemluxjewel-section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Quote",
+      "default": "The GemLux Jewel brand is built on the goals of transparency, honesty, and treating our environment, the jewellery industry, and other people better."
+    },
+    { "type": "text", "id": "founder_name", "label": "Attribution", "default": "GemLux Jewel — Founder" },
+    { "type": "image_picker", "id": "image", "label": "Founder photo" }
+  ],
+  "presets": [{ "name": "GL Our Story Founder" }]
+}
+{% endschema %}

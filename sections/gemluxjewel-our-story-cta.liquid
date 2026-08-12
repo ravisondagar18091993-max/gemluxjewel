@@ -1,0 +1,63 @@
+{% render 'gemluxjewel-fonts' %}
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+{{ 'section-gemluxjewel-our-story.css' | asset_url | stylesheet_tag }}
+
+<section class="gemluxjewel gemluxjewel-our-story gemluxjewel-our-story-cta">
+  <div class="gemluxjewel-our-story-cta__media">
+    {%- if section.settings.image != blank -%}
+      {{
+        section.settings.image
+        | image_url: width: 1600
+        | image_tag:
+          widths: '800, 1200, 1600',
+          sizes: '100vw',
+          loading: 'lazy',
+          alt: ''
+      }}
+    {%- else -%}
+      <img
+        class="gemluxjewel-our-story-cta__fallback"
+        src="{{ 'gemluxjewel-custom-expert-banner.png' | asset_url }}"
+        alt=""
+        width="1600"
+        height="900"
+        loading="lazy"
+      >
+    {%- endif -%}
+    <div class="gemluxjewel-our-story-cta__overlay" aria-hidden="true"></div>
+  </div>
+  <div class="gemluxjewel-our-story-cta__content">
+    {%- if section.settings.title != blank -%}
+      <h2 class="gemluxjewel-our-story-cta__title">{{ section.settings.title | escape }}</h2>
+    {%- endif -%}
+    {%- if section.settings.text != blank -%}
+      <p class="gemluxjewel-our-story-cta__text">{{ section.settings.text | escape }}</p>
+    {%- endif -%}
+    {%- if section.settings.button_label != blank -%}
+      <a href="{{ section.settings.button_link | default: routes.root_url }}" class="gemluxjewel-our-story-cta__btn">
+        {{ section.settings.button_label | escape }}
+      </a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "GL Our Story CTA",
+  "tag": "section",
+  "class": "section gemluxjewel-section",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "Need a hand?" },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description",
+      "default": "Visit us in person or virtually. We're here to help you find the perfect ring, no matter where you are."
+    },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Get In Touch" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "image_picker", "id": "image", "label": "Background image" }
+  ],
+  "presets": [{ "name": "GL Our Story CTA" }]
+}
+{% endschema %}
