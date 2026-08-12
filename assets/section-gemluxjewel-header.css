@@ -521,10 +521,56 @@ html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
   max-width: 100%;
 }
 
-.gemluxjewel-header__mega-col--featured {
+.gemluxjewel-header__mega-col--featured,
+.gemluxjewel-header__mega-col--preview {
   min-width: 0;
   max-width: 100%;
   justify-self: stretch;
+}
+
+.gemluxjewel-header__mega-preview {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.gemluxjewel-header__mega-preview-img {
+  aspect-ratio: 1;
+  background: #e4eaec;
+  border-radius: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gemluxjewel-header__mega-preview-img img,
+.gemluxjewel-header__mega-preview-current {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.25s ease;
+}
+
+.gemluxjewel-header__mega-preview-current:not([src]),
+.gemluxjewel-header__mega-preview-current[src=''] {
+  opacity: 0;
+}
+
+.gemluxjewel-header__mega-preview-caption {
+  display: block;
+  margin-top: 14px;
+  font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
+  font-size: 14px;
+  line-height: 1.35;
+  color: #1a2744;
+  text-align: left;
+}
+
+.gemluxjewel-header__mega-link.is-preview-source,
+.gemluxjewel-header__mega-title--link.is-preview-source {
+  color: var(--gemluxjewel-primary, #73976a);
 }
 
 .gemluxjewel-header__mega-title-row {

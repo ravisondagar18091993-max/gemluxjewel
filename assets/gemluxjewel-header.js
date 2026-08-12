@@ -73,6 +73,7 @@
       }
 
       initMegaMenu(header, mainBar);
+      initMegaPreview(header);
       if (closeAllMegaFn) closeAllMegaFn();
 
       header.dataset.gemluxjewelHeaderReady = 'true';
@@ -148,6 +149,63 @@
         closeAllMega();
       });
     }
+  }
+
+  function initMegaPreview(header) {
+    header.querySelectorAll('[data-gemluxjewel-mega-standard]').forEach(function (panel) {
+      if (panel.dataset.gemluxjewelMegaPreviewReady === 'true') return;
+
+      var previewCol = panel.querySelector('[data-gemluxjewel-mega-preview]');
+      if (!previewCol) return;
+
+      var currentTarget = previewCol.querySelector('[data-gemluxjewel-mega-preview-current]');
+      var captionEl = previewCol.querySelector('[data-gemluxjewel-mega-preview-caption]');
+      var defaultSrc = previewCol.dataset.defaultSrc || '';
+      var defaultCaption = previewCol.dataset.defaultCaption || '';
+      var triggers = panel.querySelectorAll('[data-mega-preview-src]');
+
+      function setPreview(src, caption) {
+        if (currentTarget && currentTarget.tagName === 'IMG') {
+          if (src) {
+            currentTarget.src = src;
+            currentTarget.hidden = false;
+          }
+          if (caption) currentTarget.alt = caption;
+        }
+        if (captionEl) {
+          if (caption) {
+            captionEl.textContent = caption;
+            captionEl.hidden = false;
+          } else if (!defaultCaption) {
+            captionEl.hidden = true;
+          }
+        }
+      }
+
+      function resetPreview() {
+        setPreview(defaultSrc, defaultCaption);
+        triggers.forEach(function (trigger) {
+          trigger.classList.remove('is-preview-source');
+        });
+      }
+
+      triggers.forEach(function (trigger) {
+        trigger.addEventListener('mouseenter', function () {
+          var src = trigger.getAttribute('data-mega-preview-src');
+          var caption = trigger.getAttribute('data-mega-preview-caption') || '';
+          if (!src) return;
+
+          triggers.forEach(function (other) {
+            other.classList.remove('is-preview-source');
+          });
+          trigger.classList.add('is-preview-source');
+          setPreview(src, caption);
+        });
+      });
+
+      panel.addEventListener('mouseleave', resetPreview);
+      panel.dataset.gemluxjewelMegaPreviewReady = 'true';
+    });
   }
 
   function initAnnouncementSlider(header) {

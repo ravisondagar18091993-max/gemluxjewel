@@ -339,7 +339,13 @@
     },
     {
       "type": "paragraph",
-      "content": "Add a Mega menu banner block below for each nav item that needs its own right-side image. Menus without a banner block will not show an image."
+      "content": "Add a Mega menu banner block for each nav item to set the default 6th-column image and fallback for collections without images. Add Mega menu link image blocks to override specific links."
+    },
+    {
+      "type": "image_picker",
+      "id": "mega_default_collection_image",
+      "label": "Global fallback collection image",
+      "info": "Used when a collection has no image and no menu-specific fallback is set."
     },
     {
       "type": "header",
@@ -428,9 +434,36 @@
           "default": "Best seller",
           "info": "Must match the top nav link title (case-insensitive). Each mega menu gets its own image."
         },
-        { "type": "image_picker", "id": "image", "label": "Banner image" },
+        { "type": "image_picker", "id": "image", "label": "Default / banner image" },
+        {
+          "type": "image_picker",
+          "id": "fallback_image",
+          "label": "Fallback image for collections without image",
+          "info": "Used when a hovered collection link has no image. Leave blank to use the default image above."
+        },
         { "type": "text", "id": "caption", "label": "Caption", "default": "Solitaire Rings" },
         { "type": "url", "id": "link", "label": "Banner link" }
+      ]
+    },
+    {
+      "type": "mega_link_image",
+      "name": "Mega menu link image",
+      "limit": 50,
+      "settings": [
+        {
+          "type": "text",
+          "id": "parent_nav",
+          "label": "Parent menu item",
+          "default": "Engagement Ring",
+          "info": "Must match the top nav link title (case-insensitive)."
+        },
+        {
+          "type": "text",
+          "id": "link_title",
+          "label": "Link title",
+          "info": "Must match the menu link text exactly (case-insensitive)."
+        },
+        { "type": "image_picker", "id": "image", "label": "Image override" }
       ]
     },
     {

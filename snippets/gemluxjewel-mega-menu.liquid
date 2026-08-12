@@ -1,10 +1,7 @@
 {% comment %}
   Mega menu built from Shopify navigation links.
   Accepts: link (top-level nav item with children), section
-  Menu structure in Shopify Admin → Navigation:
-  - Level 1: Top nav item (e.g. Engagement Rings)
-  - Level 2: Column headings (e.g. Lab Grown Diamonds)
-  - Level 3: Links inside each column (e.g. Solitaire Rings)
+  Column 6: hover preview image (collection image, custom upload, or fallback).
 {% endcomment %}
 
 {%- if link.links.size > 0 -%}
@@ -12,38 +9,39 @@
     assign link_key = link.title | downcase | strip
     assign highlight_titles = section.settings.mega_highlight_links | downcase | split: ','
     assign new_badge_titles = section.settings.mega_new_badge_links | downcase | split: ','
-    assign banner_image = blank
-    assign banner_caption = blank
-    assign banner_link = blank
-    assign banner_block = nil
+    assign link_image_blocks = section.blocks | where: 'type', 'mega_link_image'
+    assign nav_fallback_image = blank
+    assign nav_default_caption = blank
+    assign nav_default_link = blank
 
     for block in section.blocks
       if block.type == 'mega_banner'
         assign block_parent = block.settings.parent_nav | downcase | strip
-        if block_parent == link_key and block.settings.image != blank
-          assign banner_block = block
-          assign banner_image = block.settings.image
-          assign banner_caption = block.settings.caption
-          assign banner_link = block.settings.link
+        if block_parent == link_key
+          if block.settings.fallback_image != blank
+            assign nav_fallback_image = block.settings.fallback_image
+          elsif block.settings.image != blank
+            assign nav_fallback_image = block.settings.image
+          endif
+          assign nav_default_caption = block.settings.caption
+          assign nav_default_link = block.settings.link
         endif
       endif
     endfor
 
-    assign show_featured = false
-    if banner_image != blank
-      assign show_featured = true
+    if nav_fallback_image == blank and section.settings.mega_default_collection_image != blank
+      assign nav_fallback_image = section.settings.mega_default_collection_image
     endif
 
-    assign mega_menu_cols = link.links.size
-    if show_featured
-      assign mega_menu_cols = link.links.size | plus: 1
-    endif
+    assign default_preview_image = nav_fallback_image
+    assign default_preview_caption = nav_default_caption
+    assign mega_menu_cols = link.links.size | plus: 1
   -%}
 
-  <div class="gemluxjewel-header__mega" data-gemluxjewel-mega-panel>
+  <div class="gemluxjewel-header__mega" data-gemluxjewel-mega-panel data-gemluxjewel-mega-standard>
     <div class="gemluxjewel-header__mega-inner">
       <div
-        class="gemluxjewel-header__mega-grid{% if show_featured %} gemluxjewel-header__mega-grid--featured{% endif %}"
+        class="gemluxjewel-header__mega-grid gemluxjewel-header__mega-grid--featured"
         style="--mega-menu-cols: {{ mega_menu_cols }};"
         data-mega-cols="{{ mega_menu_cols }}"
       >
@@ -60,11 +58,38 @@
                 endif
               endfor
             endif
+
+            assign child_preview_image = blank
+            assign child_title_key = child.title | downcase | strip
+            for block in link_image_blocks
+              assign block_parent = block.settings.parent_nav | downcase | strip
+              assign block_link = block.settings.link_title | downcase | strip
+              if block_parent == link_key and block_link == child_title_key and block.settings.image != blank
+                assign child_preview_image = block.settings.image
+              endif
+            endfor
+            if child_preview_image == blank and child.type == 'collection_link' and child.object.featured_image != blank
+              assign child_preview_image = child.object.featured_image
+            endif
+            if child_preview_image == blank
+              assign child_preview_image = nav_fallback_image
+            endif
+            if default_preview_image == blank and child_preview_image != blank
+              assign default_preview_image = child_preview_image
+              assign default_preview_caption = child.title
+            endif
           -%}
           <div class="gemluxjewel-header__mega-col">
             <div class="gemluxjewel-header__mega-title-row">
               {%- if child.url != blank -%}
-                <a href="{{ child.url }}" class="gemluxjewel-header__mega-title gemluxjewel-header__mega-title--link">
+                <a
+                  href="{{ child.url }}"
+                  class="gemluxjewel-header__mega-title gemluxjewel-header__mega-title--link"
+                  {% if child_preview_image != blank %}
+                    data-mega-preview-src="{{ child_preview_image | image_url: width: 560 }}"
+                    data-mega-preview-caption="{{ child.title | escape }}"
+                  {% endif %}
+                >
                   {{ child.title | escape }}
                 </a>
               {%- else -%}
@@ -106,11 +131,34 @@
                         assign is_new = true
                       endif
                     endfor
+
+                    assign preview_image = blank
+                    for block in link_image_blocks
+                      assign block_parent = block.settings.parent_nav | downcase | strip
+                      assign block_link = block.settings.link_title | downcase | strip
+                      if block_parent == link_key and block_link == grandchild_key and block.settings.image != blank
+                        assign preview_image = block.settings.image
+                      endif
+                    endfor
+                    if preview_image == blank and grandchild.type == 'collection_link' and grandchild.object.featured_image != blank
+                      assign preview_image = grandchild.object.featured_image
+                    endif
+                    if preview_image == blank
+                      assign preview_image = nav_fallback_image
+                    endif
+                    if default_preview_image == blank and preview_image != blank
+                      assign default_preview_image = preview_image
+                      assign default_preview_caption = grandchild.title
+                    endif
                   -%}
                   <li>
                     <a
                       href="{{ grandchild.url }}"
                       class="gemluxjewel-header__mega-link{% if is_highlight %} is-highlight{% endif %}"
+                      {% if preview_image != blank %}
+                        data-mega-preview-src="{{ preview_image | image_url: width: 560 }}"
+                        data-mega-preview-caption="{{ grandchild.title | escape }}"
+                      {% endif %}
                     >
                       <span>{{ grandchild.title | escape }}</span>
                       {%- if is_new -%}
@@ -123,7 +171,14 @@
             {%- elsif child.url != blank -%}
               <ul class="gemluxjewel-header__mega-list">
                 <li>
-                  <a href="{{ child.url }}" class="gemluxjewel-header__mega-link">
+                  <a
+                    href="{{ child.url }}"
+                    class="gemluxjewel-header__mega-link"
+                    {% if child_preview_image != blank %}
+                      data-mega-preview-src="{{ child_preview_image | image_url: width: 560 }}"
+                      data-mega-preview-caption="{{ child.title | escape }}"
+                    {% endif %}
+                  >
                     <span>{{ child.title | escape }}</span>
                   </a>
                 </li>
@@ -132,34 +187,45 @@
           </div>
         {%- endfor -%}
 
-        {%- if show_featured -%}
-          <div class="gemluxjewel-header__mega-col gemluxjewel-header__mega-col--featured"{% if banner_block %} {{ banner_block.shopify_attributes }}{% endif %}>
-            {%- if banner_link != blank -%}
-              <a href="{{ banner_link }}" class="gemluxjewel-header__mega-featured">
+        <div
+          class="gemluxjewel-header__mega-col gemluxjewel-header__mega-col--preview"
+          data-gemluxjewel-mega-preview
+          {% if default_preview_image != blank %}
+            data-default-src="{{ default_preview_image | image_url: width: 560 }}"
+            data-default-caption="{{ default_preview_caption | escape }}"
+          {% endif %}
+        >
+          {%- if nav_default_link != blank -%}
+            <a href="{{ nav_default_link }}" class="gemluxjewel-header__mega-preview">
+          {%- else -%}
+            <div class="gemluxjewel-header__mega-preview">
+          {%- endif -%}
+            <div class="gemluxjewel-header__mega-preview-img">
+              <img
+                class="gemluxjewel-header__mega-preview-current"
+                data-gemluxjewel-mega-preview-current
+                {% if default_preview_image != blank %}
+                  src="{{ default_preview_image | image_url: width: 560 }}"
+                  alt="{{ default_preview_caption | escape }}"
+                {% endif %}
+                loading="lazy"
+                width="560"
+                height="560"
+              >
+            </div>
+            {%- if default_preview_caption != blank -%}
+              <span class="gemluxjewel-header__mega-preview-caption" data-gemluxjewel-mega-preview-caption>
+                {{ default_preview_caption | escape }}
+              </span>
             {%- else -%}
-              <div class="gemluxjewel-header__mega-featured">
+              <span class="gemluxjewel-header__mega-preview-caption" data-gemluxjewel-mega-preview-caption hidden></span>
             {%- endif -%}
-              <div class="gemluxjewel-header__mega-featured-img">
-                {{
-                  banner_image
-                  | image_url: width: 560
-                  | image_tag:
-                    widths: '280, 360, 560',
-                    sizes: '(min-width: 990px) calc((100vw - 120px) / 6), 100vw',
-                    loading: 'lazy',
-                    alt: banner_caption
-                }}
-              </div>
-              {%- if banner_caption != blank -%}
-                <span class="gemluxjewel-header__mega-featured-caption">{{ banner_caption | escape }}</span>
-              {%- endif -%}
-            {%- if banner_link != blank -%}
-              </a>
-            {%- else -%}
-              </div>
-            {%- endif -%}
-          </div>
-        {%- endif -%}
+          {%- if nav_default_link != blank -%}
+            </a>
+          {%- else -%}
+            </div>
+          {%- endif -%}
+        </div>
       </div>
     </div>
   </div>

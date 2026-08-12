@@ -19,8 +19,19 @@
           "settings": {
             "parent_nav": "Best seller",
             "image": "shopify://shop_images/Round_Lab-Grown_Diamond_Cross_Pendant_Necklace_in_14K_Yellow_Gold_1.png",
+            "fallback_image": "shopify://shop_images/Round_Lab-Grown_Diamond_Cross_Pendant_Necklace_in_14K_Yellow_Gold_1.png",
             "caption": "Solitaire Rings",
             "link": "https://gemluxjewels.com/collections/all"
+          }
+        },
+        "mega_banner_engagement": {
+          "type": "mega_banner",
+          "settings": {
+            "parent_nav": "Engagement Ring",
+            "image": "shopify://shop_images/gold-ring-with-white-dimonds-and-a-large-stone.jpg",
+            "fallback_image": "shopify://shop_images/gold-ring-with-white-dimonds-and-a-large-stone.jpg",
+            "caption": "Engagement Rings",
+            "link": "shopify://collections/all"
           }
         },
         "mega_contact_get_in_touch": {
@@ -65,6 +76,7 @@
       },
       "block_order": [
         "mega_banner_CmAQq7",
+        "mega_banner_engagement",
         "mega_contact_get_in_touch",
         "mega_contact_book",
         "top_1",
