@@ -74,16 +74,6 @@
             <p class="gemluxjewel-pdp__sku">SKU: {{ current_variant.sku | escape }}</p>
           {%- endif -%}
 
-          {%- if section.settings.show_specs_row -%}
-            <p class="gemluxjewel-pdp__specs">
-              {%- if product.metafields.custom.specs != blank -%}
-                {{ product.metafields.custom.specs }}
-              {%- else -%}
-                {{ section.settings.default_specs | escape }}
-              {%- endif -%}
-            </p>
-          {%- endif -%}
-
           <div id="price-{{ section.id }}" role="status">
             {% render 'gemluxjewel-pdp-price' %}
           </div>
@@ -301,18 +291,6 @@
     {
       "type": "header",
       "content": "Product details"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_specs_row",
-      "label": "Show specs line",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "default_specs",
-      "label": "Default specs (when product metafield empty)",
-      "default": "Lab Grown Diamond • Dutch Marquise Cut • F Color • 1.00 To 4.00 CT • VS Clarity"
     },
     {
       "type": "checkbox",
