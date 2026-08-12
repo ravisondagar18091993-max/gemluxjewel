@@ -802,7 +802,6 @@
   font-size: clamp(28px, 3vw, 36px);
   line-height: 1.25;
   font-weight: 700;
-  color: #73976a;
 }
 
 .gemluxjewel-custom-form__utility-text {
@@ -810,7 +809,6 @@
   font-family: var(--gemluxjewel-font-body);
   font-size: 15px;
   line-height: 1.65;
-  color: #73976a;
 }
 
 .gemluxjewel-custom-form__utility-actions {
