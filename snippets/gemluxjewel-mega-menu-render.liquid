@@ -1,0 +1,19 @@
+{%- comment -%}
+  Renders the correct mega menu for a nav item.
+  Accepts: link, section
+{%- endcomment -%}
+
+{%- liquid
+  assign link_key = link.title | downcase | strip
+  assign contact_nav = section.settings.contact_mega_nav | downcase | strip
+  assign use_contact_mega = false
+  if contact_nav != blank and link_key == contact_nav
+    assign use_contact_mega = true
+  endif
+-%}
+
+{%- if use_contact_mega -%}
+  {% render 'gemluxjewel-mega-menu-contact', link: link, section: section %}
+{%- else -%}
+  {% render 'gemluxjewel-mega-menu', link: link, section: section %}
+{%- endif -%}

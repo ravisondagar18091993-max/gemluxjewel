@@ -685,6 +685,99 @@ html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
   text-align: left;
 }
 
+/* ── Contact mega menu (CULLEN-style) ── */
+.gemluxjewel-header__mega--contact .gemluxjewel-header__mega-inner {
+  padding-top: 36px;
+  padding-bottom: 44px;
+}
+
+.gemluxjewel-header__mega-contact-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+@media (min-width: 990px) {
+  .gemluxjewel-header__mega-contact-layout {
+    grid-template-columns: minmax(160px, 220px) minmax(0, 1fr);
+    gap: 48px 72px;
+  }
+}
+
+.gemluxjewel-header__mega-contact-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.gemluxjewel-header__mega-contact-links li {
+  margin: 0 0 14px;
+}
+
+.gemluxjewel-header__mega-contact-links li:last-child {
+  margin-bottom: 0;
+}
+
+.gemluxjewel-header__mega-contact-link {
+  display: inline-block;
+  font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
+  font-size: 14px;
+  line-height: 1.45;
+  font-weight: 400;
+  color: #141414;
+  text-decoration: none;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.gemluxjewel-header__mega-contact-link:hover {
+  color: var(--gemluxjewel-primary, #73976a);
+}
+
+.gemluxjewel-header__mega-contact-features {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-width: 0;
+}
+
+.gemluxjewel-header__mega-contact-feature-title {
+  margin: 0 0 12px;
+  font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
+  font-size: 11px;
+  line-height: 1.2;
+  letter-spacing: 0.12em;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #141414;
+}
+
+.gemluxjewel-header__mega-contact-feature-media {
+  display: block;
+  overflow: hidden;
+  background: #e4eaec;
+  text-decoration: none;
+}
+
+.gemluxjewel-header__mega-contact-feature-media img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 5;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.gemluxjewel-header__mega-contact-feature-media:hover img {
+  transform: scale(1.02);
+}
+
+.gemluxjewel-header__mega-contact-feature-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 5;
+  background: linear-gradient(135deg, #dde5e8 0%, #eef2f4 100%);
+}
+
 .gemluxjewel-header__nav-item.has-mega.is-mega-active > .gemluxjewel-header__nav-link,
 .gemluxjewel-header__nav-item.has-mega:hover > .gemluxjewel-header__nav-link,
 .gemluxjewel-header__nav-item.has-mega:focus-within > .gemluxjewel-header__nav-link {

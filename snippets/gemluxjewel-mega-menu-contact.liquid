@@ -1,0 +1,93 @@
+{% comment %}
+  CULLEN-style Contact mega menu.
+  Left: flat link list from nav children.
+  Right: stacked image panels from mega_contact_feature blocks.
+{% endcomment %}
+
+{%- if link.links.size > 0 -%}
+  {%- liquid
+    assign link_key = link.title | downcase | strip
+    assign contact_features = section.blocks | where: 'type', 'mega_contact_feature'
+  -%}
+
+  <div class="gemluxjewel-header__mega gemluxjewel-header__mega--contact" data-gemluxjewel-mega-panel>
+    <div class="gemluxjewel-header__mega-inner">
+      <div class="gemluxjewel-header__mega-contact-layout">
+        <div class="gemluxjewel-header__mega-contact-links-wrap">
+          <ul class="gemluxjewel-header__mega-contact-links">
+            {%- for child in link.links -%}
+              {%- if child.links.size > 0 -%}
+                {%- for grandchild in child.links -%}
+                  <li>
+                    <a href="{{ grandchild.url }}" class="gemluxjewel-header__mega-contact-link">
+                      {{ grandchild.title | escape }}
+                    </a>
+                  </li>
+                {%- endfor -%}
+              {%- else -%}
+                <li>
+                  <a href="{{ child.url }}" class="gemluxjewel-header__mega-contact-link">
+                    {{ child.title | escape }}
+                  </a>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        </div>
+
+        <div class="gemluxjewel-header__mega-contact-features">
+          {%- assign feature_count = 0 -%}
+          {%- for block in contact_features -%}
+            {%- assign block_parent = block.settings.parent_nav | downcase | strip -%}
+            {%- if block_parent == link_key -%}
+              {%- assign feature_count = feature_count | plus: 1 -%}
+              <div class="gemluxjewel-header__mega-contact-feature" {{ block.shopify_attributes }}>
+                {%- if block.settings.title != blank -%}
+                  <p class="gemluxjewel-header__mega-contact-feature-title">{{ block.settings.title | escape }}</p>
+                {%- endif -%}
+                {%- if block.settings.link != blank -%}
+                  <a href="{{ block.settings.link }}" class="gemluxjewel-header__mega-contact-feature-media">
+                {%- else -%}
+                  <div class="gemluxjewel-header__mega-contact-feature-media">
+                {%- endif -%}
+                  {%- if block.settings.image != blank -%}
+                    {{
+                      block.settings.image
+                      | image_url: width: 1400
+                      | image_tag:
+                        widths: '600, 900, 1200, 1400',
+                        sizes: '(min-width: 990px) 52vw, 100vw',
+                        loading: 'lazy',
+                        alt: block.settings.title
+                    }}
+                  {%- else -%}
+                    <div class="gemluxjewel-header__mega-contact-feature-placeholder" aria-hidden="true"></div>
+                  {%- endif -%}
+                {%- if block.settings.link != blank -%}
+                  </a>
+                {%- else -%}
+                  </div>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+
+          {%- if feature_count == 0 -%}
+            <div class="gemluxjewel-header__mega-contact-feature">
+              <p class="gemluxjewel-header__mega-contact-feature-title">Get In Touch</p>
+              <div class="gemluxjewel-header__mega-contact-feature-media">
+                <div class="gemluxjewel-header__mega-contact-feature-placeholder" aria-hidden="true"></div>
+              </div>
+            </div>
+            <div class="gemluxjewel-header__mega-contact-feature">
+              <p class="gemluxjewel-header__mega-contact-feature-title">Book an Appointment</p>
+              <div class="gemluxjewel-header__mega-contact-feature-media">
+                <div class="gemluxjewel-header__mega-contact-feature-placeholder" aria-hidden="true"></div>
+              </div>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+{%- endif -%}

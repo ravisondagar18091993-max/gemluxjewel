@@ -23,6 +23,22 @@
             "link": "https://gemluxjewels.com/collections/all"
           }
         },
+        "mega_contact_get_in_touch": {
+          "type": "mega_contact_feature",
+          "settings": {
+            "parent_nav": "Contact",
+            "title": "Get In Touch",
+            "link": "shopify://pages/contact"
+          }
+        },
+        "mega_contact_book": {
+          "type": "mega_contact_feature",
+          "settings": {
+            "parent_nav": "Contact",
+            "title": "Book an Appointment",
+            "link": "shopify://pages/contact"
+          }
+        },
         "top_1": {
           "type": "top_link",
           "settings": {
@@ -47,6 +63,8 @@
       },
       "block_order": [
         "mega_banner_CmAQq7",
+        "mega_contact_get_in_touch",
+        "mega_contact_book",
         "top_1",
         "top_2",
         "top_3"
@@ -60,6 +78,7 @@
         "show_shop_all": true,
         "shop_all_label": "Shop All",
         "view_column_label": "View all",
+        "contact_mega_nav": "Contact",
         "mega_info_columns": "Lab Grown Diamonds, Moissanite",
         "mega_highlight_links": "",
         "mega_new_badge_links": "",
