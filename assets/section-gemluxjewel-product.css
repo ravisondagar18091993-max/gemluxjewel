@@ -1109,7 +1109,7 @@
   font-size: clamp(34px, 4vw, 44px);
   line-height: 1.1;
   font-weight: 400;
-  color: #002147;
+  color: #141414;
 }
 
 .gemluxjewel-pdp-trust__title {
@@ -1120,7 +1120,6 @@
   font-weight: 700 !important;
   text-transform: none !important;
   letter-spacing: 0;
-  color: #002147;
 }
 
 .gemluxjewel-pdp-trust__list {
@@ -1170,7 +1169,7 @@
   justify-content: center;
   width: 52px;
   height: 52px;
-  color: #002147;
+  color: #141414;
 }
 
 .gemluxjewel-pdp-trust__icon svg {
@@ -1193,7 +1192,7 @@
   font-weight: 500;
   text-transform: none;
   letter-spacing: 0;
-  color: #002147;
+  color: #141414;
 }
 
 .gemluxjewel-pdp-trust__cta {
@@ -1206,7 +1205,7 @@
   justify-content: center;
   min-width: 220px;
   padding: 16px 36px;
-  background: #002147;
+  background: #73976a;
   color: #fff;
   border: 0;
   border-radius: 0;
