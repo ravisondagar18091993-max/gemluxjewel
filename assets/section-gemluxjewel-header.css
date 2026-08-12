@@ -702,8 +702,8 @@ html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
 
 @media (min-width: 990px) {
   .gemluxjewel-header__mega-contact-layout {
-    grid-template-columns: 200px minmax(0, 1fr);
-    gap: 40px 80px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 40px;
     align-items: start;
   }
 }
@@ -762,14 +762,16 @@ html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
 .gemluxjewel-header__mega-contact-feature-media {
   display: block;
   overflow: hidden;
+  height: 140px;
+  max-height: 140px;
   background: #e4eaec;
   text-decoration: none;
 }
 
 .gemluxjewel-header__mega-contact-feature-media img {
   width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 5;
+  height: 140px;
+  max-height: 140px;
   object-fit: cover;
   display: block;
   transition: transform 0.35s ease;
@@ -781,7 +783,8 @@ html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
 
 .gemluxjewel-header__mega-contact-feature-placeholder {
   width: 100%;
-  aspect-ratio: 16 / 5;
+  height: 140px;
+  max-height: 140px;
   background: linear-gradient(135deg, #dde5e8 0%, #eef2f4 100%);
 }
 
