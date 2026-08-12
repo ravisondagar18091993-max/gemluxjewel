@@ -28,6 +28,7 @@
           "settings": {
             "parent_nav": "Contact Us",
             "title": "Get In Touch",
+            "image": "shopify://shop_images/gold-ring-with-white-dimonds-and-a-large-stone.jpg",
             "link": "shopify://pages/contact"
           }
         },
