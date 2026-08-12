@@ -8,20 +8,35 @@
   <div class="gemluxjewel-container">
     {%- liquid
       assign hulk_form_id = section.settings.hulk_form_id | strip
+      assign hulk_app_blocks = section.blocks | where: 'type', '@app'
+      assign use_hulk = false
+      if hulk_form_id != blank or hulk_app_blocks.size > 0
+        assign use_hulk = true
+      endif
     -%}
 
-    <div class="gemluxjewel-custom-form__panel{% if hulk_form_id != blank %} gemluxjewel-custom-form__panel--hulk{% endif %}">
-      {%- if hulk_form_id != blank -%}
-        {%- if section.settings.intro_text != blank -%}
-          <p class="gemluxjewel-custom-form__intro">{{ section.settings.intro_text | escape }}</p>
-        {%- endif -%}
+    <div class="gemluxjewel-custom-form__panel{% if use_hulk %} gemluxjewel-custom-form__panel--hulk{% endif %}">
+      {%- if use_hulk -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == '@app' -%}
+            <div class="gemluxjewel-custom-form__hulk-app" {{ block.shopify_attributes }}>
+              {% render block %}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
 
-        <div
-          class="gemluxjewel-custom-form__hulk"
-          data-hulk-form-id="{{ hulk_form_id | escape }}"
-        >
-          <div class="hulk-form-builder" data-form-id="{{ hulk_form_id | escape }}"></div>
-        </div>
+        {%- if hulk_app_blocks.size > 0 -%}
+          {%- comment -%} Form rendered via Hulk app block {%- endcomment -%}
+        {%- elsif hulk_form_id != blank -%}
+          <div class="gemluxjewel-custom-form__hulk">
+            <div id="{{ hulk_form_id | escape }}" class="pxFormGenerator"></div>
+          </div>
+        {%- elsif request.design_mode -%}
+          <div class="gemluxjewel-custom-form__hulk-placeholder">
+            <p>Add your Hulk Form ID in section settings, or add a <strong>Form Builder App</strong> block above.</p>
+            <p>Also enable <strong>App embeds → Hulk Form Builder</strong> in Theme settings.</p>
+          </div>
+        {%- endif -%}
       {%- else -%}
       <div data-gemluxjewel-custom-form>
       {%- form 'contact', id: 'GemluxCustomJewelleryForm', class: 'gemluxjewel-custom-form__form' -%}
@@ -164,7 +179,7 @@
     },
     {
       "type": "paragraph",
-      "content": "Enable Hulk in Theme Customize → App embeds → Hulk Form Builder ON."
+      "content": "Required: Theme Customize → App embeds → Hulk Form Builder ON. You can also add a Form Builder App block in this section."
     },
     {
       "type": "header",
@@ -251,6 +266,9 @@
     }
   ],
   "blocks": [
+    {
+      "type": "@app"
+    },
     {
       "type": "text_field",
       "name": "Text field",

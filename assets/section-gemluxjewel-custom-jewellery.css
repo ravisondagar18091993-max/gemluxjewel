@@ -237,8 +237,22 @@
   min-height: 120px;
 }
 
-.gemluxjewel-custom-form__hulk .hulk-form-builder {
+.gemluxjewel-custom-form__hulk .pxFormGenerator {
   width: 100%;
+}
+
+.gemluxjewel-custom-form__hulk-app {
+  width: 100%;
+}
+
+.gemluxjewel-custom-form__hulk-placeholder {
+  padding: 24px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(30, 57, 42, 0.72);
+  border: 1px dashed rgba(30, 57, 42, 0.25);
+  border-radius: 4px;
 }
 
 .gemluxjewel-custom-form__intro {

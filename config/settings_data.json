@@ -151,6 +151,11 @@
         "type": "shopify://apps/geolocation-glc/blocks/selector/e347b539-0714-46e4-9e69-23a73992ae3a",
         "disabled": false,
         "settings": {}
+      },
+      "17837527835600000001": {
+        "type": "shopify://apps/hulk-form-builder/blocks/app-embed/b6b8dd14-356b-4725-a4ed-77232212b3c3",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
