@@ -15,6 +15,7 @@
         "show_breadcrumb": true,
         "breadcrumb_home": "Home",
         "breadcrumb_parent": "Rings",
+        "breadcrumb_parent_link": "",
         "breadcrumb_current": "Engagement Ring",
         "title": "Custom Lab Grown Diamond Engagement Rings",
         "text": "Design your unique jewelry with Gemlux. Tailor every detail to your taste for a truly personal touch. Create the one-of-a-kind piece you've always dreamed of."
@@ -28,7 +29,8 @@
           "settings": {
             "title": "Find Your Ring Size",
             "text": "Unsure of Your Ring Size? No Problem! Click on 'Find Now' and let us assist you in choosing the right ring size for you.",
-            "button_label": "Find Now"
+            "button_label": "Find Now",
+            "button_link": ""
           }
         },
         "u_gem": {
@@ -47,8 +49,17 @@
       ],
       "settings": {
         "hulk_form_id": "978R1lbxhx17O5o1yMDqYsA",
+        "title": "Custom Lab Grown Diamond Engagement Rings",
+        "intro_text": "Design your unique jewelry with Gemlux. Tailor every detail to your taste for a truly personal touch. Create the one-of-a-kind piece you've always dreamed of.",
+        "email_subject": "Custom Engagement Ring Request",
+        "button_label": "Submit",
         "show_file_upload": false,
-        "show_ring_sizer": false
+        "file_upload_label": "Upload Image here",
+        "file_upload_help": "Max file size: 5MB",
+        "file_upload_button": "Browse File",
+        "show_ring_sizer": false,
+        "ring_sizer_label": "Get a free ring sizer kit. Usually $15 Value.",
+        "success_message": "Thank you! Our design team will be in touch within 24 hours."
       }
     },
     "custom_trust": {
@@ -77,6 +88,7 @@
         "f1": {
           "type": "faq",
           "settings": {
+            "category": "general",
             "question": "What is custom jewelry?",
             "answer": "<p>Custom jewelry is designed and crafted specifically for you, based on your preferences for metal, stone, shape, and setting style.</p>"
           }
@@ -84,6 +96,7 @@
         "f2": {
           "type": "faq",
           "settings": {
+            "category": "general",
             "question": "How is custom jewelry made at Gemlux?",
             "answer": "<p>Our team guides you from initial consultation through 3D design, stone selection, and handcrafting in our studio.</p>"
           }
@@ -91,6 +104,7 @@
         "f3": {
           "type": "faq",
           "settings": {
+            "category": "general",
             "question": "How much does it cost to get a custom design?",
             "answer": "<p>Pricing depends on metal, stone size, and complexity. Share your budget in the form above and we will recommend options within your range.</p>"
           }
@@ -98,6 +112,7 @@
         "f4": {
           "type": "faq",
           "settings": {
+            "category": "general",
             "question": "How long does a custom ring take?",
             "answer": "<p>Most custom engagement rings take 4–6 weeks from design approval to delivery.</p>"
           }
@@ -105,12 +120,19 @@
         "f5": {
           "type": "faq",
           "settings": {
+            "category": "general",
             "question": "Can I see a 3D render before production?",
             "answer": "<p>Yes. We provide detailed 3D visualisations for your approval before any manufacturing begins.</p>"
           }
         }
       },
-      "block_order": ["f1", "f2", "f3", "f4", "f5"],
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5"
+      ],
       "settings": {
         "title": "Because It Means More When It's Made Just For You!"
       }
@@ -130,10 +152,52 @@
         "title": "Why To Buy Custom Engagement Ring?",
         "content": "<p>The custom engagement ring has more sentiment and attachment than premade rings, which are specially made only for you — so it's one of a kind. Gemlux allows you to get your dream engagement ring with 100% customization and design your own ring your way. Submit the details in the form above, including reference or inspiration images, and we can create the same design for you.</p><p>We custom make engagement rings in any shape, size, and color of lab grown diamonds, moissanite, or other gemstones. If you have questions or would like an expert opinion, schedule a virtual appointment with us.</p>"
       }
+    },
+    "178651200345c9235a": {
+      "type": "apps",
+      "blocks": {
+        "hulk_form_builder_form_block_DVDbgm": {
+          "type": "shopify://apps/hulk-form-builder/blocks/form-block/b6b8dd14-356b-4725-a4ed-77232212b3c3",
+          "settings": {
+            "form_uuid": "978R1bxhx17O5o1yMDqYsA",
+            "form_settings": false,
+            "font_color": "#000000",
+            "size": 14,
+            "input_background_color": "#FFF",
+            "input_background_color_focus": "#F4DADA",
+            "input_border_radius": 1,
+            "input_border_color": "#ebe9e9",
+            "input_border_color_focus": "#2D2727",
+            "input_font_color": "#3D3131",
+            "input_size": 14,
+            "border_color": "#121212",
+            "border_radius": 2,
+            "border": 1,
+            "fill_color": "#EBE9E9",
+            "padding": 35,
+            "form_width": 600,
+            "btn_text": "Submit",
+            "sub_btn_txt_color": "#F3F3F3",
+            "sub_btn_bg_color": "#3F3333",
+            "sub_btn_font_size": 14,
+            "sub_btn_bdr_color": "#FFFFFF",
+            "sub_btn_bdr_rad": 3,
+            "sub_btn_bdr_width": 1,
+            "fonts": "Times New Roman"
+          }
+        }
+      },
+      "block_order": [
+        "hulk_form_builder_form_block_DVDbgm"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
     "custom_hero",
+    "178651200345c9235a",
     "custom_form",
     "custom_trust",
     "custom_promo",
