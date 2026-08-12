@@ -1631,7 +1631,6 @@
   font-size: clamp(24px, 2.8vw, 32px);
   line-height: 1.25;
   font-weight: 700;
-  color: #73976a;
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
@@ -1641,7 +1640,6 @@
   margin: 0 auto;
   font-size: 15px;
   line-height: 1.75;
-  color: rgba(115, 151, 106, 0.78);
 }
 
 .gemluxjewel-custom-why__content p {
