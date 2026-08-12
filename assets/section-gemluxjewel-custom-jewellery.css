@@ -255,6 +255,231 @@
   border-radius: 4px;
 }
 
+/* Hulk Form Builder — match Gemlux custom form design */
+.gemluxjewel-custom-form__panel--hulk {
+  padding: clamp(32px, 4vw, 52px);
+}
+
+.gemluxjewel-custom-form__hulk .formContainer,
+.gemluxjewel-custom-form__hulk-app .formContainer {
+  max-width: none !important;
+  margin: 0 !important;
+}
+
+.gemluxjewel-custom-form__hulk .form_generater_form_div,
+.gemluxjewel-custom-form__hulk-app .form_generater_form_div {
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.gemluxjewel-custom-form__hulk .form_generater_form_div > .tab,
+.gemluxjewel-custom-form__hulk-app .form_generater_form_div > .tab {
+  background: transparent !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+.gemluxjewel-custom-form__hulk .form_title_div,
+.gemluxjewel-custom-form__hulk-app .form_title_div,
+.gemluxjewel-custom-form__hulk .form_description_div,
+.gemluxjewel-custom-form__hulk-app .form_description_div {
+  display: none !important;
+}
+
+.gemluxjewel-custom-form__hulk .row.form_container,
+.gemluxjewel-custom-form__hulk-app .row.form_container {
+  display: grid !important;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+@media (min-width: 750px) {
+  .gemluxjewel-custom-form__hulk .row.form_container,
+  .gemluxjewel-custom-form__hulk-app .row.form_container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.gemluxjewel-custom-form__hulk .form-group,
+.gemluxjewel-custom-form__hulk-app .form-group {
+  width: 100% !important;
+  float: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.gemluxjewel-custom-form__hulk .form-group:not(.halfwidth),
+.gemluxjewel-custom-form__hulk-app .form-group:not(.halfwidth) {
+  grid-column: 1 / -1;
+}
+
+.gemluxjewel-custom-form__hulk label.block_label,
+.gemluxjewel-custom-form__hulk-app label.block_label,
+.gemluxjewel-custom-form__hulk label.fitText.block_label,
+.gemluxjewel-custom-form__hulk-app label.fitText.block_label {
+  display: block;
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+  font-weight: 500 !important;
+  color: #1e392a !important;
+  margin: 0 0 8px !important;
+  text-transform: none !important;
+}
+
+.gemluxjewel-custom-form__hulk .form-group input[type='text'],
+.gemluxjewel-custom-form__hulk .form-group input[type='email'],
+.gemluxjewel-custom-form__hulk .form-group input[type='tel'],
+.gemluxjewel-custom-form__hulk .form-group input[type='number'],
+.gemluxjewel-custom-form__hulk .form-group input[type='url'],
+.gemluxjewel-custom-form__hulk .form-group input[type='date'],
+.gemluxjewel-custom-form__hulk .form-group select,
+.gemluxjewel-custom-form__hulk .form-group textarea,
+.gemluxjewel-custom-form__hulk-app .form-group input[type='text'],
+.gemluxjewel-custom-form__hulk-app .form-group input[type='email'],
+.gemluxjewel-custom-form__hulk-app .form-group input[type='tel'],
+.gemluxjewel-custom-form__hulk-app .form-group input[type='number'],
+.gemluxjewel-custom-form__hulk-app .form-group input[type='url'],
+.gemluxjewel-custom-form__hulk-app .form-group input[type='date'],
+.gemluxjewel-custom-form__hulk-app .form-group select,
+.gemluxjewel-custom-form__hulk-app .form-group textarea {
+  width: 100% !important;
+  max-width: none !important;
+  font-family: var(--gemluxjewel-font-body) !important;
+  font-size: 15px !important;
+  line-height: 22px !important;
+  color: #1e392a !important;
+  background: #fff !important;
+  border: 1px solid rgba(30, 57, 42, 0.15) !important;
+  border-radius: 4px !important;
+  padding: 14px 16px !important;
+  box-shadow: none !important;
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+.gemluxjewel-custom-form__hulk .form-group select,
+.gemluxjewel-custom-form__hulk-app .form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%231e392a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 16px center !important;
+  padding-right: 40px !important;
+}
+
+.gemluxjewel-custom-form__hulk .form-group textarea,
+.gemluxjewel-custom-form__hulk-app .form-group textarea {
+  min-height: 140px !important;
+  resize: vertical;
+}
+
+.gemluxjewel-custom-form__hulk .form-group input:focus,
+.gemluxjewel-custom-form__hulk .form-group select:focus,
+.gemluxjewel-custom-form__hulk .form-group textarea:focus,
+.gemluxjewel-custom-form__hulk-app .form-group input:focus,
+.gemluxjewel-custom-form__hulk-app .form-group select:focus,
+.gemluxjewel-custom-form__hulk-app .form-group textarea:focus {
+  outline: none !important;
+  border-color: #1e392a !important;
+}
+
+.gemluxjewel-custom-form__hulk .form-group.radio .radio-list,
+.gemluxjewel-custom-form__hulk-app .form-group.radio .radio-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+}
+
+.gemluxjewel-custom-form__hulk .form-group.radio .radio-inline,
+.gemluxjewel-custom-form__hulk-app .form-group.radio .radio-inline {
+  margin: 0 !important;
+}
+
+.gemluxjewel-custom-form__hulk .form-group.radio label,
+.gemluxjewel-custom-form__hulk-app .form-group.radio label {
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  color: #1e392a !important;
+}
+
+.gemluxjewel-custom-form__hulk .form-group.file .file-upload-area,
+.gemluxjewel-custom-form__hulk .form-group.image .file-upload-area,
+.gemluxjewel-custom-form__hulk-app .form-group.file .file-upload-area,
+.gemluxjewel-custom-form__hulk-app .form-group.image .file-upload-area {
+  background: #fff !important;
+  border: 1px dashed rgba(30, 57, 42, 0.25) !important;
+  border-radius: 4px !important;
+  padding: 24px 16px !important;
+}
+
+.gemluxjewel-custom-form__hulk .form-group.file .browse-btn,
+.gemluxjewel-custom-form__hulk .form-group.image .browse-btn,
+.gemluxjewel-custom-form__hulk-app .form-group.file .browse-btn,
+.gemluxjewel-custom-form__hulk-app .form-group.image .browse-btn {
+  background: #1e392a !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  color: #fff !important;
+  font-size: 12px !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  padding: 10px 18px !important;
+}
+
+.gemluxjewel-custom-form__hulk .form_submit_div,
+.gemluxjewel-custom-form__hulk-app .form_submit_div {
+  grid-column: 1 / -1;
+  margin: 8px 0 0 !important;
+  padding: 0 !important;
+  text-align: center !important;
+}
+
+.gemluxjewel-custom-form__hulk .form_submit_div button,
+.gemluxjewel-custom-form__hulk .form_submit_div button.btn,
+.gemluxjewel-custom-form__hulk-app .form_submit_div button,
+.gemluxjewel-custom-form__hulk-app .form_submit_div button.btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 220px !important;
+  width: auto !important;
+  max-width: 100% !important;
+  padding: 16px 32px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: #1e392a !important;
+  color: #fff !important;
+  font-family: var(--gemluxjewel-font-body) !important;
+  font-size: 13px !important;
+  line-height: 1 !important;
+  letter-spacing: 0.12em !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  box-shadow: none !important;
+}
+
+.gemluxjewel-custom-form__hulk .form_submit_div button:hover,
+.gemluxjewel-custom-form__hulk-app .form_submit_div button:hover {
+  opacity: 0.88;
+}
+
+.gemluxjewel-custom-form__hulk .powered_by_hulk,
+.gemluxjewel-custom-form__hulk-app .powered_by_hulk,
+.gemluxjewel-custom-form__hulk .hulkapps-powered-by,
+.gemluxjewel-custom-form__hulk-app .hulkapps-powered-by {
+  display: none !important;
+}
+
+.gemluxjewel-custom-form__hulk iframe,
+.gemluxjewel-custom-form__hulk-app iframe {
+  border: 0 !important;
+  border-radius: 4px;
+}
+
 .gemluxjewel-custom-form__intro {
   margin: 0 0 28px;
   font-size: 15px;
@@ -477,84 +702,186 @@
 }
 
 .gemluxjewel-custom-form__utilities {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-  max-width: 760px;
-  margin: 32px auto 0;
-}
-
-@media (min-width: 750px) {
-  .gemluxjewel-custom-form__utilities {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  max-width: none;
 }
 
 .gemluxjewel-custom-form__utility {
-  background: #f7f7f7;
-  overflow: hidden;
+  width: 100%;
+}
+
+.gemluxjewel-custom-form__utility--ring_size {
+  background: #f9f6f1;
+}
+
+.gemluxjewel-custom-form__utility--gemologist {
+  background: #eef7fe;
+}
+
+.gemluxjewel-custom-form__utility-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 32px;
+  padding-top: clamp(40px, 5vw, 56px);
+  padding-bottom: clamp(40px, 5vw, 56px);
+}
+
+@media (min-width: 990px) {
+  .gemluxjewel-custom-form__utility-inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(32px, 4vw, 64px);
+  }
+
+  .gemluxjewel-custom-form__utility--ring_size .gemluxjewel-custom-form__utility-content {
+    order: 1;
+  }
+
+  .gemluxjewel-custom-form__utility--ring_size .gemluxjewel-custom-form__utility-media {
+    order: 2;
+  }
+
+  .gemluxjewel-custom-form__utility--gemologist .gemluxjewel-custom-form__utility-media {
+    order: 1;
+  }
+
+  .gemluxjewel-custom-form__utility--gemologist .gemluxjewel-custom-form__utility-content {
+    order: 2;
+  }
+}
+
+.gemluxjewel-custom-form__utility-content {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  max-width: 520px;
+}
+
+.gemluxjewel-custom-form__utility--ring_size .gemluxjewel-custom-form__utility-content {
+  margin-right: auto;
+}
+
+.gemluxjewel-custom-form__utility--gemologist .gemluxjewel-custom-form__utility-content {
+  margin-left: auto;
 }
 
 .gemluxjewel-custom-form__utility-media {
-  aspect-ratio: 16 / 10;
+  position: relative;
+  min-height: 260px;
   overflow: hidden;
-  background: #ececec;
+  background: rgba(255, 255, 255, 0.45);
 }
 
 .gemluxjewel-custom-form__utility-media img {
   width: 100%;
   height: 100%;
+  min-height: 260px;
   object-fit: cover;
+  object-position: center;
   display: block;
 }
 
-.gemluxjewel-custom-form__utility-body {
-  padding: 24px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+.gemluxjewel-custom-form__utility--ring_size .gemluxjewel-custom-form__utility-media img {
+  object-fit: contain;
+  object-position: center right;
+  background: transparent;
+}
+
+.gemluxjewel-custom-form__utility-media-placeholder {
+  width: 100%;
+  min-height: 260px;
+  background: linear-gradient(135deg, rgba(5, 32, 68, 0.06), rgba(5, 32, 68, 0.02));
 }
 
 .gemluxjewel-custom-form__utility-title {
-  margin: 0 0 10px;
+  margin: 0 0 16px;
   font-family: 'Libre Baskerville', Georgia, serif;
-  font-size: 22px;
-  line-height: 1.3;
-  font-weight: 400;
-  color: #1e392a;
+  font-size: clamp(28px, 3vw, 36px);
+  line-height: 1.25;
+  font-weight: 700;
+  color: #052044;
 }
 
 .gemluxjewel-custom-form__utility-text {
-  margin: 0 0 16px;
-  font-size: 14px;
-  line-height: 1.6;
-  color: rgba(30, 57, 42, 0.75);
-  flex: 1;
+  margin: 0 0 28px;
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  color: #052044;
+}
+
+.gemluxjewel-custom-form__utility-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 18px;
 }
 
 .gemluxjewel-custom-form__utility-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  align-self: flex-start;
-  min-width: 120px;
-  padding: 12px 20px;
-  background: #1e392a;
-  color: #fff;
+  min-width: 140px;
+  padding: 14px 28px;
+  border: 1px solid #052044;
+  border-radius: 0;
+  font-family: var(--gemluxjewel-font-body);
   font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: opacity 0.2s, background-color 0.2s, color 0.2s;
+}
+
+.gemluxjewel-custom-form__utility-btn--solid {
+  background: #052044;
+  color: #fff;
+  border-color: #052044;
+}
+
+.gemluxjewel-custom-form__utility-btn--solid:hover {
+  opacity: 0.9;
+  color: #fff;
+}
+
+.gemluxjewel-custom-form__utility-btn--outline {
+  background: #fff;
+  color: #052044;
+  border-color: #052044;
+}
+
+.gemluxjewel-custom-form__utility-btn--outline:hover {
+  background: #052044;
+  color: #fff;
+}
+
+.gemluxjewel-custom-form__utility-call {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 13px;
   line-height: 1;
   letter-spacing: 0.08em;
   font-weight: 600;
   text-transform: uppercase;
+  color: #052044;
   text-decoration: none;
   transition: opacity 0.2s;
 }
 
-.gemluxjewel-custom-form__utility-btn:hover {
-  opacity: 0.88;
-  color: #fff;
+.gemluxjewel-custom-form__utility-call:hover {
+  opacity: 0.75;
+  color: #052044;
+}
+
+.gemluxjewel-custom-form__utility-call-icon {
+  flex-shrink: 0;
 }
 
 .gemluxjewel-custom-form__utility-link {
@@ -864,92 +1191,264 @@
   transform: rotate(180deg);
 }
 
-/* ── Expert CTA ── */
-.gemluxjewel-custom-expert {
-  background: #fff;
-  padding: 64px 0;
+/* ── Made to Order (Reference / Reality) ── */
+.gemluxjewel-custom-made-to-order {
+  background: #f7f7f7;
+  padding: clamp(56px, 7vw, 88px) 0;
+  overflow: hidden;
 }
 
-.gemluxjewel-custom-expert__grid {
+.gemluxjewel-custom-made-to-order__inner {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 32px;
+  gap: clamp(32px, 4vw, 48px);
   align-items: center;
 }
 
 @media (min-width: 990px) {
-  .gemluxjewel-custom-expert__grid {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 48px;
+  .gemluxjewel-custom-made-to-order__inner {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.35fr);
+    gap: clamp(40px, 5vw, 72px);
   }
 }
 
-.gemluxjewel-custom-expert__media {
-  overflow: hidden;
-  background: #f0f0f0;
+.gemluxjewel-custom-made-to-order__content {
+  max-width: 480px;
 }
 
-.gemluxjewel-custom-expert__media img {
+.gemluxjewel-custom-made-to-order__title {
+  margin: 0 0 20px;
+  font-family: var(--gemluxjewel-font-body);
+  font-size: clamp(28px, 3.2vw, 38px);
+  line-height: 1.2;
+  font-weight: 700;
+  color: #002147;
+}
+
+.gemluxjewel-custom-made-to-order__text {
+  margin: 0 0 32px;
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(0, 33, 71, 0.78);
+}
+
+.gemluxjewel-custom-made-to-order__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 32px;
+  border: 1px solid #002147;
+  border-radius: 0;
+  background: #002147;
+  color: #fff;
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.gemluxjewel-custom-made-to-order__btn:hover {
+  opacity: 0.9;
+  color: #fff;
+}
+
+.gemluxjewel-custom-made-to-order__gallery {
+  position: relative;
+  min-width: 0;
+}
+
+.gemluxjewel-custom-made-to-order__viewport {
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.gemluxjewel-custom-made-to-order__track {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.gemluxjewel-custom-made-to-order__pair {
+  flex: 0 0 min(100%, 520px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-width: 0;
+}
+
+@media (min-width: 750px) {
+  .gemluxjewel-custom-made-to-order__pair {
+    flex-basis: min(85%, 560px);
+  }
+}
+
+.gemluxjewel-custom-made-to-order__shot {
+  position: relative;
+  min-width: 0;
+}
+
+.gemluxjewel-custom-made-to-order__img {
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: #ececec;
+}
+
+.gemluxjewel-custom-made-to-order__img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
+.gemluxjewel-custom-made-to-order__tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 1;
+  padding: 7px 12px;
+  background: #dceaf5;
+  color: #052044;
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.gemluxjewel-custom-made-to-order__nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.gemluxjewel-custom-made-to-order__nav-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(5, 32, 68, 0.15);
+  background: #fff;
+  color: #052044;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.gemluxjewel-custom-made-to-order__nav-btn:hover:not(:disabled) {
+  border-color: #052044;
+  background: rgba(5, 32, 68, 0.04);
+}
+
+.gemluxjewel-custom-made-to-order__nav-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* ── Expert CTA ── */
+.gemluxjewel-custom-expert {
+  background: #f9f8f6;
+  padding: 0;
+}
+
+.gemluxjewel-custom-expert__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+  min-height: 0;
+}
+
+@media (min-width: 990px) {
+  .gemluxjewel-custom-expert__inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+.gemluxjewel-custom-expert__media {
+  position: relative;
+  min-height: 280px;
+  overflow: hidden;
+  background: #f9f8f6;
+}
+
+@media (min-width: 990px) {
+  .gemluxjewel-custom-expert__media {
+    min-height: 420px;
+  }
+}
+
+.gemluxjewel-custom-expert__media img {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.gemluxjewel-custom-expert__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: clamp(40px, 5vw, 64px) clamp(24px, 5vw, 72px);
+  max-width: 640px;
+}
+
+@media (min-width: 990px) {
+  .gemluxjewel-custom-expert__content {
+    padding-left: clamp(48px, 6vw, 88px);
+    padding-right: clamp(32px, 4vw, 64px);
+  }
+}
+
 .gemluxjewel-custom-expert__title {
-  font-family: 'Libre Baskerville', Georgia, serif;
+  margin: 0 0 20px;
+  font-family: var(--gemluxjewel-font-body);
   font-size: clamp(28px, 3vw, 36px);
-  line-height: 1.25;
-  font-weight: 400;
-  color: #1e392a;
-  margin: 0 0 16px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #002147;
   text-transform: none;
 }
 
 .gemluxjewel-custom-expert__text {
-  font-size: 16px;
+  margin: 0 0 32px;
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 15px;
   line-height: 1.65;
-  color: rgba(30, 57, 42, 0.75);
-  margin: 0 0 24px;
+  color: rgba(0, 33, 71, 0.82);
 }
 
-.gemluxjewel-custom-expert__inner {
-  text-align: center;
-  max-width: 560px;
-  margin: 0 auto;
-}
-
-.gemluxjewel-custom-expert__icon {
-  width: 64px;
-  height: 64px;
-  margin: 0 auto 20px;
-  border-radius: 50%;
-  background: rgba(115, 151, 106, 0.12);
-  display: flex;
+.gemluxjewel-custom-expert__btn {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  padding: 16px 32px;
+  border: 1px solid #002147;
+  border-radius: 0;
+  background: #002147;
+  color: #fff;
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: opacity 0.2s, background-color 0.2s;
 }
 
-.gemluxjewel-custom-expert__icon img {
-  width: 28px;
-  height: 28px;
-}
-
-.gemluxjewel-custom-expert__title {
-  font-family: var(--gemluxjewel-font-heading);
-  font-size: 28px;
-  line-height: 34px;
-  font-weight: 500;
-  color: var(--gemluxjewel-dark);
-  margin: 0 0 12px;
-  text-transform: capitalize;
-}
-
-.gemluxjewel-custom-expert__text {
-  font-size: 16px;
-  line-height: 26px;
-  color: var(--gemluxjewel-gray);
-  margin: 0 0 24px;
+.gemluxjewel-custom-expert__btn:hover {
+  opacity: 0.9;
+  color: #fff;
 }
 
 /* ── Promo banner ── */
@@ -961,6 +1460,10 @@
 .gemluxjewel-custom-promo--full .gemluxjewel-custom-promo__banner {
   border-radius: 0;
   min-height: clamp(280px, 36vw, 460px);
+}
+
+.gemluxjewel-custom-promo--image-only .gemluxjewel-custom-promo__banner {
+  display: block;
 }
 
 .gemluxjewel-custom-promo__banner {
@@ -1104,10 +1607,12 @@
 .gemluxjewel-custom-why {
   background: #fff;
   padding: 0 0 80px;
+  text-align: center;
 }
 
 .gemluxjewel-custom-why__title {
-  margin: 0 0 20px;
+  margin: 0 auto 20px;
+  max-width: 900px;
   font-family: 'Libre Baskerville', Georgia, serif;
   font-size: clamp(26px, 3vw, 34px);
   line-height: 1.25;
@@ -1118,6 +1623,7 @@
 
 .gemluxjewel-custom-why__content {
   max-width: 900px;
+  margin: 0 auto;
   font-size: 15px;
   line-height: 1.75;
   color: rgba(30, 57, 42, 0.78);

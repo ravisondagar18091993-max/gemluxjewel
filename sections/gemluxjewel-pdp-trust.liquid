@@ -1,28 +1,38 @@
 {% render 'gemluxjewel-fonts' %}
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 {{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
 {{ 'section-gemluxjewel-product.css' | asset_url | stylesheet_tag }}
 
 <section class="gemluxjewel gemluxjewel-pdp-trust">
   <div class="gemluxjewel-container">
+    {%- if section.settings.prefix != blank -%}
+      <p class="gemluxjewel-pdp-trust__prefix">{{ section.settings.prefix | escape }}</p>
+    {%- endif -%}
+    {%- if section.settings.title != blank -%}
+      <h2 class="gemluxjewel-pdp-trust__title">{{ section.settings.title | escape }}</h2>
+    {%- endif -%}
+
     <ul class="gemluxjewel-pdp-trust__list">
       {%- for i in (1..6) -%}
         {%- liquid
           assign label_key = 'label_' | append: i
           assign icon_key = 'icon_' | append: i
+          assign image_key = 'icon_image_' | append: i
           assign item_label = section.settings[label_key]
           assign item_icon = section.settings[icon_key]
+          assign item_icon_image = section.settings[image_key]
         -%}
         {%- if item_label != blank -%}
           <li class="gemluxjewel-pdp-trust__item">
             <span class="gemluxjewel-pdp-trust__icon">
-              {%- if item_icon != blank -%}
+              {%- if item_icon_image != blank -%}
                 {{
-                  item_icon
-                  | image_url: width: 80
-                  | image_tag: widths: '40, 80', sizes: '18px', loading: 'lazy', alt: '', class: 'gemluxjewel-pdp-trust__icon-img'
+                  item_icon_image
+                  | image_url: width: 96
+                  | image_tag: widths: '48, 96', sizes: '48px', loading: 'lazy', alt: '', class: 'gemluxjewel-pdp-trust__icon-img'
                 }}
               {%- else -%}
-                <img src="{{ 'diamond.svg' | asset_url }}" alt="" class="gemluxjewel-pdp-trust__icon-img" width="18" height="18">
+                {% render 'gemluxjewel-pdp-trust-icon', icon: item_icon %}
               {%- endif -%}
             </span>
             <span class="gemluxjewel-pdp-trust__label">{{ item_label | escape }}</span>
@@ -30,6 +40,17 @@
         {%- endif -%}
       {%- endfor -%}
     </ul>
+
+    {%- if section.settings.show_button and section.settings.button_label != blank -%}
+      <div class="gemluxjewel-pdp-trust__cta">
+        <a
+          href="{{ section.settings.button_link | default: routes.root_url }}"
+          class="gemluxjewel-pdp-trust__btn"
+        >
+          {{ section.settings.button_label | escape }}
+        </a>
+      </div>
+    {%- endif -%}
   </div>
 </section>
 
@@ -39,18 +60,135 @@
   "tag": "section",
   "class": "gemluxjewel-section",
   "settings": [
-    { "type": "text", "id": "label_1", "label": "Item 1", "default": "Free Shipping" },
-    { "type": "image_picker", "id": "icon_1", "label": "Icon 1" },
-    { "type": "text", "id": "label_2", "label": "Item 2", "default": "Secure Payment" },
-    { "type": "image_picker", "id": "icon_2", "label": "Icon 2" },
-    { "type": "text", "id": "label_3", "label": "Item 3", "default": "Warranty" },
-    { "type": "image_picker", "id": "icon_3", "label": "Icon 3" },
-    { "type": "text", "id": "label_4", "label": "Item 4", "default": "30-Day Returns" },
-    { "type": "image_picker", "id": "icon_4", "label": "Icon 4" },
-    { "type": "text", "id": "label_5", "label": "Item 5", "default": "Eco Friendly" },
-    { "type": "image_picker", "id": "icon_5", "label": "Icon 5" },
-    { "type": "text", "id": "label_6", "label": "Item 6", "default": "Handmade Jewelry" },
-    { "type": "image_picker", "id": "icon_6", "label": "Icon 6" }
+    {
+      "type": "text",
+      "id": "prefix",
+      "label": "Script heading",
+      "default": "Gemlux Promise"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Main heading",
+      "default": "How We're Distinct From Others!"
+    },
+    { "type": "text", "id": "label_1", "label": "Item 1", "default": "Free Shipping Worldwide" },
+    {
+      "type": "select",
+      "id": "icon_1",
+      "label": "Icon 1",
+      "default": "shipping",
+      "options": [
+        { "value": "shipping", "label": "Shipping" },
+        { "value": "support", "label": "Customer service" },
+        { "value": "money_back", "label": "Money back guarantee" },
+        { "value": "trust", "label": "Brand trust" },
+        { "value": "market_price", "label": "Market price" },
+        { "value": "eco", "label": "Eco friendly" }
+      ]
+    },
+    { "type": "image_picker", "id": "icon_image_1", "label": "Custom icon 1 (optional)" },
+    { "type": "text", "id": "label_2", "label": "Item 2", "default": "24/7 Customer Service" },
+    {
+      "type": "select",
+      "id": "icon_2",
+      "label": "Icon 2",
+      "default": "support",
+      "options": [
+        { "value": "shipping", "label": "Shipping" },
+        { "value": "support", "label": "Customer service" },
+        { "value": "money_back", "label": "Money back guarantee" },
+        { "value": "trust", "label": "Brand trust" },
+        { "value": "market_price", "label": "Market price" },
+        { "value": "eco", "label": "Eco friendly" }
+      ]
+    },
+    { "type": "image_picker", "id": "icon_image_2", "label": "Custom icon 2 (optional)" },
+    { "type": "text", "id": "label_3", "label": "Item 3", "default": "100% Money Back Guarantee" },
+    {
+      "type": "select",
+      "id": "icon_3",
+      "label": "Icon 3",
+      "default": "money_back",
+      "options": [
+        { "value": "shipping", "label": "Shipping" },
+        { "value": "support", "label": "Customer service" },
+        { "value": "money_back", "label": "Money back guarantee" },
+        { "value": "trust", "label": "Brand trust" },
+        { "value": "market_price", "label": "Market price" },
+        { "value": "eco", "label": "Eco friendly" }
+      ]
+    },
+    { "type": "image_picker", "id": "icon_image_3", "label": "Custom icon 3 (optional)" },
+    { "type": "text", "id": "label_4", "label": "Item 4", "default": "Gemlux's Trust" },
+    {
+      "type": "select",
+      "id": "icon_4",
+      "label": "Icon 4",
+      "default": "trust",
+      "options": [
+        { "value": "shipping", "label": "Shipping" },
+        { "value": "support", "label": "Customer service" },
+        { "value": "money_back", "label": "Money back guarantee" },
+        { "value": "trust", "label": "Brand trust" },
+        { "value": "market_price", "label": "Market price" },
+        { "value": "eco", "label": "Eco friendly" }
+      ]
+    },
+    { "type": "image_picker", "id": "icon_image_4", "label": "Custom icon 4 (optional)" },
+    { "type": "text", "id": "label_5", "label": "Item 5", "default": "Unbeatable Market Price" },
+    {
+      "type": "select",
+      "id": "icon_5",
+      "label": "Icon 5",
+      "default": "market_price",
+      "options": [
+        { "value": "shipping", "label": "Shipping" },
+        { "value": "support", "label": "Customer service" },
+        { "value": "money_back", "label": "Money back guarantee" },
+        { "value": "trust", "label": "Brand trust" },
+        { "value": "market_price", "label": "Market price" },
+        { "value": "eco", "label": "Eco friendly" }
+      ]
+    },
+    { "type": "image_picker", "id": "icon_image_5", "label": "Custom icon 5 (optional)" },
+    { "type": "text", "id": "label_6", "label": "Item 6", "default": "Eco Friendly Element" },
+    {
+      "type": "select",
+      "id": "icon_6",
+      "label": "Icon 6",
+      "default": "eco",
+      "options": [
+        { "value": "shipping", "label": "Shipping" },
+        { "value": "support", "label": "Customer service" },
+        { "value": "money_back", "label": "Money back guarantee" },
+        { "value": "trust", "label": "Brand trust" },
+        { "value": "market_price", "label": "Market price" },
+        { "value": "eco", "label": "Eco friendly" }
+      ]
+    },
+    { "type": "image_picker", "id": "icon_image_6", "label": "Custom icon 6 (optional)" },
+    {
+      "type": "header",
+      "content": "Call to action"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button",
+      "label": "Show button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Get a Quote"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    }
   ],
   "presets": [{ "name": "gemluxjewel PDP Trust" }]
 }

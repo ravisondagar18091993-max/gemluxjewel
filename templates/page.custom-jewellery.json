@@ -17,7 +17,7 @@
         "breadcrumb_parent": "Rings",
         "breadcrumb_current": "Engagement Ring",
         "title": "Custom Lab Grown Diamond Engagement Rings",
-        "text": "Design your unique jewelry with Gemlux. Tailor every detail to your taste for a truly personal touch. Create the one-of-a-kind piece you've always dreamed of."
+        "text": ""
       }
     },
     "custom_form": {
@@ -26,18 +26,22 @@
         "u_size": {
           "type": "utility_card",
           "settings": {
+            "card_style": "ring_size",
             "title": "Find Your Ring Size",
             "text": "Unsure of Your Ring Size? No Problem! Click on 'Find Now' and let us assist you in choosing the right ring size for you.",
+            "secondary_button_label": "Print",
             "button_label": "Find Now"
           }
         },
         "u_gem": {
           "type": "utility_card",
           "settings": {
+            "card_style": "gemologist",
             "title": "Talk with Gemologist",
             "text": "Do you have inquiries about diamonds and moissanite? Arrange a virtual meeting with a skilled gemologist to get your questions answered.",
-            "button_label": "Book Now",
-            "button_link": "shopify://pages/contact"
+            "button_label": "Book an Appointment",
+            "button_link": "shopify://pages/contact",
+            "phone_label": "Call Us"
           }
         }
       },
@@ -55,20 +59,31 @@
     "custom_trust": {
       "type": "gemluxjewel-pdp-trust",
       "settings": {
+        "prefix": "Gemlux Promise",
+        "title": "How We're Distinct From Others!",
         "label_1": "Free Shipping Worldwide",
+        "icon_1": "shipping",
         "label_2": "24/7 Customer Service",
+        "icon_2": "support",
         "label_3": "100% Money Back Guarantee",
-        "label_4": "Unbeatable Market Price",
-        "label_5": "Eco Friendly Element",
-        "label_6": "Responsibly Sourced"
+        "icon_3": "money_back",
+        "label_4": "Gemlux's Trust",
+        "icon_4": "trust",
+        "label_5": "Unbeatable Market Price",
+        "icon_5": "market_price",
+        "label_6": "Eco Friendly Element",
+        "icon_6": "eco",
+        "show_button": true,
+        "button_label": "Get a Quote",
+        "button_link": "shopify://pages/custom-jewellery"
       }
     },
     "custom_promo": {
       "type": "gemluxjewel-custom-promo",
       "settings": {
-        "title": "Crafted by Hand, Designed for You",
-        "text": "Every custom ring begins with your vision and is brought to life by our master artisans.",
-        "button_label": "Explore Our Process",
+        "title": "",
+        "text": "",
+        "button_label": "",
         "button_link": "shopify://pages/contact"
       }
     },
@@ -120,9 +135,26 @@
       "type": "gemluxjewel-custom-expert",
       "settings": {
         "title": "Need Expert Advice?",
-        "text": "Looking for Professional Guidance? If you require assistance with custom orders or designing your perfect piece, don't hesitate to schedule a consultation with our experts.",
-        "button_label": "Book a Consultation",
+        "text": "Looking for Professional Guidance?\nIf you require assistance with custom orders or designing your perfect piece, don't hesitate to schedule a consultation with our experts.",
+        "button_label": "Book an Appointment",
         "button_link": "shopify://pages/contact"
+      }
+    },
+    "custom_made_to_order": {
+      "type": "gemluxjewel-custom-made-to-order",
+      "blocks": {
+        "pair_1": { "type": "pair", "settings": {} },
+        "pair_2": { "type": "pair", "settings": {} },
+        "pair_3": { "type": "pair", "settings": {} }
+      },
+      "block_order": ["pair_1", "pair_2", "pair_3"],
+      "settings": {
+        "title": "Your Perfect Ring, Made to Order.",
+        "text": "From stone to setting, we craft every ring by hand, just the way you want it. Choose your design, personalize every detail, and see it come to life with updates at every step.",
+        "button_label": "Submit Your Design",
+        "button_link": "",
+        "reference_label": "Reference",
+        "reality_label": "Reality"
       }
     },
     "custom_why": {
@@ -140,6 +172,7 @@
     "custom_promo",
     "custom_faq",
     "custom_expert",
+    "custom_made_to_order",
     "custom_why"
   ]
 }

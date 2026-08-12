@@ -4,7 +4,7 @@
 {{ 'section-gemluxjewel-custom-jewellery.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'gemluxjewel-custom-jewellery.js' | asset_url }}" defer="defer"></script>
 
-<section class="gemluxjewel gemluxjewel-custom-form">
+<section id="gemluxjewel-custom-form" class="gemluxjewel gemluxjewel-custom-form">
   <div class="gemluxjewel-container">
     {%- liquid
       assign hulk_form_id = section.settings.hulk_form_id | strip
@@ -129,35 +129,105 @@
       </div>
       {%- endif -%}
     </div>
+  </div>
 
-    {%- assign utility_blocks = section.blocks | where: 'type', 'utility_card' -%}
-    {%- if utility_blocks.size > 0 -%}
-      <div class="gemluxjewel-custom-form__utilities">
+  {%- assign utility_blocks = section.blocks | where: 'type', 'utility_card' -%}
+  {%- if utility_blocks.size > 0 -%}
+    <div class="gemluxjewel-custom-form__utilities">
         {%- for block in utility_blocks -%}
-          <div class="gemluxjewel-custom-form__utility" {{ block.shopify_attributes }}>
-            {%- if block.settings.image != blank -%}
-              <div class="gemluxjewel-custom-form__utility-media">
-                {{ block.settings.image | image_url: width: 800 | image_tag: widths: '400, 800', sizes: '(min-width: 750px) 320px, 100vw', loading: 'lazy', alt: block.settings.title }}
+          {%- liquid
+            assign card_style = block.settings.card_style | default: 'ring_size'
+            if card_style == blank
+              if forloop.index == 2
+                assign card_style = 'gemologist'
+              else
+                assign card_style = 'ring_size'
+              endif
+            endif
+          -%}
+          <div
+            class="gemluxjewel-custom-form__utility gemluxjewel-custom-form__utility--{{ card_style }}"
+            {{ block.shopify_attributes }}
+          >
+            <div class="gemluxjewel-custom-form__utility-inner gemluxjewel-container">
+              {%- if card_style == 'gemologist' -%}
+                <div class="gemluxjewel-custom-form__utility-media">
+                  {%- if block.settings.image != blank -%}
+                    {{ block.settings.image | image_url: width: 900 | image_tag: widths: '450, 700, 900', sizes: '(min-width: 990px) 540px, 50vw', loading: 'lazy', alt: block.settings.title }}
+                  {%- else -%}
+                    <div class="gemluxjewel-custom-form__utility-media-placeholder" aria-hidden="true"></div>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+
+              <div class="gemluxjewel-custom-form__utility-content">
+                {%- if block.settings.title != blank -%}
+                  <h3 class="gemluxjewel-custom-form__utility-title">{{ block.settings.title | escape }}</h3>
+                {%- endif -%}
+                {%- if block.settings.text != blank -%}
+                  <p class="gemluxjewel-custom-form__utility-text">{{ block.settings.text | escape }}</p>
+                {%- endif -%}
+
+                <div class="gemluxjewel-custom-form__utility-actions">
+                  {%- if card_style == 'ring_size' -%}
+                    {%- if block.settings.secondary_button_label != blank -%}
+                      <a
+                        href="{{ block.settings.secondary_button_link | default: '#' }}"
+                        class="gemluxjewel-custom-form__utility-btn gemluxjewel-custom-form__utility-btn--solid"
+                      >
+                        {{ block.settings.secondary_button_label | escape }}
+                      </a>
+                    {%- endif -%}
+                    {%- if block.settings.button_label != blank -%}
+                      <a
+                        href="{{ block.settings.button_link | default: '#' }}"
+                        class="gemluxjewel-custom-form__utility-btn gemluxjewel-custom-form__utility-btn--outline"
+                      >
+                        {{ block.settings.button_label | escape }}
+                      </a>
+                    {%- endif -%}
+                  {%- else -%}
+                    {%- if block.settings.button_label != blank -%}
+                      <a
+                        href="{{ block.settings.button_link | default: routes.root_url }}"
+                        class="gemluxjewel-custom-form__utility-btn gemluxjewel-custom-form__utility-btn--solid"
+                      >
+                        {{ block.settings.button_label | escape }}
+                      </a>
+                    {%- endif -%}
+                    {%- if block.settings.phone_label != blank -%}
+                      <a
+                        class="gemluxjewel-custom-form__utility-call"
+                        {% if block.settings.phone_number != blank %}
+                          href="tel:{{ block.settings.phone_number | strip | replace: ' ', '' | replace: '(', '' | replace: ')', '' | replace: '-', '' }}"
+                        {% else %}
+                          href="{{ block.settings.button_link | default: routes.root_url }}"
+                        {% endif %}
+                      >
+                        <svg class="gemluxjewel-custom-form__utility-call-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                          <path d="M6.6 10.8c1.4 2.8 3.4 4.8 6.2 6.2l2.1-2.1c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.3 0 .7-.2 1L6.6 10.8z" fill="currentColor"/>
+                        </svg>
+                        {{ block.settings.phone_label | escape }}
+                      </a>
+                    {%- endif -%}
+                  {%- endif -%}
+                </div>
               </div>
-            {%- endif -%}
-            <div class="gemluxjewel-custom-form__utility-body">
-              {%- if block.settings.title != blank -%}
-                <h3 class="gemluxjewel-custom-form__utility-title">{{ block.settings.title | escape }}</h3>
-              {%- endif -%}
-              {%- if block.settings.text != blank -%}
-                <p class="gemluxjewel-custom-form__utility-text">{{ block.settings.text | escape }}</p>
-              {%- endif -%}
-              {%- if block.settings.button_label != blank -%}
-                <a href="{{ block.settings.button_link | default: routes.root_url }}" class="gemluxjewel-custom-form__utility-btn">
-                  {{ block.settings.button_label | escape }}
-                </a>
+
+              {%- if card_style == 'ring_size' -%}
+                <div class="gemluxjewel-custom-form__utility-media">
+                  {%- if block.settings.image != blank -%}
+                    {{ block.settings.image | image_url: width: 900 | image_tag: widths: '450, 700, 900', sizes: '(min-width: 990px) 540px, 50vw', loading: 'lazy', alt: block.settings.title }}
+                  {%- else -%}
+                    <div class="gemluxjewel-custom-form__utility-media-placeholder" aria-hidden="true"></div>
+                  {%- endif -%}
+                </div>
               {%- endif -%}
             </div>
           </div>
         {%- endfor -%}
-      </div>
-    {%- endif -%}
-  </div>
+    </div>
+  {%- endif -%}
 </section>
 
 {% schema %}
@@ -339,11 +409,25 @@
       "name": "Utility card",
       "limit": 2,
       "settings": [
+        {
+          "type": "select",
+          "id": "card_style",
+          "label": "Banner style",
+          "options": [
+            { "value": "ring_size", "label": "Find Your Ring Size" },
+            { "value": "gemologist", "label": "Talk with Gemologist" }
+          ],
+          "default": "ring_size"
+        },
         { "type": "image_picker", "id": "image", "label": "Image" },
         { "type": "text", "id": "title", "label": "Heading", "default": "Find Your Ring Size" },
         { "type": "textarea", "id": "text", "label": "Text" },
-        { "type": "text", "id": "button_label", "label": "Link label", "default": "Ring Size Guide" },
-        { "type": "url", "id": "button_link", "label": "Link" }
+        { "type": "text", "id": "button_label", "label": "Primary button label", "default": "Find Now" },
+        { "type": "url", "id": "button_link", "label": "Primary button link" },
+        { "type": "text", "id": "secondary_button_label", "label": "Secondary button label (ring size only)", "default": "Print" },
+        { "type": "url", "id": "secondary_button_link", "label": "Secondary button link (ring size only)" },
+        { "type": "text", "id": "phone_label", "label": "Phone link label (gemologist only)", "default": "Call Us" },
+        { "type": "text", "id": "phone_number", "label": "Phone number (gemologist only)" }
       ]
     }
   ],
@@ -416,17 +500,21 @@
         {
           "type": "utility_card",
           "settings": {
+            "card_style": "ring_size",
             "title": "Find Your Ring Size",
-            "text": "Use our ring size guide to find your perfect fit before you order.",
-            "button_label": "Ring Size Guide"
+            "text": "Unsure of Your Ring Size? No Problem! Click on 'Find Now' and let us assist you in choosing the right ring size for you.",
+            "secondary_button_label": "Print",
+            "button_label": "Find Now"
           }
         },
         {
           "type": "utility_card",
           "settings": {
-            "title": "Talk with a Gemologist",
-            "text": "Book a virtual consultation with our experts for personalized guidance.",
-            "button_label": "Book Consultation"
+            "card_style": "gemologist",
+            "title": "Talk with Gemologist",
+            "text": "Do you have inquiries about diamonds and moissanite? Arrange a virtual meeting with a skilled gemologist to get your questions answered.",
+            "button_label": "Book an Appointment",
+            "phone_label": "Call Us"
           }
         }
       ]

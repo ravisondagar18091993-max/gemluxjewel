@@ -1,7 +1,14 @@
 {{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
 {{ 'section-gemluxjewel-custom-jewellery.css' | asset_url | stylesheet_tag }}
 
-<section class="gemluxjewel gemluxjewel-custom-promo gemluxjewel-custom-promo--full">
+{%- liquid
+  assign has_promo_content = false
+  if section.settings.title != blank or section.settings.text != blank or section.settings.button_label != blank
+    assign has_promo_content = true
+  endif
+-%}
+
+<section class="gemluxjewel gemluxjewel-custom-promo gemluxjewel-custom-promo--full{% unless has_promo_content %} gemluxjewel-custom-promo--image-only{% endunless %}">
   <div class="gemluxjewel-custom-promo__banner">
       <div class="gemluxjewel-custom-promo__bg" aria-hidden="true">
         {%- if section.settings.image != blank -%}
@@ -24,9 +31,12 @@
             alt: section.settings.title
           %}
         {%- endif -%}
-        <div class="gemluxjewel-custom-promo__overlay"></div>
+        {%- if has_promo_content -%}
+          <div class="gemluxjewel-custom-promo__overlay"></div>
+        {%- endif -%}
       </div>
 
+      {%- if has_promo_content -%}
       <div class="gemluxjewel-custom-promo__content">
         {%- if section.settings.title != blank -%}
           <h2 class="gemluxjewel-custom-promo__title">{{ section.settings.title | escape }}</h2>
@@ -40,6 +50,7 @@
         </a>
       {%- endif -%}
     </div>
+      {%- endif -%}
   </div>
 </section>
 

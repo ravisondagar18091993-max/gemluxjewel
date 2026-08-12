@@ -1,0 +1,52 @@
+{% comment %}
+  PDP trust bar icons (Diamondrensu-style line art).
+  Accepts: icon {String} shipping | support | money_back | trust | market_price | eco
+{% endcomment %}
+{%- case icon -%}
+  {%- when 'shipping' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <circle cx="24" cy="22" r="13" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M11 22h26M24 9v26M15 13c2-3 6-5 9-5s7 2 9 5M15 31c2 3 6 5 9 5s7-2 9-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M30 30h6l3 4v5h-4M30 30v-6h-8v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="21" cy="39" r="2" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="35" cy="39" r="2" stroke="currentColor" stroke-width="1.5"/>
+    </svg>
+  {%- when 'support' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <circle cx="24" cy="16" r="6" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M12 36c0-6.6 5.4-12 12-12s12 5.4 12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M10 24a14 14 0 0 1 28 0v6a3 3 0 0 1-3 3h-2v-6h5M10 24v6a3 3 0 0 0 3 3h2v-6H10Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>
+  {%- when 'money_back' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <path d="M24 10a14 14 0 1 0 0 28 14 14 0 0 0 0-28Z" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M18 18c2-2 4-3 6-3s4 1 6 3M30 30c-2 2-4 3-6 3s-4-1-6-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M22 24h4M24 22v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M21 24c0-1.7 1.3-3 3-3s3 1.3 3 3-1.3 3-3 3" stroke="currentColor" stroke-width="1.5"/>
+    </svg>
+  {%- when 'trust' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <circle cx="24" cy="24" r="14" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M24 10v4M24 34v4M10 24h4M34 24h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M15.8 15.8l2.8 2.8M29.4 29.4l2.8 2.8M32.2 15.8l-2.8 2.8M18.6 29.4l-2.8 2.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M18 24l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  {%- when 'market_price' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <path d="M14 34c0-8 4-14 10-18 6 4 10 10 10 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M18 34h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="24" cy="14" r="5" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M22 14h4M24 12v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  {%- when 'eco' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <path d="M12 30c4-8 8-12 12-16 4 4 8 8 12 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M10 34h28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M24 18v12M20 22c1 2 2.5 3 4 4M28 22c-1 2-2.5 3-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  {%- else -%}
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <circle cx="24" cy="24" r="14" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M18 24l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+{%- endcase -%}

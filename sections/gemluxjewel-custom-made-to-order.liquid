@@ -1,0 +1,190 @@
+{{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-custom-jewellery.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'gemluxjewel-custom-jewellery.js' | asset_url }}" defer="defer"></script>
+
+{%- assign pair_image_sizes = '(min-width: 990px) 22vw, 42vw' -%}
+
+<section class="gemluxjewel gemluxjewel-custom-made-to-order">
+  <div class="gemluxjewel-custom-made-to-order__inner gemluxjewel-container">
+    <div class="gemluxjewel-custom-made-to-order__content">
+      {%- if section.settings.title != blank -%}
+        <h2 class="gemluxjewel-custom-made-to-order__title">{{ section.settings.title | escape }}</h2>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <p class="gemluxjewel-custom-made-to-order__text">{{ section.settings.text | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.button_label != blank -%}
+        {%- liquid
+          assign button_url = section.settings.button_link
+          if button_url == blank
+            assign button_url = '#gemluxjewel-custom-form'
+          endif
+        -%}
+        <a
+          href="{{ button_url }}"
+          class="gemluxjewel-custom-made-to-order__btn"
+        >
+          {{ section.settings.button_label | escape }}
+        </a>
+      {%- endif -%}
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="gemluxjewel-custom-made-to-order__gallery" data-gemluxjewel-made-to-order>
+        <div class="gemluxjewel-custom-made-to-order__viewport">
+          <div class="gemluxjewel-custom-made-to-order__track" data-gemluxjewel-made-to-order-track>
+            {%- for block in section.blocks -%}
+              {%- liquid
+                assign reference_alt = 'Reference design'
+                assign reality_alt = 'Finished ring'
+                if block.settings.reference_image.alt != blank
+                  assign reference_alt = block.settings.reference_image.alt
+                endif
+                if block.settings.reality_image.alt != blank
+                  assign reality_alt = block.settings.reality_image.alt
+                endif
+              -%}
+              <div class="gemluxjewel-custom-made-to-order__pair" {{ block.shopify_attributes }}>
+                <div class="gemluxjewel-custom-made-to-order__shot">
+                  <span class="gemluxjewel-custom-made-to-order__tag">{{ section.settings.reference_label | default: 'Reference' | escape }}</span>
+                  <div class="gemluxjewel-custom-made-to-order__img">
+                    {%- if block.settings.reference_image != blank -%}
+                      {{
+                        block.settings.reference_image
+                        | image_url: width: 800
+                        | image_tag:
+                          widths: '300, 400, 600, 800',
+                          sizes: pair_image_sizes,
+                          loading: 'lazy',
+                          alt: reference_alt
+                      }}
+                    {%- else -%}
+                      {% render 'gemluxjewel-theme-image',
+                        use_store_media: true,
+                        seed: forloop.index,
+                        width: 600,
+                        widths: '300,400,600,800',
+                        sizes: pair_image_sizes,
+                        alt: 'Reference design'
+                      %}
+                    {%- endif -%}
+                  </div>
+                </div>
+                <div class="gemluxjewel-custom-made-to-order__shot">
+                  <span class="gemluxjewel-custom-made-to-order__tag">{{ section.settings.reality_label | default: 'Reality' | escape }}</span>
+                  <div class="gemluxjewel-custom-made-to-order__img">
+                    {%- if block.settings.reality_image != blank -%}
+                      {{
+                        block.settings.reality_image
+                        | image_url: width: 800
+                        | image_tag:
+                          widths: '300, 400, 600, 800',
+                          sizes: pair_image_sizes,
+                          loading: 'lazy',
+                          alt: reality_alt
+                      }}
+                    {%- else -%}
+                      {% render 'gemluxjewel-theme-image',
+                        use_store_media: true,
+                        seed: forloop.index | plus: 10,
+                        width: 600,
+                        widths: '300,400,600,800',
+                        sizes: pair_image_sizes,
+                        alt: 'Finished ring'
+                      %}
+                    {%- endif -%}
+                  </div>
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+
+        <div class="gemluxjewel-custom-made-to-order__nav">
+          <button
+            type="button"
+            class="gemluxjewel-custom-made-to-order__nav-btn"
+            data-gemluxjewel-made-to-order-prev
+            aria-label="Previous"
+            disabled
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="gemluxjewel-custom-made-to-order__nav-btn"
+            data-gemluxjewel-made-to-order-next
+            aria-label="Next"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "GL Made to Order",
+  "tag": "section",
+  "class": "section gemluxjewel-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Your Perfect Ring, Made to Order."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description",
+      "default": "From stone to setting, we craft every ring by hand, just the way you want it. Choose your design, personalize every detail, and see it come to life with updates at every step."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Submit Your Design"
+    },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    {
+      "type": "text",
+      "id": "reference_label",
+      "label": "Reference tag label",
+      "default": "Reference"
+    },
+    {
+      "type": "text",
+      "id": "reality_label",
+      "label": "Reality tag label",
+      "default": "Reality"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pair",
+      "name": "Reference / Reality pair",
+      "settings": [
+        { "type": "image_picker", "id": "reference_image", "label": "Reference image" },
+        { "type": "image_picker", "id": "reality_image", "label": "Reality image" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "GL Made to Order",
+      "blocks": [
+        { "type": "pair" },
+        { "type": "pair" },
+        { "type": "pair" }
+      ]
+    }
+  ]
+}
+{% endschema %}

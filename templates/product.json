@@ -167,12 +167,23 @@
     "gemluxjewel_pdp_trust": {
       "type": "gemluxjewel-pdp-trust",
       "settings": {
-        "label_1": "Free Shipping",
-        "label_2": "Secure Payment",
-        "label_3": "Warranty",
-        "label_4": "30-Day Returns",
-        "label_5": "Eco Friendly",
-        "label_6": "Handmade Jewelry"
+        "prefix": "Gemlux Promise",
+        "title": "How We're Distinct From Others!",
+        "label_1": "Free Shipping Worldwide",
+        "icon_1": "shipping",
+        "label_2": "24/7 Customer Service",
+        "icon_2": "support",
+        "label_3": "100% Money Back Guarantee",
+        "icon_3": "money_back",
+        "label_4": "Gemlux's Trust",
+        "icon_4": "trust",
+        "label_5": "Unbeatable Market Price",
+        "icon_5": "market_price",
+        "label_6": "Eco Friendly Element",
+        "icon_6": "eco",
+        "show_button": true,
+        "button_label": "Get a Quote",
+        "button_link": "shopify://pages/contact"
       }
     },
     "gemluxjewel_product_related": {
