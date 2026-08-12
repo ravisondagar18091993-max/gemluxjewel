@@ -2,8 +2,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 {{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
 {{ 'section-gemluxjewel-product.css' | asset_url | stylesheet_tag }}
+{%- if section.settings.accent_style == 'brand' -%}
+  {{ 'section-gemluxjewel-custom-jewellery.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
 
-<section class="gemluxjewel gemluxjewel-pdp-trust">
+<section class="gemluxjewel gemluxjewel-pdp-trust{% if section.settings.accent_style == 'brand' %} gemluxjewel-pdp-trust--brand{% endif %}">
   <div class="gemluxjewel-container">
     {%- if section.settings.prefix != blank -%}
       <p class="gemluxjewel-pdp-trust__prefix">{{ section.settings.prefix | escape }}</p>
@@ -71,6 +74,16 @@
       "id": "title",
       "label": "Main heading",
       "default": "How We're Distinct From Others!"
+    },
+    {
+      "type": "select",
+      "id": "accent_style",
+      "label": "Accent color",
+      "default": "navy",
+      "options": [
+        { "value": "navy", "label": "Navy" },
+        { "value": "brand", "label": "Brand green" }
+      ]
     },
     { "type": "text", "id": "label_1", "label": "Item 1", "default": "Free Shipping Worldwide" },
     {

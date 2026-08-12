@@ -70,6 +70,7 @@
       "settings": {
         "prefix": "Gemlux Promise",
         "title": "How We're Distinct From Others!",
+        "accent_style": "brand",
         "label_1": "Free Shipping Worldwide",
         "icon_1": "shipping",
         "label_2": "24/7 Customer Service",

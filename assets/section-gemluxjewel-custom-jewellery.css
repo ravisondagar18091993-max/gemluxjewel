@@ -793,7 +793,7 @@
 .gemluxjewel-custom-form__utility-media-placeholder {
   width: 100%;
   min-height: 260px;
-  background: linear-gradient(135deg, rgba(5, 32, 68, 0.06), rgba(5, 32, 68, 0.02));
+  background: linear-gradient(135deg, rgba(115, 151, 106, 0.06), rgba(115, 151, 106, 0.02));
 }
 
 .gemluxjewel-custom-form__utility-title {
@@ -802,7 +802,7 @@
   font-size: clamp(28px, 3vw, 36px);
   line-height: 1.25;
   font-weight: 700;
-  color: #052044;
+  color: #73976a;
 }
 
 .gemluxjewel-custom-form__utility-text {
@@ -810,7 +810,7 @@
   font-family: var(--gemluxjewel-font-body);
   font-size: 15px;
   line-height: 1.65;
-  color: #052044;
+  color: #73976a;
 }
 
 .gemluxjewel-custom-form__utility-actions {
@@ -826,7 +826,7 @@
   justify-content: center;
   min-width: 140px;
   padding: 14px 28px;
-  border: 1px solid #052044;
+  border: 1px solid #73976a;
   border-radius: 0;
   font-family: var(--gemluxjewel-font-body);
   font-size: 12px;
@@ -839,9 +839,9 @@
 }
 
 .gemluxjewel-custom-form__utility-btn--solid {
-  background: #052044;
+  background: #73976a;
   color: #fff;
-  border-color: #052044;
+  border-color: #73976a;
 }
 
 .gemluxjewel-custom-form__utility-btn--solid:hover {
@@ -851,12 +851,12 @@
 
 .gemluxjewel-custom-form__utility-btn--outline {
   background: #fff;
-  color: #052044;
-  border-color: #052044;
+  color: #73976a;
+  border-color: #73976a;
 }
 
 .gemluxjewel-custom-form__utility-btn--outline:hover {
-  background: #052044;
+  background: #73976a;
   color: #fff;
 }
 
@@ -870,14 +870,14 @@
   letter-spacing: 0.08em;
   font-weight: 600;
   text-transform: uppercase;
-  color: #052044;
+  color: #73976a;
   text-decoration: none;
   transition: opacity 0.2s;
 }
 
 .gemluxjewel-custom-form__utility-call:hover {
   opacity: 0.75;
-  color: #052044;
+  color: #73976a;
 }
 
 .gemluxjewel-custom-form__utility-call-icon {
@@ -1222,7 +1222,7 @@
   font-size: clamp(28px, 3.2vw, 38px);
   line-height: 1.2;
   font-weight: 700;
-  color: #002147;
+  color: #73976a;
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
@@ -1232,7 +1232,7 @@
   font-family: var(--gemluxjewel-font-body);
   font-size: 15px;
   line-height: 1.65;
-  color: rgba(0, 33, 71, 0.78);
+  color: rgba(115, 151, 106, 0.78);
 }
 
 .gemluxjewel-custom-made-to-order__btn {
@@ -1240,9 +1240,9 @@
   align-items: center;
   justify-content: center;
   padding: 16px 32px;
-  border: 1px solid #002147;
+  border: 1px solid #73976a;
   border-radius: 0;
-  background: #002147;
+  background: #73976a;
   color: #fff;
   font-family: var(--gemluxjewel-font-body);
   font-size: 12px;
@@ -1313,8 +1313,8 @@
   left: 12px;
   z-index: 1;
   padding: 7px 12px;
-  background: #dceaf5;
-  color: #052044;
+  background: rgba(115, 151, 106, 0.18);
+  color: #73976a;
   font-family: var(--gemluxjewel-font-body);
   font-size: 11px;
   line-height: 1;
@@ -1333,9 +1333,9 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: 1px solid rgba(5, 32, 68, 0.15);
+  border: 1px solid rgba(115, 151, 106, 0.15);
   background: #fff;
-  color: #052044;
+  color: #73976a;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1345,8 +1345,8 @@
 }
 
 .gemluxjewel-custom-made-to-order__nav-btn:hover:not(:disabled) {
-  border-color: #052044;
-  background: rgba(5, 32, 68, 0.04);
+  border-color: #73976a;
+  background: rgba(115, 151, 106, 0.04);
 }
 
 .gemluxjewel-custom-made-to-order__nav-btn:disabled {
@@ -1426,7 +1426,7 @@
   font-size: clamp(22px, 2.4vw, 28px);
   line-height: 1.25;
   font-weight: 700;
-  color: #002147;
+  color: #73976a;
   text-transform: none;
 }
 
@@ -1440,7 +1440,7 @@
   font-family: var(--gemluxjewel-font-body);
   font-size: 15px;
   line-height: 1.65;
-  color: rgba(0, 33, 71, 0.82);
+  color: rgba(115, 151, 106, 0.82);
 }
 
 .gemluxjewel-custom-expert__btn {
@@ -1448,9 +1448,9 @@
   align-items: center;
   justify-content: center;
   padding: 14px 28px;
-  border: 1px solid #002147;
+  border: 1px solid #73976a;
   border-radius: 0;
-  background: #002147;
+  background: #73976a;
   color: #fff;
   font-family: var(--gemluxjewel-font-body);
   font-size: 12px;
@@ -1560,7 +1560,7 @@
   font-size: clamp(24px, 2.8vw, 32px);
   line-height: 1.25;
   font-weight: 700;
-  color: #002147;
+  color: #73976a;
   text-align: center;
   text-transform: none;
 }
@@ -1637,7 +1637,7 @@
   font-size: clamp(24px, 2.8vw, 32px);
   line-height: 1.25;
   font-weight: 700;
-  color: #002147;
+  color: #73976a;
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
@@ -1647,7 +1647,7 @@
   margin: 0 auto;
   font-size: 15px;
   line-height: 1.75;
-  color: rgba(0, 33, 71, 0.78);
+  color: rgba(115, 151, 106, 0.78);
 }
 
 .gemluxjewel-custom-why__content p {
@@ -1698,4 +1698,20 @@
 
 .gemluxjewel-custom-faq__item.is-hidden {
   display: none;
+}
+
+/* Custom page — brand green trust section */
+.gemluxjewel-pdp-trust--brand {
+  color: #73976a;
+}
+
+.gemluxjewel-pdp-trust--brand .gemluxjewel-pdp-trust__prefix,
+.gemluxjewel-pdp-trust--brand .gemluxjewel-pdp-trust__title,
+.gemluxjewel-pdp-trust--brand .gemluxjewel-pdp-trust__icon,
+.gemluxjewel-pdp-trust--brand .gemluxjewel-pdp-trust__label {
+  color: #73976a;
+}
+
+.gemluxjewel-pdp-trust--brand .gemluxjewel-pdp-trust__btn {
+  background: #73976a;
 }
