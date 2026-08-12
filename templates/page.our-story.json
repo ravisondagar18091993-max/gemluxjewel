@@ -100,95 +100,9 @@
         "title": "Need a hand?",
         "text": "Visit us in person or virtually. We're here to help you find the perfect ring, no matter where you are.",
         "button_label": "Get In Touch",
-        "button_link": "shopify://pages/contact"
+        "button_link": "shopify://pages/contact",
+        "image": "shopify://shop_images/ChatGPT_Image_Aug_10_2026_12_25_11_PM.png"
       }
-    },
-    "our_story_reviews": {
-      "type": "gemluxjewel-our-story-reviews",
-      "blocks": {
-        "r1": {
-          "type": "review",
-          "settings": {
-            "platform": "google",
-            "rating": 5,
-            "text": "Absolutely stunning ring and exceptional service from start to finish. The team made the entire process feel personal and stress-free."
-          }
-        },
-        "r2": {
-          "type": "review",
-          "settings": {
-            "platform": "trustpilot",
-            "rating": 5,
-            "text": "The quality exceeded our expectations. Beautiful craftsmanship and they were so helpful choosing the perfect design."
-          }
-        },
-        "r3": {
-          "type": "review",
-          "settings": {
-            "platform": "google",
-            "rating": 5,
-            "text": "We felt genuinely cared for throughout. Transparent pricing, expert guidance, and a ring we will treasure forever."
-          }
-        },
-        "r4": {
-          "type": "review",
-          "settings": {
-            "platform": "trustpilot",
-            "rating": 5,
-            "text": "From virtual consultation to delivery, everything was seamless. Highly recommend GemLux Jewel for engagement rings."
-          }
-        }
-      },
-      "block_order": [
-        "r1",
-        "r2",
-        "r3",
-        "r4"
-      ],
-      "settings": {
-        "title": "What Our Clients Say",
-        "subtitle": "Here's what our clients have to say about their GemLux Jewel experience."
-      }
-    },
-    "our_story_trust": {
-      "type": "gemluxjewel-our-story-trust",
-      "blocks": {
-        "t1": {
-          "type": "item",
-          "settings": {
-            "label": "Ethical & Sustainable",
-            "icon": "eco"
-          }
-        },
-        "t2": {
-          "type": "item",
-          "settings": {
-            "label": "Lifetime Warranty",
-            "icon": "trust"
-          }
-        },
-        "t3": {
-          "type": "item",
-          "settings": {
-            "label": "Free Resizing",
-            "icon": "support"
-          }
-        },
-        "t4": {
-          "type": "item",
-          "settings": {
-            "label": "Free Shipping",
-            "icon": "shipping"
-          }
-        }
-      },
-      "block_order": [
-        "t1",
-        "t2",
-        "t3",
-        "t4"
-      ],
-      "settings": {}
     }
   },
   "order": [
@@ -196,8 +110,6 @@
     "our_story_founder",
     "our_story_blocks",
     "our_story_quote",
-    "our_story_cta",
-    "our_story_reviews",
-    "our_story_trust"
+    "our_story_cta"
   ]
 }
