@@ -1193,8 +1193,8 @@
 
 /* ── Made to Order (Reference / Reality) ── */
 .gemluxjewel-custom-made-to-order {
-  background: #f7f7f7;
-  padding: clamp(56px, 7vw, 88px) 0;
+  background: #fff;
+  padding: clamp(56px, 7vw, 80px) 0;
   overflow: hidden;
 }
 
@@ -1218,11 +1218,13 @@
 
 .gemluxjewel-custom-made-to-order__title {
   margin: 0 0 20px;
-  font-family: var(--gemluxjewel-font-body);
+  font-family: 'Libre Baskerville', Georgia, serif;
   font-size: clamp(28px, 3.2vw, 38px);
   line-height: 1.2;
   font-weight: 700;
   color: #002147;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
 .gemluxjewel-custom-made-to-order__text {
@@ -1354,73 +1356,87 @@
 
 /* ── Expert CTA ── */
 .gemluxjewel-custom-expert {
-  background: #f9f8f6;
-  padding: 0;
+  background: #fff;
+  padding: clamp(48px, 6vw, 72px) 0;
 }
 
-.gemluxjewel-custom-expert__inner {
+.gemluxjewel-custom-expert__grid {
   display: grid;
   grid-template-columns: 1fr;
-  align-items: stretch;
-  min-height: 0;
+  gap: 24px;
 }
 
 @media (min-width: 990px) {
-  .gemluxjewel-custom-expert__inner {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  .gemluxjewel-custom-expert__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
   }
 }
 
-.gemluxjewel-custom-expert__media {
-  position: relative;
-  min-height: 280px;
-  overflow: hidden;
+.gemluxjewel-custom-expert__card {
+  min-height: 100%;
   background: #f9f8f6;
 }
 
-@media (min-width: 990px) {
-  .gemluxjewel-custom-expert__media {
-    min-height: 420px;
+.gemluxjewel-custom-expert__card--split {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 750px) {
+  .gemluxjewel-custom-expert__card--split {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
   }
 }
 
-.gemluxjewel-custom-expert__media img {
+.gemluxjewel-custom-expert__card--solid {
+  background: #ececec;
+}
+
+.gemluxjewel-custom-expert__card-media {
+  min-height: 220px;
+  overflow: hidden;
+}
+
+@media (min-width: 750px) {
+  .gemluxjewel-custom-expert__card-media {
+    min-height: 100%;
+  }
+}
+
+.gemluxjewel-custom-expert__card-media img {
   width: 100%;
   height: 100%;
-  min-height: inherit;
+  min-height: 220px;
   object-fit: cover;
-  object-position: center;
   display: block;
 }
 
-.gemluxjewel-custom-expert__content {
+.gemluxjewel-custom-expert__card-body {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: clamp(40px, 5vw, 64px) clamp(24px, 5vw, 72px);
-  max-width: 640px;
+  padding: clamp(28px, 4vw, 40px);
 }
 
-@media (min-width: 990px) {
-  .gemluxjewel-custom-expert__content {
-    padding-left: clamp(48px, 6vw, 88px);
-    padding-right: clamp(32px, 4vw, 64px);
-  }
-}
-
-.gemluxjewel-custom-expert__title {
-  margin: 0 0 20px;
-  font-family: var(--gemluxjewel-font-body);
-  font-size: clamp(28px, 3vw, 36px);
-  line-height: 1.2;
+.gemluxjewel-custom-expert__card-title {
+  margin: 0 0 16px;
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: clamp(22px, 2.4vw, 28px);
+  line-height: 1.25;
   font-weight: 700;
   color: #002147;
   text-transform: none;
 }
 
-.gemluxjewel-custom-expert__text {
-  margin: 0 0 32px;
+.gemluxjewel-custom-expert__card-title--caps {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.gemluxjewel-custom-expert__card-text {
+  margin: 0 0 28px;
   font-family: var(--gemluxjewel-font-body);
   font-size: 15px;
   line-height: 1.65;
@@ -1431,7 +1447,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 16px 32px;
+  padding: 14px 28px;
   border: 1px solid #002147;
   border-radius: 0;
   background: #002147;
@@ -1443,7 +1459,7 @@
   font-weight: 700;
   text-transform: uppercase;
   text-decoration: none;
-  transition: opacity 0.2s, background-color 0.2s;
+  transition: opacity 0.2s;
 }
 
 .gemluxjewel-custom-expert__btn:hover {
@@ -1453,8 +1469,12 @@
 
 /* ── Promo banner ── */
 .gemluxjewel-custom-promo {
-  padding: 0 0 64px;
+  padding: 0;
   background: #fff;
+}
+
+.gemluxjewel-custom-promo--image-only {
+  padding: 0;
 }
 
 .gemluxjewel-custom-promo--full .gemluxjewel-custom-promo__banner {
@@ -1531,17 +1551,17 @@
 /* ── FAQ ── */
 .gemluxjewel-custom-faq {
   background: #fff;
-  padding: 64px 0 80px;
+  padding: clamp(48px, 6vw, 64px) 0;
 }
 
 .gemluxjewel-custom-faq__title {
   margin: 0 0 32px;
   font-family: 'Libre Baskerville', Georgia, serif;
-  font-size: clamp(26px, 3vw, 34px);
+  font-size: clamp(24px, 2.8vw, 32px);
   line-height: 1.25;
-  font-weight: 400;
+  font-weight: 700;
+  color: #002147;
   text-align: center;
-  color: #1e392a;
   text-transform: none;
 }
 
@@ -1606,19 +1626,20 @@
 /* ── Why section ── */
 .gemluxjewel-custom-why {
   background: #fff;
-  padding: 0 0 80px;
+  padding: clamp(48px, 6vw, 72px) 0 clamp(64px, 8vw, 96px);
   text-align: center;
 }
 
 .gemluxjewel-custom-why__title {
-  margin: 0 auto 20px;
+  margin: 0 auto 24px;
   max-width: 900px;
   font-family: 'Libre Baskerville', Georgia, serif;
-  font-size: clamp(26px, 3vw, 34px);
+  font-size: clamp(24px, 2.8vw, 32px);
   line-height: 1.25;
-  font-weight: 400;
-  color: #1e392a;
-  text-transform: none;
+  font-weight: 700;
+  color: #002147;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
 .gemluxjewel-custom-why__content {
@@ -1626,7 +1647,7 @@
   margin: 0 auto;
   font-size: 15px;
   line-height: 1.75;
-  color: rgba(30, 57, 42, 0.78);
+  color: rgba(0, 33, 71, 0.78);
 }
 
 .gemluxjewel-custom-why__content p {

@@ -154,10 +154,14 @@
     "custom_expert": {
       "type": "gemluxjewel-custom-expert",
       "settings": {
-        "title": "Need Expert Advice?",
-        "text": "Looking for Professional Guidance?\nIf you require assistance with custom orders or designing your perfect piece, don't hesitate to schedule a consultation with our experts.",
-        "button_label": "Book an Appointment",
-        "button_link": "shopify://pages/contact"
+        "left_title": "Need Expert Advice?",
+        "left_text": "Looking for Professional Guidance?\nIf you require assistance with custom orders or designing your perfect piece, don't hesitate to schedule a consultation with our experts.",
+        "left_button_label": "Book an Appointment",
+        "left_button_link": "shopify://pages/contact",
+        "right_title": "Need Expert Advice?",
+        "right_text": "No idea where to start? Let us help you find the perfect ring to celebrate your story. Book a consultation with a gemologist today for free expert advice.",
+        "right_button_label": "Contact Design Experts",
+        "right_button_link": "shopify://pages/contact"
       }
     },
     "custom_made_to_order": {
@@ -183,52 +187,10 @@
         "title": "Why To Buy Custom Engagement Ring?",
         "content": "<p>The custom engagement ring has more sentiment and attachment than premade rings, which are specially made only for you — so it's one of a kind. Gemlux allows you to get your dream engagement ring with 100% customization and design your own ring your way. Submit the details in the form above, including reference or inspiration images, and we can create the same design for you.</p><p>We custom make engagement rings in any shape, size, and color of lab grown diamonds, moissanite, or other gemstones. If you have questions or would like an expert opinion, schedule a virtual appointment with us.</p>"
       }
-    },
-    "178651200345c9235a": {
-      "type": "apps",
-      "blocks": {
-        "hulk_form_builder_form_block_DVDbgm": {
-          "type": "shopify://apps/hulk-form-builder/blocks/form-block/b6b8dd14-356b-4725-a4ed-77232212b3c3",
-          "settings": {
-            "form_uuid": "978R1bxhx17O5o1yMDqYsA",
-            "form_settings": false,
-            "font_color": "#000000",
-            "size": 14,
-            "input_background_color": "#FFF",
-            "input_background_color_focus": "#F4DADA",
-            "input_border_radius": 1,
-            "input_border_color": "#ebe9e9",
-            "input_border_color_focus": "#2D2727",
-            "input_font_color": "#3D3131",
-            "input_size": 14,
-            "border_color": "#121212",
-            "border_radius": 2,
-            "border": 1,
-            "fill_color": "#EBE9E9",
-            "padding": 35,
-            "form_width": 600,
-            "btn_text": "Submit",
-            "sub_btn_txt_color": "#F3F3F3",
-            "sub_btn_bg_color": "#3F3333",
-            "sub_btn_font_size": 14,
-            "sub_btn_bdr_color": "#FFFFFF",
-            "sub_btn_bdr_rad": 3,
-            "sub_btn_bdr_width": 1,
-            "fonts": "Times New Roman"
-          }
-        }
-      },
-      "block_order": [
-        "hulk_form_builder_form_block_DVDbgm"
-      ],
-      "settings": {
-        "include_margins": true
-      }
     }
   },
   "order": [
     "custom_hero",
-    "178651200345c9235a",
     "custom_form",
     "custom_trust",
     "custom_promo",
