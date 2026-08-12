@@ -37,6 +37,7 @@
           "settings": {
             "parent_nav": "Contact Us",
             "title": "Book an Appointment",
+            "image": "shopify://shop_images/ChatGPT_Image_Aug_10_2026_12_25_11_PM.png",
             "link": "shopify://pages/contact"
           }
         },
