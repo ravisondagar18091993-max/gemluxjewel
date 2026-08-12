@@ -1,16 +1,27 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "our_story_hero": {
       "type": "gemluxjewel-our-story-hero",
       "settings": {
-        "title": "Our Story"
+        "title": "Our Story",
+        "image": "shopify://shop_images/ChatGPT_Image_Aug_10_2026_12_25_11_PM.png"
       }
     },
     "our_story_founder": {
       "type": "gemluxjewel-our-story-founder",
       "settings": {
         "quote": "In 2018, as I searched for the perfect engagement ring, I could not have imagined where that journey would lead.",
-        "founder_name": "GemLux Jewel — Founder"
+        "founder_name": "GemLux Jewel — Founder",
+        "image": "shopify://shop_images/8_752953a8-869f-476a-b8ec-7c9cc5ddcbf1.jpg"
       }
     },
     "our_story_blocks": {
@@ -22,6 +33,7 @@
             "eyebrow": "Our Origin",
             "heading": "A modern approach to an ancient craft.",
             "text": "<p>GemLux Jewel began with a simple search for an engagement ring — and the realisation that the industry could be gentler, clearer, and far more considered.</p><p>What started as one custom ring became the catalyst for a different kind of jewellery experience: one shaped by conscience, craftsmanship and care.</p><p>We have crafted a name for ourselves by creating lab-grown diamond, moissanite and gemstone pieces designed for a lifetime — chosen by clients who expect beauty and integrity in equal measure.</p>",
+            "image": "shopify://shop_images/WhatsAppImage2026-08-11at12.18.35PM.jpg",
             "image_position": "right"
           }
         },
@@ -31,6 +43,7 @@
             "eyebrow": "Where We Are Today",
             "heading": "Trusted by couples around the world.",
             "text": "<p>GemLux Jewel has grown into a premium jewellery brand trusted by thousands of couples worldwide. We create distinctive engagement rings, wedding bands and fine jewellery — crafted for longevity, with beauty and conscience at the heart of every decision.</p><p>With showrooms and personalised virtual appointments available anywhere, we serve a global community — helping people mark the stories and moments that matter most with pieces designed to last.</p>",
+            "image": "shopify://shop_images/WhatsAppImage2026-08-11at12.18.35PM_1.jpg",
             "image_position": "left"
           }
         },
@@ -40,6 +53,7 @@
             "eyebrow": "Our Promise",
             "heading": "Unreasonable care in every detail.",
             "text": "<p>Our promise shows up in the smallest details. It's in the way a showroom is considered and laid out. It's in how a ring is engineered to wear beautifully for decades. And it's in how we remember a client's story and respond with genuine attention.</p><p>This commitment shapes everything we do — design, service, production, aftercare — and it's what makes the GemLux Jewel experience distinct, consistent and deeply human.</p>",
+            "image": "shopify://shop_images/WhatsAppImage2026-08-11at12.18.36PM.jpg",
             "image_position": "right"
           }
         },
@@ -49,6 +63,7 @@
             "eyebrow": "Our Mission",
             "heading": "Beautiful jewellery made with conscience. Lasting experiences wrapped in care.",
             "text": "<p>From ethically sourced materials to considered design and personalised guidance, every detail reflects a belief that how something is made — and how it's experienced — matters just as much as how it looks.</p>",
+            "image": "shopify://shop_images/wave-feather-contour-wedding-band-detail.png",
             "image_position": "left"
           }
         },
@@ -58,11 +73,19 @@
             "eyebrow": "Our Purpose",
             "heading": "To craft amazing moments in people's lives.",
             "text": "<p>Each piece marks a moment to remember. GemLux Jewel exists to honour life's milestones with heirlooms in the making, designed to be worn often, loved deeply, and carried forward through time.</p>",
+            "image": "shopify://shop_images/marquise-cut-lab-grown-diamond-leaf-vine-engagement-ring-3ct-front.jpg",
             "image_position": "right"
           }
         }
       },
-      "block_order": ["row_1", "row_2", "row_3", "row_4", "row_5"]
+      "block_order": [
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4",
+        "row_5"
+      ],
+      "settings": {}
     },
     "our_story_quote": {
       "type": "gemluxjewel-our-story-quote",
@@ -77,60 +100,88 @@
         "title": "Need a hand?",
         "text": "Visit us in person or virtually. We're here to help you find the perfect ring, no matter where you are.",
         "button_label": "Get In Touch",
-        "button_link": "shopify://pages/contact"
+        "button_link": "shopify://pages/contact",
+        "image": "shopify://shop_images/ChatGPT_Image_Aug_10_2026_12_25_11_PM.png"
       }
     },
-    "our_story_reviews": {
-      "type": "gemluxjewel-our-story-reviews",
+    "gemluxjewel_testimonials_keTPpW": {
+      "type": "gemluxjewel-testimonials",
       "blocks": {
-        "r1": {
+        "review_Fz6KmF": {
           "type": "review",
           "settings": {
             "platform": "google",
             "rating": 5,
-            "text": "Absolutely stunning ring and exceptional service from start to finish. The team made the entire process feel personal and stress-free."
+            "author": "Abigail Green",
+            "time_ago": "an hour ago",
+            "text": "Absolutely stunning ring! The craftsmanship is incredible and it sparkles beautifully. Customer service was helpful throughout.",
+            "review_url": ""
           }
         },
-        "r2": {
+        "review_UE94kt": {
           "type": "review",
           "settings": {
             "platform": "trustpilot",
             "rating": 5,
-            "text": "The quality exceeded our expectations. Beautiful craftsmanship and they were so helpful choosing the perfect design."
+            "author": "James Mitchell",
+            "time_ago": "2 hours ago",
+            "text": "Ordered a lab-grown diamond engagement ring and couldn't be happier. Fast shipping, elegant packaging, and the ring looks even better in person.",
+            "review_url": ""
           }
         },
-        "r3": {
+        "review_NdpVUG": {
           "type": "review",
           "settings": {
             "platform": "google",
             "rating": 5,
-            "text": "We felt genuinely cared for throughout. Transparent pricing, expert guidance, and a ring we will treasure forever."
+            "author": "Sarah Chen",
+            "time_ago": "3 hours ago",
+            "text": "Great experience from start to finish. The team helped me choose the perfect setting and the quality is outstanding for the price.",
+            "review_url": ""
           }
         },
-        "r4": {
+        "review_KyzA6T": {
           "type": "review",
           "settings": {
             "platform": "trustpilot",
             "rating": 5,
-            "text": "From virtual consultation to delivery, everything was seamless. Highly recommend GemLux Jewel for engagement rings."
+            "author": "Michael Roberts",
+            "time_ago": "5 hours ago",
+            "text": "My wife loves her new necklace. The diamonds are brilliant and the design is timeless. Will definitely shop here again.",
+            "review_url": ""
+          }
+        },
+        "review_Bhkbnw": {
+          "type": "review",
+          "settings": {
+            "platform": "trustpilot",
+            "rating": 5,
+            "author": "Emma Wilson",
+            "time_ago": "a day ago",
+            "text": "Beautiful jewellery and transparent pricing. Resizing was quick and the ring fits perfectly now.",
+            "review_url": ""
           }
         }
       },
-      "block_order": ["r1", "r2", "r3", "r4"],
+      "block_order": [
+        "review_Fz6KmF",
+        "review_UE94kt",
+        "review_NdpVUG",
+        "review_KyzA6T",
+        "review_Bhkbnw"
+      ],
+      "name": "gemluxjewel Testimonials",
       "settings": {
         "title": "What Our Clients Say",
-        "subtitle": "Here's what our clients have to say about their GemLux Jewel experience."
+        "subtitle": "Here's what our clients have to say about their Gemlux experience.",
+        "show_summary": true,
+        "average_rating": "5.0",
+        "review_count": "250+ reviews",
+        "write_review_label": "Write a Review",
+        "read_reviews_label": "Read Our Reviews",
+        "trustpilot_reviews_url": "",
+        "trustpilot_write_url": ""
       }
-    },
-    "our_story_trust": {
-      "type": "gemluxjewel-our-story-trust",
-      "blocks": {
-        "t1": { "type": "item", "settings": { "label": "Ethical & Sustainable", "icon": "eco" } },
-        "t2": { "type": "item", "settings": { "label": "Lifetime Warranty", "icon": "trust" } },
-        "t3": { "type": "item", "settings": { "label": "Free Resizing", "icon": "support" } },
-        "t4": { "type": "item", "settings": { "label": "Free Shipping", "icon": "shipping" } }
-      },
-      "block_order": ["t1", "t2", "t3", "t4"]
     }
   },
   "order": [
@@ -139,7 +190,6 @@
     "our_story_blocks",
     "our_story_quote",
     "our_story_cta",
-    "our_story_reviews",
-    "our_story_trust"
+    "gemluxjewel_testimonials_keTPpW"
   ]
 }
