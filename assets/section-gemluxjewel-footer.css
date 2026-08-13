@@ -341,9 +341,61 @@
 
 @media (min-width: 990px) {
   .gemluxjewel-footer__columns {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1.25fr) repeat(4, minmax(0, 1fr));
     gap: 24px 20px;
   }
+}
+
+.gemluxjewel-footer__column--brand {
+  min-width: 0;
+}
+
+@media (max-width: 767px) {
+  .gemluxjewel-footer__column--brand {
+    grid-column: 1 / -1;
+  }
+
+  .gemluxjewel-footer__brand-description {
+    max-width: 420px;
+  }
+}
+
+.gemluxjewel-footer__brand {
+  margin-bottom: 24px;
+}
+
+.gemluxjewel-footer__brand-logo {
+  display: inline-block;
+  margin-bottom: 14px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.gemluxjewel-footer__brand-logo img {
+  display: block;
+  width: auto;
+  max-width: 160px;
+  height: auto;
+}
+
+.gemluxjewel-footer__brand-logo-text {
+  display: block;
+  font-family: var(--gemluxjewel-font-heading, 'Figtree', sans-serif);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.22em;
+  padding-left: 0.22em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.gemluxjewel-footer__brand-description {
+  margin: 0;
+  max-width: 280px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: rgba(255, 248, 244, 0.72);
 }
 
 .gemluxjewel-footer__column-title {

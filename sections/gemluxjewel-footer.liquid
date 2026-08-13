@@ -104,7 +104,32 @@
             assign column_menu = section.settings[menu_key]
           -%}
           {%- if column_title != blank or column_menu != blank or i == 2 or i == 1 or i == 4 -%}
-            <div class="gemluxjewel-footer__column">
+            <div class="gemluxjewel-footer__column{% if i == 1 %} gemluxjewel-footer__column--brand{% endif %}">
+              {%- if i == 1 -%}
+                <div class="gemluxjewel-footer__brand">
+                  <a href="{{ routes.root_url }}" class="gemluxjewel-footer__brand-logo">
+                    {%- if section.settings.brand_logo != blank -%}
+                      {{
+                        section.settings.brand_logo
+                        | image_url: width: 280
+                        | image_tag:
+                          widths: '140, 280',
+                          sizes: '160px',
+                          loading: 'lazy',
+                          alt: section.settings.brand_logo_text | default: shop.name
+                      }}
+                    {%- else -%}
+                      <span class="gemluxjewel-footer__brand-logo-text">
+                        {{ section.settings.brand_logo_text | default: shop.name | escape }}
+                      </span>
+                    {%- endif -%}
+                  </a>
+                  {%- if section.settings.brand_description != blank -%}
+                    <p class="gemluxjewel-footer__brand-description">{{ section.settings.brand_description | escape }}</p>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+
               {%- if column_title != blank -%}
                 <p class="gemluxjewel-footer__column-title">{{ column_title | escape }}</p>
               {%- endif -%}
@@ -282,6 +307,28 @@
       "id": "directions_label",
       "label": "Directions label",
       "default": "Get Directions"
+    },
+    {
+      "type": "header",
+      "content": "Brand column"
+    },
+    {
+      "type": "image_picker",
+      "id": "brand_logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "text",
+      "id": "brand_logo_text",
+      "label": "Logo text",
+      "default": "GEMLUXJEWEL",
+      "info": "Shown when no logo image is uploaded"
+    },
+    {
+      "type": "textarea",
+      "id": "brand_description",
+      "label": "Brand description",
+      "default": "Timeless lab-grown diamond and moissanite jewellery, crafted with exceptional quality and personalized service."
     },
     {
       "type": "header",
