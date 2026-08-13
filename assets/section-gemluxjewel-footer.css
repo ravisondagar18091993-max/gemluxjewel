@@ -230,7 +230,7 @@
   font-size: 16px;
   line-height: 1;
   letter-spacing: 0.04em;
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: #ffffff;
   white-space: nowrap;
 }
@@ -300,10 +300,11 @@
   color: rgba(255, 248, 244, 0.9);
 }
 
-.gemluxjewel-footer__promo-heading {
+.gemluxjewel .gemluxjewel-footer .gemluxjewel-footer__promo-heading {
   margin: 0 0 8px;
   font-size: 15px;
   line-height: 1.5;
+  text-transform: capitalize;
   color: rgba(255, 248, 244, 0.88);
 }
 
