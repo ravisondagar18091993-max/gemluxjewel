@@ -24,20 +24,19 @@
   padding: 0;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 28px 16px;
-  justify-items: center;
-  align-items: start;
+  gap: 24px 20px;
+  align-items: center;
 }
 
 .gemluxjewel-footer__trust-item {
   margin: 0;
   width: 100%;
-  max-width: 168px;
+  max-width: none;
 }
 
 .gemluxjewel-footer__trust-link {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   gap: 12px;
   text-decoration: none;
@@ -49,21 +48,21 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   flex-shrink: 0;
   color: var(--gemluxjewel-dark, #141414);
 }
 
 .gemluxjewel-footer__trust-icon svg {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   display: block;
 }
 
 .gemluxjewel-footer__trust-icon img {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   object-fit: contain;
   display: block;
 }
@@ -71,15 +70,17 @@
 .gemluxjewel-footer__trust-label {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: center;
   gap: 2px;
-  width: 100%;
+  flex: 1;
+  min-width: 0;
   font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
   font-size: 10px;
-  line-height: 1.4;
-  letter-spacing: 0.12em;
+  line-height: 1.35;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  text-align: center;
+  text-align: left;
   color: var(--gemluxjewel-dark, #141414);
 }
 
@@ -89,16 +90,12 @@
   }
 
   .gemluxjewel-footer__trust-grid {
-    gap: 32px 24px;
-  }
-
-  .gemluxjewel-footer__trust-item {
-    max-width: 180px;
+    gap: 28px 32px;
   }
 
   .gemluxjewel-footer__trust-label {
     font-size: 11px;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.1em;
   }
 }
 
@@ -109,26 +106,22 @@
 
   .gemluxjewel-footer__trust-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 24px 20px;
-  }
-
-  .gemluxjewel-footer__trust-item {
-    max-width: none;
+    gap: 20px 24px;
   }
 
   .gemluxjewel-footer__trust-link {
-    gap: 16px;
+    gap: 14px;
   }
 
   .gemluxjewel-footer__trust-icon {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
   }
 
   .gemluxjewel-footer__trust-icon svg,
   .gemluxjewel-footer__trust-icon img {
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
   }
 }
 
@@ -141,8 +134,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: flex-start;
-    gap: 40px 48px;
+    align-items: center;
+    gap: 32px 48px;
   }
 
   .gemluxjewel-footer__trust-item {
@@ -151,7 +144,7 @@
   }
 
   .gemluxjewel-footer__trust-link {
-    gap: 18px;
+    gap: 16px;
   }
 }
 
