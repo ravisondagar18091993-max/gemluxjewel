@@ -1,6 +1,6 @@
 /* ── Initiatives (split accordion + image) ── */
 .gemluxjewel-initiatives {
-  background: #73976a;
+  background: #808000;
 }
 
 .gemluxjewel-initiatives__grid {
@@ -20,7 +20,7 @@
   position: relative;
   min-height: 320px;
   overflow: hidden;
-  background: #73976a;
+  background: #808000;
 }
 
 @media (min-width: 990px) {

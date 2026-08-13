@@ -1,7 +1,7 @@
 /* gemluxjewel Engagement Ring landing page */
 
 .gemluxjewel-engagement {
-  --gemluxjewel-primary: #73976a;
+  --gemluxjewel-primary: #808000;
   --gemluxjewel-orange: #e37859;
   --gemluxjewel-dark: #141414;
   --gemluxjewel-gray: #818181;
@@ -61,7 +61,7 @@
 
 /* ── Hero ── */
 .gemluxjewel-engagement-hero {
-  background:#73976a14;
+  background:#80800014;
   padding: calc(var(--gemluxjewel-header-offset, 108px) + 48px) 0 var(--gemluxjewel-engagement-space-section-top);
   text-align: center;
 }

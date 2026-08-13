@@ -56,7 +56,7 @@
 
 /* ── Founder quote (green split) ── */
 .gemluxjewel-our-story-founder {
-  background:#73976a;
+  background:#808000;
   color: #fff;
 }
 
@@ -312,8 +312,8 @@
   justify-content: center;
   min-height: 48px;
   padding: 0 32px;
-  background: var(--gemluxjewel-primary, #73976a);
-  border: 1px solid var(--gemluxjewel-primary, #73976a);
+  background: var(--gemluxjewel-primary, #808000);
+  border: 1px solid var(--gemluxjewel-primary, #808000);
   font-family: var(--gemluxjewel-font-body);
   font-size: 12px;
   line-height: 1;

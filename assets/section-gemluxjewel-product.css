@@ -4,7 +4,7 @@
 .gemluxjewel-pdp-faq,
 .gemluxjewel-pdp-related,
 .gemluxjewel-pdp-shared {
-  --gemluxjewel-primary:  #73976a;
+  --gemluxjewel-primary:  #808000;
   --gemluxjewel-secondary: #ffffff;
   --gemluxjewel-dark: #141414;
   --gemluxjewel-gray: #818181;
@@ -1225,7 +1225,7 @@
   justify-content: center;
   min-width: 220px;
   padding: 16px 36px;
-  background: #73976a;
+  background: #808000;
   color: #fff;
   border: 0;
   border-radius: 0;

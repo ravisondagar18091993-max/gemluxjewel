@@ -9,7 +9,7 @@
 }
 
 .gemluxjewel-footer__trust {
-  background: #73976a14;
+  background: #80800014;
   padding: 32px 0 36px;
 }
 
@@ -163,7 +163,7 @@
 
 .gemluxjewel-footer__body {
   position: relative;
-  background: var(--gemluxjewel-primary, #73976a);
+  background: var(--gemluxjewel-primary, #808000);
   padding: 0 0 32px;
 }
 

@@ -1,7 +1,7 @@
 /* gemluxjewel homepage — matches HTML/index.html + main.css */
 
 .gemluxjewel {
-  --gemluxjewel-primary: #73976a;
+  --gemluxjewel-primary: #808000;
   --gemluxjewel-secondary: #ffffff;
   --gemluxjewel-layer: rgba(67, 63, 63, 0.3);
   --gemluxjewel-orange: #e37859;
@@ -1570,7 +1570,7 @@
 
 /* ── Testimonials (Trustpilot-style slider) ── */
 .gemluxjewel-testimonials {
-  background: #73976a;
+  background: #808000;
   padding: 80px 0 100px;
 }
 
@@ -1698,7 +1698,7 @@
   justify-content: center;
   min-height: 44px;
   padding: 0 16px;
-  background: #73976a;
+  background: #808000;
   color: #fff;
   font-family: var(--gemluxjewel-font-body);
   font-size: 12px;
