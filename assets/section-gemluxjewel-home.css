@@ -891,7 +891,7 @@
   color: inherit;
 }
 
-@media (min-width: 1600px) {
+@media (min-width: 1200px) {
   .gemluxjewel-split-promo__card {
     min-height: 560px;
   }
