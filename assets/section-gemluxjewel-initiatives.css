@@ -145,6 +145,15 @@
   padding: 0 0 28px;
 }
 
+.gemluxjewel-initiatives__item .closet-item.is-open .closet-content,
+.gemluxjewel-initiatives__item .closet-header.active + .closet-content {
+  display: block;
+}
+
+.gemluxjewel-initiatives__item .closet-content[hidden] {
+  display: none !important;
+}
+
 .gemluxjewel-initiatives__text {
   font-family: var(--gemluxjewel-font-body);
   font-size: 15px;

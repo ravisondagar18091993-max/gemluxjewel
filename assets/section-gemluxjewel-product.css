@@ -827,6 +827,16 @@
   display: none;
 }
 
+.gemluxjewel-pdp-faq .closet-item:not(.is-open) .closet-content,
+.gemluxjewel-pdp-faq .closet-content[hidden] {
+  display: none !important;
+}
+
+.gemluxjewel-pdp-faq .closet-item.is-open .closet-content,
+.gemluxjewel-pdp-faq .closet-header.active + .closet-content {
+  display: block;
+}
+
 .gemluxjewel-pdp-faq .closet-content__inner {
   margin-right: 24px;
   padding-bottom: 35px;
@@ -953,6 +963,16 @@
 
 .gemluxjewel-faq-page .closet-content {
   display: none;
+}
+
+.gemluxjewel-faq-page .closet-item:not(.is-open) .closet-content,
+.gemluxjewel-faq-page .closet-content[hidden] {
+  display: none !important;
+}
+
+.gemluxjewel-faq-page .closet-item.is-open .closet-content,
+.gemluxjewel-faq-page .closet-header.active + .closet-content {
+  display: block;
 }
 
 .gemluxjewel-faq-page .closet-content__inner {

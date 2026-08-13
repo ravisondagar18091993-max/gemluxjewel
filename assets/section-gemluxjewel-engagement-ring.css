@@ -740,8 +740,14 @@
   display: none;
 }
 
+.gemluxjewel-engagement-faq .closet-item:not(.is-open) .closet-content,
 .gemluxjewel-engagement-faq .closet-content[hidden] {
   display: none !important;
+}
+
+.gemluxjewel-engagement-faq .closet-item.is-open .closet-content,
+.gemluxjewel-engagement-faq .closet-header.active + .closet-content {
+  display: block;
 }
 
 .gemluxjewel-engagement-faq .closet-content__inner {
