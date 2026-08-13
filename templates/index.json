@@ -502,6 +502,7 @@
         "init_2",
         "init_3"
       ],
+      "disabled": true,
       "settings": {
         "prefix": "Initiatives",
         "default_link": ""
