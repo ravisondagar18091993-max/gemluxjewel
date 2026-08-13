@@ -963,9 +963,15 @@ html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
 }
 
 .gemluxjewel-mobile-menu__list-item--divider {
-  height: 1px;
-  margin: 8px 0 16px;
-  background: rgba(20, 20, 20, 0.08);
+  height: 0;
+  margin: 12px 0;
+  border: none;
+  border-top: 1px solid rgba(20, 20, 20, 0.08);
+  background: none;
+}
+
+.gemluxjewel-mobile-menu__list-item:has(+ .gemluxjewel-mobile-menu__list-item--divider) .gemluxjewel-mobile-menu__item {
+  border-bottom: none;
 }
 
 .gemluxjewel-mobile-menu__item {
