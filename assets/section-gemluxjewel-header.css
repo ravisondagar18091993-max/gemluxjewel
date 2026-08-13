@@ -917,12 +917,16 @@ html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
   flex: 1;
   min-height: 0;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
   background: #fafafa;
 }
 
 .gemluxjewel-mobile-menu__panels {
   position: relative;
-  height: 100%;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .gemluxjewel-mobile-menu__panel {
@@ -943,7 +947,7 @@ html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
 }
 
 .gemluxjewel-mobile-menu__panel.is-active {
-  position: relative;
+  z-index: 2;
   transform: translateX(0);
   opacity: 1;
   visibility: visible;
