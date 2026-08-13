@@ -60,27 +60,6 @@
 
   <p class="gemluxjewel-mobile-menu__panel-title">{{ link.title | escape }}</p>
 
-  {%- if panel_image != blank and use_contact_mega == false -%}
-    <div class="gemluxjewel-mobile-menu__feature">
-      {%- if panel_link != blank -%}
-        <a href="{{ panel_link }}" class="gemluxjewel-mobile-menu__feature-link" data-gemluxjewel-menu-close-on-click>
-      {%- endif -%}
-      {{
-        panel_image
-        | image_url: width: 800
-        | image_tag:
-          widths: '400, 600, 800',
-          sizes: '100vw',
-          loading: 'lazy',
-          alt: link.title,
-          class: 'gemluxjewel-mobile-menu__feature-img'
-      }}
-      {%- if panel_link != blank -%}
-        </a>
-      {%- endif -%}
-    </div>
-  {%- endif -%}
-
   {%- if use_contact_mega -%}
     <ul class="gemluxjewel-mobile-menu__flat-links">
       {%- for child in link.links -%}
@@ -102,7 +81,7 @@
       {%- endfor -%}
     </ul>
 
-    <div class="gemluxjewel-mobile-menu__contact-cards">
+    <div class="gemluxjewel-mobile-menu__contact-cards gemluxjewel-mobile-menu__contact-cards--text">
       {%- assign feature_count = 0 -%}
       {%- for block in contact_features -%}
         {%- liquid
@@ -122,20 +101,6 @@
             {%- if block.settings.link != blank -%}
               <a href="{{ block.settings.link }}" class="gemluxjewel-mobile-menu__contact-card-link" data-gemluxjewel-menu-close-on-click>
             {%- endif -%}
-              {%- if block.settings.image != blank -%}
-                {{
-                  block.settings.image
-                  | image_url: width: 800
-                  | image_tag:
-                    widths: '400, 600, 800',
-                    sizes: '100vw',
-                    loading: 'lazy',
-                    alt: block.settings.title,
-                    class: 'gemluxjewel-mobile-menu__contact-card-img'
-                }}
-              {%- else -%}
-                <div class="gemluxjewel-mobile-menu__contact-card-placeholder" aria-hidden="true"></div>
-              {%- endif -%}
               {%- if block.settings.title != blank -%}
                 <span class="gemluxjewel-mobile-menu__contact-card-title">{{ block.settings.title | escape }}</span>
               {%- endif -%}

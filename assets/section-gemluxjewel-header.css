@@ -842,6 +842,13 @@ html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
   color: var(--gemluxjewel-primary, #73976a);
 }
 
+@media (max-width: 1199px) {
+  .gemluxjewel-header__mega,
+  .gemluxjewel-header__mega-backdrop {
+    display: none !important;
+  }
+}
+
 /* ── Mobile menu (premium drill-down) ── */
 .gemluxjewel-mobile-menu {
   position: fixed;
@@ -923,10 +930,11 @@ html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
   -webkit-overflow-scrolling: touch;
   padding: 0 var(--gemluxjewel-header-gutter, 20px) 28px;
   background: #fafafa;
-  transform: translateX(100%);
+  transform: translateX(12px);
   opacity: 0;
   visibility: hidden;
-  transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.38s ease, visibility 0.38s ease;
+  pointer-events: none;
+  transition: transform 0.28s ease, opacity 0.28s ease, visibility 0.28s ease;
 }
 
 .gemluxjewel-mobile-menu__panel.is-active {
@@ -934,12 +942,14 @@ html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
   transform: translateX(0);
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
 
 .gemluxjewel-mobile-menu__panel.is-leaving {
   position: absolute;
-  transform: translateX(-28%);
+  transform: translateX(-8%);
   opacity: 0;
+  pointer-events: none;
 }
 
 .gemluxjewel-mobile-menu__nav {
@@ -963,27 +973,27 @@ html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 18px 0;
+  padding: 14px 0;
   border: none;
   border-bottom: 1px solid rgba(20, 20, 20, 0.07);
   background: transparent;
-  font-family: var(--gemluxjewel-font-heading, 'Figtree', sans-serif);
-  font-size: clamp(28px, 8vw, 40px);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+  font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
+  font-size: 14px;
+  line-height: 1.3;
+  letter-spacing: 0.1em;
   font-weight: 500;
   text-transform: uppercase;
   color: var(--gemluxjewel-dark, #141414);
   text-decoration: none;
   text-align: left;
   cursor: pointer;
-  transition: color 0.25s ease, padding-left 0.25s ease;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.2s ease;
 }
 
 .gemluxjewel-mobile-menu__item:hover,
 .gemluxjewel-mobile-menu__item:focus-visible {
   color: var(--gemluxjewel-primary, #73976a);
-  padding-left: 6px;
   outline: none;
 }
 
@@ -1001,17 +1011,21 @@ html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
-  margin-left: 12px;
-  color: rgba(20, 20, 20, 0.45);
-  transition: color 0.25s ease, transform 0.25s ease;
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  color: rgba(20, 20, 20, 0.4);
+  transition: color 0.2s ease;
+}
+
+.gemluxjewel-mobile-menu__item-chevron svg {
+  width: 8px;
+  height: 12px;
 }
 
 .gemluxjewel-mobile-menu__item--expand:hover .gemluxjewel-mobile-menu__item-chevron,
 .gemluxjewel-mobile-menu__item--expand:focus-visible .gemluxjewel-mobile-menu__item-chevron {
   color: var(--gemluxjewel-primary, #73976a);
-  transform: translateX(3px);
 }
 
 .gemluxjewel-mobile-menu__subhead {
@@ -1019,7 +1033,7 @@ html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 16px 0 8px;
+  padding: 12px 0 6px;
   position: sticky;
   top: 0;
   z-index: 2;
@@ -1066,32 +1080,41 @@ html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
 }
 
 .gemluxjewel-mobile-menu__panel-title {
-  margin: 0 0 20px;
-  font-family: var(--gemluxjewel-font-heading, 'Figtree', sans-serif);
-  font-size: clamp(24px, 6vw, 32px);
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  margin: 0 0 16px;
+  font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
+  font-size: 13px;
+  line-height: 1.3;
+  letter-spacing: 0.1em;
   font-weight: 600;
   text-transform: uppercase;
-  color: var(--gemluxjewel-dark, #141414);
+  color: rgba(20, 20, 20, 0.55);
 }
 
-.gemluxjewel-mobile-menu__feature {
-  margin-bottom: 24px;
-  border-radius: 2px;
-  overflow: hidden;
+.gemluxjewel-mobile-menu__feature,
+.gemluxjewel-mobile-menu__contact-card-img,
+.gemluxjewel-mobile-menu__contact-card-placeholder {
+  display: none !important;
 }
 
-.gemluxjewel-mobile-menu__feature-link {
+.gemluxjewel-mobile-menu__contact-cards--text {
+  gap: 0;
+  margin-top: 8px;
+}
+
+.gemluxjewel-mobile-menu__contact-cards--text .gemluxjewel-mobile-menu__contact-card {
+  border-bottom: 1px solid rgba(20, 20, 20, 0.07);
+}
+
+.gemluxjewel-mobile-menu__contact-cards--text .gemluxjewel-mobile-menu__contact-card-link {
   display: block;
+  padding: 14px 0;
   text-decoration: none;
 }
 
-.gemluxjewel-mobile-menu__feature-img {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  display: block;
+.gemluxjewel-mobile-menu__contact-cards--text .gemluxjewel-mobile-menu__contact-card-title {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: 0.08em;
 }
 
 .gemluxjewel-mobile-menu__accordions {
@@ -1114,7 +1137,7 @@ html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 18px 16px;
+  padding: 14px 12px;
   border: none;
   background: #fff;
   font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
@@ -1126,6 +1149,7 @@ html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
   color: var(--gemluxjewel-dark, #141414);
   text-align: left;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
   transition: color 0.2s ease;
 }
 
@@ -1193,21 +1217,21 @@ html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
   display: block;
   padding: 10px 0;
   font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.35;
   color: rgba(20, 20, 20, 0.82);
   text-decoration: none;
-  transition: color 0.2s ease, padding-left 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.2s ease;
 }
 
 .gemluxjewel-mobile-menu__sublink:hover {
   color: var(--gemluxjewel-primary, #73976a);
-  padding-left: 6px;
 }
 
 .gemluxjewel-mobile-menu__flat-links {
   list-style: none;
-  margin: 0 0 24px;
+  margin: 0 0 16px;
   padding: 0;
 }
 
@@ -1216,16 +1240,17 @@ html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
   padding: 14px 0;
   border-bottom: 1px solid rgba(20, 20, 20, 0.07);
   font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
-  font-size: 18px;
+  font-size: 14px;
   line-height: 1.3;
+  letter-spacing: 0.04em;
   color: var(--gemluxjewel-dark, #141414);
   text-decoration: none;
-  transition: color 0.2s ease, padding-left 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.2s ease;
 }
 
 .gemluxjewel-mobile-menu__flat-link:hover {
   color: var(--gemluxjewel-primary, #73976a);
-  padding-left: 6px;
 }
 
 .gemluxjewel-mobile-menu__contact-cards {

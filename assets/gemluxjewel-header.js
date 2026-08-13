@@ -83,12 +83,37 @@
       if (closeBtn) closeBtn.addEventListener('click', closeMenu);
 
       if (mobileMenu) {
-        mobileMenu.addEventListener('click', function (event) {
-          if (event.target.closest('[data-gemluxjewel-menu-close-on-click]')) {
-            closeMenu();
-          }
-        });
-        initMobileMenuPanels(mobileMenu);
+        if (!mobileMenu.dataset.gemluxjewelMenuBound) {
+          mobileMenu.addEventListener('click', function (event) {
+            var closeLink = event.target.closest('a[data-gemluxjewel-menu-close-on-click]');
+            if (closeLink) {
+              closeMenu();
+              return;
+            }
+
+            var expandBtn = event.target.closest('[data-mobile-open]');
+            if (expandBtn) {
+              event.preventDefault();
+              showMobilePanel(mobileMenu, expandBtn.getAttribute('data-mobile-open'));
+            }
+
+            var backBtn = event.target.closest('[data-mobile-back]');
+            if (backBtn) {
+              event.preventDefault();
+              showMobilePanel(mobileMenu, 'main');
+            }
+
+            var accordionTrigger = event.target.closest('.gemluxjewel-mobile-menu__accordion-trigger');
+            if (accordionTrigger) {
+              event.preventDefault();
+              toggleMobileAccordion(accordionTrigger);
+            }
+          });
+
+          mobileMenu.dataset.gemluxjewelMenuBound = 'true';
+        }
+
+        resetMobilePanels();
       }
 
       initMegaMenu(header, mainBar);
@@ -170,66 +195,45 @@
     }
   }
 
-  function initMobileMenuPanels(mobileMenu) {
-    if (mobileMenu.dataset.gemluxjewelMobilePanelsReady === 'true') return;
-
+  function showMobilePanel(mobileMenu, panelId) {
     var panelsWrap = mobileMenu.querySelector('[data-gemluxjewel-mobile-panels]');
-    if (!panelsWrap) return;
+    if (!panelsWrap || !panelId) return;
 
-    function showPanel(panelId) {
-      var current = panelsWrap.querySelector('.gemluxjewel-mobile-menu__panel.is-active');
-      var next = panelsWrap.querySelector('[data-mobile-panel="' + panelId + '"]');
-      if (!next || current === next) return;
+    panelsWrap.querySelectorAll('[data-mobile-panel]').forEach(function (panel) {
+      var isTarget = panel.dataset.mobilePanel === panelId;
 
-      if (current) {
-        current.classList.add('is-leaving');
-        current.classList.remove('is-active');
-        window.setTimeout(function () {
-          current.classList.remove('is-leaving');
-          current.hidden = true;
-        }, 380);
+      if (isTarget) {
+        panel.hidden = false;
+        panel.classList.remove('is-leaving');
+        window.requestAnimationFrame(function () {
+          panel.classList.add('is-active');
+        });
+      } else {
+        panel.classList.remove('is-active', 'is-leaving');
+        panel.hidden = true;
       }
+    });
+  }
 
-      next.hidden = false;
-      window.requestAnimationFrame(function () {
-        next.classList.add('is-active');
+  function toggleMobileAccordion(trigger) {
+    var accordion = trigger.closest('.gemluxjewel-mobile-menu__accordion');
+    if (!accordion) return;
+
+    var isOpen = accordion.classList.contains('is-open');
+    var group = accordion.closest('.gemluxjewel-mobile-menu__accordions');
+
+    if (group) {
+      group.querySelectorAll('.gemluxjewel-mobile-menu__accordion.is-open').forEach(function (openAccordion) {
+        if (openAccordion !== accordion) {
+          openAccordion.classList.remove('is-open');
+          var openTrigger = openAccordion.querySelector('.gemluxjewel-mobile-menu__accordion-trigger');
+          if (openTrigger) openTrigger.setAttribute('aria-expanded', 'false');
+        }
       });
     }
 
-    mobileMenu.querySelectorAll('[data-mobile-open]').forEach(function (button) {
-      button.addEventListener('click', function () {
-        showPanel(button.getAttribute('data-mobile-open'));
-      });
-    });
-
-    mobileMenu.querySelectorAll('[data-mobile-back]').forEach(function (button) {
-      button.addEventListener('click', function () {
-        showPanel('main');
-      });
-    });
-
-    mobileMenu.querySelectorAll('.gemluxjewel-mobile-menu__accordion-trigger').forEach(function (trigger) {
-      trigger.addEventListener('click', function () {
-        var accordion = trigger.closest('.gemluxjewel-mobile-menu__accordion');
-        if (!accordion) return;
-
-        var isOpen = accordion.classList.contains('is-open');
-        accordion.closest('.gemluxjewel-mobile-menu__accordions')
-          .querySelectorAll('.gemluxjewel-mobile-menu__accordion.is-open')
-          .forEach(function (openAccordion) {
-            if (openAccordion !== accordion) {
-              openAccordion.classList.remove('is-open');
-              var openTrigger = openAccordion.querySelector('.gemluxjewel-mobile-menu__accordion-trigger');
-              if (openTrigger) openTrigger.setAttribute('aria-expanded', 'false');
-            }
-          });
-
-        accordion.classList.toggle('is-open', !isOpen);
-        trigger.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
-      });
-    });
-
-    mobileMenu.dataset.gemluxjewelMobilePanelsReady = 'true';
+    accordion.classList.toggle('is-open', !isOpen);
+    trigger.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
   }
 
   function initMegaPreview(header) {
