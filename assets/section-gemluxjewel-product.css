@@ -9,7 +9,7 @@
   --gemluxjewel-dark: #141414;
   --gemluxjewel-gray: #818181;
   --gemluxjewel-orange: #e37859;
-  --gemluxjewel-pdp-navy: #1e392a;
+  --gemluxjewel-pdp-navy: #808000;
   --gemluxjewel-pdp-accent: #4a90a4;
   --gemluxjewel-radius: 10px;
   --gemluxjewel-radius-pill: 30px;
@@ -53,6 +53,7 @@
 
 @media (max-width: 991px) {
   .gemluxjewel-pdp { padding-bottom: var(--gemluxjewel-pdp-gap-mobile); }
+  .gemluxjewel-pdp--ref { padding-bottom: 0; }
 }
 
 .gemluxjewel-pdp__topbar {
@@ -765,8 +766,16 @@
 }
 
 @media (max-width: 991px) {
+  .gemluxjewel-pdp__layout {
+    gap: 28px;
+  }
+
   .gemluxjewel-pdp__info-accordion {
-    margin-bottom: 40px;
+    margin-bottom: 24px;
+  }
+
+  .gemluxjewel-pdp--ref .gemluxjewel-pdp__info-accordion {
+    margin-bottom: 12px;
   }
 }
 
@@ -1688,8 +1697,8 @@
 }
 
 .gemluxjewel-pdp__gold-grid-cell input:checked + .gemluxjewel-pdp__gold-grid-swatch {
-  border-color: var(--gemluxjewel-pdp-navy, #1e392a);
-  box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--gemluxjewel-pdp-navy, #1e392a);
+  border-color: var(--gemluxjewel-pdp-navy, #808000);
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--gemluxjewel-pdp-navy, #808000);
 }
 
 .gemluxjewel-pdp__karat-row,

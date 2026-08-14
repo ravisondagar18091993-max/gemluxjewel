@@ -48,18 +48,14 @@
     if stone_shape_filter != blank and stone_shape_filter.values.size > 0
       assign use_filter_shapes = true
     endif
-
-    assign use_metaobjects = section.settings.use_stone_shape_metaobjects
-    assign metaobject_type = section.settings.stone_shape_metaobject_type | default: 'shopify--stone-shape'
   -%}
 
   {%- capture shape_items -%}
     {% render 'gemluxjewel-stone-shapes-items',
       section: section,
       target_collection: collection,
-      stone_shape_filter: link_stone_shape_filter,
-      use_metaobjects: use_metaobjects,
-      metaobject_type: metaobject_type,
+      stone_shape_filter: stone_shape_filter,
+      link_stone_shape_filter: link_stone_shape_filter,
       use_filter_shapes: use_filter_shapes,
       item_modifier: '--plp',
       shape_image_sizes: shape_image_sizes

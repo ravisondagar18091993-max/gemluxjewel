@@ -1,7 +1,7 @@
 .gemluxjewel-pdp-how-made {
   padding: 56px 0 72px;
   background: #fff;
-  color: #1e392a;
+  color: #808000;
 }
 
 .gemluxjewel-pdp-how-made__container {
@@ -16,15 +16,15 @@
   font-size: clamp(24px, 2.2vw, 32px);
   font-weight: 700;
   line-height: 1.25;
-  color: #1e392a;
+  color: #808000;
   text-align: left;
   text-transform: capitalize;
 }
 
 .gemluxjewel-pdp-how-made__grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 28px 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 16px;
 }
 
 @media (min-width: 750px) {
@@ -69,7 +69,7 @@
   font-size: 18px !important;
   font-weight: 700;
   line-height: 1.4;
-  color: #1e392a;
+  color: #808000;
   text-transform: capitalize !important;
 }
 
@@ -78,15 +78,33 @@
   font-family: 'Outfit', var(--font-body-family), sans-serif;
   font-size: 14px;
   line-height: 1.6;
-  color: #1e392a;
+  color: #808000;
 }
 
 @media (max-width: 749px) {
   .gemluxjewel-pdp-how-made {
-    padding: 40px 0 56px;
+    padding: 24px 0 40px;
   }
 
   .gemluxjewel-pdp-how-made__title {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
+  }
+
+  .gemluxjewel-pdp-how-made__grid {
+    gap: 20px 12px;
+  }
+
+  .gemluxjewel-pdp-how-made__image {
+    margin-bottom: 10px;
+  }
+
+  .gemluxjewel-pdp-how-made__item-title {
+    font-size: 14px !important;
+    margin-bottom: 6px;
+  }
+
+  .gemluxjewel-pdp-how-made__item-text {
+    font-size: 12px;
+    line-height: 1.5;
   }
 }

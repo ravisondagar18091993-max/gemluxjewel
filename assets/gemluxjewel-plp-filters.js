@@ -84,6 +84,43 @@
     });
   }
 
+  function positionDropdownPanel(dropdown) {
+    var panel = dropdown.querySelector('.gemluxjewel-plp-filter-dropdown__panel');
+    if (!panel) return;
+
+    panel.style.left = '';
+    panel.style.right = '';
+    panel.style.maxWidth = '';
+
+    if (!dropdown.open) return;
+
+    window.requestAnimationFrame(function () {
+      var viewportPadding = 12;
+      var panelRect = panel.getBoundingClientRect();
+
+      if (panelRect.right > window.innerWidth - viewportPadding) {
+        panel.style.left = 'auto';
+        panel.style.right = '0';
+      }
+
+      panelRect = panel.getBoundingClientRect();
+
+      if (panelRect.left < viewportPadding) {
+        panel.style.left = '0';
+        panel.style.right = 'auto';
+      }
+
+      panelRect = panel.getBoundingClientRect();
+
+      if (panelRect.right > window.innerWidth - viewportPadding) {
+        var triggerRect = dropdown.getBoundingClientRect();
+        panel.style.maxWidth = Math.max(160, window.innerWidth - triggerRect.left - viewportPadding) + 'px';
+        panel.style.left = '0';
+        panel.style.right = 'auto';
+      }
+    });
+  }
+
   function initDropdowns(root) {
     root.querySelectorAll('[data-gemluxjewel-plp-dropdown]').forEach(function (dropdown) {
       if (dropdown.dataset.gemluxjewelPlpDropdownInit === 'true') return;
@@ -107,6 +144,7 @@
         if (dropdown.open) {
           closeAllDropdowns(dropdown);
         }
+        positionDropdownPanel(dropdown);
       });
     });
   }
@@ -219,6 +257,54 @@
     });
   }
 
+  function initCollectionSearch(root) {
+    root.querySelectorAll('[data-gemluxjewel-plp-search]').forEach(function (input) {
+      if (input.dataset.gemluxjewelPlpSearchInit === 'true') return;
+      input.dataset.gemluxjewelPlpSearchInit = 'true';
+
+      var form = input.closest('form');
+      var facetForm = input.closest('facet-filters-form');
+      if (!form || !facetForm) return;
+
+      function buildSearchParams() {
+        var params = new FormData(form);
+        var query = (params.get('q') || '').trim();
+
+        if (!query) {
+          params.delete('q');
+          params.delete('options[prefix]');
+        } else {
+          params.set('q', query);
+          params.set('options[prefix]', 'last');
+        }
+
+        return new URLSearchParams(params).toString();
+      }
+
+      function submitSearch() {
+        facetForm.onSubmitForm(buildSearchParams(), { target: input });
+      }
+
+      var debouncedSubmit = typeof debounce === 'function' ? debounce(submitSearch, 500) : submitSearch;
+
+      input.addEventListener('input', function (event) {
+        event.stopPropagation();
+        debouncedSubmit();
+      });
+
+      input.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          submitSearch();
+        }
+      });
+
+      input.addEventListener('search', function () {
+        submitSearch();
+      });
+    });
+  }
+
   function init(root) {
     root = root || document;
     initDropdowns(root);
@@ -226,6 +312,7 @@
     initDrawer(root);
     initFilterLabels(root);
     initDropdownOptions(root);
+    initCollectionSearch(root);
   }
 
   document.addEventListener('click', function (event) {
@@ -257,9 +344,16 @@
     root.querySelectorAll('[data-gemluxjewel-dropdown-option-init]').forEach(function (el) {
       delete el.dataset.gemluxjewelDropdownOptionInit;
     });
+    root.querySelectorAll('[data-gemluxjewel-plp-search]').forEach(function (el) {
+      delete el.dataset.gemluxjewelPlpSearchInit;
+    });
   }
 
   document.addEventListener('gemluxjewel:facets-updated', function () {
+    var params = new URLSearchParams(window.location.search);
+    document.querySelectorAll('[data-gemluxjewel-plp-search]').forEach(function (input) {
+      input.value = params.get('q') || '';
+    });
     resetInitFlags(document);
     init(document);
   });

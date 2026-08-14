@@ -25,7 +25,7 @@
           {%- endif -%}
 
           <div id="ProductGridContainer">
-            {%- if section.settings.enable_stone_shapes -%}
+            {%- if section.settings.enable_stone_shapes and collection.terms == blank -%}
               {% render 'gemluxjewel-plp-stone-shapes', collection: collection, section: section %}
             {%- endif -%}
             {% render 'gemluxjewel-collection-grid', paginate: paginate %}
@@ -300,20 +300,14 @@
       "id": "auto_fetch_stone_shapes",
       "label": "Auto-fetch shapes from source collection",
       "default": true,
-      "info": "Fallback when metaobjects are off — loads Stone shape filter values from the source collection."
-    },
-    {
-      "type": "checkbox",
-      "id": "use_stone_shape_metaobjects",
-      "label": "Load shapes from metaobjects",
-      "default": true,
-      "info": "Shows each Stone shape metaobject entry (Cushion Cut, Princess Cut, etc.)."
+      "info": "Loads the 8 base Stone shape filter values from Search & Discovery (Round, Oval, Pear, etc.)."
     },
     {
       "type": "text",
       "id": "stone_shape_metaobject_type",
-      "label": "Metaobject type handle",
-      "default": "shopify--stone-shape"
+      "label": "Metaobject type handle (filter icons)",
+      "default": "shopify--stone-shape",
+      "info": "Used only for PLP filter dropdown icons — not the shape slider."
     },
     {
       "type": "collection",

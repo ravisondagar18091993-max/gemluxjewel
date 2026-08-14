@@ -29,12 +29,12 @@ function initGemluxjewelStoneShapes() {
       if (isPlp) {
         if (window.matchMedia('(min-width: 1200px)').matches) return 8;
         if (window.matchMedia('(min-width: 750px)').matches) return 5;
-        return 3;
+        return 2;
       }
 
       if (window.matchMedia('(min-width: 1200px)').matches) return 8;
       if (window.matchMedia('(min-width: 750px)').matches) return 5;
-      return 3;
+      return 2;
     }
 
     function getMaxIndex() {

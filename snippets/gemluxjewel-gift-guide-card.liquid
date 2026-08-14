@@ -98,9 +98,15 @@
         %}
       {%- endif -%}
     </div>
-    {%- if card_title != blank -%}
-      <p class="gemluxjewel-gift-guide__tile-title">{{ card_title | escape }}</p>
-    {%- endif -%}
+    <div class="gemluxjewel-gift-guide__tile-overlay" aria-hidden="true"></div>
+    <div class="gemluxjewel-gift-guide__tile-content">
+      {%- if card_title != blank -%}
+        <p class="gemluxjewel-gift-guide__tile-title">{{ card_title | escape }}</p>
+      {%- endif -%}
+      {%- if button_label != blank -%}
+        <span class="gemluxjewel-gift-guide__tile-btn">{{ button_label | escape }}</span>
+      {%- endif -%}
+    </div>
   {%- if card_url != blank -%}
     </a>
   {%- else -%}

@@ -27,9 +27,6 @@
     assign use_filter_shapes = true
   endif
 
-  assign metaobject_type = section.settings.metaobject_type | default: 'shopify--stone-shape'
-  assign use_metaobjects = section.settings.use_metaobjects
-
   assign shape_image_sizes = '(min-width: 1200px) 180px, (min-width: 750px) 160px, 110px'
 -%}
 
@@ -46,7 +43,7 @@
       </div>
     </div>
 
-    {%- if use_metaobjects or use_filter_shapes or section.blocks.size > 0 -%}
+    {%- if use_filter_shapes or section.blocks.size > 0 -%}
       <div class="gemluxjewel-stone-shapes__slider" data-gemluxjewel-stone-shapes-slider>
         <button
           type="button"
@@ -64,8 +61,6 @@
               section: section,
               target_collection: products_collection,
               stone_shape_filter: stone_shape_filter,
-              use_metaobjects: use_metaobjects,
-              metaobject_type: metaobject_type,
               use_filter_shapes: use_filter_shapes,
               item_modifier: '',
               shape_image_sizes: shape_image_sizes
@@ -83,16 +78,10 @@
         </button>
       </div>
 
-      {%- if section.settings.auto_fetch_shapes and use_metaobjects == false and stone_shape_filter == blank -%}
+      {%- if section.settings.auto_fetch_shapes and stone_shape_filter == blank -%}
         <p class="gemluxjewel-stone-shapes__notice">
           Enable the <strong>Stone shape</strong> category metafield filter in
           <strong>Search &amp; Discovery</strong> to load shapes automatically, or assign collections to each block.
-        </p>
-      {%- elsif section.settings.use_metaobjects and shop.metaobjects[metaobject_type] == blank -%}
-        <p class="gemluxjewel-stone-shapes__notice">
-          No metaobject type <strong>{{ metaobject_type }}</strong> found. Check the type handle (yours is
-          <strong>shopify--stone-shape</strong>) under <strong>Settings → Custom data → Metaobjects</strong>, and turn on
-          <strong>Storefront API access</strong> for that type.
         </p>
       {%- endif -%}
     {%- endif -%}
@@ -124,21 +113,7 @@
     },
     {
       "type": "paragraph",
-      "content": "By default, shapes load from your Stone shape metaobjects (Settings → Custom data). Fallback: Shopify category filter from Search & Discovery."
-    },
-    {
-      "type": "checkbox",
-      "id": "use_metaobjects",
-      "label": "Load shapes from metaobjects",
-      "default": true,
-      "info": "Shows each metaobject entry (Cushion Cut, Princess Cut, etc.). Turn off to use the Shopify Stone shape filter instead."
-    },
-    {
-      "type": "text",
-      "id": "metaobject_type",
-      "label": "Metaobject type handle",
-      "default": "shopify--stone-shape",
-      "info": "Type handle from Settings → Custom data → Metaobjects. For Gemlux: shopify--stone-shape"
+      "content": "Shapes load from the Stone shape filter in Search & Discovery (8 base shapes: Round, Oval, Pear, etc.). Theme blocks override images when the shape name matches."
     },
     {
       "type": "collection",
@@ -171,7 +146,7 @@
           "id": "title",
           "label": "Shape name",
           "default": "Round",
-          "info": "Must match the category metafield value or metaobject display name, e.g. Marquise Cut, Round, Cushion Cut."
+          "info": "Must match the Search & Discovery filter value exactly, e.g. Round, Oval, Rectangular, Other."
         },
         {
           "type": "image_picker",

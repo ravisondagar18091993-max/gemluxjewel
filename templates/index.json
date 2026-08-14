@@ -194,8 +194,6 @@
         "subtitle": "Explore our collection by diamond and gemstone cut — find the shape that speaks to you.",
         "products_collection": "all",
         "filter_label": "Stone shape",
-        "use_metaobjects": true,
-        "metaobject_type": "shopify--stone-shape",
         "auto_fetch_shapes": true
       }
     },

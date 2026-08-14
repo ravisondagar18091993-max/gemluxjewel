@@ -1,11 +1,11 @@
 /* gemluxjewel Our Story — Cullen-style page */
 
 .gemluxjewel-our-story {
-  --os-green: #1a3224;
-  --os-green-light: #2a4a35;
+  --os-green: #808000;
+  --os-green-light: #808000;
   --os-cream: #f5f0eb;
   --os-serif: 'Libre Baskerville', Georgia, serif;
-  --os-heading-green: #1a3224;
+  --os-heading-green: #808000;
 }
 
 /* ── Hero ── */
@@ -278,7 +278,7 @@
 .gemluxjewel-our-story-cta__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(26, 50, 36, 0.72);
+  background: rgba(128, 128, 0, 0.72);
 }
 
 .gemluxjewel-our-story-cta__content {

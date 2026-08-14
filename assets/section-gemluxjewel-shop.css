@@ -877,7 +877,7 @@
 
 .gemluxjewel-stone-shapes__track--plp {
   --stone-shapes-gap: 12px;
-  --stone-shapes-visible: 3;
+  --stone-shapes-visible: 2;
   display: flex;
   gap: var(--stone-shapes-gap);
   transition: transform 0.45s ease;
@@ -1565,6 +1565,16 @@
   margin-top: 16px;
 }
 
+.gemluxjewel-plp-filter-bar__active:empty {
+  display: none;
+  margin: 0;
+}
+
+.gemluxjewel-plp-filter-bar__active:not(:has(.active-facets__button, .active-facets__button-remove)) {
+  display: none;
+  margin: 0;
+}
+
 .gemluxjewel-plp-filter-bar__active .active-facets__button-inner {
   font-size: 12px;
 }
@@ -1709,12 +1719,13 @@
   border-bottom: 1px solid #f0f0f0;
 }
 
-.gemluxjewel-plp-sidebar-group__title {
+.gemluxjewel-plp-filter-drawer .gemluxjewel-plp-sidebar-group__title {
   margin: 0 0 14px;
   font-family: var(--gemluxjewel-font-body);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 500;
-  letter-spacing: 0.1em;
+  line-height: 1.3;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--gemluxjewel-gray);
 }
@@ -1939,9 +1950,57 @@ html.gemluxjewel-plp-drawer-open {
     left: 0;
     right: auto;
   }
+
+  .gemluxjewel-plp-filter-dropdown__panel {
+    max-width: min(320px, calc(100vw - 24px));
+  }
 }
 
 @media (max-width: 749px) {
+  .gemluxjewel-shop--horizontal-filters {
+    padding-top: 20px;
+  }
+
+  .gemluxjewel-plp-filter-bar {
+    margin-bottom: 10px;
+  }
+
+  .gemluxjewel-plp-filter-bar__main {
+    gap: 8px;
+  }
+
+  .gemluxjewel-plp-filter-bar__controls {
+    gap: 8px;
+  }
+
+  .gemluxjewel-plp-filter-bar__meta {
+    gap: 6px;
+    margin-top: 0;
+  }
+
+  .gemluxjewel-plp-filter-bar__sort {
+    max-width: none;
+    justify-self: stretch;
+  }
+
+  .gemluxjewel-plp-sort {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .gemluxjewel-plp-filter-bar__active {
+    margin-top: 6px;
+  }
+
+  .gemluxjewel-stone-shapes--plp {
+    padding: 0 0 8px;
+    margin-bottom: 0;
+  }
+
+  .gemluxjewel-stone-shapes--plp__heading {
+    margin-bottom: 12px;
+  }
+
   .gemluxjewel-plp-filter-bar__filters-cluster {
     flex-direction: column;
     align-items: stretch;
@@ -1949,7 +2008,7 @@ html.gemluxjewel-plp-drawer-open {
 
   .gemluxjewel-plp-filter-bar__dropdowns {
     flex-wrap: wrap;
-    overflow-x: visible;
+    overflow: visible;
   }
 
   .gemluxjewel-plp-filter-bar__filters-btn {
@@ -1965,13 +2024,44 @@ html.gemluxjewel-plp-drawer-open {
     width: 100%;
   }
 
+  .gemluxjewel-plp-filter-dropdown__panel {
+    min-width: 0;
+    width: min(320px, calc(100vw - 24px));
+    max-width: calc(100vw - 24px);
+  }
+
+  .gemluxjewel-plp-filter-dropdown:nth-child(odd) .gemluxjewel-plp-filter-dropdown__panel {
+    left: 0;
+    right: auto;
+  }
+
+  .gemluxjewel-plp-filter-dropdown:nth-child(even) .gemluxjewel-plp-filter-dropdown__panel {
+    left: auto;
+    right: 0;
+  }
+
+  .gemluxjewel-plp-filter-dropdown--icon-grid .gemluxjewel-plp-filter-dropdown__panel {
+    min-width: 0;
+    width: min(320px, calc(100vw - 24px));
+    max-width: calc(100vw - 24px);
+  }
+
   .gemluxjewel-plp-filter-dropdown--icon-grid .gemluxjewel-plp-filter-dropdown__list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .gemluxjewel-plp-filter-dropdown--icon-grid .gemluxjewel-plp-filter-dropdown__panel {
-    min-width: min(100vw - 32px, 320px);
-    left: 0;
-    right: auto;
+  .gemluxjewel-plp-filter-drawer__title {
+    font-size: 16px;
+  }
+
+  .gemluxjewel-plp-filter-drawer .gemluxjewel-plp-sidebar-sort__label,
+  .gemluxjewel-plp-filter-drawer .gemluxjewel-plp-sidebar-group__title {
+    font-size: 9px;
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+  }
+
+  .gemluxjewel-plp-sidebar-group {
+    padding: 16px 0;
   }
 }

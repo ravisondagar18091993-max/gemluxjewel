@@ -1,6 +1,6 @@
 .gemluxjewel-contact-page {
   background: #fff;
-  color: #1e392a;
+  color: #808000;
 }
 
 /* Hero */
@@ -84,7 +84,7 @@
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: capitalize;
-  color: #1e392a;
+  color: #808000;
 }
 
 .gemluxjewel-contact-page__input,
@@ -97,7 +97,7 @@
   font-family: 'Outfit', var(--font-body-family), sans-serif;
   font-size: 15px;
   line-height: 1.4;
-  color: #1e392a;
+  color: #808000;
   outline: none;
   transition: border-color 0.2s ease;
 }
@@ -113,12 +113,12 @@
 
 .gemluxjewel-contact-page__input:focus,
 .gemluxjewel-contact-page__textarea:focus {
-  border-color: #1e392a;
+  border-color: #808000;
 }
 
 .gemluxjewel-contact-page__input::placeholder,
 .gemluxjewel-contact-page__textarea::placeholder {
-  color: rgba(30, 57, 42, 0.45);
+  color: rgba(128, 128, 0, 0.45);
 }
 
 .gemluxjewel-contact-page__checkbox {
@@ -129,7 +129,7 @@
   font-family: 'Outfit', var(--font-body-family), sans-serif;
   font-size: 14px;
   line-height: 1.5;
-  color: #1e392a;
+  color: #808000;
   cursor: pointer;
 }
 
@@ -137,7 +137,7 @@
   width: 16px;
   height: 16px;
   margin-top: 2px;
-  accent-color: #1e392a;
+  accent-color: #808000;
   flex-shrink: 0;
 }
 
@@ -153,7 +153,7 @@
   font-family: 'Outfit', var(--font-body-family), sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #1e392a;
+  color: #808000;
 }
 
 .gemluxjewel-contact-page__stone-type-options {
@@ -174,7 +174,7 @@
   padding: 12px 36px;
   border: 0;
   border-radius: 0;
-  background: #1e392a;
+  background: #808000;
   color: #fff;
   font-family: 'Outfit', var(--font-body-family), sans-serif;
   font-size: 13px;
@@ -195,7 +195,7 @@
   font-family: 'Outfit', var(--font-body-family), sans-serif;
   font-size: 11px;
   line-height: 1.6;
-  color: rgba(30, 57, 42, 0.65);
+  color: rgba(128, 128, 0, 0.65);
 }
 
 .gemluxjewel-contact-page__legal p {
@@ -210,8 +210,8 @@
 }
 
 .gemluxjewel-contact-page__status--success {
-  background: rgba(30, 57, 42, 0.08);
-  color: #1e392a;
+  background: rgba(128, 128, 0, 0.08);
+  color: #808000;
 }
 
 .gemluxjewel-contact-page__status--error {
@@ -248,7 +248,7 @@
   flex-shrink: 0;
   width: 28px;
   height: 28px;
-  color: #1e392a;
+  color: #808000;
 }
 
 .gemluxjewel-contact-page__quick-link-text {
@@ -258,7 +258,7 @@
   line-height: 1.5;
   letter-spacing: 0.03em;
   text-transform: capitalize;
-  color: #1e392a;
+  color: #808000;
   text-decoration: none;
 }
 

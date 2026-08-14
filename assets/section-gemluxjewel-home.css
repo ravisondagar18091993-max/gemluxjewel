@@ -277,9 +277,9 @@
 }
 
 .gemluxjewel-hero__btn--primary {
-  background: #1e392a;
+  background: #808000;
   color: #fff;
-  border: 1px solid #1e392a;
+  border: 1px solid #808000;
 }
 
 .gemluxjewel-hero__btn--primary:hover {
@@ -303,7 +303,7 @@
   right: 0;
   bottom: 0;
   height: 6px;
-  background: #1e392a;
+  background: #808000;
   z-index: 3;
 }
 
@@ -433,7 +433,7 @@
 
 .gemluxjewel-stone-shapes__track {
   --stone-shapes-gap: 12px;
-  --stone-shapes-visible: 3;
+  --stone-shapes-visible: 2;
   display: flex;
   gap: var(--stone-shapes-gap);
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -724,6 +724,18 @@
 }
 
 @media (max-width: 749px) {
+  .gemluxjewel-collection-slider {
+    padding-bottom: 48px;
+  }
+
+  .gemluxjewel-collection-slider .gemluxjewel-section-header {
+    margin-bottom: 24px;
+  }
+
+  .gemluxjewel-collection-slider__track {
+    --collection-slider-gap: 16px;
+  }
+
   .gemluxjewel-collection-slider__nav {
     width: 36px;
     height: 36px;
@@ -734,7 +746,15 @@
   }
 
   .gemluxjewel-collection-slider__img {
-    margin-bottom: 12px;
+    aspect-ratio: 4 / 3;
+    max-height: 260px;
+    margin-bottom: 10px;
+  }
+
+  .gemluxjewel-collection-slider__img img,
+  .gemluxjewel-collection-slider__img .gemluxjewel-collection-slider__fallback {
+    object-fit: cover;
+    object-position: center center;
   }
 }
 
@@ -1176,6 +1196,120 @@
   text-transform: uppercase;
   color: var(--gemluxjewel-dark, #141414);
   margin: 12px 0 0;
+}
+
+.gemluxjewel-gift-guide__tile-overlay,
+.gemluxjewel-gift-guide__tile-content,
+.gemluxjewel-gift-guide__tile-btn {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .gemluxjewel-gift-guide__featured,
+  .gemluxjewel-gift-guide__tiles {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 0;
+  }
+
+  .gemluxjewel-gift-guide__featured {
+    margin-bottom: 16px;
+  }
+
+  .gemluxjewel-gift-guide__featured-card,
+  .gemluxjewel-gift-guide__tile {
+    aspect-ratio: 4 / 3;
+    min-height: 0;
+    border-radius: var(--gemluxjewel-radius, 0);
+    overflow: hidden;
+  }
+
+  .gemluxjewel-gift-guide__tile {
+    position: relative;
+    display: block;
+  }
+
+  .gemluxjewel-gift-guide__tile-media {
+    position: absolute;
+    inset: 0;
+    aspect-ratio: auto;
+    height: 100%;
+  }
+
+  .gemluxjewel-gift-guide__tile-overlay {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.18);
+    pointer-events: none;
+  }
+
+  .gemluxjewel-gift-guide__tile-content {
+    display: flex;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 24px 20px;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .gemluxjewel-gift-guide__tile-title {
+    display: block;
+    margin: 0;
+    font-family: var(--gemluxjewel-font-heading);
+    font-size: 22px;
+    line-height: 1.15;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: #fff;
+  }
+
+  .gemluxjewel-gift-guide__tile-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    padding: 10px 24px;
+    border: 1px solid #fff;
+    background: transparent;
+    color: #fff;
+    font-family: var(--gemluxjewel-font-body);
+    font-size: 11px;
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .gemluxjewel-gift-guide__featured-title {
+    font-size: 22px;
+  }
+
+  .gemluxjewel-gift-guide__featured-btn {
+    min-width: 120px;
+    padding: 10px 24px;
+  }
+
+  .gemluxjewel-gift-guide__featured-content {
+    gap: 16px;
+    padding: 24px 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .gemluxjewel-gift-guide__tile-content {
+    display: block;
+  }
+
+  .gemluxjewel-gift-guide__tile-content .gemluxjewel-gift-guide__tile-title {
+    margin: 12px 0 0;
+  }
 }
 
 /* ── Marquee Strip ── */
@@ -1798,12 +1932,30 @@
     padding: 60px 0 72px;
   }
 
+  .gemluxjewel-testimonials .gemluxjewel-container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .gemluxjewel-testimonials__slider {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
   .gemluxjewel-testimonials__header {
     margin-bottom: 32px;
   }
 }
 
 @media (max-width: 749px) {
+  .gemluxjewel-testimonials .gemluxjewel-container,
+  .gemluxjewel-testimonials__slider {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
   .gemluxjewel-testimonials__nav {
     display: none;
   }

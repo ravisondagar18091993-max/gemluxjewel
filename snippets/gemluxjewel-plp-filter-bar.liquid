@@ -174,6 +174,7 @@
             <span class="gemluxjewel-plp-filter-bar__search-icon" aria-hidden="true">
               {{- 'icon-search.svg' | inline_asset_content -}}
             </span>
+            <input type="hidden" name="options[prefix]" value="last">
             <input
               id="GemluxPlpSearch-{{ section.id }}"
               class="gemluxjewel-plp-filter-bar__search"
@@ -182,6 +183,7 @@
               value="{{ results.terms | escape }}"
               placeholder="{{ section.settings.search_placeholder | default: 'Search by style, shape or metal' | escape }}"
               autocomplete="off"
+              data-gemluxjewel-plp-search
             >
           </div>
         </div>
@@ -195,7 +197,12 @@
             data-total-count="{{ results.all_products_count }}"
           >
             <span id="ProductCount">
-              {%- if results.products_count == results.all_products_count -%}
+              {%- if results.terms != blank and results.results_count -%}
+                {{
+                  'templates.search.results_with_count'
+                  | t: terms: results.terms, count: results.results_count
+                }}
+              {%- elsif results.products_count == results.all_products_count -%}
                 {{ 'products.facets.product_count_simple' | t: count: results.products_count }}
               {%- else -%}
                 {{
