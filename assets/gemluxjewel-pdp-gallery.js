@@ -27,18 +27,20 @@
     var styles = window.getComputedStyle(gallery);
     var size = parseFloat(styles.getPropertyValue('--pdp-media-thumb-size')) || 72;
     var gap = parseFloat(styles.getPropertyValue('--pdp-media-thumb-gap')) || 10;
-    return { size: size, gap: gap };
+    return { size: size, gap: gap, step: size + gap };
   }
 
-  function getThumbOffset(thumbsWrap, thumb, axis) {
-    var wrapRect = thumbsWrap.getBoundingClientRect();
-    var thumbRect = thumb.getBoundingClientRect();
+  function getScrollTargetForIndex(index, thumbsLength, step) {
+    var visibleCount = Math.min(VISIBLE_THUMBS, thumbsLength);
+    var maxScroll = Math.max(0, (thumbsLength - visibleCount) * step);
 
-    if (axis === 'y') {
-      return thumbRect.top - wrapRect.top + thumbsWrap.scrollTop;
-    }
+    if (thumbsLength <= visibleCount) return 0;
+    if (index <= 0) return 0;
+    if (index >= thumbsLength - 1) return maxScroll;
 
-    return thumbRect.left - wrapRect.left + thumbsWrap.scrollLeft;
+    var maxOffset = thumbsLength - visibleCount;
+    var offset = Math.min(index - 1, maxOffset);
+    return offset * step;
   }
 
   function initGallery(root) {
@@ -88,37 +90,22 @@
       counter.textContent = index + 1 + ' / ' + getSlides(gallery).length;
     }
 
-    function scrollThumbIntoView(index) {
+    function scrollThumbIntoView(index, behavior) {
       if (!thumbsWrap) return;
 
       var thumbs = getThumbs(gallery);
-      var thumb = thumbs[index];
-      if (!thumb) return;
+      if (!thumbs.length || index < 0 || index >= thumbs.length) return;
+
+      var metrics = getThumbMetrics(gallery);
+      var scrollBehavior = behavior || 'smooth';
+      var scrollTarget = getScrollTargetForIndex(index, thumbs.length, metrics.step);
 
       if (isDesktopThumbs()) {
-        var viewport = thumbsWrap.clientHeight;
-        var metrics = getThumbMetrics(gallery);
-        var thumbTop = getThumbOffset(thumbsWrap, thumb, 'y');
-        var thumbHeight = thumb.offsetHeight;
-        var scrollTarget = thumbTop + thumbHeight / 2 - viewport / 2;
-        var maxScroll = Math.max(0, thumbsWrap.scrollHeight - viewport);
-        scrollTarget = Math.max(0, Math.min(scrollTarget, maxScroll));
-
-        if (index > 0 && scrollTarget === 0 && thumbTop > metrics.gap) {
-          scrollTarget = Math.min(thumbTop - metrics.gap, maxScroll);
-        }
-
-        thumbsWrap.scrollTo({ top: scrollTarget, behavior: 'smooth' });
+        thumbsWrap.scrollTo({ top: scrollTarget, behavior: scrollBehavior });
         return;
       }
 
-      var viewportWidth = thumbsWrap.clientWidth;
-      var thumbLeft = getThumbOffset(thumbsWrap, thumb, 'x');
-      var thumbWidth = thumb.offsetWidth;
-      var scrollLeftTarget = thumbLeft + thumbWidth / 2 - viewportWidth / 2;
-      var maxScrollLeft = Math.max(0, thumbsWrap.scrollWidth - viewportWidth);
-      scrollLeftTarget = Math.max(0, Math.min(scrollLeftTarget, maxScrollLeft));
-      thumbsWrap.scrollTo({ left: scrollLeftTarget, behavior: 'smooth' });
+      thumbsWrap.scrollTo({ left: scrollTarget, behavior: scrollBehavior });
     }
 
     function setActiveThumb(index) {
@@ -176,7 +163,7 @@
 
       setActiveThumb(current);
       updateCounter(current);
-      scrollThumbIntoView(current);
+      scrollThumbIntoView(current, options.fromAutoplay ? 'auto' : 'smooth');
 
       var activeType = slides[current].getAttribute('data-media-type');
       if (activeType === 'video' || activeType === 'external_video') {
@@ -264,11 +251,14 @@
     updateCounter(current);
     syncThumbViewport();
     setActiveThumb(current);
-    scrollThumbIntoView(current);
+    scrollThumbIntoView(current, 'auto');
     setAutoplayUi(true);
     startAutoplay();
 
-    window.addEventListener('resize', syncThumbViewport);
+    window.addEventListener('resize', function () {
+      syncThumbViewport();
+      scrollThumbIntoView(current, 'auto');
+    });
   }
 
   function init(root) {

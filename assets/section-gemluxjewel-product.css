@@ -1635,6 +1635,63 @@
   display: none !important;
 }
 
+.gemluxjewel-pdp__gold-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.gemluxjewel-pdp__gold-grid-cell {
+  position: relative;
+  flex: 0 0 52px;
+}
+
+.gemluxjewel-pdp__gold-grid-cell input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.gemluxjewel-pdp__gold-grid-swatch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.gemluxjewel-pdp__gold-grid-swatch span {
+  position: relative;
+  z-index: 1;
+}
+
+.gemluxjewel-pdp__gold-grid-swatch--white {
+  background: linear-gradient(145deg, #f8f8f8, #d4d4d4);
+  color: #555;
+}
+
+.gemluxjewel-pdp__gold-grid-swatch--yellow {
+  background: linear-gradient(145deg, #ffe9a0, #d4af37);
+  color: #5c4a1a;
+}
+
+.gemluxjewel-pdp__gold-grid-swatch--rose {
+  background: linear-gradient(145deg, #f0c4c8, #b76e79);
+  color: #5c2a32;
+}
+
+.gemluxjewel-pdp__gold-grid-cell input:checked + .gemluxjewel-pdp__gold-grid-swatch {
+  border-color: var(--gemluxjewel-pdp-navy, #1e392a);
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--gemluxjewel-pdp-navy, #1e392a);
+}
+
 .gemluxjewel-pdp__karat-row,
 .gemluxjewel-pdp__color-swatches {
   display: flex;
