@@ -113,12 +113,12 @@
 
 .gemluxjewel-contact-page__input:focus,
 .gemluxjewel-contact-page__textarea:focus {
-  border-color: #808000;
+  border-color: #101010;
 }
 
 .gemluxjewel-contact-page__input::placeholder,
 .gemluxjewel-contact-page__textarea::placeholder {
-  color: rgba(128, 128, 0, 0.45);
+  color: rgba(16, 16, 16, 0.45);
 }
 
 .gemluxjewel-contact-page__checkbox {
@@ -129,7 +129,7 @@
   font-family: 'Outfit', var(--font-body-family), sans-serif;
   font-size: 14px;
   line-height: 1.5;
-  color: #808000;
+  color: #101010;
   cursor: pointer;
 }
 
@@ -137,7 +137,7 @@
   width: 16px;
   height: 16px;
   margin-top: 2px;
-  accent-color: #808000;
+  accent-color: #101010;
   flex-shrink: 0;
 }
 
@@ -153,7 +153,7 @@
   font-family: 'Outfit', var(--font-body-family), sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #808000;
+  color: #101010;
 }
 
 .gemluxjewel-contact-page__stone-type-options {
@@ -195,7 +195,7 @@
   font-family: 'Outfit', var(--font-body-family), sans-serif;
   font-size: 11px;
   line-height: 1.6;
-  color: rgba(128, 128, 0, 0.65);
+  color: rgba(16, 16, 16, 0.65);
 }
 
 .gemluxjewel-contact-page__legal p {
