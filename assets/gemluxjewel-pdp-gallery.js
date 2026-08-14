@@ -1,11 +1,16 @@
 (function () {
   var AUTOPLAY_MS = 5000;
+  var VISIBLE_THUMBS = 4;
 
   function pauseSlideMedia(slide) {
     if (!slide) return;
     slide.querySelectorAll('video').forEach(function (video) {
       video.pause();
     });
+  }
+
+  function isDesktopThumbs() {
+    return window.matchMedia('(min-width: 990px)').matches;
   }
 
   function initGallery(root) {
@@ -32,6 +37,31 @@
     var autoplayTimer = null;
     var autoplayEnabled = slides.length > 1;
 
+    function getThumbMetrics() {
+      var styles = window.getComputedStyle(gallery);
+      var size = parseFloat(styles.getPropertyValue('--pdp-media-thumb-size')) || 72;
+      var gap = parseFloat(styles.getPropertyValue('--pdp-media-thumb-gap')) || 10;
+      return { size: size, gap: gap };
+    }
+
+    function syncThumbViewport() {
+      if (!thumbsWrap) return;
+
+      var metrics = getThumbMetrics();
+      var visibleCount = Math.min(VISIBLE_THUMBS, thumbs.length);
+      var viewportSize = visibleCount * metrics.size + Math.max(visibleCount - 1, 0) * metrics.gap;
+
+      if (isDesktopThumbs()) {
+        thumbsWrap.style.height = viewportSize + 'px';
+        thumbsWrap.style.width = metrics.size + 'px';
+      } else {
+        thumbsWrap.style.height = metrics.size + 'px';
+        thumbsWrap.style.width = viewportSize + 'px';
+      }
+
+      thumbsWrap.classList.toggle('is-short', thumbs.length <= VISIBLE_THUMBS);
+    }
+
     function updateCounter(index) {
       if (!counter) return;
       counter.textContent = (index + 1) + ' / ' + slides.length;
@@ -39,13 +69,33 @@
 
     function scrollThumbIntoView(index) {
       if (!thumbsWrap || !thumbs[index]) return;
+
       var thumb = thumbs[index];
-      if (window.matchMedia('(min-width: 990px)').matches) {
-        var offset = thumb.offsetTop - thumbsWrap.clientHeight / 2 + thumb.clientHeight / 2;
-        thumbsWrap.scrollTo({ top: offset, behavior: 'smooth' });
+
+      if (isDesktopThumbs()) {
+        var viewport = thumbsWrap.clientHeight;
+        var thumbTop = thumb.offsetTop;
+        var thumbBottom = thumbTop + thumb.offsetHeight;
+        var scrollTop = thumbsWrap.scrollTop;
+        var scrollBottom = scrollTop + viewport;
+
+        if (thumbTop < scrollTop) {
+          thumbsWrap.scrollTo({ top: thumbTop, behavior: 'smooth' });
+        } else if (thumbBottom > scrollBottom) {
+          thumbsWrap.scrollTo({ top: thumbBottom - viewport, behavior: 'smooth' });
+        }
       } else {
-        var left = thumb.offsetLeft - thumbsWrap.clientWidth / 2 + thumb.clientWidth / 2;
-        thumbsWrap.scrollTo({ left: left, behavior: 'smooth' });
+        var viewportWidth = thumbsWrap.clientWidth;
+        var thumbLeft = thumb.offsetLeft;
+        var thumbRight = thumbLeft + thumb.offsetWidth;
+        var scrollLeft = thumbsWrap.scrollLeft;
+        var scrollRight = scrollLeft + viewportWidth;
+
+        if (thumbLeft < scrollLeft) {
+          thumbsWrap.scrollTo({ left: thumbLeft, behavior: 'smooth' });
+        } else if (thumbRight > scrollRight) {
+          thumbsWrap.scrollTo({ left: thumbRight - viewportWidth, behavior: 'smooth' });
+        }
       }
     }
 
@@ -183,8 +233,12 @@
     }
 
     updateCounter(current);
+    syncThumbViewport();
+    scrollThumbIntoView(current);
     setAutoplayUi(true);
     startAutoplay();
+
+    window.addEventListener('resize', syncThumbViewport);
   }
 
   function init(root) {

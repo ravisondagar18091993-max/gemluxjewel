@@ -137,8 +137,11 @@
 
 /* Gallery — vertical thumb slider */
 .gemluxjewel-pdp-media {
+  --pdp-media-thumb-size: 72px;
+  --pdp-media-thumb-gap: 10px;
+  --pdp-media-thumb-visible: 4;
   display: flex;
-  align-items: stretch;
+  align-items: center;
   gap: 12px;
   min-width: 0;
 }
@@ -146,14 +149,23 @@
 .gemluxjewel-pdp-media__thumbs {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  flex: 0 0 72px;
-  width: 72px;
-  max-height: min(560px, 70vh);
+  gap: var(--pdp-media-thumb-gap);
+  flex: 0 0 var(--pdp-media-thumb-size);
+  width: var(--pdp-media-thumb-size);
+  height: calc(
+    var(--pdp-media-thumb-visible) * var(--pdp-media-thumb-size) +
+    (var(--pdp-media-thumb-visible) - 1) * var(--pdp-media-thumb-gap)
+  );
+  align-self: center;
   overflow-x: hidden;
   overflow-y: auto;
+  scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: rgba(20, 20, 20, 0.25) transparent;
+}
+
+.gemluxjewel-pdp-media__thumbs.is-short {
+  overflow-y: hidden;
 }
 
 .gemluxjewel-pdp-media__thumbs::-webkit-scrollbar {
@@ -168,8 +180,8 @@
 .gemluxjewel-pdp-media__thumb {
   position: relative;
   flex-shrink: 0;
-  width: 72px;
-  height: 72px;
+  width: var(--pdp-media-thumb-size);
+  height: var(--pdp-media-thumb-size);
   padding: 0;
   border: 2px solid transparent;
   border-radius: 4px;
@@ -359,22 +371,35 @@
 @media (max-width: 989px) {
   .gemluxjewel-pdp-media {
     flex-direction: column-reverse;
+    align-items: stretch;
     gap: 14px;
+  }
+
+  .gemluxjewel-pdp-media {
+    --pdp-media-thumb-size: 64px;
+    --pdp-media-thumb-gap: 8px;
   }
 
   .gemluxjewel-pdp-media__thumbs {
     flex: 0 0 auto;
     flex-direction: row;
-    width: 100%;
-    max-height: none;
+    align-self: center;
+    width: min(
+      100%,
+      calc(
+        var(--pdp-media-thumb-visible) * var(--pdp-media-thumb-size) +
+        (var(--pdp-media-thumb-visible) - 1) * var(--pdp-media-thumb-gap)
+      )
+    );
+    height: var(--pdp-media-thumb-size);
     overflow-x: auto;
     overflow-y: hidden;
     padding-bottom: 2px;
   }
 
   .gemluxjewel-pdp-media__thumb {
-    width: 64px;
-    height: 64px;
+    width: var(--pdp-media-thumb-size);
+    height: var(--pdp-media-thumb-size);
   }
 
   .gemluxjewel-pdp-media__nav {

@@ -1,10 +1,18 @@
 # Demo PDP Product Import
 
-Import this file in **Shopify Admin → Products → Import** to create a product with full DiamondRensu-style variants:
+Import this file in **Shopify Admin → Products → Import** to create demo products with full PDP-style variants:
 
 - **File:** `data/demo-pdp-product.csv`
-- **Handle:** `nature-inspired-dutch-marquise-demo`
-- **275 variants** covering:
+
+## Products included
+
+| Handle | Title | Variants | Price (from) |
+|--------|-------|----------|--------------|
+| `nature-inspired-dutch-marquise-demo` | Nature Inspired Engagement Ring Using Dutch Marquise Diamond (Demo) | 275 | $994.00 |
+| `0-5-carat-round-moissanite-solitaire-demo` | 0.5 Carat Round Moissanite Solitaire Ring With Side Stones (Demo) | 275 | $129.00 |
+| `emerald-bezel-solitaire-ring-demo` | Emerald Cut Bezel Solitaire Engagement Ring (Demo) | 275 | $1,895.00 |
+
+**825 total variant rows** across 3 demo products, each covering:
   - Metal Type: Silver, Gold, Platinum
   - Karat: Standard (Silver/Platinum), 10K / 14K / 18K (Gold)
   - Metal Color: Standard (Silver/Platinum), White / Yellow / Rose Gold

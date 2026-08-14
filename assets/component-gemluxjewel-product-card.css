@@ -100,25 +100,8 @@
   top: 12px;
   left: 12px;
   right: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   z-index: 2;
   pointer-events: none;
-}
-
-.gemluxjewel-card__top a {
-  pointer-events: auto;
-}
-
-.gemluxjewel-card__heart {
-  width: 22px;
-  display: block;
-}
-
-.gemluxjewel-card__heart img {
-  width: 22px;
-  height: auto;
 }
 
 .gemluxjewel-card__basket {
@@ -198,10 +181,6 @@
     top: 8px;
     left: 8px;
     right: 8px;
-  }
-
-  .gemluxjewel-card__heart img {
-    width: 18px;
   }
 
   .gemluxjewel-card__row {

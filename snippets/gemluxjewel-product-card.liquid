@@ -56,16 +56,11 @@
       {%- endif -%}
     </a>
 
-    <div class="gemluxjewel-card__top">
-      {%- if badge_text != blank -%}
+    {%- if badge_text != blank -%}
+      <div class="gemluxjewel-card__top">
         <span class="gemluxjewel-badge">{{ badge_text }}</span>
-      {%- else -%}
-        <span aria-hidden="true"></span>
-      {%- endif -%}
-      <a href="#" class="gemluxjewel-card__heart" aria-label="Wishlist">
-        <img src="{{ 'heart.svg' | asset_url }}" alt="" width="22" height="22">
-      </a>
-    </div>
+      </div>
+    {%- endif -%}
 
     <a href="{{ product.url | default: '#' }}" class="gemluxjewel-card__basket" aria-label="View product">
       <img src="{{ 'basket.svg' | asset_url }}" alt="" width="24" height="24">
