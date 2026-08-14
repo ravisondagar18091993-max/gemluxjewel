@@ -13,6 +13,7 @@
       "type": "gemluxjewel-hero",
       "settings": {
         "media_type": "video",
+        "image": "shopify://shop_images/ChatGPT_Image_Aug_10_2026_12_25_11_PM.png",
         "video": "shopify://files/videos/Woman_wearing_jewelry_indoors_1080p_202608061709_gwr_video_mvp.mp4",
         "prefix": "Engagement Rings",
         "title": "A Shift in Perspective",
