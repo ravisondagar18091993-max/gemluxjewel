@@ -1529,7 +1529,7 @@
 /* ── Testimonials (Trustpilot-style slider) ── */
 .gemluxjewel-testimonials {
   background: #808000;
-  padding: 80px 0 100px;
+  padding: 60px 0 60px;
 }
 
 .gemluxjewel-testimonials__header {
@@ -1592,7 +1592,7 @@
 @media (min-width: 990px) {
   .gemluxjewel-testimonials__card {
     flex: 0 0 calc((100% - 36px) / 4);
-    min-height: 300px;
+    min-height: 250px;
   }
 }
 
