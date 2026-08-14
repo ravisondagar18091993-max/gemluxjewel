@@ -35,33 +35,6 @@
             "link": ""
           }
         },
-        "shape_dX4KQk": {
-          "type": "shape",
-          "settings": {
-            "title": "Round",
-            "image": "shopify://shop_images/Princecs_shape_diamond_png.png",
-            "collection": "",
-            "link": ""
-          }
-        },
-        "shape_VwCLPd": {
-          "type": "shape",
-          "settings": {
-            "title": "Round",
-            "image": "shopify://shop_images/rediant_shape_diamond.png",
-            "collection": "",
-            "link": ""
-          }
-        },
-        "s1": {
-          "type": "shape",
-          "settings": {
-            "title": "Round",
-            "image": "shopify://shop_images/round.avif",
-            "collection": "",
-            "link": ""
-          }
-        },
         "s2": {
           "type": "shape",
           "settings": {
@@ -146,9 +119,6 @@
       },
       "block_order": [
         "shape_tYFh6K",
-        "shape_dX4KQk",
-        "shape_VwCLPd",
-        "s1",
         "s2",
         "s3",
         "s4",
