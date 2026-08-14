@@ -26,6 +26,33 @@
     "gemluxjewel_stone_shapes": {
       "type": "gemluxjewel-stone-shapes",
       "blocks": {
+        "shape_x9kzqP": {
+          "type": "shape",
+          "settings": {
+            "title": "Roundfgf",
+            "image": "shopify://shop_images/emerald_shape_diamond_png.png",
+            "collection": "",
+            "link": ""
+          }
+        },
+        "shape_QaejrV": {
+          "type": "shape",
+          "settings": {
+            "title": "Round",
+            "image": "shopify://shop_images/round_shape_diamond_png.png",
+            "collection": "",
+            "link": ""
+          }
+        },
+        "shape_rEeQiF": {
+          "type": "shape",
+          "settings": {
+            "title": "Round",
+            "image": "shopify://shop_images/cushion_shape_diamond.png",
+            "collection": "",
+            "link": ""
+          }
+        },
         "shape_L68FYp": {
           "type": "shape",
           "settings": {
@@ -116,6 +143,15 @@
             "link": ""
           }
         },
+        "s10": {
+          "type": "shape",
+          "settings": {
+            "title": "Heart",
+            "image": "shopify://shop_images/heart_shape_diamond.png",
+            "collection": "",
+            "link": ""
+          }
+        },
         "s8": {
           "type": "shape",
           "settings": {
@@ -133,18 +169,12 @@
             "collection": "",
             "link": ""
           }
-        },
-        "s10": {
-          "type": "shape",
-          "settings": {
-            "title": "Heart",
-            "image": "shopify://shop_images/heart_shape_diamond.png",
-            "collection": "",
-            "link": ""
-          }
         }
       },
       "block_order": [
+        "shape_x9kzqP",
+        "shape_QaejrV",
+        "shape_rEeQiF",
         "shape_L68FYp",
         "shape_f6hc4E",
         "shape_qcV7n6",
@@ -155,9 +185,9 @@
         "s5",
         "s6",
         "s7",
+        "s10",
         "s8",
-        "s9",
-        "s10"
+        "s9"
       ],
       "settings": {
         "title": "Shop by Stone Shape",
