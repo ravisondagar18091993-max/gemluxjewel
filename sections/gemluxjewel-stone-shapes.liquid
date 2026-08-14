@@ -27,6 +27,9 @@
     assign use_filter_shapes = true
   endif
 
+  assign metaobject_type = section.settings.metaobject_type | default: 'stone_shape'
+  assign use_metaobjects = section.settings.use_metaobjects
+
   assign shape_image_sizes = '(min-width: 1200px) 180px, (min-width: 750px) 160px, 110px'
 -%}
 
@@ -43,7 +46,7 @@
       </div>
     </div>
 
-    {%- if use_filter_shapes or section.blocks.size > 0 -%}
+    {%- if use_metaobjects or use_filter_shapes or section.blocks.size > 0 -%}
       <div class="gemluxjewel-stone-shapes__slider" data-gemluxjewel-stone-shapes-slider>
         <button
           type="button"
@@ -57,131 +60,16 @@
 
         <div class="gemluxjewel-stone-shapes__viewport">
           <div class="gemluxjewel-stone-shapes__track" data-gemluxjewel-stone-shapes-track>
-            {%- if use_filter_shapes -%}
-              {%- for value in stone_shape_filter.values -%}
-                {%- liquid
-                  assign shape_title = value.label
-                  assign shape_label_key = shape_title | downcase | strip
-                  assign shape_image = blank
-                  assign shape_url = products_collection.url | append: '?' | append: value.param_name | append: '=' | append: value.value | url_param_escape
-                  assign block_attributes = blank
-
-                  for block in section.blocks
-                    assign block_title_key = block.settings.title | downcase | strip
-                    if block_title_key == shape_label_key
-                      if block.settings.image != blank
-                        assign shape_image = block.settings.image
-                      endif
-                      assign block_attributes = block.shopify_attributes
-                      break
-                    endif
-                  endfor
-                -%}
-
-                <a href="{{ shape_url }}" class="gemluxjewel-stone-shapes__item" {{ block_attributes }}>
-                  <div class="gemluxjewel-stone-shapes__img">
-                    {%- if shape_image != blank -%}
-                      {{
-                        shape_image
-                        | image_url: width: 800
-                        | image_tag:
-                          widths: '200, 300, 400, 600, 800',
-                          sizes: shape_image_sizes,
-                          loading: 'lazy',
-                          alt: shape_title
-                      }}
-                    {%- else -%}
-                      {% render 'gemluxjewel-theme-image',
-                        use_store_media: true,
-                        seed: forloop.index,
-                        width: 400,
-                        widths: '200,300,400,600',
-                        sizes: shape_image_sizes,
-                        alt: shape_title,
-                        class: 'gemluxjewel-stone-shapes__fallback'
-                      %}
-                    {%- endif -%}
-                  </div>
-                  <span class="gemluxjewel-stone-shapes__label">{{ shape_title | escape }}</span>
-                </a>
-              {%- endfor -%}
-            {%- else -%}
-              {%- for block in section.blocks -%}
-                {%- liquid
-                  assign shape_title = block.settings.title
-                  assign shape_collection = block.settings.collection
-                  assign shape_image = block.settings.image
-
-                  if shape_title == blank and shape_collection != blank
-                    assign shape_title = shape_collection.title
-                  endif
-
-                  if shape_image == blank and shape_collection != blank
-                    assign shape_image = shape_collection.featured_image
-                  endif
-
-                  assign shape_url = block.settings.link
-                  if shape_url == blank and shape_collection != blank
-                    assign shape_url = shape_collection.url
-                  endif
-
-                  if shape_url == blank and shape_title != blank and products_collection != blank
-                    for filter in products_collection.filters
-                      assign filter_label = filter.label | downcase
-                      assign filter_param = filter.param_name | downcase
-                      if filter_param contains 'stone-shape' or filter_param contains 'stone_shape' or filter_label == filter_label_setting
-                        for value in filter.values
-                          assign value_label_key = value.label | downcase | strip
-                          assign shape_title_key = shape_title | downcase | strip
-                          if value_label_key == shape_title_key
-                            assign shape_url = products_collection.url | append: '?' | append: value.param_name | append: '=' | append: value.value | url_param_escape
-                            break
-                          endif
-                        endfor
-                        break
-                      endif
-                    endfor
-                  endif
-                -%}
-
-                {%- if shape_url != blank -%}
-                  <a href="{{ shape_url }}" class="gemluxjewel-stone-shapes__item" {{ block.shopify_attributes }}>
-                {%- else -%}
-                  <div class="gemluxjewel-stone-shapes__item gemluxjewel-stone-shapes__item--static" {{ block.shopify_attributes }}>
-                {%- endif -%}
-                  <div class="gemluxjewel-stone-shapes__img">
-                    {%- if shape_image != blank -%}
-                      {{
-                        shape_image
-                        | image_url: width: 800
-                        | image_tag:
-                          widths: '200, 300, 400, 600, 800',
-                          sizes: shape_image_sizes,
-                          loading: 'lazy',
-                          alt: shape_title
-                      }}
-                    {%- else -%}
-                      {% render 'gemluxjewel-theme-image',
-                        use_store_media: true,
-                        seed: forloop.index,
-                        width: 400,
-                        widths: '200,300,400,600',
-                        sizes: shape_image_sizes,
-                        alt: shape_title,
-                        class: 'gemluxjewel-stone-shapes__fallback'
-                      %}
-                    {%- endif -%}
-                  </div>
-                  {%- if shape_title != blank -%}
-                    <span class="gemluxjewel-stone-shapes__label">{{ shape_title | escape }}</span>
-                  {%- endif -%}
-                {%- if shape_url != blank -%}
-                  </a>
-                {%- else -%}
-                  </div>
-                {%- endif -%}
-              {%- endfor -%}
-            {%- endif -%}
+            {% render 'gemluxjewel-stone-shapes-items',
+              section: section,
+              target_collection: products_collection,
+              stone_shape_filter: stone_shape_filter,
+              use_metaobjects: use_metaobjects,
+              metaobject_type: metaobject_type,
+              use_filter_shapes: use_filter_shapes,
+              item_modifier: '',
+              shape_image_sizes: shape_image_sizes
+            %}
           </div>
         </div>
 
@@ -195,10 +83,15 @@
         </button>
       </div>
 
-      {%- if section.settings.auto_fetch_shapes and stone_shape_filter == blank -%}
+      {%- if section.settings.auto_fetch_shapes and use_metaobjects == false and stone_shape_filter == blank -%}
         <p class="gemluxjewel-stone-shapes__notice">
           Enable the <strong>Stone shape</strong> category metafield filter in
           <strong>Search &amp; Discovery</strong> to load shapes automatically, or assign collections to each block.
+        </p>
+      {%- elsif section.settings.use_metaobjects and shop.metaobjects[metaobject_type] == blank -%}
+        <p class="gemluxjewel-stone-shapes__notice">
+          No metaobject type <strong>{{ metaobject_type }}</strong> found. Check the type handle under
+          <strong>Settings → Custom data → Metaobjects</strong>, or turn off “Load from metaobjects”.
         </p>
       {%- endif -%}
     {%- endif -%}
@@ -230,7 +123,21 @@
     },
     {
       "type": "paragraph",
-      "content": "Shapes are loaded from your Shopify category metafield filter (Stone shape). Enable it in Search & Discovery → Filters, then assign stone shapes on products."
+      "content": "By default, shapes load from your Stone shape metaobjects (Settings → Custom data). Fallback: Shopify category filter from Search & Discovery."
+    },
+    {
+      "type": "checkbox",
+      "id": "use_metaobjects",
+      "label": "Load shapes from metaobjects",
+      "default": true,
+      "info": "Shows each metaobject entry (Cushion Cut, Princess Cut, etc.). Turn off to use the Shopify Stone shape filter instead."
+    },
+    {
+      "type": "text",
+      "id": "metaobject_type",
+      "label": "Metaobject type handle",
+      "default": "stone_shape",
+      "info": "The type handle from Settings → Custom data → Metaobjects (e.g. stone_shape)."
     },
     {
       "type": "collection",
@@ -263,7 +170,7 @@
           "id": "title",
           "label": "Shape name",
           "default": "Round",
-          "info": "Must match the category metafield value, e.g. Marquise, Round, Oval."
+          "info": "Must match the category metafield value or metaobject display name, e.g. Marquise Cut, Round, Cushion Cut."
         },
         {
           "type": "image_picker",

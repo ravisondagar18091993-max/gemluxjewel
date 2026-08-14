@@ -1,0 +1,260 @@
+{%- comment -%}
+  Stone shape slider items — from metaobjects, category filter, or section blocks.
+  @param section {Section}
+  @param target_collection {Collection} — link destination collection
+  @param stone_shape_filter {Filter} — optional Shopify Stone shape filter for URLs
+  @param use_metaobjects {Boolean}
+  @param metaobject_type {String}
+  @param use_filter_shapes {Boolean}
+  @param item_modifier {String} — e.g. '--plp'
+  @param shape_image_sizes {String}
+{%- endcomment -%}
+
+{%- liquid
+  assign item_class = 'gemluxjewel-stone-shapes__item'
+  if item_modifier != blank
+    assign item_class = item_class | append: ' gemluxjewel-stone-shapes__item' | append: item_modifier
+  endif
+
+  assign img_class = 'gemluxjewel-stone-shapes__img'
+  if item_modifier != blank
+    assign img_class = img_class | append: ' gemluxjewel-stone-shapes__img' | append: item_modifier
+  endif
+
+  assign label_class = 'gemluxjewel-stone-shapes__label'
+  if item_modifier != blank
+    assign label_class = label_class | append: ' gemluxjewel-stone-shapes__label' | append: item_modifier
+  endif
+
+  assign metaobject_entries = blank
+  if use_metaobjects and metaobject_type != blank
+    assign metaobject_definition = shop.metaobjects[metaobject_type]
+    if metaobject_definition != blank
+      assign metaobject_entries = metaobject_definition.values
+    endif
+  endif
+
+  assign use_metaobject_shapes = false
+  if metaobject_entries != blank and metaobject_entries.size > 0
+    assign use_metaobject_shapes = true
+  endif
+-%}
+
+{%- if use_metaobject_shapes -%}
+  {%- for entry in metaobject_entries -%}
+    {%- liquid
+      assign shape_title = blank
+      if entry.display_name.value != blank
+        assign shape_title = entry.display_name.value
+      elsif entry.name.value != blank
+        assign shape_title = entry.name.value
+      else
+        assign shape_title = entry.system.handle | replace: '-', ' '
+      endif
+
+      assign shape_label_key = shape_title | downcase | strip
+      assign shape_image = blank
+      assign shape_url = target_collection.url
+      assign block_attributes = blank
+      assign filter_match = blank
+      assign base_shape = entry.base_stone_shape.value | default: ''
+
+      if entry.image.value != blank
+        assign shape_image = entry.image.value
+      elsif entry.icon.value != blank
+        assign shape_image = entry.icon.value
+      endif
+
+      for block in section.blocks
+        if block.type != 'shape'
+          continue
+        endif
+
+        assign block_title_key = block.settings.title | downcase | strip
+        if block_title_key == shape_label_key
+          if block.settings.image != blank
+            assign shape_image = block.settings.image
+          endif
+          assign block_attributes = block.shopify_attributes
+          break
+        endif
+      endfor
+
+      if stone_shape_filter != blank
+        for value in stone_shape_filter.values
+          assign value_key = value.label | downcase | strip
+          if value_key == shape_label_key
+            assign filter_match = value
+            break
+          endif
+        endfor
+
+        if filter_match == blank and base_shape != blank
+          assign base_key = base_shape | downcase | strip
+          for value in stone_shape_filter.values
+            assign value_key = value.label | downcase | strip
+            if value_key == base_key
+              assign filter_match = value
+              break
+            endif
+          endfor
+        endif
+      endif
+
+      if filter_match != blank
+        assign shape_url = target_collection.url | append: '?' | append: filter_match.param_name | append: '=' | append: filter_match.value | url_param_escape
+      endif
+    -%}
+
+    <a href="{{ shape_url }}" class="{{ item_class }}" {{ block_attributes }}>
+      <div class="{{ img_class }}">
+        {%- if shape_image != blank -%}
+          {{
+            shape_image
+            | image_url: width: 800
+            | image_tag:
+              widths: '200, 300, 400, 600, 800',
+              sizes: shape_image_sizes,
+              loading: 'lazy',
+              alt: shape_title
+          }}
+        {%- else -%}
+          {% render 'gemluxjewel-theme-image',
+            use_store_media: true,
+            seed: forloop.index,
+            width: 400,
+            widths: '200,300,400,600',
+            sizes: shape_image_sizes,
+            alt: shape_title,
+            class: 'gemluxjewel-stone-shapes__fallback'
+          %}
+        {%- endif -%}
+      </div>
+      <span class="{{ label_class }}">{{ shape_title | escape }}</span>
+    </a>
+  {%- endfor -%}
+{%- elsif use_filter_shapes -%}
+  {%- for value in stone_shape_filter.values -%}
+    {%- liquid
+      assign shape_title = value.label
+      assign shape_label_key = shape_title | downcase | strip
+      assign shape_image = blank
+      assign shape_url = target_collection.url | append: '?' | append: value.param_name | append: '=' | append: value.value | url_param_escape
+      assign block_attributes = blank
+
+      for block in section.blocks
+        if block.type != 'shape'
+          continue
+        endif
+
+        assign block_title_key = block.settings.title | downcase | strip
+        if block_title_key == shape_label_key
+          if block.settings.image != blank
+            assign shape_image = block.settings.image
+          endif
+          assign block_attributes = block.shopify_attributes
+          break
+        endif
+      endfor
+    -%}
+
+    <a href="{{ shape_url }}" class="{{ item_class }}" {{ block_attributes }}>
+      <div class="{{ img_class }}">
+        {%- if shape_image != blank -%}
+          {{
+            shape_image
+            | image_url: width: 800
+            | image_tag:
+              widths: '200, 300, 400, 600, 800',
+              sizes: shape_image_sizes,
+              loading: 'lazy',
+              alt: shape_title
+          }}
+        {%- else -%}
+          {% render 'gemluxjewel-theme-image',
+            use_store_media: true,
+            seed: forloop.index,
+            width: 400,
+            widths: '200,300,400,600',
+            sizes: shape_image_sizes,
+            alt: shape_title,
+            class: 'gemluxjewel-stone-shapes__fallback'
+          %}
+        {%- endif -%}
+      </div>
+      <span class="{{ label_class }}">{{ shape_title | escape }}</span>
+    </a>
+  {%- endfor -%}
+{%- else -%}
+  {%- for block in section.blocks -%}
+    {%- if block.type != 'shape' -%}
+      {%- continue -%}
+    {%- endif -%}
+    {%- liquid
+      assign shape_title = block.settings.title
+      assign shape_collection = block.settings.collection
+      assign shape_image = block.settings.image
+
+      if shape_title == blank and shape_collection != blank
+        assign shape_title = shape_collection.title
+      endif
+
+      if shape_image == blank and shape_collection != blank
+        assign shape_image = shape_collection.featured_image
+      endif
+
+      assign shape_url = block.settings.link
+      if shape_url == blank and shape_collection != blank
+        assign shape_url = shape_collection.url
+      endif
+
+      if shape_url == blank and shape_title != blank and stone_shape_filter != blank
+        assign shape_title_key = shape_title | downcase | strip
+        for value in stone_shape_filter.values
+          assign value_label_key = value.label | downcase | strip
+          if value_label_key == shape_title_key
+            assign shape_url = target_collection.url | append: '?' | append: value.param_name | append: '=' | append: value.value | url_param_escape
+            break
+          endif
+        endfor
+      endif
+    -%}
+
+    {%- if shape_url != blank -%}
+      <a href="{{ shape_url }}" class="{{ item_class }}" {{ block.shopify_attributes }}>
+    {%- else -%}
+      <div class="{{ item_class }} gemluxjewel-stone-shapes__item--static" {{ block.shopify_attributes }}>
+    {%- endif -%}
+      <div class="{{ img_class }}">
+        {%- if shape_image != blank -%}
+          {{
+            shape_image
+            | image_url: width: 800
+            | image_tag:
+              widths: '200, 300, 400, 600, 800',
+              sizes: shape_image_sizes,
+              loading: 'lazy',
+              alt: shape_title
+          }}
+        {%- else -%}
+          {% render 'gemluxjewel-theme-image',
+            use_store_media: true,
+            seed: forloop.index,
+            width: 400,
+            widths: '200,300,400,600',
+            sizes: shape_image_sizes,
+            alt: shape_title,
+            class: 'gemluxjewel-stone-shapes__fallback'
+          %}
+        {%- endif -%}
+      </div>
+      {%- if shape_title != blank -%}
+        <span class="{{ label_class }}">{{ shape_title | escape }}</span>
+      {%- endif -%}
+    {%- if shape_url != blank -%}
+      </a>
+    {%- else -%}
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
