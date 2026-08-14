@@ -39,6 +39,7 @@
           "type": "shape",
           "settings": {
             "title": "Round",
+            "image": "shopify://shop_images/Princecs_shape_diamond_png.png",
             "collection": "",
             "link": ""
           }
@@ -47,6 +48,7 @@
           "type": "shape",
           "settings": {
             "title": "Round",
+            "image": "shopify://shop_images/rediant_shape_diamond.png",
             "collection": "",
             "link": ""
           }
@@ -118,6 +120,7 @@
           "type": "shape",
           "settings": {
             "title": "Asscher",
+            "image": "shopify://shop_images/marquiese_shape_diamond.png",
             "collection": "",
             "link": ""
           }
