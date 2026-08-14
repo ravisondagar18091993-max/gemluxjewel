@@ -1582,12 +1582,12 @@
   letter-spacing: 0.08em;
   font-weight: 600;
   text-transform: uppercase;
-  color: #808000;
+  color: #101010;
 }
 
 .gemluxjewel-custom-faq__accordion .accordion-close {
   flex-shrink: 0;
-  color: #808000;
+  color: #101010;
   transition: transform 0.25s ease;
 }
 
