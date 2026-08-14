@@ -1067,6 +1067,8 @@ class VariantSelects extends HTMLElement {
 
   connectedCallback() {
     this.addEventListener('change', (event) => {
+      if (event.target.matches('[data-gemluxjewel-pdp-gold-grid]')) return;
+
       const target = this.getInputForEventTarget(event.target);
       this.updateSelectionMetadata(event);
 

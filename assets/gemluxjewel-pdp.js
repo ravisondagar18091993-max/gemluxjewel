@@ -35,6 +35,58 @@
     return null;
   }
 
+  function getGoldSelectionKey(picker) {
+    return picker.dataset.productHandle || picker.getAttribute('data-product-handle') || '';
+  }
+
+  function saveGoldSelection(picker, value) {
+    if (!value) return;
+
+    picker.dataset.gemluxjewelPdpGoldValue = value;
+
+    if (picker.dataset.gemluxjewelPdpDemo === 'true') return;
+
+    var handle = getGoldSelectionKey(picker);
+    if (!handle) return;
+
+    try {
+      sessionStorage.setItem('gemluxjewel_pdp_gold_' + handle, value);
+    } catch (error) {
+      /* ignore storage errors */
+    }
+  }
+
+  function readGoldSelection(picker) {
+    if (picker.dataset.gemluxjewelPdpGoldValue) {
+      return picker.dataset.gemluxjewelPdpGoldValue;
+    }
+
+    var handle = getGoldSelectionKey(picker);
+    if (!handle) return '';
+
+    try {
+      return sessionStorage.getItem('gemluxjewel_pdp_gold_' + handle) || '';
+    } catch (error) {
+      return '';
+    }
+  }
+
+  function restoreGoldSelection(picker) {
+    if (picker.dataset.gemluxjewelPdpDemo === 'true') return;
+    if (!isGoldMetal(getCheckedMetalTab(picker))) return;
+
+    var value = readGoldSelection(picker);
+    if (!value) return;
+
+    var gridInputs = picker.querySelectorAll('[data-gemluxjewel-pdp-gold-grid]');
+    for (var i = 0; i < gridInputs.length; i++) {
+      if (gridInputs[i].value === value) {
+        gridInputs[i].checked = true;
+        break;
+      }
+    }
+  }
+
   function syncGoldGridToRadios(picker, gridInput) {
     var hiddenWrap = picker.querySelector('[data-gemluxjewel-pdp-gold-radios]');
     if (!hiddenWrap || !gridInput) return;
@@ -53,6 +105,20 @@
       colorRadio.checked = true;
       colorRadio.dispatchEvent(new Event('change', { bubbles: true }));
     }
+  }
+
+  function syncGoldGridToRadiosSilent(picker, gridInput) {
+    var hiddenWrap = picker.querySelector('[data-gemluxjewel-pdp-gold-radios]');
+    if (!hiddenWrap || !gridInput) return;
+
+    var karat = gridInput.getAttribute('data-karat-value') || (gridInput.value.split('|')[0] || '');
+    var color = gridInput.getAttribute('data-color-value') || (gridInput.value.split('|')[1] || '');
+
+    var karatRadio = findRadioByValue(hiddenWrap, '[data-gemluxjewel-pdp-karat]', karat);
+    var colorRadio = findRadioByValue(hiddenWrap, '[data-gemluxjewel-pdp-color]', color);
+
+    if (karatRadio) karatRadio.checked = true;
+    if (colorRadio) colorRadio.checked = true;
   }
 
   function syncGoldGridFromRadios(picker) {
@@ -92,9 +158,16 @@
     }
 
     if (showGold) {
-      syncGoldGridFromRadios(picker);
-      var checkedGrid = picker.querySelector('[data-gemluxjewel-pdp-gold-grid]:checked');
-      if (checkedGrid) syncGoldGridToRadios(picker, checkedGrid);
+      var hiddenWrap = picker.querySelector('[data-gemluxjewel-pdp-gold-radios]');
+      var hasHiddenKarat = hiddenWrap && hiddenWrap.querySelector('[data-gemluxjewel-pdp-karat]');
+
+      if (hasHiddenKarat) {
+        syncGoldGridFromRadios(picker);
+        var checkedGrid = picker.querySelector('[data-gemluxjewel-pdp-gold-grid]:checked');
+        if (checkedGrid) syncGoldGridToRadiosSilent(picker, checkedGrid);
+      } else {
+        restoreGoldSelection(picker);
+      }
     } else {
       selectNaOption(picker, '[data-gemluxjewel-pdp-karat]');
       selectNaOption(picker, '[data-gemluxjewel-pdp-color]');
@@ -126,8 +199,16 @@
       return;
     }
 
-    if (target.matches('[data-gemluxjewel-pdp-gold-grid]') && picker.dataset.gemluxjewelPdpDemo !== 'true') {
-      syncGoldGridToRadios(picker, target);
+    if (target.matches('[data-gemluxjewel-pdp-gold-grid]')) {
+      saveGoldSelection(picker, target.value);
+
+      if (picker.dataset.gemluxjewelPdpDemo === 'true') return;
+
+      var hiddenWrap = picker.querySelector('[data-gemluxjewel-pdp-gold-radios]');
+      var hasHiddenKarat = hiddenWrap && hiddenWrap.querySelector('[data-gemluxjewel-pdp-karat]');
+      if (hasHiddenKarat) {
+        syncGoldGridToRadios(picker, target);
+      }
     }
   }
 
