@@ -335,14 +335,14 @@
 
 @media (min-width: 768px) {
   .gemluxjewel-footer__columns {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
 @media (min-width: 990px) {
   .gemluxjewel-footer__columns {
-    grid-template-columns: minmax(0, 1.25fr) repeat(4, minmax(0, 1fr));
-    gap: 24px 20px;
+    grid-template-columns: minmax(0, 1.3fr) repeat(3, minmax(0, 1fr));
+    gap: 24px 32px;
   }
 }
 
@@ -361,7 +361,7 @@
 }
 
 .gemluxjewel-footer__brand {
-  margin-bottom: 24px;
+  margin-bottom: 0;
 }
 
 .gemluxjewel-footer__brand-logo {
