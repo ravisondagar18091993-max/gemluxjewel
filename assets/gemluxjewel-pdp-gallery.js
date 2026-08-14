@@ -13,20 +13,46 @@
     return window.matchMedia('(min-width: 990px)').matches;
   }
 
+  function getSlides(gallery) {
+    return Array.prototype.slice.call(gallery.querySelectorAll('[data-pdp-media-slide]'));
+  }
+
+  function getThumbs(gallery) {
+    return Array.prototype.slice.call(
+      gallery.querySelectorAll('[data-pdp-media-thumbs] .gemluxjewel-pdp-media__thumb')
+    );
+  }
+
+  function getThumbMetrics(gallery) {
+    var styles = window.getComputedStyle(gallery);
+    var size = parseFloat(styles.getPropertyValue('--pdp-media-thumb-size')) || 72;
+    var gap = parseFloat(styles.getPropertyValue('--pdp-media-thumb-gap')) || 10;
+    return { size: size, gap: gap };
+  }
+
+  function getThumbOffset(thumbsWrap, thumb, axis) {
+    var wrapRect = thumbsWrap.getBoundingClientRect();
+    var thumbRect = thumb.getBoundingClientRect();
+
+    if (axis === 'y') {
+      return thumbRect.top - wrapRect.top + thumbsWrap.scrollTop;
+    }
+
+    return thumbRect.left - wrapRect.left + thumbsWrap.scrollLeft;
+  }
+
   function initGallery(root) {
     var gallery = (root || document).querySelector('[data-gemluxjewel-pdp-media]');
     if (!gallery || gallery.dataset.gemluxjewelPdpMediaReady === 'true') return;
     gallery.dataset.gemluxjewelPdpMediaReady = 'true';
 
-    var slides = Array.prototype.slice.call(gallery.querySelectorAll('[data-pdp-media-slide]'));
-    var thumbs = Array.prototype.slice.call(gallery.querySelectorAll('.gemluxjewel-pdp-media__thumb'));
     var prevBtn = gallery.querySelector('[data-pdp-media-prev]');
     var nextBtn = gallery.querySelector('[data-pdp-media-next]');
-    var counter = gallery.querySelector('[data-pdp-media-counter]');
     var autoplayBtn = gallery.querySelector('[data-pdp-media-autoplay]');
     var thumbsWrap = gallery.querySelector('[data-pdp-media-thumbs]');
     var stage = gallery.querySelector('.gemluxjewel-pdp-media__stage');
 
+    var slides = getSlides(gallery);
     if (!slides.length) return;
 
     var current = slides.findIndex(function (slide) {
@@ -37,17 +63,11 @@
     var autoplayTimer = null;
     var autoplayEnabled = slides.length > 1;
 
-    function getThumbMetrics() {
-      var styles = window.getComputedStyle(gallery);
-      var size = parseFloat(styles.getPropertyValue('--pdp-media-thumb-size')) || 72;
-      var gap = parseFloat(styles.getPropertyValue('--pdp-media-thumb-gap')) || 10;
-      return { size: size, gap: gap };
-    }
-
     function syncThumbViewport() {
       if (!thumbsWrap) return;
 
-      var metrics = getThumbMetrics();
+      var thumbs = getThumbs(gallery);
+      var metrics = getThumbMetrics(gallery);
       var visibleCount = Math.min(VISIBLE_THUMBS, thumbs.length);
       var viewportSize = visibleCount * metrics.size + Math.max(visibleCount - 1, 0) * metrics.gap;
 
@@ -63,40 +83,51 @@
     }
 
     function updateCounter(index) {
+      var counter = gallery.querySelector('[data-pdp-media-counter]');
       if (!counter) return;
-      counter.textContent = (index + 1) + ' / ' + slides.length;
+      counter.textContent = index + 1 + ' / ' + getSlides(gallery).length;
     }
 
     function scrollThumbIntoView(index) {
-      if (!thumbsWrap || !thumbs[index]) return;
+      if (!thumbsWrap) return;
 
+      var thumbs = getThumbs(gallery);
       var thumb = thumbs[index];
+      if (!thumb) return;
 
       if (isDesktopThumbs()) {
         var viewport = thumbsWrap.clientHeight;
-        var thumbTop = thumb.offsetTop;
-        var thumbBottom = thumbTop + thumb.offsetHeight;
-        var scrollTop = thumbsWrap.scrollTop;
-        var scrollBottom = scrollTop + viewport;
+        var metrics = getThumbMetrics(gallery);
+        var thumbTop = getThumbOffset(thumbsWrap, thumb, 'y');
+        var thumbHeight = thumb.offsetHeight;
+        var scrollTarget = thumbTop + thumbHeight / 2 - viewport / 2;
+        var maxScroll = Math.max(0, thumbsWrap.scrollHeight - viewport);
+        scrollTarget = Math.max(0, Math.min(scrollTarget, maxScroll));
 
-        if (thumbTop < scrollTop) {
-          thumbsWrap.scrollTo({ top: thumbTop, behavior: 'smooth' });
-        } else if (thumbBottom > scrollBottom) {
-          thumbsWrap.scrollTo({ top: thumbBottom - viewport, behavior: 'smooth' });
+        if (index > 0 && scrollTarget === 0 && thumbTop > metrics.gap) {
+          scrollTarget = Math.min(thumbTop - metrics.gap, maxScroll);
         }
-      } else {
-        var viewportWidth = thumbsWrap.clientWidth;
-        var thumbLeft = thumb.offsetLeft;
-        var thumbRight = thumbLeft + thumb.offsetWidth;
-        var scrollLeft = thumbsWrap.scrollLeft;
-        var scrollRight = scrollLeft + viewportWidth;
 
-        if (thumbLeft < scrollLeft) {
-          thumbsWrap.scrollTo({ left: thumbLeft, behavior: 'smooth' });
-        } else if (thumbRight > scrollRight) {
-          thumbsWrap.scrollTo({ left: thumbRight - viewportWidth, behavior: 'smooth' });
-        }
+        thumbsWrap.scrollTo({ top: scrollTarget, behavior: 'smooth' });
+        return;
       }
+
+      var viewportWidth = thumbsWrap.clientWidth;
+      var thumbLeft = getThumbOffset(thumbsWrap, thumb, 'x');
+      var thumbWidth = thumb.offsetWidth;
+      var scrollLeftTarget = thumbLeft + thumbWidth / 2 - viewportWidth / 2;
+      var maxScrollLeft = Math.max(0, thumbsWrap.scrollWidth - viewportWidth);
+      scrollLeftTarget = Math.max(0, Math.min(scrollLeftTarget, maxScrollLeft));
+      thumbsWrap.scrollTo({ left: scrollLeftTarget, behavior: 'smooth' });
+    }
+
+    function setActiveThumb(index) {
+      getThumbs(gallery).forEach(function (thumb) {
+        var thumbIndex = parseInt(thumb.getAttribute('data-pdp-media-index'), 10);
+        var isActive = thumbIndex === index;
+        thumb.classList.toggle('is-active', isActive);
+        thumb.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
     }
 
     function setAutoplayUi(playing) {
@@ -116,6 +147,7 @@
 
     function startAutoplay() {
       stopAutoplay();
+      slides = getSlides(gallery);
       if (!autoplayEnabled || slides.length <= 1) return;
       autoplayTimer = window.setInterval(function () {
         goTo(current + 1, { fromAutoplay: true });
@@ -124,6 +156,9 @@
 
     function goTo(index, options) {
       options = options || {};
+      slides = getSlides(gallery);
+      if (!slides.length) return;
+
       var nextIndex = index;
       if (nextIndex < 0) nextIndex = slides.length - 1;
       if (nextIndex >= slides.length) nextIndex = 0;
@@ -139,12 +174,7 @@
       slides[current].classList.add('is-active');
       slides[current].hidden = false;
 
-      thumbs.forEach(function (thumb, thumbIndex) {
-        var isActive = thumbIndex === current;
-        thumb.classList.toggle('is-active', isActive);
-        thumb.setAttribute('aria-selected', isActive ? 'true' : 'false');
-      });
-
+      setActiveThumb(current);
       updateCounter(current);
       scrollThumbIntoView(current);
 
@@ -157,32 +187,31 @@
       }
     }
 
-    thumbs.forEach(function (thumb) {
-      thumb.addEventListener('click', function () {
+    gallery.addEventListener('click', function (event) {
+      var thumb = event.target.closest('.gemluxjewel-pdp-media__thumb');
+      if (thumb && gallery.contains(thumb)) {
         var index = parseInt(thumb.getAttribute('data-pdp-media-index'), 10);
         if (!isNaN(index)) {
           stopAutoplay();
           goTo(index);
           if (autoplayBtn && autoplayBtn.classList.contains('is-playing')) startAutoplay();
         }
-      });
-    });
+        return;
+      }
 
-    if (prevBtn) {
-      prevBtn.addEventListener('click', function () {
+      if (event.target.closest('[data-pdp-media-prev]')) {
         stopAutoplay();
         goTo(current - 1);
         if (autoplayBtn && autoplayBtn.classList.contains('is-playing')) startAutoplay();
-      });
-    }
+        return;
+      }
 
-    if (nextBtn) {
-      nextBtn.addEventListener('click', function () {
+      if (event.target.closest('[data-pdp-media-next]')) {
         stopAutoplay();
         goTo(current + 1);
         if (autoplayBtn && autoplayBtn.classList.contains('is-playing')) startAutoplay();
-      });
-    }
+      }
+    });
 
     if (autoplayBtn) {
       autoplayBtn.addEventListener('click', function () {
@@ -234,6 +263,7 @@
 
     updateCounter(current);
     syncThumbViewport();
+    setActiveThumb(current);
     scrollThumbIntoView(current);
     setAutoplayUi(true);
     startAutoplay();

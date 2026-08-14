@@ -21,6 +21,16 @@
   else
     assign metal_values_list = metal_values
   endif
+
+  assign show_gold_panel = demo_mode
+  unless show_gold_panel
+    if metal_option != blank and metal_option.selected_value != blank
+      assign selected_metal_down = metal_option.selected_value | downcase
+      if selected_metal_down == 'gold' or selected_metal_down contains 'gold'
+        assign show_gold_panel = true
+      endif
+    endif
+  endunless
 -%}
 
 <div class="gemluxjewel-pdp__metal-block" data-gemluxjewel-pdp-metal-block>
@@ -70,7 +80,7 @@
     </div>
   </fieldset>
 
-  <div class="gemluxjewel-pdp__gold-options{% unless demo_mode %} is-hidden{% endunless %}" data-gemluxjewel-pdp-gold-panel hidden>
+  <div class="gemluxjewel-pdp__gold-options" data-gemluxjewel-pdp-gold-panel{% unless show_gold_panel %} hidden{% endunless %}>
     {% render 'gemluxjewel-pdp-gold-grid',
       demo_mode: demo_mode,
       section: section,

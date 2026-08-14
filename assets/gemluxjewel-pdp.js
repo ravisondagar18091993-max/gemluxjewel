@@ -83,6 +83,7 @@
     var showGold = isGoldMetal(metal);
 
     panel.hidden = !showGold;
+    panel.classList.toggle('is-hidden', !showGold);
     panel.classList.toggle('is-visible', showGold);
 
     if (picker.dataset.gemluxjewelPdpDemo === 'true') {
@@ -102,30 +103,32 @@
     updateMetalLabel(picker, metal);
   }
 
-  function initPicker(picker) {
-    if (picker.dataset.gemluxjewelPdpReady === 'true') return;
-    picker.dataset.gemluxjewelPdpReady = 'true';
-
-    picker.querySelectorAll('[data-gemluxjewel-pdp-metal-tab]').forEach(function (input) {
-      input.addEventListener('change', function () {
-        syncGoldPanel(picker);
-      });
+  function initPickers(root) {
+    (root || document).querySelectorAll('[data-gemluxjewel-pdp-variant-picker]').forEach(function (picker) {
+      syncGoldPanel(picker);
     });
-
-    picker.querySelectorAll('[data-gemluxjewel-pdp-gold-grid]').forEach(function (input) {
-      input.addEventListener('change', function () {
-        if (picker.dataset.gemluxjewelPdpDemo !== 'true') {
-          syncGoldGridToRadios(picker, input);
-        }
-      });
-    });
-
-    syncGoldPanel(picker);
   }
 
   function init(root) {
-    (root || document).querySelectorAll('[data-gemluxjewel-pdp-variant-picker]').forEach(initPicker);
+    initPickers(root);
     initWishlist(root);
+  }
+
+  function handlePickerChange(event) {
+    var target = event.target;
+    if (!target || !target.matches) return;
+
+    var picker = target.closest('[data-gemluxjewel-pdp-variant-picker]');
+    if (!picker) return;
+
+    if (target.matches('[data-gemluxjewel-pdp-metal-tab]')) {
+      syncGoldPanel(picker);
+      return;
+    }
+
+    if (target.matches('[data-gemluxjewel-pdp-gold-grid]') && picker.dataset.gemluxjewelPdpDemo !== 'true') {
+      syncGoldGridToRadios(picker, target);
+    }
   }
 
   var WISHLIST_STORAGE_KEY = 'gemluxjewel_wishlist';
@@ -231,8 +234,16 @@
     });
   }
 
+  document.addEventListener('change', handlePickerChange);
+
   document.addEventListener('DOMContentLoaded', function () {
     init(document);
+
+    if (typeof subscribe === 'function' && typeof PUB_SUB_EVENTS !== 'undefined') {
+      subscribe(PUB_SUB_EVENTS.variantChange, function () {
+        initPickers(document);
+      });
+    }
   });
 
   document.addEventListener('shopify:section:load', function (event) {
