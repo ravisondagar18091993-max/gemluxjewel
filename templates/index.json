@@ -26,6 +26,15 @@
     "gemluxjewel_stone_shapes": {
       "type": "gemluxjewel-stone-shapes",
       "blocks": {
+        "shape_L68FYp": {
+          "type": "shape",
+          "settings": {
+            "title": "Square",
+            "image": "shopify://shop_images/cushion_shape_diamond.png",
+            "collection": "",
+            "link": ""
+          }
+        },
         "shape_f6hc4E": {
           "type": "shape",
           "settings": {
@@ -136,6 +145,7 @@
         }
       },
       "block_order": [
+        "shape_L68FYp",
         "shape_f6hc4E",
         "shape_qcV7n6",
         "shape_tYFh6K",
