@@ -89,30 +89,6 @@
     <span class="gemluxjewel-card__price">
       {%- if product != blank -%}{{ product.price | money }}{%- else -%}€ 135.00{%- endif -%}
     </span>
-    <div class="gemluxjewel-card__swatches">
-      {%- if product != blank and product.options_by_name['Color'] != blank -%}
-        {%- for value in product.options_by_name['Color'].values limit: 4 -%}
-          {%- assign swatch_key = value | downcase -%}
-          {%- assign swatch_mod = 'gemluxjewel-swatch' -%}
-          {%- if swatch_key contains 'silver' or swatch_key contains 'grey' or swatch_key contains 'gray' or swatch_key contains 'white' or swatch_key contains 'platinum' -%}
-            {%- assign swatch_mod = 'gemluxjewel-swatch gemluxjewel-swatch--gray' -%}
-          {%- endif -%}
-          <span class="{{ swatch_mod }}" title="{{ value | escape }}"><span class="gemluxjewel-swatch__inner"></span></span>
-        {%- endfor -%}
-      {%- elsif product != blank and product.options_by_name['Colour'] != blank -%}
-        {%- for value in product.options_by_name['Colour'].values limit: 4 -%}
-          {%- assign swatch_key = value | downcase -%}
-          {%- assign swatch_mod = 'gemluxjewel-swatch' -%}
-          {%- if swatch_key contains 'silver' or swatch_key contains 'grey' or swatch_key contains 'gray' or swatch_key contains 'white' or swatch_key contains 'platinum' -%}
-            {%- assign swatch_mod = 'gemluxjewel-swatch gemluxjewel-swatch--gray' -%}
-          {%- endif -%}
-          <span class="{{ swatch_mod }}" title="{{ value | escape }}"><span class="gemluxjewel-swatch__inner"></span></span>
-        {%- endfor -%}
-      {%- else -%}
-        <span class="gemluxjewel-swatch"><span class="gemluxjewel-swatch__inner"></span></span>
-        <span class="gemluxjewel-swatch gemluxjewel-swatch--gray"><span class="gemluxjewel-swatch__inner"></span></span>
-      {%- endif -%}
-    </div>
   </div>
   </div>
 </div>
