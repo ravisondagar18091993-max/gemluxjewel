@@ -74,6 +74,10 @@
             assign value_label_key = value.label | downcase | strip
             assign option_image = blank
             assign block_type = 'shape'
+            assign is_shape_filter = false
+            if dropdown_style == 'shape'
+              assign is_shape_filter = true
+            endif
 
             if dropdown_style == 'setting' or dropdown_style == 'ring-design'
               assign block_type = 'setting'
@@ -84,7 +88,7 @@
               assign block_type = 'gemstone'
             endif
 
-            if use_icon_grid
+            if use_icon_grid and is_shape_filter == false
               for block in section_blocks
                 if block.type != block_type
                   continue
@@ -147,7 +151,23 @@
                   {% if is_disabled %}disabled{% endif %}
                 >
                 <span class="gemluxjewel-plp-filter-dropdown__option-icon">
-                  {%- if option_image != blank -%}
+                  {%- if is_shape_filter -%}
+                    {%- capture shape_icon -%}
+                      {% render 'gemluxjewel-stone-shape-icon',
+                        value_label: value.label,
+                        section_blocks: section_blocks,
+                        metaobject_type: section.settings.stone_shape_metaobject_type,
+                        width: 120,
+                        sizes: '56px',
+                        widths: '60, 90, 120'
+                      %}
+                    {%- endcapture -%}
+                    {%- if shape_icon != blank -%}
+                      {{ shape_icon }}
+                    {%- else -%}
+                      <span class="gemluxjewel-plp-filter-dropdown__option-icon-fallback" aria-hidden="true"></span>
+                    {%- endif -%}
+                  {%- elsif option_image != blank -%}
                     {{
                       option_image
                       | image_url: width: 120

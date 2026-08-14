@@ -1,0 +1,128 @@
+{%- comment -%}
+  Stone shape icon for PLP filters — blocks, aliases, then metaobjects.
+  @param value_label {String}
+  @param section_blocks {Array}
+  @param metaobject_type {String}
+  @param width {Number}
+  @param sizes {String}
+  @param widths {String}
+  @param img_class {String}
+{%- endcomment -%}
+
+{%- liquid
+  assign value_label_key = value_label | downcase | strip
+  assign option_image = blank
+  assign mo_type = metaobject_type | default: 'shopify--stone-shape'
+  assign icon_width = width | default: 120
+  assign icon_sizes = sizes | default: '56px'
+  assign icon_widths = widths | default: '60, 90, 120'
+  assign icon_img_class = img_class | default: ''
+
+  for block in section_blocks
+    if block.type != 'shape'
+      continue
+    endif
+    assign block_title_key = block.settings.title | downcase | strip
+    if block_title_key == value_label_key and block.settings.image != blank
+      assign option_image = block.settings.image
+      break
+    endif
+  endfor
+
+  if option_image == blank
+    assign alias_keys = blank
+
+    case value_label_key
+      when 'rectangular'
+        assign alias_keys = 'rectangular|emerald|emerald cut|asscher|asscher cut|radiant|princess|princess cut'
+      when 'other'
+        assign alias_keys = 'other|cushion|cushion cut|radiant|baguette|moval|moval cut'
+      when 'square'
+        assign alias_keys = 'square|princess|princess cut|cushion|cushion cut|asscher|asscher cut'
+      when 'oval'
+        assign alias_keys = 'oval|moval|moval cut'
+      when 'marquise'
+        assign alias_keys = 'marquise|marquise cut'
+      when 'round'
+        assign alias_keys = 'round'
+      when 'pear'
+        assign alias_keys = 'pear'
+      when 'heart'
+        assign alias_keys = 'heart'
+    endcase
+
+    if alias_keys != blank
+      assign alias_array = alias_keys | split: '|'
+      for alias_key in alias_array
+        assign alias_key_clean = alias_key | downcase | strip
+        for block in section_blocks
+          if block.type != 'shape'
+            continue
+          endif
+          assign block_title_key = block.settings.title | downcase | strip
+          if block_title_key == alias_key_clean and block.settings.image != blank
+            assign option_image = block.settings.image
+            break
+          endif
+        endfor
+        if option_image != blank
+          break
+        endif
+      endfor
+    endif
+  endif
+
+  if option_image == blank
+    assign mo_def = shop.metaobjects[mo_type]
+    if mo_def != blank
+      for entry in mo_def.values
+        assign entry_label = entry.label.value | downcase | strip
+        assign base_label = blank
+        if entry.base_stone_shape.value != blank
+          if entry.base_stone_shape.value.label != blank
+            assign base_label = entry.base_stone_shape.value.label | downcase | strip
+          else
+            assign base_label = entry.base_stone_shape.value | downcase | strip
+          endif
+        endif
+
+        if entry_label == value_label_key and entry.image.value != blank
+          assign option_image = entry.image.value
+          break
+        endif
+
+        if option_image == blank and base_label == value_label_key
+          if entry.image.value != blank
+            assign option_image = entry.image.value
+            break
+          endif
+
+          assign entry_label_raw = entry.label.value
+          for block in section_blocks
+            if block.type != 'shape'
+              continue
+            endif
+            assign block_title_key = block.settings.title | downcase | strip
+            assign entry_label_key = entry_label_raw | downcase | strip
+            if block_title_key == entry_label_key and block.settings.image != blank
+              assign option_image = block.settings.image
+              break
+            endif
+          endfor
+
+          if option_image != blank
+            break
+          endif
+        endif
+      endfor
+    endif
+  endif
+-%}
+
+{%- if option_image != blank -%}
+  {{
+    option_image
+    | image_url: width: icon_width
+    | image_tag: widths: icon_widths, sizes: icon_sizes, loading: 'lazy', alt: value_label, class: icon_img_class
+  }}
+{%- endif -%}

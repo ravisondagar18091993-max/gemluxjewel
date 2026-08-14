@@ -35,6 +35,7 @@
             assign value_label_key = value.label | downcase | strip
             assign option_image = blank
             assign block_type = 'shape'
+            assign is_shape_filter = false
 
             if layout == 'icon-grid' or layout == 'icon-grid-2'
               if filter.label contains 'Setting' or filter.label contains 'setting'
@@ -43,18 +44,22 @@
                 assign block_type = 'gemstone'
               elsif filter.label contains 'Ring design' or filter.label contains 'ring design'
                 assign block_type = 'ring_design'
+              else
+                assign is_shape_filter = true
               endif
 
-              for block in section_blocks
-                if block.type != block_type
-                  continue
-                endif
-                assign block_title_key = block.settings.title | downcase | strip
-                if block_title_key == value_label_key and block.settings.image != blank
-                  assign option_image = block.settings.image
-                  break
-                endif
-              endfor
+              if is_shape_filter == false
+                for block in section_blocks
+                  if block.type != block_type
+                    continue
+                  endif
+                  assign block_title_key = block.settings.title | downcase | strip
+                  if block_title_key == value_label_key and block.settings.image != blank
+                    assign option_image = block.settings.image
+                    break
+                  endif
+                endfor
+              endif
             endif
 
             assign metal_class = 'gemluxjewel-plp-filter-swatch--default'
@@ -93,7 +98,23 @@
 
                 {%- when 'icon-grid', 'icon-grid-2' -%}
                   <span class="gemluxjewel-plp-sidebar-group__icon">
-                    {%- if option_image != blank -%}
+                    {%- if is_shape_filter -%}
+                      {%- capture shape_icon -%}
+                        {% render 'gemluxjewel-stone-shape-icon',
+                          value_label: value.label,
+                          section_blocks: section_blocks,
+                          metaobject_type: section.settings.stone_shape_metaobject_type,
+                          width: 120,
+                          sizes: '60px',
+                          widths: '60, 90, 120'
+                        %}
+                      {%- endcapture -%}
+                      {%- if shape_icon != blank -%}
+                        {{ shape_icon }}
+                      {%- else -%}
+                        <span class="gemluxjewel-plp-sidebar-group__icon-fallback" aria-hidden="true"></span>
+                      {%- endif -%}
+                    {%- elsif option_image != blank -%}
                       {{
                         option_image
                         | image_url: width: 120
