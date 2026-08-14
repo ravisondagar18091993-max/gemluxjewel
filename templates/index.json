@@ -195,7 +195,7 @@
         "products_collection": "all",
         "filter_label": "Stone shape",
         "use_metaobjects": true,
-        "metaobject_type": "stone_shape",
+        "metaobject_type": "shopify--stone-shape",
         "auto_fetch_shapes": true
       }
     },

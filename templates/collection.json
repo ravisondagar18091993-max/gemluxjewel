@@ -175,7 +175,7 @@
         "enable_stone_shapes": true,
         "auto_fetch_stone_shapes": true,
         "use_stone_shape_metaobjects": true,
-        "stone_shape_metaobject_type": "stone_shape",
+        "stone_shape_metaobject_type": "shopify--stone-shape",
         "stone_shapes_source_collection": "all",
         "stone_shapes_heading": "",
         "stone_shape_filter_label": "Stone shape"

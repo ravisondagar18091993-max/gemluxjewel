@@ -27,7 +27,7 @@
     assign use_filter_shapes = true
   endif
 
-  assign metaobject_type = section.settings.metaobject_type | default: 'stone_shape'
+  assign metaobject_type = section.settings.metaobject_type | default: 'shopify--stone-shape'
   assign use_metaobjects = section.settings.use_metaobjects
 
   assign shape_image_sizes = '(min-width: 1200px) 180px, (min-width: 750px) 160px, 110px'
@@ -90,8 +90,9 @@
         </p>
       {%- elsif section.settings.use_metaobjects and shop.metaobjects[metaobject_type] == blank -%}
         <p class="gemluxjewel-stone-shapes__notice">
-          No metaobject type <strong>{{ metaobject_type }}</strong> found. Check the type handle under
-          <strong>Settings → Custom data → Metaobjects</strong>, or turn off “Load from metaobjects”.
+          No metaobject type <strong>{{ metaobject_type }}</strong> found. Check the type handle (yours is
+          <strong>shopify--stone-shape</strong>) under <strong>Settings → Custom data → Metaobjects</strong>, and turn on
+          <strong>Storefront API access</strong> for that type.
         </p>
       {%- endif -%}
     {%- endif -%}
@@ -136,8 +137,8 @@
       "type": "text",
       "id": "metaobject_type",
       "label": "Metaobject type handle",
-      "default": "stone_shape",
-      "info": "The type handle from Settings → Custom data → Metaobjects (e.g. stone_shape)."
+      "default": "shopify--stone-shape",
+      "info": "Type handle from Settings → Custom data → Metaobjects. For Gemlux: shopify--stone-shape"
     },
     {
       "type": "collection",
