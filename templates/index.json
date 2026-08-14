@@ -26,6 +26,15 @@
     "gemluxjewel_stone_shapes": {
       "type": "gemluxjewel-stone-shapes",
       "blocks": {
+        "shape_f6hc4E": {
+          "type": "shape",
+          "settings": {
+            "title": "Rectangular",
+            "image": "shopify://shop_images/Princecs_shape_diamond_png.png",
+            "collection": "",
+            "link": ""
+          }
+        },
         "shape_qcV7n6": {
           "type": "shape",
           "settings": {
@@ -127,6 +136,7 @@
         }
       },
       "block_order": [
+        "shape_f6hc4E",
         "shape_qcV7n6",
         "shape_tYFh6K",
         "s2",
