@@ -52,6 +52,7 @@
         "step_1": {
           "type": "step",
           "settings": {
+            "image": "shopify://shop_images/Rings_are_made_1.webp",
             "title": "Design & Selection",
             "text": "From custom to ready-to-ship, every ring is thoughtfully designed for timeless elegance"
           }
@@ -59,6 +60,7 @@
         "step_2": {
           "type": "step",
           "settings": {
+            "image": "shopify://shop_images/Rings_are_made_2.webp",
             "title": "Expert Craftsmanship",
             "text": "Our skilled artisans shape, cast, and refine each ring with precision and care."
           }
@@ -66,6 +68,7 @@
         "step_3": {
           "type": "step",
           "settings": {
+            "image": "shopify://shop_images/Rings_are_made_3.webp",
             "title": "Stone Setting & Polishing",
             "text": "Each diamond is carefully set and polished to achieve flawless radiance."
           }
@@ -73,6 +76,7 @@
         "step_4": {
           "type": "step",
           "settings": {
+            "image": "shopify://shop_images/Rings_are_made_4.webp",
             "title": "Quality Check & Packaging",
             "text": "Each ring passes a strict quality check before being elegantly packaged."
           }
@@ -167,6 +171,7 @@
       "settings": {
         "prefix": "Gemlux Promise",
         "title": "How We're Distinct From Others!",
+        "accent_style": "navy",
         "label_1": "Free Shipping Worldwide",
         "icon_1": "shipping",
         "label_2": "24/7 Customer Service",
