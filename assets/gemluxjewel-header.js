@@ -1,6 +1,7 @@
 (function () {
   var headerSliderTimer = null;
   var closeAllMegaFn = null;
+  var closeMegaFromScrollFn = null;
 
   function initGemluxjewelHeader() {
     var header = document.querySelector('[data-gemluxjewel-header]');
@@ -48,10 +49,15 @@
 
       window.addEventListener('scroll', function () {
         if (document.documentElement.classList.contains('gemluxjewel-menu-open')) return;
-        if (closeAllMegaFn) closeAllMegaFn();
+
+        var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        var scrollingDown = currentScroll > prevScroll;
+
+        if (scrollingDown && closeMegaFromScrollFn) {
+          closeMegaFromScrollFn();
+        }
 
         if (mainBar && mainBar.classList.contains('is-mega-open')) return;
-        var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
         if (prevScroll > currentScroll || currentScroll === 0) {
           header.classList.remove('is-hidden');
         } else if (currentScroll > 120) {
@@ -135,23 +141,50 @@
     var closeTimer = null;
 
     function closeAllMega() {
+      if (closeTimer) {
+        window.clearTimeout(closeTimer);
+        closeTimer = null;
+      }
+
+      megaItems.forEach(function (item) {
+        item.classList.remove('is-mega-active');
+      });
+      mainBar.classList.remove('is-mega-open');
+      document.documentElement.classList.remove('gemluxjewel-mega-open', 'gemluxjewel-mega-closed');
+
+      var backdrop = header.querySelector('[data-gemluxjewel-mega-backdrop]');
+      if (backdrop) backdrop.setAttribute('aria-hidden', 'true');
+    }
+
+    function closeMegaFromScroll() {
+      if (!mainBar.classList.contains('is-mega-open')) return;
+
+      if (closeTimer) {
+        window.clearTimeout(closeTimer);
+        closeTimer = null;
+      }
+
       megaItems.forEach(function (item) {
         item.classList.remove('is-mega-active');
       });
       mainBar.classList.remove('is-mega-open');
       document.documentElement.classList.remove('gemluxjewel-mega-open');
+      document.documentElement.classList.add('gemluxjewel-mega-closed');
 
       var backdrop = header.querySelector('[data-gemluxjewel-mega-backdrop]');
       if (backdrop) backdrop.setAttribute('aria-hidden', 'true');
     }
 
     closeAllMegaFn = closeAllMega;
+    closeMegaFromScrollFn = closeMegaFromScroll;
 
     function openMega(item) {
       if (closeTimer) {
         window.clearTimeout(closeTimer);
         closeTimer = null;
       }
+
+      document.documentElement.classList.remove('gemluxjewel-mega-closed');
 
       megaItems.forEach(function (other) {
         if (other !== item) other.classList.remove('is-mega-active');
@@ -177,7 +210,10 @@
         openMega(item);
       });
 
-      item.addEventListener('mouseleave', scheduleClose);
+      item.addEventListener('mouseleave', function () {
+        document.documentElement.classList.remove('gemluxjewel-mega-closed');
+        scheduleClose();
+      });
 
       if (panel) {
         panel.addEventListener('mouseenter', function () {

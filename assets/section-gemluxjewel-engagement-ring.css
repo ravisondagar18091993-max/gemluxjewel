@@ -596,7 +596,15 @@
 
 .gemluxjewel-engagement-categories__cta .gemluxjewel-engagement-btn--outline {
   min-width: min(100%, 420px);
-  background: #fff;
+  background: #808000;
+  border-color: #808000;
+  color: #fff;
+}
+
+.gemluxjewel-engagement-categories__cta .gemluxjewel-engagement-btn--outline:hover {
+  background: #808000;
+  border-color: #808000;
+  color: #fff;
 }
 
 /* ── FAQ ── */

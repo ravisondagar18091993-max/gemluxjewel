@@ -453,6 +453,18 @@ html.gemluxjewel-mega-open .gemluxjewel-header__mega-backdrop {
   pointer-events: auto;
 }
 
+html.gemluxjewel-mega-closed .gemluxjewel-header__mega {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+html.gemluxjewel-mega-closed .gemluxjewel-header__mega-backdrop {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
 /* ── Mega menu (CULLEN-style) ── */
 .gemluxjewel-header__mega {
   position: fixed;
