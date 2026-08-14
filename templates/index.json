@@ -26,7 +26,16 @@
     "gemluxjewel_stone_shapes": {
       "type": "gemluxjewel-stone-shapes",
       "blocks": {
-        "shape_tYFh6K": {
+        "shape_x9kzqP": {
+          "type": "shape",
+          "settings": {
+            "title": "Roundfgf",
+            "image": "shopify://shop_images/emerald_shape_diamond_png.png",
+            "collection": "",
+            "link": ""
+          }
+        },
+        "shape_QaejrV": {
           "type": "shape",
           "settings": {
             "title": "Round",
@@ -35,27 +44,47 @@
             "link": ""
           }
         },
-        "shape_dX4KQk": {
+        "shape_rEeQiF": {
           "type": "shape",
           "settings": {
             "title": "Round",
+            "image": "shopify://shop_images/cushion_shape_diamond.png",
             "collection": "",
             "link": ""
           }
         },
-        "shape_VwCLPd": {
+        "shape_L68FYp": {
           "type": "shape",
           "settings": {
-            "title": "Round",
+            "title": "Square",
+            "image": "shopify://shop_images/cushion_shape_diamond.png",
             "collection": "",
             "link": ""
           }
         },
-        "s1": {
+        "shape_f6hc4E": {
+          "type": "shape",
+          "settings": {
+            "title": "Rectangular",
+            "image": "shopify://shop_images/Princecs_shape_diamond_png.png",
+            "collection": "",
+            "link": ""
+          }
+        },
+        "shape_qcV7n6": {
+          "type": "shape",
+          "settings": {
+            "title": "other",
+            "image": "shopify://shop_images/pear_shape_diamond.png",
+            "collection": "",
+            "link": ""
+          }
+        },
+        "shape_tYFh6K": {
           "type": "shape",
           "settings": {
             "title": "Round",
-            "image": "shopify://shop_images/round.avif",
+            "image": "shopify://shop_images/round_shape_diamond_png.png",
             "collection": "",
             "link": ""
           }
@@ -114,10 +143,20 @@
             "link": ""
           }
         },
+        "s10": {
+          "type": "shape",
+          "settings": {
+            "title": "Heart",
+            "image": "shopify://shop_images/heart_shape_diamond.png",
+            "collection": "",
+            "link": ""
+          }
+        },
         "s8": {
           "type": "shape",
           "settings": {
             "title": "Asscher",
+            "image": "shopify://shop_images/marquiese_shape_diamond.png",
             "collection": "",
             "link": ""
           }
@@ -130,31 +169,25 @@
             "collection": "",
             "link": ""
           }
-        },
-        "s10": {
-          "type": "shape",
-          "settings": {
-            "title": "Heart",
-            "image": "shopify://shop_images/heart_shape_diamond.png",
-            "collection": "",
-            "link": ""
-          }
         }
       },
       "block_order": [
+        "shape_x9kzqP",
+        "shape_QaejrV",
+        "shape_rEeQiF",
+        "shape_L68FYp",
+        "shape_f6hc4E",
+        "shape_qcV7n6",
         "shape_tYFh6K",
-        "shape_dX4KQk",
-        "shape_VwCLPd",
-        "s1",
         "s2",
         "s3",
         "s4",
         "s5",
         "s6",
         "s7",
+        "s10",
         "s8",
-        "s9",
-        "s10"
+        "s9"
       ],
       "settings": {
         "title": "Shop by Stone Shape",
