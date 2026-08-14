@@ -13,6 +13,8 @@
     header.classList.toggle('active', isOpen);
     header.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
 
+    content.style.display = '';
+
     if (isOpen) {
       content.removeAttribute('hidden');
     } else {

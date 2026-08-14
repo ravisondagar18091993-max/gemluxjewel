@@ -4,7 +4,7 @@
 .gemluxjewel-blog-page-hero {
   --gemluxjewel-primary: #808000;
   --gemluxjewel-secondary: #ffffff;
-  --gemluxjewel-dark: #141414;
+  --gemluxjewel-dark: #101010;
   --gemluxjewel-gray: #818181;
   --gemluxjewel-font-body: 'Outfit', var(--font-body-family), sans-serif;
   --gemluxjewel-font-heading: 'Figtree', var(--font-heading-family), sans-serif;
@@ -201,7 +201,7 @@
 }
 
 .gemluxjewel-blog-card:not(.gemluxjewel-blog-card--education) .gemluxjewel-blog-card__title a {
-  color: var(--gemluxjewel-primary);
+  color: var(--gemluxjewel-dark, #101010);
   text-decoration: none;
 }
 

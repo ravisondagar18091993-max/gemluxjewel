@@ -1,6 +1,6 @@
 .gemluxjewel-contact-page {
   background: #fff;
-  color: #808000;
+  color: #101010;
 }
 
 /* Hero */
@@ -211,7 +211,7 @@
 
 .gemluxjewel-contact-page__status--success {
   background: rgba(128, 128, 0, 0.08);
-  color: #808000;
+  color: #101010;
 }
 
 .gemluxjewel-contact-page__status--error {

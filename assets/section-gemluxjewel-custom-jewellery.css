@@ -4,7 +4,7 @@
 .gemluxjewel-custom-hero--intro {
   background: #fff;
   padding: calc(var(--gemluxjewel-header-offset, 108px) + 24px) 0 clamp(24px, 3vw, 32px);
-  color: #808000;
+  color: #101010;
 }
 
 .gemluxjewel-custom-hero__breadcrumb {
@@ -16,7 +16,7 @@
   font-family: var(--gemluxjewel-font-body);
   font-size: 13px;
   line-height: 1.4;
-  color: rgba(128, 128, 0, 0.65);
+  color: rgba(16, 16, 16, 0.65);
 }
 
 .gemluxjewel-custom-hero__breadcrumb a {
@@ -25,12 +25,12 @@
 }
 
 .gemluxjewel-custom-hero__breadcrumb a:hover {
-  color: #808000;
+  color: #101010;
   text-decoration: underline;
 }
 
 .gemluxjewel-custom-hero__breadcrumb-current {
-  color: #808000;
+  color: #101010;
 }
 
 .gemluxjewel-custom-hero--intro .gemluxjewel-custom-hero__title {
@@ -39,7 +39,7 @@
   font-size: clamp(32px, 4vw, 48px);
   line-height: 1.2;
   text-transform: none;
-  color: #808000;
+  color: #101010;
   margin: 0 auto;
   max-width: 900px;
   text-align: center;
@@ -51,7 +51,7 @@
   font-family: var(--gemluxjewel-font-body);
   font-size: 15px;
   line-height: 1.65;
-  color: rgba(128, 128, 0, 0.78);
+  color: rgba(16, 16, 16, 0.78);
   text-align: center;
 }
 
@@ -251,7 +251,7 @@
   text-align: center;
   font-size: 14px;
   line-height: 1.6;
-  color: rgba(128, 128, 0, 0.72);
+  color: rgba(16, 16, 16, 0.72);
   border: 1px dashed rgba(128, 128, 0, 0.25);
   border-radius: 4px;
 }
@@ -327,7 +327,7 @@
   font-size: 14px !important;
   line-height: 1.4 !important;
   font-weight: 500 !important;
-  color: #808000 !important;
+  color: #101010 !important;
   margin: 0 0 8px !important;
   text-transform: none !important;
 }
@@ -353,7 +353,7 @@
   font-family: var(--gemluxjewel-font-body) !important;
   font-size: 15px !important;
   line-height: 22px !important;
-  color: #808000 !important;
+  color: #101010 !important;
   background: #fff !important;
   border: 1px solid rgba(128, 128, 0, 0.15) !important;
   border-radius: 4px !important;
@@ -404,7 +404,7 @@
 .gemluxjewel-custom-form__hulk-app .form-group.radio label {
   font-size: 14px !important;
   font-weight: 400 !important;
-  color: #808000 !important;
+  color: #101010 !important;
 }
 
 .gemluxjewel-custom-form__hulk .form-group.file .file-upload-area,
@@ -486,7 +486,7 @@
   font-size: 15px;
   line-height: 1.65;
   text-align: center;
-  color: rgba(128, 128, 0, 0.78);
+  color: rgba(16, 16, 16, 0.78);
 }
 
 .gemluxjewel-custom-form__fields {
@@ -510,7 +510,7 @@
   font-size: 14px;
   line-height: 1.4;
   font-weight: 500;
-  color: #808000;
+  color: #101010;
   margin-bottom: 8px;
 }
 
@@ -521,7 +521,7 @@
   font-family: var(--gemluxjewel-font-body);
   font-size: 15px;
   line-height: 22px;
-  color: #808000;
+  color: #101010;
   background: #fff;
   border: 1px solid rgba(128, 128, 0, 0.15);
   border-radius: 4px;
@@ -557,7 +557,7 @@
   margin: 0 0 12px;
   font-size: 13px;
   line-height: 1.4;
-  color: rgba(128, 128, 0, 0.65);
+  color: rgba(16, 16, 16, 0.65);
 }
 
 .gemluxjewel-custom-form__upload-row {
@@ -609,7 +609,7 @@
   min-width: 0;
   font-size: 14px;
   line-height: 1.4;
-  color: rgba(128, 128, 0, 0.65);
+  color: rgba(16, 16, 16, 0.65);
   word-break: break-word;
 }
 
@@ -652,7 +652,7 @@
 .gemluxjewel-custom-form__sizer-text {
   font-size: 14px;
   line-height: 1.45;
-  color: #808000;
+  color: #101010;
 }
 
 .gemluxjewel-custom-form__sizer-image {
@@ -1318,7 +1318,7 @@
   z-index: 1;
   padding: 7px 12px;
   background: rgba(115, 151, 106, 0.18);
-  color: #808000;
+  color: #101010;
   font-family: var(--gemluxjewel-font-body);
   font-size: 11px;
   line-height: 1;
@@ -1414,7 +1414,7 @@
   font-size: clamp(20px, 2.2vw, 26px);
   line-height: 1.25;
   font-weight: 700;
-  color: #141414;
+  color: #101010;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -1424,7 +1424,7 @@
   font-family: var(--gemluxjewel-font-body);
   font-size: 14px;
   line-height: 1.6;
-  color: #141414;
+  color: #101010;
 }
 
 .gemluxjewel-custom-expert__btn {
@@ -1599,7 +1599,7 @@
   padding: 0 0 20px;
   font-size: 15px;
   line-height: 1.65;
-  color: rgba(128, 128, 0, 0.78);
+  color: rgba(16, 16, 16, 0.78);
 }
 
 .gemluxjewel-custom-faq__item.is-hidden {
@@ -1683,14 +1683,14 @@
 
 /* Custom page — brand green trust section */
 .gemluxjewel-pdp-trust--brand {
-  color: #808000;
+  color: #101010;
 }
 
 .gemluxjewel-pdp-trust--brand .gemluxjewel-pdp-trust__prefix,
 .gemluxjewel-pdp-trust--brand .gemluxjewel-pdp-trust__title,
 .gemluxjewel-pdp-trust--brand .gemluxjewel-pdp-trust__icon,
 .gemluxjewel-pdp-trust--brand .gemluxjewel-pdp-trust__label {
-  color: #141414;
+  color: #101010;
 }
 
 .gemluxjewel-pdp-trust--brand .gemluxjewel-pdp-trust__btn {

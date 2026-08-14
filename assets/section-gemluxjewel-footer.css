@@ -51,7 +51,7 @@
   width: 40px;
   height: 40px;
   flex-shrink: 0;
-  color: var(--gemluxjewel-dark, #141414);
+  color: var(--gemluxjewel-dark, #101010);
 }
 
 .gemluxjewel-footer__trust-icon svg {
@@ -81,7 +81,7 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   text-align: left;
-  color: var(--gemluxjewel-dark, #141414);
+  color: var(--gemluxjewel-dark, #101010);
 }
 
 @media (min-width: 576px) {

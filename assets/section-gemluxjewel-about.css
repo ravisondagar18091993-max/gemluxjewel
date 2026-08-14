@@ -181,7 +181,7 @@
   font-size: 18px;
   line-height: 24px;
   text-transform: uppercase;
-  color: var(--gemluxjewel-primary, #808000);
+  color: var(--gemluxjewel-dark, #101010);
   margin: 0 0 12px;
 }
 
@@ -273,12 +273,12 @@
 }
 
 .gemluxjewel-about-mission__prefix {
-  color: var(--gemluxjewel-primary, #808000);
+  color: var(--gemluxjewel-dark, #101010);
   margin-bottom: 12px;
 }
 
 .gemluxjewel-about-mission__title {
-  color: var(--gemluxjewel-primary, #808000);
+  color: var(--gemluxjewel-dark, #101010);
   margin-bottom: 32px;
 }
 
@@ -298,7 +298,7 @@
   font-size: 16px;
   line-height: 20px;
   text-transform: uppercase;
-  color: var(--gemluxjewel-primary, #808000);
+  color: var(--gemluxjewel-dark, #101010);
   margin: 0 0 10px;
 }
 
@@ -351,7 +351,7 @@
 }
 
 .gemluxjewel-about-founder__prefix {
-  color: var(--gemluxjewel-primary, #808000);
+  color: var(--gemluxjewel-dark, #101010);
   margin-bottom: 12px;
 }
 
@@ -361,7 +361,7 @@
   font-size: 38px;
   line-height: 42px;
   text-transform: uppercase;
-  color: var(--gemluxjewel-dark, #141414);
+  color: var(--gemluxjewel-dark, #101010);
   margin: 0 0 8px;
 }
 
@@ -377,7 +377,7 @@
   font-family: var(--gemluxjewel-font-body);
   font-size: 18px;
   line-height: 28px;
-  color: var(--gemluxjewel-dark, #141414);
+  color: var(--gemluxjewel-dark, #101010);
   margin: 0 0 24px;
 }
 
@@ -387,7 +387,7 @@
   font-size: 22px;
   line-height: 32px;
   font-style: italic;
-  color: var(--gemluxjewel-primary, #808000);
+  color: var(--gemluxjewel-dark, #101010);
   margin: 0 0 32px;
   padding: 24px;
   background: #f7f7f7;
@@ -491,7 +491,7 @@ a.gemluxjewel-about-appointment__detail-value:hover {
   font-size: 22px;
   line-height: 28px;
   text-transform: uppercase;
-  color: var(--gemluxjewel-dark, #141414);
+  color: var(--gemluxjewel-dark, #101010);
   margin: 0 0 24px;
 }
 
@@ -517,7 +517,7 @@ a.gemluxjewel-about-appointment__detail-value:hover {
   font-family: var(--gemluxjewel-font-body);
   font-size: 14px;
   line-height: 18px;
-  color: var(--gemluxjewel-dark, #141414);
+  color: var(--gemluxjewel-dark, #101010);
   margin-bottom: 8px;
 }
 
@@ -527,7 +527,7 @@ a.gemluxjewel-about-appointment__detail-value:hover {
   font-family: var(--gemluxjewel-font-body);
   font-size: 15px;
   line-height: 22px;
-  color: var(--gemluxjewel-dark, #141414);
+  color: var(--gemluxjewel-dark, #101010);
   background: #f7f7f7;
   border: 1px solid rgba(115, 151, 106, 0.12);
   border-radius: var(--gemluxjewel-radius, 10px);

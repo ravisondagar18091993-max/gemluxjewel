@@ -18,6 +18,10 @@
     --gemluxjewel-font-heading-weight: 600;
     --gemluxjewel-font-heading-weight-medium: 600;
     --gemluxjewel-secondary: #ffffff;
+    --gemluxjewel-dark: #101010;
+    --gemluxjewel-text-title: #101010;
+    --gemluxjewel-text-desc: #101010;
+    --gemluxjewel-text-desc-muted: rgba(16, 16, 16, 0.72);
   }
 
   .gemluxjewel :is(
@@ -53,5 +57,71 @@
     max-width: 100%;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .gemluxjewel :is(
+    .gemluxjewel-section-title,
+    .gemluxjewel-pdp__title,
+    .gemluxjewel-article__title,
+    .gemluxjewel-policy__heading,
+    .gemluxjewel-custom-hero__title,
+    .gemluxjewel-pdp-how-made__title,
+    .gemluxjewel-pdp-how-made__item-title,
+    .gemluxjewel-pdp-how-made__item-text,
+    .gemluxjewel-about-mission__title,
+    .gemluxjewel-about-mission__prefix,
+    .gemluxjewel-about-mission__card-label,
+    .gemluxjewel-about-founder__prefix,
+    .gemluxjewel-about-founder__quote,
+    .gemluxjewel-about-history__card-title,
+    .gemluxjewel-custom-made-to-order__title,
+    .gemluxjewel-custom-expert__title,
+    .gemluxjewel-custom-faq__title,
+    .gemluxjewel-custom-why__title,
+    .gemluxjewel-custom-form__utility-title,
+    .gemluxjewel-pdp-trust__title,
+    .gemluxjewel-pdp-trust__prefix,
+    .gemluxjewel-blog-card__title a,
+    .gemluxjewel-pdp-faq__title,
+    .gemluxjewel-dual-cards__title,
+    .gemluxjewel-split-promo__title,
+    .gemluxjewel-testimonials__title,
+    .gemluxjewel-news__title
+  ) {
+    color: var(--gemluxjewel-text-title);
+  }
+
+  .gemluxjewel :is(
+    .gemluxjewel-section-desc,
+    .gemluxjewel-custom-hero__text,
+    .gemluxjewel-custom-faq__accordion .closet-content__inner,
+    .gemluxjewel-custom-form__utility-text,
+    .gemluxjewel-custom-form__intro,
+    .gemluxjewel-custom-made-to-order__text,
+    .gemluxjewel-custom-expert__text,
+    .gemluxjewel-custom-why__content,
+    .gemluxjewel-pdp-trust__label,
+    .gemluxjewel-pdp-faq__desc,
+    .gemluxjewel-dual-cards__desc,
+    .gemluxjewel-split-promo__desc
+  ) {
+    color: var(--gemluxjewel-text-desc);
+  }
+
+  .gemluxjewel .gemluxjewel-article__content :is(h2, h3, h4) {
+    color: var(--gemluxjewel-text-title);
+  }
+
+  .gemluxjewel.gemluxjewel-pdp--ref .gemluxjewel-pdp__title,
+  .gemluxjewel.gemluxjewel-pdp--ref .gemluxjewel-pdp__complete-set-title {
+    color: var(--gemluxjewel-text-title);
+  }
+
+  .gemluxjewel.gemluxjewel-our-story :is(
+    .gemluxjewel-our-story-split__heading,
+    .gemluxjewel-our-story-cta__title,
+    .gemluxjewel-our-story-reviews__title
+  ) {
+    color: var(--gemluxjewel-text-title);
   }
 {% endstyle %}

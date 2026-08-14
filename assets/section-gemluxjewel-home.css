@@ -6,7 +6,7 @@
   --gemluxjewel-layer: rgba(67, 63, 63, 0.3);
   --gemluxjewel-orange: #e37859;
   --gemluxjewel-pink: #ffe7e0;
-  --gemluxjewel-dark: #141414;
+  --gemluxjewel-dark: #101010;
   --gemluxjewel-gray: #818181;
   --gemluxjewel-yellow: #d6c372;
   --gemluxjewel-gray-border: #bec7c7;
@@ -1140,7 +1140,7 @@
 
 .gemluxjewel-gift-guide__featured-card:hover .gemluxjewel-gift-guide__featured-btn {
   background: #fff;
-  color: var(--gemluxjewel-dark, #141414);
+  color: var(--gemluxjewel-dark, #101010);
 }
 
 .gemluxjewel-gift-guide__tiles {
@@ -1194,7 +1194,7 @@
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--gemluxjewel-dark, #141414);
+  color: var(--gemluxjewel-dark, #101010);
   margin: 12px 0 0;
 }
 

@@ -6,7 +6,7 @@
 .gemluxjewel-pdp-shared {
   --gemluxjewel-primary:  #808000;
   --gemluxjewel-secondary: #ffffff;
-  --gemluxjewel-dark: #141414;
+  --gemluxjewel-dark: #101010;
   --gemluxjewel-gray: #818181;
   --gemluxjewel-orange: #e37859;
   --gemluxjewel-pdp-navy: #808000;
@@ -294,7 +294,7 @@
 
 .gemluxjewel-pdp-media__nav:hover {
   background: #ffffff;
-  color: var(--gemluxjewel-dark, #141414);
+  color: var(--gemluxjewel-dark, #101010);
 }
 
 .gemluxjewel-pdp-media__nav--prev {
@@ -354,7 +354,7 @@
 
 .gemluxjewel-pdp-media__autoplay:hover {
   background: #ffffff;
-  color: var(--gemluxjewel-dark, #141414);
+  color: var(--gemluxjewel-dark, #101010);
 }
 
 .gemluxjewel-pdp-media__autoplay-icon--play {
@@ -452,7 +452,7 @@
   font-weight: 500;
   font-size: 40px;
   line-height: 52px;
-  color: var(--gemluxjewel-primary);
+  color: var(--gemluxjewel-dark, #101010);
   margin: 0 0 12px;
 }
 
@@ -1540,7 +1540,7 @@
   flex: 1;
   font-size: clamp(28px, 3vw, 36px);
   line-height: 1.25;
-  color: var(--gemluxjewel-pdp-navy);
+  color: var(--gemluxjewel-dark, #101010);
 }
 
 .gemluxjewel-pdp__sku {

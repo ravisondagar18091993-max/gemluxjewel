@@ -5,7 +5,7 @@
   --os-green-light: #808000;
   --os-cream: #f5f0eb;
   --os-serif: 'Libre Baskerville', Georgia, serif;
-  --os-heading-green: #808000;
+  --os-heading-green: #101010;
 }
 
 /* ── Hero ── */
@@ -181,7 +181,7 @@
   font-family: var(--gemluxjewel-font-body);
   font-size: 15px;
   line-height: 1.75;
-  color: var(--gemluxjewel-dark, #141414);
+  color: var(--gemluxjewel-dark, #101010);
 }
 
 .gemluxjewel-our-story-split__body p {
@@ -418,7 +418,7 @@
   font-family: var(--gemluxjewel-font-body);
   font-size: 13px;
   line-height: 1.6;
-  color: var(--gemluxjewel-dark, #141414);
+  color: var(--gemluxjewel-dark, #101010);
 }
 
 /* ── Trust bar ── */

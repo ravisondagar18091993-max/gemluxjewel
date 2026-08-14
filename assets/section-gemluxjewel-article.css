@@ -3,7 +3,7 @@
 .gemluxjewel-article {
   --gemluxjewel-primary: #808000;
   --gemluxjewel-secondary: #ffffff;
-  --gemluxjewel-dark: #141414;
+  --gemluxjewel-dark: #101010;
   --gemluxjewel-gray: #818181;
   --gemluxjewel-radius: 10px;
   --gemluxjewel-radius-pill: 30px;
@@ -219,7 +219,7 @@
   font-size: 40px;
   line-height: 1.25;
   text-transform: uppercase;
-  color: var(--gemluxjewel-primary);
+  color: var(--gemluxjewel-dark, #101010);
   margin: 0 0 16px;
 }
 
@@ -284,7 +284,7 @@
   font-family: var(--gemluxjewel-font-heading);
   font-weight: 400;
   text-transform: uppercase;
-  color: var(--gemluxjewel-primary);
+  color: var(--gemluxjewel-dark, #101010);
   margin: 0 0 12px;
 }
 
