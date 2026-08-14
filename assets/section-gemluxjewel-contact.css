@@ -84,7 +84,7 @@
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: capitalize;
-  color: #808000;
+  color: #101010;
 }
 
 .gemluxjewel-contact-page__input,
@@ -97,7 +97,7 @@
   font-family: 'Outfit', var(--font-body-family), sans-serif;
   font-size: 15px;
   line-height: 1.4;
-  color: #808000;
+  color: #101010;
   outline: none;
   transition: border-color 0.2s ease;
 }
@@ -248,7 +248,7 @@
   flex-shrink: 0;
   width: 28px;
   height: 28px;
-  color: #808000;
+  color: #101010;
 }
 
 .gemluxjewel-contact-page__quick-link-text {
@@ -258,7 +258,7 @@
   line-height: 1.5;
   letter-spacing: 0.03em;
   text-transform: capitalize;
-  color: #808000;
+  color: #101010;
   text-decoration: none;
 }
 
