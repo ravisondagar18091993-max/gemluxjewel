@@ -72,22 +72,17 @@
   display: none;
 }
 
-/* Gallery — uniform 2-column grid */
-.gemluxjewel-pdp--ref .gemluxjewel-pdp__gallery {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-}
-
-.gemluxjewel-pdp--ref .gemluxjewel-pdp__gallery-item {
-  height: auto;
-  min-height: 0;
-  aspect-ratio: 1;
-  border-radius: 4px;
+/* Gallery — vertical thumb slider */
+.gemluxjewel-pdp--ref .gemluxjewel-pdp-media__stage {
   background: #f4f6f8;
 }
 
-.gemluxjewel-pdp--ref .gemluxjewel-pdp__gallery-item img {
-  object-fit: cover;
+.gemluxjewel-pdp--ref .gemluxjewel-pdp-media__thumb.is-active {
+  border-color: var(--pdp-navy, #1e392a);
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__gallery {
+  display: block;
 }
 
 /* Title + wishlist */

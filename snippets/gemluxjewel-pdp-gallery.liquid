@@ -1,19 +1,211 @@
-<div class="gemluxjewel-pdp__gallery">
-  {%- if product.media.size > 0 -%}
-    {%- for media in product.media limit: 8 -%}
-      <div class="gemluxjewel-pdp__gallery-item">
-        {%- if media.media_type == 'image' -%}
-          {{ media | image_url: width: 900 | image_tag: widths: '300, 450, 600, 900', sizes: '(min-width: 990px) 220px, 50vw', loading: 'lazy', alt: product.title }}
-        {%- else -%}
-          {{ media | image_url: width: 900 | image_tag: widths: '300, 450, 600, 900', sizes: '(min-width: 990px) 220px, 50vw', loading: 'lazy', alt: product.title }}
-        {%- endif -%}
-      </div>
-    {%- endfor -%}
-  {%- else -%}
-    {%- for i in (1..8) -%}
-      <div class="gemluxjewel-pdp__gallery-item">
-        {% render 'gemluxjewel-theme-image', use_store_media: true, seed: product.id, width: 900, widths: '450,600,900', sizes: '(min-width: 990px) 45vw, 100vw', alt: product.title %}
-      </div>
-    {%- endfor -%}
-  {%- endif -%}
+{% comment %}
+  PDP media slider — vertical thumbnails + main stage with arrows.
+{% endcomment %}
+
+{%- liquid
+  assign gallery_media = product.media
+  assign gallery_count = gallery_media.size
+  assign use_fallback = false
+  if gallery_count == 0
+    assign use_fallback = true
+    assign gallery_count = 8
+  endif
+-%}
+
+<div
+  class="gemluxjewel-pdp-media"
+  data-gemluxjewel-pdp-media
+  data-media-count="{{ gallery_count }}"
+  tabindex="0"
+>
+  <div class="gemluxjewel-pdp-media__thumbs" data-pdp-media-thumbs role="tablist" aria-label="Product media thumbnails">
+    {%- if use_fallback -%}
+      {%- for i in (1..8) -%}
+        <button
+          type="button"
+          class="gemluxjewel-pdp-media__thumb{% if forloop.first %} is-active{% endif %}"
+          data-pdp-media-index="{{ forloop.index0 }}"
+          role="tab"
+          aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+          aria-label="View image {{ forloop.index }}"
+        >
+          {% render 'gemluxjewel-theme-image', use_store_media: true, seed: product.id, width: 160, widths: '80, 160', sizes: '72px', alt: product.title, class: 'gemluxjewel-pdp-media__thumb-img' %}
+        </button>
+      {%- endfor -%}
+    {%- else -%}
+      {%- for media in gallery_media -%}
+        <button
+          type="button"
+          class="gemluxjewel-pdp-media__thumb{% if forloop.first %} is-active{% endif %}"
+          data-pdp-media-index="{{ forloop.index0 }}"
+          data-media-id="{{ media.id }}"
+          role="tab"
+          aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+          aria-label="View media {{ forloop.index }}"
+        >
+          {{
+            media.preview_image
+            | image_url: width: 160
+            | image_tag:
+              class: 'gemluxjewel-pdp-media__thumb-img',
+              widths: '80, 160',
+              sizes: '72px',
+              loading: 'lazy',
+              alt: media.alt | default: product.title
+          }}
+          {%- if media.media_type == 'video' or media.media_type == 'external_video' -%}
+            <span class="gemluxjewel-pdp-media__thumb-play" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M3.5 2.5L11.5 7L3.5 11.5V2.5Z" fill="currentColor"/>
+              </svg>
+            </span>
+          {%- endif -%}
+        </button>
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+
+  <div class="gemluxjewel-pdp-media__stage">
+    <div class="gemluxjewel-pdp-media__slides" data-pdp-media-slides>
+      {%- if use_fallback -%}
+        {%- for i in (1..8) -%}
+          <div
+            class="gemluxjewel-pdp-media__slide{% if forloop.first %} is-active{% endif %}"
+            data-pdp-media-slide
+            data-media-type="image"
+            data-pdp-media-index="{{ forloop.index0 }}"
+            role="tabpanel"
+            {% unless forloop.first %}hidden{% endunless %}
+          >
+            {% render 'gemluxjewel-theme-image', use_store_media: true, seed: product.id, width: 1600, widths: '600, 900, 1200, 1600', sizes: '(min-width: 990px) 45vw, 100vw', alt: product.title, class: 'gemluxjewel-pdp-media__image' %}
+          </div>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for media in gallery_media -%}
+          <div
+            class="gemluxjewel-pdp-media__slide{% if forloop.first %} is-active{% endif %}"
+            data-pdp-media-slide
+            data-media-id="{{ media.id }}"
+            data-media-type="{{ media.media_type }}"
+            data-pdp-media-index="{{ forloop.index0 }}"
+            role="tabpanel"
+            {% unless forloop.first %}hidden{% endunless %}
+          >
+            {%- case media.media_type -%}
+              {%- when 'image' -%}
+                {%- if forloop.first -%}
+                  {{
+                    media
+                    | image_url: width: 1600
+                    | image_tag:
+                      class: 'gemluxjewel-pdp-media__image',
+                      widths: '600, 900, 1200, 1600',
+                      sizes: '(min-width: 990px) 45vw, 100vw',
+                      loading: 'eager',
+                      alt: media.alt | default: product.title
+                  }}
+                {%- else -%}
+                  {{
+                    media
+                    | image_url: width: 1600
+                    | image_tag:
+                      class: 'gemluxjewel-pdp-media__image',
+                      widths: '600, 900, 1200, 1600',
+                      sizes: '(min-width: 990px) 45vw, 100vw',
+                      loading: 'lazy',
+                      alt: media.alt | default: product.title
+                  }}
+                {%- endif -%}
+              {%- when 'video' -%}
+                <div class="gemluxjewel-pdp-media__video-wrap">
+                  {{
+                    media
+                    | video_tag:
+                      class: 'gemluxjewel-pdp-media__video',
+                      image_size: '1200x',
+                      controls: true,
+                      preload: 'metadata',
+                      muted: false
+                  }}
+                </div>
+              {%- when 'external_video' -%}
+                <div class="gemluxjewel-pdp-media__video-wrap">
+                  {{ media | external_video_tag: class: 'gemluxjewel-pdp-media__iframe' }}
+                </div>
+              {%- when 'model' -%}
+                {{
+                  media.preview_image
+                  | image_url: width: 1600
+                  | image_tag:
+                    class: 'gemluxjewel-pdp-media__image',
+                    widths: '600, 900, 1200, 1600',
+                    sizes: '(min-width: 990px) 45vw, 100vw',
+                    loading: 'lazy',
+                    alt: media.alt | default: product.title
+                }}
+              {%- else -%}
+                {{
+                  media.preview_image
+                  | image_url: width: 1600
+                  | image_tag:
+                    class: 'gemluxjewel-pdp-media__image',
+                    widths: '600, 900, 1200, 1600',
+                    sizes: '(min-width: 990px) 45vw, 100vw',
+                    loading: 'lazy',
+                    alt: media.alt | default: product.title
+                }}
+            {%- endcase -%}
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+
+    {%- if gallery_count > 1 -%}
+      <button
+        type="button"
+        class="gemluxjewel-pdp-media__nav gemluxjewel-pdp-media__nav--prev"
+        data-pdp-media-prev
+        aria-label="Previous image"
+      >
+        <svg width="12" height="20" viewBox="0 0 12 20" fill="none" aria-hidden="true">
+          <path d="M9.5 2L2.5 10L9.5 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button
+        type="button"
+        class="gemluxjewel-pdp-media__nav gemluxjewel-pdp-media__nav--next"
+        data-pdp-media-next
+        aria-label="Next image"
+      >
+        <svg width="12" height="20" viewBox="0 0 12 20" fill="none" aria-hidden="true">
+          <path d="M2.5 2L9.5 10L2.5 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    {%- endif -%}
+
+    <div class="gemluxjewel-pdp-media__footer">
+      <span class="gemluxjewel-pdp-media__counter" data-pdp-media-counter>1 / {{ gallery_count }}</span>
+      {%- if gallery_count > 1 -%}
+        <button
+          type="button"
+          class="gemluxjewel-pdp-media__autoplay is-playing"
+          data-pdp-media-autoplay
+          aria-label="Pause slideshow"
+          aria-pressed="true"
+        >
+          <span class="gemluxjewel-pdp-media__autoplay-icon gemluxjewel-pdp-media__autoplay-icon--pause" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <rect x="2.5" y="2" width="3" height="10" rx="0.5" fill="currentColor"/>
+              <rect x="8.5" y="2" width="3" height="10" rx="0.5" fill="currentColor"/>
+            </svg>
+          </span>
+          <span class="gemluxjewel-pdp-media__autoplay-icon gemluxjewel-pdp-media__autoplay-icon--play" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M3.5 2.5L11.5 7L3.5 11.5V2.5Z" fill="currentColor"/>
+            </svg>
+          </span>
+        </button>
+      {%- endif -%}
+    </div>
+  </div>
 </div>

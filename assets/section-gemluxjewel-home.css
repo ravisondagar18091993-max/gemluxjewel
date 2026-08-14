@@ -596,7 +596,7 @@
 }
 
 .gemluxjewel-collection-slider__track {
-  --collection-slider-gap: 16px;
+  --collection-slider-gap: 30px;
   --collection-slider-visible: 1;
   display: flex;
   gap: var(--collection-slider-gap);
