@@ -257,14 +257,15 @@
   object-fit: contain;
   display: block;
   background: #f4f6f8;
-  transition: transform 0.45s ease;
-  transform-origin: center center;
+  will-change: transform;
 }
 
-.gemluxjewel-pdp-media__stage:hover
-  .gemluxjewel-pdp-media__slide.is-active[data-media-type='image']
-  .gemluxjewel-pdp-media__image {
-  transform: scale(1.12);
+.gemluxjewel-pdp-media__stage--zoomable.is-magnifying {
+  cursor: zoom-in;
+}
+
+.gemluxjewel-pdp-media__stage--zoomable.is-magnifying .gemluxjewel-pdp-media__image {
+  transition: none;
 }
 
 .gemluxjewel-pdp-media__video-wrap {

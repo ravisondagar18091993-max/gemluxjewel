@@ -43,6 +43,109 @@
     return offset * step;
   }
 
+  var ZOOM_RATIO = 2.25;
+
+  function canMagnify() {
+    return window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  }
+
+  function resetMagnify(image) {
+    if (!image) return;
+    image.style.transform = '';
+    image.style.transformOrigin = '';
+  }
+
+  function resetStageMagnify(stage) {
+    if (!stage) return;
+    stage.classList.remove('is-magnifying');
+    stage.querySelectorAll('.gemluxjewel-pdp-media__image').forEach(resetMagnify);
+  }
+
+  function getContainedImageBounds(slideRect, image) {
+    if (!image.naturalWidth || !image.naturalHeight) return null;
+
+    var containerRatio = slideRect.width / slideRect.height;
+    var imageRatio = image.naturalWidth / image.naturalHeight;
+    var renderedWidth;
+    var renderedHeight;
+    var offsetX;
+    var offsetY;
+
+    if (imageRatio > containerRatio) {
+      renderedWidth = slideRect.width;
+      renderedHeight = slideRect.width / imageRatio;
+      offsetX = 0;
+      offsetY = (slideRect.height - renderedHeight) / 2;
+    } else {
+      renderedHeight = slideRect.height;
+      renderedWidth = slideRect.height * imageRatio;
+      offsetX = (slideRect.width - renderedWidth) / 2;
+      offsetY = 0;
+    }
+
+    return {
+      offsetX: offsetX,
+      offsetY: offsetY,
+      renderedWidth: renderedWidth,
+      renderedHeight: renderedHeight,
+    };
+  }
+
+  function initImageMagnify(stage) {
+    if (!stage || !canMagnify()) return;
+
+    stage.classList.add('gemluxjewel-pdp-media__stage--zoomable');
+
+    stage.addEventListener('mousemove', function (event) {
+      if (
+        event.target.closest('.gemluxjewel-pdp-media__nav') ||
+        event.target.closest('.gemluxjewel-pdp-media__footer')
+      ) {
+        return;
+      }
+
+      var slide = stage.querySelector('.gemluxjewel-pdp-media__slide.is-active[data-media-type="image"]');
+      if (!slide) {
+        resetStageMagnify(stage);
+        return;
+      }
+
+      var image = slide.querySelector('.gemluxjewel-pdp-media__image');
+      if (!image) {
+        resetStageMagnify(stage);
+        return;
+      }
+
+      var slideRect = slide.getBoundingClientRect();
+      var bounds = getContainedImageBounds(slideRect, image);
+      if (!bounds) {
+        resetStageMagnify(stage);
+        return;
+      }
+
+      var x = event.clientX - slideRect.left;
+      var y = event.clientY - slideRect.top;
+
+      if (
+        x < bounds.offsetX ||
+        x > bounds.offsetX + bounds.renderedWidth ||
+        y < bounds.offsetY ||
+        y > bounds.offsetY + bounds.renderedHeight
+      ) {
+        resetStageMagnify(stage);
+        return;
+      }
+
+      stage.classList.add('is-magnifying');
+      image.style.transformOrigin = x + 'px ' + y + 'px';
+      image.style.transform = 'scale(' + ZOOM_RATIO + ')';
+    });
+
+    stage.addEventListener('mouseleave', function () {
+      resetStageMagnify(stage);
+    });
+  }
+
   function initGallery(root) {
     var gallery = (root || document).querySelector('[data-gemluxjewel-pdp-media]');
     if (!gallery || gallery.dataset.gemluxjewelPdpMediaReady === 'true') return;
@@ -185,6 +288,7 @@
       if (nextIndex === current && !options.force) return;
 
       pauseSlideMedia(slides[current]);
+      resetStageMagnify(stage);
 
       slides[current].classList.remove('is-active');
       slides[current].hidden = true;
@@ -263,6 +367,8 @@
     });
 
     if (stage) {
+      initImageMagnify(stage);
+
       var touchStartX = 0;
       stage.addEventListener(
         'touchstart',
@@ -293,6 +399,7 @@
     startAutoplay();
 
     window.addEventListener('resize', function () {
+      resetStageMagnify(stage);
       syncThumbViewport();
       scrollThumbIntoView(current, 'auto');
     });
