@@ -278,7 +278,7 @@
 
 .gemluxjewel-header__nav-link {
   font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1;
   letter-spacing: 0.1em;
   font-weight: 400;
@@ -594,7 +594,7 @@ html.gemluxjewel-mega-closed .gemluxjewel-header__mega-backdrop {
 
 .gemluxjewel-header__mega-title {
   font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.2;
   letter-spacing: 0.08em;
   font-weight: 500;
