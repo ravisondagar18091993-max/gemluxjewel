@@ -1451,5 +1451,24 @@
         "default": "scheme-1"
       }
     ]
+  },
+  {
+    "name": "SEO & Analytics",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Google Search Console: Shopify cannot serve HTML verification files at your domain root (e.g. googleba66aa6a6a878bd0.html). In Search Console, use the HTML tag or DNS verification method, then paste the meta tag content value below."
+      },
+      {
+        "type": "text",
+        "id": "google_site_verification",
+        "label": "Google Search Console verification code",
+        "info": "From Search Console → Verify ownership → HTML tag → copy only the content value (not the full meta tag). Example: IV7BPLESttSpBdxSWN1s4zlr4HIcuHkGQYmE3wLG59w"
+      },
+      {
+        "type": "paragraph",
+        "content": "Sitemap: Shopify auto-generates your sitemap at /sitemap.xml. After verifying Search Console, submit sitemap.xml under Indexing → Sitemaps."
+      }
+    ]
   }
 ]

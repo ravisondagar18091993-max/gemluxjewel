@@ -1,0 +1,12 @@
+{% comment %}
+  SEO helpers: Google Search Console verification meta tag.
+  Paste the content value from Search Console → Ownership verification → HTML tag
+  into Theme settings → SEO & Analytics → Google Search Console verification code.
+
+  Note: HTML file verification (googleba66aa6a6a878bd0.html) cannot be served at the
+  store root on Shopify. Use the HTML tag or DNS method in Search Console instead.
+{% endcomment %}
+
+{%- if settings.google_site_verification != blank -%}
+  <meta name="google-site-verification" content="{{ settings.google_site_verification | escape }}">
+{%- endif -%}
