@@ -943,12 +943,28 @@
   }
 
   .gemluxjewel-stone-shapes__slider--plp {
-    gap: 4px;
+    display: block;
   }
 
   .gemluxjewel-stone-shapes__nav--plp {
-    width: 36px;
-    height: 36px;
+    display: none;
+  }
+
+  .gemluxjewel-stone-shapes__viewport--plp {
+    overflow: visible;
+  }
+
+  .gemluxjewel-stone-shapes__track--plp {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    transform: none !important;
+    transition: none;
+  }
+
+  .gemluxjewel-stone-shapes__item--plp {
+    flex: none;
+    width: auto;
   }
 
   .gemluxjewel-stone-shapes__img--plp {

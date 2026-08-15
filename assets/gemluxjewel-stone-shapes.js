@@ -12,8 +12,6 @@ document.addEventListener('gemluxjewel:facets-updated', function () {
 
 function initGemluxjewelStoneShapes() {
   document.querySelectorAll('[data-gemluxjewel-stone-shapes-slider]').forEach(function (slider) {
-    if (slider.dataset.gemluxjewelStoneShapesReady === 'true') return;
-
     var track = slider.querySelector('[data-gemluxjewel-stone-shapes-track]');
     var prevBtn = slider.querySelector('[data-gemluxjewel-stone-shapes-prev]');
     var nextBtn = slider.querySelector('[data-gemluxjewel-stone-shapes-next]');
@@ -24,8 +22,15 @@ function initGemluxjewelStoneShapes() {
 
     var index = 0;
     var isPlp = slider.closest('.gemluxjewel-stone-shapes--plp') !== null;
+    var gridMq = window.matchMedia('(max-width: 749px)');
+
+    function isGridMode() {
+      return gridMq.matches;
+    }
 
     function getVisibleCount() {
+      if (isGridMode()) return items.length;
+
       if (isPlp) {
         if (window.matchMedia('(min-width: 1200px)').matches) return 8;
         if (window.matchMedia('(min-width: 750px)').matches) return 5;
@@ -41,7 +46,24 @@ function initGemluxjewelStoneShapes() {
       return Math.max(0, items.length - getVisibleCount());
     }
 
+    function applyMode() {
+      if (isGridMode()) {
+        track.style.transform = '';
+        prevBtn.disabled = true;
+        nextBtn.disabled = true;
+        return;
+      }
+
+      index = Math.min(index, getMaxIndex());
+      update();
+    }
+
     function update() {
+      if (isGridMode()) {
+        track.style.transform = '';
+        return;
+      }
+
       var item = items[0];
       if (!item) return;
 
@@ -54,22 +76,26 @@ function initGemluxjewelStoneShapes() {
     }
 
     function onResize() {
-      index = Math.min(index, getMaxIndex());
-      update();
+      applyMode();
     }
 
-    prevBtn.addEventListener('click', function () {
-      index = Math.max(0, index - getVisibleCount());
-      update();
-    });
+    if (slider.dataset.gemluxjewelStoneShapesReady !== 'true') {
+      prevBtn.addEventListener('click', function () {
+        if (isGridMode()) return;
+        index = Math.max(0, index - getVisibleCount());
+        update();
+      });
 
-    nextBtn.addEventListener('click', function () {
-      index = Math.min(getMaxIndex(), index + getVisibleCount());
-      update();
-    });
+      nextBtn.addEventListener('click', function () {
+        if (isGridMode()) return;
+        index = Math.min(getMaxIndex(), index + getVisibleCount());
+        update();
+      });
 
-    window.addEventListener('resize', onResize);
-    slider.dataset.gemluxjewelStoneShapesReady = 'true';
-    update();
+      window.addEventListener('resize', onResize);
+      slider.dataset.gemluxjewelStoneShapesReady = 'true';
+    }
+
+    applyMode();
   });
 }
