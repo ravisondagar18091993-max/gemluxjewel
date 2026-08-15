@@ -298,6 +298,7 @@
           "settings": {
             "layout": "tile",
             "collection": "",
+            "image": "shopify://shop_images/home_small_banner_8_04022026010431.avif",
             "title": "Under $1000",
             "button_label": "Shop Now",
             "link": "shopify://collections/all"
@@ -308,6 +309,7 @@
           "settings": {
             "layout": "tile",
             "collection": "",
+            "image": "shopify://shop_images/home_small_banner_7_10302025102324.avif",
             "title": "For Him",
             "button_label": "Shop Now",
             "link": "shopify://collections/all"
