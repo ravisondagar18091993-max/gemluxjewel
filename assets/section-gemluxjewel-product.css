@@ -247,12 +247,24 @@
   z-index: 1;
 }
 
+.gemluxjewel-pdp-media__slide[data-media-type='image'] {
+  overflow: hidden;
+}
+
 .gemluxjewel-pdp-media__image {
   width: 100%;
   height: 100%;
   object-fit: contain;
   display: block;
   background: #f4f6f8;
+  transition: transform 0.45s ease;
+  transform-origin: center center;
+}
+
+.gemluxjewel-pdp-media__stage:hover
+  .gemluxjewel-pdp-media__slide.is-active[data-media-type='image']
+  .gemluxjewel-pdp-media__image {
+  transform: scale(1.12);
 }
 
 .gemluxjewel-pdp-media__video-wrap {

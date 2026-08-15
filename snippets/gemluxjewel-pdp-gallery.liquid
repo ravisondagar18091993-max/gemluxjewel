@@ -6,16 +6,25 @@
   assign gallery_media = product.media
   assign gallery_count = gallery_media.size
   assign use_fallback = false
+  assign has_video_media = false
   if gallery_count == 0
     assign use_fallback = true
     assign gallery_count = 8
+  else
+    for media in gallery_media
+      if media.media_type == 'video' or media.media_type == 'external_video'
+        assign has_video_media = true
+        break
+      endif
+    endfor
   endif
 -%}
 
 <div
-  class="gemluxjewel-pdp-media"
+  class="gemluxjewel-pdp-media{% if has_video_media %} gemluxjewel-pdp-media--has-video{% endif %}"
   data-gemluxjewel-pdp-media
   data-media-count="{{ gallery_count }}"
+  {% if has_video_media %}data-has-video="true"{% endif %}
   tabindex="0"
 >
   <div class="gemluxjewel-pdp-media__thumbs" data-pdp-media-thumbs role="tablist" aria-label="Product media thumbnails">
@@ -185,13 +194,14 @@
 
     <div class="gemluxjewel-pdp-media__footer">
       <span class="gemluxjewel-pdp-media__counter" data-pdp-media-counter>1 / {{ gallery_count }}</span>
-      {%- if gallery_count > 1 -%}
+      {%- if has_video_media -%}
         <button
           type="button"
           class="gemluxjewel-pdp-media__autoplay is-playing"
           data-pdp-media-autoplay
-          aria-label="Pause slideshow"
+          aria-label="Pause video"
           aria-pressed="true"
+          hidden
         >
           <span class="gemluxjewel-pdp-media__autoplay-icon gemluxjewel-pdp-media__autoplay-icon--pause" aria-hidden="true">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">

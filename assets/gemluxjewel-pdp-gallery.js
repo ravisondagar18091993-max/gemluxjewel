@@ -122,7 +122,40 @@
       autoplayBtn.classList.toggle('is-playing', playing);
       autoplayBtn.classList.toggle('is-paused', !playing);
       autoplayBtn.setAttribute('aria-pressed', playing ? 'true' : 'false');
-      autoplayBtn.setAttribute('aria-label', playing ? 'Pause slideshow' : 'Play slideshow');
+      autoplayBtn.setAttribute('aria-label', playing ? 'Pause video' : 'Play video');
+    }
+
+    function getSlideVideo(slide) {
+      if (!slide || slide.getAttribute('data-media-type') !== 'video') return null;
+      return slide.querySelector('video');
+    }
+
+    function updateVideoControls(index) {
+      if (!autoplayBtn) return;
+
+      var slide = slides[index];
+      var video = getSlideVideo(slide);
+      autoplayBtn.hidden = !video;
+
+      if (!video) return;
+
+      setAutoplayUi(!video.paused);
+    }
+
+    function bindVideoEvents(slide) {
+      var video = getSlideVideo(slide);
+      if (!video || video.dataset.gemluxjewelPdpVideoBound === 'true') return;
+
+      video.dataset.gemluxjewelPdpVideoBound = 'true';
+      video.addEventListener('play', function () {
+        if (slides[current] === slide) setAutoplayUi(true);
+      });
+      video.addEventListener('pause', function () {
+        if (slides[current] === slide) setAutoplayUi(false);
+      });
+      video.addEventListener('ended', function () {
+        if (slides[current] === slide) setAutoplayUi(false);
+      });
     }
 
     function stopAutoplay() {
@@ -164,12 +197,13 @@
       setActiveThumb(current);
       updateCounter(current);
       scrollThumbIntoView(current, options.fromAutoplay ? 'auto' : 'smooth');
+      bindVideoEvents(slides[current]);
+      updateVideoControls(current);
 
       var activeType = slides[current].getAttribute('data-media-type');
       if (activeType === 'video' || activeType === 'external_video') {
         stopAutoplay();
-        setAutoplayUi(false);
-      } else if (!options.fromAutoplay && autoplayEnabled && autoplayBtn && autoplayBtn.classList.contains('is-playing')) {
+      } else if (!options.fromAutoplay && autoplayEnabled && (!autoplayBtn || autoplayBtn.hidden)) {
         startAutoplay();
       }
     }
@@ -181,7 +215,7 @@
         if (!isNaN(index)) {
           stopAutoplay();
           goTo(index);
-          if (autoplayBtn && autoplayBtn.classList.contains('is-playing')) startAutoplay();
+          if (!autoplayBtn || autoplayBtn.hidden) startAutoplay();
         }
         return;
       }
@@ -189,26 +223,28 @@
       if (event.target.closest('[data-pdp-media-prev]')) {
         stopAutoplay();
         goTo(current - 1);
-        if (autoplayBtn && autoplayBtn.classList.contains('is-playing')) startAutoplay();
+        if (!autoplayBtn || autoplayBtn.hidden) startAutoplay();
         return;
       }
 
       if (event.target.closest('[data-pdp-media-next]')) {
         stopAutoplay();
         goTo(current + 1);
-        if (autoplayBtn && autoplayBtn.classList.contains('is-playing')) startAutoplay();
+        if (!autoplayBtn || autoplayBtn.hidden) startAutoplay();
       }
     });
 
     if (autoplayBtn) {
       autoplayBtn.addEventListener('click', function () {
-        var playing = autoplayBtn.classList.contains('is-playing');
-        if (playing) {
-          stopAutoplay();
-          setAutoplayUi(false);
-        } else {
+        var video = getSlideVideo(slides[current]);
+        if (!video) return;
+
+        if (video.paused) {
+          video.play();
           setAutoplayUi(true);
-          startAutoplay();
+        } else {
+          video.pause();
+          setAutoplayUi(false);
         }
       });
     }
@@ -242,7 +278,7 @@
           if (Math.abs(delta) < 40) return;
           stopAutoplay();
           goTo(delta > 0 ? current - 1 : current + 1);
-          if (autoplayBtn && autoplayBtn.classList.contains('is-playing')) startAutoplay();
+          if (!autoplayBtn || autoplayBtn.hidden) startAutoplay();
         },
         { passive: true }
       );
@@ -252,7 +288,8 @@
     syncThumbViewport();
     setActiveThumb(current);
     scrollThumbIntoView(current, 'auto');
-    setAutoplayUi(true);
+    slides.forEach(bindVideoEvents);
+    updateVideoControls(current);
     startAutoplay();
 
     window.addEventListener('resize', function () {
