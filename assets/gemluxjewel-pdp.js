@@ -27,10 +27,19 @@
     return findRadioByValue(wrap, 'input[type="radio"]', value);
   }
 
-  function selectHiddenMetalRadio(picker, value, dispatchChange) {
+  function getVisibleVariantPickers(root) {
+    return Array.from((root || document).querySelectorAll('[data-gemluxjewel-pdp-variant-picker]')).filter(function (picker) {
+      return picker.style.display !== 'none';
+    });
+  }
+
+  function applyCompositeMetalSelection(picker, value, options) {
+    if (!isCompositeMetalPicker(picker) || !value) return false;
+
     var radio = findHiddenMetalRadio(picker, value);
     if (!radio || radio.disabled || radio.classList.contains('disabled')) return false;
 
+    var silent = options && options.silent;
     var previousValue = getCheckedHiddenMetalValue(picker);
 
     if (!radio.checked) {
@@ -39,11 +48,49 @@
 
     saveCompositeMetalSelection(picker, value);
 
-    if (dispatchChange !== false && previousValue !== value) {
+    var family = metalFamilyFromValue(value);
+    var parsed = parseCompositeGold(value);
+    var panel = picker.querySelector('[data-gemluxjewel-pdp-gold-panel]');
+    var colorPanel = picker.querySelector('[data-gemluxjewel-pdp-gold-color-panel]');
+    var showGold = family === 'Gold';
+
+    syncCompositeFamilyUi(picker, family);
+
+    if (panel) {
+      panel.hidden = !showGold;
+      panel.classList.toggle('is-hidden', !showGold);
+      panel.classList.toggle('is-visible', showGold);
+    }
+
+    if (showGold) {
+      var karat = parsed.karat || getCheckedGoldKarat(picker) || firstAvailableGoldKarat(picker);
+      syncCompositeKaratUi(picker, karat);
+      syncGoldColorCells(picker, karat);
+      syncCompositeColorUi(picker, value);
+
+      if (colorPanel) {
+        colorPanel.hidden = !karat;
+        colorPanel.classList.toggle('is-hidden', !karat);
+        colorPanel.classList.toggle('is-visible', !!karat);
+      }
+
+      updateMetalLabel(picker, parsed.karat && parsed.color ? value : karat ? karat + ' Gold' : 'Gold');
+    } else if (colorPanel) {
+      colorPanel.hidden = true;
+      colorPanel.classList.add('is-hidden');
+      colorPanel.classList.remove('is-visible');
+      updateMetalLabel(picker, value);
+    }
+
+    if (!silent && previousValue !== value) {
       radio.dispatchEvent(new Event('change', { bubbles: true }));
     }
 
     return true;
+  }
+
+  function selectHiddenMetalRadio(picker, value, dispatchChange) {
+    return applyCompositeMetalSelection(picker, value, { silent: dispatchChange === false });
   }
 
   function getCompositeMetalSelectionKey(picker) {
@@ -86,14 +133,76 @@
     var saved = readCompositeMetalSelection(picker);
     if (!saved) return;
 
-    var radio = findHiddenMetalRadio(picker, saved);
-    if (!radio || radio.disabled || radio.classList.contains('disabled')) return;
+    applyCompositeMetalSelection(picker, saved, { silent: true });
+  }
 
-    if (!radio.checked) {
-      radio.checked = true;
+  function syncInputAvailability(currentInput, incomingInput) {
+    if (!currentInput || !incomingInput) return;
+
+    currentInput.disabled = incomingInput.disabled;
+    currentInput.classList.toggle('disabled', incomingInput.classList.contains('disabled'));
+  }
+
+  function mergeCompositeVariantSelects(current, incoming) {
+    if (!current || !incoming) return;
+
+    var currentHidden = current.querySelector('[data-gemluxjewel-pdp-metal-radios]');
+    var incomingHidden = incoming.querySelector('[data-gemluxjewel-pdp-metal-radios]');
+    if (currentHidden && incomingHidden) {
+      incomingHidden.querySelectorAll('input[type="radio"]').forEach(function (incomingInput) {
+        var currentInput = currentHidden.querySelector(
+          '[data-option-value-id="' + incomingInput.dataset.optionValueId + '"]'
+        );
+        syncInputAvailability(currentInput, incomingInput);
+      });
     }
 
-    syncCompositeColorUi(picker, saved);
+    current.querySelectorAll('.gemluxjewel-pdp__option--diamond input[type="radio"]').forEach(function (currentInput) {
+      var incomingInput = incoming.querySelector('[data-option-value-id="' + currentInput.dataset.optionValueId + '"]');
+      syncInputAvailability(currentInput, incomingInput);
+    });
+
+    var currentRing = current.querySelector('.gemluxjewel-pdp__ring-select');
+    var incomingRing = incoming.querySelector('.gemluxjewel-pdp__ring-select');
+    if (currentRing && incomingRing) {
+      incomingRing.querySelectorAll('option[data-option-value-id]').forEach(function (incomingOption) {
+        var currentOption = currentRing.querySelector(
+          '[data-option-value-id="' + incomingOption.dataset.optionValueId + '"]'
+        );
+        if (!currentOption) return;
+        currentOption.disabled = incomingOption.disabled;
+      });
+    }
+
+    var currentScript = current.querySelector('[data-selected-variant]');
+    var incomingScript = incoming.querySelector('[data-selected-variant]');
+    if (currentScript && incomingScript) {
+      currentScript.textContent = incomingScript.textContent;
+    }
+  }
+
+  function bindCompositeVariantMerge(productInfo) {
+    if (!productInfo || productInfo.dataset.gemluxjewelPdpMergeBound === 'true') return;
+    if (!productInfo.querySelector('[data-gemluxjewel-pdp-composite-metal="true"]')) return;
+
+    productInfo.dataset.gemluxjewelPdpMergeBound = 'true';
+
+    var originalUpdateOptionValues = productInfo.updateOptionValues.bind(productInfo);
+    productInfo.updateOptionValues = function (html) {
+      var incoming = html.querySelector('variant-selects');
+      var current = productInfo.querySelector('variant-selects');
+
+      if (incoming && current && current.dataset.gemluxjewelPdpCompositeMetal === 'true') {
+        mergeCompositeVariantSelects(current, incoming);
+        return;
+      }
+
+      originalUpdateOptionValues(html);
+    };
+  }
+
+  function bindCompositeVariantMergeAll(root) {
+    (root || document).querySelectorAll('product-info').forEach(bindCompositeVariantMerge);
   }
 
   function getCheckedHiddenMetalValue(picker) {
@@ -468,20 +577,30 @@
   function initPickers(root, options) {
     var restoreSelection = !options || options.restoreSelection !== false;
 
-    (root || document).querySelectorAll('[data-gemluxjewel-pdp-variant-picker]').forEach(function (picker) {
+    getVisibleVariantPickers(root).forEach(function (picker) {
+      if (isCompositeMetalPicker(picker)) {
+        if (restoreSelection) {
+          restoreCompositeMetalSelection(picker);
+        } else {
+          var current = getCheckedHiddenMetalValue(picker);
+          if (current && !readCompositeMetalSelection(picker)) {
+            saveCompositeMetalSelection(picker, current);
+          }
+          var value = readCompositeMetalSelection(picker) || current;
+          if (value) applyCompositeMetalSelection(picker, value, { silent: true });
+        }
+        return;
+      }
+
       if (restoreSelection) {
         restoreCompositeMetalSelection(picker);
-      } else if (isCompositeMetalPicker(picker)) {
-        var current = getCheckedHiddenMetalValue(picker);
-        if (current && !readCompositeMetalSelection(picker)) {
-          saveCompositeMetalSelection(picker, current);
-        }
       }
       syncGoldPanel(picker);
     });
   }
 
   function init(root) {
+    bindCompositeVariantMergeAll(root);
     initPickers(root, { restoreSelection: false });
     initWishlist(root);
   }
@@ -514,7 +633,7 @@
 
     if (target.matches('[data-gemluxjewel-pdp-metal-value]')) {
       saveCompositeMetalSelection(picker, target.value);
-      syncCompositeMetal(picker);
+      applyCompositeMetalSelection(picker, target.value, { silent: true });
       return;
     }
 
@@ -664,7 +783,12 @@
     }
   });
 
+  document.addEventListener('product-info:loaded', function (event) {
+    bindCompositeVariantMerge(event.target);
+  });
+
   document.addEventListener('shopify:section:load', function (event) {
+    bindCompositeVariantMergeAll(event.target);
     init(event.target);
   });
 })();
