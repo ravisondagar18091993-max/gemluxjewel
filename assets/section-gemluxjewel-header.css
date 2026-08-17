@@ -394,11 +394,6 @@
   align-items: center;
 }
 
-.gemluxjewel-header__icons .pick_currency .nice-select {
-  height: initial !important;
-  line-height: 1.2 !important;
-  min-height: 28px;
-}
 
 .gemluxjewel-mobile-menu__list > .pick_currency.mldcustom {
   padding: 0 var(--gemluxjewel-header-gutter, 20px) 8px;
