@@ -29,14 +29,18 @@
     var radio = findHiddenMetalRadio(picker, value);
     if (!radio || radio.disabled || radio.classList.contains('disabled')) return false;
 
+    var previousValue = getCheckedHiddenMetalValue(picker);
+
     if (!radio.checked) {
       radio.checked = true;
-      if (dispatchChange !== false) {
-        radio.dispatchEvent(new Event('change', { bubbles: true }));
-      }
     }
 
     saveCompositeMetalSelection(picker, value);
+
+    if (dispatchChange !== false && previousValue !== value) {
+      radio.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+
     return true;
   }
 
