@@ -395,7 +395,7 @@
 }
 
 .gemluxjewel-header__icons .pick_currency .nice-select {
-  height: auto !important;
+  height: initial !important;
   line-height: 1.2 !important;
   min-height: 28px;
 }
