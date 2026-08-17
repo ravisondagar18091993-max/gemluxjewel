@@ -1,7 +1,7 @@
 /* gemluxjewel homepage — matches HTML/index.html + main.css */
 
 .gemluxjewel {
-  --gemluxjewel-primary: #808000;
+  --gemluxjewel-primary: #253e2b;
   --gemluxjewel-secondary: #ffffff;
   --gemluxjewel-layer: rgba(67, 63, 63, 0.3);
   --gemluxjewel-orange: #e37859;
@@ -277,9 +277,9 @@
 }
 
 .gemluxjewel-hero__btn--primary {
-  background: #808000;
+  background: #253e2b;
   color: #fff;
-  border: 1px solid #808000;
+  border: 1px solid #253e2b;
 }
 
 .gemluxjewel-hero__btn--primary:hover {
@@ -303,7 +303,7 @@
   right: 0;
   bottom: 0;
   height: 6px;
-  background: #808000;
+  background: #253e2b;
   z-index: 3;
 }
 
@@ -1672,7 +1672,7 @@
 
 /* ── Testimonials (Trustpilot-style slider) ── */
 .gemluxjewel-testimonials {
-  background: #808000;
+  background: #253e2b;
   padding: 60px 0 60px;
 }
 
@@ -1800,7 +1800,7 @@
   justify-content: center;
   min-height: 44px;
   padding: 0 16px;
-  background: #808000;
+  background: #253e2b;
   color: #fff;
   font-family: var(--gemluxjewel-font-body);
   font-size: 12px;
