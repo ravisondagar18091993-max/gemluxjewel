@@ -19,7 +19,8 @@
           "settings": {
             "icon": "shipping",
             "line_1": "Worldwide",
-            "line_2": "Express Shipping"
+            "line_2": "Express Shipping",
+            "link": ""
           }
         },
         "trust_2": {
@@ -27,7 +28,8 @@
           "settings": {
             "icon": "resizing",
             "line_1": "Free",
-            "line_2": "Resizing"
+            "line_2": "Resizing",
+            "link": ""
           }
         },
         "trust_3": {
@@ -35,7 +37,8 @@
           "settings": {
             "icon": "warranty",
             "line_1": "Lifetime Ring",
-            "line_2": "Warranty"
+            "line_2": "Warranty",
+            "link": ""
           }
         },
         "trust_4": {
@@ -43,7 +46,8 @@
           "settings": {
             "icon": "customization",
             "line_1": "Free Ring",
-            "line_2": "Customisation"
+            "line_2": "Customisation",
+            "link": ""
           }
         }
       },
@@ -59,16 +63,33 @@
         "newsletter_placeholder": "Sign Me Up",
         "promo_heading": "Join our guest list and receive exclusive access to new collections, offers, and events.",
         "promo_text": "Enjoy $100 off your first order*",
+        "phone": "+1 000 000 0000",
+        "email": "hello@gemluxjewel.com",
+        "address": "",
+        "hours": "Mon–Fri: 9am–6pm EST",
+        "directions_url": "",
+        "directions_label": "Get Directions",
         "brand_logo_text": "GEMLUXJEWEL",
         "brand_description": "Timeless lab-grown diamond and moissanite jewellery, crafted with exceptional quality and personalized service.",
         "menu_1_title": "Brand Info",
+        "menu_1": "footer",
         "menu_2_title": "Contact Info",
+        "menu_2": "",
         "menu_3_title": "",
+        "menu_3": "",
         "menu_4_title": "Education",
+        "menu_4": "",
         "menu_5_title": "",
+        "menu_5": "",
+        "youtube_url": "",
+        "pinterest_url": "https://ca.pinterest.com/gemlux_jewels108/",
+        "linkedin_url": "",
+        "legal_menu": "",
         "copyright_text": "© gemluxjewel 2026"
       }
     }
   },
-  "order": ["gemluxjewel_footer"]
+  "order": [
+    "gemluxjewel_footer"
+  ]
 }
