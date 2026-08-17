@@ -1,8 +1,8 @@
 /* gemluxjewel Our Story — Cullen-style page */
 
 .gemluxjewel-our-story {
-  --os-green: #808000;
-  --os-green-light: #808000;
+  --os-green: #253e2b;
+  --os-green-light: #253e2b;
   --os-cream: #f5f0eb;
   --os-serif: 'Libre Baskerville', Georgia, serif;
   --os-heading-green: #101010;
@@ -56,7 +56,7 @@
 
 /* ── Founder quote (green split) ── */
 .gemluxjewel-our-story-founder {
-  background:#808000;
+  background:#253e2b;
   color: #fff;
 }
 
