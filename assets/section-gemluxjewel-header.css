@@ -15,7 +15,7 @@
 
 /* ── Announcement bar ── */
 .gemluxjewel-header__top {
-  background: #808000;
+  background: #253e2b;
   padding: 11px 16px;
   overflow: hidden;
 }
@@ -296,7 +296,7 @@
 }
 
 .gemluxjewel-header__nav-link.is-highlight {
-  color: var(--gemluxjewel-primary, #808000);
+  color: var(--gemluxjewel-primary, #253e2b);
   opacity: 1;
 }
 
@@ -392,7 +392,7 @@
   height: 14px;
   padding: 0 3px;
   border-radius: 50%;
-  background: var(--gemluxjewel-primary, #808000);
+  background: var(--gemluxjewel-primary, #253e2b);
   color: #fff;
   font-size: 9px;
   line-height: 14px;
@@ -582,7 +582,7 @@ html.gemluxjewel-mega-closed .gemluxjewel-header__mega-backdrop {
 
 .gemluxjewel-header__mega-link.is-preview-source,
 .gemluxjewel-header__mega-title--link.is-preview-source {
-  color: var(--gemluxjewel-primary, #808000);
+  color: var(--gemluxjewel-primary, #253e2b);
 }
 
 .gemluxjewel-header__mega-title-row {
@@ -609,7 +609,7 @@ html.gemluxjewel-mega-closed .gemluxjewel-header__mega-backdrop {
 }
 
 .gemluxjewel-header__mega-title--link:hover {
-  color: var(--gemluxjewel-primary, #808000);
+  color: var(--gemluxjewel-primary, #253e2b);
 }
 
 .gemluxjewel-header__mega-info {
@@ -667,7 +667,7 @@ html.gemluxjewel-mega-closed .gemluxjewel-header__mega-backdrop {
 }
 
 .gemluxjewel-header__mega-link:hover {
-  color: var(--gemluxjewel-primary, #808000);
+  color: var(--gemluxjewel-primary, #253e2b);
 }
 
 .gemluxjewel-header__mega-link.is-highlight {
@@ -675,7 +675,7 @@ html.gemluxjewel-mega-closed .gemluxjewel-header__mega-backdrop {
 }
 
 .gemluxjewel-header__mega-link.is-highlight:hover {
-  color: var(--gemluxjewel-primary, #808000);
+  color: var(--gemluxjewel-primary, #253e2b);
 }
 
 .gemluxjewel-header__mega-badge {
@@ -706,7 +706,7 @@ html.gemluxjewel-mega-closed .gemluxjewel-header__mega-backdrop {
 }
 
 .gemluxjewel-header__mega-shop-all:hover {
-  color: var(--gemluxjewel-primary, #808000);
+  color: var(--gemluxjewel-primary, #253e2b);
 }
 
 .gemluxjewel-header__mega-featured {
@@ -796,7 +796,7 @@ html.gemluxjewel-mega-closed .gemluxjewel-header__mega-backdrop {
 }
 
 .gemluxjewel-header__mega-contact-link:hover {
-  color: var(--gemluxjewel-primary, #808000);
+  color: var(--gemluxjewel-primary, #253e2b);
 }
 
 .gemluxjewel-header__mega-contact-features {
@@ -851,7 +851,7 @@ html.gemluxjewel-mega-closed .gemluxjewel-header__mega-backdrop {
 .gemluxjewel-header__nav-item.has-mega:hover > .gemluxjewel-header__nav-link,
 .gemluxjewel-header__nav-item.has-mega:focus-within > .gemluxjewel-header__nav-link {
   font-weight: 500;
-  color: var(--gemluxjewel-primary, #808000);
+  color: var(--gemluxjewel-primary, #253e2b);
 }
 
 @media (max-width: 1199px) {
@@ -915,7 +915,7 @@ html.gemluxjewel-mega-closed .gemluxjewel-header__mega-backdrop {
 }
 
 .gemluxjewel-mobile-menu__close:hover {
-  color: var(--gemluxjewel-primary, #808000);
+  color: var(--gemluxjewel-primary, #253e2b);
   opacity: 0.85;
 }
 
@@ -1020,12 +1020,12 @@ html.gemluxjewel-mega-closed .gemluxjewel-header__mega-backdrop {
 
 .gemluxjewel-mobile-menu__item:hover,
 .gemluxjewel-mobile-menu__item:focus-visible {
-  color: var(--gemluxjewel-primary, #808000);
+  color: var(--gemluxjewel-primary, #253e2b);
   outline: none;
 }
 
 .gemluxjewel-mobile-menu__item.is-highlight {
-  color: var(--gemluxjewel-primary, #808000);
+  color: var(--gemluxjewel-primary, #253e2b);
 }
 
 .gemluxjewel-mobile-menu__item-label {
@@ -1052,7 +1052,7 @@ html.gemluxjewel-mega-closed .gemluxjewel-header__mega-backdrop {
 
 .gemluxjewel-mobile-menu__item--expand:hover .gemluxjewel-mobile-menu__item-chevron,
 .gemluxjewel-mobile-menu__item--expand:focus-visible .gemluxjewel-mobile-menu__item-chevron {
-  color: var(--gemluxjewel-primary, #808000);
+  color: var(--gemluxjewel-primary, #253e2b);
 }
 
 .gemluxjewel-mobile-menu__subhead {
@@ -1086,7 +1086,7 @@ html.gemluxjewel-mega-closed .gemluxjewel-header__mega-backdrop {
 
 .gemluxjewel-mobile-menu__back:hover,
 .gemluxjewel-mobile-menu__back:focus-visible {
-  color: var(--gemluxjewel-primary, #808000);
+  color: var(--gemluxjewel-primary, #253e2b);
   outline: none;
 }
 
@@ -1103,7 +1103,7 @@ html.gemluxjewel-mega-closed .gemluxjewel-header__mega-backdrop {
 }
 
 .gemluxjewel-mobile-menu__view-all:hover {
-  color: var(--gemluxjewel-primary, #808000);
+  color: var(--gemluxjewel-primary, #253e2b);
 }
 
 .gemluxjewel-mobile-menu__panel-title {
@@ -1182,7 +1182,7 @@ html.gemluxjewel-mega-closed .gemluxjewel-header__mega-backdrop {
 
 .gemluxjewel-mobile-menu__accordion-trigger:hover,
 .gemluxjewel-mobile-menu__accordion-trigger:focus-visible {
-  color: var(--gemluxjewel-primary, #808000);
+  color: var(--gemluxjewel-primary, #253e2b);
   outline: none;
 }
 
@@ -1253,7 +1253,7 @@ html.gemluxjewel-mega-closed .gemluxjewel-header__mega-backdrop {
 }
 
 .gemluxjewel-mobile-menu__sublink:hover {
-  color: var(--gemluxjewel-primary, #808000);
+  color: var(--gemluxjewel-primary, #253e2b);
 }
 
 .gemluxjewel-mobile-menu__flat-links {
@@ -1277,7 +1277,7 @@ html.gemluxjewel-mega-closed .gemluxjewel-header__mega-backdrop {
 }
 
 .gemluxjewel-mobile-menu__flat-link:hover {
-  color: var(--gemluxjewel-primary, #808000);
+  color: var(--gemluxjewel-primary, #253e2b);
 }
 
 .gemluxjewel-mobile-menu__contact-cards {
@@ -1342,7 +1342,7 @@ html.gemluxjewel-mega-closed .gemluxjewel-header__mega-backdrop {
 }
 
 .gemluxjewel-mobile-menu__utility:hover {
-  color: var(--gemluxjewel-primary, #808000);
+  color: var(--gemluxjewel-primary, #253e2b);
 }
 
 .gemluxjewel-mobile-menu__utility img {
