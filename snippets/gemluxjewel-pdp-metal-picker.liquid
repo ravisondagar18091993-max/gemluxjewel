@@ -6,7 +6,7 @@
 {%- liquid
   assign product_form_id = product_form_id | default: 'product-form-' | append: section.id
   assign composite_metal = composite_metal | default: false
-  assign metal_families = 'Silver,Gold,Platinum' | split: ','
+  assign metal_families = 'Silver,Platinum,Gold' | split: ','
   assign gold_karats = '10K,14K,18K' | split: ','
   assign gold_colors = 'White Gold,Yellow Gold,Rose Gold' | split: ','
   assign gold_color_keys = 'white,yellow,rose' | split: ','
