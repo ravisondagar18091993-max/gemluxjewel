@@ -168,7 +168,7 @@
   }
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 1399px) {
   .gemluxjewel-header__inner {
     grid-template-columns: auto minmax(0, 1fr) auto;
   }
@@ -188,7 +188,7 @@
   justify-self: end;
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 1399px) {
   .gemluxjewel-header__actions {
     gap: 0;
   }
@@ -213,7 +213,7 @@
   opacity: 0.75;
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 1399px) {
   .gemluxjewel-header__logo {
     font-size: 18px;
     letter-spacing: 0.24em;
@@ -238,7 +238,7 @@
   display: none;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
   .gemluxjewel-header__nav-wrap {
     display: block;
   }
@@ -248,7 +248,7 @@
   display: none;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
   .gemluxjewel-header__nav-wrap--right {
     display: block;
   }
@@ -338,7 +338,7 @@
   white-space: nowrap;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
   .gemluxjewel-header__locale {
     display: inline;
   }
@@ -351,7 +351,7 @@
   flex-shrink: 0;
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 1399px) {
   .gemluxjewel-header__icons {
     gap: 14px;
   }
@@ -407,7 +407,7 @@
   flex-shrink: 0;
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 1399px) {
   .gemluxjewel-header__burger {
     display: flex;
   }
@@ -854,7 +854,7 @@ html.gemluxjewel-mega-closed .gemluxjewel-header__mega-backdrop {
   color: var(--gemluxjewel-primary, #253e2b);
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 1399px) {
   .gemluxjewel-header__mega,
   .gemluxjewel-header__mega-backdrop {
     display: none !important;
@@ -1376,7 +1376,7 @@ html.gemluxjewel-mega-open .gemluxjewel-plp-sort__dropdown {
   --gemluxjewel-header-offset: 108px;
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 1399px) {
   :root {
     --gemluxjewel-header-offset: 96px;
   }
