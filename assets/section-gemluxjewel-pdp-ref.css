@@ -246,8 +246,8 @@
 /* Gold 3×3 grid */
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__gold-options {
   margin-top: 8px;
-  padding-top: 8px;
-  border-top: 1px solid var(--pdp-border);
+  padding-top: 0;
+  border-top: none;
 }
 
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__option--gold-karat {
