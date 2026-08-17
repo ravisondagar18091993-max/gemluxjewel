@@ -9,7 +9,9 @@
   }
 
   function isCompositeMetalPicker(picker) {
-    return picker.dataset.gemluxjewelPdpCompositeMetal === 'true';
+    if (!picker) return false;
+    if (picker.dataset.gemluxjewelPdpCompositeMetal === 'true') return true;
+    return !!picker.querySelector('[data-gemluxjewel-pdp-composite-metal="true"]');
   }
 
   function metalFamilyFromValue(value) {
@@ -637,13 +639,26 @@
     });
   }
 
+  function syncPriceFromVariantChange(event) {
+    var data = event && event.data;
+    if (!data || !data.html || !data.sectionId) return;
+
+    var priceSource = data.html.getElementById('price-' + data.sectionId);
+    var priceDest = document.getElementById('price-' + data.sectionId);
+    if (!priceSource || !priceDest) return;
+
+    priceDest.innerHTML = priceSource.innerHTML;
+    priceDest.classList.remove('hidden');
+  }
+
   document.addEventListener('change', handlePickerChange);
 
   document.addEventListener('DOMContentLoaded', function () {
     init(document);
 
     if (typeof subscribe === 'function' && typeof PUB_SUB_EVENTS !== 'undefined') {
-      subscribe(PUB_SUB_EVENTS.variantChange, function () {
+      subscribe(PUB_SUB_EVENTS.variantChange, function (event) {
+        syncPriceFromVariantChange(event);
         initPickers(document, { restoreSelection: true });
       });
     }

@@ -75,6 +75,7 @@
     id="variant-selects-{{ section.id }}"
     class="gemluxjewel-pdp__variant-selects"
     data-gemluxjewel-pdp-variant-picker
+    {% if composite_metal %}data-gemluxjewel-pdp-composite-metal="true"{% endif %}
     data-section="{{ section.id }}"
     data-product-handle="{{ product.handle }}"
     data-product-title="{{ product.title | escape }}"
