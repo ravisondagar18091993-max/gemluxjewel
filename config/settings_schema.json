@@ -1464,10 +1464,6 @@
         "id": "google_site_verification",
         "label": "Google Search Console verification code",
         "info": "From Search Console → Verify ownership → HTML tag → copy only the content value (not the full meta tag). Example: IV7BPLESttSpBdxSWN1s4zlr4HIcuHkGQYmE3wLG59w"
-      },
-      {
-        "type": "paragraph",
-        "content": "Sitemap: Shopify auto-generates your sitemap at /sitemap.xml. After verifying Search Console, submit sitemap.xml under Indexing → Sitemaps."
       }
     ]
   }
