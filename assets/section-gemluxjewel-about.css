@@ -143,7 +143,7 @@
 
 .gemluxjewel-about-history__year {
   flex-shrink: 0;
-  background: var(--gemluxjewel-primary, #808000);
+  background: var(--gemluxjewel-primary, #253e2b);
   color: #fff;
   font-family: var(--gemluxjewel-font-body);
   font-size: 14px;
@@ -156,7 +156,7 @@
 .gemluxjewel-about-history__line {
   flex: 1;
   height: 2px;
-  background: var(--gemluxjewel-primary, #808000);
+  background: var(--gemluxjewel-primary, #253e2b);
   margin-left: -4px;
 }
 
@@ -209,8 +209,8 @@
 }
 
 .gemluxjewel-about-history__nav:hover:not(:disabled) {
-  background: var(--gemluxjewel-primary, #808000);
-  border-color: var(--gemluxjewel-primary, #808000);
+  background: var(--gemluxjewel-primary, #253e2b);
+  border-color: var(--gemluxjewel-primary, #253e2b);
 }
 
 .gemluxjewel-about-history__nav:hover:not(:disabled) .gemluxjewel-about-history__nav-icon {
@@ -290,7 +290,7 @@
 
 .gemluxjewel-about-mission__card {
   padding-left: 20px;
-  border-left: 3px solid var(--gemluxjewel-primary, #808000);
+  border-left: 3px solid var(--gemluxjewel-primary, #253e2b);
 }
 
 .gemluxjewel-about-mission__card-label {
@@ -392,12 +392,12 @@
   padding: 24px;
   background: #f7f7f7;
   border-radius: var(--gemluxjewel-radius, 10px);
-  border-left: 4px solid var(--gemluxjewel-primary, #808000);
+  border-left: 4px solid var(--gemluxjewel-primary, #253e2b);
 }
 
 /* ── Book Appointment ── */
 .gemluxjewel-about-appointment {
-  background: var(--gemluxjewel-primary, #808000);
+  background: var(--gemluxjewel-primary, #253e2b);
   padding: 100px 0 120px;
   color: #fff;
 }
@@ -538,7 +538,7 @@ a.gemluxjewel-about-appointment__detail-value:hover {
 .gemluxjewel-about-appointment__input:focus,
 .gemluxjewel-about-appointment__textarea:focus {
   outline: none;
-  border-color: var(--gemluxjewel-primary, #808000);
+  border-color: var(--gemluxjewel-primary, #253e2b);
 }
 
 .gemluxjewel-about-appointment__textarea {
@@ -554,7 +554,7 @@ a.gemluxjewel-about-appointment__detail-value:hover {
 }
 
 .gemluxjewel-about-appointment__status--success {
-  color: var(--gemluxjewel-primary, #808000);
+  color: var(--gemluxjewel-primary, #253e2b);
 }
 
 .gemluxjewel-about-appointment__status--error {
