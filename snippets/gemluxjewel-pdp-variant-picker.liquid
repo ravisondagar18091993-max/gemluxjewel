@@ -43,6 +43,17 @@
         assign ring_option = option
       endif
     endfor
+
+    assign composite_metal = false
+    if metal_option != blank and karat_option == blank
+      for value in metal_option.values
+        assign value_downcase = value | downcase
+        if value_downcase contains '10k' or value_downcase contains '14k' or value_downcase contains '18k'
+          assign composite_metal = true
+          break
+        endif
+      endfor
+    endif
   endunless
 -%}
 
@@ -78,7 +89,8 @@
         section: section,
         metal_option: metal_option,
         karat_option: karat_option,
-        color_option: color_option
+        color_option: color_option,
+        composite_metal: composite_metal
       -%}
     {%- endif -%}
 

@@ -1657,6 +1657,38 @@
   display: none !important;
 }
 
+.gemluxjewel-pdp__metal-tabs--karat,
+.gemluxjewel-pdp__karat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.gemluxjewel-pdp__karat-row input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.gemluxjewel-pdp__karat-row input:checked + .gemluxjewel-pdp__karat-tab {
+  background: var(--gemluxjewel-pdp-navy);
+  border-color: var(--gemluxjewel-pdp-navy);
+  color: #fff;
+}
+
+.gemluxjewel-pdp__gold-color-options {
+  margin-top: 16px;
+}
+
+.gemluxjewel-pdp__gold-color-options[hidden] {
+  display: none !important;
+}
+
+[data-gemluxjewel-pdp-gold-color-cell][hidden],
+[data-gemluxjewel-pdp-gold-color-cell].is-hidden {
+  display: none !important;
+}
+
 .gemluxjewel-pdp__gold-grid {
   display: flex;
   flex-wrap: wrap;

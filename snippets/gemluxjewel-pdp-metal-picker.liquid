@@ -1,45 +1,61 @@
 {% comment %}
-  Metal type tabs + conditional gold karat/color swatches.
-  @param demo_mode {Boolean}
-  @param metal_option {Object} — Shopify option (live mode)
-  @param karat_option {Object}
-  @param color_option {Object}
-  @param metal_values {Array} — demo mode
-  @param karat_values {Array}
-  @param color_values {Array}
+  Metal type tabs + conditional gold options.
+  composite_metal: single Metal Type option with values like Silver, Platinum, 10K White Gold, etc.
 {% endcomment %}
 
 {%- liquid
   assign product_form_id = product_form_id | default: 'product-form-' | append: section.id
-  assign metal_name = 'Metal Type'
-  assign karat_name = 'Karat'
-  assign color_name = 'Metal Color'
-
-  if demo_mode == false and metal_option != blank
-    assign metal_name = metal_option.name
-    assign metal_values_list = metal_option.values
-  else
-    assign metal_values_list = metal_values
-  endif
-
+  assign composite_metal = composite_metal | default: false
+  assign metal_families = 'Silver,Platinum,Gold' | split: ','
+  assign gold_karats = '10K,14K,18K' | split: ','
+  assign gold_colors = 'White Gold,Yellow Gold,Rose Gold' | split: ','
+  assign gold_color_keys = 'white,yellow,rose' | split: ','
+  assign initial_family = 'Gold'
+  assign initial_karat = '10K'
   assign show_gold_panel = demo_mode
-  unless show_gold_panel
-    if metal_option != blank and metal_option.selected_value != blank
-      assign selected_metal_down = metal_option.selected_value | downcase
-      if selected_metal_down == 'gold' or selected_metal_down contains 'gold'
-        assign show_gold_panel = true
+  assign show_gold_color_panel = false
+
+  if demo_mode == false and metal_option != blank and composite_metal
+    assign selected_metal_down = metal_option.selected_value | downcase
+    if selected_metal_down == 'silver'
+      assign initial_family = 'Silver'
+    elsif selected_metal_down == 'platinum'
+      assign initial_family = 'Platinum'
+    else
+      assign initial_family = 'Gold'
+    endif
+
+    if selected_metal_down contains '14k'
+      assign initial_karat = '14K'
+    elsif selected_metal_down contains '18k'
+      assign initial_karat = '18K'
+    endif
+
+    if initial_family == 'Gold'
+      assign show_gold_panel = true
+      if selected_metal_down contains '10k' or selected_metal_down contains '14k' or selected_metal_down contains '18k'
+        assign show_gold_color_panel = true
       endif
     endif
-  endunless
+  elsif demo_mode
+    assign show_gold_panel = true
+    assign show_gold_color_panel = true
+  elsif demo_mode == false and metal_option != blank and metal_option.selected_value != blank
+    assign selected_metal_down = metal_option.selected_value | downcase
+    if selected_metal_down == 'gold' or selected_metal_down contains 'gold'
+      assign show_gold_panel = true
+    endif
+  endif
 -%}
 
-<div class="gemluxjewel-pdp__metal-block" data-gemluxjewel-pdp-metal-block>
+<div class="gemluxjewel-pdp__metal-block" data-gemluxjewel-pdp-metal-block{% if composite_metal %} data-gemluxjewel-pdp-composite-metal="true"{% endif %}>
   <fieldset class="js product-form__input gemluxjewel-pdp__option gemluxjewel-pdp__option--metal">
     <legend class="gemluxjewel-pdp__option-label gemluxjewel-pdp__option-label--stacked">
       Metal: <span class="gemluxjewel-pdp__metal-selected" data-gemluxjewel-pdp-metal-label>Select Metal Type</span>
     </legend>
-    <div class="gemluxjewel-pdp__metal-tabs">
-      {%- if demo_mode -%}
+
+    {%- if demo_mode -%}
+      <div class="gemluxjewel-pdp__metal-tabs">
         {%- for value in metal_values -%}
           {%- assign input_id = section.id | append: '-metal-' | append: forloop.index0 -%}
           <input
@@ -52,7 +68,49 @@
           >
           <label for="{{ input_id }}" class="gemluxjewel-pdp__metal-tab">{{ value | upcase }}</label>
         {%- endfor -%}
-      {%- else -%}
+      </div>
+    {%- elsif composite_metal -%}
+      <div class="gemluxjewel-pdp__metal-tabs gemluxjewel-pdp__metal-tabs--family">
+        {%- for family in metal_families -%}
+          {%- assign family_id = section.id | append: '-metal-family-' | append: forloop.index0 -%}
+          <input
+            type="radio"
+            id="{{ family_id }}"
+            name="metal-family-{{ section.id }}"
+            value="{{ family | escape }}"
+            {% if family == initial_family %}checked{% endif %}
+            data-gemluxjewel-pdp-metal-family-tab
+          >
+          <label for="{{ family_id }}" class="gemluxjewel-pdp__metal-tab">{{ family | upcase }}</label>
+        {%- endfor -%}
+      </div>
+
+      <div class="visually-hidden" data-gemluxjewel-pdp-metal-radios>
+        {%- for value in metal_option.values -%}
+          {%- liquid
+            assign option_disabled = false
+            unless value.available
+              assign option_disabled = true
+            endunless
+            assign input_id = section.id | append: '-metal-hidden-' | append: forloop.index0
+            assign input_name = metal_option.name | append: '-' | append: metal_option.position
+          -%}
+          <input
+            type="radio"
+            id="{{ input_id }}"
+            name="{{ input_name | escape }}"
+            value="{{ value | escape }}"
+            form="{{ product_form_id }}"
+            {% if value.selected %}checked{% endif %}
+            {% if option_disabled %}class="disabled" disabled{% endif %}
+            data-option-value-id="{{ value.id }}"
+            data-option-name="{{ metal_option.name | escape }}"
+            data-gemluxjewel-pdp-metal-value
+          >
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <div class="gemluxjewel-pdp__metal-tabs">
         {%- for value in metal_option.values -%}
           {%- liquid
             assign option_disabled = false
@@ -69,25 +127,85 @@
             value="{{ value | escape }}"
             form="{{ product_form_id }}"
             {% if value.selected %}checked{% endif %}
-            {% if option_disabled %}class="disabled"{% endif %}
+            {% if option_disabled %}class="disabled" disabled{% endif %}
             data-option-value-id="{{ value.id }}"
             data-option-name="{{ metal_option.name | escape }}"
             data-gemluxjewel-pdp-metal-tab
           >
           <label for="{{ input_id }}" class="gemluxjewel-pdp__metal-tab">{{ value | upcase }}</label>
         {%- endfor -%}
-      {%- endif -%}
-    </div>
+      </div>
+    {%- endif -%}
   </fieldset>
 
   <div class="gemluxjewel-pdp__gold-options" data-gemluxjewel-pdp-gold-panel{% unless show_gold_panel %} hidden{% endunless %}>
-    {% render 'gemluxjewel-pdp-gold-grid',
-      demo_mode: demo_mode,
-      section: section,
-      product_form_id: product_form_id,
-      karat_option: karat_option,
-      color_option: color_option
-    %}
+    {%- if composite_metal or demo_mode -%}
+      <fieldset class="js product-form__input gemluxjewel-pdp__option gemluxjewel-pdp__option--gold-karat">
+        <legend class="gemluxjewel-pdp__option-label gemluxjewel-pdp__option-label--stacked">Select Karat:</legend>
+        <div class="gemluxjewel-pdp__karat-row gemluxjewel-pdp__metal-tabs gemluxjewel-pdp__metal-tabs--karat">
+          {%- for karat in gold_karats -%}
+            {%- assign karat_id = section.id | append: '-gold-karat-' | append: forloop.index0 -%}
+            <input
+              type="radio"
+              id="{{ karat_id }}"
+              name="gold-karat-ui-{{ section.id }}"
+              value="{{ karat | escape }}"
+              {% if karat == initial_karat %}checked{% endif %}
+              data-gemluxjewel-pdp-gold-karat
+            >
+            <label for="{{ karat_id }}" class="gemluxjewel-pdp__metal-tab gemluxjewel-pdp__karat-tab">{{ karat | upcase }}</label>
+          {%- endfor -%}
+        </div>
+      </fieldset>
+
+      <div class="gemluxjewel-pdp__gold-color-options" data-gemluxjewel-pdp-gold-color-panel{% unless show_gold_color_panel %} hidden{% endunless %}>
+        <fieldset class="js product-form__input gemluxjewel-pdp__option gemluxjewel-pdp__option--gold-color">
+          <legend class="gemluxjewel-pdp__option-label gemluxjewel-pdp__option-label--stacked">Select Gold Color:</legend>
+          <div class="gemluxjewel-pdp__gold-grid">
+            {%- for karat in gold_karats -%}
+              {%- for color in gold_colors -%}
+                {%- liquid
+                  assign color_index = forloop.index0
+                  assign grid_index = forloop.parentloop.index0 | times: 3 | plus: color_index
+                  assign input_id = section.id | append: '-gold-color-' | append: grid_index
+                  assign color_key = gold_color_keys[color_index]
+                  assign combined_value = karat | append: ' ' | append: color
+                  assign is_selected = false
+                  if demo_mode == false and metal_option.selected_value == combined_value
+                    assign is_selected = true
+                  elsif demo_mode and karat == '10K' and color == 'White Gold'
+                    assign is_selected = true
+                  endif
+                -%}
+                <div class="gemluxjewel-pdp__gold-grid-cell" data-gemluxjewel-pdp-gold-color-cell data-karat="{{ karat | escape }}">
+                  <input
+                    type="radio"
+                    id="{{ input_id }}"
+                    name="gold-color-ui-{{ section.id }}"
+                    value="{{ combined_value | escape }}"
+                    data-gemluxjewel-pdp-gold-color
+                    data-karat-value="{{ karat | escape }}"
+                    data-color-value="{{ color | escape }}"
+                    {% if is_selected %}checked{% endif %}
+                  >
+                  <label for="{{ input_id }}" class="gemluxjewel-pdp__gold-grid-swatch gemluxjewel-pdp__gold-grid-swatch--{{ color_key }}" title="{{ karat }} {{ color }}">
+                    <span>{{ karat }}</span>
+                  </label>
+                </div>
+              {%- endfor -%}
+            {%- endfor -%}
+          </div>
+        </fieldset>
+      </div>
+    {%- else -%}
+      {% render 'gemluxjewel-pdp-gold-grid',
+        demo_mode: demo_mode,
+        section: section,
+        product_form_id: product_form_id,
+        karat_option: karat_option,
+        color_option: color_option
+      %}
+    {%- endif -%}
   </div>
 </div>
 
