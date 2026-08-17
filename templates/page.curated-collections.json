@@ -1,0 +1,85 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "collections": {
+      "type": "curated-collections",
+      "blocks": {
+        "diwali": {
+          "type": "collection",
+          "settings": {
+            "tag": "Diwali",
+            "title": "Diwali Collection",
+            "description": "Golden accents and brilliant lab-grown diamonds for the festival of lights.",
+            "link_label": "Shop Diwali edit"
+          }
+        },
+        "wedding": {
+          "type": "collection",
+          "settings": {
+            "tag": "Wedding",
+            "title": "Bridal Collection",
+            "description": "Timeless rings, earrings, and necklaces for your celebration.",
+            "link_label": "Explore bridal"
+          }
+        },
+        "everyday": {
+          "type": "collection",
+          "settings": {
+            "tag": "Everyday",
+            "title": "Everyday Luxe",
+            "description": "Refined pieces made for daily wear with elevated craftsmanship.",
+            "link_label": "View collection"
+          }
+        },
+        "gifting": {
+          "type": "collection",
+          "settings": {
+            "tag": "Gifting",
+            "title": "Gift Guide",
+            "description": "Thoughtful jewellery gifts for every milestone and moment.",
+            "link_label": "Shop gifts"
+          }
+        }
+      },
+      "block_order": [
+        "diwali",
+        "wedding",
+        "everyday",
+        "gifting"
+      ],
+      "settings": {
+        "eyebrow": "Curated Edits",
+        "heading": "Discover Our <em>Collections</em>",
+        "lead": "<p>Handpicked jewellery edits for every occasion — assign collections in the theme editor to build pages like Diwali, Wedding, or Everyday.</p>",
+        "show_product_count": true,
+        "columns_desktop": 3,
+        "columns_tablet": 2,
+        "columns_mobile": "1",
+        "card_border_radius": 12,
+        "background_color": "#faf7f3",
+        "card_background": "#ffffff",
+        "media_background": "#f3ede4",
+        "text_color": "#2c1810",
+        "heading_color": "#2c1810",
+        "copy_color": "#3d2418",
+        "accent_color": "#b8956f",
+        "eyebrow_color": "#7c3a2a",
+        "muted_color": "#9a928a",
+        "border_color": "#2c181014",
+        "padding_top": 56,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": [
+    "collections"
+  ]
+}

@@ -1,0 +1,344 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+
+{{ 'section-curated-collections.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign columns_desktop = section.settings.columns_desktop | plus: 0
+  assign columns_tablet = section.settings.columns_tablet | plus: 0
+  assign columns_mobile = section.settings.columns_mobile | plus: 0
+  assign card_sizes = '(min-width: 990px) calc((min(100vw, 1600px) - 10rem) / ' | append: columns_desktop | append: '), (min-width: 750px) 50vw, 100vw'
+-%}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  #CuratedCollections-{{ section.id }} {
+    --curated-collections-bg: {{ section.settings.background_color }};
+    --curated-collections-text: {{ section.settings.text_color }};
+    --curated-collections-heading: {{ section.settings.heading_color }};
+    --curated-collections-copy: {{ section.settings.copy_color }};
+    --curated-collections-accent: {{ section.settings.accent_color }};
+    --curated-collections-eyebrow: {{ section.settings.eyebrow_color }};
+    --curated-collections-muted: {{ section.settings.muted_color }};
+    --curated-collections-card-bg: {{ section.settings.card_background }};
+    --curated-collections-media-bg: {{ section.settings.media_background }};
+    --curated-collections-line: {{ section.settings.border_color }};
+    --curated-collections-card-radius: {{ section.settings.card_border_radius }}px;
+    --curated-collections-columns-desktop: {{ columns_desktop }};
+    --curated-collections-columns-tablet: {{ columns_tablet }};
+    --curated-collections-columns-mobile: {{ columns_mobile }};
+  }
+{%- endstyle -%}
+
+<section
+  id="CuratedCollections-{{ section.id }}"
+  class="curated-collections section-{{ section.id }}-padding{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+>
+  <div class="curated-collections__container">
+    {%- unless section.settings.eyebrow == blank and section.settings.heading == blank and section.settings.lead == blank -%}
+      <div class="curated-collections__header">
+        {%- unless section.settings.eyebrow == blank -%}
+          <p class="curated-collections__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {%- endunless -%}
+
+        {%- unless section.settings.heading == blank -%}
+          <h2 class="curated-collections__heading eb-garamond-heading--curated-collections inline-richtext">
+            {{ section.settings.heading }}
+          </h2>
+        {%- endunless -%}
+
+        {%- unless section.settings.lead == blank -%}
+          <div class="curated-collections__lead rte">{{ section.settings.lead }}</div>
+        {%- endunless -%}
+      </div>
+    {%- endunless -%}
+
+    <ul class="curated-collections__grid" role="list">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          <li
+            class="curated-collections__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            {% if settings.animations_reveal_on_scroll %}
+              data-cascade
+              style="--animation-order: {{ forloop.index }};"
+            {% endif %}
+          >
+            {% render 'card-curated-collection',
+              block: block,
+              placeholder_index: forloop.index,
+              lazy_load: forloop.index > 2,
+              sizes: card_sizes,
+              show_product_count: section.settings.show_product_count
+            %}
+          </li>
+        {%- endfor -%}
+      {%- else -%}
+        <li class="curated-collections__empty">
+          <p>Add collection blocks in the theme editor to build this page.</p>
+        </li>
+      {%- endif -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Curated Collections",
+  "tag": "section",
+  "class": "section section-curated-collections",
+  "max_blocks": 24,
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Curated for you"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop by <em>Occasion</em>",
+      "info": "Use emphasis (italic) on a word to highlight it in the accent color."
+    },
+    {
+      "type": "richtext",
+      "id": "lead",
+      "label": "Introduction",
+      "default": "<p>Explore handpicked edits for every celebration — from festive gifting to everyday elegance.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_product_count",
+      "label": "Show product count on cards",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3,
+      "label": "Columns on desktop"
+    },
+    {
+      "type": "range",
+      "id": "columns_tablet",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 2,
+      "label": "Columns on tablet"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "options": [
+        { "value": "1", "label": "1" },
+        { "value": "2", "label": "2" }
+      ],
+      "default": "1",
+      "label": "Columns on mobile"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "min": 0,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Card corner radius",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#faf7f3"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "media_background",
+      "label": "Image placeholder background",
+      "default": "#f3ede4"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#2c1810"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#2c1810"
+    },
+    {
+      "type": "color",
+      "id": "copy_color",
+      "label": "Body text",
+      "default": "#3d2418"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent",
+      "default": "#b8956f"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow & tags",
+      "default": "#7c3a2a"
+    },
+    {
+      "type": "color",
+      "id": "muted_color",
+      "label": "Muted text",
+      "default": "#9a928a"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border",
+      "default": "#2c181014"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Optional. Overrides the collection featured image."
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Tag",
+          "info": "Optional label on the image, e.g. Diwali, Wedding, New Arrivals."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "info": "Optional. Overrides the collection title."
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "info": "Optional. Overrides the collection description."
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link label",
+          "default": "Explore collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Curated Collections",
+      "blocks": [
+        {
+          "type": "collection",
+          "settings": {
+            "tag": "Diwali",
+            "title": "Festive Gifting",
+            "description": "Radiant pieces crafted for celebrations, family gatherings, and luminous evenings.",
+            "link_label": "Shop Diwali edit"
+          }
+        },
+        {
+          "type": "collection",
+          "settings": {
+            "tag": "Wedding",
+            "title": "Bridal Edit",
+            "description": "Statement rings, earrings, and necklaces for your most memorable day.",
+            "link_label": "Explore bridal"
+          }
+        },
+        {
+          "type": "collection",
+          "settings": {
+            "tag": "Everyday",
+            "title": "Daily Elegance",
+            "description": "Minimal silhouettes designed for effortless wear from morning to evening.",
+            "link_label": "View collection"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
