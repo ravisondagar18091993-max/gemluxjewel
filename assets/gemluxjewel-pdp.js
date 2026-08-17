@@ -36,7 +36,58 @@
       }
     }
 
+    saveCompositeMetalSelection(picker, value);
     return true;
+  }
+
+  function getCompositeMetalSelectionKey(picker) {
+    return picker.dataset.productHandle || picker.getAttribute('data-product-handle') || '';
+  }
+
+  function saveCompositeMetalSelection(picker, value) {
+    if (!value || !isCompositeMetalPicker(picker)) return;
+
+    picker.dataset.gemluxjewelPdpMetalValue = value;
+
+    var handle = getCompositeMetalSelectionKey(picker);
+    if (!handle) return;
+
+    try {
+      sessionStorage.setItem('gemluxjewel_pdp_metal_' + handle, value);
+    } catch (error) {
+      /* ignore storage errors */
+    }
+  }
+
+  function readCompositeMetalSelection(picker) {
+    if (picker.dataset.gemluxjewelPdpMetalValue) {
+      return picker.dataset.gemluxjewelPdpMetalValue;
+    }
+
+    var handle = getCompositeMetalSelectionKey(picker);
+    if (!handle) return '';
+
+    try {
+      return sessionStorage.getItem('gemluxjewel_pdp_metal_' + handle) || '';
+    } catch (error) {
+      return '';
+    }
+  }
+
+  function restoreCompositeMetalSelection(picker) {
+    if (!isCompositeMetalPicker(picker)) return;
+
+    var saved = readCompositeMetalSelection(picker);
+    if (!saved) return;
+
+    var radio = findHiddenMetalRadio(picker, saved);
+    if (!radio || radio.disabled || radio.classList.contains('disabled')) return;
+
+    if (!radio.checked) {
+      radio.checked = true;
+    }
+
+    syncCompositeColorUi(picker, saved);
   }
 
   function getCheckedHiddenMetalValue(picker) {
@@ -408,14 +459,24 @@
     updateMetalLabel(picker, metal);
   }
 
-  function initPickers(root) {
+  function initPickers(root, options) {
+    var restoreSelection = !options || options.restoreSelection !== false;
+
     (root || document).querySelectorAll('[data-gemluxjewel-pdp-variant-picker]').forEach(function (picker) {
+      if (restoreSelection) {
+        restoreCompositeMetalSelection(picker);
+      } else if (isCompositeMetalPicker(picker)) {
+        var current = getCheckedHiddenMetalValue(picker);
+        if (current && !readCompositeMetalSelection(picker)) {
+          saveCompositeMetalSelection(picker, current);
+        }
+      }
       syncGoldPanel(picker);
     });
   }
 
   function init(root) {
-    initPickers(root);
+    initPickers(root, { restoreSelection: false });
     initWishlist(root);
   }
 
@@ -446,6 +507,7 @@
     }
 
     if (target.matches('[data-gemluxjewel-pdp-metal-value]')) {
+      saveCompositeMetalSelection(picker, target.value);
       syncCompositeMetal(picker);
       return;
     }
@@ -578,7 +640,7 @@
 
     if (typeof subscribe === 'function' && typeof PUB_SUB_EVENTS !== 'undefined') {
       subscribe(PUB_SUB_EVENTS.variantChange, function () {
-        initPickers(document);
+        initPickers(document, { restoreSelection: true });
       });
     }
   });
