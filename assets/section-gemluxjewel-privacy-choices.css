@@ -53,7 +53,7 @@
 }
 
 .gemluxjewel-privacy-choices__content a {
-  color: var(--gemluxjewel-primary, #808000);
+  color: var(--gemluxjewel-primary, #253e2b);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -82,15 +82,15 @@
 }
 
 .gemluxjewel-privacy-choices__opt-out:hover:not(:disabled) {
-  background: var(--gemluxjewel-primary, #808000);
-  border-color: var(--gemluxjewel-primary, #808000);
+  background: var(--gemluxjewel-primary, #253e2b);
+  border-color: var(--gemluxjewel-primary, #253e2b);
   color: #fff;
 }
 
 .gemluxjewel-privacy-choices__opt-out:disabled,
 .gemluxjewel-privacy-choices__opt-out.is-success {
-  background: var(--gemluxjewel-primary, #808000);
-  border-color: var(--gemluxjewel-primary, #808000);
+  background: var(--gemluxjewel-primary, #253e2b);
+  border-color: var(--gemluxjewel-primary, #253e2b);
   color: #fff;
   cursor: default;
 }
@@ -100,7 +100,7 @@
   font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif);
   font-size: 14px;
   line-height: 1.5;
-  color: var(--gemluxjewel-primary, #808000);
+  color: var(--gemluxjewel-primary, #253e2b);
 }
 
 .gemluxjewel-privacy-choices__status[hidden] {
@@ -131,7 +131,7 @@
 }
 
 .gemluxjewel-privacy-choices__policy-link a {
-  color: var(--gemluxjewel-primary, #808000);
+  color: var(--gemluxjewel-primary, #253e2b);
   text-decoration: underline;
   text-underline-offset: 3px;
   text-transform: uppercase;

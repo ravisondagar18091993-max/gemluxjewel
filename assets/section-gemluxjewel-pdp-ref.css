@@ -3,8 +3,8 @@
  */
 
 .gemluxjewel-pdp--ref {
-  --pdp-navy: #808000;
-  --pdp-navy-dark: #808000;
+  --pdp-navy: #253e2b;
+  --pdp-navy-dark: #253e2b;
   --pdp-teal: #4a9fb0;
   --pdp-teal-light: #e8f4f7;
   --pdp-border: #dde3ea;
@@ -78,7 +78,7 @@
 }
 
 .gemluxjewel-pdp--ref .gemluxjewel-pdp-media__thumb.is-active {
-  border-color: var(--pdp-navy, #808000);
+  border-color: var(--pdp-navy, #253e2b);
 }
 
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__gallery {

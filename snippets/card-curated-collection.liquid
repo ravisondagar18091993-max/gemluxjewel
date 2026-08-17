@@ -1,0 +1,102 @@
+{% comment %}
+  Curated collection card — image, optional tag, title, description, explore link.
+
+  Accepts:
+  - block: {Object} Section block
+  - placeholder_index: {Number}
+  - lazy_load: {Boolean}
+  - sizes: {String}
+  - show_product_count: {Boolean}
+{% endcomment %}
+
+{%- liquid
+  assign card_collection = block.settings.collection
+  assign card_image = block.settings.image
+  if card_image == blank and card_collection != blank and card_collection.featured_image != blank
+    assign card_image = card_collection.featured_image
+  endif
+
+  assign card_title = block.settings.title
+  if card_title == blank and card_collection != blank
+    assign card_title = card_collection.title
+  endif
+  if card_title == blank
+    assign card_title = 'Collection'
+  endif
+
+  assign card_description = block.settings.description
+  if card_description == blank and card_collection != blank and card_collection.description != blank
+    assign card_description = card_collection.description | strip_html | truncate: 140
+  endif
+
+  assign card_url = '#'
+  if card_collection != blank
+    assign card_url = card_collection.url
+  endif
+
+  assign loading_attr = 'lazy'
+  if lazy_load == false
+    assign loading_attr = 'eager'
+  endif
+
+  if placeholder_index == blank
+    assign placeholder_index = 1
+  endif
+  assign placeholder_image = 'collection-apparel-' | append: placeholder_index
+-%}
+
+<article class="curated-collection-card" {{ block.shopify_attributes }}>
+  <a
+    href="{{ card_url }}"
+    class="curated-collection-card__link"
+    {% if card_collection == blank %}
+      aria-disabled="true"
+      tabindex="-1"
+    {% endif %}
+  >
+    <div class="curated-collection-card__media{% if card_image == blank %} curated-collection-card__media--placeholder{% endif %}">
+      {%- if card_image != blank -%}
+        {{
+          card_image
+          | image_url: width: 1200
+          | image_tag:
+            widths: '375, 550, 750, 900, 1100, 1200, 1500',
+            sizes: sizes,
+            loading: loading_attr,
+            alt: card_title,
+            class: 'curated-collection-card__image'
+        }}
+      {%- else -%}
+        {{ placeholder_image | placeholder_svg_tag: 'curated-collection-card__placeholder' }}
+      {%- endif -%}
+      <div class="curated-collection-card__shade" aria-hidden="true"></div>
+      {%- if block.settings.tag != blank -%}
+        <span class="curated-collection-card__tag">{{ block.settings.tag | escape }}</span>
+      {%- endif -%}
+    </div>
+
+    <div class="curated-collection-card__body">
+      <h2 class="curated-collection-card__title">{{ card_title | escape }}</h2>
+
+      {%- if show_product_count and card_collection != blank -%}
+        <p class="curated-collection-card__count">
+          {{ card_collection.products_count }}
+          {%- if card_collection.products_count == 1 -%}
+            design
+          {%- else -%}
+            designs
+          {%- endif -%}
+        </p>
+      {%- endif -%}
+
+      {%- if card_description != blank -%}
+        <p class="curated-collection-card__description">{{ card_description | escape }}</p>
+      {%- endif -%}
+
+      <span class="curated-collection-card__cta">
+        {{ block.settings.link_label | default: 'Explore collection' | escape }}
+        <span aria-hidden="true">→</span>
+      </span>
+    </div>
+  </a>
+</article>
