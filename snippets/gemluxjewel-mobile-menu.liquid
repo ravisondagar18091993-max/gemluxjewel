@@ -22,7 +22,7 @@
     <div class="gemluxjewel-mobile-menu__panels" data-gemluxjewel-mobile-panels>
       <div class="gemluxjewel-mobile-menu__panel is-active" data-mobile-panel="main">
         <nav class="gemluxjewel-mobile-menu__nav" aria-label="Mobile">
-          <ul class="gemluxjewel-mobile-menu__list">
+          <ul class="gemluxjewel-mobile-menu__list menu-drawer__menu list-menu" role="list">
             {%- if section.settings.menu != blank -%}
               {%- for link in section.settings.menu.links -%}
                 {%- assign panel_id = 'left-' | append: link.handle -%}

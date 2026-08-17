@@ -157,7 +157,7 @@
                 <img src="{{ 'header-icon3.svg' | asset_url }}" alt="" width="18" height="18">
               </a>
             {%- endif -%}
-            <a href="{{ routes.cart_url }}" class="gemluxjewel-header__icon" id="gemluxjewel-cart-icon" aria-label="Cart">
+            <a href="{{ routes.cart_url }}" class="gemluxjewel-header__icon header__icon header__icon--cart link focus-inset" id="gemluxjewel-cart-icon" aria-label="Cart">
               <img src="{{ 'header-bag-thin.svg' | asset_url }}" alt="" width="18" height="18">
               {%- if cart.item_count > 0 -%}
                 <span class="gemluxjewel-header__cart-count">{{ cart.item_count }}</span>

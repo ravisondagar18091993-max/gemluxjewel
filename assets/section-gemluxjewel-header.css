@@ -384,6 +384,33 @@
   object-fit: contain;
 }
 
+/* MLV Auto Currency Switcher (inline with header) */
+.gemluxjewel-header__icons .pick_currency {
+  position: static;
+  left: auto;
+  top: auto;
+  margin: 0;
+  display: inline-flex !important;
+  align-items: center;
+}
+
+.gemluxjewel-header__icons .pick_currency .nice-select {
+  height: auto !important;
+  line-height: 1.2 !important;
+  min-height: 28px;
+}
+
+.gemluxjewel-mobile-menu__list > .pick_currency.mldcustom {
+  padding: 0 var(--gemluxjewel-header-gutter, 20px) 8px;
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .gemluxjewel-header__icons .pick_currency.mldesk {
+    display: none !important;
+  }
+}
+
 .gemluxjewel-header__cart-count {
   position: absolute;
   top: -7px;

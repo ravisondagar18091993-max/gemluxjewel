@@ -377,6 +377,57 @@
     });
   }
 
-  document.addEventListener('DOMContentLoaded', initGemluxjewelHeader);
-  document.addEventListener('shopify:section:load', initGemluxjewelHeader);
+  function revealMlvedaCurrencySwitcher() {
+    var selectors = [
+      '.gemluxjewel-header__icons .pick_currency.mldesk',
+      '.gemluxjewel-mobile-menu__list .pick_currency.mldcustom'
+    ];
+
+    selectors.forEach(function (selector) {
+      document.querySelectorAll(selector).forEach(function (el) {
+        if (window.matchMedia('(max-width: 767px)').matches && el.classList.contains('mldesk')) {
+          el.style.setProperty('display', 'none', 'important');
+          return;
+        }
+
+        if (window.matchMedia('(max-width: 767px)').matches && el.classList.contains('mldcustom')) {
+          el.style.setProperty('display', 'inline-flex', 'important');
+          return;
+        }
+
+        if (el.classList.contains('mldcustom')) return;
+
+        el.style.setProperty('display', 'inline-flex', 'important');
+      });
+    });
+  }
+
+  function initMlvedaCurrencySwitcher() {
+    revealMlvedaCurrencySwitcher();
+    window.setTimeout(revealMlvedaCurrencySwitcher, 250);
+    window.setTimeout(revealMlvedaCurrencySwitcher, 1500);
+
+    if (window.__gemluxjewelMlvedaCurrencyObserver) return;
+
+    var observeTargets = document.querySelector('.gemluxjewel-header__icons');
+    var mobileList = document.querySelector('.gemluxjewel-mobile-menu__list');
+
+    if (!observeTargets && !mobileList) return;
+
+    window.__gemluxjewelMlvedaCurrencyObserver = new MutationObserver(revealMlvedaCurrencySwitcher);
+
+    [observeTargets, mobileList].forEach(function (target) {
+      if (target) {
+        window.__gemluxjewelMlvedaCurrencyObserver.observe(target, { childList: true, subtree: true });
+      }
+    });
+  }
+
+  function initGemluxjewelHeaderAndCurrency() {
+    initGemluxjewelHeader();
+    initMlvedaCurrencySwitcher();
+  }
+
+  document.addEventListener('DOMContentLoaded', initGemluxjewelHeaderAndCurrency);
+  document.addEventListener('shopify:section:load', initGemluxjewelHeaderAndCurrency);
 })();
