@@ -1,7 +1,7 @@
 /* gemluxjewel About page */
 
 .gemluxjewel-about-hero {
-  background: var(--gemluxjewel-primary, #808000);
+  background: var(--gemluxjewel-primary, #253e2b);
   padding: var(--gemluxjewel-header-offset, 218px) 0 80px;
   color: #fff;
 }
