@@ -1579,20 +1579,27 @@
 
 /* Variant picker — DiamondRensu layout */
 .gemluxjewel-pdp__variants-block {
-  margin: 24px 0;
+  margin: 16px 0;
 }
 
 .gemluxjewel-pdp__variant-selects {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 12px;
   width: 100%;
+}
+
+.gemluxjewel-pdp__metal-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
 .gemluxjewel-pdp__option-label--stacked {
   display: block;
   width: 100%;
-  padding: 0 0 12px;
+  padding: 0 0 6px;
+  margin: 0;
   font-size: 15px;
   font-weight: 500;
   text-transform: none;
@@ -1648,8 +1655,8 @@
 }
 
 .gemluxjewel-pdp__gold-options {
-  margin-top: 16px;
-  padding-top: 16px;
+  margin-top: 8px;
+  padding-top: 8px;
   border-top: 1px solid rgba(20, 20, 20, 0.08);
 }
 
@@ -1677,7 +1684,7 @@
 }
 
 .gemluxjewel-pdp__gold-color-options {
-  margin-top: 16px;
+  margin-top: 8px;
 }
 
 .gemluxjewel-pdp__gold-color-options[hidden] {

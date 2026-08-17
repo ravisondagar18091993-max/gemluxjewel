@@ -176,24 +176,44 @@
 
 /* Variant sections */
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__variants-block {
-  margin: 0 0 20px;
+  margin: 0 0 16px;
 }
 
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__variant-selects {
-  gap: 20px;
+  gap: 12px;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__metal-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__option {
   flex-direction: column;
   align-items: stretch;
   width: 100%;
+  gap: 0;
 }
 
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__option-label--stacked {
   font-size: 14px;
   font-weight: 600;
   color: var(--pdp-text);
-  padding-bottom: 10px;
+  padding-top: 0;
+  padding-bottom: 6px;
+  margin: 0;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__option--diamond .gemluxjewel-pdp__option-label--stacked,
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__option--ring .gemluxjewel-pdp__option-label--stacked {
+  padding-bottom: 6px;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__option--diamond legend,
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__option--diamond .gemluxjewel-pdp__option-label--stacked {
+  padding: 0 0 6px;
+  margin: 0;
 }
 
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__metal-selected {
@@ -225,9 +245,13 @@
 
 /* Gold 3×3 grid */
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__gold-options {
-  margin-top: 14px;
-  padding-top: 14px;
+  margin-top: 8px;
+  padding-top: 8px;
   border-top: 1px solid var(--pdp-border);
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__option--gold-karat {
+  margin-bottom: 0;
 }
 
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__metal-tabs--karat,
@@ -242,7 +266,7 @@
 }
 
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__gold-color-options {
-  margin-top: 14px;
+  margin-top: 8px;
 }
 
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__gold-grid {
@@ -328,7 +352,7 @@
 
 /* Ring size */
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__ring-head {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__find-size {
