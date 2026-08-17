@@ -49,11 +49,15 @@ function initGemluxjewelStoneShapes() {
     function applyMode() {
       if (isGridMode()) {
         track.style.transform = '';
+        prevBtn.hidden = true;
+        nextBtn.hidden = true;
         prevBtn.disabled = true;
         nextBtn.disabled = true;
         return;
       }
 
+      prevBtn.hidden = false;
+      nextBtn.hidden = false;
       index = Math.min(index, getMaxIndex());
       update();
     }

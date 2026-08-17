@@ -520,10 +520,6 @@
     display: block;
   }
 
-  .gemluxjewel-stone-shapes__nav {
-    display: none;
-  }
-
   .gemluxjewel-stone-shapes__viewport {
     overflow: visible;
     padding: 0;
@@ -580,6 +576,12 @@
 
 .gemluxjewel-stone-shapes__nav-icon--prev {
   transform: rotate(180deg);
+}
+
+@media (max-width: 749px) {
+  .gemluxjewel-stone-shapes__nav {
+    display: none !important;
+  }
 }
 
 .gemluxjewel-stone-shapes__notice {
