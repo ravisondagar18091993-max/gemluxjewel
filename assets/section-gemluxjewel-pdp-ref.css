@@ -230,6 +230,21 @@
   border-top: 1px solid var(--pdp-border);
 }
 
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__metal-tabs--karat,
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__karat-row {
+  gap: 8px;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__karat-row input:checked + .gemluxjewel-pdp__karat-tab {
+  background: var(--pdp-navy);
+  border-color: var(--pdp-navy);
+  color: #fff;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__gold-color-options {
+  margin-top: 14px;
+}
+
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__gold-grid {
   display: flex;
   flex-wrap: wrap;
