@@ -346,6 +346,7 @@
         "split_1": {
           "type": "card",
           "settings": {
+            "image": "shopify://shop_images/DSF5487web_1500x1500_c6583f49-fb28-497f-b561-9cb094404096.webp",
             "title": "San Diego, We're On Our Way.",
             "description": "Our newest showroom is coming soon. Be the first to know when we open.",
             "link_label": "Get Notified When We Open",
@@ -355,6 +356,7 @@
         "split_2": {
           "type": "card",
           "settings": {
+            "image": "shopify://shop_images/RTS-TEW_1500x1500_1fd7ed3e-e2db-47da-9fd8-06ee3e314b8a.jpg",
             "title": "Ready When You Are",
             "description": "Engagement Rings, resized and dispatched within 48 hours.",
             "link_label": "Shop Ready-to-ship Rings",
