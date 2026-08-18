@@ -217,7 +217,7 @@
         "title": "Your Perfect Ring, Made to Order.",
         "text": "From stone to setting, we craft every ring by hand, just the way you want it. Choose your design, personalize every detail, and see it come to life with updates at every step.",
         "button_label": "Submit Your Design",
-        "button_link": "",
+        "button_link": "shopify://pages/contact",
         "reference_label": "Reference",
         "reality_label": "Reality"
       }
