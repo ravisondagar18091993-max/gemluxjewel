@@ -101,7 +101,7 @@
         "show_announcement_icon": true,
         "slider_speed": 4,
         "enable_search": true,
-        "show_account_icon": false,
+        "show_account_icon": true,
         "show_wishlist_icon": false,
         "wishlist_url": "",
         "locale_text": "IN"
