@@ -192,11 +192,17 @@
       "blocks": {
         "pair_1": {
           "type": "pair",
-          "settings": {}
+          "settings": {
+            "reference_image": "shopify://shop_images/7.webp",
+            "reality_image": "shopify://shop_images/07_c3dc1558-9d89-4b6e-a397-593a3b5afe82.webp"
+          }
         },
         "pair_2": {
           "type": "pair",
-          "settings": {}
+          "settings": {
+            "reference_image": "shopify://shop_images/26.webp",
+            "reality_image": "shopify://shop_images/026.webp"
+          }
         },
         "pair_3": {
           "type": "pair",
