@@ -107,7 +107,7 @@
         "icon_5": "market_price",
         "label_6": "Eco Friendly Element",
         "icon_6": "eco",
-        "show_button": true,
+        "show_button": false,
         "button_label": "Get a Quote",
         "button_link": "shopify://pages/custom-jewellery"
       }
