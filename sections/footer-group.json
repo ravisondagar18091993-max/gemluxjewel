@@ -23,6 +23,15 @@
             "link": ""
           }
         },
+        "trust_item_DgAnBi": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "shipping",
+            "line_1": "Worldwide",
+            "line_2": "Express Shipping",
+            "link": ""
+          }
+        },
         "trust_2": {
           "type": "trust_item",
           "settings": {
@@ -53,6 +62,7 @@
       },
       "block_order": [
         "trust_1",
+        "trust_item_DgAnBi",
         "trust_2",
         "trust_3",
         "trust_4"
