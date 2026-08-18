@@ -240,6 +240,16 @@
           "type": "style",
           "settings": {
             "title": "Halo",
+            "image": "shopify://shop_images/ChatGPT_Image_Aug_18_2026_01_47_57_PM_1.png",
+            "collection": "",
+            "link": ""
+          }
+        },
+        "style_AEjdep": {
+          "type": "style",
+          "settings": {
+            "title": "East-West",
+            "image": "shopify://shop_images/ChatGPT_Image_Aug_18_2026_01_47_57_PM_2.png",
             "collection": "",
             "link": ""
           }
@@ -250,7 +260,8 @@
         "c2",
         "c3",
         "c4",
-        "c5"
+        "c5",
+        "style_AEjdep"
       ],
       "settings": {
         "title": "Shop Lab Diamond Engagement Rings by Style",
