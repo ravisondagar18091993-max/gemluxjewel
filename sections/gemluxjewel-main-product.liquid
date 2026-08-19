@@ -71,6 +71,10 @@
             </button>
           </div>
 
+          <div class="gemluxjewel-pdp__reviews-row">
+            {% render 'gemluxjewel-judgeme-badge', product: product %}
+          </div>
+
           {%- if section.settings.show_sku and current_variant.sku != blank -%}
             <p class="gemluxjewel-pdp__sku">SKU: {{ current_variant.sku | escape }}</p>
           {%- endif -%}

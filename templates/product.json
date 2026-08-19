@@ -46,6 +46,14 @@
         "complete_set_limit": 4
       }
     },
+    "gemluxjewel_pdp_content_accordion": {
+      "type": "gemluxjewel-pdp-content-accordion",
+      "settings": {
+        "title": "More About This Ring",
+        "accordion_title": "Product Details",
+        "accordion_content": "<p>Add rich text content for this product section.</p>"
+      }
+    },
     "gemluxjewel_pdp_how_made": {
       "type": "gemluxjewel-pdp-how-made",
       "blocks": {
@@ -205,6 +213,7 @@
   },
   "order": [
     "gemluxjewel_main_product",
+    "gemluxjewel_pdp_content_accordion",
     "gemluxjewel_pdp_how_made",
     "1786465595f85eb7a3",
     "gemluxjewel_product_faq",

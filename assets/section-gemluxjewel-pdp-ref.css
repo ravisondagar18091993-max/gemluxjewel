@@ -122,6 +122,19 @@
   margin-bottom: 12px;
 }
 
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__reviews-row .gemluxjewel-judgeme-badge,
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__reviews-row .jdgm-preview-badge {
+  display: inline-flex;
+  align-items: center;
+}
+
+.gemluxjewel-pdp--ref .gemluxjewel-pdp__reviews-row .jdgm-prev-badge__text {
+  font-family: var(--gemluxjewel-font-body, 'Inter', sans-serif);
+  font-size: 13px;
+  line-height: 1.3;
+  color: var(--pdp-muted, #666);
+}
+
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__stars {
   display: inline-flex;
   align-items: center;

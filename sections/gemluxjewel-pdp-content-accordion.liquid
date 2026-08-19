@@ -1,0 +1,58 @@
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-product.css' | asset_url | stylesheet_tag }}
+{{ 'section-gemluxjewel-pdp-content-accordion.css' | asset_url | stylesheet_tag }}
+
+<section class="gemluxjewel gemluxjewel-pdp-content-accordion">
+  <div class="gemluxjewel-container gemluxjewel-pdp-content-accordion__container">
+    {%- if section.settings.title != blank -%}
+      <h2 class="gemluxjewel-pdp-content-accordion__title">{{ section.settings.title | escape }}</h2>
+    {%- endif -%}
+
+    {%- if section.settings.accordion_title != blank and section.settings.accordion_content != blank -%}
+      <div class="gemluxjewel-pdp-content-accordion__accordion gemluxjewel-pdp__info-accordion">
+        <div class="gemluxjewel-pdp__product-accordian">
+          <div class="closet-accordion" data-gemluxjewel-accordion>
+            {% render 'gemluxjewel-pdp-accordion-item',
+              title: section.settings.accordion_title,
+              content: section.settings.accordion_content,
+              open_by_default: true
+            %}
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PDP Content Accordion",
+  "tag": "section",
+  "class": "gemluxjewel-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section heading",
+      "default": "More About This Ring"
+    },
+    {
+      "type": "text",
+      "id": "accordion_title",
+      "label": "Accordion title",
+      "default": "Product Details"
+    },
+    {
+      "type": "richtext",
+      "id": "accordion_content",
+      "label": "Accordion content",
+      "default": "<p>Add rich text content for this product section.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "PDP Content Accordion"
+    }
+  ]
+}
+{% endschema %}

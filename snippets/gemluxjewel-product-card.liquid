@@ -86,13 +86,7 @@
     </span>
     {%- if product != blank -%}
       <div class="gemluxjewel-card__reviews">
-        <div
-          class="jdgm-widget jdgm-preview-badge"
-          data-id="{{ product.id }}"
-          data-auto-install="false"
-        >
-          {{ product.metafields.judgeme.badge }}
-        </div>
+        {% render 'gemluxjewel-judgeme-badge', product: product %}
       </div>
     {%- endif -%}
   </div>

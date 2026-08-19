@@ -1,0 +1,15 @@
+{% comment %}
+  Judge.me star rating + review count badge.
+
+  @param product {Product}
+{% endcomment %}
+
+{%- if product != blank -%}
+  <div
+    class="jdgm-widget jdgm-preview-badge gemluxjewel-judgeme-badge"
+    data-id="{{ product.id }}"
+    data-auto-install="false"
+  >
+    {{ product.metafields.judgeme.badge }}
+  </div>
+{%- endif -%}
