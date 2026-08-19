@@ -260,6 +260,8 @@
   function buildSearchParamsFromForm(form) {
     var params = new FormData(form);
     var query = (params.get('q') || '').trim();
+    var facetsContainer = document.querySelector('.facets-container');
+    var isSearchPage = facetsContainer && facetsContainer.dataset.template === 'search';
 
     if (!query) {
       params.delete('q');
@@ -267,6 +269,10 @@
     } else {
       params.set('q', query);
       params.set('options[prefix]', 'last');
+    }
+
+    if (isSearchPage) {
+      params.set('type', 'product');
     }
 
     return new URLSearchParams(params).toString();

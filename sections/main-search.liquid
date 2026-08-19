@@ -18,12 +18,6 @@
       {%- endif -%}
 
       {%- if search.performed -%}
-        {%- if search.results_count == 0 and search.filters == empty -%}
-          <p class="gemluxjewel-search-page__empty" role="status">
-            {{ 'templates.search.no_results' | t: terms: search.terms }}
-          </p>
-        {%- endif -%}
-
         {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
           {% render 'gemluxjewel-plp-filter-bar',
             results: search,

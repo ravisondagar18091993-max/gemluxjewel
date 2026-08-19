@@ -15,17 +15,19 @@
 <div class="collection">
   <div class="loading-overlay gradient"></div>
   {%- if product_count == 0 -%}
-    <div class="gemluxjewel-shop__empty">
-      {%- if search.performed and search.terms != blank -%}
-        <p>{{ 'templates.search.no_results' | t: terms: search.terms }}</p>
-      {%- else -%}
-        <p>{{ 'sections.collection_template.empty' | t }}</p>
-      {%- endif -%}
-      {%- if search.filters != empty -%}
-        <p>
-          {{ 'sections.collection_template.use_fewer_filters_html' | t: link: routes.search_url, class: 'gemluxjewel-shop__empty-link' }}
-        </p>
-      {%- endif -%}
+    <div id="product-grid" data-id="{{ section.id }}" class="collection--empty">
+      <div class="gemluxjewel-shop__empty">
+        {%- if search.performed and search.terms != blank -%}
+          <p>{{ 'templates.search.no_results' | t: terms: search.terms }}</p>
+        {%- else -%}
+          <p>{{ 'sections.collection_template.empty' | t }}</p>
+        {%- endif -%}
+        {%- if search.filters != empty -%}
+          <p>
+            {{ 'sections.collection_template.use_fewer_filters_html' | t: link: routes.search_url, class: 'gemluxjewel-shop__empty-link' }}
+          </p>
+        {%- endif -%}
+      </div>
     </div>
   {%- else -%}
     <ul id="product-grid" data-id="{{ section.id }}" class="gemluxjewel-shop__grid">

@@ -6,11 +6,13 @@
 <div class="collection">
   <div class="loading-overlay gradient"></div>
   {%- if collection.products.size == 0 -%}
-    <div class="gemluxjewel-shop__empty">
-      <p>{{ 'sections.collection_template.empty' | t }}</p>
-      <p>
-        {{ 'sections.collection_template.use_fewer_filters_html' | t: link: collection.url, class: 'gemluxjewel-shop__empty-link' }}
-      </p>
+    <div id="product-grid" data-id="{{ section.id }}" class="collection--empty">
+      <div class="gemluxjewel-shop__empty">
+        <p>{{ 'sections.collection_template.empty' | t }}</p>
+        <p>
+          {{ 'sections.collection_template.use_fewer_filters_html' | t: link: collection.url, class: 'gemluxjewel-shop__empty-link' }}
+        </p>
+      </div>
     </div>
   {%- else -%}
     <ul id="product-grid" data-id="{{ section.id }}" class="gemluxjewel-shop__grid">

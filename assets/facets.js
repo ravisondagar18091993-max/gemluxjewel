@@ -42,7 +42,7 @@ class FacetFiltersForm extends HTMLElement {
       '.facets-container .loading__spinner, facet-filters-form .loading__spinner',
     );
     loadingSpinners.forEach((spinner) => spinner.classList.remove('hidden'));
-    document.getElementById('ProductGridContainer').querySelector('.collection').classList.add('loading');
+    document.getElementById('ProductGridContainer')?.querySelector('.collection')?.classList.add('loading');
     if (countContainer) {
       countContainer.classList.add('loading');
     }
@@ -338,11 +338,13 @@ class FacetFiltersForm extends HTMLElement {
   }
 
   static getSections() {
-    return [
-      {
-        section: document.getElementById('product-grid').dataset.id,
-      },
-    ];
+    const productGrid = document.getElementById('product-grid');
+    const sectionId =
+      productGrid?.dataset.id ||
+      document.querySelector('.facets-container')?.dataset.id ||
+      document.getElementById('main-collection-filters')?.dataset.id;
+
+    return [{ section: sectionId }];
   }
 
   createSearchParams(form) {
