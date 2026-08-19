@@ -21,6 +21,7 @@
 
   assign products_limit = section.settings.products_per_page | default: 15
   assign matched_count = 0
+  assign rendered_count = 0
 -%}
 
 <div id="ProductGridContainer">
@@ -28,6 +29,46 @@
     {%- paginate search.results by 50 -%}
       <div class="collection">
         <div class="loading-overlay gradient"></div>
+
+        {%- capture matched_products -%}
+          {%- for item in search.results -%}
+            {%- if item.object_type != 'product' -%}
+              {%- continue -%}
+            {%- endif -%}
+
+            {%- assign in_collection = false -%}
+            {%- for item_collection in item.collections -%}
+              {%- if collection_id_param != blank and item_collection.id == collection_id_param -%}
+                {%- assign in_collection = true -%}
+                {%- break -%}
+              {%- elsif collection_handle_param != blank and item_collection.handle == collection_handle_param -%}
+                {%- assign in_collection = true -%}
+                {%- break -%}
+              {%- endif -%}
+            {%- endfor -%}
+
+            {%- unless in_collection -%}
+              {%- continue -%}
+            {%- endunless -%}
+
+            {%- assign matched_count = matched_count | plus: 1 -%}
+            {%- if rendered_count >= products_limit -%}
+              {%- continue -%}
+            {%- endif -%}
+            {%- assign rendered_count = rendered_count | plus: 1 -%}
+
+            <li>
+              {%- liquid
+                assign badge_text = ''
+                if item.tags contains 'new' or item.tags contains 'New In' or item.tags contains 'NEW IN'
+                  assign badge_text = 'NEW IN'
+                endif
+              -%}
+              {% render 'gemluxjewel-product-card', product: item, badge_text: badge_text, show_discount: true %}
+            </li>
+          {%- endfor -%}
+        {%- endcapture -%}
+
         {%- if matched_count == 0 -%}
           <div class="gemluxjewel-shop__empty">
             <p>{{ 'sections.collection_template.empty' | t }}</p>
@@ -39,43 +80,7 @@
             data-id="{{ grid_section_id_param | escape }}"
             class="gemluxjewel-shop__grid"
           >
-            {%- assign rendered_count = 0 -%}
-            {%- for item in search.results -%}
-              {%- if item.object_type != 'product' -%}
-                {%- continue -%}
-              {%- endif -%}
-
-              {%- assign in_collection = false -%}
-              {%- for item_collection in item.collections -%}
-                {%- if collection_id_param != blank and item_collection.id == collection_id_param -%}
-                  {%- assign in_collection = true -%}
-                  {%- break -%}
-                {%- elsif collection_handle_param != blank and item_collection.handle == collection_handle_param -%}
-                  {%- assign in_collection = true -%}
-                  {%- break -%}
-                {%- endif -%}
-              {%- endfor -%}
-
-              {%- unless in_collection -%}
-                {%- continue -%}
-              {%- endunless -%}
-
-              {%- assign matched_count = matched_count | plus: 1 -%}
-              {%- if rendered_count >= products_limit -%}
-                {%- continue -%}
-              {%- endif -%}
-              {%- assign rendered_count = rendered_count | plus: 1 -%}
-
-              <li>
-                {%- liquid
-                  assign badge_text = ''
-                  if item.tags contains 'new' or item.tags contains 'New In' or item.tags contains 'NEW IN'
-                    assign badge_text = 'NEW IN'
-                  endif
-                -%}
-                {% render 'gemluxjewel-product-card', product: item, badge_text: badge_text, show_discount: true %}
-              </li>
-            {%- endfor -%}
+            {{ matched_products }}
           </ul>
         {%- endif -%}
       </div>

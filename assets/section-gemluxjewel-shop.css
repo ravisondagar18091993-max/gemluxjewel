@@ -1013,8 +1013,18 @@
 
 /* ── Horizontal PLP filter bar (Cullen style) ── */
 .gemluxjewel-shop--horizontal-filters {
-  padding-top: 40px;
+  padding-top: 24px;
   overflow: visible;
+}
+
+.gemluxjewel-shop--horizontal-filters .gemluxjewel-plp-filter-bar {
+  margin-bottom: 8px;
+}
+
+.gemluxjewel-shop--horizontal-filters #ProductGridContainer > .gemluxjewel-stone-shapes--plp:first-child {
+  padding-top: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .gemluxjewel-shop--horizontal-filters .gemluxjewel-container {
@@ -1024,6 +1034,10 @@
 .gemluxjewel-plp-filter-bar {
   margin-bottom: 24px;
   position: relative;
+}
+
+.gemluxjewel-shop--horizontal-filters .gemluxjewel-plp-filter-bar__main {
+  gap: 6px;
 }
 
 .gemluxjewel-plp-filter-bar.facets-container {
