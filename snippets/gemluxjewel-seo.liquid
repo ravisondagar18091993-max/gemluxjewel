@@ -1,0 +1,9 @@
+{% comment %}
+  SEO extras for gemluxjewel theme.
+  Theme setting: SEO & Analytics → Google Search Console verification code
+  Paste only the content value from Search Console (not the full meta tag).
+{% endcomment %}
+
+{%- if settings.google_site_verification != blank -%}
+  <meta name="google-site-verification" content="{{ settings.google_site_verification | escape }}">
+{%- endif -%}
