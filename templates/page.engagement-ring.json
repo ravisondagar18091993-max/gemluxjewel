@@ -25,6 +25,7 @@
         "dual_lab": {
           "type": "card",
           "settings": {
+            "image": "shopify://shop_images/Group_39733_52648025-73ec-43f2-8e4a-0283561975c5.webp",
             "title": "Lab Grown Diamond",
             "text": "Explore our collection of lab-grown diamond engagement rings, available in a variety of sizes and styles to create a unique proposal experience.",
             "button_label": "Shop Lab Grown Engagement Rings",
@@ -35,6 +36,7 @@
         "dual_moissanite": {
           "type": "card",
           "settings": {
+            "image": "shopify://shop_images/Group_39733_52648025-73ec-43f2-8e4a-0283561975c5.webp",
             "title": "Moissanite",
             "text": "Thinking about popping the question? Discover our elegant collection of moissanite engagement rings for your special moment.",
             "button_label": "Shop Moissanite Rings",
@@ -43,7 +45,10 @@
           }
         }
       },
-      "block_order": ["dual_lab", "dual_moissanite"],
+      "block_order": [
+        "dual_lab",
+        "dual_moissanite"
+      ],
       "settings": {}
     },
     "engagement_lab_showcase": {
@@ -52,27 +57,46 @@
         "lab_1": {
           "type": "product",
           "settings": {
+            "product": "",
             "featured": true
           }
         },
         "lab_2": {
           "type": "product",
-          "settings": {}
+          "settings": {
+            "product": "",
+            "featured": false
+          }
         },
         "lab_3": {
           "type": "product",
-          "settings": {}
+          "settings": {
+            "product": "",
+            "featured": false
+          }
         },
         "lab_4": {
           "type": "product",
-          "settings": {}
+          "settings": {
+            "product": "",
+            "featured": false
+          }
         },
         "lab_5": {
           "type": "product",
-          "settings": {}
+          "settings": {
+            "product": "",
+            "featured": false
+          }
         }
       },
-      "block_order": ["lab_1", "lab_2", "lab_3", "lab_4", "lab_5"],
+      "block_order": [
+        "lab_1",
+        "lab_2",
+        "lab_3",
+        "lab_4",
+        "lab_5"
+      ],
       "settings": {
         "title": "Popular Lab Grown Diamond Rings",
         "collection": "all",
@@ -88,28 +112,47 @@
       "blocks": {
         "moi_1": {
           "type": "product",
-          "settings": {}
+          "settings": {
+            "product": "",
+            "featured": false
+          }
         },
         "moi_2": {
           "type": "product",
-          "settings": {}
+          "settings": {
+            "product": "",
+            "featured": false
+          }
         },
         "moi_3": {
           "type": "product",
-          "settings": {}
+          "settings": {
+            "product": "",
+            "featured": false
+          }
         },
         "moi_4": {
           "type": "product",
-          "settings": {}
+          "settings": {
+            "product": "",
+            "featured": false
+          }
         },
         "moi_5": {
           "type": "product",
           "settings": {
+            "product": "",
             "featured": true
           }
         }
       },
-      "block_order": ["moi_1", "moi_2", "moi_3", "moi_4", "moi_5"],
+      "block_order": [
+        "moi_1",
+        "moi_2",
+        "moi_3",
+        "moi_4",
+        "moi_5"
+      ],
       "settings": {
         "title": "Popular Moissanite Rings",
         "collection": "all",
@@ -123,6 +166,7 @@
     "engagement_custom": {
       "type": "gemluxjewel-engagement-custom",
       "settings": {
+        "image": "shopify://shop_images/Journey-of-a-RIng-Jewelry-CAD-and-Modeling-768x456_001788cd-65b6-4747-ac37-6f4e79de3ae9.webp",
         "title": "Custom Engagement Ring",
         "text": "Can't find the right engagement ring in our collection? Don't worry — we can custom-make an engagement ring just for you.",
         "button_label": "Book Consultation",
@@ -332,7 +376,18 @@
           }
         }
       },
-      "block_order": ["faq_l1", "faq_l2", "faq_l3", "faq_l4", "faq_m1", "faq_m2", "faq_m3", "faq_r1", "faq_r2", "faq_r3"],
+      "block_order": [
+        "faq_l1",
+        "faq_l2",
+        "faq_l3",
+        "faq_l4",
+        "faq_m1",
+        "faq_m2",
+        "faq_m3",
+        "faq_r1",
+        "faq_r2",
+        "faq_r3"
+      ],
       "settings": {
         "title": "Frequently Asked Questions",
         "tab_1_label": "Lab Grown Diamond",
