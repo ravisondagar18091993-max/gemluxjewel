@@ -713,8 +713,6 @@
 /* Complete the set */
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__complete-set {
   margin-top: 8px;
-  padding-top: 24px;
-  border-top: 1px solid var(--pdp-border);
 }
 
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__complete-set-heading {

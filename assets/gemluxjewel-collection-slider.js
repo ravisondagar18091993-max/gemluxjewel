@@ -6,8 +6,9 @@ document.addEventListener('shopify:section:load', function () {
   initGemluxjewelCollectionSlider();
 });
 
-function initGemluxjewelCollectionSlider() {
-  document.querySelectorAll('[data-gemluxjewel-collection-slider]').forEach(function (slider) {
+function initGemluxjewelCollectionSlider(root) {
+  root = root || document;
+  root.querySelectorAll('[data-gemluxjewel-collection-slider]').forEach(function (slider) {
     if (slider.dataset.gemluxjewelCollectionSliderReady === 'true') return;
 
     var track = slider.querySelector('[data-gemluxjewel-collection-slider-track]');
@@ -19,8 +20,18 @@ function initGemluxjewelCollectionSlider() {
     if (!items.length) return;
 
     var index = 0;
+    var viewport = slider.querySelector('.gemluxjewel-pdp__complete-set-viewport');
 
     function getVisibleCount() {
+      if (viewport && items[0]) {
+        var gap = parseFloat(getComputedStyle(track).gap) || 16;
+        var itemWidth = items[0].getBoundingClientRect().width;
+        if (itemWidth > 0 && viewport.clientWidth > 0) {
+          var visible = Math.floor((viewport.clientWidth + gap) / (itemWidth + gap));
+          return Math.max(1, Math.min(visible, items.length));
+        }
+      }
+
       if (window.matchMedia('(min-width: 1200px)').matches) return 4;
       if (window.matchMedia('(min-width: 750px)').matches) return 3;
       return 1;
@@ -60,13 +71,24 @@ function initGemluxjewelCollectionSlider() {
     window.addEventListener('resize', onResize);
     slider.dataset.gemluxjewelCollectionSliderReady = 'true';
     update();
+    window.requestAnimationFrame(update);
+  });
+}
+
+window.initGemluxjewelCollectionSlider = initGemluxjewelCollectionSlider;
+
+function resetGemluxjewelCollectionSliders(root) {
+  root = root || document;
+  root.querySelectorAll('[data-gemluxjewel-collection-slider]').forEach(function (slider) {
+    delete slider.dataset.gemluxjewelCollectionSliderReady;
   });
 }
 
 document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('product-recommendations').forEach(function (el) {
     var observer = new MutationObserver(function () {
-      initGemluxjewelCollectionSlider();
+      resetGemluxjewelCollectionSliders(el);
+      initGemluxjewelCollectionSlider(el);
     });
     observer.observe(el, { childList: true, subtree: true });
   });

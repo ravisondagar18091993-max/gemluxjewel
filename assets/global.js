@@ -1232,6 +1232,13 @@ class ProductRecommendations extends HTMLElement {
 
         if (recommendations?.innerHTML.trim().length) {
           this.innerHTML = recommendations.innerHTML;
+
+          if (typeof window.initGemluxjewelCollectionSlider === 'function') {
+            this.querySelectorAll('[data-gemluxjewel-collection-slider]').forEach(function (slider) {
+              delete slider.dataset.gemluxjewelCollectionSliderReady;
+            });
+            window.initGemluxjewelCollectionSlider(this);
+          }
         }
 
         if (!this.querySelector('slideshow-component') && this.classList.contains('complementary-products')) {
