@@ -429,7 +429,6 @@
 
     var panel = canvas.querySelector('[data-gemluxjewel-search-panel]');
     var input = canvas.querySelector('[data-gemluxjewel-search-input]');
-    var resetButton = canvas.querySelector('.gemluxjewel-search-canvas__reset');
 
     function closeMobileMenu() {
       var mobileMenu = document.querySelector('[data-gemluxjewel-mobile-menu]');
@@ -486,12 +485,6 @@
         closeSearch();
       }
     });
-
-    if (input && resetButton) {
-      input.addEventListener('input', function () {
-        resetButton.classList.toggle('hidden', !input.value.length);
-      });
-    }
 
     canvas.dataset.gemluxjewelSearchReady = 'true';
   }

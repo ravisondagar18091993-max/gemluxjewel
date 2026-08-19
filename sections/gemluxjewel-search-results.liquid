@@ -1,0 +1,236 @@
+{% render 'gemluxjewel-fonts' %}
+{{ 'section-gemluxjewel-shop.css' | asset_url | stylesheet_tag }}
+{{ 'component-facets.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'gemluxjewel-plp-filters.js' | asset_url }}" defer="defer"></script>
+
+<section class="gemluxjewel gemluxjewel-shop gemluxjewel-shop--search gemluxjewel-shop--horizontal-filters">
+  <div class="gemluxjewel-container">
+    {%- paginate search.results by section.settings.products_per_page -%}
+      {%- if search.performed -%}
+        <div class="gemluxjewel-search-page__head">
+          <h1 class="gemluxjewel-search-page__title">{{ 'templates.search.title' | t }}</h1>
+          {%- if search.terms != blank -%}
+            <p class="gemluxjewel-search-page__terms">{{ search.terms | escape }}</p>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
+        {% render 'gemluxjewel-plp-filter-bar',
+          results: search,
+          section: section,
+          paginate: paginate,
+          enable_filtering: section.settings.enable_filtering,
+          enable_sorting: section.settings.enable_sorting
+        %}
+      {%- endif -%}
+
+      <div id="ProductGridContainer">
+        {% render 'gemluxjewel-search-grid', paginate: paginate %}
+      </div>
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "gemluxjewel Search Results",
+  "tag": "section",
+  "class": "gemluxjewel-section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 8,
+      "max": 36,
+      "step": 1,
+      "default": 15,
+      "label": "Products per page"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_filtering",
+      "label": "Enable filtering",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sorting",
+      "label": "Enable sorting",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "filters_button_label",
+      "label": "Filters button label",
+      "default": "Filters"
+    },
+    {
+      "type": "text",
+      "id": "filters_apply_label",
+      "label": "Drawer apply button",
+      "default": "Apply"
+    },
+    {
+      "type": "text",
+      "id": "filters_empty_message",
+      "label": "Empty filters message",
+      "default": "Add filters in Shopify Search & Discovery to enable product filtering."
+    },
+    {
+      "type": "text",
+      "id": "search_placeholder",
+      "label": "Search placeholder",
+      "default": "Search by style, shape or metal"
+    },
+    {
+      "type": "text",
+      "id": "metal_filter_label",
+      "label": "Metal filter label match",
+      "default": "Metal"
+    },
+    {
+      "type": "text",
+      "id": "shape_filter_label",
+      "label": "Shape filter label match",
+      "default": "Stone shape"
+    },
+    {
+      "type": "text",
+      "id": "setting_filter_label",
+      "label": "Setting style filter label match",
+      "default": "Setting style"
+    },
+    {
+      "type": "text",
+      "id": "gemstone_filter_label",
+      "label": "Gemstone type filter label match",
+      "default": "Gemstone type"
+    },
+    {
+      "type": "text",
+      "id": "ring_design_filter_label",
+      "label": "Ring design filter label match",
+      "default": "Ring design"
+    },
+    {
+      "type": "text",
+      "id": "color_filter_label",
+      "label": "Color filter label match",
+      "default": "Color"
+    },
+    {
+      "type": "text",
+      "id": "metal_dropdown_label",
+      "label": "Metal button label",
+      "default": "Metal"
+    },
+    {
+      "type": "text",
+      "id": "shape_dropdown_label",
+      "label": "Shape button label",
+      "default": "Stone shape"
+    },
+    {
+      "type": "text",
+      "id": "setting_dropdown_label",
+      "label": "Setting style button label",
+      "default": "Setting style"
+    },
+    {
+      "type": "text",
+      "id": "gemstone_dropdown_label",
+      "label": "Gemstone type button label",
+      "default": "Gemstone type"
+    },
+    {
+      "type": "text",
+      "id": "ring_design_dropdown_label",
+      "label": "Ring design button label",
+      "default": "Ring design"
+    },
+    {
+      "type": "text",
+      "id": "color_dropdown_label",
+      "label": "Color button label",
+      "default": "Color"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "shape",
+      "name": "Stone shape icon",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Shape name",
+          "default": "Round"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Shape icon"
+        }
+      ]
+    },
+    {
+      "type": "setting",
+      "name": "Setting style icon",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Setting name",
+          "default": "Solitaire"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Setting icon"
+        }
+      ]
+    },
+    {
+      "type": "gemstone",
+      "name": "Gemstone type icon",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Gemstone name",
+          "default": "Diamond"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Gemstone icon"
+        }
+      ]
+    },
+    {
+      "type": "ring_design",
+      "name": "Ring design icon",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Ring design name",
+          "default": "Solitaire"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Ring design icon"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "gemluxjewel Search Results"
+    }
+  ]
+}
+{% endschema %}

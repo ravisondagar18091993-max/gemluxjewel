@@ -1,0 +1,49 @@
+{% comment %}
+  gemluxjewel search product grid — compatible with Dawn facets.js
+  Requires: search, paginate, section
+{% endcomment %}
+
+{%- liquid
+  assign product_count = 0
+  for item in search.results
+    if item.object_type == 'product'
+      assign product_count = product_count | plus: 1
+    endif
+  endfor
+-%}
+
+<div class="collection">
+  <div class="loading-overlay gradient"></div>
+  {%- if product_count == 0 -%}
+    <div class="gemluxjewel-shop__empty">
+      {%- if search.performed and search.terms != blank -%}
+        <p>{{ 'templates.search.no_results' | t: terms: search.terms }}</p>
+      {%- else -%}
+        <p>{{ 'sections.collection_template.empty' | t }}</p>
+      {%- endif -%}
+      {%- if search.filters != empty -%}
+        <p>
+          {{ 'sections.collection_template.use_fewer_filters_html' | t: link: routes.search_url, class: 'gemluxjewel-shop__empty-link' }}
+        </p>
+      {%- endif -%}
+    </div>
+  {%- else -%}
+    <ul id="product-grid" data-id="{{ section.id }}" class="gemluxjewel-shop__grid">
+      {%- for item in search.results -%}
+        {%- if item.object_type != 'product' -%}
+          {%- continue -%}
+        {%- endif -%}
+        <li>
+          {%- liquid
+            assign badge_text = ''
+            if item.tags contains 'new' or item.tags contains 'New In' or item.tags contains 'NEW IN'
+              assign badge_text = 'NEW IN'
+            endif
+          -%}
+          {% render 'gemluxjewel-product-card', product: item, badge_text: badge_text, show_discount: true %}
+        </li>
+      {%- endfor -%}
+    </ul>
+    {% render 'gemluxjewel-pagination', paginate: paginate %}
+  {%- endif -%}
+</div>

@@ -1585,7 +1585,7 @@ html.gemluxjewel-search-open body {
 .gemluxjewel-search-canvas__input {
   width: 100%;
   min-height: 56px;
-  padding: 0 96px 0 52px;
+  padding: 0 52px 0 52px;
   border: 1px solid rgba(17, 17, 17, 0.08);
   border-radius: 8px;
   background: #f7f7f7;
@@ -1611,10 +1611,10 @@ html.gemluxjewel-search-open body {
   background: #fff;
 }
 
-.gemluxjewel-search-canvas__reset,
 .gemluxjewel-search-canvas__submit {
   position: absolute;
   top: 50%;
+  right: 12px;
   transform: translateY(-50%);
   display: inline-flex;
   align-items: center;
@@ -1627,15 +1627,6 @@ html.gemluxjewel-search-open body {
   cursor: pointer;
 }
 
-.gemluxjewel-search-canvas__reset {
-  right: 52px;
-}
-
-.gemluxjewel-search-canvas__submit {
-  right: 12px;
-}
-
-.gemluxjewel-search-canvas__reset svg,
 .gemluxjewel-search-canvas__submit svg {
   width: 18px;
   height: 18px;

@@ -14,7 +14,23 @@
 
 {%- liquid
   assign sort_by = results.sort_by | default: results.default_sort_by
-  assign results_url = results.url
+  assign is_search_page = false
+  if template.name == 'search'
+    assign is_search_page = true
+  endif
+
+  if is_search_page
+    assign terms = results.terms | escape
+    assign results_url = routes.search_url | append: '?q=' | append: terms | append: '&type=product&options%5Bprefix%5D=last&sort_by=' | append: sort_by
+  elsif results.url
+    assign results_url = results.url
+  else
+    assign terms = results.terms | escape
+    assign results_url = '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
+  endif
+
+  assign result_count = results.results_count | default: results.products_count
+  assign total_count = results.results_count | default: results.all_products_count
 
   assign metal_label = section.settings.metal_filter_label | default: 'Metal' | downcase
   assign shape_label = section.settings.shape_filter_label | default: 'Stone shape' | downcase
@@ -84,14 +100,19 @@
 
 <div
   class="gemluxjewel-plp-filter-bar facets-container"
-  data-collection-id="{{ results.id }}"
-  data-collection-handle="{{ results.handle }}"
+  {% unless is_search_page -%}
+    data-collection-id="{{ results.id }}"
+    data-collection-handle="{{ results.handle }}"
+  {%- endunless %}
   data-template="{{ template.name }}"
   id="main-collection-filters"
   data-id="{{ section.id }}"
 >
   <facet-filters-form class="gemluxjewel-plp-filter-bar__form-wrap">
     <form id="FacetFiltersForm" class="gemluxjewel-plp-filter-bar__form">
+      {%- if is_search_page -%}
+        <input type="hidden" name="type" value="product">
+      {%- endif -%}
       <div id="FacetsWrapperDesktop" class="gemluxjewel-plp-filter-bar__main">
         <div class="gemluxjewel-plp-filter-bar__controls">
           {%- if enable_filtering -%}
@@ -199,11 +220,16 @@
             class="gemluxjewel-plp-filter-bar__count product-count"
             id="ProductCountDesktop"
             role="status"
-            data-product-count="{{ results.products_count }}"
-            data-total-count="{{ results.all_products_count }}"
+            data-product-count="{{ result_count }}"
+            data-total-count="{{ total_count }}"
           >
             <span id="ProductCount">
-              {%- if collection_search_query != blank and results.results_count -%}
+              {%- if is_search_page and results.terms != blank -%}
+                {{
+                  'templates.search.results_with_count'
+                  | t: terms: results.terms, count: result_count
+                }}
+              {%- elsif collection_search_query != blank and results.results_count -%}
                 {{
                   'templates.search.results_with_count'
                   | t: terms: collection_search_query, count: results.results_count

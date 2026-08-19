@@ -390,8 +390,9 @@
       function submitSearch() {
         var searchParams = buildSearchParamsFromForm(form);
         var query = (input.value || '').trim();
+        var isSearchPage = input.closest('.gemluxjewel-plp-filter-bar')?.dataset.template === 'search';
 
-        if (!query) {
+        if (!query || isSearchPage) {
           facetForm.onSubmitForm(searchParams, { target: input });
           return;
         }
@@ -420,6 +421,9 @@
   }
 
   function initCollectionSearchFromUrl(root) {
+    var isCollectionPage = document.querySelector('.gemluxjewel-plp-filter-bar')?.dataset.template === 'collection';
+    if (!isCollectionPage) return;
+
     var params = new URLSearchParams(window.location.search);
     var query = (params.get('q') || '').trim();
     if (!query) return;
@@ -437,7 +441,9 @@
     var originalRenderPage = FacetFiltersForm.renderPage;
     FacetFiltersForm.renderPage = function (searchParams, event, updateURLHash) {
       var query = new URLSearchParams(searchParams || '').get('q');
-      if (query && query.trim()) {
+      var isCollectionPage = document.querySelector('.gemluxjewel-plp-filter-bar')?.dataset.template === 'collection';
+
+      if (query && query.trim() && isCollectionPage) {
         var input = document.querySelector('[data-gemluxjewel-plp-search]');
         if (input) {
           input.value = query;

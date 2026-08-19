@@ -1,26 +1,107 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "main": {
-      "type": "main-search",
+    "gemluxjewel_search_results": {
+      "type": "gemluxjewel-search-results",
+      "blocks": {
+        "shape_1": {
+          "type": "shape",
+          "settings": {
+            "title": "Round"
+          }
+        },
+        "shape_2": {
+          "type": "shape",
+          "settings": {
+            "title": "Princess"
+          }
+        },
+        "shape_3": {
+          "type": "shape",
+          "settings": {
+            "title": "Cushion"
+          }
+        },
+        "shape_4": {
+          "type": "shape",
+          "settings": {
+            "title": "Oval"
+          }
+        },
+        "shape_5": {
+          "type": "shape",
+          "settings": {
+            "title": "Emerald"
+          }
+        },
+        "shape_6": {
+          "type": "shape",
+          "settings": {
+            "title": "Pear"
+          }
+        },
+        "setting_1": {
+          "type": "setting",
+          "settings": {
+            "title": "Solitaire"
+          }
+        },
+        "setting_2": {
+          "type": "setting",
+          "settings": {
+            "title": "Halo"
+          }
+        },
+        "gemstone_1": {
+          "type": "gemstone",
+          "settings": {
+            "title": "Diamond"
+          }
+        }
+      },
+      "block_order": [
+        "shape_1",
+        "shape_2",
+        "shape_3",
+        "shape_4",
+        "shape_5",
+        "shape_6",
+        "setting_1",
+        "setting_2",
+        "gemstone_1"
+      ],
       "settings": {
-        "columns_desktop": 4,
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": false,
-        "show_vendor": false,
-        "show_rating": false,
+        "products_per_page": 15,
         "enable_filtering": true,
-        "filter_type": "horizontal",
         "enable_sorting": true,
-        "article_show_date": true,
-        "article_show_author": false,
-        "columns_mobile": "2",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "filters_button_label": "Filters",
+        "filters_apply_label": "Apply",
+        "filters_empty_message": "Add filters in Shopify Search & Discovery to enable product filtering.",
+        "search_placeholder": "Search by style, shape or metal",
+        "metal_filter_label": "Metal",
+        "shape_filter_label": "Stone shape",
+        "setting_filter_label": "Setting style",
+        "gemstone_filter_label": "Gemstone type",
+        "ring_design_filter_label": "Ring design",
+        "color_filter_label": "Color",
+        "metal_dropdown_label": "Metal",
+        "shape_dropdown_label": "Stone shape",
+        "setting_dropdown_label": "Setting style",
+        "gemstone_dropdown_label": "Gemstone type",
+        "ring_design_dropdown_label": "Ring design",
+        "color_dropdown_label": "Color"
       }
     }
   },
   "order": [
-    "main"
+    "gemluxjewel_search_results"
   ]
 }

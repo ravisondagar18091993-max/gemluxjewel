@@ -70,13 +70,6 @@
           >
           <input type="hidden" name="type" value="product">
           <input type="hidden" name="options[prefix]" value="last">
-          <button
-            type="reset"
-            class="gemluxjewel-search-canvas__reset{% if search.terms == blank %} hidden{% endif %}"
-            aria-label="{{ 'general.search.reset' | t }}"
-          >
-            {{- 'icon-reset.svg' | inline_asset_content -}}
-          </button>
           <button type="submit" class="gemluxjewel-search-canvas__submit" aria-label="{{ 'general.search.search' | t }}">
             {{- 'icon-search.svg' | inline_asset_content -}}
           </button>
