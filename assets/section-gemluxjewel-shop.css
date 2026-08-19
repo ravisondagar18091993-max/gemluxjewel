@@ -1079,6 +1079,10 @@
   overflow: visible;
 }
 
+.gemluxjewel-plp-filter-bar__controls--no-search {
+  grid-template-columns: 1fr;
+}
+
 .gemluxjewel-plp-filter-bar__filters-cluster {
   display: flex;
   align-items: stretch;

@@ -114,7 +114,7 @@
         <input type="hidden" name="type" value="product">
       {%- endif -%}
       <div id="FacetsWrapperDesktop" class="gemluxjewel-plp-filter-bar__main">
-        <div class="gemluxjewel-plp-filter-bar__controls">
+        <div class="gemluxjewel-plp-filter-bar__controls{% unless is_search_page %} gemluxjewel-plp-filter-bar__controls--no-search{% endunless %}">
           {%- if enable_filtering -%}
             <div class="gemluxjewel-plp-filter-bar__filters-cluster">
               <button
@@ -213,37 +213,6 @@
                 autocomplete="off"
                 data-gemluxjewel-plp-search
               >
-            </div>
-          {%- else -%}
-            <div
-              class="gemluxjewel-plp-filter-bar__search-wrap gemluxjewel-plp-filter-bar__search-form"
-              role="search"
-              data-gemluxjewel-plp-search-form
-              data-search-url="{{ routes.search_url }}"
-            >
-              <label class="visually-hidden" for="GemluxPlpSearch-{{ section.id }}">
-                {{ section.settings.search_placeholder | default: 'Search by style, shape or metal' | escape }}
-              </label>
-              <span class="gemluxjewel-plp-filter-bar__search-icon" aria-hidden="true">
-                {{- 'icon-search.svg' | inline_asset_content -}}
-              </span>
-              <input
-                id="GemluxPlpSearch-{{ section.id }}"
-                class="gemluxjewel-plp-filter-bar__search"
-                type="search"
-                value="{{ collection_search_query | escape }}"
-                placeholder="{{ section.settings.search_placeholder | default: 'Search by style, shape or metal' | escape }}"
-                autocomplete="off"
-                data-gemluxjewel-plp-collection-search
-              >
-              <button
-                type="button"
-                class="gemluxjewel-plp-filter-bar__search-btn"
-                data-gemluxjewel-plp-search-submit
-                aria-label="{{ 'general.search.search' | t }}"
-              >
-                <span class="gemluxjewel-plp-filter-bar__search-btn-text">{{ section.settings.search_button_label | default: 'Search' | escape }}</span>
-              </button>
             </div>
           {%- endif -%}
         </div>
