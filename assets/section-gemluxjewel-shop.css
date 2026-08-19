@@ -180,6 +180,14 @@
   color: var(--gemluxjewel-gray);
 }
 
+.gemluxjewel-search-page__empty {
+  margin: 0 0 24px;
+  text-align: center;
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 14px;
+  color: var(--gemluxjewel-gray);
+}
+
 @media (min-width: 768px) {
   .gemluxjewel-shop--search {
     padding-top: 40px;

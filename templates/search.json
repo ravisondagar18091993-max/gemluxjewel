@@ -9,8 +9,8 @@
  */
 {
   "sections": {
-    "gemluxjewel_search_results": {
-      "type": "gemluxjewel-search-results",
+    "main": {
+      "type": "main-search",
       "blocks": {
         "shape_1": {
           "type": "shape",
@@ -102,6 +102,6 @@
     }
   },
   "order": [
-    "gemluxjewel_search_results"
+    "main"
   ]
 }
