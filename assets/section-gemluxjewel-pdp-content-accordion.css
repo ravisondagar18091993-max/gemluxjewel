@@ -21,7 +21,18 @@
 }
 
 .gemluxjewel-pdp-content-accordion__accordion {
-  max-width: 920px;
+  width: 100%;
+  max-width: none;
+}
+
+.gemluxjewel-pdp-content-accordion__accordion.gemluxjewel-pdp__info-accordion {
+  margin: 0;
+}
+
+.gemluxjewel-pdp-content-accordion__accordion .gemluxjewel-pdp__product-accordian,
+.gemluxjewel-pdp-content-accordion__accordion .closet-accordion,
+.gemluxjewel-pdp-content-accordion__accordion .closet-item {
+  width: 100%;
 }
 
 @media (max-width: 749px) {
