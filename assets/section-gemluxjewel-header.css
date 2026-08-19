@@ -1636,13 +1636,14 @@ html.gemluxjewel-search-open body {
   position: static;
   display: none;
   width: 100%;
-  max-height: none;
+  max-height: calc(100vh - 220px);
   margin-top: 20px;
   border: none;
   border-radius: 0;
   box-shadow: none;
   background: transparent;
-  overflow: visible;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .gemluxjewel-search-canvas predictive-search[open] .predictive-search--canvas,
