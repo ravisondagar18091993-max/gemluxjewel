@@ -1436,6 +1436,11 @@
   justify-self: end;
 }
 
+.gemluxjewel-plp-filter-bar__search-form {
+  position: relative;
+  width: 100%;
+}
+
 .gemluxjewel-plp-filter-bar__search-icon {
   position: absolute;
   left: 16px;
@@ -1462,6 +1467,41 @@
   color: var(--gemluxjewel-dark);
   font-family: var(--gemluxjewel-font-body);
   font-size: 12px;
+}
+
+.gemluxjewel-plp-filter-bar__search-form .gemluxjewel-plp-filter-bar__search {
+  padding-right: 84px;
+}
+
+.gemluxjewel-plp-filter-bar__search-btn {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  padding: 0 12px;
+  border: none;
+  border-radius: 4px;
+  background: var(--gemluxjewel-primary);
+  color: #fff;
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.gemluxjewel-plp-filter-bar__search-btn:hover {
+  background: #1f3328;
+}
+
+.gemluxjewel-plp-filter-bar__search-btn-text {
+  line-height: 1;
 }
 
 .gemluxjewel-plp-filter-bar__search::placeholder {
