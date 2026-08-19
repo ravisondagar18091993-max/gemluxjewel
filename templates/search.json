@@ -79,20 +79,25 @@
         "gemstone_1"
       ],
       "settings": {
-        "columns_desktop": 4,
-        "columns_mobile": "2",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": false,
-        "show_vendor": false,
-        "show_rating": false,
+        "products_per_page": 15,
         "enable_filtering": true,
-        "filter_type": "drawer",
         "enable_sorting": true,
-        "article_show_date": true,
-        "article_show_author": false,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "filters_button_label": "Filters",
+        "filters_apply_label": "Apply",
+        "filters_empty_message": "Add filters in Shopify Search & Discovery to enable product filtering.",
+        "search_placeholder": "Search by style, shape or metal",
+        "metal_filter_label": "Metal",
+        "shape_filter_label": "Stone shape",
+        "setting_filter_label": "Setting style",
+        "gemstone_filter_label": "Gemstone type",
+        "ring_design_filter_label": "Ring design",
+        "color_filter_label": "Color",
+        "metal_dropdown_label": "Metal",
+        "shape_dropdown_label": "Stone shape",
+        "setting_dropdown_label": "Setting style",
+        "gemstone_dropdown_label": "Gemstone type",
+        "ring_design_dropdown_label": "Ring design",
+        "color_dropdown_label": "Color"
       }
     }
   },
