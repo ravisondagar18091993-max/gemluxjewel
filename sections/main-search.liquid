@@ -10,9 +10,6 @@
       {%- if search.performed -%}
         <div class="gemluxjewel-search-page__head">
           <h1 class="gemluxjewel-search-page__title">{{ 'templates.search.title' | t }}</h1>
-          {%- if search.terms != blank -%}
-            <p class="gemluxjewel-search-page__terms">{{ search.terms | escape }}</p>
-          {%- endif -%}
         </div>
       {%- else -%}
         <div class="gemluxjewel-search-page__head">
