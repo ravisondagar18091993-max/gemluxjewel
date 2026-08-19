@@ -166,6 +166,7 @@
     "engagement_custom": {
       "type": "gemluxjewel-engagement-custom",
       "settings": {
+        "image": "shopify://shop_images/Journey-of-a-RIng-Jewelry-CAD-and-Modeling-768x456_001788cd-65b6-4747-ac37-6f4e79de3ae9.webp",
         "title": "Custom Engagement Ring",
         "text": "Can't find the right engagement ring in our collection? Don't worry — we can custom-make an engagement ring just for you.",
         "button_label": "Book Consultation",
