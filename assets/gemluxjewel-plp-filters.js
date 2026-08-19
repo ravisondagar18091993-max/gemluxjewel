@@ -306,19 +306,57 @@
     });
   }
 
-  function initPlpSearchForm(root) {
-    root.querySelectorAll('[data-gemluxjewel-plp-search-form]').forEach(function (searchForm) {
-      if (searchForm.dataset.gemluxjewelPlpSearchFormInit === 'true') return;
-      searchForm.dataset.gemluxjewelPlpSearchFormInit = 'true';
+  function buildSearchResultsUrl(searchUrl, query) {
+    var params = new URLSearchParams();
+    params.set('q', query);
+    params.set('type', 'product');
+    params.set('options[prefix]', 'last');
+    return searchUrl + '?' + params.toString();
+  }
 
-      searchForm.addEventListener('submit', function (event) {
-        var input = searchForm.querySelector('input[name="q"]');
-        var query = (input?.value || '').trim();
+  function initPlpSearchForm(root) {
+    root.querySelectorAll('[data-gemluxjewel-plp-search-form]').forEach(function (searchWrap) {
+      if (searchWrap.dataset.gemluxjewelPlpSearchFormInit === 'true') return;
+      searchWrap.dataset.gemluxjewelPlpSearchFormInit = 'true';
+
+      var input = searchWrap.querySelector('[data-gemluxjewel-plp-collection-search]');
+      if (!input) return;
+
+      var submitButton = searchWrap.querySelector('[data-gemluxjewel-plp-search-submit]');
+      var searchUrl = searchWrap.dataset.searchUrl || '/search';
+
+      function navigateToSearchResults() {
+        var query = (input.value || '').trim();
         if (!query) {
+          input.focus();
+          return;
+        }
+
+        window.location.assign(buildSearchResultsUrl(searchUrl, query));
+      }
+
+      input.addEventListener('input', function (event) {
+        event.stopPropagation();
+      });
+
+      input.addEventListener('change', function (event) {
+        event.stopPropagation();
+      });
+
+      input.addEventListener('keydown', function (event) {
+        event.stopPropagation();
+        if (event.key === 'Enter') {
           event.preventDefault();
-          input?.focus();
+          navigateToSearchResults();
         }
       });
+
+      if (submitButton) {
+        submitButton.addEventListener('click', function (event) {
+          event.preventDefault();
+          navigateToSearchResults();
+        });
+      }
     });
   }
 
@@ -364,6 +402,9 @@
     });
     root.querySelectorAll('[data-gemluxjewel-plp-search]').forEach(function (el) {
       delete el.dataset.gemluxjewelPlpSearchInit;
+    });
+    root.querySelectorAll('[data-gemluxjewel-plp-search-form]').forEach(function (el) {
+      delete el.dataset.gemluxjewelPlpSearchFormInit;
     });
   }
 
