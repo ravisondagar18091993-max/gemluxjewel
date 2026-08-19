@@ -2,27 +2,45 @@
 {{ 'section-gemluxjewel-product.css' | asset_url | stylesheet_tag }}
 {{ 'section-gemluxjewel-pdp-content-accordion.css' | asset_url | stylesheet_tag }}
 
-<section class="gemluxjewel gemluxjewel-pdp-content-accordion">
-  <div class="gemluxjewel-container gemluxjewel-pdp-content-accordion__container">
-    {%- if section.settings.title != blank -%}
-      <h2 class="gemluxjewel-pdp-content-accordion__title">{{ section.settings.title | escape }}</h2>
-    {%- endif -%}
+{%- liquid
+  assign accordion_heading = product.metafields.custom.product_accordion_heading.value | default: section.settings.title
+  assign accordion_title = product.metafields.custom.product_accordion_title.value | default: section.settings.accordion_title
 
-    {%- if section.settings.accordion_title != blank and section.settings.accordion_content != blank -%}
+  if product.metafields.custom.product_accordion_content != blank
+    capture accordion_content
+      echo product.metafields.custom.product_accordion_content | metafield_tag
+    endcapture
+  else
+    assign accordion_content = section.settings.accordion_content
+  endif
+
+  assign show_section = false
+  if accordion_title != blank and accordion_content != blank
+    assign show_section = true
+  endif
+-%}
+
+{%- if show_section -%}
+  <section class="gemluxjewel gemluxjewel-pdp-content-accordion">
+    <div class="gemluxjewel-container gemluxjewel-pdp-content-accordion__container">
+      {%- if accordion_heading != blank -%}
+        <h2 class="gemluxjewel-pdp-content-accordion__title">{{ accordion_heading | escape }}</h2>
+      {%- endif -%}
+
       <div class="gemluxjewel-pdp-content-accordion__accordion gemluxjewel-pdp__info-accordion">
         <div class="gemluxjewel-pdp__product-accordian">
           <div class="closet-accordion" data-gemluxjewel-accordion>
             {% render 'gemluxjewel-pdp-accordion-item',
-              title: section.settings.accordion_title,
-              content: section.settings.accordion_content,
+              title: accordion_title,
+              content: accordion_content,
               open_by_default: true
             %}
           </div>
         </div>
       </div>
-    {%- endif -%}
-  </div>
-</section>
+    </div>
+  </section>
+{%- endif -%}
 
 {% schema %}
 {
@@ -31,22 +49,25 @@
   "class": "gemluxjewel-section",
   "settings": [
     {
+      "type": "paragraph",
+      "content": "Content is loaded per product from metafields: Product Accordion heading, title, and content. Settings below are fallbacks when metafields are empty."
+    },
+    {
       "type": "text",
       "id": "title",
-      "label": "Section heading",
+      "label": "Fallback section heading",
       "default": "More About This Ring"
     },
     {
       "type": "text",
       "id": "accordion_title",
-      "label": "Accordion title",
+      "label": "Fallback accordion title",
       "default": "Product Details"
     },
     {
       "type": "richtext",
       "id": "accordion_content",
-      "label": "Accordion content",
-      "default": "<p>Add rich text content for this product section.</p>"
+      "label": "Fallback accordion content"
     }
   ],
   "presets": [

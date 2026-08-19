@@ -1,0 +1,7 @@
+{
+  "name": "Product Accordion content",
+  "namespace": "custom",
+  "key": "product_accordion_content",
+  "description": "Rich text content inside the product page accordion.",
+  "type": "rich_text_field"
+}

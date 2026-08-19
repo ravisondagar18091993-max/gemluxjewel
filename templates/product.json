@@ -49,9 +49,9 @@
     "gemluxjewel_pdp_content_accordion": {
       "type": "gemluxjewel-pdp-content-accordion",
       "settings": {
-        "title": "More About This Ring",
-        "accordion_title": "Product Details",
-        "accordion_content": "<p>Add rich text content for this product section.</p>"
+        "title": "",
+        "accordion_title": "",
+        "accordion_content": ""
       }
     },
     "gemluxjewel_pdp_how_made": {
