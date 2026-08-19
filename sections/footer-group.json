@@ -23,6 +23,15 @@
             "link": ""
           }
         },
+        "trust_item_DgAnBi": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "shipping",
+            "line_1": "Worldwide",
+            "line_2": "Express Shipping",
+            "link": ""
+          }
+        },
         "trust_2": {
           "type": "trust_item",
           "settings": {
@@ -53,6 +62,7 @@
       },
       "block_order": [
         "trust_1",
+        "trust_item_DgAnBi",
         "trust_2",
         "trust_3",
         "trust_4"
@@ -74,11 +84,11 @@
         "menu_1_title": "Brand Info",
         "menu_1": "footer",
         "menu_2_title": "Contact Info",
-        "menu_2": "",
+        "menu_2": "contact-info",
         "menu_3_title": "",
         "menu_3": "",
         "menu_4_title": "Education",
-        "menu_4": "",
+        "menu_4": "education",
         "menu_5_title": "",
         "menu_5": "",
         "youtube_url": "https://www.youtube.com/@Gemluxjewels1008",

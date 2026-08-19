@@ -31,8 +31,8 @@
             "form_settings": false,
             "font_color": "#000000",
             "size": 14,
-            "input_background_color": "#FFFFFF",
-            "input_background_color_focus": "#FFFFFF",
+            "input_background_color": "#ffffff",
+            "input_background_color_focus": "#ffffff",
             "input_border_radius": 1,
             "input_border_color": "#ebe9e9",
             "input_border_color_focus": "#2d2727",
@@ -54,21 +54,6 @@
             "fonts": "Times New Roman"
           }
         },
-        "u_size": {
-          "type": "utility_card",
-          "settings": {
-            "card_style": "ring_size",
-            "image": "shopify://shop_images/sizing-a-ring-while-using-a-loupe.jpg",
-            "title": "Find Your Ring Size",
-            "text": "Unsure of Your Ring Size? No Problem! Click on 'Find Now' and let us assist you in choosing the right ring size for you.",
-            "button_label": "Find Now",
-            "button_link": "",
-            "secondary_button_label": "Print",
-            "secondary_button_link": "",
-            "phone_label": "Call Us",
-            "phone_number": ""
-          }
-        },
         "u_gem": {
           "type": "utility_card",
           "settings": {
@@ -81,13 +66,12 @@
             "secondary_button_label": "Print",
             "secondary_button_link": "",
             "phone_label": "Call Us",
-            "phone_number": ""
+            "phone_number": "+1 (307) 998-8068"
           }
         }
       },
       "block_order": [
         "hulk_form_builder_form_block_fRWwbM",
-        "u_size",
         "u_gem"
       ],
       "settings": {
@@ -123,7 +107,7 @@
         "icon_5": "market_price",
         "label_6": "Eco Friendly Element",
         "icon_6": "eco",
-        "show_button": true,
+        "show_button": false,
         "button_label": "Get a Quote",
         "button_link": "shopify://pages/custom-jewellery"
       }
@@ -133,6 +117,7 @@
       "settings": {
         "title": "",
         "text": "",
+        "image": "shopify://shop_images/2_7c70a3fd-a70e-4734-886e-71752364dff5.webp",
         "button_label": "",
         "button_link": "shopify://pages/contact"
       }
@@ -207,11 +192,17 @@
       "blocks": {
         "pair_1": {
           "type": "pair",
-          "settings": {}
+          "settings": {
+            "reference_image": "shopify://shop_images/7.webp",
+            "reality_image": "shopify://shop_images/07_c3dc1558-9d89-4b6e-a397-593a3b5afe82.webp"
+          }
         },
         "pair_2": {
           "type": "pair",
-          "settings": {}
+          "settings": {
+            "reference_image": "shopify://shop_images/26.webp",
+            "reality_image": "shopify://shop_images/026.webp"
+          }
         },
         "pair_3": {
           "type": "pair",
@@ -232,7 +223,7 @@
         "title": "Your Perfect Ring, Made to Order.",
         "text": "From stone to setting, we craft every ring by hand, just the way you want it. Choose your design, personalize every detail, and see it come to life with updates at every step.",
         "button_label": "Submit Your Design",
-        "button_link": "",
+        "button_link": "shopify://pages/contact",
         "reference_label": "Reference",
         "reality_label": "Reality"
       }

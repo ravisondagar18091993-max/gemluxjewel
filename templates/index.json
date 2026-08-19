@@ -206,7 +206,7 @@
             "title": "Solitaire",
             "image": "shopify://shop_images/ChatGPT_Image_Aug_13_2026_12_04_12_PM_1.png",
             "collection": "",
-            "link": ""
+            "link": "shopify://collections/solitaire-rings"
           }
         },
         "c2": {
@@ -233,13 +233,23 @@
             "title": "Three Stone",
             "image": "shopify://shop_images/ChatGPT_Image_Aug_13_2026_12_04_12_PM_4.png",
             "collection": "",
-            "link": ""
+            "link": "shopify://collections/three-stone-rings"
           }
         },
         "c5": {
           "type": "style",
           "settings": {
             "title": "Halo",
+            "image": "shopify://shop_images/ChatGPT_Image_Aug_18_2026_01_47_57_PM_1.png",
+            "collection": "",
+            "link": "shopify://collections/halo-rings"
+          }
+        },
+        "style_AEjdep": {
+          "type": "style",
+          "settings": {
+            "title": "East-West",
+            "image": "shopify://shop_images/ChatGPT_Image_Aug_18_2026_01_47_57_PM_2.png",
             "collection": "",
             "link": ""
           }
@@ -250,7 +260,8 @@
         "c2",
         "c3",
         "c4",
-        "c5"
+        "c5",
+        "style_AEjdep"
       ],
       "settings": {
         "title": "Shop Lab Diamond Engagement Rings by Style",
@@ -346,6 +357,7 @@
         "split_1": {
           "type": "card",
           "settings": {
+            "image": "shopify://shop_images/DSF5487web_1500x1500_c6583f49-fb28-497f-b561-9cb094404096.webp",
             "title": "San Diego, We're On Our Way.",
             "description": "Our newest showroom is coming soon. Be the first to know when we open.",
             "link_label": "Get Notified When We Open",
@@ -355,6 +367,7 @@
         "split_2": {
           "type": "card",
           "settings": {
+            "image": "shopify://shop_images/RTS-TEW_1500x1500_1fd7ed3e-e2db-47da-9fd8-06ee3e314b8a.jpg",
             "title": "Ready When You Are",
             "description": "Engagement Rings, resized and dispatched within 48 hours.",
             "link_label": "Shop Ready-to-ship Rings",
