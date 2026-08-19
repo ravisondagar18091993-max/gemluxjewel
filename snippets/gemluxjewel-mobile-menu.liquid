@@ -130,10 +130,10 @@
 
   <div class="gemluxjewel-mobile-menu__utilities">
     {%- if section.settings.enable_search -%}
-      <a href="{{ routes.search_url }}" class="gemluxjewel-mobile-menu__utility" data-gemluxjewel-menu-close-on-click aria-label="Search">
+      <button type="button" class="gemluxjewel-mobile-menu__utility" data-gemluxjewel-search-open aria-label="{{ 'general.search.search' | t }}">
         <img src="{{ 'header-search-thin.svg' | asset_url }}" alt="" width="20" height="20">
         <span>Search</span>
-      </a>
+      </button>
     {%- endif -%}
     {%- if section.settings.show_account_icon -%}
       <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="gemluxjewel-mobile-menu__utility" data-gemluxjewel-menu-close-on-click aria-label="Account">

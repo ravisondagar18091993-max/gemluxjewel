@@ -30,6 +30,12 @@
   assign ring_design_filter = blank
   assign color_filter = blank
 
+  capture url_search_query
+    render 'gemluxjewel-url-param', key: 'q'
+  endcapture
+  assign url_search_query = url_search_query | strip
+  assign collection_search_query = results.terms | default: url_search_query
+
   for filter in results.filters
     assign filter_label = filter.label | downcase
     assign filter_param = filter.param_name | downcase
@@ -77,7 +83,7 @@
 -%}
 
 <div
-  class="gemluxjewel-plp-filter-bar"
+  class="gemluxjewel-plp-filter-bar facets-container"
   data-collection-id="{{ results.id }}"
   data-collection-handle="{{ results.handle }}"
   data-template="{{ template.name }}"
@@ -180,7 +186,7 @@
               class="gemluxjewel-plp-filter-bar__search"
               type="search"
               name="q"
-              value="{{ results.terms | escape }}"
+              value="{{ collection_search_query | escape }}"
               placeholder="{{ section.settings.search_placeholder | default: 'Search by style, shape or metal' | escape }}"
               autocomplete="off"
               data-gemluxjewel-plp-search
@@ -197,10 +203,10 @@
             data-total-count="{{ results.all_products_count }}"
           >
             <span id="ProductCount">
-              {%- if results.terms != blank and results.results_count -%}
+              {%- if collection_search_query != blank and results.results_count -%}
                 {{
                   'templates.search.results_with_count'
-                  | t: terms: results.terms, count: results.results_count
+                  | t: terms: collection_search_query, count: results.results_count
                 }}
               {%- elsif results.products_count == results.all_products_count -%}
                 {{ 'products.facets.product_count_simple' | t: count: results.products_count }}

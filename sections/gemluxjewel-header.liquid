@@ -143,9 +143,14 @@
 
           <div class="gemluxjewel-header__icons">
             {%- if section.settings.enable_search -%}
-              <a href="{{ routes.search_url }}" class="gemluxjewel-header__icon" aria-label="Search">
+              <button
+                type="button"
+                class="gemluxjewel-header__icon gemluxjewel-header__icon--search"
+                data-gemluxjewel-search-open
+                aria-label="{{ 'general.search.search' | t }}"
+              >
                 <img src="{{ 'header-search-thin.svg' | asset_url }}" alt="" width="18" height="18">
-              </a>
+              </button>
             {%- endif -%}
             {%- if section.settings.show_account_icon -%}
               <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="gemluxjewel-header__icon gemluxjewel-header__icon--account" aria-label="Account">
@@ -177,6 +182,7 @@
 </header>
 
 {% render 'gemluxjewel-mobile-menu', section: section, logo_label: logo_label %}
+{% render 'gemluxjewel-search-canvas', section: section %}
 
 {% schema %}
 {
@@ -306,6 +312,12 @@
     {
       "type": "header",
       "content": "Utilities"
+    },
+    {
+      "type": "text",
+      "id": "search_placeholder",
+      "label": "Search placeholder",
+      "default": "Search by style, shape or metal"
     },
     {
       "type": "checkbox",

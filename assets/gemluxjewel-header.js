@@ -423,8 +423,82 @@
     });
   }
 
+  function initSearchCanvas() {
+    var canvas = document.querySelector('[data-gemluxjewel-search-canvas]');
+    if (!canvas || canvas.dataset.gemluxjewelSearchReady === 'true') return;
+
+    var panel = canvas.querySelector('[data-gemluxjewel-search-panel]');
+    var input = canvas.querySelector('[data-gemluxjewel-search-input]');
+    var resetButton = canvas.querySelector('.gemluxjewel-search-canvas__reset');
+
+    function closeMobileMenu() {
+      var mobileMenu = document.querySelector('[data-gemluxjewel-mobile-menu]');
+      var burgerBtn = document.querySelector('[data-gemluxjewel-burger]');
+      if (!mobileMenu || !mobileMenu.classList.contains('is-open')) return;
+      mobileMenu.classList.remove('is-open');
+      document.documentElement.classList.remove('gemluxjewel-menu-open');
+      if (burgerBtn) burgerBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    function openSearch() {
+      closeMobileMenu();
+      if (closeAllMegaFn) closeAllMegaFn();
+
+      canvas.classList.add('is-open');
+      canvas.setAttribute('aria-hidden', 'false');
+      document.documentElement.classList.add('gemluxjewel-search-open');
+
+      window.setTimeout(function () {
+        if (typeof trapFocus === 'function' && panel && input) {
+          trapFocus(panel, input);
+        } else if (input) {
+          input.focus();
+        }
+      }, 50);
+    }
+
+    function closeSearch() {
+      canvas.classList.remove('is-open');
+      canvas.setAttribute('aria-hidden', 'true');
+      document.documentElement.classList.remove('gemluxjewel-search-open');
+
+      if (typeof removeTrapFocus === 'function') {
+        removeTrapFocus();
+      }
+    }
+
+    document.querySelectorAll('[data-gemluxjewel-search-open]').forEach(function (button) {
+      button.addEventListener('click', function (event) {
+        event.preventDefault();
+        openSearch();
+      });
+    });
+
+    canvas.querySelectorAll('[data-gemluxjewel-search-close]').forEach(function (button) {
+      button.addEventListener('click', function (event) {
+        event.preventDefault();
+        closeSearch();
+      });
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && canvas.classList.contains('is-open')) {
+        closeSearch();
+      }
+    });
+
+    if (input && resetButton) {
+      input.addEventListener('input', function () {
+        resetButton.classList.toggle('hidden', !input.value.length);
+      });
+    }
+
+    canvas.dataset.gemluxjewelSearchReady = 'true';
+  }
+
   function initGemluxjewelHeaderAndCurrency() {
     initGemluxjewelHeader();
+    initSearchCanvas();
     initMlvedaCurrencySwitcher();
   }
 

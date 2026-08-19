@@ -1,0 +1,119 @@
+{% comment %}
+  AJAX collection search grid — rendered via Section Rendering API:
+  /search?q=term&type=product&section_id=gemluxjewel-plp-search-results&collection_id=...&grid_section_id=...
+{% endcomment %}
+
+{%- liquid
+  capture collection_id_param
+    render 'gemluxjewel-url-param', key: 'collection_id'
+  endcapture
+  assign collection_id_param = collection_id_param | strip
+
+  capture collection_handle_param
+    render 'gemluxjewel-url-param', key: 'collection_handle'
+  endcapture
+  assign collection_handle_param = collection_handle_param | strip
+
+  capture grid_section_id_param
+    render 'gemluxjewel-url-param', key: 'grid_section_id'
+  endcapture
+  assign grid_section_id_param = grid_section_id_param | strip
+
+  assign products_limit = section.settings.products_per_page | default: 15
+  assign matched_count = 0
+-%}
+
+<div id="ProductGridContainer">
+  {%- if search.performed and search.terms != blank -%}
+    {%- paginate search.results by 50 -%}
+      <div class="collection">
+        <div class="loading-overlay gradient"></div>
+        {%- if matched_count == 0 -%}
+          <div class="gemluxjewel-shop__empty">
+            <p>{{ 'sections.collection_template.empty' | t }}</p>
+            <p>{{ 'templates.search.no_results' | t: terms: search.terms }}</p>
+          </div>
+        {%- else -%}
+          <ul
+            id="product-grid"
+            data-id="{{ grid_section_id_param | escape }}"
+            class="gemluxjewel-shop__grid"
+          >
+            {%- assign rendered_count = 0 -%}
+            {%- for item in search.results -%}
+              {%- if item.object_type != 'product' -%}
+                {%- continue -%}
+              {%- endif -%}
+
+              {%- assign in_collection = false -%}
+              {%- for item_collection in item.collections -%}
+                {%- if collection_id_param != blank and item_collection.id == collection_id_param -%}
+                  {%- assign in_collection = true -%}
+                  {%- break -%}
+                {%- elsif collection_handle_param != blank and item_collection.handle == collection_handle_param -%}
+                  {%- assign in_collection = true -%}
+                  {%- break -%}
+                {%- endif -%}
+              {%- endfor -%}
+
+              {%- unless in_collection -%}
+                {%- continue -%}
+              {%- endunless -%}
+
+              {%- assign matched_count = matched_count | plus: 1 -%}
+              {%- if rendered_count >= products_limit -%}
+                {%- continue -%}
+              {%- endif -%}
+              {%- assign rendered_count = rendered_count | plus: 1 -%}
+
+              <li>
+                {%- liquid
+                  assign badge_text = ''
+                  if item.tags contains 'new' or item.tags contains 'New In' or item.tags contains 'NEW IN'
+                    assign badge_text = 'NEW IN'
+                  endif
+                -%}
+                {% render 'gemluxjewel-product-card', product: item, badge_text: badge_text, show_discount: true %}
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </div>
+    {%- endpaginate -%}
+  {%- else -%}
+    <div class="collection">
+      <div class="gemluxjewel-shop__empty">
+        <p>{{ 'sections.collection_template.empty' | t }}</p>
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+<span id="ProductCount" data-product-count="{{ matched_count }}" data-total-count="{{ matched_count }}">
+  {%- if search.performed and search.terms != blank -%}
+    {%- if matched_count > 0 -%}
+      {{ 'templates.search.results_with_count' | t: terms: search.terms, count: matched_count }}
+    {%- else -%}
+      {{ 'templates.search.no_results' | t: terms: search.terms }}
+    {%- endif -%}
+  {%- endif -%}
+</span>
+
+{% schema %}
+{
+  "name": "gemluxjewel PLP search results",
+  "tag": "section",
+  "class": "gemluxjewel-section gemluxjewel-plp-search-results",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 8,
+      "max": 50,
+      "step": 1,
+      "default": 15,
+      "label": "Products per page"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,33 @@
+{% comment %}
+  Read a URL query parameter in Liquid (Section Rendering API / full page loads).
+
+  @param key {String} Query parameter name
+{% endcomment %}
+
+{%- liquid
+  assign param_key = key | default: blank
+  assign param_value = blank
+
+  if param_key != blank
+    capture content_for_query_string
+      echo content_for_header
+    endcapture
+
+    assign page_url = content_for_query_string | split: '"pageurl":"' | last | split: '"' | first | split: request.host | last | replace: '\/', '/' | replace: '%20', ' ' | replace: '\u0026', '&'
+
+    if page_url contains '?'
+      assign query_string = page_url | split: '?' | last
+      assign query_parts = query_string | split: '&'
+
+      for part in query_parts
+        assign key_value = part | split: '='
+        if key_value.size > 1 and key_value[0] == param_key
+          assign param_value = key_value[1]
+          break
+        endif
+      endfor
+    endif
+  endif
+
+  echo param_value
+-%}

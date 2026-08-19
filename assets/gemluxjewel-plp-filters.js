@@ -257,6 +257,127 @@
     });
   }
 
+  function setCollectionGridLoading(isLoading) {
+    var gridContainer = document.getElementById('ProductGridContainer');
+    if (!gridContainer) return;
+
+    var collection = gridContainer.querySelector('.collection');
+    if (collection) {
+      collection.classList.toggle('loading', isLoading);
+    }
+
+    var count = document.getElementById('ProductCount');
+    var countDesktop = document.getElementById('ProductCountDesktop');
+    if (count) count.classList.toggle('loading', isLoading);
+    if (countDesktop) countDesktop.classList.toggle('loading', isLoading);
+  }
+
+  function updateCollectionUrl(searchParams) {
+    var nextUrl = window.location.pathname;
+    if (searchParams) {
+      nextUrl += '?' + searchParams;
+    }
+    history.pushState({ searchParams: searchParams || '' }, '', nextUrl);
+  }
+
+  function renderCollectionSearchResults(html) {
+    var parsedHTML = new DOMParser().parseFromString(html, 'text/html');
+    var fetchedGrid = parsedHTML.getElementById('ProductGridContainer');
+    var gridContainer = document.getElementById('ProductGridContainer');
+
+    if (fetchedGrid && gridContainer) {
+      gridContainer.innerHTML = fetchedGrid.innerHTML;
+    }
+
+    var fetchedCount = parsedHTML.getElementById('ProductCount');
+    var count = document.getElementById('ProductCount');
+    var countDesktop = document.getElementById('ProductCountDesktop');
+
+    if (fetchedCount && count) {
+      count.innerHTML = fetchedCount.innerHTML;
+      count.dataset.productCount = fetchedCount.dataset.productCount || '';
+      count.dataset.totalCount = fetchedCount.dataset.totalCount || '';
+      count.classList.remove('loading');
+      if (countDesktop) {
+        countDesktop.classList.remove('loading');
+      }
+    }
+
+    setCollectionGridLoading(false);
+    document.dispatchEvent(new CustomEvent('gemluxjewel:facets-updated'));
+  }
+
+  function fetchCollectionSearch(searchParams, input) {
+    var params = new URLSearchParams(searchParams);
+    var query = (params.get('q') || '').trim();
+    if (!query) return;
+
+    var form = input.closest('form');
+    var facetForm = input.closest('facet-filters-form');
+    var filterBar = document.querySelector('.gemluxjewel-plp-filter-bar');
+    var productGrid = document.getElementById('product-grid');
+    var fetchParams = new URLSearchParams();
+
+    fetchParams.set('q', query);
+    fetchParams.set('type', 'product');
+    fetchParams.set('options[prefix]', 'last');
+    fetchParams.set('section_id', 'gemluxjewel-plp-search-results');
+
+    if (filterBar?.dataset.collectionId) {
+      fetchParams.set('collection_id', filterBar.dataset.collectionId);
+    }
+    if (filterBar?.dataset.collectionHandle) {
+      fetchParams.set('collection_handle', filterBar.dataset.collectionHandle);
+    }
+    if (productGrid?.dataset.id) {
+      fetchParams.set('grid_section_id', productGrid.dataset.id);
+    } else if (filterBar?.dataset.id) {
+      fetchParams.set('grid_section_id', filterBar.dataset.id);
+    }
+
+    params.forEach(function (value, key) {
+      if (key === 'sort_by' || key.indexOf('filter.') === 0) {
+        fetchParams.set(key, value);
+      }
+    });
+
+    setCollectionGridLoading(true);
+
+    fetch('/search?' + fetchParams.toString())
+      .then(function (response) {
+        return response.text();
+      })
+      .then(function (html) {
+        renderCollectionSearchResults(html);
+        updateCollectionUrl(searchParams);
+        if (typeof FacetFiltersForm !== 'undefined') {
+          FacetFiltersForm.searchParamsPrev = searchParams;
+        }
+      })
+      .catch(function (error) {
+        console.error(error);
+        setCollectionGridLoading(false);
+        if (form && facetForm) {
+          facetForm.onSubmitForm(buildSearchParamsFromForm(form), { target: input });
+        }
+      });
+  }
+
+  function buildSearchParamsFromForm(form) {
+    var params = new FormData(form);
+    var query = (params.get('q') || '').trim();
+
+    if (!query) {
+      params.delete('q');
+      params.delete('options[prefix]');
+    } else {
+      params.set('q', query);
+      params.set('options[prefix]', 'last');
+    }
+
+    return new URLSearchParams(params).toString();
+  }
+
   function initCollectionSearch(root) {
     root.querySelectorAll('[data-gemluxjewel-plp-search]').forEach(function (input) {
       if (input.dataset.gemluxjewelPlpSearchInit === 'true') return;
@@ -266,26 +387,19 @@
       var facetForm = input.closest('facet-filters-form');
       if (!form || !facetForm) return;
 
-      function buildSearchParams() {
-        var params = new FormData(form);
-        var query = (params.get('q') || '').trim();
+      function submitSearch() {
+        var searchParams = buildSearchParamsFromForm(form);
+        var query = (input.value || '').trim();
 
         if (!query) {
-          params.delete('q');
-          params.delete('options[prefix]');
-        } else {
-          params.set('q', query);
-          params.set('options[prefix]', 'last');
+          facetForm.onSubmitForm(searchParams, { target: input });
+          return;
         }
 
-        return new URLSearchParams(params).toString();
+        fetchCollectionSearch(searchParams, input);
       }
 
-      function submitSearch() {
-        facetForm.onSubmitForm(buildSearchParams(), { target: input });
-      }
-
-      var debouncedSubmit = typeof debounce === 'function' ? debounce(submitSearch, 500) : submitSearch;
+      var debouncedSubmit = typeof debounce === 'function' ? debounce(submitSearch, 400) : submitSearch;
 
       input.addEventListener('input', function (event) {
         event.stopPropagation();
@@ -303,6 +417,36 @@
         submitSearch();
       });
     });
+  }
+
+  function initCollectionSearchFromUrl(root) {
+    var params = new URLSearchParams(window.location.search);
+    var query = (params.get('q') || '').trim();
+    if (!query) return;
+
+    root.querySelectorAll('[data-gemluxjewel-plp-search]').forEach(function (input) {
+      input.value = query;
+      fetchCollectionSearch(params.toString(), input);
+    });
+  }
+
+  function patchFacetRenderPageForSearch() {
+    if (typeof FacetFiltersForm === 'undefined' || FacetFiltersForm.__gemluxjewelSearchPatch) return;
+    FacetFiltersForm.__gemluxjewelSearchPatch = true;
+
+    var originalRenderPage = FacetFiltersForm.renderPage;
+    FacetFiltersForm.renderPage = function (searchParams, event, updateURLHash) {
+      var query = new URLSearchParams(searchParams || '').get('q');
+      if (query && query.trim()) {
+        var input = document.querySelector('[data-gemluxjewel-plp-search]');
+        if (input) {
+          input.value = query;
+          fetchCollectionSearch(searchParams, input);
+        }
+        return;
+      }
+      return originalRenderPage.call(FacetFiltersForm, searchParams, event, updateURLHash);
+    };
   }
 
   function init(root) {
@@ -358,9 +502,12 @@
     init(document);
   });
 
+  patchFacetRenderPageForSearch();
   init(document);
+  initCollectionSearchFromUrl(document);
 
   document.addEventListener('shopify:section:load', function (event) {
     init(event.target);
+    initCollectionSearchFromUrl(event.target);
   });
 })();

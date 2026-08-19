@@ -13,6 +13,10 @@
   <section class="gemluxjewel gemluxjewel-shop{% if section.settings.filter_layout == 'horizontal' %} gemluxjewel-shop--horizontal-filters{% endif %}">
     <div class="gemluxjewel-container">
       {%- paginate collection.products by section.settings.products_per_page -%}
+        {%- capture url_search_query -%}
+          {%- render 'gemluxjewel-url-param', key: 'q' -%}
+        {%- endcapture -%}
+        {%- assign url_search_query = url_search_query | strip -%}
         {%- if section.settings.filter_layout == 'horizontal' -%}
           {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
             {% render 'gemluxjewel-plp-filter-bar',
@@ -25,7 +29,7 @@
           {%- endif -%}
 
           <div id="ProductGridContainer">
-            {%- if section.settings.enable_stone_shapes and collection.terms == blank -%}
+            {%- if section.settings.enable_stone_shapes and collection.terms == blank and url_search_query == blank -%}
               {% render 'gemluxjewel-plp-stone-shapes', collection: collection, section: section %}
             {%- endif -%}
             {% render 'gemluxjewel-collection-grid', paginate: paginate %}

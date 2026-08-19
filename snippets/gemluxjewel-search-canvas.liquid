@@ -1,0 +1,100 @@
+{% comment %}
+  Full-screen search canvas with Shopify predictive search (Search & Discovery).
+
+  @param section {Section} Header section for settings
+{% endcomment %}
+
+{%- liquid
+  assign search_placeholder = section.settings.search_placeholder | default: 'Search by style, shape or metal'
+  assign search_input_id = 'GemluxSearchCanvas-' | append: section.id
+-%}
+
+<div
+  class="gemluxjewel-search-canvas"
+  data-gemluxjewel-search-canvas
+  aria-hidden="true"
+>
+  <div class="gemluxjewel-search-canvas__overlay" data-gemluxjewel-search-close tabindex="-1"></div>
+
+  <div
+    class="gemluxjewel-search-canvas__panel"
+    data-gemluxjewel-search-panel
+    role="dialog"
+    aria-modal="true"
+    aria-label="{{ 'general.search.search' | t }}"
+  >
+    <div class="gemluxjewel-search-canvas__head">
+      <p class="gemluxjewel-search-canvas__eyebrow">{{ 'general.search.search' | t }}</p>
+      <button
+        type="button"
+        class="gemluxjewel-search-canvas__close"
+        data-gemluxjewel-search-close
+        aria-label="{{ 'accessibility.close' | t }}"
+      >
+        {{- 'icon-close.svg' | inline_asset_content -}}
+      </button>
+    </div>
+
+    <div class="gemluxjewel-search-canvas__body">
+      {%- if settings.predictive_search_enabled -%}
+        <predictive-search class="gemluxjewel-search-canvas__form-wrap" data-loading-text="{{ 'accessibility.loading' | t }}">
+      {%- else -%}
+        <search-form class="gemluxjewel-search-canvas__form-wrap">
+      {%- endif -%}
+
+      <form action="{{ routes.search_url }}" method="get" role="search" class="gemluxjewel-search-canvas__form">
+        <div class="gemluxjewel-search-canvas__field">
+          <span class="gemluxjewel-search-canvas__field-icon" aria-hidden="true">
+            <img src="{{ 'header-search-thin.svg' | asset_url }}" alt="" width="20" height="20">
+          </span>
+          <input
+            class="gemluxjewel-search-canvas__input"
+            id="{{ search_input_id }}"
+            data-gemluxjewel-search-input
+            type="search"
+            name="q"
+            value="{{ search.terms | escape }}"
+            placeholder="{{ search_placeholder | escape }}"
+            autocomplete="off"
+            {%- if settings.predictive_search_enabled -%}
+              role="combobox"
+              aria-expanded="false"
+              aria-owns="predictive-search-results"
+              aria-controls="predictive-search-results"
+              aria-haspopup="listbox"
+              aria-autocomplete="list"
+              autocorrect="off"
+              autocapitalize="off"
+              spellcheck="false"
+            {%- endif -%}
+          >
+          <input type="hidden" name="type" value="product">
+          <input type="hidden" name="options[prefix]" value="last">
+          <button
+            type="reset"
+            class="gemluxjewel-search-canvas__reset{% if search.terms == blank %} hidden{% endif %}"
+            aria-label="{{ 'general.search.reset' | t }}"
+          >
+            {{- 'icon-reset.svg' | inline_asset_content -}}
+          </button>
+          <button type="submit" class="gemluxjewel-search-canvas__submit" aria-label="{{ 'general.search.search' | t }}">
+            {{- 'icon-search.svg' | inline_asset_content -}}
+          </button>
+        </div>
+
+        {%- if settings.predictive_search_enabled -%}
+          <div class="predictive-search predictive-search--canvas" tabindex="-1" data-predictive-search>
+            {%- render 'loading-spinner', class: 'predictive-search__loading-state' -%}
+          </div>
+          <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
+        {%- endif -%}
+      </form>
+
+      {%- if settings.predictive_search_enabled -%}
+        </predictive-search>
+      {%- else -%}
+        </search-form>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
