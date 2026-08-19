@@ -1617,6 +1617,7 @@
   line-height: 0;
   transition: transform 0.2s ease;
   transform-origin: center center;
+  margin-left: 20px;
 }
 
 .gemluxjewel-plp-sort__dropdown[open] .gemluxjewel-plp-sort__chevron {
