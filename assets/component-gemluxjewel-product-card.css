@@ -223,7 +223,34 @@
 .gemluxjewel-card__price-row {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
   margin-top: auto;
+  flex-wrap: wrap;
+}
+
+.gemluxjewel-card__reviews {
+  flex: 0 1 auto;
+  margin-left: auto;
+  min-width: 0;
+  text-align: right;
+}
+
+.gemluxjewel-card__reviews .jdgm-preview-badge {
+  display: inline-flex;
+  justify-content: flex-end;
+  max-width: 100%;
+}
+
+.gemluxjewel-card__reviews .jdgm-prev-badge__stars {
+  margin-right: 4px;
+}
+
+.gemluxjewel-card__reviews .jdgm-prev-badge__text {
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 12px;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 .gemluxjewel-card__price {

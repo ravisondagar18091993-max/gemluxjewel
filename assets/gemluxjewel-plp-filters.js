@@ -363,6 +363,10 @@
     });
     resetInitFlags(document);
     init(document);
+
+    if (window.jdgm && typeof window.jdgm.customizeBadges === 'function') {
+      window.jdgm.customizeBadges();
+    }
   });
 
   init(document);

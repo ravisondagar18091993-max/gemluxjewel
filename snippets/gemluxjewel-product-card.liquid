@@ -84,6 +84,17 @@
     <span class="gemluxjewel-card__price">
       {%- if product != blank -%}{{ product.price | money }}{%- else -%}€ 135.00{%- endif -%}
     </span>
+    {%- if product != blank -%}
+      <div class="gemluxjewel-card__reviews">
+        <div
+          class="jdgm-widget jdgm-preview-badge"
+          data-id="{{ product.id }}"
+          data-auto-install="false"
+        >
+          {{ product.metafields.judgeme.badge }}
+        </div>
+      </div>
+    {%- endif -%}
   </div>
   </div>
 </div>
