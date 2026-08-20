@@ -130,38 +130,37 @@
           -%}
           {%- if column_title != blank or column_menu != blank or i == 2 or i == 1 or i == 4 -%}
             <div class="gemluxjewel-footer__column">
-              {%- if column_title != blank -%}
-                <p class="gemluxjewel-footer__column-title">{{ column_title | escape }}</p>
-              {%- endif -%}
-
-              {%- if i == 2 -%}
-                {%- if column_menu != blank -%}
-                  <ul class="gemluxjewel-footer__links">
-                    {%- for link in column_menu.links -%}
-                      <li><a href="{{ link.url }}" class="gemluxjewel-footer__link">{{ link.title | escape }}</a></li>
-                    {%- endfor -%}
-                  </ul>
-                {%- else -%}
-                  {% render 'gemluxjewel-footer-dummy-links', column: 2 %}
+              <details class="gemluxjewel-footer__accordion">
+                {%- if column_title != blank -%}
+                  <summary class="gemluxjewel-footer__column-title">{{ column_title | escape }}</summary>
                 {%- endif -%}
-              {%- elsif column_menu != blank -%}
-                <ul class="gemluxjewel-footer__links">
-                  {%- for link in column_menu.links -%}
-                    <li><a href="{{ link.url }}" class="gemluxjewel-footer__link">{{ link.title | escape }}</a></li>
-                  {%- endfor -%}
-                </ul>
-              {%- elsif i == 1 or i == 4 -%}
-                {% render 'gemluxjewel-footer-dummy-links', column: i %}
-              {%- endif -%}
+                <div class="gemluxjewel-footer__accordion-content">
+                  {%- if i == 2 -%}
+                    {%- if column_menu != blank -%}
+                      <ul class="gemluxjewel-footer__links">
+                        {%- for link in column_menu.links -%}
+                          <li><a href="{{ link.url }}" class="gemluxjewel-footer__link">{{ link.title | escape }}</a></li>
+                        {%- endfor -%}
+                      </ul>
+                    {%- else -%}
+                      {% render 'gemluxjewel-footer-dummy-links', column: 2 %}
+                    {%- endif -%}
+                  {%- elsif column_menu != blank -%}
+                    <ul class="gemluxjewel-footer__links">
+                      {%- for link in column_menu.links -%}
+                        <li><a href="{{ link.url }}" class="gemluxjewel-footer__link">{{ link.title | escape }}</a></li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- elsif i == 1 or i == 4 -%}
+                    {% render 'gemluxjewel-footer-dummy-links', column: i %}
+                  {%- endif -%}
+                </div>
+              </details>
             </div>
           {%- endif -%}
         {%- endfor -%}
-
-        
       </div>
     </div>
-
-
 
     <div class="gemluxjewel-footer__social">
       {%- if settings.social_facebook_link != blank -%}
