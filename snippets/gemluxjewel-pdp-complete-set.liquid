@@ -8,7 +8,7 @@
   if metafield_products != blank
     for metafield_product in metafield_products
       if metafield_product != blank and metafield_product.id != product.id
-        assign has_metafield_products = true
+        assign has_metafi eld_products = true
         break
       endif
     endfor
@@ -16,6 +16,7 @@
 -%}
 
 {%- if has_metafield_products -%}
+  {%- assign rendered_count = 0 -%}
   <div class="gemluxjewel-pdp__complete-set" data-gemluxjewel-complete-set="metafield">
     <div class="gemluxjewel-pdp__complete-set-inner">
       <h2 class="gemluxjewel-pdp__complete-set-heading">{{ heading | escape }}</h2>
@@ -29,6 +30,10 @@
               {%- if rec_product == blank or rec_product.id == product.id -%}
                 {%- continue -%}
               {%- endif -%}
+              {%- if rendered_count >= limit -%}
+                {%- break -%}
+              {%- endif -%}
+              {%- assign rendered_count = rendered_count | plus: 1 -%}
               <div class="gemluxjewel-pdp__complete-set-item gemluxjewel-collection-slider__item">
                 <a href="{{ rec_product.url }}" class="gemluxjewel-pdp__complete-set-card">
                   <div class="gemluxjewel-pdp__complete-set-image">
