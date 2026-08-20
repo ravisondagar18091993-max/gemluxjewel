@@ -18,7 +18,7 @@
   line-height: 1;
   margin-left: 8px;
 }
-.gemluxjewel-footer__accordion[close] summary::after {
+.gemluxjewel-footer__accordion[open] summary::after {
   content: '\2212'; /* minus */
 }
 .gemluxjewel-footer__accordion-content {
