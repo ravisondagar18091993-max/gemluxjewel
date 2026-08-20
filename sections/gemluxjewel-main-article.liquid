@@ -5,7 +5,7 @@
 <article class="gemluxjewel gemluxjewel-article" itemscope itemtype="http://schema.org/BlogPosting">
   <div class="gemluxjewel-container">
     <div class="gemluxjewel-article__layout">
-      <aside class="gemluxjewel-article__sidebar">
+      {% comment %} <aside class="gemluxjewel-article__sidebar">
         <div class="gemluxjewel-article__sidebar-inner">
           <a href="{{ blog.url }}" class="gemluxjewel-article__back">
             <span class="gemluxjewel-article__back-arrow" aria-hidden="true">
@@ -46,7 +46,7 @@
             {%- endif -%}
           </div>
         </div>
-      </aside>
+      </aside> {% endcomment %}
 
       <div class="gemluxjewel-article__main">
         {%- if article.tags.first != blank -%}
