@@ -121,7 +121,7 @@
           </div>
         </div>
 
-        {%- for i in (1..5) -%}
+        {% comment %} {%- for i in (1..5) -%}
           {%- liquid
             assign title_key = 'menu_' | append: i | append: '_title'
             assign menu_key = 'menu_' | append: i
@@ -155,7 +155,7 @@
               {%- endif -%}
             </div>
           {%- endif -%}
-        {%- endfor -%}
+        {%- endfor -%} {% endcomment %}
 
         {%- for i in (1..5) -%}
   {%- liquid
