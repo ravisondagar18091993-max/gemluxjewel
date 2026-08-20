@@ -1,5 +1,39 @@
 /* gemluxjewel Footer — premium multi-column layout */
 
+
+.gemluxjewel-footer__accordion summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.gemluxjewel-footer__accordion summary::-webkit-details-marker {
+  display: none;
+}
+.gemluxjewel-footer__accordion summary::after {
+  content: '+';
+  font-size: 1.4em;
+  line-height: 1;
+  margin-left: 8px;
+}
+.gemluxjewel-footer__accordion[open] summary::after {
+  content: '\2212'; /* minus */
+}
+.gemluxjewel-footer__accordion-content {
+  overflow: hidden;
+  padding-top: 8px;
+}
+
+/* Desktop: always open, not clickable, no +/- icon */
+@media (min-width: 750px) {
+  .gemluxjewel-footer__accordion summary {
+    pointer-events: none;
+  }
+  .gemluxjewel-footer__accordion summary::after {
+    display: none;
+  }
+}
 .gemluxjewel-footer {
   position: relative;
   color: #ffffff;
