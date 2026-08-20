@@ -166,7 +166,7 @@
   -%}
   {%- if column_title != blank or column_menu != blank or i == 2 or i == 1 or i == 4 -%}
     <div class="gemluxjewel-footer__column">
-      <details class="gemluxjewel-footer__accordion" open>
+      <details class="gemluxjewel-footer__accordion" close>
         {%- if column_title != blank -%}
           <summary class="gemluxjewel-footer__column-title">{{ column_title | escape }}</summary>
         {%- endif -%}
