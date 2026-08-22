@@ -71,15 +71,6 @@
             "link": ""
           }
         },
-        "shape_qcV7n6": {
-          "type": "shape",
-          "settings": {
-            "title": "other",
-            "image": "shopify://shop_images/pear_shape_diamond.png",
-            "collection": "",
-            "link": ""
-          }
-        },
         "shape_tYFh6K": {
           "type": "shape",
           "settings": {
@@ -177,7 +168,6 @@
         "shape_rEeQiF",
         "shape_L68FYp",
         "shape_f6hc4E",
-        "shape_qcV7n6",
         "shape_tYFh6K",
         "s2",
         "s3",
