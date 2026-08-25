@@ -14,7 +14,9 @@
 
   assign products_limit = 6
   assign featured_index = 0
-
+  if section.settings.featured_position == 'right'
+    assign featured_index = 4
+  endif
 
   assign has_collection_products = false
   if collection != blank and collection.all_products_count > 0
