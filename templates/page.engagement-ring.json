@@ -29,7 +29,7 @@
             "title": "Lab Grown Diamond",
             "text": "Explore our collection of lab-grown diamond engagement rings, available in a variety of sizes and styles to create a unique proposal experience.",
             "button_label": "Shop Lab Grown Engagement Rings",
-            "button_link": "shopify://collections/all",
+            "button_link": "shopify://collections/lab-grown-diamond-engagement-rings",
             "background": "beige"
           }
         },
@@ -40,7 +40,7 @@
             "title": "Moissanite",
             "text": "Thinking about popping the question? Discover our elegant collection of moissanite engagement rings for your special moment.",
             "button_label": "Shop Moissanite Rings",
-            "button_link": "shopify://collections/all",
+            "button_link": "shopify://collections/moissanite-engagement-rings",
             "background": "sand"
           }
         }
@@ -104,7 +104,7 @@
         "badge_text": "New In",
         "show_discount": true,
         "button_label": "View All",
-        "button_link": "shopify://collections/all"
+        "button_link": "shopify://collections/lab-grown-diamond-engagement-rings"
       }
     },
     "gemluxjewel_engagement_showcase_dqU7Uh": {
@@ -160,7 +160,7 @@
         "badge_text": "New In",
         "show_discount": true,
         "button_label": "View All",
-        "button_link": "shopify://collections/all"
+        "button_link": "shopify://collections/moissanite-engagement-rings"
       }
     },
     "engagement_custom": {
