@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "gemluxjewel_faq": {
@@ -6,8 +15,8 @@
         "faq_1": {
           "type": "faq",
           "settings": {
-            "question": "Is Titanium Jewellery Safe For Sensitive Skin?",
-            "answer": "<p>Yes, absolutely. Titanium is completely hypoallergenic and biocompatible. This means it is entirely free from nickel and other common irritants, making it perfectly safe for even the most sensitive skin without causing redness or green discoloration.</p>"
+            "question": "How are lab grown diamonds made?",
+            "answer": "<p>A <strong>lab grown diamond</strong> is formed by recreating the same natural conditions found deep within the earth, only with precision and cutting-edge technology. Using methods such as HPHT and CVD, carbon atoms come together in controlled environments to form a crystal identical to a mined diamond. Every stone carries the same structure, brilliance, and durability, but with a more thoughtful and innovative origin. It’s this modern craftsmanship that inspires so many to buy lab grown diamonds at Gemlux Jewels and embrace the future of fine jewelry.</p>"
           }
         },
         "faq_2": {
