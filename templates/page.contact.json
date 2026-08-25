@@ -12,14 +12,6 @@
     "gemluxjewel_contact": {
       "type": "gemluxjewel-contact",
       "blocks": {
-        "quick_1": {
-          "type": "quick_link",
-          "settings": {
-            "icon": "appointment",
-            "label": "Book an appointment",
-            "url": "shopify://pages/virtual-appointment"
-          }
-        },
         "quick_2": {
           "type": "quick_link",
           "settings": {
@@ -54,7 +46,6 @@
         }
       },
       "block_order": [
-        "quick_1",
         "quick_2",
         "quick_3",
         "quick_4",
