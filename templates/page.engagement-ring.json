@@ -51,62 +51,6 @@
       ],
       "settings": {}
     },
-    "engagement_lab_showcase": {
-      "type": "gemluxjewel-engagement-showcase",
-      "blocks": {
-        "lab_1": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "featured": true
-          }
-        },
-        "lab_2": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "featured": false
-          }
-        },
-        "lab_3": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "featured": false
-          }
-        },
-        "lab_4": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "featured": false
-          }
-        },
-        "lab_5": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "featured": false
-          }
-        }
-      },
-      "block_order": [
-        "lab_1",
-        "lab_2",
-        "lab_3",
-        "lab_4",
-        "lab_5"
-      ],
-      "settings": {
-        "title": "Popular Lab Grown Diamond Rings",
-        "collection": "popular-lab-grown-diamond-rings",
-        "featured_position": "left",
-        "badge_text": "New In",
-        "show_discount": true,
-        "button_label": "View All",
-        "button_link": "shopify://collections/all"
-      }
-    },
     "engagement_moissanite_showcase": {
       "type": "gemluxjewel-engagement-showcase",
       "blocks": {
@@ -152,6 +96,62 @@
         "moi_3",
         "moi_4",
         "moi_5"
+      ],
+      "settings": {
+        "title": "Popular Lab Grown Diamond Rings",
+        "collection": "popular-lab-grown-diamond-rings",
+        "featured_position": "right",
+        "badge_text": "New In",
+        "show_discount": true,
+        "button_label": "View All",
+        "button_link": "shopify://collections/all"
+      }
+    },
+    "gemluxjewel_engagement_showcase_dqU7Uh": {
+      "type": "gemluxjewel-engagement-showcase",
+      "blocks": {
+        "product_YJTrzE": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "featured": false
+          }
+        },
+        "product_ki8Lqr": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "featured": false
+          }
+        },
+        "product_TtKYfi": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "featured": false
+          }
+        },
+        "product_n9PmJ4": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "featured": false
+          }
+        },
+        "product_aXWfbM": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "featured": true
+          }
+        }
+      },
+      "block_order": [
+        "product_YJTrzE",
+        "product_ki8Lqr",
+        "product_TtKYfi",
+        "product_n9PmJ4",
+        "product_aXWfbM"
       ],
       "settings": {
         "title": "Popular Moissanite Rings",
@@ -400,8 +400,8 @@
   "order": [
     "engagement_hero",
     "engagement_dual",
-    "engagement_lab_showcase",
     "engagement_moissanite_showcase",
+    "gemluxjewel_engagement_showcase_dqU7Uh",
     "engagement_custom",
     "engagement_trust",
     "engagement_categories",
