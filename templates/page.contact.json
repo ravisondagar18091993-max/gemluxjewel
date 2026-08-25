@@ -33,22 +33,14 @@
           "settings": {
             "icon": "faq",
             "label": "View frequently asked questions",
-            "url": ""
+            "url": "shopify://pages/faqs"
           }
         },
         "quick_4": {
           "type": "quick_link",
           "settings": {
             "icon": "phone",
-            "label": "+1 000 000 0000",
-            "url": ""
-          }
-        },
-        "quick_5": {
-          "type": "quick_link",
-          "settings": {
-            "icon": "chat",
-            "label": "Live chat",
+            "label": "+1 (307) 998-8068",
             "url": ""
           }
         },
@@ -56,7 +48,7 @@
           "type": "quick_link",
           "settings": {
             "icon": "email",
-            "label": "info@gemluxjewels.com",
+            "label": "gemluxjewels@gmail.com",
             "url": ""
           }
         }
@@ -66,7 +58,6 @@
         "quick_2",
         "quick_3",
         "quick_4",
-        "quick_5",
         "quick_6"
       ],
       "settings": {
