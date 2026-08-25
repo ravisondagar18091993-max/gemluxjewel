@@ -17,7 +17,7 @@
           "settings": {
             "icon": "appointment",
             "label": "Book an appointment",
-            "url": ""
+            "url": "shopify://pages/virtual-appointment"
           }
         },
         "quick_2": {
