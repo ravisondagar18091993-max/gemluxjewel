@@ -56,8 +56,8 @@
         "shape_L68FYp": {
           "type": "shape",
           "settings": {
-            "title": "Square",
-            "image": "shopify://shop_images/cushion_shape_diamond.png",
+            "title": "Princess",
+            "image": "shopify://shop_images/Princecs_shape_diamond_png.png",
             "collection": "",
             "link": ""
           }
@@ -65,8 +65,8 @@
         "shape_f6hc4E": {
           "type": "shape",
           "settings": {
-            "title": "Rectangular",
-            "image": "shopify://shop_images/Princecs_shape_diamond_png.png",
+            "title": "Radiant",
+            "image": "shopify://shop_images/rediant_shape_diamond_2d2921fa-8fea-48c7-9ddb-e14263e8fbbc.png",
             "collection": "",
             "link": ""
           }
