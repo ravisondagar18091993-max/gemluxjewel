@@ -52,24 +52,17 @@
             "link": "shopify://pages/contact"
           }
         },
-        "top_1": {
-          "type": "top_link",
-          "settings": {
-            "label": "127,778 TREES PLANTED",
-            "url": ""
-          }
-        },
         "top_2": {
           "type": "top_link",
           "settings": {
-            "label": "Free shipping on orders over $100",
+            "label": "",
             "url": "shopify://collections/all"
           }
         },
         "top_3": {
           "type": "top_link",
           "settings": {
-            "label": "10% off your first order — Shop now",
+            "label": "",
             "url": "shopify://collections/all"
           }
         }
@@ -79,7 +72,6 @@
         "mega_banner_engagement",
         "mega_contact_get_in_touch",
         "mega_contact_book",
-        "top_1",
         "top_2",
         "top_3"
       ],
@@ -100,6 +92,7 @@
         "announcement_url": "",
         "show_announcement_icon": true,
         "slider_speed": 4,
+        "search_placeholder": "Search by style, shape or metal",
         "enable_search": true,
         "show_account_icon": true,
         "show_wishlist_icon": false,
