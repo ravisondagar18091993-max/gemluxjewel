@@ -12,6 +12,10 @@
   class="gemluxjewel-cart{% if cart == empty %} is-empty{% endif %}"
   view-event-payload="{{ cart | standard_event_data: 'view', context: 'page' | escape }}"
 >
+    <div id="shopping-cart-line-item-status" aria-hidden="true" aria-live="polite" class="visually-hidden"></div>
+      <div id="cart-live-region-text" aria-live="polite" aria-hidden="true" class="visually-hidden"></div>
+
+
   <section class="gemluxjewel gemluxjewel-cart__section">
     <div class="gemluxjewel-container">
       <div class="gemluxjewel-cart__head">
