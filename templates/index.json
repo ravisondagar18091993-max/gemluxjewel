@@ -71,15 +71,6 @@
             "link": ""
           }
         },
-        "shape_tYFh6K": {
-          "type": "shape",
-          "settings": {
-            "title": "Round",
-            "image": "shopify://shop_images/round.avif",
-            "collection": "",
-            "link": ""
-          }
-        },
         "s2": {
           "type": "shape",
           "settings": {
@@ -168,7 +159,6 @@
         "shape_rEeQiF",
         "shape_L68FYp",
         "shape_f6hc4E",
-        "shape_tYFh6K",
         "s2",
         "s3",
         "s4",
