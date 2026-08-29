@@ -29,8 +29,8 @@
         "shape_x9kzqP": {
           "type": "shape",
           "settings": {
-            "title": "Roundfgf",
-            "image": "shopify://shop_images/emerald_shape_diamond_png.png",
+            "title": "Round",
+            "image": "shopify://shop_images/round.avif",
             "collection": "",
             "link": ""
           }
@@ -38,16 +38,8 @@
         "shape_QaejrV": {
           "type": "shape",
           "settings": {
-            "title": "Round",
-            "image": "shopify://shop_images/round_shape_diamond_png.png",
-            "collection": "",
-            "link": ""
-          }
-        },
-        "shape_hcyEtb": {
-          "type": "shape",
-          "settings": {
-            "title": "Round",
+            "title": "Oval",
+            "image": "shopify://shop_images/oval_shape_diamond_png.png",
             "collection": "",
             "link": ""
           }
@@ -55,8 +47,8 @@
         "shape_rEeQiF": {
           "type": "shape",
           "settings": {
-            "title": "Round",
-            "image": "shopify://shop_images/cushion_shape_diamond.png",
+            "title": "Emerald",
+            "image": "shopify://shop_images/emerald_shape_diamond_png.png",
             "collection": "",
             "link": ""
           }
@@ -182,7 +174,6 @@
       "block_order": [
         "shape_x9kzqP",
         "shape_QaejrV",
-        "shape_hcyEtb",
         "shape_rEeQiF",
         "shape_L68FYp",
         "shape_f6hc4E",
