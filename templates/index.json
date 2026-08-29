@@ -44,6 +44,14 @@
             "link": ""
           }
         },
+        "shape_hcyEtb": {
+          "type": "shape",
+          "settings": {
+            "title": "Round",
+            "collection": "",
+            "link": ""
+          }
+        },
         "shape_rEeQiF": {
           "type": "shape",
           "settings": {
@@ -174,6 +182,7 @@
       "block_order": [
         "shape_x9kzqP",
         "shape_QaejrV",
+        "shape_hcyEtb",
         "shape_rEeQiF",
         "shape_L68FYp",
         "shape_f6hc4E",
@@ -194,7 +203,7 @@
         "subtitle": "Explore our collection by diamond and gemstone cut — find the shape that speaks to you.",
         "products_collection": "all",
         "filter_label": "Stone shape",
-        "auto_fetch_shapes": true
+        "auto_fetch_shapes": false
       }
     },
     "gemluxjewel_collection_slider": {
