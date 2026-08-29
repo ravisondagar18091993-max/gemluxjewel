@@ -298,7 +298,7 @@
           "settings": {
             "layout": "tile",
             "collection": "",
-            "image": "shopify://shop_images/ChatGPT_Image_Aug_10_2026_12_25_11_PM.png",
+            "image": "shopify://shop_images/ESSENTIALS.png",
             "title": "Essentials",
             "button_label": "Shop Now",
             "link": "shopify://collections/all"
@@ -309,7 +309,7 @@
           "settings": {
             "layout": "tile",
             "collection": "",
-            "image": "shopify://shop_images/home_small_banner_8_04022026010431.avif",
+            "image": "shopify://shop_images/Under_1000.png",
             "title": "Under $1000",
             "button_label": "Shop Now",
             "link": "shopify://collections/all"
