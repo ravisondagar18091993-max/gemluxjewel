@@ -92,8 +92,8 @@
         "s4": {
           "type": "shape",
           "settings": {
-            "title": "Oval",
-            "image": "shopify://shop_images/oval_shape_diamond_png.png",
+            "title": "Pear",
+            "image": "shopify://shop_images/pear_shape_diamond.png",
             "collection": "",
             "link": ""
           }
