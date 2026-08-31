@@ -98,24 +98,6 @@
             "link": ""
           }
         },
-        "s6": {
-          "type": "shape",
-          "settings": {
-            "title": "Pear",
-            "image": "shopify://shop_images/pear_shape_diamond.png",
-            "collection": "",
-            "link": ""
-          }
-        },
-        "s7": {
-          "type": "shape",
-          "settings": {
-            "title": "Marquise",
-            "image": "shopify://shop_images/marquiese_shape_diamond.png",
-            "collection": "",
-            "link": ""
-          }
-        },
         "s10": {
           "type": "shape",
           "settings": {
@@ -144,8 +126,6 @@
         "s3",
         "s4",
         "s5",
-        "s6",
-        "s7",
         "s10",
         "s8"
       ],
