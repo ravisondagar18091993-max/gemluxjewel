@@ -71,15 +71,6 @@
             "link": ""
           }
         },
-        "s2": {
-          "type": "shape",
-          "settings": {
-            "title": "Princess",
-            "image": "shopify://shop_images/Princecs_shape_diamond_png.png",
-            "collection": "",
-            "link": ""
-          }
-        },
         "s3": {
           "type": "shape",
           "settings": {
@@ -159,7 +150,6 @@
         "shape_rEeQiF",
         "shape_L68FYp",
         "shape_f6hc4E",
-        "s2",
         "s3",
         "s4",
         "s5",
