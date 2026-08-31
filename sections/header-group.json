@@ -51,13 +51,29 @@
             "image": "shopify://shop_images/ChatGPT_Image_Aug_10_2026_12_25_11_PM.png",
             "link": "shopify://pages/contact"
           }
+        },
+        "top_2": {
+          "type": "top_link",
+          "settings": {
+            "label": "Lab-Grown Diamonds • Fine Gold • Custom Designs",
+            "url": "shopify://collections/all"
+          }
+        },
+        "top_3": {
+          "type": "top_link",
+          "settings": {
+            "label": "Custom Jewellery Crafted For Your Story.",
+            "url": "shopify://collections/all"
+          }
         }
       },
       "block_order": [
         "mega_banner_CmAQq7",
         "mega_banner_engagement",
         "mega_contact_get_in_touch",
-        "mega_contact_book"
+        "mega_contact_book",
+        "top_2",
+        "top_3"
       ],
       "settings": {
         "logo_text": "gemluxjewels",
@@ -72,9 +88,9 @@
         "mega_info_columns": "Lab Grown Diamonds, Moissanite",
         "mega_highlight_links": "",
         "mega_new_badge_links": "",
-        "announcement_text": "",
+        "announcement_text": "Designed With You. Crafted By Gemlux Jewels.",
         "announcement_url": "",
-        "show_announcement_icon": true,
+        "show_announcement_icon": false,
         "slider_speed": 4,
         "search_placeholder": "Search by style, shape or metal",
         "enable_search": true,
