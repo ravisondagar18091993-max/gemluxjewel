@@ -27,7 +27,7 @@
           "type": "shape",
           "settings": {
             "title": "Round",
-            "image": "shopify://shop_images/round.avif"
+            "image": "shopify://shop_images/round-1.png"
           }
         },
         "shape_2": {
@@ -175,7 +175,6 @@
         "filters_button_label": "Filters",
         "filters_apply_label": "Apply",
         "filters_empty_message": "Add filters in Shopify Search & Discovery to enable product filtering.",
-        "search_placeholder": "Search by style, shape or metal",
         "metal_filter_label": "Metal",
         "shape_filter_label": "Stone shape",
         "setting_filter_label": "Setting style",
