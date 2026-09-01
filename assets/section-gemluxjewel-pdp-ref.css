@@ -378,7 +378,7 @@
 }
 
 .gemluxjewel-pdp--ref .gemluxjewel-pdp__ring-select {
-  min-height: 46px;
+  /* min-height: 46px;
   border: 1px solid var(--pdp-border);
   border-radius: 4px;
   font-size: 14px;
@@ -386,7 +386,26 @@
   -webkit-appearance: none;
   appearance: none;
   background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='1.5' fill='none'/%3E%3C/svg%3E") no-repeat right 14px center;
-  padding-right: 36px;
+  padding-right: 36px; */
+
+
+
+
+
+   width: 100%;
+  min-height: 48px;
+  padding: 0 36px 0 16px;
+  border: 1px solid var(--gemluxjewel-primary);
+  border-radius: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23253e2b' stroke-width='1.5' fill='none'/%3E%3C/svg%3E") no-repeat right 14px center;
+  font-family: var(--gemluxjewel-font-body);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--gemluxjewel-primary);
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* Add to cart + wishlist row */
