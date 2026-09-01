@@ -97,6 +97,61 @@
                 class="product-variant-id"
               >
 
+                              <input
+                type="hidden"
+                name="id"
+                value="{{ current_variant.id }}"
+                {% if current_variant.available == false %}disabled{% endif %}
+                class="product-variant-id"
+              >
+
+              {%- liquid
+                assign show_ring_size = false
+                for tag in product.tags
+                  assign tag_downcase = tag | downcase
+                  if tag_downcase contains 'ring-size' or tag_downcase contains 'ring size'
+                    assign show_ring_size = true
+                  endif
+                endfor
+              -%}
+              {%- if show_ring_size -%}
+                <div class="gemluxjewel-pdp__option">
+                  <label for="RingSize-{{ section.id }}" class="gemluxjewel-pdp__option-label">Ring Size</label>
+                  <select
+                    name="properties[Ring Size]"
+                    id="RingSize-{{ section.id }}"
+                    class="gemluxjewel-pdp__ring-select"
+                    required
+                  >
+                    <option value="">Ring Size</option>
+                    <option value="4 US">4 US</option>
+                    <option value="4 1/4 US">4 1/4 US</option>
+                    <option value="4 1/2 US">4 1/2 US</option>
+                    <option value="4 3/4 US">4 3/4 US</option>
+                    <option value="5 US">5 US</option>
+                    <option value="5 1/4 US">5 1/4 US</option>
+                    <option value="5 1/2 US">5 1/2 US</option>
+                    <option value="5 3/4 US">5 3/4 US</option>
+                    <option value="6 US">6 US</option>
+                    <option value="6 1/4 US">6 1/4 US</option>
+                    <option value="6 1/2 US">6 1/2 US</option>
+                    <option value="6 3/4 US">6 3/4 US</option>
+                    <option value="7 US">7 US</option>
+                    <option value="7 1/4 US">7 1/4 US</option>
+                    <option value="7 1/2 US">7 1/2 US</option>
+                    <option value="7 3/4 US">7 3/4 US</option>
+                    <option value="8 US">8 US</option>
+                    <option value="8 1/4 US">8 1/4 US</option>
+                    <option value="8 1/2 US">8 1/2 US</option>
+                    <option value="9 US">9 US</option>
+                    <option value="9 1/2 US">9 1/2 US</option>
+                    <option value="10 US">10 US</option>
+                  </select>
+                </div>
+              {%- endif -%}
+
+            
+
               <div class="gemluxjewel-pdp__actions">
                 <button
                   type="submit"
@@ -222,6 +277,8 @@
       </div>
     </div>
   </section>
+
+  
 </product-info>
 
 {% schema %}
