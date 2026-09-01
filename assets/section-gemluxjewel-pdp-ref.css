@@ -406,21 +406,7 @@
   color: var(--gemluxjewel-primary);
   cursor: pointer;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.gemluxjewel-pdp__ring-select:hover {
-  border-color: var(--gemluxjewel-primary);
-  box-shadow: 0 0 0 1px var(--gemluxjewel-primary);
-}
-
-.gemluxjewel-pdp__ring-select:focus {
-  outline: none;
-  border-color: var(--gemluxjewel-primary);
-  box-shadow: 0 0 0 2px rgba(37, 62, 43, 0.25);
-}
-
-.gemluxjewel-pdp__ring-select option {
-  color: var(--gemluxjewel-dark);
+  margin-bottom: 24px;
 }
 
 /* Add to cart + wishlist row */
