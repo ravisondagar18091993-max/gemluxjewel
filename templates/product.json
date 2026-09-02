@@ -26,7 +26,7 @@
         "show_consultation": true,
         "consultation_intro": "Have Questions?",
         "consultation_label": "Book a Virtual Consultation",
-        "consultation_url": "",
+        "consultation_url": "shopify://pages/customize",
         "consultation_open_new_tab": false,
         "show_inline_trust": true,
         "trust_label_1": "Worldwide Shipping",
