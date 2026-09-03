@@ -275,9 +275,9 @@
         "title": "Best Sellers",
         "subtitle": "Discover our customer favorites — timeless designs loved by shoppers worldwide.",
         "button_label": "View Collection",
-        "button_link": "shopify://collections/all",
+        "button_link": "shopify://collections/best-sellers",
         "badge_text": "Best Seller",
-        "collection": "all",
+        "collection": "best-sellers",
         "products_to_show": 4
       }
     },
