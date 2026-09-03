@@ -124,7 +124,7 @@
         "subtitle": "Explore our collection by diamond and gemstone cut — find the shape that speaks to you.",
         "products_collection": "all",
         "filter_label": "Stone shape",
-        "auto_fetch_shapes": true
+        "auto_fetch_shapes": false
       }
     },
     "gemluxjewel_collection_slider": {
