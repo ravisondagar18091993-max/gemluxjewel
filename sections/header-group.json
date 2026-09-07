@@ -56,14 +56,14 @@
           "type": "top_link",
           "settings": {
             "label": "Lab-Grown Diamonds • Fine Gold • Custom Designs",
-            "url": "shopify://collections/all"
+            "url": "#"
           }
         },
         "top_3": {
           "type": "top_link",
           "settings": {
             "label": "Custom Jewellery Crafted For Your Story.",
-            "url": "shopify://collections/all"
+            "url": "#"
           }
         }
       },
