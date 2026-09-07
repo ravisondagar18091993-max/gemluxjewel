@@ -26,6 +26,15 @@
     "gemluxjewel_stone_shapes": {
       "type": "gemluxjewel-stone-shapes",
       "blocks": {
+        "shape_k749ay": {
+          "type": "shape",
+          "settings": {
+            "title": "Rectangular",
+            "image": "shopify://shop_images/rediant_shape_diamond_2d2921fa-8fea-48c7-9ddb-e14263e8fbbc.png",
+            "collection": "",
+            "link": ""
+          }
+        },
         "shape_x9kzqP": {
           "type": "shape",
           "settings": {
@@ -109,6 +118,7 @@
         }
       },
       "block_order": [
+        "shape_k749ay",
         "shape_x9kzqP",
         "shape_QaejrV",
         "shape_rEeQiF",
