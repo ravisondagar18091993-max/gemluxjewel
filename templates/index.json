@@ -26,6 +26,15 @@
     "gemluxjewel_stone_shapes": {
       "type": "gemluxjewel-stone-shapes",
       "blocks": {
+        "shape_4V8NqU": {
+          "type": "shape",
+          "settings": {
+            "title": "Other",
+            "image": "shopify://shop_images/emerald_shape_diamond_png.png",
+            "collection": "",
+            "link": ""
+          }
+        },
         "shape_NA6QWE": {
           "type": "shape",
           "settings": {
@@ -127,6 +136,7 @@
         }
       },
       "block_order": [
+        "shape_4V8NqU",
         "shape_NA6QWE",
         "shape_k749ay",
         "shape_x9kzqP",
