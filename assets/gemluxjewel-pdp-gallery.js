@@ -398,6 +398,28 @@
     updateVideoControls(current);
     startAutoplay();
 
+
+        if (typeof subscribe === 'function' && typeof PUB_SUB_EVENTS !== 'undefined') {
+      var productInfoEl = gallery.closest('product-info');
+
+      subscribe(PUB_SUB_EVENTS.variantChange, function (event) {
+        if (productInfoEl && event.data.sectionId !== productInfoEl.dataset.section) return;
+
+        var mediaId = event.data.variant && event.data.variant.featured_media && event.data.variant.featured_media.id;
+        if (!mediaId) return;
+
+        var targetSlide = gallery.querySelector('[data-pdp-media-slide][data-media-id="' + mediaId + '"]');
+        if (!targetSlide) return;
+
+        var targetIndex = parseInt(targetSlide.getAttribute('data-pdp-media-index'), 10);
+        if (isNaN(targetIndex)) return;
+
+        stopAutoplay();
+        goTo(targetIndex);
+        if (!autoplayBtn || autoplayBtn.hidden) startAutoplay();
+      });
+    }
+
     window.addEventListener('resize', function () {
       resetStageMagnify(stage);
       syncThumbViewport();
