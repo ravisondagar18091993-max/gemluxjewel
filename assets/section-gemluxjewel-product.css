@@ -599,6 +599,15 @@
   white-space: nowrap;
 }
 
+@media (max-width: 749px) {
+  .gemluxjewel-pdp__pill {
+    min-width: 72px;
+    min-height: 40px;
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+}
+
 .gemluxjewel-pdp__option--pill input:checked + .gemluxjewel-pdp__pill {
   background: var(--gemluxjewel-primary);
   color: #fff;
