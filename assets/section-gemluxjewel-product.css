@@ -559,7 +559,7 @@
 
 .gemluxjewel-pdp__option-values {
   display: flex;
-
+  flex-wrap: wrap;
   align-items: stretch;
   gap: 10px;
   width: 100%;
@@ -619,8 +619,6 @@
   min-width: auto;
   padding: 10px 20px;
 }
-
-
 
 .gemluxjewel-pdp__size-guide {
   font-size: 16px;
@@ -979,11 +977,6 @@
     justify-content: space-between;
     width: 100%;
   }
-
-
-  .gemluxjewel-pdp--ref .gemluxjewel-pdp__option-values {
-  flex-wrap: wrap;
-}
 
   .gemluxjewel-pdp__option-right {
     align-items: flex-end;
