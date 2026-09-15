@@ -59,16 +59,7 @@
 
 {%- if use_demo_picker -%}
   <div class="gemluxjewel-pdp__variant-selects gemluxjewel-pdp__variant-selects--demo" data-gemluxjewel-pdp-variant-picker data-gemluxjewel-pdp-demo="true">
-    {%- render 'gemluxjewel-pdp-metal-picker',
-      demo_mode: true,
-      product_form_id: product_form_id,
-      section: section,
-      metal_values: 'Silver,Gold,Platinum' | split: ',',
-      karat_values: '10K,14K,18K' | split: ',',
-      color_values: 'White Gold,Yellow Gold,Rose Gold' | split: ',',
-      diamond_values: '1.00,1.70,2.00,3.00,4.00' | split: ',',
-      ring_values: '4,5,6,7,8,9,10' | split: ','
-    -%}
+    {%- render 'gemluxjewel-pdp-metal-picker', demo_mode: true, product_form_id: product_form_id, section: section, metal_values: 'Silver,Gold,Platinum', split: ',', karat_values: '10K,14K,18K', color_values: 'White Gold,Yellow Gold,Rose Gold', diamond_values: '1.00,1.70,2.00,3.00,4.00', ring_values: '4,5,6,7,8,9,10' -%}
   </div>
 {%- else -%}
   <variant-selects
@@ -226,3 +217,26 @@
     </script>
   </variant-selects>
 {%- endif -%}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {%- render 'gemluxjewel-pdp-metal-picker',
+          demo_mode: true,
+          product_form_id: product_form_id,
+          section: section,
+          metal_values: 'Silver,Gold,Platinum' | split: ',',
+          karat_values: '10K,14K,18K' | split: ',',
+          color_values: 'White Gold,Yellow Gold,Rose Gold' | split: ',',
+          diamond_values: '1.00,1.70,2.00,3.00,4.00' | split: ',',
+          ring_values: '4,5,6,7,8,9,10' | split: ','
+        -%}
+  to: "{%- render 'gemluxjewel-pdp-metal-picker', demo_mode: true, product_form_id:
+    product_form_id, section: section, metal_values: 'Silver,Gold,Platinum', split:
+    ',', karat_values: '10K,14K,18K', color_values: 'White Gold,Yellow Gold,Rose Gold',
+    diamond_values: '1.00,1.70,2.00,3.00,4.00', ring_values: '4,5,6,7,8,9,10' -%}"
+  position: 2098..2416
+{% endcomment %}

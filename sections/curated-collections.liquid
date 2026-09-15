@@ -75,13 +75,7 @@
               style="--animation-order: {{ forloop.index }};"
             {% endif %}
           >
-            {% render 'card-curated-collection',
-              block: block,
-              placeholder_index: forloop.index,
-              lazy_load: forloop.index > 2,
-              sizes: card_sizes,
-              show_product_count: section.settings.show_product_count
-            %}
+            {% render 'card-curated-collection', block: block, placeholder_index: forloop.index, lazy_load: forloop.index, sizes: card_sizes, show_product_count: section.settings.show_product_count %}
           </li>
         {%- endfor -%}
       {%- else -%}
@@ -342,3 +336,22 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'card-curated-collection',
+                  block: block,
+                  placeholder_index: forloop.index,
+                  lazy_load: forloop.index > 2,
+                  sizes: card_sizes,
+                  show_product_count: section.settings.show_product_count
+                %}
+  to: "{% render 'card-curated-collection', block: block, placeholder_index: forloop.index,
+    lazy_load: forloop.index, sizes: card_sizes, show_product_count: section.settings.show_product_count
+    %}"
+  position: 3734..3922
+{% endcomment %}

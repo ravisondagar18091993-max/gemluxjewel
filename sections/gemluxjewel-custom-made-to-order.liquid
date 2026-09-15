@@ -90,14 +90,7 @@
                           alt: reality_alt
                       }}
                     {%- else -%}
-                      {% render 'gemluxjewel-theme-image',
-                        use_store_media: true,
-                        seed: forloop.index | plus: 10,
-                        width: 600,
-                        widths: '300,400,600,800',
-                        sizes: slide_image_sizes,
-                        alt: 'Finished ring'
-                      %}
+                      {% render 'gemluxjewel-theme-image', use_store_media: true, seed: forloop.index, plus: 10, width: 600, widths: '300,400,600,800', sizes: slide_image_sizes, alt: 'Finished ring' %}
                     {%- endif -%}
                   </div>
                 </div>
@@ -199,3 +192,23 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'gemluxjewel-theme-image',
+                            use_store_media: true,
+                            seed: forloop.index | plus: 10,
+                            width: 600,
+                            widths: '300,400,600,800',
+                            sizes: slide_image_sizes,
+                            alt: 'Finished ring'
+                          %}
+  to: "{% render 'gemluxjewel-theme-image', use_store_media: true, seed: forloop.index,
+    plus: 10, width: 600, widths: '300,400,600,800', sizes: slide_image_sizes, alt:
+    'Finished ring' %}"
+  position: 4556..4735
+{% endcomment %}

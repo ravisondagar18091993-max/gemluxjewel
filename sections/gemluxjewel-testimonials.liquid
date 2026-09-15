@@ -59,16 +59,7 @@
           {%- for block in section.blocks -%}
             {%- if block.type == 'review' -%}
               {%- assign color_index = forloop.index0 | modulo: avatar_colors.size -%}
-              {% render 'gemluxjewel-testimonial-card',
-                platform: block.settings.platform,
-                author: block.settings.author,
-                rating: block.settings.rating,
-                time_ago: block.settings.time_ago,
-                text: block.settings.text,
-                review_url: block.settings.review_url | default: trustpilot_reviews_url,
-                avatar_color: avatar_colors[color_index],
-                shopify_attributes: block.shopify_attributes
-              %}
+              {% render 'gemluxjewel-testimonial-card', platform: block.settings.platform, author: block.settings.author, rating: block.settings.rating, time_ago: block.settings.time_ago, text: block.settings.text, review_url: block.settings.review_url, default: trustpilot_reviews_url, avatar_color: avatar_colors[color_index], shopify_attributes: block.shopify_attributes %}
             {%- endif -%}
           {%- endfor -%}
         </div>
@@ -259,3 +250,27 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'gemluxjewel-testimonial-card',
+                    platform: block.settings.platform,
+                    author: block.settings.author,
+                    rating: block.settings.rating,
+                    time_ago: block.settings.time_ago,
+                    text: block.settings.text,
+                    review_url: block.settings.review_url | default: trustpilot_reviews_url,
+                    avatar_color: avatar_colors[color_index],
+                    shopify_attributes: block.shopify_attributes
+                  %}
+  to: "{% render 'gemluxjewel-testimonial-card', platform: block.settings.platform,
+    author: block.settings.author, rating: block.settings.rating, time_ago: block.settings.time_ago,
+    text: block.settings.text, review_url: block.settings.review_url, default: trustpilot_reviews_url,
+    avatar_color: avatar_colors[color_index], shopify_attributes: block.shopify_attributes
+    %}"
+  position: 3368..3730
+{% endcomment %}

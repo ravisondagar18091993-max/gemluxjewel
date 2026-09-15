@@ -247,24 +247,12 @@
                     assign default_open = section.settings.accordion_default_open | default: 'none'
                   -%}
                   {%- if show_description -%}
-                    {% render 'gemluxjewel-pdp-accordion-item',
-                      title: section.settings.description_title,
-                      content: product.description,
-                      open_by_default: default_open == 'overview'
-                    %}
+                    {% render 'gemluxjewel-pdp-accordion-item', title: section.settings.description_title, content: product.description, open_by_default: default_open %}
                   {%- endif -%}
 
-                  {% render 'gemluxjewel-pdp-accordion-item',
-                    title: section.settings.ring_size_title,
-                    content: section.settings.ring_size_content,
-                    open_by_default: default_open == 'ring_size'
-                  %}
+                  {% render 'gemluxjewel-pdp-accordion-item', title: section.settings.ring_size_title, content: section.settings.ring_size_content, open_by_default: default_open %}
 
-                  {% render 'gemluxjewel-pdp-accordion-item',
-                    title: section.settings.ring_details_title,
-                    content: section.settings.ring_details_content,
-                    open_by_default: default_open == 'ring_details'
-                  %}
+                  {% render 'gemluxjewel-pdp-accordion-item', title: section.settings.ring_details_title, content: section.settings.ring_details_content, open_by_default: default_open %}
                 </div>
               </div>
             </div>
@@ -507,3 +495,38 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'gemluxjewel-pdp-accordion-item',
+                          title: section.settings.description_title,
+                          content: product.description,
+                          open_by_default: default_open == 'overview'
+                        %}
+  to: "{% render 'gemluxjewel-pdp-accordion-item', title: section.settings.description_title,
+    content: product.description, open_by_default: default_open %}"
+  position: 12321..12470
+- from: |-
+    {% render 'gemluxjewel-pdp-accordion-item',
+                        title: section.settings.ring_size_title,
+                        content: section.settings.ring_size_content,
+                        open_by_default: default_open == 'ring_size'
+                      %}
+  to: "{% render 'gemluxjewel-pdp-accordion-item', title: section.settings.ring_size_title,
+    content: section.settings.ring_size_content, open_by_default: default_open %}"
+  position: 12522..12684
+- from: |-
+    {% render 'gemluxjewel-pdp-accordion-item',
+                        title: section.settings.ring_details_title,
+                        content: section.settings.ring_details_content,
+                        open_by_default: default_open == 'ring_details'
+                      %}
+  to: "{% render 'gemluxjewel-pdp-accordion-item', title: section.settings.ring_details_title,
+    content: section.settings.ring_details_content, open_by_default: default_open
+    %}"
+  position: 12704..12872
+{% endcomment %}

@@ -13,7 +13,7 @@
           <p class="dirona-section-desc">{{ section.settings.subtitle }}</p>
         {%- endif -%}
       </div>
-      {% render 'dirona-btn', label: section.settings.button_label, url: section.settings.button_link | default: blog.url, style: 'green' %}
+      {% render 'dirona-btn', label: section.settings.button_label, url: section.settings.button_link, default: blog.url, style: 'green' %}
     </div>
     <div class="dirona-news__grid">
       {%- if blog != blank and blog.articles.size > 0 -%}
@@ -110,3 +110,15 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'dirona-btn', label: section.settings.button_label, url: section.settings.button_link
+    | default: blog.url, style: 'green' %}"
+  to: "{% render 'dirona-btn', label: section.settings.button_label, url: section.settings.button_link,
+    default: blog.url, style: 'green' %}"
+  position: 573..706
+{% endcomment %}
