@@ -26,6 +26,15 @@
     "gemluxjewel_stone_shapes": {
       "type": "gemluxjewel-stone-shapes",
       "blocks": {
+        "shape_rNwgDy": {
+          "type": "shape",
+          "settings": {
+            "title": "Lozenge",
+            "image": "shopify://shop_images/LOZENGE.webp",
+            "collection": "lozenge-diamond",
+            "link": ""
+          }
+        },
         "shape_4wiBd7": {
           "type": "shape",
           "settings": {
@@ -145,6 +154,7 @@
         }
       },
       "block_order": [
+        "shape_rNwgDy",
         "shape_4wiBd7",
         "shape_4V8NqU",
         "shape_NA6QWE",
