@@ -26,6 +26,15 @@
     "gemluxjewel_stone_shapes": {
       "type": "gemluxjewel-stone-shapes",
       "blocks": {
+        "shape_4wiBd7": {
+          "type": "shape",
+          "settings": {
+            "title": "Dutch Marquise",
+            "image": "shopify://shop_images/DUTCH_MARQUISE_a71487d2-87e2-4dce-a89a-2ce2921fe1e3.webp",
+            "collection": "dutch-marquise-diamond",
+            "link": ""
+          }
+        },
         "shape_4V8NqU": {
           "type": "shape",
           "settings": {
@@ -136,6 +145,7 @@
         }
       },
       "block_order": [
+        "shape_4wiBd7",
         "shape_4V8NqU",
         "shape_NA6QWE",
         "shape_k749ay",
