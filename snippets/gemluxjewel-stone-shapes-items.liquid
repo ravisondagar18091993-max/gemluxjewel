@@ -93,6 +93,89 @@
       <span class="{{ label_class }}">{{ shape_title | escape }}</span>
     </a>
   {%- endfor -%}
+
+
+
+  {%- comment -%} Extra manual shapes not present in the live filter (e.g. custom cuts) {%- endcomment -%}
+  {%- for block in section.blocks -%}
+    {%- if block.type != 'shape' -%}
+      {%- continue -%}
+    {%- endif -%}
+
+    {%- liquid
+      assign block_title_key = block.settings.title | downcase | strip
+      assign already_in_filter = false
+      for value in stone_shape_filter.values
+        assign value_key = value.label | downcase | strip
+        if value_key == block_title_key
+          assign already_in_filter = true
+          break
+        endif
+      endfor
+    -%}
+
+    {%- if already_in_filter -%}
+      {%- continue -%}
+    {%- endif -%}
+
+    {%- liquid
+      assign shape_title = block.settings.title
+      assign shape_collection = block.settings.collection
+      assign shape_image = block.settings.image
+
+      if shape_title == blank and shape_collection != blank
+        assign shape_title = shape_collection.title
+      endif
+
+      if shape_image == blank and shape_collection != blank
+        assign shape_image = shape_collection.featured_image
+      endif
+
+      assign shape_url = block.settings.link
+      if shape_url == blank and shape_collection != blank
+        assign shape_url = shape_collection.url
+      endif
+    -%}
+
+    {%- if shape_url != blank -%}
+      <a href="{{ shape_url }}" class="{{ item_class }}" {{ block.shopify_attributes }}>
+    {%- else -%}
+      <div class="{{ item_class }} gemluxjewel-stone-shapes__item--static" {{ block.shopify_attributes }}>
+    {%- endif -%}
+      <div class="{{ img_class }}">
+        {%- if shape_image != blank -%}
+          {{
+            shape_image
+            | image_url: width: 800
+            | image_tag:
+              widths: '200, 300, 400, 600, 800',
+              sizes: shape_image_sizes,
+              loading: 'lazy',
+              alt: shape_title
+          }}
+        {%- else -%}
+          {% render 'gemluxjewel-theme-image',
+            use_store_media: true,
+            seed: forloop.index,
+            width: 400,
+            widths: '200,300,400,600',
+            sizes: shape_image_sizes,
+            alt: shape_title,
+            class: 'gemluxjewel-stone-shapes__fallback'
+          %}
+        {%- endif -%}
+      </div>
+      {%- if shape_title != blank -%}
+        <span class="{{ label_class }}">{{ shape_title | escape }}</span>
+      {%- endif -%}
+    {%- if shape_url != blank -%}
+      </a>
+    {%- else -%}
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+
+
 {%- else -%}
   {%- for block in section.blocks -%}
     {%- if block.type != 'shape' -%}
