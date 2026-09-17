@@ -86,13 +86,6 @@
             "image": "shopify://shop_images/heart_shape_diamond.png"
           }
         },
-        "shape_10": {
-          "type": "shape",
-          "settings": {
-            "title": "Square",
-            "image": "shopify://shop_images/Princecs_shape_diamond_png.png"
-          }
-        },
         "shape_11": {
           "type": "shape",
           "settings": {
@@ -154,7 +147,6 @@
         "shape_7",
         "shape_8",
         "shape_9",
-        "shape_10",
         "shape_11",
         "shape_12",
         "setting_1",
