@@ -11,7 +11,21 @@
   "sections": {
     "main": {
       "type": "gemluxjewel-diamond-size-chart",
-      "settings": {}
+      "settings": {
+        "eyebrow": "Diamond Size Chart",
+        "title": "Diamond Size Chart",
+        "subtitle": "<p>Want to know the actual size of a 1 carat diamond on a hand? Use our diamond size chart to understand the millimeter (mm) size of each diamond shape.</p>",
+        "image_round": "shopify://shop_images/diamond-size-hand-round..jpg",
+        "image_princess": "shopify://shop_images/diamond-size-hand-princess..jpg",
+        "image_cushion": "shopify://shop_images/diamond-size-hand-asscher..jpg",
+        "image_oval": "shopify://shop_images/diamond-size-hand-oval..jpg",
+        "image_emerald": "shopify://shop_images/diamond-size-hand-emerald..jpg",
+        "image_pear": "shopify://shop_images/diamond-size-hand-pear..jpg",
+        "image_marquise": "shopify://shop_images/diamond-size-hand-marquise..jpg",
+        "image_asscher": "shopify://shop_images/diamond-size-hand-cushion..jpg",
+        "image_radiant": "shopify://shop_images/diamond-size-hand-radiant..jpg",
+        "image_heart": "shopify://shop_images/diamond-size-hand-heart..jpg"
+      }
     }
   },
   "order": [
