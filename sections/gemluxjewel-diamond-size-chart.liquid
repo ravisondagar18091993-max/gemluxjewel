@@ -1,0 +1,234 @@
+{% render 'gemluxjewel-fonts' %}
+
+<section class="gemluxjewel gemluxjewel-diamond-chart">
+  <div class="gemluxjewel-container gemluxjewel-diamond-chart__container">
+    <div class="gemluxjewel-diamond-chart__header">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="gemluxjewel-diamond-chart__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      <h1 class="gemluxjewel-diamond-chart__title">{{ section.settings.title | escape }}</h1>
+      {%- if section.settings.subtitle != blank -%}
+        <p class="gemluxjewel-diamond-chart__subtitle">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="gemluxjewel-diamond-chart__selector">
+      <label for="DiamondShapeSelect">Select your diamond shape:</label>
+      <select id="DiamondShapeSelect" data-diamond-shape-select>
+        <option value="round">Round</option>
+        <option value="princess">Princess</option>
+        <option value="cushion">Cushion</option>
+        <option value="oval">Oval</option>
+        <option value="emerald">Emerald</option>
+        <option value="pear">Pear</option>
+        <option value="marquise">Marquise</option>
+        <option value="asscher">Asscher</option>
+        <option value="radiant">Radiant</option>
+        <option value="heart">Heart</option>
+      </select>
+    </div>
+
+    <div class="gemluxjewel-diamond-chart__body">
+      <div class="gemluxjewel-diamond-chart__table-wrap">
+        <table class="gemluxjewel-diamond-chart__table">
+          <thead>
+            <tr>
+              <th>MM Size</th>
+              <th>Carat Weight</th>
+            </tr>
+          </thead>
+          <tbody data-diamond-shape-table></tbody>
+        </table>
+      </div>
+
+      <div class="gemluxjewel-diamond-chart__image-wrap">
+        {%- assign diamond_shapes = "round,princess,cushion,oval,emerald,pear,marquise,asscher,radiant,heart" | split: "," -%}
+        {%- for shape in diamond_shapes -%}
+          {%- assign setting_key = 'image_' | append: shape -%}
+          {%- assign shape_image = section.settings[setting_key] -%}
+          <img
+            src="{% if shape_image != blank %}{{ shape_image | image_url: width: 900 }}{% endif %}"
+            alt="{{ shape | capitalize }} diamond size on hand"
+            class="gemluxjewel-diamond-chart__image{% unless shape == 'round' %} hidden{% endunless %}"
+            data-diamond-shape-image="{{ shape }}"
+            width="900"
+            height="900"
+            loading="lazy"
+          >
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="application/json" id="gemluxjewel-diamond-chart-data">
+{
+  "round":    [["4 mm","0.25 ct"],["4.4 mm","0.30 ct"],["5.2 mm","0.50 ct"],["5.9 mm","0.75 ct"],["6.5 mm","1.00 ct"],["6.8 mm","1.25 ct"],["7.4 mm","1.50 ct"],["8.2 mm","2.00 ct"],["8.8 mm","2.50 ct"],["9.4 mm","3.00 ct"],["10.4 mm","4.00 ct"],["11.2 mm","5.00 ct"]],
+  "princess": [["3.4 mm","0.25 ct"],["3.6 mm","0.30 ct"],["4.4 mm","0.50 ct"],["5.0 mm","0.75 ct"],["5.5 mm","1.00 ct"],["5.9 mm","1.25 ct"],["6.2 mm","1.50 ct"],["6.8 mm","2.00 ct"],["7.4 mm","2.50 ct"],["7.9 mm","3.00 ct"],["8.7 mm","4.00 ct"],["9.4 mm","5.00 ct"]],
+  "cushion":  [["3.7 mm","0.25 ct"],["4.0 mm","0.30 ct"],["4.8 mm","0.50 ct"],["5.5 mm","0.75 ct"],["6.0 mm","1.00 ct"],["6.4 mm","1.25 ct"],["6.8 mm","1.50 ct"],["7.4 mm","2.00 ct"],["8.0 mm","2.50 ct"],["8.5 mm","3.00 ct"],["9.4 mm","4.00 ct"],["10.1 mm","5.00 ct"]],
+  "oval":     [["5.0 x 3.5 mm","0.25 ct"],["5.3 x 3.7 mm","0.30 ct"],["6.0 x 4.2 mm","0.50 ct"],["6.9 x 4.8 mm","0.75 ct"],["7.7 x 5.4 mm","1.00 ct"],["8.2 x 5.7 mm","1.25 ct"],["8.6 x 6.0 mm","1.50 ct"],["9.4 x 6.6 mm","2.00 ct"],["10.1 x 7.1 mm","2.50 ct"],["10.7 x 7.5 mm","3.00 ct"],["11.8 x 8.2 mm","4.00 ct"],["12.7 x 8.9 mm","5.00 ct"]],
+  "emerald":  [["4.7 x 3.2 mm","0.25 ct"],["5.0 x 3.4 mm","0.30 ct"],["5.7 x 3.9 mm","0.50 ct"],["6.5 x 4.4 mm","0.75 ct"],["7.0 x 5.0 mm","1.00 ct"],["7.4 x 5.3 mm","1.25 ct"],["7.7 x 5.5 mm","1.50 ct"],["8.4 x 6.0 mm","2.00 ct"],["9.0 x 6.4 mm","2.50 ct"],["9.5 x 6.8 mm","3.00 ct"],["10.5 x 7.5 mm","4.00 ct"],["11.3 x 8.1 mm","5.00 ct"]],
+  "pear":     [["5.7 x 3.5 mm","0.25 ct"],["6.0 x 3.7 mm","0.30 ct"],["7.0 x 4.3 mm","0.50 ct"],["7.9 x 4.9 mm","0.75 ct"],["8.7 x 5.4 mm","1.00 ct"],["9.2 x 5.7 mm","1.25 ct"],["9.7 x 6.0 mm","1.50 ct"],["10.6 x 6.6 mm","2.00 ct"],["11.4 x 7.1 mm","2.50 ct"],["12.1 x 7.5 mm","3.00 ct"],["13.3 x 8.3 mm","4.00 ct"],["14.4 x 8.9 mm","5.00 ct"]],
+  "marquise": [["6.5 x 3.2 mm","0.25 ct"],["6.9 x 3.4 mm","0.30 ct"],["7.9 x 3.9 mm","0.50 ct"],["9.0 x 4.5 mm","0.75 ct"],["10.0 x 5.0 mm","1.00 ct"],["10.6 x 5.3 mm","1.25 ct"],["11.1 x 5.6 mm","1.50 ct"],["12.1 x 6.1 mm","2.00 ct"],["13.0 x 6.5 mm","2.50 ct"],["13.8 x 6.9 mm","3.00 ct"],["15.1 x 7.6 mm","4.00 ct"],["16.3 x 8.2 mm","5.00 ct"]],
+  "asscher":  [["3.7 mm","0.25 ct"],["4.0 mm","0.30 ct"],["4.8 mm","0.50 ct"],["5.5 mm","0.75 ct"],["6.0 mm","1.00 ct"],["6.4 mm","1.25 ct"],["6.8 mm","1.50 ct"],["7.4 mm","2.00 ct"],["8.0 mm","2.50 ct"],["8.5 mm","3.00 ct"],["9.4 mm","4.00 ct"],["10.1 mm","5.00 ct"]],
+  "radiant":  [["4.6 x 3.9 mm","0.25 ct"],["4.9 x 4.1 mm","0.30 ct"],["5.6 x 4.7 mm","0.50 ct"],["6.3 x 5.3 mm","0.75 ct"],["6.9 x 5.8 mm","1.00 ct"],["7.3 x 6.1 mm","1.25 ct"],["7.7 x 6.4 mm","1.50 ct"],["8.4 x 7.0 mm","2.00 ct"],["9.0 x 7.5 mm","2.50 ct"],["9.5 x 8.0 mm","3.00 ct"],["10.5 x 8.8 mm","4.00 ct"],["11.3 x 9.5 mm","5.00 ct"]],
+  "heart":    [["4.6 mm","0.25 ct"],["4.9 mm","0.30 ct"],["5.6 mm","0.50 ct"],["6.3 mm","0.75 ct"],["6.9 mm","1.00 ct"],["7.3 mm","1.25 ct"],["7.7 mm","1.50 ct"],["8.4 mm","2.00 ct"],["9.0 mm","2.50 ct"],["9.5 mm","3.00 ct"],["10.5 mm","4.00 ct"],["11.3 mm","5.00 ct"]]
+}
+</script>
+
+<script>
+  (function () {
+    var dataEl = document.getElementById('gemluxjewel-diamond-chart-data');
+    if (!dataEl) return;
+    var chartData = JSON.parse(dataEl.textContent);
+
+    var select = document.querySelector('[data-diamond-shape-select]');
+    var tableBody = document.querySelector('[data-diamond-shape-table]');
+    var images = document.querySelectorAll('[data-diamond-shape-image]');
+
+    function renderTable(shape) {
+      var rows = chartData[shape] || [];
+      tableBody.innerHTML = rows
+        .map(function (row) {
+          return '<tr><td>' + row[0] + '</td><td>' + row[1] + '</td></tr>';
+        })
+        .join('');
+    }
+
+    function renderImage(shape) {
+      images.forEach(function (img) {
+        img.classList.toggle('hidden', img.getAttribute('data-diamond-shape-image') !== shape);
+      });
+    }
+
+    select.addEventListener('change', function () {
+      renderTable(this.value);
+      renderImage(this.value);
+    });
+
+    renderTable(select.value);
+  })();
+</script>
+
+<style>
+  .gemluxjewel-diamond-chart {
+    padding: 48px 0 64px;
+    font-family: var(--gemluxjewel-font-body, 'Inter', sans-serif);
+  }
+  .gemluxjewel-diamond-chart__container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .gemluxjewel-diamond-chart__header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .gemluxjewel-diamond-chart__eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 13px;
+    color: var(--gemluxjewel-primary, #253e2b);
+    margin: 0 0 8px;
+  }
+  .gemluxjewel-diamond-chart__title {
+    font-family: var(--gemluxjewel-font-heading, 'Figtree', serif);
+    font-size: clamp(28px, 3vw, 38px);
+    margin: 0 0 12px;
+  }
+  .gemluxjewel-diamond-chart__subtitle {
+    max-width: 640px;
+    margin: 0 auto;
+    color: #6b7280;
+    line-height: 1.6;
+  }
+  .gemluxjewel-diamond-chart__selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .gemluxjewel-diamond-chart__selector select {
+    min-height: 42px;
+    padding: 0 32px 0 14px;
+    border: 1px solid var(--gemluxjewel-primary, #253e2b);
+    border-radius: 6px;
+    font-size: 14px;
+    color: var(--gemluxjewel-primary, #253e2b);
+    background: #fff;
+    cursor: pointer;
+  }
+  .gemluxjewel-diamond-chart__body {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+  @media (min-width: 750px) {
+    .gemluxjewel-diamond-chart__body {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .gemluxjewel-diamond-chart__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .gemluxjewel-diamond-chart__table th {
+    text-align: left;
+    padding: 10px 12px;
+    background: var(--gemluxjewel-primary, #253e2b);
+    color: #fff;
+    font-weight: 600;
+  }
+  .gemluxjewel-diamond-chart__table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #e5e7eb;
+    color: #374151;
+  }
+  .gemluxjewel-diamond-chart__table tr:nth-child(even) td {
+    background: #f9fafb;
+  }
+  .gemluxjewel-diamond-chart__image-wrap {
+    position: relative;
+    min-height: 320px;
+  }
+  .gemluxjewel-diamond-chart__image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+  }
+  .gemluxjewel-diamond-chart__image.hidden {
+    display: none;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Diamond Size Chart",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow text", "default": "Diamond Size Chart" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Diamond Size Chart" },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "<p>Want to know the actual size of a 1 carat diamond on a hand? Use our diamond size chart to understand the millimeter (mm) size of each diamond shape.</p>"
+    },
+    { "type": "header", "content": "Hand comparison images" },
+    { "type": "image_picker", "id": "image_round", "label": "Round" },
+    { "type": "image_picker", "id": "image_princess", "label": "Princess" },
+    { "type": "image_picker", "id": "image_cushion", "label": "Cushion" },
+    { "type": "image_picker", "id": "image_oval", "label": "Oval" },
+    { "type": "image_picker", "id": "image_emerald", "label": "Emerald" },
+    { "type": "image_picker", "id": "image_pear", "label": "Pear" },
+    { "type": "image_picker", "id": "image_marquise", "label": "Marquise" },
+    { "type": "image_picker", "id": "image_asscher", "label": "Asscher" },
+    { "type": "image_picker", "id": "image_radiant", "label": "Radiant" },
+    { "type": "image_picker", "id": "image_heart", "label": "Heart" }
+  ],
+  "presets": [{ "name": "Diamond Size Chart" }]
+}
+{% endschema %}
