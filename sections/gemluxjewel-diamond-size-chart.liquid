@@ -110,7 +110,7 @@
   })();
 </script>
 
-<style>
+{% comment %} <style>
   .gemluxjewel-diamond-chart {
     padding: 48px 0 64px;
     font-family: var(--gemluxjewel-font-body, 'Inter', sans-serif);
@@ -202,6 +202,161 @@
   }
   .gemluxjewel-diamond-chart__image.hidden {
     display: none;
+  }
+</style> {% endcomment %}
+
+
+<style>
+  .gemluxjewel-diamond-chart {
+    padding: 32px 0 48px;
+    font-family: var(--gemluxjewel-font-body, 'Inter', sans-serif);
+  }
+  .gemluxjewel-diamond-chart__container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  .gemluxjewel-diamond-chart__header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .gemluxjewel-diamond-chart__eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 12px;
+    color: var(--gemluxjewel-primary, #253e2b);
+    margin: 0 0 8px;
+  }
+  .gemluxjewel-diamond-chart__title {
+    font-family: var(--gemluxjewel-font-heading, 'Figtree', serif);
+    font-size: clamp(24px, 5vw, 38px);
+    line-height: 1.2;
+    margin: 0 0 10px;
+  }
+  .gemluxjewel-diamond-chart__subtitle {
+    max-width: 600px;
+    margin: 0 auto;
+    color: #6b7280;
+    line-height: 1.6;
+    font-size: 14px;
+    padding: 0 8px;
+  }
+  .gemluxjewel-diamond-chart__selector {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .gemluxjewel-diamond-chart__selector label {
+    font-size: 14px;
+    white-space: nowrap;
+  }
+  .gemluxjewel-diamond-chart__selector select {
+    min-height: 44px;
+    padding: 0 32px 0 14px;
+    border: 1px solid var(--gemluxjewel-primary, #253e2b);
+    border-radius: 6px;
+    font-size: 14px;
+    color: var(--gemluxjewel-primary, #253e2b);
+    background: #fff;
+    cursor: pointer;
+    max-width: 100%;
+  }
+
+  .gemluxjewel-diamond-chart__body {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 20px;
+    align-items: stretch;
+  }
+  .gemluxjewel-diamond-chart__table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .gemluxjewel-diamond-chart__table {
+    width: 100%;
+    min-width: 320px;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .gemluxjewel-diamond-chart__table th {
+    text-align: left;
+    padding: 8px 10px;
+    background: var(--gemluxjewel-primary, #253e2b);
+    color: #fff;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .gemluxjewel-diamond-chart__table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #e5e7eb;
+    color: #374151;
+    white-space: nowrap;
+  }
+  .gemluxjewel-diamond-chart__table tr:nth-child(even) td {
+    background: #f9fafb;
+  }
+
+  .gemluxjewel-diamond-chart__image-wrap {
+    position: relative;
+    width: 100%;
+  }
+  .gemluxjewel-diamond-chart__image {
+    width: 100%;
+    height: auto;
+    max-width: 420px;
+    margin: 0 auto;
+    border-radius: 8px;
+    display: block;
+  }
+  .gemluxjewel-diamond-chart__image.hidden {
+    display: none;
+  }
+
+  /* Tablet and up: side-by-side layout */
+  @media (min-width: 750px) {
+    .gemluxjewel-diamond-chart {
+      padding: 48px 0 64px;
+    }
+    .gemluxjewel-diamond-chart__container {
+      padding: 0 20px;
+    }
+    .gemluxjewel-diamond-chart__body {
+      flex-direction: row;
+      align-items: center;
+    }
+    .gemluxjewel-diamond-chart__table-wrap {
+      flex: 1 1 50%;
+      overflow-x: visible;
+    }
+    .gemluxjewel-diamond-chart__table {
+      font-size: 14px;
+    }
+    .gemluxjewel-diamond-chart__table th,
+    .gemluxjewel-diamond-chart__table td {
+      padding: 10px 12px;
+      white-space: normal;
+    }
+    .gemluxjewel-diamond-chart__image-wrap {
+      flex: 1 1 50%;
+      min-height: 320px;
+    }
+    .gemluxjewel-diamond-chart__image {
+      max-width: 100%;
+    }
+  }
+
+  /* Small phones */
+  @media (max-width: 380px) {
+    .gemluxjewel-diamond-chart__selector {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .gemluxjewel-diamond-chart__selector select {
+      width: 100%;
+    }
   }
 </style>
 
