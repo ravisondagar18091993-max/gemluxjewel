@@ -106,7 +106,18 @@
       renderImage(this.value);
     });
 
-    renderTable(select.value);
+    {% comment %} renderTable(select.value); {% endcomment %}
+
+    var urlParams = new URLSearchParams(window.location.search);
+var shapeFromUrl = urlParams.get('shape');
+var validShapes = Object.keys(chartData);
+
+if (shapeFromUrl && validShapes.indexOf(shapeFromUrl) !== -1) {
+  select.value = shapeFromUrl;
+}
+
+renderTable(select.value);
+renderImage(select.value);
   })();
 </script>
 
