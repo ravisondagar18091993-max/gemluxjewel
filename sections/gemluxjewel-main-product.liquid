@@ -237,7 +237,7 @@
             endif
           -%}
 
-          {%- if show_info_accordion -%}
+          {% comment %} {%- if show_info_accordion -%}
             <div class="gemluxjewel-pdp__accordian-block gemluxjewel-pdp__info-accordion">
               <div class="gemluxjewel-pdp__product-accordian">
                 <div class="closet-accordion" data-gemluxjewel-accordion>
@@ -251,6 +251,46 @@
                   {% render 'gemluxjewel-pdp-accordion-item', title: section.settings.ring_size_title, content: section.settings.ring_size_content, open_by_default: default_open %}
 
                   {% render 'gemluxjewel-pdp-accordion-item', title: section.settings.ring_details_title, content: section.settings.ring_details_content, open_by_default: default_open %}
+                </div>
+              </div>
+            </div>
+          {%- endif -%} {% endcomment %}
+
+
+                    {%- if show_info_accordion -%}
+            <div class="gemluxjewel-pdp__accordian-block gemluxjewel-pdp__info-accordion">
+              <div class="gemluxjewel-pdp__product-accordian">
+                <div class="closet-accordion" data-gemluxjewel-accordion>
+                  {%- liquid
+                    assign default_open = section.settings.accordion_default_open | default: 'none'
+                    assign open_overview = false
+                    assign open_ring_size = false
+                    assign open_ring_details = false
+                    if default_open == 'overview'
+                      assign open_overview = true
+                    elsif default_open == 'ring_size'
+                      assign open_ring_size = true
+                    elsif default_open == 'ring_details'
+                      assign open_ring_details = true
+                    endif
+
+                    assign product_shape = 'round'
+                    for tag in product.tags
+                      assign tag_downcase = tag | downcase
+                      if tag_downcase contains 'shape-'
+                        assign product_shape = tag_downcase | remove: 'shape-' | strip
+                      endif
+                    endfor
+                    assign dynamic_chart_url = '/pages/diamond-size-chart?shape=' | append: product_shape
+                    assign ring_size_html = section.settings.ring_size_content | replace: '#diamond-size-chart', dynamic_chart_url
+                  -%}
+                  {%- if show_description -%}
+                    {% render 'gemluxjewel-pdp-accordion-item', title: section.settings.description_title, content: product.description, open_by_default: open_overview %}
+                  {%- endif -%}
+
+                  {% render 'gemluxjewel-pdp-accordion-item', title: section.settings.ring_size_title, content: ring_size_html, open_by_default: open_ring_size %}
+
+                  {% render 'gemluxjewel-pdp-accordion-item', title: section.settings.ring_details_title, content: section.settings.ring_details_content, open_by_default: open_ring_details %}
                 </div>
               </div>
             </div>
