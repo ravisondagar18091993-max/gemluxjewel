@@ -282,7 +282,8 @@
                       endif
                     endfor
                     assign dynamic_chart_url = '/pages/diamond-size-chart?shape=' | append: product_shape
-                    assign ring_size_html = section.settings.ring_size_content | replace: '#diamond-size-chart', dynamic_chart_url
+
+                    assign ring_size_html = section.settings.ring_size_content | replace: '/pages/diamond-size-chart', dynamic_chart_url
                   -%}
                   {%- if show_description -%}
                     {% render 'gemluxjewel-pdp-accordion-item', title: section.settings.description_title, content: product.description, open_by_default: open_overview %}
