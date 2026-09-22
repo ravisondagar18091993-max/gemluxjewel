@@ -54,6 +54,31 @@
         "accordion_content": ""
       }
     },
+    "17900717604d077ed5": {
+      "type": "apps",
+      "blocks": {
+        "diamond_selector_for_jewelry_diamond_selector_8R4fAA": {
+          "type": "shopify://apps/diamond-selector-for-jewelry/blocks/diamond-selector/119bfb8b-05c1-407b-9246-e0c08ed304ed",
+          "settings": {
+            "button_label": "Choose Your Diamond",
+            "dsa_color_primary": "#000000",
+            "dsa_color_secondary": "#f2f2f2",
+            "dsa_color_text": "#000000",
+            "dsa_color_background": "#111111",
+            "dsa_color_background_alt": "#ebebeb",
+            "dsa_color_hover": "rgba(255, 255, 255, 0.08)",
+            "dsa_color_shadow": "rgba(0, 0, 0, 0.5)",
+            "dsa_color_border": "#333333"
+          }
+        }
+      },
+      "block_order": [
+        "diamond_selector_for_jewelry_diamond_selector_8R4fAA"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
     "gemluxjewel_pdp_how_made": {
       "type": "gemluxjewel-pdp-how-made",
       "blocks": {
@@ -214,6 +239,7 @@
   "order": [
     "gemluxjewel_main_product",
     "gemluxjewel_pdp_content_accordion",
+    "17900717604d077ed5",
     "gemluxjewel_pdp_how_made",
     "1786465595f85eb7a3",
     "gemluxjewel_product_faq",
