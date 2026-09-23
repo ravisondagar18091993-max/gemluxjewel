@@ -17,9 +17,9 @@
           "settings": {
             "button_label": "Choose Your Diamond",
             "dsa_color_primary": "#253E2B",
-            "dsa_color_secondary": "#f2f2f2",
+            "dsa_color_secondary": "#FFFFFF",
             "dsa_color_text": "#101010",
-            "dsa_color_background": "#111111",
+            "dsa_color_background": "#253E2B",
             "dsa_color_background_alt": "#ebebeb",
             "dsa_color_hover": "#ffffff14",
             "dsa_color_shadow": "#00000080",
