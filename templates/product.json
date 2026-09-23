@@ -16,7 +16,7 @@
           "type": "shopify://apps/diamond-selector-for-jewelry/blocks/diamond-selector/119bfb8b-05c1-407b-9246-e0c08ed304ed",
           "settings": {
             "button_label": "Choose Your Diamond",
-            "dsa_color_primary": "#000000",
+            "dsa_color_primary": "#253E2B",
             "dsa_color_secondary": "#f2f2f2",
             "dsa_color_text": "#000000",
             "dsa_color_background": "#111111",
@@ -63,32 +63,6 @@
         "complete_set_use_recommendations_fallback": true,
         "complete_set_heading": "Complete The Set",
         "complete_set_limit": 4
-      }
-    },
-    "1790145981e2b249f9": {
-      "type": "apps",
-      "blocks": {
-        "diamond_selector_for_jewelry_diamond_selector_iDrCrV": {
-          "type": "shopify://apps/diamond-selector-for-jewelry/blocks/diamond-selector/119bfb8b-05c1-407b-9246-e0c08ed304ed",
-          "settings": {
-            "button_label": "Choose Your Diamond",
-            "dsa_color_primary": "#000000",
-            "dsa_color_secondary": "#f2f2f2",
-            "dsa_color_text": "#000000",
-            "dsa_color_background": "#111111",
-            "dsa_color_background_alt": "#ebebeb",
-            "dsa_color_hover": "#ffffff14",
-            "dsa_color_shadow": "#00000080",
-            "dsa_color_border": "#333333"
-          }
-        }
-      },
-      "block_order": [
-        "diamond_selector_for_jewelry_diamond_selector_iDrCrV"
-      ],
-      "disabled": true,
-      "settings": {
-        "include_margins": true
       }
     },
     "gemluxjewel_pdp_content_accordion": {
@@ -258,7 +232,6 @@
   },
   "order": [
     "gemluxjewel_main_product",
-    "1790145981e2b249f9",
     "gemluxjewel_pdp_content_accordion",
     "gemluxjewel_pdp_how_made",
     "1786465595f85eb7a3",
