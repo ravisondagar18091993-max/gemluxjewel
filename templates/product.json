@@ -14,6 +14,7 @@
       "blocks": {
         "diamond_selector_for_jewelry_diamond_selector_qhQXiA": {
           "type": "shopify://apps/diamond-selector-for-jewelry/blocks/diamond-selector/119bfb8b-05c1-407b-9246-e0c08ed304ed",
+          "disabled": true,
           "settings": {
             "button_label": "Choose Your Diamond",
             "dsa_color_primary": "#000000",
@@ -70,7 +71,6 @@
       "blocks": {
         "diamond_selector_for_jewelry_diamond_selector_iDrCrV": {
           "type": "shopify://apps/diamond-selector-for-jewelry/blocks/diamond-selector/119bfb8b-05c1-407b-9246-e0c08ed304ed",
-          "disabled": true,
           "settings": {
             "button_label": "Choose Your Diamond",
             "dsa_color_primary": "#000000",
