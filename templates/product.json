@@ -87,6 +87,7 @@
       "block_order": [
         "diamond_selector_for_jewelry_diamond_selector_iDrCrV"
       ],
+      "disabled": true,
       "settings": {
         "include_margins": true
       }
