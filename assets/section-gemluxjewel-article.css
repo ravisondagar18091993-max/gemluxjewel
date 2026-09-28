@@ -199,8 +199,8 @@
 }
 
 .gemluxjewel-article__social-link img {
-  width: 22px;
-  height: 22px;
+  width: auto;
+  height: auto;
   object-fit: contain;
 }
 
