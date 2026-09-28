@@ -262,8 +262,8 @@
 }
 
 .gemluxjewel-article__hero-media img {
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   display: block;
 }
