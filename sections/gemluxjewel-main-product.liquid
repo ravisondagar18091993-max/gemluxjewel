@@ -317,6 +317,91 @@
   
 </product-info>
 
+
+<style>
+  /* 1. Stop the whole page from becoming wider than the phone (header, breadcrumb, cart icon) */
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-x: clip;
+  }
+
+  /* 2. Layout columns must be allowed to shrink */
+  .gemluxjewel-pdp,
+  .gemluxjewel-pdp__container,
+  .gemluxjewel-pdp__layout,
+  .gemluxjewel-pdp__gallery-col,
+  .gemluxjewel-pdp__info {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* 3. Everything inside the gallery is limited to the column width */
+  .gemluxjewel-pdp__gallery-col {
+    overflow: hidden;
+    width: 100%;
+  }
+  .gemluxjewel-pdp__gallery-col [class*="gallery"],
+  .gemluxjewel-pdp__gallery-col [class*="slider"],
+  .gemluxjewel-pdp__gallery-col [class*="slide"],
+  .gemluxjewel-pdp__gallery-col [class*="media"],
+  .gemluxjewel-pdp__gallery-col [class*="main"],
+  .gemluxjewel-pdp__gallery-col [class*="image"] {
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  .gemluxjewel-pdp__gallery-col img,
+  .gemluxjewel-pdp__gallery-col video,
+  .gemluxjewel-pdp__gallery-col picture {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* 4. Breadcrumb: long product names wrap instead of pushing the page wide */
+  .gemluxjewel-pdp__breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+  .gemluxjewel-pdp__breadcrumb-current { min-width: 0; }
+
+  /* 5. Phones and tablets: stack image and details */
+  @media (max-width: 989px) {
+    .gemluxjewel-pdp__layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 24px;
+    }
+    .gemluxjewel-pdp__gallery-col,
+    .gemluxjewel-pdp__info {
+      width: 100%;
+    }
+  }
+
+  /* 6. Touch devices: no zoom/scale effects (this is why your image looks zoomed in) */
+  @media (hover: none) {
+    .gemluxjewel-pdp__gallery-col img,
+    .gemluxjewel-pdp__gallery-col [class*="zoom"],
+    .gemluxjewel-pdp__gallery-col [class*="media"] {
+      transform: none !important;
+      cursor: default;
+    }
+  }
+
+  /* 7. Keep the other product sections inside the screen too */
+  .gemluxjewel-pdp__info-accordion,
+  .gemluxjewel-pdp__support-zone,
+  .gemluxjewel-pdp__actions {
+    max-width: 100%;
+    min-width: 0;
+  }
+</style>
+
 {% schema %}
 {
   "name": "gemluxjewel Main Product",
