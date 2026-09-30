@@ -4,6 +4,50 @@
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 {{ 'section-gemluxjewel-product.css' | asset_url | stylesheet_tag }}
 {{ 'section-gemluxjewel-pdp-ref.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  .gemluxjewel-pdp-media {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+  }
+  .gemluxjewel-pdp-media__stage {
+    position: relative;
+    flex: 1 1 auto;
+    min-width: 0;
+    aspect-ratio: 1;
+    border-radius: 4px;
+    background: #f4f6f8;
+    overflow: hidden;
+  }
+  .gemluxjewel-pdp-media__slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .gemluxjewel-pdp-media__slide.is-active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 1;
+  }
+  .gemluxjewel-pdp-media__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    background: #f4f6f8;
+  }
+  @media (max-width: 989px) {
+    .gemluxjewel-pdp-media {
+      flex-direction: column-reverse;
+      align-items: stretch;
+    }
+  }
+{% endstyle %}
+
+
 {{ 'section-gemluxjewel-home.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 
