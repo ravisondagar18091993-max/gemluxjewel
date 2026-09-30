@@ -336,6 +336,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 </head>
 
+   {% if article.handle == 'what-is-my-angel-number' %}<script src="{{ 'angel-calc.js' | asset_url }}" defer></script>{% endif %}
+
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}{% if template.name == 'page' and template.suffix == 'engagement-ring' %} template-engagement-ring{% endif %}">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
