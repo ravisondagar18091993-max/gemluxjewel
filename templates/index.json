@@ -459,22 +459,22 @@
         "faq_3": {
           "type": "faq",
           "settings": {
-            "question": "Can I customize my engagement ring?",
-            "answer": "<p>Absolutely! At Gemlux Jewels, we specialize in custom jewellery. You can request your preferred diamond shape, carat weight, metal, setting, and design details. Our team can guide you through the design and approval process before production begins.</p>"
+            "question": "How long will my order take to arrive?",
+            "answer": "<p>Many made-to-order designs require approximately 10–12 working days for production. Shipping takes additional time depending on your destination and selected service. We'll provide an estimated schedule for your specific order before you purchase.</p>"
           }
         },
         "faq_4": {
           "type": "faq",
           "settings": {
-            "question": "Do Lab Grown Diamonds or Moissanite come with a Certificate?",
-            "answer": "<p>Yes, Diamondrensu's lab-grown diamonds are certified by IGI or GIA, ensuring their quality and authenticity. Additionally, our moissanite come with a Gemluxjewels certificate of authenticity, guaranteeing their premium quality. This certification provides assurance of ethical sourcing and top-notch craftsmanship for every gemstone purchased from us.</p>"
+            "question": "Can I see actual photos or videos before purchasing?",
+            "answer": "<p>Yes! Contact our team to request additional photos or videos of an available diamond or design. For custom-made jewellery, we can also discuss the available design previews and approval process.</p>"
           }
         },
         "faq_5": {
           "type": "faq",
           "settings": {
-            "question": "Do they come in different shapes and colors?",
-            "answer": "<p>Yes, lab grown diamonds are available in a wide variety of shapes, from classic rounds to bold fancy cuts. They can also be created in striking colors such as pink, blue, and yellow. This range allows Gemlux Jewels to offer more creative and expressive jewelry options than ever before.</p>"
+            "question": "What happens if I order the wrong ring size?",
+            "answer": "<p>Please contact Gemlux Jewels as soon as possible. We will review the design and available resizing options. Eligibility, costs, and processing times depend on the product and our published resizing policy.</p>"
           }
         }
       },
