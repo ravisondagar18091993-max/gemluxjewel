@@ -12,8 +12,8 @@
     "engagement_hero": {
       "type": "gemluxjewel-engagement-hero",
       "settings": {
-        "title": "Engagement Ring",
-        "text": "Explore our stunning engagement ring collection, featuring both lab-grown diamonds and moissanite options. Each ring is designed to capture the essence of love and commitment. Perfect for those seeking elegance and sustainability, our rings offer a brilliant choice for your special moment. Find your dream ring with us today.",
+        "title": "hip hop jewelry",
+        "text": "Make your style stand out with bold hip-hop jewelry from Gemlux Jewels. Explore custom grillz, statement pendants and charms, and chains in a range of styles, featuring moissanite or lab-grown diamonds.\nHave a design in mind? Share your idea with us, and we’ll help you explore a custom piece that reflects your personal style.",
         "enable_read_more": true,
         "read_more_label": "Read more",
         "read_less_label": "Read less"
@@ -99,12 +99,12 @@
       ],
       "settings": {
         "title": "Popular Lab Grown Diamond Rings",
-        "collection": "popular-lab-grown-diamond-rings",
+        "collection": "hip-hop-rings-lab-grown-diamonds",
         "featured_position": "right",
         "badge_text": "New In",
         "show_discount": true,
         "button_label": "View All",
-        "button_link": "shopify://collections/lab-grown-diamond-engagement-rings"
+        "button_link": "shopify://collections/all-hip-hop-jewelry"
       }
     },
     "gemluxjewel_engagement_showcase_dqU7Uh": {
@@ -155,7 +155,7 @@
       ],
       "settings": {
         "title": "Popular Moissanite Rings",
-        "collection": "popular-moissanite-rings",
+        "collection": "all-hip-hop-jewelry",
         "featured_position": "right",
         "badge_text": "New In",
         "show_discount": true,
@@ -190,106 +190,6 @@
         "icon_5": "value",
         "label_6": "Eco Friendly",
         "icon_6": "eco"
-      }
-    },
-    "engagement_categories": {
-      "type": "gemluxjewel-engagement-categories",
-      "blocks": {
-        "card_lab": {
-          "type": "category_card",
-          "settings": {
-            "title": "Lab Grown Diamonds",
-            "category_key": "lab_grown"
-          }
-        },
-        "card_moi": {
-          "type": "category_card",
-          "settings": {
-            "title": "Moissanite",
-            "category_key": "moissanite"
-          }
-        },
-        "lab_style": {
-          "type": "link_column",
-          "settings": {
-            "category": "lab_grown",
-            "column_title": "Shop by Style",
-            "links": "<ul><li><a href=\"/collections/all\">Solitaire</a></li><li><a href=\"/collections/all\">Halo</a></li><li><a href=\"/collections/all\">Vintage</a></li><li><a href=\"/collections/all\">Three Stone</a></li></ul>"
-          }
-        },
-        "lab_shape": {
-          "type": "link_column",
-          "settings": {
-            "category": "lab_grown",
-            "column_title": "Shop by Shape",
-            "links": "<ul><li><a href=\"/collections/all\">Round</a></li><li><a href=\"/collections/all\">Oval</a></li><li><a href=\"/collections/all\">Emerald</a></li><li><a href=\"/collections/all\">Marquise</a></li></ul>"
-          }
-        },
-        "lab_budget": {
-          "type": "link_column",
-          "settings": {
-            "category": "lab_grown",
-            "column_title": "Shop by Budget",
-            "links": "<ul><li><a href=\"/collections/all\">Rings Under $500</a></li><li><a href=\"/collections/all\">Rings Under $1000</a></li><li><a href=\"/collections/all\">Rings Under $1500</a></li></ul>"
-          }
-        },
-        "lab_collection": {
-          "type": "link_column",
-          "settings": {
-            "category": "lab_grown",
-            "column_title": "Rings by Collection",
-            "links": "<ul><li><a href=\"/collections/all\">Top 20 Engagement Rings</a></li><li><a href=\"/collections/all\">New Arrival</a></li><li><a href=\"/collections/all\">Best Sellers</a></li></ul>"
-          }
-        },
-        "moi_style": {
-          "type": "link_column",
-          "settings": {
-            "category": "moissanite",
-            "column_title": "Shop by Style",
-            "links": "<ul><li><a href=\"/collections/all\">Solitaire</a></li><li><a href=\"/collections/all\">Halo</a></li><li><a href=\"/collections/all\">Vintage</a></li><li><a href=\"/collections/all\">Hidden Halo</a></li></ul>"
-          }
-        },
-        "moi_shape": {
-          "type": "link_column",
-          "settings": {
-            "category": "moissanite",
-            "column_title": "Shop by Shape",
-            "links": "<ul><li><a href=\"/collections/all\">Round</a></li><li><a href=\"/collections/all\">Cushion</a></li><li><a href=\"/collections/all\">Radiant</a></li><li><a href=\"/collections/all\">Emerald</a></li></ul>"
-          }
-        },
-        "moi_budget": {
-          "type": "link_column",
-          "settings": {
-            "category": "moissanite",
-            "column_title": "Shop by Budget",
-            "links": "<ul><li><a href=\"/collections/all\">Rings Under $200</a></li><li><a href=\"/collections/all\">Rings Under $500</a></li><li><a href=\"/collections/all\">Rings Under $1000</a></li></ul>"
-          }
-        },
-        "moi_collection": {
-          "type": "link_column",
-          "settings": {
-            "category": "moissanite",
-            "column_title": "Rings by Collection",
-            "links": "<ul><li><a href=\"/collections/all\">Top 20 Engagement Rings</a></li><li><a href=\"/collections/all\">New Arrival</a></li><li><a href=\"/collections/all\">Best Sellers</a></li></ul>"
-          }
-        }
-      },
-      "block_order": [
-        "card_lab",
-        "card_moi",
-        "lab_style",
-        "lab_shape",
-        "lab_budget",
-        "lab_collection",
-        "moi_style",
-        "moi_shape",
-        "moi_budget",
-        "moi_collection"
-      ],
-      "settings": {
-        "title": "Engagement Rings By Category",
-        "button_label": "Design Your Own Engagement Ring",
-        "button_link": "shopify://pages/custom-jewellery"
       }
     },
     "engagement_faq": {
@@ -404,7 +304,6 @@
     "gemluxjewel_engagement_showcase_dqU7Uh",
     "engagement_custom",
     "engagement_trust",
-    "engagement_categories",
     "engagement_faq"
   ]
 }
