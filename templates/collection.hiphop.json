@@ -23,48 +23,30 @@
     "gemluxjewel_stone_shapes_nTNKRA": {
       "type": "gemluxjewel-stone-shapes",
       "blocks": {
-        "shape_rxQNVe": {
-          "type": "shape",
-          "settings": {
-            "title": "Bracelet",
-            "collection": "hip-hop-bracelets-lab-grown-diamonds",
-            "link": ""
-          }
-        },
-        "shape_wfKKDj": {
-          "type": "shape",
-          "settings": {
-            "title": "Ring",
-            "collection": "hip-hop-rings-lab-grown-diamonds",
-            "link": ""
-          }
-        },
         "shape_z7ijCR": {
           "type": "shape",
           "settings": {
-            "title": "Pendant",
-            "collection": "hip-hop-pendants",
+            "title": "Lab Grown Diamond",
+            "collection": "hip-hop-lab-grown-diamond",
             "link": ""
           }
         },
         "shape_hwFXcP": {
           "type": "shape",
           "settings": {
-            "title": "Chain",
-            "collection": "lab-grown-hip-hop-chain",
+            "title": "Moissanite",
+            "collection": "hip-hop-moissanite",
             "link": ""
           }
         }
       },
       "block_order": [
-        "shape_rxQNVe",
-        "shape_wfKKDj",
         "shape_z7ijCR",
         "shape_hwFXcP"
       ],
       "name": "gemluxjewel Stone Shapes",
       "settings": {
-        "title": "Shop By Type",
+        "title": "Shop By Material",
         "subtitle": "Explore our collection by diamond and gemstone cut — find the shape that speaks to you.",
         "products_collection": "",
         "filter_label": "Stone shape",
