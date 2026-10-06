@@ -20,6 +20,39 @@
         "hide_image": false
       }
     },
+    "gemluxjewel_stone_shapes_nTNKRA": {
+      "type": "gemluxjewel-stone-shapes",
+      "blocks": {
+        "shape_z7ijCR": {
+          "type": "shape",
+          "settings": {
+            "title": "Lab Grown Diamond",
+            "collection": "hip-hop-lab-grown-diamond",
+            "link": ""
+          }
+        },
+        "shape_hwFXcP": {
+          "type": "shape",
+          "settings": {
+            "title": "Moissanite",
+            "collection": "hip-hop-moissanite",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "shape_z7ijCR",
+        "shape_hwFXcP"
+      ],
+      "name": "gemluxjewel Stone Shapes",
+      "settings": {
+        "title": "Shop By Material",
+        "subtitle": "Explore our collection by diamond and gemstone cut — find the shape that speaks to you.",
+        "products_collection": "",
+        "filter_label": "Stone shape",
+        "auto_fetch_shapes": false
+      }
+    },
     "gemluxjewel_collection_products": {
       "type": "gemluxjewel-collection-products",
       "blocks": {
@@ -187,7 +220,7 @@
         "gemstone_dropdown_label": "Gemstone type",
         "ring_design_dropdown_label": "Ring design",
         "color_dropdown_label": "Color",
-        "enable_stone_shapes": true,
+        "enable_stone_shapes": false,
         "auto_fetch_stone_shapes": true,
         "stone_shape_metaobject_type": "shopify--stone-shape",
         "stone_shapes_source_collection": "all",
@@ -198,6 +231,7 @@
   },
   "order": [
     "gemluxjewel_collection_hero",
+    "gemluxjewel_stone_shapes_nTNKRA",
     "gemluxjewel_collection_products"
   ]
 }
