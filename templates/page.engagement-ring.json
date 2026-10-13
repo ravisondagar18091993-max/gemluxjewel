@@ -12,8 +12,8 @@
     "engagement_hero": {
       "type": "gemluxjewel-engagement-hero",
       "settings": {
-        "title": "hip hop jewelry",
-        "text": "Make your style stand out with bold hip-hop jewelry from Gemlux Jewels. Explore custom grillz, statement pendants and charms, and chains in a range of styles, featuring moissanite or lab-grown diamonds.\nHave a design in mind? Share your idea with us, and we’ll help you explore a custom piece that reflects your personal style.",
+        "title": "Engagement Ring",
+        "text": "Explore our stunning engagement ring collection, featuring both lab-grown diamonds and moissanite options. Each ring is designed to capture the essence of love and commitment. Perfect for those seeking elegance and sustainability, our rings offer a brilliant choice for your special moment. Find your dream ring with us today.",
         "enable_read_more": true,
         "read_more_label": "Read more",
         "read_less_label": "Read less"
@@ -29,7 +29,7 @@
             "title": "Lab Grown Diamond",
             "text": "Explore our collection of lab-grown diamond engagement rings, available in a variety of sizes and styles to create a unique proposal experience.",
             "button_label": "Shop Lab Grown Engagement Rings",
-            "button_link": "shopify://collections/hip-hop-rings-lab-grown-diamonds",
+            "button_link": "shopify://collections/lab-grown-diamond-engagement-rings",
             "background": "beige"
           }
         },
@@ -40,7 +40,7 @@
             "title": "Moissanite",
             "text": "Thinking about popping the question? Discover our elegant collection of moissanite engagement rings for your special moment.",
             "button_label": "Shop Moissanite Rings",
-            "button_link": "shopify://collections/moissanite-hip-hop-rings",
+            "button_link": "shopify://collections/moissanite-engagement-rings",
             "background": "sand"
           }
         }
@@ -104,7 +104,7 @@
         "badge_text": "New In",
         "show_discount": true,
         "button_label": "View All",
-        "button_link": "shopify://collections/all-hip-hop-jewelry"
+        "button_link": "shopify://collections/popular-lab-grown-diamond-rings"
       }
     },
     "gemluxjewel_engagement_showcase_dqU7Uh": {
