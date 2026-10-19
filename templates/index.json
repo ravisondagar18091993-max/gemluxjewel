@@ -44,15 +44,6 @@
             "link": "/search?q=Dutch+Marquise"
           }
         },
-        "shape_4V8NqU": {
-          "type": "shape",
-          "settings": {
-            "title": "Other",
-            "image": "shopify://shop_images/emerald_shape_diamond_png.png",
-            "collection": "",
-            "link": ""
-          }
-        },
         "shape_k749ay": {
           "type": "shape",
           "settings": {
@@ -142,12 +133,20 @@
             "collection": "",
             "link": ""
           }
+        },
+        "shape_4V8NqU": {
+          "type": "shape",
+          "settings": {
+            "title": "Other",
+            "image": "shopify://shop_images/emerald_shape_diamond_png.png",
+            "collection": "",
+            "link": ""
+          }
         }
       },
       "block_order": [
         "shape_rNwgDy",
         "shape_4wiBd7",
-        "shape_4V8NqU",
         "shape_k749ay",
         "shape_x9kzqP",
         "shape_QaejrV",
@@ -157,7 +156,8 @@
         "s3",
         "s4",
         "s5",
-        "s10"
+        "s10",
+        "shape_4V8NqU"
       ],
       "settings": {
         "title": "Shop by Stone Shape",
