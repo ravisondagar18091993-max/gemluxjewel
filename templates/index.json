@@ -26,14 +26,6 @@
     "gemluxjewel_stone_shapes": {
       "type": "gemluxjewel-stone-shapes",
       "blocks": {
-        "shape_kjhqDW": {
-          "type": "shape",
-          "settings": {
-            "title": "baguette",
-            "collection": "",
-            "link": ""
-          }
-        },
         "shape_rNwgDy": {
           "type": "shape",
           "settings": {
@@ -135,7 +127,6 @@
         }
       },
       "block_order": [
-        "shape_kjhqDW",
         "shape_rNwgDy",
         "shape_4wiBd7",
         "shape_x9kzqP",
@@ -153,7 +144,8 @@
         "subtitle": "Explore our collection by diamond and gemstone cut — find the shape that speaks to you.",
         "products_collection": "all",
         "filter_label": "Stone shape",
-        "auto_fetch_shapes": true
+        "auto_fetch_shapes": true,
+        "hide_shapes_without_image": true
       }
     },
     "gemluxjewel_collection_slider": {
