@@ -26,6 +26,15 @@
     "gemluxjewel_stone_shapes": {
       "type": "gemluxjewel-stone-shapes",
       "blocks": {
+        "shape_kjhqDW": {
+          "type": "shape",
+          "settings": {
+            "title": "baguette",
+            "image": "shopify://shop_images/BaguetteCutMoissaniteSevenStoneRinginSolidGold_5.jpg",
+            "collection": "",
+            "link": ""
+          }
+        },
         "shape_rNwgDy": {
           "type": "shape",
           "settings": {
@@ -127,6 +136,7 @@
         }
       },
       "block_order": [
+        "shape_kjhqDW",
         "shape_rNwgDy",
         "shape_4wiBd7",
         "shape_x9kzqP",
