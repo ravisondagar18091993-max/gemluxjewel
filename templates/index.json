@@ -47,7 +47,7 @@
         "shape_k749ay": {
           "type": "shape",
           "settings": {
-            "title": "Rectangular",
+            "title": "baguette",
             "image": "shopify://shop_images/rediant_shape_diamond_2d2921fa-8fea-48c7-9ddb-e14263e8fbbc.png",
             "collection": "",
             "link": ""
@@ -133,15 +133,6 @@
             "collection": "",
             "link": ""
           }
-        },
-        "shape_4V8NqU": {
-          "type": "shape",
-          "settings": {
-            "title": "Other",
-            "image": "shopify://shop_images/emerald_shape_diamond_png.png",
-            "collection": "",
-            "link": ""
-          }
         }
       },
       "block_order": [
@@ -156,8 +147,7 @@
         "s3",
         "s4",
         "s5",
-        "s10",
-        "shape_4V8NqU"
+        "s10"
       ],
       "settings": {
         "title": "Shop by Stone Shape",
