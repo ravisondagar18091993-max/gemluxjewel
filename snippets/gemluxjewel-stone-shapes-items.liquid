@@ -66,6 +66,10 @@
       endfor
     -%}
 
+        {%- if section.settings.hide_shapes_without_image and shape_image == blank -%}
+      {%- continue -%}
+    {%- endif -%}
+
     <a href="{{ shape_url }}" class="{{ item_class }}" {{ block_attributes }}>
       <div class="{{ img_class }}">
         {%- if shape_image != blank -%}
