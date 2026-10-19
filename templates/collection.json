@@ -30,13 +30,6 @@
             "image": "shopify://shop_images/round_shape_diamond_png.png"
           }
         },
-        "shape_3": {
-          "type": "shape",
-          "settings": {
-            "title": "Cushion",
-            "image": "shopify://shop_images/cushion_shape_diamond.png"
-          }
-        },
         "shape_4": {
           "type": "shape",
           "settings": {
@@ -132,7 +125,6 @@
       },
       "block_order": [
         "shape_1",
-        "shape_3",
         "shape_4",
         "shape_5",
         "shape_6",
