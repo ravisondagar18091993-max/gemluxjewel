@@ -30,13 +30,6 @@
             "image": "shopify://shop_images/round_shape_diamond_png.png"
           }
         },
-        "shape_2": {
-          "type": "shape",
-          "settings": {
-            "title": "Princess",
-            "image": "shopify://shop_images/Princecs_shape_diamond_png.png"
-          }
-        },
         "shape_3": {
           "type": "shape",
           "settings": {
@@ -146,7 +139,6 @@
       },
       "block_order": [
         "shape_1",
-        "shape_2",
         "shape_3",
         "shape_4",
         "shape_5",
