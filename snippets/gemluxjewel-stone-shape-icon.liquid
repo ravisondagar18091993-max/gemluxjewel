@@ -9,7 +9,7 @@
   @param img_class {String}
 {%- endcomment -%}
 
-{% comment %} {%- liquid
+{%- liquid
   assign value_label_key = value_label | downcase | strip
   assign option_image = blank
   assign mo_type = metaobject_type | default: 'shopify--stone-shape'
@@ -117,35 +117,8 @@
       endfor
     endif
   endif
--%} {% endcomment %}
-
-{%- liquid
-  assign value_label_key = value_label | downcase | strip
-  assign option_image = blank
-  assign icon_width = width | default: 120
-  assign icon_sizes = sizes | default: '56px'
-  assign icon_widths = widths | default: '60, 90, 120'
-  assign icon_img_class = img_class | default: ''
-
-  for block in section_blocks
-    if block.type != 'shape'
-      continue
-    endif
-    assign block_title_key = block.settings.title | downcase | strip
-    if block_title_key == value_label_key and block.settings.image != blank
-      assign option_image = block.settings.image
-      break
-    endif
-  endfor
 -%}
 
-{%- if option_image != blank -%}
-  {{
-    option_image
-    | image_url: width: icon_width
-    | image_tag: widths: icon_widths, sizes: icon_sizes, loading: 'lazy', alt: value_label, class: icon_img_class
-  }}
-{%- endif -%}
 
 
 
