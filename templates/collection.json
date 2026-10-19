@@ -93,13 +93,6 @@
             "image": "shopify://shop_images/emerald_shape_diamond_png.png"
           }
         },
-        "shape_12": {
-          "type": "shape",
-          "settings": {
-            "title": "Other",
-            "image": "shopify://shop_images/emerald_shape_diamond_png.png"
-          }
-        },
         "setting_1": {
           "type": "setting",
           "settings": {
@@ -148,7 +141,6 @@
         "shape_9",
         "shape_10",
         "shape_11",
-        "shape_12",
         "setting_1",
         "setting_2",
         "setting_3",
