@@ -37,13 +37,6 @@
             "image": "shopify://shop_images/oval_shape_diamond_png.png"
           }
         },
-        "shape_5": {
-          "type": "shape",
-          "settings": {
-            "title": "Emerald",
-            "image": "shopify://shop_images/emerald_shape_diamond_png.png"
-          }
-        },
         "shape_6": {
           "type": "shape",
           "settings": {
@@ -56,13 +49,6 @@
           "settings": {
             "title": "Marquise",
             "image": "shopify://shop_images/marquiese_shape_diamond.png"
-          }
-        },
-        "shape_8": {
-          "type": "shape",
-          "settings": {
-            "title": "Radiant",
-            "image": "shopify://shop_images/rediant_shape_diamond.png"
           }
         },
         "shape_9": {
@@ -119,10 +105,8 @@
       "block_order": [
         "shape_1",
         "shape_4",
-        "shape_5",
         "shape_6",
         "shape_7",
-        "shape_8",
         "shape_9",
         "shape_10",
         "setting_1",
