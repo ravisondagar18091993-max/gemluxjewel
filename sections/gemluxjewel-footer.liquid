@@ -247,6 +247,54 @@
       {%- endif -%}
     </div>
 
+
+    <div class="gemluxjewel-footer__social">
+      {%- if settings.social_facebook_link != blank -%}
+        <a href="{{ settings.social_facebook_link }}" class="gemluxjewel-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <img src="{{ 'white-facebook.svg' | asset_url }}" alt="" width="22" height="22">
+        </a>
+      {%- else -%}
+        <a href="#" class="gemluxjewel-footer__social-link" aria-label="Facebook">
+          <img src="{{ 'white-facebook.svg' | asset_url }}" alt="" width="22" height="22">
+        </a>
+      {%- endif -%}
+      {%- if settings.social_instagram_link != blank -%}
+        <a href="{{ settings.social_instagram_link }}" class="gemluxjewel-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <img src="{{ 'white-instagram.svg' | asset_url }}" alt="" width="22" height="22">
+        </a>
+      {%- else -%}
+        <a href="#" class="gemluxjewel-footer__social-link" aria-label="Instagram">
+          <img src="{{ 'white-instagram.svg' | asset_url }}" alt="" width="22" height="22">
+        </a>
+      {%- endif -%}
+      {%- if section.settings.youtube_url != blank -%}
+        <a href="{{ section.settings.youtube_url }}" class="gemluxjewel-footer__social-link gemluxjewel-footer__social-link--text" target="_blank" rel="noopener noreferrer" aria-label="YouTube">Y</a>
+      {%- else -%}
+        <a href="#" class="gemluxjewel-footer__social-link gemluxjewel-footer__social-link--text" aria-label="YouTube">Y</a>
+      {%- endif -%}
+      {%- if settings.social_twitter_link != blank -%}
+        <a href="{{ settings.social_twitter_link }}" class="gemluxjewel-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="X">
+          <img src="{{ 'white-twitter.svg' | asset_url }}" alt="" width="22" height="22">
+        </a>
+      {%- else -%}
+        <a href="#" class="gemluxjewel-footer__social-link" aria-label="X">
+          <img src="{{ 'white-twitter.svg' | asset_url }}" alt="" width="22" height="22">
+        </a>
+      {%- endif -%}
+      {%- if section.settings.pinterest_url != blank -%}
+        <a href="{{ section.settings.pinterest_url }}" class="gemluxjewel-footer__social-link gemluxjewel-footer__social-link--text" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
+          P
+        </a>
+      {%- else -%}
+        <a href="#" class="gemluxjewel-footer__social-link gemluxjewel-footer__social-link--text" aria-label="Pinterest">P</a>
+      {%- endif -%}
+      {%- if section.settings.linkedin_url != blank -%}
+        <a href="{{ section.settings.linkedin_url }}" class="gemluxjewel-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <img src="{{ 'white-linkedin.svg' | asset_url }}" alt="" width="22" height="22">
+        </a>
+      {%- endif -%}
+    </div>
+
     <div class="gemluxjewel-footer__bar">
       <p class="gemluxjewel-footer__copyright">
         {%- if section.settings.copyright_text != blank -%}
