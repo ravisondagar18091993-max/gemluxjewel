@@ -36,7 +36,7 @@
             "title": "Cancellation Policy",
             "nav_label": "Cancellation Policy",
             "anchor_id": "cancel-policy",
-            "content": "<p>You may request to cancel your order within a short window after placing it. If the order has not yet been processed or shipped, we will cancel it and initiate a full refund.</p><p>If the order has already been dispatched, cancellation will not be possible. In such cases, you may refer to our return policy after receiving the product.</p>"
+            "content": "<p>You may request to cancel your order within a short window after placing it. If the order has not yet been processed or shipped, we will cancel it and initiate a full refund.</p><p>If the order has already been dispatched, cancellation will not be possible. In such cases, you may refer to our return policy after receiving the product. &nbsp;</p>"
           }
         },
         "p4": {
@@ -45,7 +45,7 @@
             "title": "Returns & Refunds",
             "nav_label": "Returns & Refunds",
             "anchor_id": "return-policy",
-            "content": "<p>We want you to be completely satisfied with your purchase. If you are not happy with your order, you may request a return within the eligible return period from the date of delivery.</p><p>To qualify for a return:</p><ul><li>The item must be unused and in its original condition</li><li>All original packaging must be intact</li><li>Proof of purchase is required</li></ul><p>Once your return is received and inspected, we will notify you of the approval status. Approved refunds will be processed to your original payment method within a few business days.</p><p>Shipping fees (if applicable) are non-refundable unless the return is due to a damaged, defective, or incorrect item.</p>"
+            "content": "<p>We want you to be completely satisfied with your purchase. If you are not happy with your order, you may request a return within the eligible return period from the date of delivery.</p><p>To qualify for a return:</p><ul><li>The item must be unused and in its original condition</li><li>All original packaging must be intact</li><li>Proof of purchase is required</li></ul><p>Once your return is received and inspected, we will notify you of the approval status. Approved refunds will be processed to your original payment method within a few business days.</p><p>Shipping fees (if applicable) are non-refundable unless the return is due to a damaged, defective, or incorrect item. <a href=\"/policies/refund-policy\" title=\"Refund Policy\">Read More</a></p>"
           }
         },
         "p5": {
