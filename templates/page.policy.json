@@ -86,7 +86,7 @@
         "p7"
       ],
       "settings": {
-        "show_quick_links": true
+        "show_quick_links": false
       }
     }
   },
