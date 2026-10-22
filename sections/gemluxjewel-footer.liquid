@@ -119,7 +119,39 @@
               <p class="gemluxjewel-footer__brand-description">{{ section.settings.brand_description | escape }}</p>
             {%- endif -%}
 
-            
+                        {%- if section.settings.brand_description != blank -%}
+              <p class="gemluxjewel-footer__brand-description">{{ section.settings.brand_description | escape }}</p>
+            {%- endif -%}
+
+            {%- assign cert_blocks = section.blocks | where: 'type', 'certification' -%}
+            {%- if cert_blocks.size > 0 -%}
+              <div class="gemluxjewel-footer__certs">
+                {%- if section.settings.certs_heading != blank -%}
+                  <p class="gemluxjewel-footer__certs-heading">{{ section.settings.certs_heading | escape }}</p>
+                {%- endif -%}
+                <ul class="gemluxjewel-footer__certs-list">
+                  {%- for block in cert_blocks -%}
+                    {%- if block.settings.image != blank -%}
+                      <li class="gemluxjewel-footer__certs-item" {{ block.shopify_attributes }}>
+                        {%- if block.settings.link != blank -%}
+                          <a href="{{ block.settings.link }}" target="_blank" rel="noopener noreferrer" aria-label="{{ block.settings.label | escape }}">
+                        {%- endif -%}
+                        {{
+                          block.settings.image
+                          | image_url: height: 160
+                          | image_tag: height: 48, loading: 'lazy', alt: block.settings.label
+                        }}
+                        {%- if block.settings.link != blank -%}
+                          </a>
+                        {%- endif -%}
+                      </li>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </ul>
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
           </div>
         </div>
 
