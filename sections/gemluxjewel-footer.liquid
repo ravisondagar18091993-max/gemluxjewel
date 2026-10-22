@@ -118,43 +118,44 @@
             {%- if section.settings.brand_description != blank -%}
               <p class="gemluxjewel-footer__brand-description">{{ section.settings.brand_description | escape }}</p>
             {%- endif -%}
+          </div>
+        </div>
 
-                        {%- if section.settings.brand_description != blank -%}
-              <p class="gemluxjewel-footer__brand-description">{{ section.settings.brand_description | escape }}</p>
-            {%- endif -%}
+        {% comment %} {%- for i in (1..5) -%}
+          {%- liquid
+            assign title_key = 'menu_' | append: i | append: '_title'
+            assign menu_key = 'menu_' | append: i
+            assign column_title = section.settings[title_key]
+            assign column_menu = section.settings[menu_key]
+          -%}
+          {%- if column_title != blank or column_menu != blank or i == 2 or i == 1 or i == 4 -%}
+            <div class="gemluxjewel-footer__column">
+              {%- if column_title != blank -%}
+                <p class="gemluxjewel-footer__column-title">{{ column_title | escape }}</p>
+              {%- endif -%}
 
-            {%- assign cert_blocks = section.blocks | where: 'type', 'certification' -%}
-            {%- if cert_blocks.size > 0 -%}
-              <div class="gemluxjewel-footer__certs">
-                {%- if section.settings.certs_heading != blank -%}
-                  <p class="gemluxjewel-footer__certs-heading">{{ section.settings.certs_heading | escape }}</p>
+              {%- if i == 2 -%}
+                {%- if column_menu != blank -%}
+                  <ul class="gemluxjewel-footer__links">
+                    {%- for link in column_menu.links -%}
+                      <li><a href="{{ link.url }}" class="gemluxjewel-footer__link">{{ link.title | escape }}</a></li>
+                    {%- endfor -%}
+                  </ul>
+                {%- else -%}
+                  {% render 'gemluxjewel-footer-dummy-links', column: 2 %}
                 {%- endif -%}
-                <ul class="gemluxjewel-footer__certs-list">
-                  {%- for block in cert_blocks -%}
-                    {%- if block.settings.image != blank -%}
-                      <li class="gemluxjewel-footer__certs-item" {{ block.shopify_attributes }}>
-                        {%- if block.settings.link != blank -%}
-                          <a href="{{ block.settings.link }}" target="_blank" rel="noopener noreferrer" aria-label="{{ block.settings.label | escape }}">
-                        {%- endif -%}
-                        {{
-                          block.settings.image
-                          | image_url: height: 160
-                          | image_tag: height: 48, loading: 'lazy', alt: block.settings.label
-                        }}
-                        {%- if block.settings.link != blank -%}
-                          </a>
-                        {%- endif -%}
-                      </li>
-                    {%- endif -%}
+              {%- elsif column_menu != blank -%}
+                <ul class="gemluxjewel-footer__links">
+                  {%- for link in column_menu.links -%}
+                    <li><a href="{{ link.url }}" class="gemluxjewel-footer__link">{{ link.title | escape }}</a></li>
                   {%- endfor -%}
                 </ul>
-              </div>
-            {%- endif -%}
-          </div>
-        </div>
-          </div>
-        </div>
-
+              {%- elsif i == 1 or i == 4 -%}
+                {% render 'gemluxjewel-footer-dummy-links', column: i %}
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%} {% endcomment %}
 
         {%- for i in (1..5) -%}
   {%- liquid
