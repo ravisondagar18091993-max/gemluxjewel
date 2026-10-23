@@ -18,7 +18,7 @@
           "type": "certification",
           "settings": {
             "image": "shopify://shop_images/GIA-Logo-768x253.png",
-            "label": "IGI Certified",
+            "label": "GIA Certified",
             "link": ""
           }
         },
@@ -27,6 +27,38 @@
           "settings": {
             "image": "shopify://shop_images/logo_IGI.webp",
             "label": "IGI Certified",
+            "link": ""
+          }
+        },
+        "certification_dDyYUR": {
+          "type": "certification",
+          "settings": {
+            "image": "shopify://shop_images/GJEPC_Logo-2011.jpg",
+            "label": "GJEPC Certified",
+            "link": ""
+          }
+        },
+        "certification_RQeCk6": {
+          "type": "certification",
+          "settings": {
+            "image": "shopify://shop_images/images.png",
+            "label": "SGLCertified",
+            "link": ""
+          }
+        },
+        "certification_F3ttWM": {
+          "type": "certification",
+          "settings": {
+            "image": "shopify://shop_images/images_2.png",
+            "label": "JCK Certified",
+            "link": ""
+          }
+        },
+        "certification_qfAMYm": {
+          "type": "certification",
+          "settings": {
+            "image": "shopify://shop_images/images_1.png",
+            "label": "HKDTC Certified",
             "link": ""
           }
         },
@@ -70,6 +102,10 @@
       "block_order": [
         "certification_Lg4bCn",
         "certification_9Mz8Rh",
+        "certification_dDyYUR",
+        "certification_RQeCk6",
+        "certification_F3ttWM",
+        "certification_qfAMYm",
         "trust_item_DgAnBi",
         "trust_2",
         "trust_3",
