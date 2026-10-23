@@ -580,21 +580,23 @@
   color: #ffffff;
 }
 
-/* Certifications & Awards: logo tiles */
+
+/* Certifications & Awards — final */
 footer.gemluxjewel-footer .gemluxjewel-footer__certs {
   display: block;
-  margin: 28px 0 0;
+  max-width: none;
+  margin: 24px 0 0;
   padding: 0;
 }
 footer.gemluxjewel-footer .gemluxjewel-footer__certs-heading {
-  margin: 0 0 14px;
-  font-family: var(--gemluxjewel-font-heading, 'Figtree', sans-serif);
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1.3;
-  letter-spacing: 0;
-  text-transform: none;
-  color: #ffffff;
+  margin: 0 0 12px !important;
+  font-family: var(--gemluxjewel-font-body, 'Outfit', sans-serif) !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  line-height: 1.3 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: #ffffff !important;
 }
 footer.gemluxjewel-footer .gemluxjewel-footer__certs-list {
   list-style: none;
@@ -602,14 +604,14 @@ footer.gemluxjewel-footer .gemluxjewel-footer__certs-list {
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
 }
 footer.gemluxjewel-footer .gemluxjewel-footer__certs-item {
   margin: 0;
   padding: 0;
   list-style: none;
-  width: 76px;
-  height: 46px;
+  width: 64px;
+  height: 40px;
   background: #ffffff;
   border-radius: 6px;
   overflow: hidden;
@@ -622,9 +624,6 @@ footer.gemluxjewel-footer .gemluxjewel-footer__certs-inner {
   width: 100%;
   height: 100%;
 }
-footer.gemluxjewel-footer .gemluxjewel-footer__certs-item a:hover {
-  opacity: 0.85;
-}
 footer.gemluxjewel-footer .gemluxjewel-footer__certs-item img {
   display: block;
   width: auto;
@@ -635,8 +634,8 @@ footer.gemluxjewel-footer .gemluxjewel-footer__certs-item img {
 }
 @media (max-width: 749px) {
   footer.gemluxjewel-footer .gemluxjewel-footer__certs-item {
-    width: 64px;
-    height: 40px;
+    width: 56px;
+    height: 36px;
   }
 }
 
