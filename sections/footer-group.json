@@ -14,6 +14,22 @@
     "gemluxjewel_footer": {
       "type": "gemluxjewel-footer",
       "blocks": {
+        "certification_Lg4bCn": {
+          "type": "certification",
+          "settings": {
+            "image": "shopify://shop_images/GIA-Logo-768x253.png",
+            "label": "IGI Certified",
+            "link": ""
+          }
+        },
+        "certification_9Mz8Rh": {
+          "type": "certification",
+          "settings": {
+            "image": "shopify://shop_images/logo_IGI.webp",
+            "label": "IGI Certified",
+            "link": ""
+          }
+        },
         "trust_item_DgAnBi": {
           "type": "trust_item",
           "settings": {
@@ -52,6 +68,8 @@
         }
       },
       "block_order": [
+        "certification_Lg4bCn",
+        "certification_9Mz8Rh",
         "trust_item_DgAnBi",
         "trust_2",
         "trust_3",
@@ -85,7 +103,8 @@
         "pinterest_url": "https://ca.pinterest.com/gemlux_jewels108/",
         "linkedin_url": "",
         "legal_menu": "",
-        "copyright_text": "© 2026 gemluxjewel. All Rights Reserved."
+        "copyright_text": "© 2026 gemluxjewel. All Rights Reserved.",
+        "certs_heading": "Certifications And Awards"
       }
     }
   },
