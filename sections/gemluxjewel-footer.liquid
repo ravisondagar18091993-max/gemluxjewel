@@ -118,6 +118,40 @@
             {%- if section.settings.brand_description != blank -%}
               <p class="gemluxjewel-footer__brand-description">{{ section.settings.brand_description | escape }}</p>
             {%- endif -%}
+
+
+            {%- assign cert_blocks = section.blocks | where: 'type', 'certification' -%}
+            {%- if cert_blocks.size > 0 -%}
+              <div class="gemluxjewel-footer__certs">
+                {%- if section.settings.certs_heading != blank -%}
+                  <p class="gemluxjewel-footer__certs-heading">{{ section.settings.certs_heading | escape }}</p>
+                {%- endif -%}
+                <ul class="gemluxjewel-footer__certs-list">
+                  {%- for block in cert_blocks -%}
+                    {%- if block.settings.image != blank -%}
+                      <li class="gemluxjewel-footer__certs-item" {{ block.shopify_attributes }}>
+                        {%- if block.settings.link != blank -%}
+                          <a href="{{ block.settings.link }}" target="_blank" rel="noopener noreferrer" aria-label="{{ block.settings.label | escape }}">
+                        {%- else -%}
+                          <span class="gemluxjewel-footer__certs-inner">
+                        {%- endif -%}
+                        {{
+                          block.settings.image
+                          | image_url: width: 240
+                          | image_tag: widths: '120, 240', sizes: '76px', loading: 'lazy', alt: block.settings.label
+                        }}
+                        {%- if block.settings.link != blank -%}
+                          </a>
+                        {%- else -%}
+                          </span>
+                        {%- endif -%}
+                      </li>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </ul>
+              </div>
+            {%- endif -%}
+
           </div>
         </div>
 
@@ -460,9 +494,41 @@
       "id": "copyright_text",
       "label": "Copyright prefix",
       "default": "© gemluxjewel"
+    },
+    {
+      "type": "header",
+      "content": "Certifications & Awards"
+    },
+    {
+      "type": "text",
+      "id": "certs_heading",
+      "label": "Heading (leave empty to hide)",
+      "default": "Certifications And Awards"
     }
   ],
   "blocks": [
+    {
+      "type": "certification",
+      "name": "Certification / Award",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Logo"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Name (alt text)",
+          "default": "IGI Certified"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link (optional)"
+        }
+      ]
+    },
     {
       "type": "trust_item",
       "name": "Trust item",
