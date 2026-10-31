@@ -44,13 +44,20 @@
         "shape_z7ijCR",
         "shape_hwFXcP"
       ],
+      "custom_css": [
+        ".gemluxjewel-stone-shapes__slider {display: block !important;}",
+        ".gemluxjewel-stone-shapes__track {display: grid !important; grid-template-columns: repeat(2, minmax(0, 350px)) !important; justify-content: center !important; gap: 24px !important; transform: none !important;}",
+        ".gemluxjewel-stone-shapes__item {width: 100% !important;}",
+        ".gemluxjewel-stone-shapes__nav {display: none !important;}"
+      ],
       "name": "gemluxjewel Stone Shapes",
       "settings": {
         "title": "Shop By Material",
         "subtitle": "Explore our collection by diamond and gemstone cut — find the shape that speaks to you.",
         "products_collection": "",
         "filter_label": "Stone shape",
-        "auto_fetch_shapes": false
+        "auto_fetch_shapes": false,
+        "hide_shapes_without_image": true
       }
     },
     "gemluxjewel_collection_products": {
@@ -225,7 +232,8 @@
         "stone_shape_metaobject_type": "shopify--stone-shape",
         "stone_shapes_source_collection": "all",
         "stone_shapes_heading": "",
-        "stone_shape_filter_label": "Stone shape"
+        "stone_shape_filter_label": "Stone shape",
+        "hide_shapes_without_image": true
       }
     }
   },
