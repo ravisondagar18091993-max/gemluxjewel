@@ -69,8 +69,8 @@
                         {%- endif -%}
                         {{
                           block.settings.image
-                          | image_url: width: 340
-                          | image_tag: widths: '320, 240', sizes: '186px', loading: 'lazy', alt: block.settings.label
+                          | image_url: width: 120
+                          | image_tag: widths: '120, 340', sizes: '186px', loading: 'lazy', alt: block.settings.label
                         }}
                         {%- if block.settings.link != blank -%}
                           </a>
