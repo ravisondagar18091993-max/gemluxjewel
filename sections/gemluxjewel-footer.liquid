@@ -383,6 +383,60 @@
       justify-content: flex-start;
     }
   }
+    #shopify-section-{{ section.id }} .gemluxjewel-footer__certs--top {
+    box-sizing: border-box;
+    padding-top: 28px;
+    gap: 24px;
+  }
+
+  #shopify-section-{{ section.id }}
+  .gemluxjewel-footer__certs--top
+  .gemluxjewel-footer__certs-heading {
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight: 600;
+  }
+
+  #shopify-section-{{ section.id }}
+  .gemluxjewel-footer__certs--top
+  .gemluxjewel-footer__certs-list {
+    justify-content: flex-start;
+    margin-left: auto;
+    gap: 14px;
+  }
+
+  #shopify-section-{{ section.id }}
+  .gemluxjewel-footer__certs--top
+  .gemluxjewel-footer__certs-item {
+    flex: 0 0 120px;
+    width: 120px;
+  }
+
+  #shopify-section-{{ section.id }}
+  .gemluxjewel-footer__certs--top
+  .gemluxjewel-footer__certs-item > a,
+  #shopify-section-{{ section.id }}
+  .gemluxjewel-footer__certs--top
+  .gemluxjewel-footer__certs-inner {
+    height: 78px;
+    padding: 6px;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }}
+  .gemluxjewel-footer__certs--top
+  .gemluxjewel-footer__certs-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  @media (max-width: 749px) {
+    #shopify-section-{{ section.id }} .gemluxjewel-footer__certs--top {
+      gap: 14px;
+    }
+  }
 </style>
 
 {% schema %}
