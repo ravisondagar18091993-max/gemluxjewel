@@ -69,7 +69,7 @@
                         {%- endif -%}
                         {{
                           block.settings.image
-                          | image_url: width: 240
+                          | image_url: width: 340
                           | image_tag: widths: '120, 240', sizes: '186px', loading: 'lazy', alt: block.settings.label
                         }}
                         {%- if block.settings.link != blank -%}
